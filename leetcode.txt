@@ -1,0 +1,210 @@
+--- Binary search:
+	0023(h): 對list做divide and conquer，並利用recursion做合併。
+	0034(m): 利用雙binary search，一個left < right求左邊界，一個left <= right求右邊界。
+	0069(e): 利用binary search，mid*mid < x的condition來查找。
+	0153(m): 利用binary search，minimum一定在非升序的那一區段。
+	0162(m): 利用binary search，往高點找，即nums[mid] < nums[mid+1]，left = mid+1。
+	0268(e): 利用binary search找到缺失位，利用nums[mid] > mid then right = mid因為左邊太少導致中間點得值比原本大。
+	0287(m): 利用binary search找到重複位，利用cnt >= mid then right = mid，因為左邊太多導致比mid大。
+	0378(m): 做value的binary search，每次算出<=mid的次數，若cnt < k then left = mid+1, else, right = mid。
+	0395(m): 要找到兩界限，左界線為右邊找第一個<k的idx，右界線為左界線找完後繼續往右找第一個>=k的idx。若左界線 == s.size(), return 左界線。
+	0658(m): 若右邊界靠近x，left = mid+1; 若左邊界靠近x，right = mid; 若左右邊界和x相同，right = mid;
+
+--- Array operation:
+	0009(e): find hightest digit and lowest digit in each iteration。
+	0016(m): 類似3sum，但每次找出較小的diff，以及維持一個最小的abs diff。
+	0031(m): 找到第一個nums[i-1] < nums[i]，往右邊找最後一個>nums[i-1]，做swap，然後對i往右做sort。
+	0041(h): swap直到nums[i] < 0 || nums[i] >= n || nums[i] == nums[nums[i]-1]。
+	0042(h): 維持左右兩邊的較大值，若左小於右，往右走計算水容量，反之。
+	0043(m): 字串乘法，注意位數相乘後必須加上res對應的值後，再做取餘數和商數。
+	0049(m): 利用counting sort，將字串當成vector(26)的id。
+	0057(h): 維持一tag來看newInterval有沒有插入到res，若沒用，要跟當前intervals[i]比較誰的head比較小。
+	0060(m): 找出規律，n = 4，表示第一區分是6，再來是2，最後是1。
+	0062(m): dfs，從尾巴遞迴回到(0,0)。
+	0073(m): 對於非零列或行，如果[i,j] = 0, [i,0] = [0,j] = 0，再跑一次非零列或行，若[i,0] 或 [0,j] = 0，[i,j] = 0，零列或行在一開始先記錄有沒有零。
+	0075(m): 對於2，必須讓邊界大於當前i才跳過。
+	0079(m): dfs，若這個方向沒有find，再往下個方向做。
+	0130(m): dfs，將邊上的點用dfs轉成特殊字母，再遍歷一次轉回去。
+	0179(m): sort，或是可以用merge sort。
+	0189(e): nums[i+k] = nums[i]，若i+k = start，++start。
+	0217(e): unordered_set。
+	0219(e): 利用unordered_map紀錄出現過的數字。
+	0227(m): 利用stack，遇到operator就存起來，遇到數字算好，若* or /就和sk.top()做運算。
+	0229(m): 若有一個和當前兩個都不一樣，這兩個計數器都減一。
+	0238(m): one pass，左到右和右到左同時進行。
+	0253(m): 將start time, end time 分別排序，若start < end, ++res。
+	0260(m): 找到第一個不一樣的bit，對每一個nums做xor找到這兩個數字。
+	0268(e): 利用xor。
+	0295(h): 每次push進去minque，然後取top push進maxque，若minque.size() < maxque.size() -> maxque top push進minque。
+	0300(m): 維持一個res，用binary search去找可以插入的位置。
+	0442(m): 當遇到當前指到的val為負的表示之前被指過，這個值重複。
+	0445(m): 計算長度後，遞歸到尾巴往頭算值。or stack。
+	0459(e): 利用kmp演算法。
+	0491(m): 因為同個iteration的重複項可能不一樣，需要用一vector紀錄 -> 因為不能排序，用set記錄這一輪走過的點，走過就跳過。
+	0498(m): 找出規律，r >= row or c >= col 優先判斷。
+	0516(m): 因為要找字串中最大回文，s[i] == s[j] 取 dp[i+1][j-1]+2，不用j-i+2是因為裡面不太可能都回文反之 dp[i][j] = max(dp[i+1][j], dp[i][j-1])。
+	0575(e): 找出kind種類，若大於len/2，return len/2，反之，return 種類的數量。
+	0581(e): 跑兩遍，向右找最大值，若最大值。nums[i]，表示i必須被sort，向左找最小值。
+	0605(e): 左邊和右邊都是0，即可種花。
+	0611(m): 從後面遍歷，若nums[left]+nums[right] > nums[i]，res += right-left。
+	0646(m): end = min(end, pairs[i][1])。
+	0647(m): 利用2維dp去解。
+	0680(e): 利用雙指針，若不服，可用
+	0724(e): 因為當前點左右總和相同，sum-nums[i] == 2*cur_sum -> return i。
+	0768(h): 維持升序stack，若top > arr[i]，pop_back()，return sk.size()。 維持left_max和right_min，若left_max[i] <= right_min[i+1]，++res。
+	0769(m): 維持當前最大值，若 i > maxv, ++res。
+	0792(m): 記錄每一個字串到目前為止得進度，若當前s[i]和其匹配，且指針等同於words[j].size()，++res，反之更新words[j]的指針位置，vector<pair<int, int>> map[26]。
+	0801(m): 分兩種case，a[i]>a[i-1] && b[i]>b[i-1] or a[i]>b[i-1] && b[i]>a[i-1]，維持兩個dp：swap & noswap。
+	0819(m): trie tree or double pointer。
+	0896(e): 用兩個bool up&down，必須其中一個是true才return true。
+	0926(m): 利用一變數記錄到目前為止1的數量，當前單調是將到目前為止的1數量變為0或是當前數字變為1	->上一輪res + 1 or res，+1表示當前為'0'，要轉為1。因為上一輪res是合法單調的minimum number。
+	0957(m): 對每一次的cells找規律，也就是找循環，若當前好上次紀錄一樣，N = ((N % cycles)-1+cycles) % cycles; -1是因為原本是從1開始，+cycles是因為reshift to 0 ~ cycles-1。
+	0977(e): 頭尾雙指針，大的放入res。
+	0978(m): 利用sign來判斷，分3 case：>，<，=。對於當前>或<，紀錄上次是相反結果(sign)的話cnt++，反之就重新初始化狀態(cnt = 2)。
+	0986(m): 判斷有沒有交集，若有，取max of start & min of end。
+	1003(m): 利用stack，若當前為c，判斷最上面兩個是否是a和b。
+	1005(e): 利用quick select找出前k個小的，若<0轉正，若k沒用完且為奇數找出最小的正數，扣掉此數。
+	1029(e): 先算出每個人都去a的花費大小，找出前n個去b城市花費較少(對去b-去a的話費做排序)，將這些加上到sum。
+	1046(e): 因為每次拿最重的兩個，可以用priority queue。
+	1089(e): 雙指針，計算有多少個0，j從n+zeros開始，因為要利用a[j] = a[i]，且當a[i] == 0，a[j]再一次=a[i]，注意若j >= n，就不用assgin。
+	1122(e): 利用counting sort，將arr2的數字依序放入，最後將剩餘的數字從小到大放入res。
+
+--- Sliding window:
+	0239(h): 利用queue(stl::dequeue)，若front <= i-k，pop，若back < nums[i]，pop。
+	0424(m): 維持到目前為止最大數字的數量，若當前長度-最大數量>k，移動左邊界。
+	0713(m): sliding window，當sum >= k，移動左邊界。
+	0992(m): 用map計算數字出現的次數，sliding window。可計算出最多k個次數，我們用最多k個次數-最多k-1個的次數來求出exact k different digits的 subarray。
+	1004(m): sliding window，維持一變數計算1的數量-> while (right-left+1-ones > K)。
+	1052(m): 維持一個sliding window，遇到grumpu[i] == 0，直接累加，滑動時，遇到grumpy[i] == 1時，在windown裡相加，在window外相減。
+
+--- Linklist:
+	此種題目通常需要dummy，pre。
+	0025(h): 注意revH可以設成最後一個node(可能為null)。	
+	0092(m): 類似25，對於相接部分都可以記錄點，比較好做連接。
+	0143(m): 將後半端reverse，注意邊界問題。
+	0147(m): 維持一個邊界，表示有序list的最後一個。
+	0148(m): 利用快慢指針找出中間點，slow->next = NULL。
+	0237(e): 將下一個值取代上一個值。
+	0328(m): 保持兩條list，注意奇偶數問題的邊界。
+	0430(m): 要細心連好，遇到child就去處理child的最右端連到now->next。
+
+--- Dynamic programming: 做dp時，若要找min，initial INT_MAX，反之。
+	0055(m): 當前最大步數若無法到i，return false。
+	0091(m): O(1) space，維持兩個變量i_1，i_2，表示上一位方法數和上上一位方法數。
+	0134(m): greedy method，當到目前為止總和negative，表示前面的點都不是起點，下一個點當起點，若總和negative，則沒有點可以當起點。
+	0140(m): 利用一個map紀錄當前string有沒有被記錄過。
+	0279(m): dp[i+j*j] = min(dp[i+j*j], dp[i]+1)。
+	0375(m): 利用minimax，對於dp[i][j] = min(dp[i][j], max(dp[i][k-1], dp[k+1][j])+k)， k = i~j。在最壞的情況中選最好的。
+	0474(m): dp[m][n] = max(dp[m][n], dp[m-zeros][n-ones]+1)，iteration。
+	0494(m): 0/1 problem，也可用dp解：dp[idx][sum] = dp[idx-1][sum-nums[now-1]] + dp[idx-1][sum+nums[now-1]];不可用bitset，因為bitset是用來判斷那位有沒有，無法計算次數。
+	0542(m): dp[i][j] = min(dp[i][j-1], dp[i-1][j])+1, dp[i][j] = min(dp[i][j+1], dp[i+1][j])+1。
+	0583(m): 找maximum uncrossed lines。
+	0621(m): max((int)tasks.size(), (max_len-1)*(n+1)+max_cnt)。
+	0628(m): 找出最大三個和最小兩個。
+	0650(m): 維持dp[i] = dp[i/j]+j, j = 2~i-1，j越小越好。
+	0673(m): dp[i] < dp[j]+1 -> cnt[i] = cnt[j]，dp[i] == dp[j]+1 -> cnt[i] += cnt[j];
+	0714(m): sell = max(pre_sell, prices[i]+pre_buy-fee); buy = max(pre_buy, pre_sell-prices[i]);
+	0718(m): 找maximum uncrossed lines，但注意是找連續的。
+	0740(m): 類似house robber，cnt[i] = max(cnt[i-2]+cnt[i], cnt[i-1])。
+	0823(m): 利用dp，dp[A[i]] = dp[A[j]] * dp[A[i]/A[j]]。
+	1043(m): 利用dp[i]表示到目前為止的最大值，可以從當前往前找k個，每次都去比較dp[i] = max(dp[i], dp[j-1] + maxv*(i-j+1))。
+	1048(m): 基本dp，利用mask diff算出當前兩個1的數量差異，若為1或0，dp[i] = max(dp[i], dp[j]+1)。
+	1049(m): 因為找出最小重量，代表陣列中最大可倍抵銷得數量，利用0/1解決。
+	1155(m): 利用dp，因為有顛倒順序，amount在外面，且在每一輪1~target，要創一個tmp表示tmp[i] += dp[i-j]，表示這一輪用上一輪的結果，dp不能重複用，不然當前這輪會被這輪的數值影響。
+
+--- Math:
+	0050(m): dfs recursion，只做一半。
+	0168(e): 每次計算前要做n--。
+	0172(e): 要算10就要看2和5，因為5數量比2小，所以看5。
+	0202(e): happy number 和不會是4。如果找不到1，表示有環。
+	0204(e): 對所有<=sqrt(n)的數字，把其倍數都標記。
+	0258(e): 所有1digit為該數的9的餘數。
+	0338(m): now = res[i/2]+i%2，now為i的bit 1數量。
+	0382(m): Resivoir Sampling
+	0389(e): 找出唯一出現一次，其餘出現兩次，可用xor去解。
+	0397(m): 遞迴列出所有情況
+	0398(m): Resivoir Sampling
+	0476(e): 對於每個bit取出做xor 1。
+	0507(e): 找出2~sqrt(n)中整除num的val，sum += val + num/val，if (val*val == num)，後面那項=0。
+	0754(m): -target的# of step = target的# of step，計算到sum >= target，判斷diff，只要差距偶數，# of step不變，差奇數，判斷下一個值是偶數還是奇數來決定step+1 or step+2。
+	1037(e): ay/ax == by/bx is equal tp ay*bx == by*ax。
+
+--- Subarray:
+	0152(m): 維持最大數字和最小數字，當前最大為max(nums[i], max*nums[i], min*nums[i])，最小亦同。
+	0907(m): increasing stack，dp[i]表示到i為止min of Subarray的總和。
+	1186(m): 一個deletion可以分成兩個，第一個是加上後是正的的，另一個是加上後是負的，所以維持兩個minv1, minv2, sum1, sum2。sum1是整個subarray都正的，第二個是整個subarray扣掉一個minv2是>0的。
+
+--- Prefix sum:
+	0437(e): 使用prefix sum，注意now在使用完左右遞迴後，dp[now]--才行。
+	0523(m): 要算出有沒有k的倍數序列，維持第一個餘數出現的i，若當前數rem的i - map[rem] > 1，return true。
+	0525(m): 遇到0，sum--。dp[0] = -1。
+	0560(m): res += dp[sum-k]。
+	0974(m): sum = (sum%k+k)%k。
+	1171(m): 紀錄當前sum的node，若遇到重複的，遍歷一次從上一個出現的sum的node的val到當前的鎖累加val，刪除這些val所在的map location。
+
+--- Tree:
+	0099(h): 可利用morris traversal找兩點做交換，O(1) space。
+	0114(m): iteration，每次將左孩子的最右孩子接到右孩子，當前now->right = now->left，now->left = NULL。
+	0117(m): iteration with O(1) space，保持下一層的head & rear做連接。
+	0124(h): 利用postorder，path可以用當前做轉彎點，res = max(res, now+left+right, now, now+left, now+right)，return max(now, now+left, now+right)。
+	0145(m): stack iteration，利用last紀錄最後一次用過，若左孩子或右孩子是last，則當前等於last，輸出當前->val。 也要看morris traversal。
+	0208(m): 對於沒走過的路徑才要new出來，否則直接now = now->next[word[i]-'a']。
+	0222(m): log(h)，若當前左右子樹高度不同，return 1 + dfs(root->left) + dfs(root->right)每次計算前要做n--。
+	0235(e): root = p,q,null, return root。判斷left & right情況。 或用bst特性去找要往右還是往左。
+	0297(h): 利用istringsteam做deserialize。遇到"#" return NULL。
+	0310(m): 拓墣法，每次跑一次當前queue size的回圈，來process他們的連結點，bfs都可以這樣做。
+	0331(m): 預設起始計算值cnt = 1，若cnt = 0且非'#'，return false。
+	0404(e): 要求left leaves，表示當前node為上一層的left child且自己沒有child。
+	0450(m): 利用bst特性到對應點，去做刪除和連接，因為點可能是left or right child，不同方向，連接的方向也會不同。
+	0501(e): 因為是bst，做inorder，維持最大數量res，若last_val != root->val，去看last_val的次數有沒有比max_cnt大。
+	0572(e): 當前val一樣，比較是否sametree，反之，比較s->left and t, s->right and t。
+	0617(e): 若當前有一個是null，return 另外一個。
+	0648(m): 利用prefix tree。
+	0654(m): stack iteration 解法。
+	0662(m): 若用bfs，會overflow，因此要判斷當層只有一個node情況下，將index變1，這只能在bfs達成。
+	0669(e): 利用bst特性找到符合 L <= node->val <= R 的node。
+	0814(m): 用postorder，若child不為null或node->val == 1，return node，反之，return NULL。
+	0894(m): 類似lc95和96，注意因為偶數不用算，可以i += 2 from start+1 ~ mid。
+	0897(e): 利用double pointer以及一個last來做走訪最新的node節點。
+	0938(e): 利用preorder，若root->val > R，往左走，若root->val < L，往右走。
+	0958(m): 利用complete bt特性，將所有node的left and right push進去直到遇到null，若是complete可以走到完。
+	0965(e): 若root->val != root->left->val，return false，right亦同。
+	0971(m): 若當前val != voyage[now]，res = {-1}，若left->val != voyage[now+1]-> swap。
+	0979(m): postorder，紀錄coins數量，res += abs(coins)。
+	0987(m): 利用map<int, map<int, set<int>>>， 前面兩個map是 x and y position sorting，set是用來sort 若 x y 相同的點，取smaller val在前面。
+	0988(m): 利用preorder找到root到leaf的string，用postorder無解。
+	0998(m): 找出規律，若root->val < val，new node->left = root，return root。
+	1008(m): iteration用stack，recursion跑一次for loop，每次插一個。
+	1026(m): 利用preorder找最大最小，用postorder無解，可能找到的最大最小在不同路徑。
+	1028(m): 利用stack size代表當前深度。
+	1104(m): 利用對稱性，res[i] = pow(2,i) - 1 + pow(2,i+1) - res[i+1]。
+	1145(m): 將tree分成三部分，return 最大值 of 這三部分 > n/2。
+
+--- Design:
+	0146(m): LRU cache，用list和用map記錄其iterator。
+
+--- Graph: 
+	0133(m): 利用map找出原node和clone node的對應關係，再用dfs去跑。
+	0207(m): 找沒有被指到的，也就是deg = 0的點丟入queue做循環。
+	0419(m): dfs特化題，往右下找最後一個+時再做++res。
+	0489(h): 用set記錄走過的路，初始化位置可以自己決定，如(0,0)，因為位置都是相對的。
+	0463(e): 因為要找邊長，將走過的改成-1。也可以計算總方格數，扣掉重複邊長(看右下是不是1)。
+	0934(m): 利用dfs對島嶼做標記(-2 & -1)，用bfs找出最短距離。
+	0980(h): 計算要走的步數，然後用基本dfs就可以。
+	1034(m): 用dfs把所有點標成-tag，走訪判斷若上下左右都是abs(tag)，表示此點為內部點，改為tag。
+	1135(m): union finding，維持一個parent，若同一個union，其parent都一樣，若不一樣，將這兩個parent做連接。另外對cost做排序，若當前兩個點parent不同，加上這個edge。
+
+--- Stack:
+	0084(h): 利用升序stack。
+	0105(m): stack。
+	0155(e): 在stack裡，每次push時，檢查x有沒有<=當前minv，若有，push minv後minv = x，pop看當前top有沒有== minv，若有則pop。
+	0226(m): 遇到新的op，針對舊的op放入stack，若是*或/，取top做運算。
+	0402(m): 若是升序序列，則去掉最後面k個，因此維持升序stack，若res.back() > nums[i]，pop_back()，若while後發現k還沒用完，res從後面刪。
+	0496(e): 對於nums2做降序陣列，再利用map移回nums1。
+	0901(m): 利用降序stack。
+	1130(m): 利用降序stack，對每個pop的取左右兩邊較小值做乘積，此為當前最佳解。
+
+--- kth:
+	0215(m): heapsort, priority_queue, quick_select
+	0373(m): min heap with priority queue，每次丟入(x+1,y)和(x,y+1)進入queue。
+

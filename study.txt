@@ -1,0 +1,593 @@
+1. char s[]中任一位置有'\0'，印出來就是停在那，而std::string則繼續印(跳過'\0')，計算char陣列長度用strlen
+string size() = length() (length是從c過來的)
+且string會算入\0當作length()或size()的一位
+
+2. sizeof是byte數量，且會計算最大分配空間(也會算入'\0')，strlen是字數量(=size())，不會計算'\0'，除非下種情況:
+char[] a={'a','b','c'}; sizeof(a) = 3
+一般情況 char[] b={"abc"}; sizeof(b) = 4
+
+3. 通常char陣列結尾必有'\0'，但有例外:char[] a={'a','b','c'}; sizeof(a) = 3
+
+
+若string str={'a','b','c','\0','X'};
+sizeof(str)=5，strlen(str)=3
+
+char ss[n] -> ss[n-1]必 = '\0';
+
+char ss[100] = "0123456789"; sizeof(ss) = 100*1(byte)
+
+https://blog.csdn.net/z_qifa/article/details/77744482
+
+s.substr(start,length)
+
+************************************************************************************
+
+使用virtual function目的是為了節省程式碼，用一個類別定義Virtual函數，子類別詳細定義，命名obj可用母類別。
+這樣不用為了不同種類的子 class都寫個別func，寫一個用母class obj傳進去就好 (clean code)
+https://ascii-iicsa.blogspot.com/2010/08/pure-virtual-functionabstract-base.html
+
+That’s what virtual methods do: they downcast safely, with apparently simple and concise(簡潔) code, 
+
+https://stackoverflow.com/questions/2391679/why-do-we-need-virtual-functions-in-c, answered by M-J
+
+我們可以得知virtual function可以讓我們在runtime才決定要call哪個function。
+virtual function其實是用來實作多型(polymorphism)而發明的。
+virtual function達到dynamic binding的目的 (make code more clean and concise)
+總結: 
+當有很多class有共通點的時候，我們找到其共通點作為base class，
+這樣base class可以指向各個不同的subclass來達到多行的目的，然而這些sub class和base class
+可能都有共同的行為(function)，那麼用base class指向sub class的方式可能會有early binding的問題
+(compiler 會認為使用base class的function)，此時運用virtual function來達到dynamic binding，在runtime才知道是用哪個type的function
+來解決多形有共同function在subclass和base class的問題
+
+so,第一原因:解決多行機制調用function在base或sub class都有的問題(dynamic binding)
+   第二原因:使code更簡潔
+
+virtual pointer & virtual table
+virtual table存放該類別所有的virtual function的位址
+
+virtual table和指向他的virtual pointer會在class被建構時建立，且如果virtual function在base class和sub class
+同名時，sub class的virtual function會蓋掉所有base class的virtual function，另外，程式執行到virutal funciton時，
+會去查找virtual ptr指向的virtual table中所存放的相對應位址，去那地址執行virtual function的內容
+
+在衍生類別重新定義基底類別中某一多載函數會把所有同名之多載函數全部遮蓋掉，只剩該一被重新定義之函數。
+如果衍生類別還想使用原來在基底類別中其他的同名函數則必需在衍生類別中一一重新定義。
+
+http://ublearning.blogspot.com/p/virtual-function.html
+http://puremonkey2010.blogspot.com/2014/08/c-gossip-virtual-function.html
+https://www.hackerearth.com/zh/practice/notes/virtual-function-and-virtual-table-in-c/
+
+************************************************************************************
+
+hash table實作 (平常使用unordered map)
+map內建將key排序的功能。
+for (auto it = m.begin(); it != m.end(); ++it) -> 從頭遍歷。
+for (auto it = m.rbegin(); it != m.rend(); ++it) -> 從尾遍歷。
+
+hash<int> h，可以做hash value。
+
+可以用array of list，用list來找collision，lc705，lc706。
+
+************************************************************************************
+
+(1) 動態規劃為將問題分為子問題，當前問題可由子問題和當前條件解出。
+(2) 通常題目問到最大，最小，連續最大或連續最小，都可用dp解(ex: longest)。
+(3) dp recursion在講time complexity時，若有用memorization，通常time complexity都是dp data大小。
+	若recursion裡面額外for loop，要算進去。
+
+************************************************************************************
+
+bfs: http://alrightchiu.github.io/SecondRound/graph-breadth-first-searchbfsguang-du-you-xian-sou-xun.html
+dfs: http://alrightchiu.github.io/SecondRound/graph-depth-first-searchdfsshen-du-you-xian-sou-xun.html
+
+bfs和dfs都可用來檢測有向圖或無向圖的環
+
+bfs可以用來解最短路徑，dfs可以用來找方法數。
+
+bfs用queue實作
+(1) queue
+(2) color: 白灰黑 (0, 1, 2) 
+	有向為利用拓樸排序，從入度為0的開始找，若完成點數不到總點數代表有環。
+	無向為遇到1或2是環。
+(3) distance: 紀錄與起點的距離
+(4) predecessor: 該點的祖先(上一點)
+
+pseudo-code:
+
+初始化所有參數
+for (所有點)
+{
+	找白色點->做bfs
+}
+
+bfs(點)
+{
+	將input點放入queue且改灰色
+	while (queue不是空的)
+	{
+		for (和queue的head相連點)
+		{
+			if (是白色點)
+			{
+				放入queue且改灰色
+				distance(找到的點) = distance(head) + 1
+				predecessor[找到的點] = queue的head。
+			}
+
+		}
+		將head從queue移除並改黑色，
+	}
+}
+
+or
+
+bfs(點) //--- 洋蔥式 bfs
+{
+	將input點放入queue且改灰色
+	while (n != 0)
+	{
+		q_size = 當前que size
+		n = n - q_size
+		for (int i = 0; i < q_size; ++i)
+		{
+			for (和queue的head相連點)
+			{
+				if (是白色點)
+				{
+					放入queue且改灰色
+					distance(找到的點) = distance(head) + 1
+					predecessor[找到的點] = queue的head。
+				}
+
+			}
+			將head從queue移除並改黑色，
+		}
+	}
+}
+
+一層一層的把當前處理的index的相連所有點都加入queue，把當前點設灰色，
+移除條件為與其連接的for迴圈都做完就pop，並把要pop的點設黑色。
+queue如果是空的就結束bfs。
+
+*** bfs有兩種，一種是從中心往外，另一種是從外圍一層一層剝掉。
+
+dfs用preorder實作，因為優先拜訪當前點，根據與當前點連接並還沒拜訪過的走(深度搜尋)
+(1) time
+(2) discover, finish: 紀錄時間點
+(3) color: 白灰黑 (0, 1, 2) 有向為遇到1是環，無向為遇到1或2是環。
+(4) predecessor: 該點的祖先(上一點)
+
+紀錄distance方法另一種: 預設qsize = 1，每次pop就減1並將pop的element加入vector，
+當等於0代表vector裡的都是同一距離，並且再讓qsize=當前queue.size()
+
+pseudo-code:
+
+初始化所有參數
+for (所有點)
+{
+	找白色點->做dfs
+}
+
+dfs(點)
+{
+	discover[input點] = ++time;
+	input點改灰色
+	for (和input相連的點)
+	{
+		if (是白色點)
+		{
+			dfs(白色點)
+			predecessor[找到的點] = input點
+		}
+	}
+	把input點改黑色
+	finish[input點] = ++time;
+}
+
+
+拜訪當前點，設定拜訪時間，並設灰色，然後對當前點的所有與其相連的點並且未拜訪的call dfs做遞迴，
+結束後將當前點設為黑色。
+
+此外在使用dfs時，可以用一陣列儲存走過的點，這樣就不會重複運算。(如果tle或時間很高再用這方法)。
+
+************************************************************************************
+preorder：
+
+while(cur || stack不是空)
+{
+	printf;
+	if (cur->right) stack.push(cur->right);
+	cur = cur->left;
+	if (cur == NULL)
+	{
+		cur = stack.pop();
+	}
+}
+
+inorder：
+
+while(cur || stack不是空)
+{
+	while(cur)
+	{
+		stack.push(cur);
+		cur = cur->left;
+	}
+	if (cur == NULL)
+	{
+		cur = stack.pop();
+		printf;
+		cur = cur->right;
+	}
+}
+
+postorder：
+
+因為後續必須等孩子都做完才能換自己做，需要一個標記來確認自己孩子做完沒。
+利用head做標記，初始化為root，代表最後一次處理完哪個node(已經print到哪個node)
+將root push進stack，令cur = stack.top()
+while (stack不為空)
+{
+	if (cur->left == head || cur->right == head || (cur沒有孩子))
+	{
+		把cur pop出stack，print。
+		head = cur
+	}
+	else
+	{
+		push右孩子
+		push左孩子
+	}
+}
+
+************************************************************************************
+
+c++ pass array to function (reference pointer)
+!!注意!!若要用遞迴call本身function，傳入參數size過大，要用reference傳。
+或傳入參數size過大，直接用&(reference)。
+
+************************************************************************************
+
+Pointer技巧:
+struct node
+{
+	int val;
+	struct node *next;
+};
+
+若要用n1->next = n2 代表n1->next這個pointer存放的內容是n2的位址，不是&n2。
+使用function傳遞pointer時，代表傳遞的是pointer指向的東西用另一個pointer指。
+若這東西在裡面重新被new且改值，外面的東西值不便 (因為被改的是被new的東西)
+若這東西在裡面改值，外面的東西值變。
+
+因此若要實作pointer linklist，可用double pointer。
+
+(1) single pointer：
+指向的東西在function內被new，外面不會知道，因為new出來的位址不是外面指向的
+ex: ptr1->struct1，進funciton: ptr2->struct1
+若struct1被重新new為struct2，則ptr2->struct2但外面還是ptr1->struct1。
+
+(2) double pointer:：
+ptr1->ptr2->struct1，進function：ptr3->ptr2->struct1
+若struct1被重新new為struct2，則ptr3->ptr2->struct2，且外面是ptr1->ptr2->struct2。
+=>裡面改外面也跟著變動。
+
+注意!!!!!!!!!!若遞迴中，變數有被會記憶體位置，就要用double pointer，或是return 變數。
+
+************************************************************************************
+
+heapify : recursive call maxheapify if needed (root和孩子交換就要call)。
+buildmaxheap：產生root為最大值的maxheap(利用max heapify)。 O(n)
+heapsort: (1) 先buildmaxheap， 0(n)
+	  	  (2) 每次將max_heap的最大值(也就是root)和最後一個node交換，取出最一個node，再做一次maxheapify()
+	      	  直到最後一個node是root為止。 O(nlogn)
+
+c++ make_heap： O(n)
+    push_heap： O(logn) 做一次以自己為起點的逆向heapify
+    pop_heap：  O(logn) 頭尾交換後，做一次以root為開始點的heapify
+
+************************************************************************************
+
+priority_queue<int> q; O(nlogn)：base on heap_sort
+
+max_heap: priority_queue<int> q;
+min_heap: priority_queue<int, vector<int>, greater<int>> q;
+
+自定義：
+priority_queue<int, vector<int>, decltype(comp)> que(comp);
+
+比較函數用法：auto comp = [&nums1, &nums2](vector<int> &a, vector<int> &b)
+
+void partial_sort (RandomAccessIterator first, RandomAccessIterator middle,
+                     RandomAccessIterator last, Compare comp);
+
+************************************************************************************
+
+使用1-3張 贏最多
+dp[0,n] = max((n(0)-dp[1,n]), (n(0)+n(1)-dp[2,n]), (n(0)+n(1)+n(2)-dp[3,n]));
+牌可能為負數。
+
+************************************************************************************
+
+(1) 所有binary search都可用下面做計算
+
+=== 條件都設 if (dp[mid] < nums[i]) ===
+(不管是遞升還是遞減， 等是互換就好)。
+
+while (left < right)
+{
+
+	right = mid;
+	or
+	left = mid+1
+
+}
+
+若有例外會在left == right再檢查。
+
+(2) 也有可能會下種：
+while (left < right)
+{
+
+	right = mid-1;
+	or
+	left = mid+1
+}
+若有例外會在left == right或left > right再檢查。
+此通常圍tree或是中間點已有，往左或右查找。
+
+防止overflow: mid = left + (right - left) / 2;
+
+binary search有兩種搜索方法：
+(1) index搜索。
+(2) value搜索。
+	做value搜索時要做到left = right。
+
+對於用binary search找連續區間，左邊界正常找，右邊界較特殊。
+while (left <= right)
+	if (nums[mid] <= target)
+		left = mid+1;
+	else
+		right = mid-1;
+	nums[right] 為右邊界。
+
+若是sorted array search，可以用binary search。
+
+************************************************************************************
+
+Trie Tree: 前序樹，每一個節點有n個next(如26個表示a~z)，若當前字串有a表示node->next[0]可以走。
+
+time complexity : O(l*cnt)
+space complexity: O(l*cnt)
+l : length of word
+cnt : counts of words
+
+************************************************************************************
+
+做dp時，
+(1) 若要重複使用key，則從0開始到target，(當前狀態會被之前狀態影響，因為同個key會將狀態做推移)。
+(2) 若不重複使用key，則從target開始到key。
+初始化的時候，要自己跑一遍例子確定初始話的值。
+
+通常求最多或最少，最長或最短，都用dp去解。 (0-1問題)
+
+解總合問題，若key前後使用有順序，則amount在外面，key在裡面。
+		  若key前後使用沒有順序(lc518. coins change 2)，則key在外面，amount在裡面。
+
+0/1 Knapsacks: 494 416 1049...
+
+通常做do實為雙迴圈
+for (int i = 0; i < n; ++i)
+	for (int j = 0; j < i; ++j)
+
+or
+
+for (int i = n-1; i >=0 ; --i)
+	for (int j = i; j < n; ++j)
+
+第二個迴圈就是將問題分為字問題(sub problem)。
+
+time complexity for dp:
+The time complexity should depend on the number of states, since the DP "touches" each state once.
+
+************************************************************************************
+
+unordered_set, unordered_map
+
+unordered_map： hash_table，查找key可用map.find(key) == map.end()。
+
+set, map可以排序。
+
+************************************************************************************
+
+處理前幾小或前幾大問題，可用unordered_map，priority_queue，quick select。
+排序問題也可以使用priority queue，拿出一個區間最大或最小值也可以用priority_queue。
+
+對於priority queue，可以用pair<int,int>就用，速度比vector<int>快很多。
+
+************************************************************************************
+
+當想要找到第一個大於當前數字的值，可以先更新候選人的值使得都大於當前數字，下一輪可直接比較。(lc264)
+
+************************************************************************************
+
+避免重複可以用if (dp[i] == dp[i-1]) ++i，若不相鄰，可用一map or vector紀錄這個數字在當前這輪
+有沒有用過。
+
+不能使用 if (dp[i] == dp[i+1]) ++i。
+
+************************************************************************************
+
+若取的環境參數超過512，則會stack overflow，因為strcpy 不會有bound checking機制，
+超過512則return address 會更改，attacker可以execute 或是修改一些本來無法修改的記憶體內容(stack中的local variable)。
+
+************************************************************************************
+
+c++ emplace_back，push_back差別
+http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function
+
+************************************************************************************
+
+c++ istringstream：字串分割
+
+istringstream is(str)
+while(is >> s)
+	cout << s << "\n";
+
+ostringstream ss;
+ss << "qwe";
+string str = ss.str()
+
+isalpha(c), tolower(c), toupper(c);
+想將大小寫互轉也可以使用^32，因為大小寫在第六個bit不一樣，其他都一樣。
+
+比較string，可以用a.compare(b)，若比大小，長度必須相同。也可直接用 num1 > num2來判斷
+a > b return 1， a < b return -1， a == b return 0。
+
+若要比較數字大小，需要兩數字一樣長才行用compare。
+
+c++ 比較數字大小是去看每一位數字大小，所以"3" > "22"，因為第一位"3" > "2"。
+
+************************************************************************************
+
+字串分類問題可用prefix角度去想，例如開一個vector<int> size: 26，並且將字串的首個字母分類到對應的vector。
+
+************************************************************************************
+
+atoi(), stoi()
+atoi()的參數是const char*，因此對於一個字串我們必須用c_str()的方法把這個string轉成const char *類型，
+而stoi()的參數是const string*，不需要轉成 const char*；
+
+************************************************************************************
+
+當我們要對list做由後往前的操作時，可以用stack。
+注意：stack操作可將尾巴的東西先做。
+
+************************************************************************************
+
+c++ vector: insert, erase, find
+
+string find: s1.find(s2) != std::string::npos
+	   erase: S = S.erase(i, len);
+	   insert: S.insert(idx, cnt, char);
+
+注意，vector of pair initialize
+vector<pair<int,int>> ch_list[26];
+
+************************************************************************************
+
+找第k個，前k個，或是最多(少)k個可用：
+(1) quick select O(n)。
+(2) priority queue
+(3) bucket sort
+(4) dp
+
+************************************************************************************
+
+recursion to iteration寫法。
+
+************************************************************************************
+
+list 在於訪問特定點或是刪除插入是O(1)，但隨機訪問效率差，和vector相反。
+
+************************************************************************************
+
+c++ iterator is similar to pointer
+c++ STL deque
+
+************************************************************************************
+
+bst題目可以用區間，min, max去做，或是挑路走。
+若下層影響上層，用postorder，若找路徑間變化，用preorder。
+要traverse tree時，可以先想想能不能用morris traversal。
+
+tree的題目，若有特殊需求，level order相關的取法或要求，可用queue。
+
+************************************************************************************
+
+看到array求subarray，可用prefix sum，double pointer，sliding window去想。
+看到array求element或多個element，可用binary search維持區間或找element。
+看到array求區間，可用stack做降序或升序。
+
+sliding window of substring：先向右去累積條件，直到條件充分，滑動左窗口直到最後一個條件充分的idx。
+
+************************************************************************************
+
+c++: mutex, unique_lock, condition_variable, lock_guard, share_lock
+
+unique lock 比lock guard更多功能，但效率較差，share_lock通常用作read，lock_guard和unique_lock
+用作write。
+
+lc1188，lc1279。
+
+************************************************************************************
+
+點對點最短路徑或最長路徑 (Dijkstra 演算法)
+可用priority queue。
+
+最短路徑問題也可以用bfs，但是注意只要當前可以被更新，就要丟入queue，Dijkstra則是加入後就不能再加入。
+
+一般來說找最短路徑用bfs，O(V+E)，用Dijkstra，O(V+E+ElogE)。
+若data structure是adjacent matrix，bfs: (V^2)，Dijkstra: O(V^2+ElogE)。
+
+circular queue，circular dequeue。
+
+************************************************************************************
+
+difference between subsequence and substring:
+
+awkwqtez, akw是其subsequence，而kwqt是其substring。
+即substring必須是原字符串中連續的字符串，而subsequence可以不是。
+
+************************************************************************************
+
+unordered_map with pair的用法。
+
+unordered_map<pair<int,int>, int, hash_pair>
+
+struct hash_pair { 
+    template <class T1, class T2> 
+    size_t operator()(const pair<T1, T2>& p) const
+    { 
+        auto hash1 = hash<T1>{}(p.first); 
+        auto hash2 = hash<T2>{}(p.second); 
+        return hash1 ^ hash2; 
+    } 
+};
+
+************************************************************************************
+
+segment tree: https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/
+binary indexed tree: https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
+
+lc1409，lc307。
+
+************************************************************************************
+
+delete node，兩種方法
+(1) now = root->right往左走到最底，now->left = root->left, return root->right
+(2) now = root->right往左走到最底，此為新點new node，new->left = root->left, new->right = root->right
+	且在找的過程中用recursion重新接好。
+	if (root->left) {
+		root->left = findmin(root->left, min);
+	} else {
+		*min = root;
+		return root->right;
+	}
+
+************************************************************************************
+
+reverse link list, revH 設置為null或下個起始點
+
+a->b->c->null
+
+cur = a;
+now = revh = null
+while (cur != now) {
+	tmp = cur->next;
+	cur->next = revh;
+	revh = cur;
+	cur = tmp;
+}
+
+************************************************************************************
