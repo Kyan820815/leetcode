@@ -1983,6 +1983,8 @@ https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
 	// len is the average length of words
 	// m * n is the size of board
 	// maxlen is the max length of words
+(2) 將每一個word跑一遍m*n dfs，每一個dfs為m*n，利用len 表示當前檢測到
+	哪一個位置，若idx == word.size()-1，return true。
 
 ///////////////////////////////////////////////////////////////
 //

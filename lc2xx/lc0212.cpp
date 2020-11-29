@@ -4,67 +4,123 @@
 class Node {
 public:
     Node() {
+        end = false;
         next.resize(26, NULL);
-        isWord = false;
     }
+    bool end;
     vector<Node *> next;
-    bool isWord;
 };
-class TrieTree {
+
+class Trietree {
 public:
-    TrieTree() {
-        root = new Node;
+    Trietree() {
+        root = new Node();
     }
     void insert(string &word) {
         Node *now = root;
         for (int i = 0; i < word.size(); ++i) {
-            if (!now->next[word[i] - 'a'])
-                now->next[word[i] - 'a'] = new Node();
-            now = now->next[word[i] - 'a'];
+            if (!now->next[word[i]-'a']) {
+                now->next[word[i]-'a'] = new Node();
+            }
+            now = now->next[word[i]-'a'];
         }
-        now->isWord = true;
+        now->end = true;
     }
-Node *root;
+    
+    Node *root;
 };
+
 class Solution {
 public:
+    vector<string> res;
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        vector<vector<int>> dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        unordered_set<string> res;
         int row = board.size(), col = board[0].size();
-        TrieTree *tree = new TrieTree();
-        for (int i = 0; i < words.size(); ++i)
-            tree->insert(words[i]);
+        vector<vector<int>> dir = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+        Trietree *trie = new Trietree();
+        for (int i = 0; i < words.size(); ++i) {
+            trie->insert(words[i]);
+        }
         for (int i = 0; i < row; ++i) {
-            for (int j = 0; j < col; ++j) {
-                string nowstr = "";
-                char tmp = board[i][j];
-                board[i][j] = '0';
-                nowstr.push_back(tmp);
-                dfs(i, j, board, dir, res, tree->root->next[tmp-'a'], nowstr);
-                board[i][j] = tmp;
+            for (int j = 0; j < col && words.size() > res.size(); ++j) {
+                string word = "";
+                Node *now = trie->root;
+                dfs(i, j, board, dir, now->next[board[i][j]-'a'], word);
             }
         }
-        return vector<string>(res.begin(), res.end());
-    }
-    void dfs(int r, int c, vector<vector<char>> &board, vector<vector<int>> &dir, unordered_set<string> &res, Node *now, string &nowstr) {
+        return res;
+    }   
+    void dfs(int i, int j, vector<vector<char>> &board, vector<vector<int>> &dir, Node *now, string &word) {
         int row = board.size(), col = board[0].size();
-        if (!now)
+        if (!now) {
             return;
-        if (now->isWord)
-            res.insert(nowstr);
-        
-        for (int i = 0; i < 4; ++i) {
-            int nr = r + dir[i][0];
-            int nc = c + dir[i][1];
-            if (nr < 0 || nr >= row || nc < 0 || nc >= col || board[nr][nc] == '0')
-                continue;
-            char tmp = board[nr][nc];
-            board[nr][nc] = '0';
-            nowstr.push_back(tmp);
-            dfs(nr, nc, board, dir, res, now->next[tmp-'a'], nowstr);
-            nowstr.pop_back();
-            board[nr][nc] = tmp;
         }
+        word.push_back(board[i][j]);
+        if (now->end) {
+            res.push_back(word);
+            now->end = false;
+        }
+        char tmp = board[i][j];
+        board[i][j] = '0';
+        for (int k = 0; k < 4; ++k) {
+            int ni = i + dir[k][0];
+            int nj = j + dir[k][1];
+            if (ni < 0 || ni >= row || nj < 0 || nj >= col || board[ni][nj] == '0') {
+                continue;
+            }
+            dfs(ni, nj, board, dir, now->next[board[ni][nj]-'a'], word);
+        }
+        board[i][j] = tmp;
+        word.pop_back();
+    }
+};
+
+//--- method 2: simple dfs with word lenth restriction
+class Solution {
+public:
+    int row, col;
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+        row = board.size(), col = board[0].size();
+        vector<string> res;
+        for (int i = 0; i < words.size(); ++i) {
+            if (exist(words[i], board)) {
+                res.push_back(words[i]);
+            }
+        }
+        return res;
+    }
+    bool exist(string &word, vector<vector<char>> &board) {
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (dfs(i, j, 0, word, board)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    vector<vector<int>> dir = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+    bool dfs(int r, int c, int idx, string &word, vector<vector<char>> &board) {
+        if (board[r][c] != word[idx]) {
+            return false;
+        }
+        if (idx+1 == word.size()) {
+            return true;
+        }
+        char prev = board[r][c];
+        board[r][c] = '0';
+        bool find = false;
+        for (int i = 0; i < 4; ++i) {
+            int nr = dir[i][0] + r;
+            int nc = dir[i][1] + c;
+            if (nr < 0 || nr >= row || nc < 0 || nc >= col || board[nr][nc] == '0') {
+                continue;
+            }
+            find |= dfs(nr, nc, idx+1, word, board);
+            if (find) {
+                break;
+            }
+        }
+        board[r][c] = prev;
+        return find;
     }
 };
