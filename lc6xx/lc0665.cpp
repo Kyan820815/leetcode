@@ -4,13 +4,11 @@
 class Solution {
 public:
     bool checkPossibility(vector<int>& nums) {
-        int credit = 1, last = -100001;
+        int last = INT_MIN, next = INT_MAX, cnt = 1;
         for (int i = 0; i < nums.size()-1; ++i) {
-            if (nums[i] > nums[i+1]) {
-                int next = (i+2 == nums.size()) ? 100001 : nums[i+2];
-                if (--credit < 0 || last > nums[i+1] && nums[i] > next) {
-                    return false;
-                }
+            int next = (i < nums.size()-2) ? nums[i+2] : INT_MAX;
+            if (nums[i] > nums[i+1] && --cnt < 0 || last > nums[i+1] && nums[i] > next) {
+                return false;
             }
             last = nums[i];
         }

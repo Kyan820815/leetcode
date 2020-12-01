@@ -4,26 +4,28 @@
 class Solution {
 public:
     vector<int> exclusiveTime(int n, vector<string>& logs) {
-        stack<int> sk;
+        vector<int> sk;
         vector<int> res(n, 0);
-        int lastTime = 0;
+        int last_time = 0;
         for (int i = 0; i < logs.size(); ++i) {
-            int idx1 = 0;
-            while (logs[i][idx1++] != ':');
-            int funcid = stoi(logs[i].substr(0, idx1-1));
-            int idx2 = idx1;
-            while (logs[i][idx2++] != ':');
-            string type = logs[i].substr(idx1, idx2-idx1-1);
-            int time = stoi(logs[i].substr(idx2));
-            if (sk.size())
-                res[sk.top()] += time - lastTime;
-            lastTime = time;
-            if (type == "start")
-                sk.push(funcid);
-            else {
-                ++res[sk.top()];
-                sk.pop();
-                ++lastTime;
+            int idx = 0, id = 0, time = 0;
+            string log = logs[i];
+            while (log[idx] != ':') {
+                id = id * 10 + log[idx++]-'0';
+            }
+            ++idx;
+            if (log[idx] == 's') {
+                time = stoi(log.substr(idx+6));
+                if (sk.size()) {
+                    res[sk.back()] += time-last_time;
+                }
+                sk.push_back(id);
+                last_time = time;
+            } else {
+                time = stoi(log.substr(idx+4));
+                res[id] += time-last_time+1;
+                sk.pop_back();
+                last_time = time+1;
             }
         }
         return res;

@@ -16,7 +16,6 @@ public:
             if (visit[i])
                 continue;
             queue<int> que{{i}};
-            int qsize = 1;
             set<string> mail;
             while (que.size()) {
                 auto now = que.front();
@@ -41,44 +40,42 @@ public:
 
 class Solution {
 public:
+    unordered_map<string, vector<string>> group;
     vector<vector<string>> accountsMerge(vector<vector<string>>& accounts) {
-        unordered_map<string, string> parent, head;
-        unordered_map<string, vector<string>> list;
-        vector<vector<string>> res;
+        unordered_map<string, string> head, parent;
         for (int i = 0; i < accounts.size(); ++i) {
-            string ap = findp(accounts[i][1], parent, list);
+            string ap = findp(accounts[i][1], parent);
             head[ap] = accounts[i][0];
             for (int j = 2; j < accounts[i].size(); ++j) {
-                string ap = findp(accounts[i][1], parent, list);
-                string bp = findp(accounts[i][j], parent, list);
+                string bp = findp(accounts[i][j], parent);
                 if (ap != bp) {
-                    if (list[ap].size() < list[bp].size()) {
+                    if (group[ap].size() < group[bp].size()) {
                         parent[ap] = bp;
-                        list[bp].insert(list[bp].end(), list[ap].begin(), list[ap].end());
-                        list.erase(ap);
+                        group[bp].insert(group[bp].end(), group[ap].begin(), group[ap].end());
+                        group.erase(ap);
                     } else {
                         parent[bp] = ap;
-                        list[ap].insert(list[ap].end(), list[bp].begin(), list[bp].end());
-                        list.erase(bp);
+                        group[ap].insert(group[ap].end(), group[bp].begin(), group[bp].end());
+                        group.erase(bp);
                     }
                 }
+                ap = findp(accounts[i][1], parent);
             }
         }
-        for (auto &m: list) {
-            string x = m.first;
-            res.push_back({head[x]});
-            sort(list[x].begin(), list[x].end());
-            res.back().insert(res.back().end(), list[x].begin(), list[x].end());
+        vector<vector<string>> res;
+        for (auto &s: group) {
+            res.push_back({head[s.first]});
+            sort(s.second.begin(), s.second.end());
+            res.back().insert(res.back().end(), s.second.begin(), s.second.end());
         }
         return res;
     }
-    string findp(string &now, unordered_map<string, string> &parent, unordered_map<string, vector<string>> &list) {
+    string findp(string now, unordered_map<string, string> &parent) {
         if (parent.find(now) == parent.end()) {
-            parent[now] = now;
-            list[now].push_back(now);
-        } else if (now != parent[now]){
-            return parent[now] = findp(parent[now], parent, list);
+            group[now].push_back(now);
+            return parent[now] = now;
+        } else {
+            return parent[now] == now ? now : findp(parent[now], parent);
         }
-        return parent[now];
     }
 };

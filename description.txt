@@ -3207,6 +3207,7 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
 
 (1) k = j+1~i-1
 	利用minimax，dp[j][i] = min(k + max(dp[j][k-1],dp[k+1][i]))
+(2) recursion for minimax。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -3478,7 +3479,6 @@ follow up: pos[i][j]表示從i開始，'a'+j第一個出現的位置。
 	首先recursion function會被call幾次？ -> m*n，因為要填滿每一個dp data位置，
 	再來，每個recursion有跑一次n linear search，所以m*n*n。
 	可improve到logn by binary search。
-	類似lc410。
 
 ///////////////////////////////////////////////////////////////
 //

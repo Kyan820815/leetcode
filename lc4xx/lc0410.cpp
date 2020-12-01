@@ -41,25 +41,27 @@ public:
 class Solution {
 public:
     int splitArray(vector<int>& nums, int m) {
-        vector<vector<long>> dp(m, vector<long>(nums.size()+1, INT_MAX));
+        vector<vector<int>> dp(m, vector<int>(nums.size()+1, -1));
         dp[0][0] = 0;
-        for (int i = 1; i <= nums.size(); ++i) {
-            dp[0][i] = dp[0][i-1] + nums[i-1];
+        for (int i = 0; i < nums.size(); ++i) {
+            dp[0][i+1] = dp[0][i] + nums[i];
         }
-        return dfs(dp, m-1, 1, nums.size());
+        return dfs(nums.size(), m-1, dp);
     }
-    long dfs(vector<vector<long>> &dp, int k, int start, int end) {
-        if (!k || k > end-start) {
-            return dp[k][end] = dp[0][end] - dp[0][start-1];
+    int dfs(int end, int m, vector<vector<int>> &dp) {
+        if (!m || end-1 < m) {
+            return dp[m][end] = dp[0][end];
         }
-        if (dp[k][end] != INT_MAX) {
-            return dp[k][end];
+        if (dp[m][end] != -1) {
+            return dp[m][end];
         }
-        for (int j = start; j < end; ++j) {
-            long val = max(dfs(dp, k-1, start, j), dp[0][end] - dp[0][j]);
-            dp[k][end] = min(dp[k][end], val);
+        int minv = INT_MAX;
+        for (int i = 1; i <= end; ++i) {
+            int leftv = dfs(i, m-1, dp);
+            int rightv = dp[0][end] - dp[0][i];
+            minv = min(minv, max(leftv, rightv));
         }
-        return dp[k][end];
+        return dp[m][end] = minv;
     }
 };
 

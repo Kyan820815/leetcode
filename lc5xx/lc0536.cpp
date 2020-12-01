@@ -17,29 +17,28 @@ class Solution {
 public:
     TreeNode* str2tree(string s) {
         int idx = 0;
-        if (s == "") {
-            return NULL;
-        }
         return dfs(idx, s);
     }
     TreeNode *dfs(int &idx, string &s) {
-        int sum = 0, sign = 1;
-        if (s[idx] == '-') {
-            sign = -1;
-            ++idx;
+        if (idx >= s.size()) {
+            return NULL;
         }
-        while (idx < s.size() && s[idx] >= '0' && s[idx] <= '9') {
-            sum = sum * 10 + s[idx++] - '0';
+        int val, now = idx;
+        while (now < s.size() && s[now] != '(' && s[now] != ')') {
+            ++now;
         }
-        TreeNode *now = new TreeNode(sum * sign);
+        val = stoi(s.substr(idx, now-idx));
+        TreeNode *node = new TreeNode(val);
+        idx = now;
         if (s[idx] == '(') {
-            now->left = dfs(++idx, s);
             ++idx;
+            node->left = dfs(idx, s);
         }
         if (s[idx] == '(') {
-            now->right = dfs(++idx, s);
             ++idx;
+            node->right = dfs(idx, s);
         }
-        return now;
+        ++idx;
+        return node;
     }
 };
