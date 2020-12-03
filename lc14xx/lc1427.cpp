@@ -7,16 +7,18 @@ public:
         int diff = 0;
         for (int i = 0; i < shift.size(); ++i) {
             if (!shift[i][0]) {
-                diff += shift[i][1];
-            } else {
                 diff -= shift[i][1];
+            } else {
+                diff += shift[i][1];
             }
         }
         diff %= (int)s.size();
         if (diff > 0) {
-            return s.substr(diff) + s.substr(0, diff) ;
+            // right
+            return s.substr(s.size()-diff, diff) + s.substr(0, s.size()-diff) ;
         } else {
-            return s.substr(s.size()+diff) + s.substr(0, s.size()+diff);
+            // left
+            return s.substr(-diff) + s.substr(0, -diff);
         }
     }
 };

@@ -192,7 +192,7 @@
 	0907(m): Sum of Subarray Minimums
 	1003(m): Check If Word Is Valid After Substitutions
 	1008(m): Construct Binary Search Tree from Preorder Traversal
-	1019(m): Next Greater Node In Linked Lis
+	1019(m): Next Greater Node In Linked List
 	1021(e): Remove Outermost Parentheses
 	1028(h): Recover a Tree From Preorder Traversal
 	1043(e): Remove All Adjacent Duplicates In String

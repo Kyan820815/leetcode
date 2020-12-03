@@ -17,7 +17,7 @@ public:
     vector<TreeNode*> splitBST(TreeNode* root, int V) {
         vector<TreeNode *> res(2, NULL);
         if (!root) {
-            return  res;
+            return res;
         }
         if (root->val > V) {
             res = splitBST(root->left, V);

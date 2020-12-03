@@ -6891,11 +6891,10 @@ O(n)
 最佳解： method 1
 
 (1) dp iteration。
-	先將vector排序，之後對於前後差1的計算是否差字母，在此使用26bit的mask。
-	如果dp[i]和dp[j]差一字母，
-	dp[i] = max(dp[i], dp[j]+1)。
-	類似lc300，lc673。
-	注意，差一個字母可能是重複的，不一定是words[j]沒有，words[i]有的
+	先將vector排序，
+	對每一個word去做 last_str = word.substr(0,j) + word.substr(j+1)
+	類似lc 301
+	dp[cur_str] = max(dp[cur_str], dp[last_str]+1)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -7506,7 +7505,7 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
-// lc1186. Maximum Subarray Sum with One Deletion (看)*
+// lc1186. Maximum Subarray Sum with One Deletion (看)**
 //
 ///////////////////////////////////////////////////////////////
 
@@ -7514,10 +7513,9 @@ O(n)
 
 (1) 類似lc053.cpp。
 	分成兩個case，主要是這兩個case都維持一個min，
-	1. 對於當前sum1 < 0，重新開始一個subarray -> 維持一個即使遇到一個負的整個array還是正的。
-	2. 對於當前sum2-min2 <= 0，重新開始一個subarray -> 維持一個扣掉一個負的array還是>0。
-	   這邊<=而非<是因為用了delete一定要>0，=0就沒意義。
-	maxv(maxv, max(sum1-min1, sum2-min2))。
+	a. maxNoDelete就是lc053。
+	b. maxWithDelete：考慮若當前要delete，就用上一輪的maxNoDelete，
+	   不delete就用maxWithDelete+arr[i]。
 
 ///////////////////////////////////////////////////////////////
 //
