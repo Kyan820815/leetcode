@@ -4,53 +4,50 @@
 class Solution {
 public:
     vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {
-        int n = nums.size();
-        vector<vector<int>> idx_pair;
-        vector<int> res(n, 0);
-        for (int i = 0; i < n; ++i) {
-            idx_pair.push_back({i, index[i]});
-        }
-        divide(0, n-1, idx_pair);
-        for (int i = 0; i < res.size(); ++i) {
-            res[idx_pair[i][1]] = nums[idx_pair[i][0]];
-        }
-        return res;
+        divide(0, nums.size()-1, nums, index);
+        return nums;
     }
-    void divide(int start, int end, vector<vector<int>> &idx_pair) {
+    void divide(int start, int end, vector<int> &nums, vector<int> &index) {
         if (start < end) {
-            int mid = (end - start) / 2 + start;
-            divide(start, mid, idx_pair);
-            divide(mid+1, end, idx_pair);
-            conquer(start, mid, end, idx_pair);
+            int mid = start + (end-start)/2;
+            divide(start, mid, nums, index);
+            divide(mid+1, end, nums, index);
+            conquer(start, mid, end, nums, index);
         }
     }
-    void conquer(int start, int mid, int end, vector<vector<int>> &idx_pair) { 
-        int i = start, j = mid+1;
-        int shift = 0;
-        vector<vector<int>> copy;
-        while (i <= mid && j <= end) {
-            if (idx_pair[i][1] + shift >= idx_pair[j][1]) {
-                copy.push_back(idx_pair[j++]);
-                ++shift;
+    void conquer(int start, int mid, int end, vector<int> &nums, vector<int> &index) {
+        vector<int> cpynums, cpyindex;
+        int left = start, right = mid+1, lower = 0;
+        while (left <= mid && right <= end) {
+            if (index[left]+lower >= index[right]) {
+                cpynums.push_back(nums[right]);
+                cpyindex.push_back(index[right]);
+                ++right;
+                ++lower;
             } else {
-                idx_pair[i][1] += shift;
-                copy.push_back(idx_pair[i++]);
+                cpynums.push_back(nums[left]);
+                cpyindex.push_back(index[left]+lower);
+                ++left;
             }
         }
-        while (i <= mid) {
-            idx_pair[i][1] += shift;
-            copy.push_back(idx_pair[i++]);
+        while (left <= mid) {
+            cpynums.push_back(nums[left]);
+            cpyindex.push_back(index[left]+lower);
+            ++left;
         }
-        while (j <= end) {
-            copy.push_back(idx_pair[j++]);
+        while (right <= end) {
+            cpynums.push_back(nums[right]);
+            cpyindex.push_back(index[right]);
+            ++right;
         }
         for (int i = start; i <= end; ++i) {
-            idx_pair[i] = copy[i-start];
+            nums[i] = cpynums[i-start];
+            index[i] = cpyindex[i-start];
         }
     }
 };
 
-//--- method 2:
+//--- method 2: insertion O(n^2)
 class Solution {
 public:
     vector<int> createTargetArray(vector<int>& nums, vector<int>& index) {

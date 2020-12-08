@@ -127,6 +127,7 @@
 	1317(e): The K Weakest Rows in a Matrix
 	1337(e): The K Weakest Rows in a Matrix
 	1338(m): Reduce Array Size to The Half
+	1353(m): Maximum Number of Events That Can Be Attended
 
 --- Bucket Sort:
 	0347(m): Top K Frequent Elements
@@ -850,7 +851,7 @@
 	0040(m): Combination Sum II
 	0046(m): Permutations
 	0047(m): Permutations II
-	0060(m): Permutation Sequence
+	0060(h): Permutation Sequence
 	0077(m): Combinations
 	0078(m): Subsets
 	0090(m): Subsets II

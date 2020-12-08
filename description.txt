@@ -1332,7 +1332,7 @@ This is consistent to C's strstr() and Java's indexOf().
 
 ///////////////////////////////////////////////////////////////
 //
-// lc126. Word Ladder (看)***
+// lc126. Word Ladder II (看)***
 //
 ///////////////////////////////////////////////////////////////
 
@@ -3937,7 +3937,7 @@ follow up: pos[i][j]表示從i開始，'a'+j第一個出現的位置。
 最佳解： method 1
 
 (1) 利用divide & conquer
-	類似lc315，lc327，lc1387。
+	類似lc315，lc327，lc1389。
 	對nums[i]做排序，且對於每一輪找到第一個nums[i] > 2*nums[j]
 	res += j-mid-1。
 
@@ -7609,7 +7609,7 @@ O(n)
 
 最佳解： method 1，2
 
-(1) 用stack做inorder traversal。
+(1) 用stack做inorder traversal，類似lc1305。
 (2) 用recursion，確認當前有沒有符合，若沒有，往左和往右去找。
 
 ///////////////////////////////////////////////////////////////
@@ -7937,9 +7937,7 @@ O(n)
 
 (1) prefix sum
 	O(m*n)
-	若當前i-max >= 1 && j-max >= 1，表示有i-max~i, j-max~i的square，
-	若sum <= threshold，++max，為什麼i和j要進一位不用重做？
-	因為i，j，max都從小到大，所以當前max一定是對於i和j來說最大的。
+	若當前i~i-len且j~j-len的方形 <= threshold，len++。
 (2) prefix sum + binary search to find max side length
 	O(m*n*log(m+n))
 
@@ -7995,9 +7993,7 @@ O(n)
 
 最佳解： method 1
 
-(1) 維持兩個stack，利用preorder，每次將current node往左邊走全部放入，
-	若當前兩個sk有一個top value比較小，放入res，且將此node->right的所有左邊點
-	放入該sk。
+(1) 類似lc1214，two stack inorder traversal。
 (2) 將node value放入res然後sort
 
 ///////////////////////////////////////////////////////////////
@@ -8139,6 +8135,18 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1353. Maximum Number of Events That Can Be Attended (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) sort events。
+	利用min priority queue，維持一d表示當前available time，
+	將所有start == d 的end加入queue，並檢查queue中的end若 < d，都pop。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1365. How Many Numbers Are Smaller Than the Current Number
 //
 ///////////////////////////////////////////////////////////////
@@ -8204,7 +8212,7 @@ O(n)
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1
+最佳解： method 2
 
 (1) O(m*n)，brute force
 (2) O(nlogn)，先sort，
@@ -8333,7 +8341,7 @@ O(n)
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1，2
+最佳解： method 2
 
 greedy method。
 always find the largest one less than K。

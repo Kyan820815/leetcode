@@ -41,34 +41,36 @@ public:
 //--- method 1-2: my version
 class Solution {
 public:
-    vector<vector<int>> res;
+    vector<vector<int>> res, rel;
+    vector<int> rank;
     vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
-        vector<int> rank(n, -1);
-        vector<vector<int>> rel(n);
+        rel.resize(n);
+        rank.resize(n, -1);
         for (int i = 0; i < connections.size(); ++i) {
             rel[connections[i][0]].push_back(connections[i][1]);
             rel[connections[i][1]].push_back(connections[i][0]);
         }
-        dfs(0, 0, -1, rel, rank);
+        dfs(0, -1, 0);
         return res;
     }
-    int dfs(int val, int now, int p, vector<vector<int>> &rel, vector<int> &rank) {
-        rank[now] = val;
+    int dfs(int now, int p, int rk) {
+        rank[now] = rk;
+        int minv = rank[now];
         for (int i = 0; i < rel[now].size(); ++i) {
             if (rel[now][i] == p) {
                 continue;
             }
             if (rank[rel[now][i]] == -1) {
-                int rk = dfs(rank[now]+1, rel[now][i], now, rel, rank);
-                if (rk > rank[now]) {
+                int rtn = dfs(rel[now][i], now, rk+1);
+                if (rtn > rank[now]) {
                     res.push_back({now, rel[now][i]});
                 } else {
-                    val = min(val, rk);
+                    minv = min(minv, rtn);
                 }
-            } else if (rank[rel[now][i]] <= rank[now]) {
-                val = min(val, rank[rel[now][i]]);
+            } else {
+                minv = min(minv, rank[rel[now][i]]);
             }
         }
-        return val;
+        return rank[now] = minv;
     }
 };
