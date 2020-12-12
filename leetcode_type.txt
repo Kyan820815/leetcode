@@ -131,7 +131,7 @@
 
 --- Bucket Sort:
 	0347(m): Top K Frequent Elements
-	387(e): First Unique Character in a String
+	0387(e): First Unique Character in a String
 	0451(m): Sort Characters By Frequency
 	0539(m): Minimum Time Difference
 	0692(m): Top K Frequent Words
@@ -248,6 +248,7 @@
 	1302(m): Deepest Leaves Sum
 	1311(m): Get Watched Videos by Your Friends
 	1391(m): Check if There is a Valid Path in a Grid
+	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
 
 --- Recursion:
 	0017(m): Letter Combinations of a Phone Number
@@ -389,6 +390,7 @@
 	1171(m): Remove Zero Sum Consecutive Nodes from Linked List
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1314(m): Matrix Block Sum
+	1512(m): Number of Good Pairs
 
 --- Map:
 	0001(e): Two Sum
@@ -432,6 +434,7 @@
 	1169(m): Invalid Transactions
 	1244(m): Design A Leaderboard
 	1396(m): Design Underground System
+	1676(m): Lowest Common Ancestor of a Binary Tree IV
 
 --- Design:
 	0146(m): LRU Cache
@@ -442,6 +445,7 @@
 	0705(e): Design HashSet
 	0706(e): Design HashMap
 	0767(m): Reorganize String
+	1114(e): Print in Order
 	1188(m): Design Bounded Blocking Queue
 	1279(e): Traffic Light Controlled Intersection
 
@@ -532,7 +536,9 @@
 	0344(e): Reverse String
 	0348(m): Design Tic-Tac-Toe
 	0406(m): Queue Reconstruction by Height
+	0412(e): Fizz Buzz
 	0414(e): Third Maximum Number
+	0453(e): Minimum Moves to Equal Array Elements
 	0477(m): Total Hamming Distance
 	0485(e): Max Consecutive Ones
 	0506(e): Relative Ranks
@@ -617,7 +623,9 @@
 	1427(e): Perform String Shifts
 	1431(e): Kids With the Greatest Number of Candies
 	1441(e): Build an Array With Stack Operations
+	1480(e): Running Sum of 1d Array
 	1464(e): Maximum Product of Two Elements in an Array
+	1507(e): Reformat Date
 
 --- Bit Operations
 	0067(e): Add Binary 
@@ -627,6 +635,7 @@
 	0268(m): Missing Number
 	0338(m): Counting Bits
 	0389(e): Find the Difference
+	0461(e): Hamming Distance
 	0476(e): Number Complement
 	1048(m): Longest String Chain
 	1072(m): Flip Columns For Maximum Number of Equal Rows
@@ -702,6 +711,7 @@
 	1254(m): Number of Closed Islands
 	1311(m): Get Watched Videos by Your Friends
 	1391(m): Check if There is a Valid Path in a Grid
+	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
 
 --- Tree:
 	0094(m): Binary Tree Inorder Traversal
@@ -838,6 +848,10 @@
 	1430(m): Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree
 	1443(m): Minimum Time to Collect All Apples in a Tree
 	1448(m): Count Good Nodes in Binary Tree
+	1469(e): Find All The Lonely Nodes
+	1490(m): Clone N-ary Tree
+	1609(m): Even Odd Tree
+	1676(m): Lowest Common Ancestor of a Binary Tree IV
 
 --- Subtree:
 	0250(m): Count Univalue Subtrees
