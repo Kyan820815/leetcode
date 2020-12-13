@@ -8580,6 +8580,44 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1612. Check If Two Expression Trees are Equivalent (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) preorder，利用cnt(26, 0)紀錄出現的次數
+follow up: 如果root是'-'，left subtree不會被影響，right subtree sign*=-1。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1660. Correct a Binary Tree
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) bfs with map，利用parent map記錄自己的parent是誰，若當前自己right
+	child被指過，表示自己的孩子和自己同一層，now->right = null，且自己
+	的parent對自己設置null。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1666. Change the Root of a Binary Tree (看)**
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 利用recursion，當前有new parent，
+	規則是如果當前now->left = new parent，則now->left = null，反之。
+	old parent = now->parent
+	now->parent = new parent，建立新的parent。
+	且若當前砍掉連接後還有左孩子，則讓他變成右孩子。因為left child 要去接
+	自己的parent: now->left = recursion(old_parent, now)。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1676. Lowest Common Ancestor of a Binary Tree IV
 //
 ///////////////////////////////////////////////////////////////

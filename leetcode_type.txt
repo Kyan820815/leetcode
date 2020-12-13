@@ -281,6 +281,7 @@
 	0841(m): Keys and Rooms
 	1236(m): Web Crawler
 	1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
+	1666(m): Change the Root of a Binary Tree
 
 --- Dynamic Programming:
 	0005(m): Longest Palindromic Substring
@@ -434,6 +435,8 @@
 	1169(m): Invalid Transactions
 	1244(m): Design A Leaderboard
 	1396(m): Design Underground System
+	1660(m): Correct a Binary Tree
+	1666(m): Change the Root of a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
 
 --- Design:
@@ -851,6 +854,8 @@
 	1469(e): Find All The Lonely Nodes
 	1490(m): Clone N-ary Tree
 	1609(m): Even Odd Tree
+	1612(m): Check If Two Expression Trees are Equivalent
+	1660(m): Correct a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
 
 --- Subtree:
