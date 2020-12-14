@@ -5010,6 +5010,19 @@ prefix sum。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc666. Path Sum IV (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) top down，若val[parent] > 0, res -= val[parent]，且val[parent] *= -1，
+	避免重複扣除在res。
+	將parent valeu加到當前的val[node]，
+	res += val[node]。
+
+///////////////////////////////////////////////////////////////
+//
 // lc669. Trim a Binary Search Tree
 //
 ///////////////////////////////////////////////////////////////
@@ -8570,6 +8583,17 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1602. Find Nearest Right Node in Binary Tree (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) bfs
+(2) preorder morris traversal，注意計算深度問題。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1609. Even Odd Tree
 //
 ///////////////////////////////////////////////////////////////
@@ -8588,6 +8612,35 @@ always find the largest one less than K。
 
 (1) preorder，利用cnt(26, 0)紀錄出現的次數
 follow up: 如果root是'-'，left subtree不會被影響，right subtree sign*=-1。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1615. Maximal Network Rank (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 利用unordered_set記錄自己有連到幾個，跑一個O(n^2)，去算出最大的兩個邊。
+	O(n^2)
+	follow up: if average m is O(n), design a O(n) algo
+follow up:
+	1. 若最大數量的node只有一個，對於其他的node算出和最大數量的和，若這兩node有
+	邊必須扣掉一。
+	2. 若有兩個以上，想像若這些node 為m，若 m*(m-1)/2 > connect 這些彼此node
+	的邊數量，代表一定有兩個node屬於最大數量邊，且沒有邊連這兩個，不用-1。
+	note: fully connected of n nodes, its edge = n*(n-1)/2。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1640. Check Array Formation Through Concatenation
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 利用map來儲存第一個pieces的type，然後對於arr的第一個數去找對應的type，
+	並iterate 該pices。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -8615,6 +8668,17 @@ follow up: 如果root是'-'，left subtree不會被影響，right subtree sign*=
 	now->parent = new parent，建立新的parent。
 	且若當前砍掉連接後還有左孩子，則讓他變成右孩子。因為left child 要去接
 	自己的parent: now->left = recursion(old_parent, now)。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1668. Maximum Repeating Substring
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 因為要找最大的k，repeat word for max k times and find this word
+	in input string。
 
 ///////////////////////////////////////////////////////////////
 //

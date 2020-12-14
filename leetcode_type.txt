@@ -435,6 +435,8 @@
 	1169(m): Invalid Transactions
 	1244(m): Design A Leaderboard
 	1396(m): Design Underground System
+	1615(m): Maximal Network Rank
+	1640(e): Check Array Formation Through Concatenation
 	1660(m): Correct a Binary Tree
 	1666(m): Change the Root of a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
@@ -558,6 +560,7 @@
 	0657(e): Robot Return to Origin
 	0661(e): Image Smoother
 	0665(e): Non-decreasing Array
+	0666(m): Path Sum IV
 	0709(e): To Lower Case
 	0717(e): 1-bit and 2-bit Characters
 	0723(m): Candy Crush
@@ -629,6 +632,7 @@
 	1480(e): Running Sum of 1d Array
 	1464(e): Maximum Product of Two Elements in an Array
 	1507(e): Reformat Date
+	1668(e): Maximum Repeating Substring
 
 --- Bit Operations
 	0067(e): Add Binary 
@@ -853,6 +857,7 @@
 	1448(m): Count Good Nodes in Binary Tree
 	1469(e): Find All The Lonely Nodes
 	1490(m): Clone N-ary Tree
+	1602(m): Find Nearest Right Node in Binary Tree
 	1609(m): Even Odd Tree
 	1612(m): Check If Two Expression Trees are Equivalent
 	1660(m): Correct a Binary Tree
