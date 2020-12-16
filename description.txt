@@ -238,6 +238,8 @@
 
 最佳解： method 2
 
+類似lc023。
+
 (1) divide & conquer
 (2) 利用遞迴，return當前比較小的，process當前的next和另一個linklist的node。
     若null，return另一個linklist。
@@ -8590,7 +8592,7 @@ always find the largest one less than K。
 最佳解： method 1，2
 
 (1) bfs
-(2) preorder morris traversal，注意計算深度問題。
+(2) preordermorris traversal，注意計算深度問題。
 
 ///////////////////////////////////////////////////////////////
 //

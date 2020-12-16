@@ -21,15 +21,11 @@ public:
 class Solution {
 public:
     bool canBeEqual(vector<int>& target, vector<int>& arr) {
-        int t = 0, sum = 0;
+        int sum = 0, tag = 0;
         for (int i = 0; i < target.size(); ++i) {
-            t ^= target[i];
-            sum += target[i];
+            sum += target[i] - arr[i];
+            tag ^= target[i] ^ arr[i];
         }
-        for (int i = 0; i < arr.size(); ++i) {
-            t ^= arr[i];
-            sum -= arr[i];
-        }
-        return !t && !sum;
+        return !sum && !tag;
     }
 };
