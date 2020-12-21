@@ -22,16 +22,16 @@ public:
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_map<int, int> cnt;
+        vector<int> cnt(128, 0);
         int left = 0, right = 0, res = 0;
         while (right < s.size()) {
-            if (++cnt[s[right]-'a'] > 1) {
-                while(--cnt[s[left++]-'a'] != 1);
+            ++cnt[s[right]];
+            while (cnt[s[right]] > 1) {
+                --cnt[s[left++]];
             }
-            res = max(right-left+1, res);
+            res = max(res, right-left+1);
             ++right;
         }
         return res;
     }
 };
-

@@ -21,6 +21,7 @@
 	0374(e): Guess Number Higher or Lower
 	0378(m): Kth Smallest Element in a Sorted Matrix
 	0410(h): Split Array Largest Sum
+	0441(e): Arranging Coins
 	0493(h): Reverse Pairs
 	0497(m): Random Point in Non-overlapping Rectangles
 	0528(m): Random Pick with Weight
@@ -28,12 +29,13 @@
 	0658(m): Find K Closest Elements
 	0704(e): Binary Search
 	0852(e): Peak Index in a Mountain Array
+	1060(m): Missing Element in Sorted Array
 	1064(e): Fixed Point
 	1150(e): Check If a Number Is Majority Element in a Sorted Array
 	1268(m): Search Suggestions System
 	1287(e): Element Appearing More Than 25% In Sorted Array
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
-	1317(e): The K Weakest Rows in a Matrix
+	1337(e): The K Weakest Rows in a Matrix
 	1385(e): Find the Distance Value Between Two Arrays
 	1389(e): Create Target Array in the Given Order
 
@@ -124,7 +126,6 @@
 	1090(m): Largest Values From Labels
 	1102(m): Path With Maximum Minimum Value
 	1167(m): Minimum Cost to Connect Sticks
-	1317(e): The K Weakest Rows in a Matrix
 	1337(e): The K Weakest Rows in a Matrix
 	1338(m): Reduce Array Size to The Half
 	1353(m): Maximum Number of Events That Can Be Attended
@@ -144,11 +145,13 @@
 	1200(e): Minimum Absolute Difference
 	1337(e): The K Weakest Rows in a Matrix
 	1338(m): Reduce Array Size to The Half
+	1347(m): Minimum Number of Steps to Make Two Strings Anagram
 	1365(e): How Many Numbers Are Smaller Than the Current Number
 	1394(e): Find Lucky Integer in an Array
 	1403(e): Minimum Subsequence in Non-Increasing Order
 	1433(m): Check If a String Can Break Another String
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
+	1657(m): Determine if Two Strings Are Close
 
 --- Union Find:
 	0261(m): Graph Valid Tree
@@ -177,6 +180,7 @@
 	0225(e): Implement Stack using Queues
 	0227(m): Basic Calculator II
 	0232(e): Implement Queue using Stacks
+	0332(m): Reconstruct Itinerary
 	0341(m): Flatten Nested List Iterator
 	0402(m): Remove K Digits
 	0430(m): Flatten a Multilevel Doubly Linked List
@@ -201,6 +205,9 @@
 	1209(m): Remove All Adjacent Duplicates in String II
 	1249(m): Minimum Remove to Make Valid Parentheses
 	1305(m): All Elements in Two Binary Search Trees
+	1472(m): Design Browser History
+	1586(m): Binary Search Tree Iterator II
+	1614(e): Maximum Nesting Depth of the Parentheses
 
 --- Queue:
 	0100(e): Same Tree
@@ -218,6 +225,7 @@
 	0301(h): Remove Invalid Parentheses
 	0310(m): Minimum Height Trees
 	0314(m): Binary Tree Vertical Order Traversal
+	0346(e): Moving Average from Data Stream
 	0362(m): Design Hit Counter
 	0417(m): Pacific Atlantic Water Flow
 	0490(m): The Maze
@@ -241,14 +249,18 @@
 	0958(m): Check Completeness of a Binary Tree
 	0994(e): Rotting Oranges
 	1059(m): All Paths from Source Lead to Destination
+	1091(m): Shortest Path in Binary Matrix
 	1129(m): Shortest Path with Alternating Colors 
 	1161(m): Maximum Level Sum of a Binary Tree
 	1162(m): As Far from Land as Possible
 	1245(m): Tree Diameter
 	1302(m): Deepest Leaves Sum
+	1306(m): Jump Game III
 	1311(m): Get Watched Videos by Your Friends
 	1391(m): Check if There is a Valid Path in a Grid
+	1429(m): First Unique Number
 	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
+	1654(m): Minimum Jumps to Reach Home 
 
 --- Recursion:
 	0017(m): Letter Combinations of a Phone Number
@@ -259,6 +271,7 @@
 	0247(m): Strobogrammatic Number II
 	0248(h): Strobogrammatic Number III
 	0301(h): Remove Invalid Parentheses
+	0332(m): Reconstruct Itinerary
 	0337(m): House Robber III
 	0341(m): Flatten Nested List Iterator
 	0364(m): Nested List Weight Sum II
@@ -364,6 +377,7 @@
 	0152(m): Maximum Product Subarray
 	0209(m): Minimum Size Subarray Sum
 	0300(m): Longest Increasing Subsequence
+	0325(m): Maximum Size Subarray Sum Equals k
 	0334(m): Increasing Triplet Subsequence
 	0392(e): Is Subsequence
 	0491(m): Increasing Subsequences
@@ -380,6 +394,7 @@
 	1186(m): Maximum Subarray Sum with One Deletion
 
 --- Prefix Sum:
+	0325(m): Maximum Size Subarray Sum Equals k
 	0327(h): Count of Range Sum
 	0437(e): Path Sum III
 	0497(m): Random Point in Non-overlapping Rectangles
@@ -388,6 +403,7 @@
 	0560(m): Subarray Sum Equals K
 	0974(m): Subarray Sums Divisible by K
 	1010(e): Pairs of Songs With Total Durations Divisible by 60
+	1109(m): Corporate Flight Bookings
 	1171(m): Remove Zero Sum Consecutive Nodes from Linked List
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1314(m): Matrix Block Sum
@@ -407,6 +423,7 @@
 	0205(e): Isomorphic Strings
 	0217(e): Contains Duplicate
 	0249(m): Group Shifted Strings
+	0253(m): Meeting Rooms II
 	0290(e): Word Pattern
 	0314(m): Binary Tree Vertical Order Traversal
 	0349(e): Intersection of Two Arrays
@@ -422,6 +439,8 @@
 	0652(m): Find Duplicate Subtrees
 	0653(e): Two Sum IV - Input is a BST
 	0697(e): Degree of an Array
+	0729(m): My Calendar I
+	0731(m): My Calendar II
 	0740(m): Delete and Earn
 	0819(e): Most Common Word
 	0888(e): Fair Candy Swap
@@ -435,6 +454,8 @@
 	1169(m): Invalid Transactions
 	1244(m): Design A Leaderboard
 	1396(m): Design Underground System
+	1429(m): First Unique Number
+	1472(m): Design Browser History
 	1615(m): Maximal Network Rank
 	1640(e): Check Array Formation Through Concatenation
 	1660(m): Correct a Binary Tree
@@ -487,6 +508,7 @@
 	0817(m): Linked List Components
 	1019(m): Next Greater Node In Linked Lis
 	1171(m): Remove Zero Sum Consecutive Nodes from Linked List
+	1485(m): Clone Binary Tree With Random Pointer
 
 --- Duplicate:
 	0217(e): Contains Duplicate
@@ -856,10 +878,14 @@
 	1443(m): Minimum Time to Collect All Apples in a Tree
 	1448(m): Count Good Nodes in Binary Tree
 	1469(e): Find All The Lonely Nodes
+	1485(m): Clone Binary Tree With Random Pointer
 	1490(m): Clone N-ary Tree
+	1586(m): Binary Search Tree Iterator II
 	1602(m): Find Nearest Right Node in Binary Tree
 	1609(m): Even Odd Tree
 	1612(m): Check If Two Expression Trees are Equivalent
+	1644(m): Lowest Common Ancestor of a Binary Tree II
+	1650(m): Lowest Common Ancestor of a Binary Tree III
 	1660(m): Correct a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
 

@@ -21,3 +21,22 @@ public:
         return res;
     }
 };
+
+//--- method 2: map count
+class Solution {
+public:
+    int minMeetingRooms(vector<vector<int>>& intervals) {
+        int res = 0;
+        map<int, int> schedule;
+        for (int i = 0; i < intervals.size(); ++i) {
+            ++schedule[intervals[i][0]];
+            --schedule[intervals[i][1]];
+        }
+        int event = 0;
+        for (auto &p: schedule) {
+            event += p.second;
+            res = max(res, event);
+        }
+        return res;
+    }
+};
