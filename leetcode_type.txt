@@ -147,6 +147,7 @@
 	1338(m): Reduce Array Size to The Half
 	1347(m): Minimum Number of Steps to Make Two Strings Anagram
 	1365(e): How Many Numbers Are Smaller Than the Current Number
+	1366(m): Rank Teams by Votes
 	1394(e): Find Lucky Integer in an Array
 	1403(e): Minimum Subsequence in Non-Increasing Order
 	1433(m): Check If a String Can Break Another String
@@ -447,6 +448,7 @@
 	0890(m): Find and Replace Pattern
 	0939(m): Minimum Area Rectangle
 	0987(m): Vertical Order Traversal of a Binary Tree
+	1094(m): Car Pooling
 	1122(e): Relative Sort Array
 	1128(e): Number of Equivalent Domino Pairs
 	1146(m): Snapshot Array
@@ -456,6 +458,7 @@
 	1396(m): Design Underground System
 	1429(m): First Unique Number
 	1472(m): Design Browser History
+	1583(m): Count Unhappy Friends
 	1615(m): Maximal Network Rank
 	1640(e): Check Array Formation Through Concatenation
 	1660(m): Correct a Binary Tree
@@ -464,7 +467,9 @@
 
 --- Design:
 	0146(m): LRU Cache
+	0348(m): Design Tic-Tac-Toe
 	0362(m): Design Hit Counter
+	0535(m): Encode and Decode TinyURL
 	0621(m): Task Scheduler
 	0622(m): Design Circular Queue
 	0641(m): Design Circular Deque
@@ -473,7 +478,10 @@
 	0767(m): Reorganize String
 	1114(e): Print in Order
 	1188(m): Design Bounded Blocking Queue
+	1244(m): Design A Leaderboard
 	1279(e): Traffic Light Controlled Intersection
+	1396(m): Design Underground System
+	1472(m): Design Browser History
 
 --- Linked List:
 	0002(m): Add Two Numbers 
@@ -881,6 +889,7 @@
 	1485(m): Clone Binary Tree With Random Pointer
 	1490(m): Clone N-ary Tree
 	1586(m): Binary Search Tree Iterator II
+	1600(m): Throne Inheritance
 	1602(m): Find Nearest Right Node in Binary Tree
 	1609(m): Even Odd Tree
 	1612(m): Check If Two Expression Trees are Equivalent
