@@ -31,8 +31,10 @@
 	0852(e): Peak Index in a Mountain Array
 	1060(m): Missing Element in Sorted Array
 	1064(e): Fixed Point
+	1095(h): Find in Mountain Array
 	1150(e): Check If a Number Is Majority Element in a Sorted Array
 	1268(m): Search Suggestions System
+	1274(h): Number of Ships in a Rectangle
 	1287(e): Element Appearing More Than 25% In Sorted Array
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1337(e): The K Weakest Rows in a Matrix
@@ -283,6 +285,7 @@
 	0399(m): Evaluate Division
 	0431(h): Encode N-ary Tree to Binary Tree
 	0445(m): Add Two Numbers II
+	0488(h): Zuma Game
 	0494(m): Target Sum
 	0509(m): Fibonacci Number
 	0536(m): Construct Binary Tree from String
@@ -433,6 +436,7 @@
 	0383(e): Ransom Note
 	0414(e): Third Maximum Number
 	0451(m): 4Sum II
+	0488(h): Zuma Game
 	0489(h): Robot Room Cleaner
 	0532(e): K-diff Pairs in an Array
 	0594(e): Longest Harmonious Subsequence
@@ -951,6 +955,7 @@
 	1227(m): Airplane Seat Assignment Probability
 	1232(e): Check If It Is a Straight Line
 	1304(e); Find N Unique Integers Sum up to Zero
+	1359(h): Count All Valid Pickup and Delivery Options
 
 --- Resivoir Sampling:
 	0382(m): Linked List Random Node
