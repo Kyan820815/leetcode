@@ -22,6 +22,46 @@ public:
     }
 };
 
+//--- method 1-2: prefix sum, my version
+class Solution {
+public:
+    int maxSideLength(vector<vector<int>>& mat, int threshold) {
+        int row = mat.size(), col = mat[0].size(), max = 0;
+        vector<vector<int>> presum(row, vector<int>(col, 0));
+        if (mat[0][0] <= threshold) {
+            ++max;
+        }
+        presum[0][0] = mat[0][0];
+        for (int i = 1; i < row; ++i) {
+            presum[i][0] = presum[i-1][0] + mat[i][0];
+            if (!max && mat[i][0] <= threshold) {
+                ++max;
+            }
+        }
+        for (int j = 1; j < col; ++j) {
+            presum[0][j] = presum[0][j-1] + mat[0][j];
+            if (!max && mat[0][j] <= threshold) {
+                ++max;
+            }
+        }
+        for (int i = 1; i < row; ++i) {
+            for (int j = 1; j < col; ++j) {
+                presum[i][j] = presum[i-1][j] + presum[i][j-1] - presum[i-1][j-1] + mat[i][j];
+                if (i-max >= 0 && j-max >= 0) {
+                    int left = (j-max-1 >= 0) ? presum[i][j-max-1] : 0;
+                    int top = (i-max-1 >= 0) ? presum[i-max-1][j] : 0;
+                    int dig = (i-max-1 >= 0) && (j-max-1 >= 0) ? presum[i-max-1][j-max-1] : 0;
+                    int sum = presum[i][j] - left - top + dig;
+                    if (sum <= threshold) {
+                        ++max;
+                    }
+                }
+            }
+        }
+        return max;
+    }
+};
+
 //--- method 2: prefix sum + binary search
 class Solution {
 public:

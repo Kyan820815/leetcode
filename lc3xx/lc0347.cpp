@@ -32,38 +32,24 @@ public:
     }
 };
 
-//--- method 2: bucket sort
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        unordered_map<int, int> appear;
-        vector<vector<int>> bucket(nums.size()+1);
-        vector<int> ans;
-        int cnt = 0;
-
-        for (int i = 0; i < nums.size(); ++i)
-            appear[nums[i]]++;
-
-        for (auto &a: appear)
-        {
-            int times = a.second;
-            int val = a.first;
-            bucket[times].push_back(val);
+        vector<int> res;
+        vector<vector<int>> cnt(nums.size()+1);
+        unordered_map<int, int> map;
+        for (int i = 0; i < nums.size(); ++i) {
+            ++map[nums[i]];
         }
-
-        for (int i = nums.size(); i >= 1; --i)
-        {
-            if (bucket[i].size() != 0)
-            {
-                for (int j = 0; j < bucket[i].size(); ++j)
-                {
-                    if (cnt++ < k)
-                        ans.push_back(bucket[i][j]);
-                    else
-                        return ans;
-                }
+        for (auto &m: map) {
+            cnt[m.second].push_back(m.first);
+        }
+        for (int i = cnt.size()-1; i >= 1 && k > 0; --i) {
+            for (int j = 0; j < cnt[i].size() && k > 0; ++j) {
+                res.push_back(cnt[i][j]);
+                --k;
             }
         }
-        return ans;
+        return res;
     }
 };

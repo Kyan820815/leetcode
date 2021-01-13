@@ -15,7 +15,7 @@ public:
     }
 };
 
-//--- follow up:
+//--- follow up method 1:
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
@@ -34,5 +34,29 @@ public:
             index = cnt[index][s[i]-'a']+1;
         }
         return true;
+    }
+};
+
+//--- follow up method 2:
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        if (!s.size()) {
+            return true;
+        }
+        vector<vector<int>> list(26);
+        list[s[0]-'a'].push_back(0);
+        for (int i = 0; i < t.size(); ++i) {
+            vector<int> tmp = list[t[i]-'a'];
+            list[t[i]-'a'].clear();
+            for (int j = 0; j < tmp.size(); ++j) {
+                if (tmp[j]+1 == s.size()) {
+                    return true;
+                } else {
+                    list[s[tmp[j]+1]-'a'].push_back(tmp[j]+1);
+                }
+            }
+        }
+        return false;
     }
 };

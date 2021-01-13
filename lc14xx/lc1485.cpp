@@ -40,8 +40,8 @@ public:
         if (node->random) {
             node->left->random = node->random->left;
         }
-        makeRandom(node->left);
-        makeRandom(node->right);
+        makeRandom(node->left->left);
+        makeRandom(node->left->right);
     }
     NodeCopy *breakNode(Node *node) {
         if (!node) {

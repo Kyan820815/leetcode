@@ -14,39 +14,31 @@ public:
                         continue;
                     }
                     int val = abs(board[i][j]);
-                    if (i < row-2 && abs(board[i+1][j]) == val && abs(board[i+2][j]) == val) {
-                        find = true;
+                    if (i+2 < row && val == abs(board[i+1][j]) && val == abs(board[i+2][j])) {
                         int idx = i;
+                        find = true;
                         while (idx < row && abs(board[idx][j]) == val) {
-                            if (board[idx][j] > 0) {
-                                board[idx][j] *= -1;
-                            }
-                            ++idx;
+                            board[idx++][j] = -val;
                         }
                     }
-                    if (j < col-2 && abs(board[i][j+1]) == val && abs(board[i][j+2]) == val) {
-                        find = true;
+                    if (j+2 < col && val == abs(board[i][j+1]) && val == abs(board[i][j+2])) {
                         int idx = j;
+                        find = true;
                         while (idx < col && abs(board[i][idx]) == val) {
-                            if (board[i][idx] > 0) {
-                                board[i][idx] *= -1;
-                            }
-                            ++idx;
+                            board[i][idx++] = -val;
                         }
                     }
                 }
             }
-            if (find) {
-                for (int j = 0; j < col; ++j) {
-                    int lastidx = row-1;
-                    for (int i = row-1; i >= 0; --i) {
-                        if (board[i][j] > 0) {
-                            board[lastidx--][j] = board[i][j];
-                        }
+            for (int c = 0; c < col; ++c) {
+                int cur = row-1;
+                for (int r = row-1; r >= 0; --r) {
+                    if (board[r][c] > 0) {
+                        swap(board[cur--][c], board[r][c]);
                     }
-                    for (int i = lastidx; i >= 0; --i) {
-                        board[i][j] = 0;
-                    }
+                }
+                for (int r = cur; r >= 0; --r) {
+                    board[r][c] = 0;
                 }
             }
         }

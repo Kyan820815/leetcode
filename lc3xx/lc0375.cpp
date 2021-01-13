@@ -6,16 +6,15 @@ public:
     int getMoneyAmount(int n) {
         vector<vector<int>> dp(n+1, vector<int>(n+1, 0));
         for (int i = 1; i <= n; ++i) {
+            dp[i][i] = 0;
             for (int j = i-1; j >= 1; --j) {
-                int val = INT_MAX;
+                int minv = INT_MAX;
                 for (int k = j+1; k < i; ++k) {
-                    val = min(val, k + max(dp[j][k-1], dp[k+1][i]));
+                    int left = dp[j][k-1];
+                    int right = dp[k+1][i];
+                    minv = min(minv, max(left, right)+k);
                 }
-                if (j+1 == i) {
-                    dp[j][i] = j;
-                } else {
-                    dp[j][i] = val;
-                }
+                dp[j][i] = (i-j == 1) ? j : minv;
             }
         }
         return dp[1][n];

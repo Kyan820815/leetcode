@@ -1,76 +1,71 @@
 //--- Q: 212. Word Search II
 
 //--- method 1: trie tree + dfs
-class Node {
+class TNode {
 public:
-    Node() {
-        end = false;
+    TNode () {
         next.resize(26, NULL);
+        isend = false;
     }
-    bool end;
-    vector<Node *> next;
+    vector<TNode *> next;
+    bool isend;
 };
-
-class Trietree {
+class TrieTree {
 public:
-    Trietree() {
-        root = new Node();
+    TrieTree() {
+        root = new TNode();
     }
-    void insert(string &word) {
-        Node *now = root;
-        for (int i = 0; i < word.size(); ++i) {
-            if (!now->next[word[i]-'a']) {
-                now->next[word[i]-'a'] = new Node();
+    void insert(string &str) {
+        TNode *now = root;
+        for (int i = 0; i < str.size(); ++i) {
+            if (!now->next[str[i]-'a']) {
+                now->next[str[i]-'a'] = new TNode();
             }
-            now = now->next[word[i]-'a'];
+            now = now->next[str[i]-'a'];
         }
-        now->end = true;
+        now->isend = true;
     }
-    
-    Node *root;
+    TNode *root;
 };
-
 class Solution {
 public:
+    int row, col;
     vector<string> res;
+    vector<vector<int>> dir = {{-1,0}, {1,0}, {0,-1}, {0,1}};
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
-        int row = board.size(), col = board[0].size();
-        vector<vector<int>> dir = {{-1,0}, {1,0}, {0,-1}, {0,1}};
-        Trietree *trie = new Trietree();
+        row = board.size(), col = board[0].size();
+        TrieTree *trie = new TrieTree();
         for (int i = 0; i < words.size(); ++i) {
             trie->insert(words[i]);
         }
         for (int i = 0; i < row; ++i) {
-            for (int j = 0; j < col && words.size() > res.size(); ++j) {
-                string word = "";
-                Node *now = trie->root;
-                dfs(i, j, board, dir, now->next[board[i][j]-'a'], word);
+            for (int j = 0; j < col; ++j) {
+                if (trie->root->next[board[i][j]-'a']) {
+                    string str = "";
+                    dfs(i, j, trie->root->next[board[i][j]-'a'], str, board);
+                }
             }
         }
         return res;
-    }   
-    void dfs(int i, int j, vector<vector<char>> &board, vector<vector<int>> &dir, Node *now, string &word) {
-        int row = board.size(), col = board[0].size();
-        if (!now) {
-            return;
+    }
+    void dfs(int r, int c, TNode *root, string &str, vector<vector<char>> &board) {
+        str.push_back(board[r][c]);
+        if (root->isend) {
+            res.push_back(str);
+            root->isend = false;
         }
-        word.push_back(board[i][j]);
-        if (now->end) {
-            res.push_back(word);
-            now->end = false;
-        }
-        char tmp = board[i][j];
-        board[i][j] = '0';
-        for (int k = 0; k < 4; ++k) {
-            int ni = i + dir[k][0];
-            int nj = j + dir[k][1];
-            if (ni < 0 || ni >= row || nj < 0 || nj >= col || board[ni][nj] == '0') {
+        char old = board[r][c];
+        board[r][c] = '#';
+        for (int i = 0; i < 4; ++i) {
+            int nr = r + dir[i][0];
+            int nc = c + dir[i][1];
+            if (nr < 0 || nr >= row || nc < 0 || nc >= col || board[nr][nc] == '#' || !root->next[board[nr][nc]-'a']) {
                 continue;
             }
-            dfs(ni, nj, board, dir, now->next[board[ni][nj]-'a'], word);
+            dfs(nr, nc, root->next[board[nr][nc]-'a'], str, board);
         }
-        board[i][j] = tmp;
-        word.pop_back();
+        board[r][c] = old;
+        str.pop_back();
     }
 };
 

@@ -200,7 +200,8 @@ while(cur || stack不是空)
 	cur = cur->left;
 	if (cur == NULL)
 	{
-		cur = stack.pop();
+		cur = stack.top();
+		stack.pop();
 	}
 }
 
@@ -213,12 +214,9 @@ while(cur || stack不是空)
 		stack.push(cur);
 		cur = cur->left;
 	}
-	if (cur == NULL)
-	{
-		cur = stack.pop();
-		printf;
-		cur = cur->right;
-	}
+	cur = stack.pop();
+	printf;
+	cur = cur->right;
 }
 
 postorder：
@@ -593,5 +591,9 @@ while (cur != now) {
 ************************************************************************************
 
 string find: str,find(word) != string::npos
+
+************************************************************************************
+
+set, map找position不能 iterator - set.begin(), 因為他們不是linear conatiner，vector才行。
 
 ************************************************************************************

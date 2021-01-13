@@ -10,7 +10,6 @@ public:
             sum += nums[i];
         if (sum % 2 == 1) return 0;
         for (int i = 0; i < nums.size(); ++i)
-            sum_bit = (sum_bit<<nums[i]) | sum_bit;
         return sum_bit[sum/2];
     }
 };

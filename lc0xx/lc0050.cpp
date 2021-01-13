@@ -4,30 +4,27 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        if (x == 0)
-            return 0;
-        if (n == 0)
-            return 1;
-        if (n == 1)
-            return x;
-        double overflow = 1;
+        double addone = 1;
         if (n < 0) {
-            if (n == INT_MIN) {
-                n++;
-                overflow = 1/x;
-            }
-            n *= -1;
             x = 1/x;
+            if (n == INT_MIN) {
+                n = INT_MAX;
+                addone = 1/x;
+            } else {
+                n *= -1;
+            }
         }
-        return dfs(x, n) * overflow;
+        return dfs(x, n) * addone;
     }
     double dfs(double x, int n) {
-        if (n == 0)
+        if (!n) {
             return 1;
-        if (n == 1)
+        } else if (n == 1) {
             return x;
-        double now = dfs(x, n/2);
-        return (n&1) == 1 ? x*now*now : now*now;
+        } else {
+            double rtn = dfs(x, n/2);
+            return rtn * rtn * ((n%2==1) ? x : 1);
+        }
     }
 };
 

@@ -28,19 +28,19 @@ public:
 class Solution {
 public:
     int numMatchingSubseq(string S, vector<string>& words) {
-        int res = 0;
         vector<vector<pair<int, int>>> word_list(26);
+        int res = 0;
         for (int i = 0; i < words.size(); ++i) {
-            word_list[words[i][0]-'a'].push_back({i, 1});
+            word_list[words[i][0]-'a'].push_back({i, 0});
         }
         for (int i = 0; i < S.size(); ++i) {
             auto tmp = word_list[S[i]-'a'];
             word_list[S[i]-'a'].clear();
             for (int j = 0; j < tmp.size(); ++j) {
-                if (words[tmp[j].first].size() == tmp[j].second) {
+                if (tmp[j].second+1 == words[tmp[j].first].size()) {
                     ++res;
                 } else {
-                    word_list[words[tmp[j].first][tmp[j].second]-'a'].push_back({tmp[j].first, tmp[j].second+1});
+                    word_list[words[tmp[j].first][tmp[j].second+1]-'a'].push_back({tmp[j].first, tmp[j].second+1});
                 }
             }
         }

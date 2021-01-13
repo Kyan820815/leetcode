@@ -37,6 +37,37 @@ public:
     }
 };
 
+//--- method 1-2: iter
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int row = matrix.size(), col = matrix[0].size();
+        int r = 0, c = -1, cnt, total = row*col, idx = 0;
+        vector<vector<int>> dir = {{0,1}, {1,0}, {0,-1}, {-1,0}};
+        vector<int> shift = {col, row-1};
+        vector<int> res;
+        while (1) {
+            for (int i = 0; i < 4; ++i) {
+                int cnt = shift[idx]--;
+                while (cnt--) {
+                    r += dir[i][0];
+                    c += dir[i][1];
+                    res.push_back(matrix[r][c]);
+                    --total;
+                }
+                idx ^= 1;
+                if (!total) {
+                    break;
+                }
+            }
+            if (!total) {
+                break;
+            }
+        }
+        return res;
+    }
+};
+
 //--- method 2: fill min_val with boundary condition
 class Solution {
 public:

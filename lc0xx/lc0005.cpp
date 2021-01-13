@@ -83,43 +83,23 @@ public:
 class Solution {
 public:
     string longestPalindrome(string s) {
-    	int pLength = s.size();
-    	int start=0, maxLength=1;    	
-
-    	if (pLength < 2)
-    		return s;
-
-    	int pmatrix[s.size()][s.size()] = {0};
-    	
-    	for (int i = 0; i < pLength; i++)
-    	{
-    		pmatrix[i][i] = 1;
-    		if (i+1 < pLength && s[i] == s[i+1])
-    		{
-    			pmatrix[i][i+1] = 1;
-    			maxLength = 2;
-    			start = i; 
-    		}
-    	}
-
-    	for (int i = pLength-3; i >= 0; i--)
-    	{
-    		for (int j = i+2; j < pLength; j++)
-    		{
-    			if (pmatrix[i+1][j-1] == 1 && (s[i] == s[j]))
-	    		{
-	    			pmatrix[i][j] = 1;
-	    			if (j-i+1 >= maxLength)
-	    			{
-	    				start = i;
-	    				maxLength = j-i+1;
-	    			}
-	    		}
-    		}
-    	}
-    	return s.substr(start, maxLength);
+        int n = s.size(), start = 0, maxlen = 1;
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        for (int i = n-1; i >= 0; --i) {
+            dp[i][i] = 1;
+            for (int j = i+1; j < n; ++j) {
+                if (s[i] == s[j] && (i == j-1 || dp[i+1][j-1])) {
+                    dp[i][j] = 1;
+                    if (j-i+1 > maxlen) {
+                        maxlen = j-i+1;
+                        start = i;
+                    }
+                }
+            }
+        }
+        return s.substr(start, maxlen);
     }
-};	
+};
 
 //--- method 4: brute force
 class Solution {

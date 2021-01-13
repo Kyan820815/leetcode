@@ -3,18 +3,20 @@
 //--- method 1: flush with 9 when previous index > now index
 class Solution {
 public:
-    int monotoneIncreasingDigits(int N, int sum = 0) {
-        string res = to_string(N);
-        int flow = res.size();
-        for (int i = res.size()-1; i > 0; --i) {
-            if (res[i-1] > res[i]) {
-                --res[i-1];
-                flow = i;
+    int monotoneIncreasingDigits(int N) {
+        string num = to_string(N);
+        int flush = num.size();
+        for (int i = num.size()-2; i >= 0; --i) {
+            if (num[i] > num[i+1]) {
+                flush = i+1;
+                --num[i];
             }
         }
-        for (int i = flow; i < res.size(); ++i) {
-            res[i] = '9';
+        if (flush < num.size()) {
+            for (int i = flush; i < num.size(); ++i) {
+                num[i] = '9';
+            }
         }
-        return stoi(res);
+        return stoi(num);
     }
 };

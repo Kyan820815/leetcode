@@ -47,6 +47,7 @@
 	對於兩個array找共同第k個，可對兩個array分別找第k/2個，若左邊的k/2 < 右邊的k/2，
 	則左邊k/2個都不考慮，因為都不可能是合併後第k個的候選人，因此左邊shift k/2位，反之。
 	若左邊k/2找不到，直接shift右邊k/2個，因為左邊不夠，代表右邊第k/2個不可能是第k個，反之。
+	log(min(m, n))
 
 ///////////////////////////////////////////////////////////////
 //
@@ -438,6 +439,7 @@ This is consistent to C's strstr() and Java's indexOf().
 最佳解： method 1
 
 (1) 類似lc077，利用recursion去做。
+https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time-Complexity
 
 ///////////////////////////////////////////////////////////////
 //
@@ -448,6 +450,7 @@ This is consistent to C's strstr() and Java's indexOf().
 最佳解： method 1
 
 (1) 類似lc47，因為要不重複，所以要跳過當前做過的重複數字(和上一個比較)。
+https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time-Complexity
 
 ///////////////////////////////////////////////////////////////
 //
@@ -543,8 +546,10 @@ This is consistent to C's strstr() and Java's indexOf().
 最佳解： method 1
 
 皆使用unordered_map做查找。
-(1) counting sort(O(n))來做排序。
+(1) counting sort(O(n*m))來做排序。
+	time: O(m*n)
 (2) 內建nlogn排序。
+	time: O(m*nlogn)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -762,7 +767,7 @@ This is consistent to C's strstr() and Java's indexOf().
 
 最佳解： method 1
 
-(1) binary search, O(logn)。
+(1) binary search, O(log(m*n))。
 (2) linear search, O(m+n)。
 
 ///////////////////////////////////////////////////////////////
@@ -1331,7 +1336,9 @@ This is consistent to C's strstr() and Java's indexOf().
 
 最佳解： method 1
 
-(1) 對於不是數字或字母的都跳過，如果比較的都是字母，轉大寫。
+(1) 對於不是數字或字母的都跳過，
+	比較s[left] == s[right] or (s[left]^32) == s[right]。
+
 
 ///////////////////////////////////////////////////////////////
 //
@@ -2086,6 +2093,8 @@ https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
 	若當前不是full complete tree，遞回去算full complete tree
 	=> 1 + dfs(root->left) + dfs(root->right)
 	time complexity: O(logN*logN)
+	since always at least one of the two recursive calls is such a full tree, 
+	at least one of the two calls immediately stops. Again we have runtime O(log(n)^2).
 
 ///////////////////////////////////////////////////////////////
 //
@@ -2153,6 +2162,10 @@ https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
 (1) dfs recursion。
 (2) stack iteration。
 (3) morris traversal。
+
+** follow up
+priroty_queue, insert, delete, find O(log(n))。
+vector<> save, insert, delete O(n), but find O(1)。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -2771,6 +2784,7 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
 		.
 		.
 		.
+https://leetcode.com/problems/remove-invalid-parentheses/discuss/167659/Time-Complexity-Analysis-O(n*2n)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -2970,6 +2984,7 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
 最佳解： method 1，2
 
 利用unordered_map<string, multiset<string>> map，
+Let N be the number of tickets. Let D be the largest outgoing degree of a vertex.
 TIME: insert map: O(NlogD), traverse: O(N)
 SPACE: O(N)
 想像一條路走到底不能再走，就push_back(那個node)，所以路線是從尾往前，
@@ -3987,8 +4002,9 @@ follow up: pos[i][j]表示從i開始，'a'+j第一個出現的位置。
 
 最佳解： method 1
 
-(1) "RRWWRRBBRR", "WB"
-	"WWBBWBBWW", "BB"
+(1) "RRWWRRBBRR", "WB" = 2
+	RRWWRRBBRR -> RRWWRRBBR[W]R -> RRWWRRBB[B]RWR -> RRWWRRRWR -> RRWWWR -> RRR -> empty
+	"WWBBWBBWW", "BB" = -1
 	插入每個位置去試。
 	dfs with memorization。
 
@@ -4332,7 +4348,7 @@ prefix sum。
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1，2
+最佳解： method 1
 
 (1) use map，因為同樣的pair只能處理一次，所以第一次遇到num[i]，檢查num[i]+k和num[i]-k
 	有沒有存過。
@@ -7541,7 +7557,7 @@ O(n)
 最佳解： method 1
 
 (1) dp recurtion
-	dp[i][m]表示第i個pile拿最多的數量，其實就是可以算出對方拿最小的，這樣我
+	dp[i][m]表示第從尾巴到第i個pile拿最多的數量，其實就是可以算出對方拿最小的，這樣我
 	就是最大的。
 	dp[i][m] = psum[i] - min(dp[i+x][max(x,m)]), for x = 1 ~ 2*m
 
@@ -7935,7 +7951,7 @@ O(n)
 
 最佳解： method 1
 
-(1) 用兩個map，一個map of pair，記錄每個分數和他的名字，
+(1) 用兩個map，一個set of pair，記錄每個分數和他的名字，
 	另一個key:名字，value:分數。
 
 ///////////////////////////////////////////////////////////////
@@ -8058,13 +8074,14 @@ O(n)
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1
+最佳解： method 2
 
 (1) 先將string lexicographically排序，這樣會有一個性質：
 	如果a[i] is prefix of a[j] -> a[i] is prefix of x, x from i+1~j-1。
 	所以我們從上一次起始點 last_start 往後開始搜尋第一個word >= search word，
 	也就是new_start，開始搜尋，然後更新start place from last_start to new start。
 	time: O(log(N)) for each query
+(2) 直接用set，lower_bound為 O(log(N))
 
 ///////////////////////////////////////////////////////////////
 //
@@ -8337,6 +8354,7 @@ O(n)
 ///////////////////////////////////////////////////////////////
 
 (1) bucket sort
+	O(m*n + max(k, 100))
 (2) binary search + priority queue。
 	O(m*(logn + logm) + klogm)
 (3) binary search + set。

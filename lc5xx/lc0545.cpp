@@ -13,29 +13,30 @@
 //--- method 1: postorder recursion with path recoding
 class Solution {
 public:
+    vector<int> res;
     vector<int> boundaryOfBinaryTree(TreeNode* root) {
-        vector<int> res;
-        if (!root)
-            return {};
-        res.push_back(root->val);
-        postorder(root->left, res, true, false);
-        postorder(root->right, res, false, true);
+        if (root) {
+            res.push_back(root->val);
+            dfs(root->left, true, false);
+            dfs(root->right, false, true);
+        }
         return res;
     }
-    void postorder(TreeNode *root, vector<int> &res, bool left, bool right) {
-        if (!root)
+    void dfs(TreeNode *root, bool left, bool right) {
+        if (!root) {
             return;
+        }
         if (!root->left && !root->right) {
             res.push_back(root->val);
-            return;            
+            return;
         }
-        if (left)
+        if (left) {
             res.push_back(root->val);
-        if (root->left)
-            postorder(root->left, res, left && root->left, right && !root->right);
-        if (root->right)
-            postorder(root->right, res, left && !root->left, right && root->right);
-        if (right)
+        }
+        dfs(root->left, left, right&&!root->right);
+        dfs(root->right, left&&!root->left, right);
+        if (right) {
             res.push_back(root->val);
+        }
     }
 };

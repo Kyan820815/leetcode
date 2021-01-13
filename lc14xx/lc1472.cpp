@@ -12,32 +12,30 @@
 class BrowserHistory {
 public:
     BrowserHistory(string homepage) {
-        history.push_back(homepage);
+        past.push_back(homepage);
     }
     
     void visit(string url) {
-        history.push_back(url);
+        past.push_back(url);
         future.clear();
     }
     
     string back(int steps) {
-        while (history.size() > 1 && steps) {
-            --steps;
-            future.push_back(history.back());
-            history.pop_back();
+        while (steps-- && past.size() > 1) {
+            future.push_back(past.back());
+            past.pop_back();
         }
-        return history.back();
+        return past.back();
     }
     
     string forward(int steps) {
-        while (future.size() && steps) {
-            --steps;
-            history.push_back(future.back());
+        while (steps-- && future.size()) {
+            past.push_back(future.back());
             future.pop_back();
         }
-        return history.back();
+        return past.back();
     }
-    vector<string> history, future;
+    vector<string> past, future;
 };
 
 //--- method 2: list
