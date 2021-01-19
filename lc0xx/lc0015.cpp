@@ -91,3 +91,29 @@ public:
 			nums[start+i] = copy[i];
     }
 };
+
+//--- method 3: no sort O(n^2)
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        int n = nums.size();
+        unordered_set<int> dup;
+        unordered_map<int, int> seen;
+        set<vector<int>> res;
+        for (int i = 0; i < n; ++i) {
+            if (dup.find(nums[i]) == dup.end()) {
+                dup.insert(nums[i]);
+                for (int j = i+1; j < n; ++j) {
+                    int comp = -nums[i]-nums[j];
+                    if (seen.find(comp) != seen.end() && seen[comp] == i) {
+                        vector<int> arr = {nums[i], nums[j], comp};
+                        sort(arr.begin(), arr.end());
+                        res.insert(arr);
+                    }
+                    seen[nums[j]] = i;
+                }
+            }
+        }
+        return vector<vector<int>>(res.begin(), res.end());
+    }
+};

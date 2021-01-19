@@ -40,6 +40,7 @@
 	1337(e): The K Weakest Rows in a Matrix
 	1385(e): Find the Distance Value Between Two Arrays
 	1389(e): Create Target Array in the Given Order
+	1539(e): Kth Missing Positive Number
 
 --- Sliding Window, Double Pointer Shifting:
 	0001(e): Two Sum
@@ -892,6 +893,7 @@
 	1469(e): Find All The Lonely Nodes
 	1485(m): Clone Binary Tree With Random Pointer
 	1490(m): Clone N-ary Tree
+	1522(m): Diameter of N-Ary Tree
 	1586(m): Binary Search Tree Iterator II
 	1600(m): Throne Inheritance
 	1602(m): Find Nearest Right Node in Binary Tree

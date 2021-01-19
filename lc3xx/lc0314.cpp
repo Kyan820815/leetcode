@@ -36,7 +36,7 @@ public:
     }
 };
 
-//--- method 2: bfs
+//--- method 2-1: bfs with map
 class Solution {
 public:
     vector<vector<int>> verticalOrder(TreeNode* root) {
@@ -60,3 +60,39 @@ public:
         return res;
     }
 };
+
+//--- method 2-2: bfs with unordered_map
+class Solution {
+public:
+    vector<vector<int>> verticalOrder(TreeNode* root) {
+        if (!root) {
+            return {};
+        }
+        queue<pair<int, TreeNode *>> que;
+        que.push({0, root});
+        vector<vector<int>> res;
+        unordered_map<int, vector<int>> map;
+        int maxcol = INT_MIN, mincol = INT_MAX;
+        while (que.size()) {
+            int qsize = que.size();
+            for (int i = 0; i < qsize; ++i) {
+                auto now = que.front();
+                que.pop();
+                mincol = min(mincol, now.first);
+                maxcol = max(maxcol, now.first);
+                map[now.first].push_back(now.second->val);
+                if (now.second->left) {
+                    que.push({now.first-1, now.second->left});
+                }
+                if (now.second->right) {
+                    que.push({now.first+1, now.second->right});
+                }
+            }
+        }
+        res.resize(maxcol-mincol+1);
+        for (auto &m: map) {
+            res[m.first-mincol] = m.second;
+        }
+        return res;
+    }
+
