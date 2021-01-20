@@ -60,6 +60,7 @@
 	0142(m): Linked List Cycle II
 	0143(m): Reorder List
 	0148(m): Sort List
+	0159(m): Longest Substring with At Most Two Distinct Characters
 	0202(e): Happy Number
 	0209(m): Minimum Size Subarray Sum
 	0234(e): Palindrome Linked List
@@ -69,6 +70,7 @@
 	0245(m): Shortest Word Distance III
 	0246(e): Strobogrammatic Number
 	0253(m): Meeting Rooms II
+	0259(m): 3Sum Smaller
 	0263(e): Ugly Number
 	0264(m): Ugly Number II
 	0287(m): Find the Duplicate Number
@@ -380,6 +382,7 @@
 --- Subarray, Subsequences:
 	0053(e): Maximum Subarray
 	0152(m): Maximum Product Subarray
+	0159(m): Longest Substring with At Most Two Distinct Characters
 	0209(m): Minimum Size Subarray Sum
 	0300(m): Longest Increasing Subsequence
 	0325(m): Maximum Size Subarray Sum Equals k
@@ -567,6 +570,7 @@
 	0073(m): Set Matrix Zeroes
 	0074(m): Search a 2D Matrix
 	0075(m): Sort Colors
+	0080(m): Remove Duplicates from Sorted Array II
 	0081(m): Search in Rotated Sorted Array II
 	0169(e): Majority Element
 	0189(e): Rotate Array
@@ -900,6 +904,7 @@
 	1485(m): Clone Binary Tree With Random Pointer
 	1490(m): Clone N-ary Tree
 	1522(m): Diameter of N-Ary Tree
+	1530(m): Number of Good Leaf Nodes Pairs
 	1586(m): Binary Search Tree Iterator II
 	1600(m): Throne Inheritance
 	1602(m): Find Nearest Right Node in Binary Tree
