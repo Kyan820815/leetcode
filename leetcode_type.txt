@@ -517,11 +517,16 @@
 	0426(m): Convert Binary Search Tree to Sorted Doubly Linked List
 	0430(m): Flatten a Multilevel Doubly Linked List
 	0445(m): Add Two Numbers II
+	0708(m): Insert into a Sorted Circular Linked List
 	0725(m): Split Linked List in Parts
 	0817(m): Linked List Components
 	1019(m): Next Greater Node In Linked Lis
+	1290(e): Convert Binary Number in a Linked List to Integer
 	1171(m): Remove Zero Sum Consecutive Nodes from Linked List
+	1474(e): Delete N Nodes After M Nodes of a Linked List
 	1485(m): Clone Binary Tree With Random Pointer
+	1669(m): Merge In Between Linked Lists
+	1721(m): Swapping Nodes in a Linked List
 
 --- Duplicate:
 	0217(e): Contains Duplicate
@@ -684,6 +689,7 @@
 	1018(e): Binary Prefix Divisible By 5
 	1118(e): Number of Days in a Month
 	1128(e): Number of Equivalent Domino Pairs
+	1290(e): Convert Binary Number in a Linked List to Integer
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
 
 --- Intervals:
