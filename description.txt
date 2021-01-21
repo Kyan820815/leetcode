@@ -4032,6 +4032,16 @@ follow up: pos[i][j]表示從i開始，'a'+j第一個出現的位置。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc487. Max Consecutive Ones II
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) two pointer，類似lc1004。
+
+///////////////////////////////////////////////////////////////
+//
 // lc488. Zuma Game (看)**
 //
 ///////////////////////////////////////////////////////////////
@@ -6030,6 +6040,23 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 (1) O(1) space，從尾巴開始，利用一變數來決定還要不要往前走。
 (2) O(n) space，stack
+
+///////////////////////////////////////////////////////////////
+//
+// lc845. Longest Mountain in Array (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 2
+
+(1) two pointer one pass, O(n) time, O(1) space
+	use dir to specify we are ascending or descending in the mountian.
+
+	dir = -1 : initial status
+	dir = 0: uphill
+	dir = 1: downhill
+(2) no dir using，skip left to start uphill
+	use right to uphill and downhill。
 
 ///////////////////////////////////////////////////////////////
 //

@@ -84,6 +84,7 @@
 	0424(m): Longest Repeating Character Replacement
 	0438(m): Find All Anagrams in a String
 	0455(e): Assign Cookies
+	0487(m): Max Consecutive Ones II
 	0567(m): Permutation in String 
 	0594(e): Longest Harmonious Subsequence
 	0611(m): Valid Triangle Number
@@ -95,6 +96,7 @@
 	0769(m): Max Chunks To Make Sorted
 	0809(m): Expressive Words
 	0844(e): Backspace String Compare
+	0845(m): Longest Mountain in Array
 	0876(e): Middle of the Linked List
 	0881(m): Boats to Save People 
 	0917(e): Reverse Only Letters
