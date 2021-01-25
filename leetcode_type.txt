@@ -35,6 +35,7 @@
 	1150(e): Check If a Number Is Majority Element in a Sorted Array
 	1268(m): Search Suggestions System
 	1274(h): Number of Ships in a Rectangle
+	1283(m): Find the Smallest Divisor Given a Threshold
 	1287(e): Element Appearing More Than 25% In Sorted Array
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1337(e): The K Weakest Rows in a Matrix
@@ -288,6 +289,7 @@
 	0395(m): Longest Substring with At Least K Repeating Characters
 	0397(m): Integer Replacement
 	0399(m): Evaluate Division
+	0401(e): Binary Watch
 	0431(h): Encode N-ary Tree to Binary Tree
 	0445(m): Add Two Numbers II
 	0488(h): Zuma Game
@@ -453,6 +455,7 @@
 	0729(m): My Calendar I
 	0731(m): My Calendar II
 	0740(m): Delete and Earn
+	0811(e): Subdomain Visit Count
 	0819(e): Most Common Word
 	0888(e): Fair Candy Swap
 	0890(m): Find and Replace Pattern
@@ -616,6 +619,7 @@
 	0766(e): Toeplitz Matrix
 	0796(e): Rotate String
 	0807(m): Max Increase to Keep City Skyline
+	0821(e): Shortest Distance to a Character
 	0830(e): Positions of Large Groups
 	0832(e): Flipping an Image
 	0840(e): Magic Squares In Grid
@@ -639,9 +643,11 @@
 	0989(e): Add to Array-Form of Integer
 	1002(e): Find Common Characters
 	1005(e): Maximize Sum Of Array After K Negations
+	1007(m): Minimum Domino Rotations For Equal Row
 	1013(e): Partition Array Into Three Parts With Equal Sum
 	1025(e): Divisor Game
 	1029(e): Two City Scheduling
+	1041(m): Robot Bounded In Circle
 	1051(e): Height Checker
 	1071(e): Greatest Common Divisor of Strings
 	1085(e): Sum of Digits in the Minimum Number
@@ -688,6 +694,7 @@
 	0268(m): Missing Number
 	0338(m): Counting Bits
 	0389(e): Find the Difference
+	0401(e): Binary Watch
 	0461(e): Hamming Distance
 	0476(e): Number Complement
 	1048(m): Longest String Chain
@@ -815,6 +822,7 @@
 	0333(m): Largest BST Subtree
 	0366(m): Find Leaves of Binary Tree
 	0404(e): Sum of Left Leaves
+	0427(m): Construct Quad Tree
 	0428(h): Serialize and Deserialize N-ary Tree
 	0429(m): N-ary Tree Level Order Traversal
 	0431(h): Encode N-ary Tree to Binary Tree
@@ -935,6 +943,7 @@
 	0090(m): Subsets II
 	0216(m): Combination Sum III
 	0491(m): Increasing Subsequences
+	0556(m): Next Greater Element III
 	1079(m): Letter Tile Possibilities
 	1087(m): Brace Expansion
 
