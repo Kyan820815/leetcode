@@ -29,10 +29,13 @@
 	0658(m): Find K Closest Elements
 	0704(e): Binary Search
 	0852(e): Peak Index in a Mountain Array
+	0875(m): Koko Eating Bananas
+	1011(m): Capacity To Ship Packages Within D Days
 	1060(m): Missing Element in Sorted Array
 	1064(e): Fixed Point
 	1095(h): Find in Mountain Array
 	1150(e): Check If a Number Is Majority Element in a Sorted Array
+	1231(h): Divide Chocolate
 	1268(m): Search Suggestions System
 	1274(h): Number of Ships in a Rectangle
 	1283(m): Find the Smallest Divisor Given a Threshold
@@ -114,6 +117,7 @@
 	1176(e): Diet Plan Performance
 	1213(e): Intersection of Three Sorted Arrays
 	1214(m): Two Sum BSTs
+	1470(e): Shuffle the Array
 
 --- Quick Select:
 	0215(m): Kth Largest Element in an Array
@@ -144,6 +148,7 @@
 	0451(m): Sort Characters By Frequency
 	0539(m): Minimum Time Difference
 	0692(m): Top K Frequent Words
+	0771(e): Jewels and Stones
 	1057(m): Campus Bikes
 	1196(e): How Many Apples Can You Put into the Basket
 	1122(e): Relative Sort Array
@@ -199,6 +204,7 @@
 	0503(m): Next Greater Element II
 	0636(m): Exclusive Time of Functions 
 	0654(m): Maximum Binary Tree
+	0716(e): Max Stack
 	0739(m): Daily Temperatures
 	0768(h): Max Chunks To Make Sorted II
 	0889(m): Construct Binary Tree from Preorder and Postorder Traversal
@@ -235,6 +241,7 @@
 	0310(m): Minimum Height Trees
 	0314(m): Binary Tree Vertical Order Traversal
 	0346(e): Moving Average from Data Stream
+	0359(e): Logger Rate Limiter
 	0362(m): Design Hit Counter
 	0417(m): Pacific Atlantic Water Flow
 	0490(m): The Maze
@@ -440,6 +447,7 @@
 	0314(m): Binary Tree Vertical Order Traversal
 	0349(e): Intersection of Two Arrays
 	0350(e): Intersection of Two Arrays II
+	0359(e): Logger Rate Limiter
 	0380(m): Insert Delete GetRandom O(1)
 	0383(e): Ransom Note
 	0414(e): Third Maximum Number
@@ -452,6 +460,8 @@
 	0652(m): Find Duplicate Subtrees
 	0653(e): Two Sum IV - Input is a BST
 	0697(e): Degree of an Array
+	0716(e): Max Stack
+	0720(e): Longest Word in Dictionary
 	0729(m): My Calendar I
 	0731(m): My Calendar II
 	0740(m): Delete and Earn
@@ -481,6 +491,7 @@
 --- Design:
 	0146(m): LRU Cache
 	0348(m): Design Tic-Tac-Toe
+	0359(e): Logger Rate Limiter
 	0362(m): Design Hit Counter
 	0535(m): Encode and Decode TinyURL
 	0621(m): Task Scheduler
@@ -684,6 +695,7 @@
 	1480(e): Running Sum of 1d Array
 	1464(e): Maximum Product of Two Elements in an Array
 	1507(e): Reformat Date
+	1629(e): Slowest Key
 	1668(e): Maximum Repeating Substring
 
 --- Bit Operations
@@ -704,6 +716,7 @@
 	1128(e): Number of Equivalent Domino Pairs
 	1290(e): Convert Binary Number in a Linked List to Integer
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
+	1470(e): Shuffle the Array
 
 --- Intervals:
 	0056(m): Merge Intervals
@@ -712,6 +725,9 @@
 	0435(m): Non-overlapping Intervals
 	0452(m): Minimum Number of Arrows to Burst Balloons
 	0646(m): Maximum Length of Pair Chain
+	0729(m): My Calendar I
+	0731(m): My Calendar II
+	0836(e): Rectangle Overlap
 	0986(m): Interval List Intersections
 	1272(m): Remove Interval
 	1450(e): Number of Students Doing Homework at a Given Time
@@ -859,6 +875,7 @@
 	0687(e): Longest Univalue Path
 	0700(e): Search in a Binary Search Tree
 	0701(m): Insert into a Binary Search Tree
+	0720(e): Longest Word in Dictionary
 	0742(m): Closest Leaf in a Binary Tree
 	0776(m): Split BST
 	0783(e): Minimum Distance Between BST Nodes
