@@ -3828,15 +3828,25 @@ follow up: pos[i][j]表示從i開始，'a'+j第一個出現的位置。
 
 最佳解： method 1
 
-三種方法都在確認idx: nums[i]-1 有沒有被走訪過。
+三種方法都在確認idx: abs(nums[i])-1 有沒有被走訪過。
 (1) 負數確認
-	若idx: nums[i]-1的值為負的，代表有兩個值指到他，為重複。
+	若idx: abs(nums[i])-1的值為負的，代表有兩個值指到他，為重複。
 (2) swapping
 	如果nums[i] 和 nums[nums[i]-1]不同，將這兩個做交換，且i--，
 	這邊i-1原因是一定要確認當前nums[i] = nums[nums[i]-1]才能往下一位走。
 	若都沒有重複，交換完應該為1~n。
 (3) 2n確認
 	對於指到的數字(index為nums[i]-1的val)加上n，跑完一遍看哪個數字>2n表示該index為重複的。
+
+///////////////////////////////////////////////////////////////
+//
+// lc443. String Compression
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) O(1) space，two pointer。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -5276,6 +5286,16 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 (1) 因為比錯一次就false，當前若遇到比不對的，直接比較去掉最右邊是否回文和去掉最左邊
 	是否回文。
+
+///////////////////////////////////////////////////////////////
+//
+// lc682. Baseball Game
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) one pass。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -6843,6 +6863,27 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc981. Time Based Key-Value Store (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2，3。
+
+類似lc1146。
+
+(1) unordered_map<string, map<int, string>> map
+	set: O(log(n))
+	get: O(log(n))
+
+(2) unordered_map<string, vector<pair<int, string>>> map;
+	因為時間為遞增，可以使用vector pair，upper bound 也為log(n)
+	set: O(1)
+	get: O(log(n))
+
+(3) 類似(2)，但implement upper_bound by binary search。
+
+///////////////////////////////////////////////////////////////
+//
 // lc983. Minimum Cost For Tickets (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -7592,6 +7633,23 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1103. Distribute Candies to People
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 每次分num個糖果，直到不能分為止。
+	time:O(sqrt(n))
+
+	we give out candies x times since the total number of candies is n, 
+	then x*(x+1)/2 = n or O(x^2) = O(n) or O(x) = O(sqrt(n)).
+
+	因為1+2+3+...+x = n
+	跑x次，x(x+1)/2 = n -> time: x = O(sqrt(n))
+
+///////////////////////////////////////////////////////////////
+//
 // lc1104. Path In Zigzag Labelled Binary Tree
 //
 ///////////////////////////////////////////////////////////////
@@ -7614,6 +7672,17 @@ O(n)
 	j from i to 1
 	h = max(h, books[j-1][1])
 	且w要在max_width範圍內。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1108. Defanging an IP Address
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) inplace replacement，從後往頭走。
+(2) 一般linear search。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -7984,6 +8053,16 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1180. Count Substrings with Only One Distinct Letter
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 判斷當前ch和last ch，若不一樣，更新。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1184. Distance Between Bus Stops
 //
 ///////////////////////////////////////////////////////////////
@@ -8048,6 +8127,34 @@ O(n)
 最佳解： method 1
 
 (1) bucket sort，O(1000 + N)，若Ｎ>>1000，bucket sort效果優於nlogn sort。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1197. Minimum Knight Moves (看)**
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) use dfs + memorization
+
+note that (1,1), (2,0), (0,2) would be special cases, these
+three cost 2 step
+The moment you reach 0,2 or 2,0 or 1,1 (visualize in the real chess board) 
+the knight cannot move further to 0,0 or might go into negative axis, 
+the smartest way is to if you are in (0,2) move the night to (2,1) 
+then from there it could move to (0,0)..this takes 2 move. 
+same applies for (1,1) and (2,0) too
+
+why only (a) abs(x-1) abs(y-2) and (b) abs(x-2) abs(y-1)
+This is because you are counting steps (and walking backwards) 
+as you traverse from x,y to 0,0. 
+The only way to reach 0.0 from x,y (x>0, y>0) is to either try (x-1,y-2) or (x-2,y-1)
+
+time: O(m*n), m = x, n = y
+
+(2) bfs
+time: O(n^2), n = 300
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9313,6 +9420,16 @@ follow up:
 最佳解： method 1
 
 (1) 維持最大diff和其label即可。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1636. Sort Array by Increasing Frequency
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) bucket sort。
 
 ///////////////////////////////////////////////////////////////
 //

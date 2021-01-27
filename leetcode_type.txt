@@ -30,6 +30,7 @@
 	0704(e): Binary Search
 	0852(e): Peak Index in a Mountain Array
 	0875(m): Koko Eating Bananas
+	0981(m): Time Based Key-Value Store
 	1011(m): Capacity To Ship Packages Within D Days
 	1060(m): Missing Element in Sorted Array
 	1064(e): Fixed Point
@@ -87,6 +88,7 @@
 	0395(m): Longest Substring with At Least K Repeating Characters
 	0424(m): Longest Repeating Character Replacement
 	0438(m): Find All Anagrams in a String
+	0443(m): String Compression
 	0455(e): Assign Cookies
 	0487(m): Max Consecutive Ones II
 	0567(m): Permutation in String 
@@ -165,6 +167,7 @@
 	1403(e): Minimum Subsequence in Non-Increasing Order
 	1433(m): Check If a String Can Break Another String
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
+	1636(e): Sort Array by Increasing Frequency
 	1657(m): Determine if Two Strings Are Close
 
 --- Union Find:
@@ -310,6 +313,7 @@
 	0784(e): Letter Case Permutation
 	0802(m): Find Eventual Safe States
 	0841(m): Keys and Rooms
+	1197(m): Minimum Knight Moves
 	1236(m): Web Crawler
 	1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
 	1666(m): Change the Root of a Binary Tree
@@ -470,6 +474,7 @@
 	0888(e): Fair Candy Swap
 	0890(m): Find and Replace Pattern
 	0939(m): Minimum Area Rectangle
+	0981(m): Time Based Key-Value Store
 	0987(m): Vertical Order Traversal of a Binary Tree
 	1094(m): Car Pooling
 	1122(e): Relative Sort Array
@@ -477,6 +482,7 @@
 	1146(m): Snapshot Array
 	1152(m): Analyze User Website Visit Pattern
 	1169(m): Invalid Transactions
+	1197(m): Minimum Knight Moves
 	1244(m): Design A Leaderboard
 	1396(m): Design Underground System
 	1429(m): First Unique Number
@@ -621,6 +627,7 @@
 	0661(e): Image Smoother
 	0665(e): Non-decreasing Array
 	0666(m): Path Sum IV
+	0682(e): Baseball Game
 	0709(e): To Lower Case
 	0717(e): 1-bit and 2-bit Characters
 	0723(m): Candy Crush
@@ -663,9 +670,12 @@
 	1071(e): Greatest Common Divisor of Strings
 	1085(e): Sum of Digits in the Minimum Number
 	1086(e): High Five 
+	1103(e): Distribute Candies to People
+	1108(e): Defanging an IP Address
 	1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
 	1119(e): Remove Vowels from a String
 	1160(e): Find Words That Can Be Formed by Characters
+	1180(e): Count Substrings with Only One Distinct Letter
 	1184(e): Distance Between Bus Stops
 	1217(e): Play with Chips
 	1221(e): Split a String in Balanced Strings
