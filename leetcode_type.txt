@@ -97,6 +97,7 @@
 	0622(m): Design Circular Queue
 	0641(m): Design Circular Deque
 	0643(e): Maximum Average Subarray I
+	0696(e): Count Binary Substrings
 	0713(m): Subarray Product Less Than K
 	0763(m): Partition Labels
 	0769(m): Max Chunks To Make Sorted
@@ -119,7 +120,9 @@
 	1176(e): Diet Plan Performance
 	1213(e): Intersection of Three Sorted Arrays
 	1214(m): Two Sum BSTs
+	1423(m): Maximum Points You Can Obtain from Cards
 	1470(e): Shuffle the Array
+	1570(m): Dot Product of Two Sparse Vectors
 
 --- Quick Select:
 	0215(m): Kth Largest Element in an Array
@@ -415,6 +418,7 @@
 	0792(m): Number of Matching Subsequences
 	1048(m): Longest String Chain
 	1186(m): Maximum Subarray Sum with One Deletion
+	1588(e): Sum of All Odd Length Subarrays
 
 --- Prefix Sum:
 	0325(m): Maximum Size Subarray Sum Equals k
@@ -458,6 +462,7 @@
 	0451(m): 4Sum II
 	0488(h): Zuma Game
 	0489(h): Robot Room Cleaner
+	0500(e): Keyboard Row
 	0532(e): K-diff Pairs in an Array
 	0594(e): Longest Harmonious Subsequence
 	0599(e): Minimum Index Sum of Two Lists
@@ -484,9 +489,12 @@
 	1169(m): Invalid Transactions
 	1197(m): Minimum Knight Moves
 	1244(m): Design A Leaderboard
+	1348(m): Tweet Counts Per Frequency
 	1396(m): Design Underground System
 	1429(m): First Unique Number
+	1436(e): Destination City
 	1472(m): Design Browser History
+	1570(m): Dot Product of Two Sparse Vectors
 	1583(m): Count Unhappy Friends
 	1615(m): Maximal Network Rank
 	1640(e): Check Array Formation Through Concatenation
@@ -512,6 +520,7 @@
 	1279(e): Traffic Light Controlled Intersection
 	1396(m): Design Underground System
 	1472(m): Design Browser History
+	1603(e): Design Parking System
 
 --- Linked List:
 	0002(m): Add Two Numbers 
@@ -638,6 +647,7 @@
 	0796(e): Rotate String
 	0807(m): Max Increase to Keep City Skyline
 	0821(e): Shortest Distance to a Character
+	0824(e): Goat Latin
 	0830(e): Positions of Large Groups
 	0832(e): Flipping an Image
 	0840(e): Magic Squares In Grid
@@ -700,6 +710,7 @@
 	1399(e): Count Largest Group
 	1413(e): Minimum Value to Get Positive Step by Step Sum
 	1427(e): Perform String Shifts
+	1428(m): Leftmost Column with at Least a One
 	1431(e): Kids With the Greatest Number of Candies
 	1441(e): Build an Array With Stack Operations
 	1480(e): Running Sum of 1d Array
@@ -725,6 +736,7 @@
 	1118(e): Number of Days in a Month
 	1128(e): Number of Equivalent Domino Pairs
 	1290(e): Convert Binary Number in a Linked List to Integer
+	1342(e): Number of Steps to Reduce a Number to Zero
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
 	1470(e): Shuffle the Array
 
@@ -1007,6 +1019,7 @@
 	1232(e): Check If It Is a Straight Line
 	1304(e); Find N Unique Integers Sum up to Zero
 	1359(h): Count All Valid Pickup and Delivery Options
+	1518(e): Water Bottles
 
 --- Resivoir Sampling:
 	0382(m): Linked List Random Node

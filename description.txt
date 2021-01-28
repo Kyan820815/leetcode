@@ -4233,6 +4233,16 @@ follow up：一直右上對角或是一直左下對角。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc500. Keyboard Row
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 用unordered_set來選擇有沒有同一個row。
+
+///////////////////////////////////////////////////////////////
+//
 // lc501. Find Mode in Binary Search Tree (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -5391,6 +5401,18 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 ///////////////////////////////////////////////////////////////
 //
+// lc696. Count Binary Substrings
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 維持pre, cur，表示上一個和當前的同樣字元的長度
+	當s[i] != s[i+1], res += min(pre, cur)。
+(2) 當s[i] != s[i+1], 計算最長長度，更新i = right-2。
+
+///////////////////////////////////////////////////////////////
+//
 // lc697. Degree of an Array
 //
 ///////////////////////////////////////////////////////////////
@@ -6119,6 +6141,16 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 最佳解： method 1
 
 (1) 利用dp，先將數組排序後，dp[A[i]] = (dp[A[i]] + dp[A[j]]*dp[A[i]/A[j]]) % M
+
+///////////////////////////////////////////////////////////////
+//
+// lc824. Goat Latin
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 用istringstream做處理。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -8776,6 +8808,16 @@ follow up: >= k
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1342. Number of Steps to Reduce a Number to Zero
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) bit operation
+
+///////////////////////////////////////////////////////////////
+//
 // lc1346. Check If N and Its Double Exist
 //
 ///////////////////////////////////////////////////////////////
@@ -8796,6 +8838,24 @@ follow up: >= k
 	即為答案。
 (2) 維持兩個cnt，取min(cnt1[i], cnt2[i])，表示絕對不用換的字母，加總res
 	return s.size() - res。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1348. Tweet Counts Per Frequency (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+* n: # of record for one tweet
+
+(1) 利用multiset<int>，lower_bound找出第一個>=startime的position
+	recordTweet time: O(logn)
+	getTweetCountsPerFrequency: O(logn) + O(# of record between startTime and endTime)
+
+(2) vector<int>，linear find。
+	recordTweet time: O(1)
+	getTweetCountsPerFrequency: O(n)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9055,6 +9115,24 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1423. Maximum Points You Can Obtain from Cards (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) sliding window，維持n-k大小的window，找最小。
+	time: O(n)
+(2) sliding window，先算出左邊開始大小為k總和: left
+	然後跑一個k for loop，
+	left -= arr[k-1-i];
+	right += arr[n-1-i];
+	res = max(res, left+right)
+	這表示每次從left扣掉一個，right加上一個，維持大小為k的兩邊總和
+	time: O(k)
+
+///////////////////////////////////////////////////////////////
+//
 // lc1427. Perform String Shifts
 //
 ///////////////////////////////////////////////////////////////
@@ -9062,6 +9140,17 @@ always find the largest one less than K。
 最佳解： method 1
 
 (1) string concatenation
+
+///////////////////////////////////////////////////////////////
+//
+// lc1428. Leftmost Column with at Least a One
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) O(rlog(c))，binary search
+(2) O(r+c)，類似lc240。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9106,6 +9195,17 @@ always find the largest one less than K。
 
 (1) bucket sort，從0~25，計算兩者當前數量，若次數交錯，表示不能break。
 (2) nlogn sort
+
+///////////////////////////////////////////////////////////////
+//
+// lc1436. Destination City
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) two pass，第一次把start place加進去，第二次對於end place看有沒有在
+	set裡。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9291,6 +9391,25 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1518. Water Bottles (看) *
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) O(log(n)) time，
+	res += empty / exchange
+	empty = empty / exchange + empty % exchange
+(2) O(1) time
+
+The "price" of buying a refill is handing over two empties. 
+However, you must have your own empty bottle to receive the refill.
+Therefore after drinking the initial numBottles, 
+we "keep aside" one empty for receiving the refills (therefore we do 9 minus 1) 
+and trade in the remaining 8 empties to get refills @ 2 bottles/refill. 
+
+///////////////////////////////////////////////////////////////
+//
 // lc1522. Diameter of N-Ary Tree
 //
 ///////////////////////////////////////////////////////////////
@@ -9322,6 +9441,18 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1570. Dot Product of Two Sparse Vectors
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) map operation，儲存非零位置。
+(2) two pointer，類似lc349，lc350。
+	用vector<pair<int, int>>儲存非零位置。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1583. Count Unhappy Friends (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -9343,6 +9474,39 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1588. Sum of All Odd Length Subarrays (看)**
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 去計算A[i] 出現在subarry的次數
+	O(n) time O(1) space
+	從左邊subarray來看，有i, [i, i-1], ... [i, i-1, ..., 1, 0], i+1種選擇
+	從右邊subarray來看，有i, [i, i+1], [i, i+1, ..., n-1], n-i種選擇
+	所以A[i]出現在subarray共有 (i+1)*(n-i)，因為要找奇數，所以/2
+	但有可能有小數點，且一定會有自己一次，所以 ((i+1)*(n-i)+1)/2;
+	也可ceil((i+1)*(n-i)/2)。
+
+	Example of array [1,2,3,4,5]
+	1 2 3 4 5 subarray length 1
+	1 2 X X X subarray length 2
+	X 2 3 X X subarray length 2
+	X X 3 4 X subarray length 2
+	X X X 4 5 subarray length 2
+	1 2 3 X X subarray length 3
+	X 2 3 4 X subarray length 3
+	X X 3 4 5 subarray length 3
+	1 2 3 4 X subarray length 4
+	X 2 3 4 5 subarray length 4
+	1 2 3 4 5 subarray length 5
+
+	5 8 9 8 5 total times each index was added.
+	3 4 5 4 3 total times in odd length array with (x + 1) / 2
+	2 4 4 4 2 total times in even length array with x / 2
+
+///////////////////////////////////////////////////////////////
+//
 // lc1600. Throne Inheritance
 //
 ///////////////////////////////////////////////////////////////
@@ -9361,6 +9525,17 @@ always find the largest one less than K。
 
 (1) bfs
 (2) preorder morris traversal，注意計算深度問題。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1603. Design Parking System
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) thread safe solution，注意用mtx陣列，fix size，而不是用vector
+https://stackoverflow.com/questions/16465633/how-can-i-use-something-like-stdvectorstdmutex/24170141
 
 ///////////////////////////////////////////////////////////////
 //
