@@ -113,6 +113,7 @@
 	0977(e): Squares of a Sorted Array
 	0992(h): Subarrays with K Different Integers
 	1004(m): Max Consecutive Ones III
+	1031(m): Maximum Sum of Two Non-Overlapping Subarrays
 	1052(m): Grumpy Bookstore Owner
 	1089(e): Duplicate Zeros
 	1099(e): Two Sum Less Than K
@@ -143,9 +144,11 @@
 	1090(m): Largest Values From Labels
 	1102(m): Path With Maximum Minimum Value
 	1167(m): Minimum Cost to Connect Sticks
+	1329(m): Sort the Matrix Diagonally
 	1337(e): The K Weakest Rows in a Matrix
 	1338(m): Reduce Array Size to The Half
 	1353(m): Maximum Number of Events That Can Be Attended
+	1481(m): Least Number of Unique Integers after K Removals
 
 --- Bucket Sort:
 	0347(m): Top K Frequent Elements
@@ -170,6 +173,7 @@
 	1403(e): Minimum Subsequence in Non-Increasing Order
 	1433(m): Check If a String Can Break Another String
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
+	1481(m): Least Number of Unique Integers after K Removals
 	1636(e): Sort Array by Increasing Frequency
 	1657(m): Determine if Two Strings Are Close
 
@@ -521,6 +525,7 @@
 	1396(m): Design Underground System
 	1472(m): Design Browser History
 	1603(e): Design Parking System
+	1656(e): Design an Ordered Stream
 
 --- Linked List:
 	0002(m): Add Two Numbers 
@@ -603,6 +608,7 @@
 	0075(m): Sort Colors
 	0080(m): Remove Duplicates from Sorted Array II
 	0081(m): Search in Rotated Sorted Array II
+	0163(e): Missing Ranges
 	0169(e): Majority Element
 	0189(e): Rotate Array
 	0228(m): Summary Ranges
@@ -636,6 +642,7 @@
 	0661(e): Image Smoother
 	0665(e): Non-decreasing Array
 	0666(m): Path Sum IV
+	0670(m): Maximum Swap
 	0682(e): Baseball Game
 	0709(e): To Lower Case
 	0717(e): 1-bit and 2-bit Characters
@@ -718,6 +725,8 @@
 	1507(e): Reformat Date
 	1629(e): Slowest Key
 	1668(e): Maximum Repeating Substring
+	1672(e): Richest Customer Wealth
+	1732(e): Find the Highest Altitude
 
 --- Bit Operations
 	0067(e): Add Binary 
@@ -739,6 +748,7 @@
 	1342(e): Number of Steps to Reduce a Number to Zero
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
 	1470(e): Shuffle the Array
+	1486(e): XOR Operation in an Array
 
 --- Intervals:
 	0056(m): Merge Intervals

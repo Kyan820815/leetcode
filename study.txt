@@ -507,6 +507,10 @@ tree的題目，若有特殊需求，level order相關的取法或要求，可用queue。
 看到array求element或多個element，可用binary search維持區間或找element。
 看到array求區間，可用stack做降序或升序。
 
+降序: while (arr[i] > sk.back())
+升序: while (arr[i] < sk.back())
+
+
 sliding window of substring：先向右去累積條件，直到條件充分，滑動左窗口直到最後一個條件充分的idx。
 
 ************************************************************************************
