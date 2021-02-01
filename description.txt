@@ -7039,12 +7039,37 @@ O(n)
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1
+最佳解： method 2
 
 (1) 類似lc1004，lc1052，lc340。
 	利用sliding window，紀錄所有子字串使用的integeres with different
 	integers <= k。
 	at most k - at most k-1。
+	two pass
+(2) one pass
+	維持一個unique integer size = k 的window，且一變數prefix，表示
+	在left之前有多少重複的number，res += prefix+1。且left為cnt[left] == 1，
+	固定起始點的出現次數為1。所以left為unique interger subarray and 
+	cnt[left] = 1。若 k < 0 => prefix = 0。要重新計算有多少prefix array。
+	ex 1 1 1 2 2 2 3 3 3
+	   0 1 2 3 4 5 6 7 8
+	   k = 3
+	   left = 3, right = 9, prefix = 2，表示有除了當前subarry還有兩個prefix
+	   array，res += prefix+1 = 3。
+	   right = 6
+	   1 1 1 2 2 2 3
+	     1 1 2 2 2 3
+	       1 2 2 2 3
+
+	   right = 7
+	   1 1 1 2 2 2 3 3
+	     1 1 2 2 2 3 3
+	       1 2 2 2 3 3
+
+	   right = 8
+	   1 1 1 2 2 2 3 3 3
+	     1 1 2 2 2 3 3 3
+	       1 2 2 2 3 3 3
 
 ///////////////////////////////////////////////////////////////
 //
@@ -8065,6 +8090,23 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1163. Last Substring in Lexicographical Order (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) l: max subarray start index
+	r: current subarray start index
+	去找到第一個 s[l+d] < s[r+d]，update l = max(l+d+1, r)
+	為什麽不只要l = r，因為 'aaaaac'，l = l+d+1可以直接跳到c，節省時間，
+	且r = l+1，從下一個位置開始重新搜尋。
+	若s[l+d] > s[r+d]，update r += d+1，從這個位置開始重新搜尋，前面
+	一定都比s[l+d]小。
+	time: O(n)
+
+///////////////////////////////////////////////////////////////
+//
 // lc1167. Minimum Cost to Connect Sticks (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -8424,6 +8466,24 @@ follow up: >= k
 	也就是res += (xy/2 + yx/2)，再來 xy % 2 和 yx % 2 表示用剩下來的，
 	這一定是0個或1個，若只有其中是一個，return -1，若兩個都是1，表示可以swap，
 	方法數 = 2，兩個都是0，維持原狀。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1248. Count Number of Nice Subarrays (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 2，3
+
+類似lc992。
+(1) use atmost(k) - atmost(k-1)
+	O(1) space，two pass
+(2) 992 method 2。
+	O(1) space，one pass
+(3) 維持一個max size k的queue，表示當前odd num的index。
+	若size == k，res += que.front()-last+1。
+	若size > k，last = que.front()+1，que.pop()。
+	O(k) space，one pass
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9264,6 +9324,17 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1437. Check If All 1's Are at Least Length K Places Away
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) linear find last index with a[idx] == 1 and check if 
+	i-idx-1 < k or not。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1441. Build an Array With Stack Operations
 //
 ///////////////////////////////////////////////////////////////
@@ -9393,6 +9464,16 @@ always find the largest one less than K。
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1475. Final Prices With a Special Discount in a Shop
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) stack iteration，維持一個升序stack。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1480. Running Sum of 1d Array
 //
 ///////////////////////////////////////////////////////////////
@@ -9464,6 +9545,37 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
 
 類似lc133
 (1) 基本dfs。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1491. Average Salary Excluding the Minimum and Maximum Salary
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) linear find
+
+///////////////////////////////////////////////////////////////
+//
+// lc1502. Can Make Arithmetic Progression From Sequence (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) O(n) time, O(1) space
+	類似lc041。
+	因為要找diff，可以先找到maxv, minv算出diff
+	跑一個回圈，對於是自己的點，跳過(++idx)，若不是自己的點，算位置，若沒辦法算，
+	return false，最後得到自己得pos，若pos < idx，表示這個點和之前已找到的點一樣，表示重複
+	，但不可能重複，除非diff = 0，所以return false，不然arr[idx] == arr[pos]，這也表示i>pos，
+	也要return false，因為如果一樣，diff會=0，一開始就跳過(++idx)，diff!=0但又有
+	arr[idx] == arr[pos]表示idx != pos，會造成無窮迴圈，
+	最後swap(arr[idx], arr[pos])。
+
+(2) O(nlogn) time, O(logn) space
+	sort then find difference
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9547,6 +9659,16 @@ and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1550. Three Consecutive Odds
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) linear find 連續三個奇數，若遇偶數，cnt = 0。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1570. Dot Product of Two Sparse Vectors
 //
 ///////////////////////////////////////////////////////////////
@@ -9556,6 +9678,35 @@ and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 (1) map operation，儲存非零位置。
 (2) two pointer，類似lc349，lc350。
 	用vector<pair<int, int>>儲存非零位置。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1572. Matrix Diagonal Sum
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) time: O(n)，跑一遍找對角線，若n是奇數，扣掉重複算的。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1582. Special Positions in a Binary Matrix
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+類似lc531。
+
+(1) 對於每個row先找colsum == 1，若有，找到對應位置並搜尋row有沒有==1，
+	若有，++res。
+	因為每個row去搜尋row只會搜尋一次，所有點總共最多visit m*n次。
+	time: O(m*n)
+	space: O(1)
+(2) lc531的method 2。
+	time: O(m*n)
+	space: O(m+n)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9691,6 +9842,17 @@ follow up:
 	2. 若有兩個以上，想像若這些node 為m，若 m*(m-1)/2 > connect 這些彼此node
 	的邊數量，代表一定有兩個node屬於最大數量邊，且沒有邊連這兩個，不用-1。
 	note: fully connected of n nodes, its edge = n*(n-1)/2。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1619. Mean of Array After Removing Some Elements
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) sort entire array
+(2) 用兩個priority queue。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9849,6 +10011,34 @@ follow up:
 最佳解： method 1
 
 (1) 基本postorder，利用unordered set來記錄node。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1700. Number of Students Unable to Eat Lunch
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) two pointer，計算不符合的數量，若等同於當前學生數量，return。
+(2) bucket sort。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1708. Largest Subarray Length K (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 因為要找最大，直接去比較頭，若都一樣，代表是最後一個subarry
+	ex: [1 1 1 1 2]，k = 3，選 [1 1 2]
+*** follow up: numbers are not distinct.
+	類似lc1163。
+	唯一差別是不能update l = max(l+d+1, r)，只能l = r，因為這是有固定的長度k
+	而不是像lc1163一樣substring沒有固定長度。
+	另外多一個條件，因為限定長度k，確認現在比的r+k-1 < n才值得比。
+	time: O(n)
 
 ///////////////////////////////////////////////////////////////
 //

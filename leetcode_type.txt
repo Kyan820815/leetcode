@@ -118,12 +118,16 @@
 	1089(e): Duplicate Zeros
 	1099(e): Two Sum Less Than K
 	1100(m): Find K-Length Substrings With No Repeated Characters
+	1163(h): Last Substring in Lexicographical Orderf
 	1176(e): Diet Plan Performance
 	1213(e): Intersection of Three Sorted Arrays
 	1214(m): Two Sum BSTs
+	1248(m): Count Number of Nice Subarrays
 	1423(m): Maximum Points You Can Obtain from Cards
 	1470(e): Shuffle the Array
 	1570(m): Dot Product of Two Sparse Vectors
+	1700(e): Number of Students Unable to Eat Lunch
+	1708(e): Largest Subarray Length K
 
 --- Quick Select:
 	0215(m): Kth Largest Element in an Array
@@ -149,6 +153,7 @@
 	1338(m): Reduce Array Size to The Half
 	1353(m): Maximum Number of Events That Can Be Attended
 	1481(m): Least Number of Unique Integers after K Removals
+	1619(e): Mean of Array After Removing Some Elements
 
 --- Bucket Sort:
 	0347(m): Top K Frequent Elements
@@ -176,6 +181,7 @@
 	1481(m): Least Number of Unique Integers after K Removals
 	1636(e): Sort Array by Increasing Frequency
 	1657(m): Determine if Two Strings Are Close
+	1700(e): Number of Students Unable to Eat Lunch
 
 --- Union Find:
 	0261(m): Graph Valid Tree
@@ -231,6 +237,7 @@
 	1249(m): Minimum Remove to Make Valid Parentheses
 	1305(m): All Elements in Two Binary Search Trees
 	1472(m): Design Browser History
+	1475(e): Final Prices With a Special Discount in a Shop
 	1586(m): Binary Search Tree Iterator II
 	1614(e): Maximum Nesting Depth of the Parentheses
 
@@ -273,6 +280,7 @@
 	0919(m): Complete Binary Tree Inserter
 	0934(m): Shortest Bridge
 	0958(m): Check Completeness of a Binary Tree
+	1248(m): Count Number of Nice Subarrays
 	0994(e): Rotting Oranges
 	1059(m): All Paths from Source Lead to Destination
 	1091(m): Shortest Path in Binary Matrix
@@ -719,10 +727,16 @@
 	1427(e): Perform String Shifts
 	1428(m): Leftmost Column with at Least a One
 	1431(e): Kids With the Greatest Number of Candies
+	1437(e): Check If All 1's Are at Least Length K Places Away
 	1441(e): Build an Array With Stack Operations
 	1480(e): Running Sum of 1d Array
 	1464(e): Maximum Product of Two Elements in an Array
+	1491(e): Average Salary Excluding the Minimum and Maximum Salary
+	1502(e): Can Make Arithmetic Progression From Sequence
 	1507(e): Reformat Date
+	1550(e): Three Consecutive Odds
+	1572(e): Matrix Diagonal Sum
+	1619(e): Mean of Array After Removing Some Elements
 	1629(e): Slowest Key
 	1668(e): Maximum Repeating Substring
 	1672(e): Richest Customer Wealth
