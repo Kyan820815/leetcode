@@ -65,6 +65,7 @@
 	0142(m): Linked List Cycle II
 	0143(m): Reorder List
 	0148(m): Sort List
+	0151(m): Reverse Words in a String
 	0159(m): Longest Substring with At Most Two Distinct Characters
 	0202(e): Happy Number
 	0209(m): Minimum Size Subarray Sum
@@ -104,11 +105,13 @@
 	0809(m): Expressive Words
 	0844(e): Backspace String Compare
 	0845(m): Longest Mountain in Array
+	0862(m): Shortest Subarray with Sum at Least K
 	0876(e): Middle of the Linked List
 	0881(m): Boats to Save People 
 	0917(e): Reverse Only Letters
 	0922(e): Sort Array By Parity II
 	0925(e): Long Pressed Name
+	0930(m): Binary Subarrays With Sum
 	0953(e): Verifying an Alien Dictionary
 	0977(e): Squares of a Sorted Array
 	0992(h): Subarrays with K Different Integers
@@ -122,7 +125,9 @@
 	1176(e): Diet Plan Performance
 	1213(e): Intersection of Three Sorted Arrays
 	1214(m): Two Sum BSTs
+	1229(m): Meeting Scheduler
 	1248(m): Count Number of Nice Subarrays
+	1358(m): Number of Substrings Containing All Three Characters
 	1423(m): Maximum Points You Can Obtain from Cards
 	1470(e): Shuffle the Array
 	1570(m): Dot Product of Two Sparse Vectors
@@ -236,6 +241,7 @@
 	1209(m): Remove All Adjacent Duplicates in String II
 	1249(m): Minimum Remove to Make Valid Parentheses
 	1305(m): All Elements in Two Binary Search Trees
+	1381(m): Design a Stack With Increment Operation
 	1472(m): Design Browser History
 	1475(e): Final Prices With a Special Discount in a Shop
 	1586(m): Binary Search Tree Iterator II
@@ -277,6 +283,7 @@
 	0743(m): Network Delay Time
 	0752(m): Open the Lock
 	0785(m): Is Graph Bipartite?
+	0862(m): Shortest Subarray with Sum at Least K
 	0919(m): Complete Binary Tree Inserter
 	0934(m): Shortest Bridge
 	0958(m): Check Completeness of a Binary Tree
@@ -440,6 +447,7 @@
 	0523(m): Continuous Subarray Sum
 	0525(m): Contiguous Array
 	0560(m): Subarray Sum Equals K
+	0862(m): Shortest Subarray with Sum at Least K
 	0974(m): Subarray Sums Divisible by K
 	1010(e): Pairs of Songs With Total Durations Divisible by 60
 	1109(m): Corporate Flight Bookings
@@ -528,6 +536,7 @@
 	0767(m): Reorganize String
 	1114(e): Print in Order
 	1188(m): Design Bounded Blocking Queue
+	1195(m): Fizz Buzz Multithreaded
 	1244(m): Design A Leaderboard
 	1279(e): Traffic Light Controlled Intersection
 	1396(m): Design Underground System
@@ -616,6 +625,7 @@
 	0075(m): Sort Colors
 	0080(m): Remove Duplicates from Sorted Array II
 	0081(m): Search in Rotated Sorted Array II
+	0151(m): Reverse Words in a String
 	0163(e): Missing Ranges
 	0169(e): Majority Element
 	0189(e): Rotate Array
@@ -740,6 +750,7 @@
 	1629(e): Slowest Key
 	1668(e): Maximum Repeating Substring
 	1672(e): Richest Customer Wealth
+	1725(e): Number Of Rectangles That Can Form The Largest Square
 	1732(e): Find the Highest Altitude
 
 --- Bit Operations
@@ -775,6 +786,7 @@
 	0731(m): My Calendar II
 	0836(e): Rectangle Overlap
 	0986(m): Interval List Intersections
+	1229(m): Meeting Scheduler
 	1272(m): Remove Interval
 	1450(e): Number of Students Doing Homework at a Given Time
 
