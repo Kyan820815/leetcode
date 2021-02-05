@@ -749,6 +749,16 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 
 ///////////////////////////////////////////////////////////////
 //
+// lc071. Simplify Path
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 基本stack，遇到不是/就看是不是".."或"."或其他，是其他的就加入stack。
+
+///////////////////////////////////////////////////////////////
+//
 // lc073. Set Matrix Zeroes (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -2028,6 +2038,24 @@ https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
 
 ///////////////////////////////////////////////////////////////
 //
+// lc211. Design Add and Search Words Data Structure
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) trie tree，類似lc208。
+	n: # of words, m: average word length
+	total space of tree: O(n*m)
+	one word insert: 
+		time: O(m)
+		space: O(m)
+	one search:
+		time:  O(max(m, (existed node in each layer)^m))
+		space: O(m) stack of recursion
+
+///////////////////////////////////////////////////////////////
+//
 // lc212. Word Search II (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -2858,6 +2886,16 @@ https://leetcode.com/problems/remove-invalid-parentheses/discuss/167659/Time-Com
 
 ///////////////////////////////////////////////////////////////
 //
+// lc304. Range Sum Query 2D - Immutable
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 類似lc1314，prefix sum。
+
+///////////////////////////////////////////////////////////////
+//
 // lc305. Number of Islands II (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -3228,6 +3266,19 @@ SPACE: O(N)
 
 (1) 用map來做。
 (2) 排序後，雙指針來做。
+
+///////////////////////////////////////////////////////////////
+//
+// lc356. Line Reflection
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) O(n) time and space
+	找到max and min of x position，對於每一個點就可以用
+	max + min - x 來確認有沒有對稱點。
+	用unordered_set去儲存string(x_y)。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -4002,6 +4053,22 @@ follow up: pos[i][j]表示從i開始，'a'+j第一個出現的位置。
 	越大越好，所以一直pop_back()到nums[i] <= sk.back()。
 
 *** follow up: 找出所有132 pattern。
+
+///////////////////////////////////////////////////////////////
+//
+// lc457. Circular Array Loop (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 類似lc287。
+	Since in this problems, we can find a loop when we start from any index. 
+	All we need to do is check if this loop has correct direction and loop cycle greater than 1.
+	We mark all position we have been to 0. 
+	so any point we travese will not more than 3 -> linear time complexity.
+	time: O(n)
+	space: O(1)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -6221,6 +6288,22 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 ///////////////////////////////////////////////////////////////
 //
+// lc838. Push Dominoes
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) in place solution，只要注意last是R的case就好。
+(2) 
+	midlen = right-left-1;
+	若d[left] == d[right]，中間都填上d[left];
+	若d[left] == 'L' && d[right] == 'R'，中間都填上'.'
+	若d[left] == 'R' && d[right] == 'L'，
+	中間填上string(midlen/2, 'R') + string(midlen%2, '.') + string(midlen/2, 'L')。
+
+///////////////////////////////////////////////////////////////
+//
 // lc840. Magic Squares In Grid
 //
 ///////////////////////////////////////////////////////////////
@@ -6528,6 +6611,25 @@ O(n)
 (1) 類似lc1019，維持一個降序stack。
 	利用stack紀錄當前price和其持續天數，當進來的price比sk.top的price還大時(>=)，
 	sk.pop，並將top的天數加到當前price上，最後將當前price和其天數push進sk。
+
+///////////////////////////////////////////////////////////////
+//
+// lc904. Fruit Into Baskets (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 因為要找連續兩個不一樣，最長subarray，
+	若目前長度為 a a a a b b b b b
+	若
+	(1) c == b -> ++cur, a = b, b = c, cnt_b++
+	(2) c == a -> ++cur, a = b, b = c, cnt_b = 1
+	(3) c!=a && c!=b -> cur = cnt_b + 1, a = b, b = c, cnt_b = 1
+
+	time：O(n)，space：O(1)。
+(2) sliding window，longest subarry with at most 2 distinct ingeger
+	time：O(n)，space：O(n)。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -8467,6 +8569,21 @@ follow up: >= k
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1234. Replace the Substring for Balanced String (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) sliding window
+	若要變成balance array，想像一個window，若outside window的數量都比
+	n/4小，表示裡面可以任意改動成balanced，所以要找最小的subarray，且
+	這個subarray的外面四個字元都 <= n/4。
+	time：O(n)
+	space：O(1)
+
+///////////////////////////////////////////////////////////////
+//
 // lc1236. Web Crawler
 //
 ///////////////////////////////////////////////////////////////
@@ -8871,6 +8988,7 @@ follow up: >= k
 
 最佳解： method 1
 
+類似lc1292。
 (1) 先算出dp[i][j]，表示(0,0)到(i,j)的總和
 	再來res[i][j] = res[i+k][j+k] - res[i+k][j-k-1] 
 								 - res[i-k-1][j+k] 
@@ -9158,6 +9276,7 @@ follow up: >= k
 最佳解： method 1
 
 (1) 利用inc array，inc[i]，表示需要加到0~i，當前若pop，inc[i-1] += inc[i]
+	並且將pop value += inc[pop index]。
 	time: O(1)。
 	space: O(n)。
 
@@ -10097,14 +10216,19 @@ follow up:
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1，2
+最佳解： method 2
 
 (1) two pointer，計算不符合的數量，若等同於當前學生數量，return。
+	O(n^2) time
+	the worst case is like student [0 0 0 1 1 1], sandwich [1 0 1 0 1 0]
+	and for each sandwich, we go though student array n/2 times. 
+	That is, total time: n/2*n = O(n^2).
+
 (2) bucket sort。
 
 ///////////////////////////////////////////////////////////////
 //
-// lc1708. Largest Subarray Length K (看)
+// lc1708. Largest Subarray Length K (看)*
 //
 ///////////////////////////////////////////////////////////////
 
@@ -10118,6 +10242,16 @@ follow up:
 	而不是像lc1163一樣substring沒有固定長度。
 	另外多一個條件，因為限定長度k，確認現在比的r+k-1 < n才值得比。
 	time: O(n)
+
+///////////////////////////////////////////////////////////////
+//
+// lc1710. Maximum Units on a Truck
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) sort。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -10151,3 +10285,13 @@ follow up:
 最佳解： method 1
 
 (1) linear找累加最大值。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1736. Latest Time by Replacing Hidden Digits
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 從左到右，找最大的數字，注意time[0]要看time[1]，time[1]要看time[0]
