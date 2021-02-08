@@ -114,6 +114,7 @@
 	0922(e): Sort Array By Parity II
 	0925(e): Long Pressed Name
 	0930(m): Binary Subarrays With Sum
+	0946(m): Validate Stack Sequences
 	0953(e): Verifying an Alien Dictionary
 	0977(e): Squares of a Sorted Array
 	0992(h): Subarrays with K Different Integers
@@ -125,6 +126,7 @@
 	1100(m): Find K-Length Substrings With No Repeated Characters
 	1163(h): Last Substring in Lexicographical Order
 	1176(e): Diet Plan Performance
+	1190(m): Reverse Substrings Between Each Pair of Parentheses
 	1213(e): Intersection of Three Sorted Arrays
 	1214(m): Two Sum BSTs
 	1229(m): Meeting Scheduler
@@ -134,6 +136,7 @@
 	1385(e): Find the Distance Value Between Two Arrays
 	1423(m): Maximum Points You Can Obtain from Cards
 	1470(e): Shuffle the Array
+	1544(e): Make The String Great
 	1570(m): Dot Product of Two Sparse Vectors
 	1700(e): Number of Students Unable to Eat Lunch
 	1708(e): Largest Subarray Length K
@@ -152,6 +155,7 @@
 	0451(m): Sort Characters By Frequency
 	0692(m): Top K Frequent Words
 	0703(e): Kth Largest Element in a Stream
+	0933(e): Number of Recent Calls
 	0973(m): K Closest Points to Origin
 	1046(e): Last Stone Weight
 	1090(m): Largest Values From Labels
@@ -183,6 +187,7 @@
 	1347(m): Minimum Number of Steps to Make Two Strings Anagram
 	1365(e): How Many Numbers Are Smaller Than the Current Number
 	1366(m): Rank Teams by Votes
+	1370(e): Increasing Decreasing String
 	1394(e): Find Lucky Integer in an Array
 	1403(e): Minimum Subsequence in Non-Increasing Order
 	1433(m): Check If a String Can Break Another String
@@ -220,8 +225,10 @@
 	0225(e): Implement Stack using Queues
 	0227(m): Basic Calculator II
 	0232(e): Implement Queue using Stacks
+	0316(m): Remove Duplicate Letters
 	0332(m): Reconstruct Itinerary
 	0341(m): Flatten Nested List Iterator
+	0388(m): Longest Absolute File Path
 	0402(m): Remove K Digits
 	0430(m): Flatten a Multilevel Doubly Linked List
 	0445(m): Add Two Numbers II
@@ -231,26 +238,34 @@
 	0636(m): Exclusive Time of Functions 
 	0654(m): Maximum Binary Tree
 	0716(e): Max Stack
+	0735(m): Asteroid Collision
 	0739(m): Daily Temperatures
 	0768(h): Max Chunks To Make Sorted II
 	0889(m): Construct Binary Tree from Preorder and Postorder Traversal
 	0901(m): Online Stock Span
 	0907(m): Sum of Subarray Minimums
+	0946(m): Validate Stack Sequences
 	1003(m): Check If Word Is Valid After Substitutions
 	1008(m): Construct Binary Search Tree from Preorder Traversal
 	1019(m): Next Greater Node In Linked List
 	1021(e): Remove Outermost Parentheses
 	1028(h): Recover a Tree From Preorder Traversal
 	1043(e): Remove All Adjacent Duplicates In String
+	1081(m): Smallest Subsequence of Distinct Characters
 	1130(m): Minimum Cost Tree From Leaf Values
+	1190(m): Reverse Substrings Between Each Pair of Parentheses
 	1209(m): Remove All Adjacent Duplicates in String II
 	1249(m): Minimum Remove to Make Valid Parentheses
 	1305(m): All Elements in Two Binary Search Trees
 	1381(m): Design a Stack With Increment Operation
 	1472(m): Design Browser History
 	1475(e): Final Prices With a Special Discount in a Shop
+	1541(m): Minimum Insertions to Balance a Parentheses String
+	1544(e): Make The String Great
 	1586(m): Binary Search Tree Iterator II
+	1598(e): Crawler Log Folder
 	1614(e): Maximum Nesting Depth of the Parentheses
+	1673(m): Find the Most Competitive Subsequence
 
 --- Queue:
 	0100(e): Same Tree
@@ -457,6 +472,7 @@
 	0974(m): Subarray Sums Divisible by K
 	1010(e): Pairs of Songs With Total Durations Divisible by 60
 	1109(m): Corporate Flight Bookings
+	1124(m): Longest Well-Performing Interval
 	1171(m): Remove Zero Sum Consecutive Nodes from Linked List
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1314(m): Matrix Block Sum
@@ -484,6 +500,7 @@
 	0356(m): Line Reflection
 	0359(e): Logger Rate Limiter
 	0380(m): Insert Delete GetRandom O(1)
+	0381(h): Insert Delete GetRandom O(1) - Duplicates allowed
 	0383(e): Ransom Note
 	0414(e): Third Maximum Number
 	0451(m): 4Sum II
@@ -503,6 +520,7 @@
 	0740(m): Delete and Earn
 	0811(e): Subdomain Visit Count
 	0819(e): Most Common Word
+	0874(e): Walking Robot Simulation
 	0888(e): Fair Candy Swap
 	0890(m): Find and Replace Pattern
 	0939(m): Minimum Area Rectangle
@@ -671,6 +689,7 @@
 	0682(e): Baseball Game
 	0709(e): To Lower Case
 	0717(e): 1-bit and 2-bit Characters
+	0722(m): Remove Comments
 	0723(m): Candy Crush
 	0724(e): Find Pivot Index
 	0738(m): Monotone Increasing Digits
@@ -751,6 +770,7 @@
 	1491(e): Average Salary Excluding the Minimum and Maximum Salary
 	1502(e): Can Make Arithmetic Progression From Sequence
 	1507(e): Reformat Date
+	1528(e): Shuffle String
 	1550(e): Three Consecutive Odds
 	1572(e): Matrix Diagonal Sum
 	1619(e): Mean of Array After Removing Some Elements
@@ -991,6 +1011,7 @@
 	1367(m): Linked List in Binary Tree
 	1372(m): Longest ZigZag Path in a Binary Tree
 	1379(m): Find a Corresponding Node of a Binary Tree in a Clone of That Tree
+	1382(m): Balance a Binary Search Tree
 	1409(m): Queries on a Permutation With Key
 	1430(m): Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree
 	1443(m): Minimum Time to Collect All Apples in a Tree
@@ -1009,6 +1030,7 @@
 	1650(m): Lowest Common Ancestor of a Binary Tree III
 	1660(m): Correct a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
+	1740(m): Find Distance in a Binary Tree
 
 --- Subtree:
 	0250(m): Count Univalue Subtrees
@@ -1066,6 +1088,7 @@
 	1304(e); Find N Unique Integers Sum up to Zero
 	1359(h): Count All Valid Pickup and Delivery Options
 	1518(e): Water Bottles
+	1716(e): Calculate Money in Leetcode Bank
 
 --- Resivoir Sampling:
 	0382(m): Linked List Random Node

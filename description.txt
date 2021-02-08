@@ -756,6 +756,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 最佳解： method 1
 
 (1) 基本stack，遇到不是/就看是不是".."或"."或其他，是其他的就加入stack。
+	類似lc388。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -3001,6 +3002,21 @@ https://leetcode.com/problems/remove-invalid-parentheses/discuss/167659/Time-Com
 
 ///////////////////////////////////////////////////////////////
 //
+// lc316. Remove Duplicate Letters
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1)
+	* Pop character from the stack when there is still another same 
+		character in the remaining string and this element > now character.
+	* every time we process each character, we need to subtract one 
+		from counter because this element we would not use anymore into our solution.
+	* if the stack contain current character, just ignore this one.
+
+///////////////////////////////////////////////////////////////
+//
 // lc322. Coin Change (看) 看遞迴。
 //
 ///////////////////////////////////////////////////////////////
@@ -3439,6 +3455,18 @@ follow up: thread safe:
 
 ///////////////////////////////////////////////////////////////
 //
+// lc381. Insert Delete GetRandom O(1) - Duplicates allowed (看)
+//
+///////////////////////////////////////////////////////////////
+
+(1) 因為有重複的，為了要確認和哪一個val有交換，必須對於每一個val紀錄他在
+	map裡的位子
+	unordered_map<int, vector<int>> map;
+	vector<pair<int, int>> arr;
+	map[arr[i].second][arr[i].first] = i;
+
+///////////////////////////////////////////////////////////////
+//
 // lc382. Linked List Random Node
 //
 ///////////////////////////////////////////////////////////////
@@ -3496,6 +3524,18 @@ follow up: thread safe:
 
 最佳解： method 1
 (1) bucket sort。
+
+///////////////////////////////////////////////////////////////
+//
+// lc388. Longest Absolute File Path
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 類似lc071。
+	maintain total len of current stack and depth of current file path
+	when we meet '\n', depth set to 0 to re compute the depth of next file or dir.
 
 ///////////////////////////////////////////////////////////////
 //
@@ -5712,6 +5752,22 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 ///////////////////////////////////////////////////////////////
 //
+// lc722. Remove Comments (看)*
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) We need to check three symbols
+
+// : valid if we do not have /* before
+/* : valid if we do not have /* before, skip to right next ch after '*'
+*/ : valid if we have /* before, skip to right next ch after '/'
+
+注意若*/ 的上一個match對象不是當前這一行，connect = 1，表示要和最後一line做連接。
+
+///////////////////////////////////////////////////////////////
+//
 // lc723. Candy Crush (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -5808,6 +5864,16 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 	用unordered_map<string, unordered_set<string>> map紀錄每個和這個
 	words相關的所有similar words。
 (2) 利用set，紀錄pairs[0] + " " pairs[1] 和 pairs[1] + " " + pairs[0]
+
+///////////////////////////////////////////////////////////////
+//
+// lc735. Asteroid Collision
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 若input < 0，check與stack back()的關係。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -6483,6 +6549,16 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 ///////////////////////////////////////////////////////////////
 //
+// lc874. Walking Robot Simulation
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 用set來儲存obstacle。
+
+///////////////////////////////////////////////////////////////
+//
 // lc875. Koko Eating Bananas
 //
 ///////////////////////////////////////////////////////////////
@@ -6790,6 +6866,17 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc933. Number of Recent Calls
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) queue。
+(2) arr loop。
+
+///////////////////////////////////////////////////////////////
+//
 // lc934. Shortest Bridge (看)*
 //
 ///////////////////////////////////////////////////////////////
@@ -6861,6 +6948,19 @@ O(n)
 最佳解： method 1
 
 (1) brute force去找就好。
+
+///////////////////////////////////////////////////////////////
+//
+// lc946. Validate Stack Sequences (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) O(1) space
+	modify pushed array，two pointer。
+	return j == popped.size()
+(2) O(n) space，一般stack解法。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -7735,6 +7835,16 @@ O(n)
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1081. Smallest Subsequence of Distinct Characters
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 和lc316相同。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1085. Sum of Digits in the Minimum Number
 //
 ///////////////////////////////////////////////////////////////
@@ -8021,6 +8131,20 @@ O(n)
 						(此right為遞迴return值，並不一定是root->right)。
 
 (2) 兩次postorder，第一次找最大深度，第二次跑lc236找最小共同祖先。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1124. Longest Well-Performing Interval (看)**
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) > 8 ，cnt++, <= 8，cnt--
+	要有最長的subarray，表示cnt == 1，因為正負都抵銷掉，然後再多一個1。
+	想像cnt <= 0，為什麼要找cnt-1位置？因為中間和=1，若找cnt-2的位置，
+	這一定在cnt-1之後，且忽略到一個1，所以cnt-1的位置必定是離當前位置最長的
+	subarray起始點。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -8357,6 +8481,19 @@ O(n)
 最佳解： method 1
 
 (1) bucket sort，對所求的取min(l和o要除以2)。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1190. Reverse Substrings Between Each Pair of Parentheses (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 2
+
+(1) stack，initial sk = {""}，每次遇到新的'('，sk.push_back("")。
+	O(n^2) time
+(2) two pass，記錄每個pair，然後對於pair去走，只要碰到'('或')'，換方向。
+	O(n) time
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9229,6 +9366,16 @@ follow up: >= k
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1370. Increasing Decreasing String
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) buckeet sort。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1372. Longest ZigZag Path in a Binary Tree
 //
 ///////////////////////////////////////////////////////////////
@@ -9279,6 +9426,32 @@ follow up: >= k
 	並且將pop value += inc[pop index]。
 	time: O(1)。
 	space: O(n)。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1382. Balance a Binary Search Tree
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) inorder + postorder
+	time: O(n)，space: O(n)
+
+follow up: O(1) space DSW algo
+https://leetcode.com/problems/balance-a-binary-search-tree/discuss/541785/C%2B%2BJava-with-picture-DSW-O(n)orO(1)
+** dont need to write code but briefly explain how it works
+(a) Convert the initial tree into a vine. By doing right rotations, 
+	we flatten a tree into a 'linked list', where the head is the former leftmost node, and tail - former rightmost node.
+(b) As you convert the tree into a vine, count the total number of nodes in cnt.
+(c) Calculate the height of the closest perfectly balanced tree: h = log2(cnt + 1).
+(d) Calculate the number of nodes in the closest perfectly balanced tree: m = pow(2, h) - 1.
+(e) Left-rotate cnt - m nodes to cover up the excess of nodes.
+Note: you rotate the root node, then you rotate the right child of the new root node, 
+and so on. In other words, left rotations are performed on every second node of the vine.
+
+(f)Left-rotate m / 2 nodes.
+(g) Divide m by two and repeat the step above while m / 2 is greater than zero.
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9826,6 +9999,17 @@ and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1528. Shuffle String
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 類似lc041。
+	swap until i == indices[i]。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1530. Number of Good Leaf Nodes Pairs
 //
 ///////////////////////////////////////////////////////////////
@@ -9854,6 +10038,33 @@ and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 
 (1) 類似lc1060。
 	唯一差別是要從1開始算。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1541. Minimum Insertions to Balance a Parentheses String
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 
+	(a) when s[i] == ')' && (s[i+1] == '(' or i == s.size()-1), we need to insert one ')'; 
+		Otherwise, there are two consecutive ')', and we skip the next one: i++
+	(b) when every time we face two ')', subtract one '(' and check if it is < 0. 
+		If yes, we need to insert one '(' and reset left to 0.
+	(c) after one time pass. res += left*2 to make sure if there are not enough ')'.
+
+///////////////////////////////////////////////////////////////
+//
+// lc1544. Make The String Great
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2
+
+(1) stack
+(2) two pointer
+	note: 'a'^'A' = 32
 
 ///////////////////////////////////////////////////////////////
 //
@@ -9959,6 +10170,16 @@ and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 	5 8 9 8 5 total times each index was added.
 	3 4 5 4 3 total times in odd length array with (x + 1) / 2
 	2 4 4 4 2 total times in even length array with x / 2
+
+///////////////////////////////////////////////////////////////
+//
+// lc1598. Crawler Log Folder
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) O(1) space，檢查 == "../" 和 != "./"即可。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -10202,6 +10423,16 @@ follow up:
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1673. Find the Most Competitive Subsequence (看)
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 利用升序stack，若當前可以pop，檢查未來還有沒有足夠的element可以放入stack。
+
+///////////////////////////////////////////////////////////////
+//
 // lc1676. Lowest Common Ancestor of a Binary Tree IV
 //
 ///////////////////////////////////////////////////////////////
@@ -10251,7 +10482,18 @@ follow up:
 
 最佳解： method 1
 
-(1) sort。
+(1) sort，and greedy。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1716. Calculate Money in Leetcode Bank
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) math，O(1) time。
+(2) loop，O(n) time
 
 ///////////////////////////////////////////////////////////////
 //
@@ -10295,3 +10537,13 @@ follow up:
 最佳解： method 1
 
 (1) 從左到右，找最大的數字，注意time[0]要看time[1]，time[1]要看time[0]
+
+///////////////////////////////////////////////////////////////
+//
+// lc1740. Find Distance in a Binary Tree
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) 基本postorder
