@@ -631,3 +631,9 @@ In C++, a Copy Constructor may be called in following cases:
 4. When compiler generates a temporary object.
 
 ************************************************************************************
+
+count bits，計算有幾個一有兩種做法：
+	(a) cnt += n&1, n >>= 1
+	(b) cnt++, n = n&(n-1)
+
+************************************************************************************

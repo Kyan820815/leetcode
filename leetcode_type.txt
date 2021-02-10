@@ -36,6 +36,7 @@
 	1064(e): Fixed Point
 	1095(h): Find in Mountain Array
 	1150(e): Check If a Number Is Majority Element in a Sorted Array
+	1228(e): Missing Number In Arithmetic Progression
 	1231(h): Divide Chocolate
 	1268(m): Search Suggestions System
 	1274(h): Number of Ships in a Rectangle
@@ -140,6 +141,7 @@
 	1570(m): Dot Product of Two Sparse Vectors
 	1700(e): Number of Students Unable to Eat Lunch
 	1708(e): Largest Subarray Length K
+	1754(m): Largest Merge Of Two Strings
 
 --- Quick Select:
 	0215(m): Kth Largest Element in an Array
@@ -165,6 +167,7 @@
 	1337(e): The K Weakest Rows in a Matrix
 	1338(m): Reduce Array Size to The Half
 	1353(m): Maximum Number of Events That Can Be Attended
+	1425(h): Constrained Subsequence Sum
 	1481(m): Least Number of Unique Integers after K Removals
 	1619(e): Mean of Array After Removing Some Elements
 
@@ -251,6 +254,7 @@
 	1021(e): Remove Outermost Parentheses
 	1028(h): Recover a Tree From Preorder Traversal
 	1043(e): Remove All Adjacent Duplicates In String
+	1063(h): Number of Valid Subarrays
 	1081(m): Smallest Subsequence of Distinct Characters
 	1130(m): Minimum Cost Tree From Leaf Values
 	1190(m): Reverse Substrings Between Each Pair of Parentheses
@@ -307,18 +311,20 @@
 	0919(m): Complete Binary Tree Inserter
 	0934(m): Shortest Bridge
 	0958(m): Check Completeness of a Binary Tree
-	1248(m): Count Number of Nice Subarrays
 	0994(e): Rotting Oranges
+	1030(e): Matrix Cells in Distance Order
 	1059(m): All Paths from Source Lead to Destination
 	1091(m): Shortest Path in Binary Matrix
 	1129(m): Shortest Path with Alternating Colors 
 	1161(m): Maximum Level Sum of a Binary Tree
 	1162(m): As Far from Land as Possible
 	1245(m): Tree Diameter
+	1248(m): Count Number of Nice Subarrays
 	1302(m): Deepest Leaves Sum
 	1306(m): Jump Game III
 	1311(m): Get Watched Videos by Your Friends
 	1391(m): Check if There is a Valid Path in a Grid
+	1425(h): Constrained Subsequence Sum
 	1429(m): First Unique Number
 	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
 	1654(m): Minimum Jumps to Reach Home 
@@ -355,6 +361,7 @@
 	0784(e): Letter Case Permutation
 	0802(m): Find Eventual Safe States
 	0841(m): Keys and Rooms
+	1137(e): N-th Tribonacci Number
 	1197(m): Minimum Knight Moves
 	1236(m): Web Crawler
 	1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
@@ -493,6 +500,7 @@
 	0217(e): Contains Duplicate
 	0249(m): Group Shifted Strings
 	0253(m): Meeting Rooms II
+	0266(e): Palindrome Permutation
 	0290(e): Word Pattern
 	0314(m): Binary Tree Vertical Order Traversal
 	0349(e): Intersection of Two Arrays
@@ -669,6 +677,7 @@
 	0414(e): Third Maximum Number
 	0453(e): Minimum Moves to Equal Array Elements
 	0477(m): Total Hamming Distance
+	0482(e): License Key Formatting
 	0485(e): Max Consecutive Ones
 	0506(e): Relative Ranks
 	0531(m): Lonely Pixel I
@@ -708,6 +717,7 @@
 	0860(e): Lemonade Change
 	0867(e): Transpose Matrix
 	0885(m): Spiral Matrix III
+	0892(e): Surface Area of 3D Shapes
 	0905(e): Sort Array By Parity
 	0912(m): Sort an Array
 	0921(m): Minimum Add to Make Parentheses Valid
@@ -717,6 +727,7 @@
 	0950(m): Reveal Cards In Increasing Order
 	0957(m): Prison Cells After N Days
 	0969(m): Pancake Sorting
+	0976(e): Largest Perimeter Triangle
 	0978(m): Longest Turbulent Subarray
 	0985(e): Sum of Even Numbers After Queries
 	0989(e): Add to Array-Form of Integer
@@ -745,6 +756,7 @@
 	1252(e): Cells with Odd Values in a Matrix
 	1260(e): Shift 2D Grid
 	1266(e): Minimum Time Visiting All Points
+	1271(e): Hexspeak
 	1275(e): Find Winner on a Tic Tac Toe Game
 	1282(m): Group the People Given the Group Size They Belong To
 	1287(e): Element Appearing More Than 25% In Sorted Array
@@ -781,11 +793,13 @@
 	1725(e): Number Of Rectangles That Can Form The Largest Square
 	1732(e): Find the Highest Altitude
 	1736(e): Latest Time by Replacing Hidden Digits
+	1753(m): Maximum Score From Removing Stones
 
 --- Bit Operations
 	0067(e): Add Binary 
 	0136(e): Single Number
 	0137(m): Single Number II
+	0231(e): Power of Two
 	0260(m): Single Number III
 	0268(m): Missing Number
 	0338(m): Counting Bits
@@ -800,9 +814,11 @@
 	1128(e): Number of Equivalent Domino Pairs
 	1290(e): Convert Binary Number in a Linked List to Integer
 	1342(e): Number of Steps to Reduce a Number to Zero
+	1356(e): Sort Integers by The Number of 1 Bits
 	1460(e): Make Two Arrays Equal by Reversing Sub-arrays
 	1470(e): Shuffle the Array
 	1486(e): XOR Operation in an Array
+	1506(m): Find Root of N-Ary Tree
 
 --- Intervals:
 	0056(m): Merge Intervals
@@ -876,6 +892,7 @@
 	1311(m): Get Watched Videos by Your Friends
 	1391(m): Check if There is a Valid Path in a Grid
 	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
+	1557(m): Minimum Number of Vertices to Reach All Nodes
 
 --- Tree:
 	0094(m): Binary Tree Inorder Traversal
@@ -1019,6 +1036,7 @@
 	1469(e): Find All The Lonely Nodes
 	1485(m): Clone Binary Tree With Random Pointer
 	1490(m): Clone N-ary Tree
+	1506(m): Find Root of N-Ary Tree
 	1522(m): Diameter of N-Ary Tree
 	1530(m): Number of Good Leaf Nodes Pairs
 	1586(m): Binary Search Tree Iterator II
