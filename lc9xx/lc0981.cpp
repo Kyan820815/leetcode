@@ -61,23 +61,31 @@ public:
     }
     
     string get(string key, int timestamp) {
-        if (map.find(key) == map.end()) {
-            return "";
-        }
-        auto &v = map[key];
-        int left = 0, right = v.size()-1;
-        while (left <= right) {
+        auto &vec = map[key];
+        int left = 0, right = vec.size()-1;
+        while (left < right) {
             int mid = left + (right-left)/2;
-            if (v[mid].first <= timestamp) {
+            if (vec[mid].first < timestamp) {
                 left = mid+1;
             } else {
-                right = mid-1;
+                right = mid;
             }
         }
-        return !left ? "" : v[left-1].second;
+        if (vec[left].first > timestamp) {
+            return !left ? "" : vec[left-1].second;
+        } else {
+            return vec[left].second;
+        }
     }
     unordered_map<string, vector<pair<int, string>>> map;
 };
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap* obj = new TimeMap();
+ * obj->set(key,value,timestamp);
+ * string param_2 = obj->get(key,timestamp);
+ */
 
 /**
  * Your TimeMap object will be instantiated and called as such:

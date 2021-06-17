@@ -3,27 +3,21 @@
 //--- method 1: check left and right
 class Solution {
 public:
+    int used = 1;
     bool validPalindrome(string s) {
-    	int left = 0, right = s.size()-1;
-    	while (left < right)
-    	{
-    		if (s[left] != s[right])
-    			return isvalid(s, left, right-1) || isvalid(s, left+1, right);
-    		++left;
-    		--right;
-    	}
-    	return true;
+        return find(s, 0, s.size()-1);        
     }
-    bool isvalid(string s, int start, int end)
-    {
-    	int left = start, right = end;
-    	while (left < right)
-    	{
-    		if (s[left] != s[right])
-    			return false;
-    		++left;
-    		--right;
-    	}
-    	return true;
+    bool find(string &s, int left, int right) {
+        while (left < right) {
+            if (s[left] == s[right]) {
+                ++left, --right;
+            } else if (used) {
+                used = 0;
+                return find(s, left+1, right) || find(s, left, right-1);
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 };

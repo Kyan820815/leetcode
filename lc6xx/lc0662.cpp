@@ -14,25 +14,22 @@
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-    	int qsize, res = INT_MIN, left, right;
+        int res = 0;
         queue<pair<TreeNode *, int>> que;
-        que.push({root,1});
-        qsize = que.size();
-        while (que.size())
-        {
-        	left = (qsize == 1) ? 1 : que.front().second;
-        	for (int i = 0; i < qsize; ++i)
-        	{
-        		pair<TreeNode *, int> now = que.front();
-        		right = (qsize == 1) ? 1 : now.second;
-        		que.pop();
-        		if (now.first->left)
-        			que.push({now.first->left, right*2});
-        		if (now.first->right)
-        			que.push({now.first->right, right*2+1});
-        	}
-        	res = max(res, right-left+1);
-        	qsize = que.size();
+        que.push({root, 0});
+        while (que.size()) {
+            int hv = que.front().second, qsize = que.size();
+            res = max(res, que.back().second-que.front().second+1);
+            for (int i = 0; i < qsize; ++i) {
+                auto now = que.front();
+                que.pop();
+                if (now.first->left) {
+                    que.push({now.first->left, (now.second-hv)*2});
+                }
+                if (now.first->right) {
+                    que.push({now.first->right, (now.second-hv)*2+1});
+                }
+            }
         }
         return res;
     }

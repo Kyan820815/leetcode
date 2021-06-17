@@ -37,3 +37,23 @@ public:
         return true;
     }
 };
+
+//--- follow up: postorder
+class Solution {
+public:
+    bool verifyPostorder(vector<int>& postorder) {
+        postorder = {10, 3, 2, 6, 5};
+        // postorder = {1, 3, 2, 6, 5};
+        int maxv = INT_MAX, idx = postorder.size();
+        for (int i = 0; i < postorder.size(); ++i) {
+            if (maxv <= postorder[i]) {
+                return false;
+            }
+            while (idx < postorder.size() && postorder[idx] > postorder[i]) {
+                maxv = postorder[idx++];
+            }
+            postorder[--idx] = postorder[i];
+        }
+        return true;
+    }
+};

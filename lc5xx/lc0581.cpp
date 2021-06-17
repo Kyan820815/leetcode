@@ -41,17 +41,19 @@ public:
 class Solution {
 public:
     int findUnsortedSubarray(vector<int>& nums) {
-    	int left = 0, right = nums.size()-1, minv = INT_MAX, maxv = INT_MIN;
-    	for (int i = 0; i < nums.size(); ++i)
-    	{
-    		maxv = max(maxv, nums[i]);
-    		if (maxv > nums[i]) right = i;
-    	}
-    	for (int i = nums.size()-1; i >= 0; --i)
-    	{
-    		minv = min(minv, nums[i]);
-    		if (minv < nums[i]) left = i;
-    	}
-    	return (left == 0 && right == nums.size()-1) ? 0 : right-left+1;
+        int left = -1, right = nums.size(), maxv = INT_MIN, minv = INT_MAX;
+        for (int i = 0, j = nums.size()-1; i < nums.size(); ++i, --j) {
+            if (maxv > nums[i]) {
+                left = i;
+            } else {
+                maxv = nums[i];
+            }
+            if (minv < nums[j]) {
+                right = j;
+            } else {
+                minv = nums[j];
+            }
+        }
+        return left == -1 ? 0 : left-right+1;
     }
 };

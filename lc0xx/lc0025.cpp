@@ -1,40 +1,35 @@
-//--- Q: 25. Reverse Nodes in k-Group
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-//--- method 1: link list operation
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode *cur = head, *dummy = new ListNode(-1);
-        ListNode *nowH = head, *pre = dummy;
+        ListNode *dummy = new ListNode(-1), *now = head, *prev = dummy;
         dummy->next = head;
-        int cnt = 0;
-        while (cur)
-        {
-            cnt++;
-            cur = cur->next;
-            if (cnt == k)
-            {
-                cnt = 0;
-                ListNode *revH = cur, *t = nowH;
-                while (nowH != cur)
-                {
-                    ListNode *tmp = nowH->next;
-                    nowH->next = revH;
-                    revH = nowH;
-                    nowH = tmp;
+        while (now) {
+            ListNode *tmp = now;
+            for (int i = 0; i < k; ++i) {
+                if (!tmp) {
+                    return dummy->next;
                 }
-                pre->next = revH;
-                pre = t;
+                tmp = tmp->next;
             }
+            ListNode *revH = tmp, *last_now = now;
+            while (now != tmp) {
+                ListNode *next_n = now->next;
+                now->next = revH;
+                revH = now;
+                now = next_n;
+            }
+            prev->next = revH;
+            prev = last_now;
         }
         return dummy->next;
     }

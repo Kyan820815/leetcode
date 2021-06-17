@@ -16,3 +16,16 @@ public:
         return s_sell;
     }
 };
+
+//--- method 2: state machine, another view
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxv = 0, buy = -prices[0], sell = 0;
+        for (int i = 1; i < prices.size(); ++i) {
+            buy = min(buy, sell-prices[i]);
+            sell = max(sell, buy+prices[i]);
+        }
+        return sell;
+    }
+};

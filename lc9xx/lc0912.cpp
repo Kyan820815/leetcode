@@ -53,14 +53,16 @@ public:
     }
     int partition(vector<int> &nums, int start, int end)
     {
-    	int c = start-1;
-    	for (int i = start; i < end; ++i)
-    	{
-    		if (nums[i] < nums[end])
-    			swap(nums[++c], nums[i]);
-    	}
-    	swap(nums[++c], nums[end]);
-    	return c;
+        int pivot = start + random()%(end-start+1);
+        swap(nums[pivot], nums[end]);
+        int idx = start-1;
+        for (int i = start; i < end; ++i) {
+            if (nums[i] < nums[end]) {
+                swap(nums[++idx], nums[i]);
+            }
+        }
+        swap(nums[++idx], nums[end]);
+        return idx;
     }
 };
 

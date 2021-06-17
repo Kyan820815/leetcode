@@ -3,34 +3,28 @@
 //--- method 1: elegant solution, better
 class Solution {
 public:
-    int myAtoi(string str) {
-        int i, sum = 0, sign = 1;
-
-        for (i = 0; i < str.size(); ++i)
-        {
-            if (str[i] == ' ')
+    int myAtoi(string s) {
+        int num = 0, sign = 1;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == ' ') {
                 continue;
-            else break;
+            }
+            if (s[i] == '+' || s[i] == '-') {
+                sign = s[i] == '-' ? -1 : 1;
+                ++i;
+            }
+            while (i < s.size() && isdigit(s[i])) {
+                if (num > INT_MAX/10 || num == INT_MAX/10 && s[i] > '7') {
+                    return INT_MAX;
+                }
+                if (num < INT_MIN/10 || num == INT_MIN/10 && s[i] > '8') {
+                    return INT_MIN;
+                }
+                num = num*10 + sign*(s[i++]-'0');
+            }
+            break;
         }
-
-        if (str[i] == '+')
-        {
-            sign = 1;
-            i++;
-        }
-        else if (str[i] == '-')
-        {
-            sign = -1;
-            i++;
-        }
-
-        while(str[i] >= '0' && str[i] <= '9')
-        {
-            if (sum > INT_MAX/10 || (sum == INT_MAX/10 && str[i]-'0' > 7)) return INT_MAX;
-            if (sum < INT_MIN/10 || (sum == INT_MIN/10 && (str[i]-'0')*sign < -8)) return INT_MIN;
-            sum = sum*10 + sign*(str[i++]-'0');
-        }
-        return sum;
+        return num;
     }
 };
 

@@ -48,3 +48,30 @@ public:
     	return now;
     }
 };
+
+//--- method 2: antoher view
+class Solution {
+public:
+    string tag = "";
+    bool find = false;
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        string str = "";
+        postorder(subRoot, tag);
+        return postorder(root, str);
+    }
+    bool postorder(TreeNode *root, string &curstr) {
+        string lv = "#", rv = "#";
+        bool find = false;
+        if (root->left) {
+            find |= postorder(root->left, lv);
+        }
+        if (!find && root->right) {
+            find |= postorder(root->right, rv);
+        }
+        curstr = lv + " " + rv + " " + to_string(root->val);
+        if (!find && curstr == tag) {
+            find = true;
+        }
+        return find;
+    }
+};

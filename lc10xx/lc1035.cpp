@@ -19,27 +19,50 @@ public:
     }
 };
 
-//--- method 2-1: dp, O(n) space, clean code
+//--- method 2-1-1: dp, O(n) space, clean code
 class Solution {
 public:
-    int maxUncrossedLines(vector<int>& A, vector<int>& B) {
-        vector<int> dp(B.size()+1, 0);
-        for (int i = 0; i < A.size(); ++i)
-        {
-            int pre = 0, last = 0;
-            for (int j = 0; j < B.size(); ++j)
-            {
-                pre = dp[j+1];
-                if (A[i] == B[j])
-                    dp[j+1] = last + 1;
-                else
-                    dp[j+1] = max(dp[j+1], dp[j]);
-                last = pre;
+    int maxUncrossedLines(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = nums1.size(), n2 = nums2.size();
+        vector<int> dp(n2+1, 0);
+        for (int i = 1; i <= n1; ++i) {
+            int last, now = 0;
+            for (int j = 1; j <= n2; ++j) {
+                last = dp[j];
+                if (nums1[i-1] == nums2[j-1]) {
+                    dp[j] = now+1;
+                } else {
+                    dp[j] = max(dp[j], dp[j-1]);
+                }
+                now = last;
             }
         }
-        return dp[B.size()];
+        return dp.back();
     }
 };
+
+//--- method 2-1-2: dp, O(n) space, clean code
+class Solution {
+public:
+    int maxUncrossedLines(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = nums1.size(), n2 = nums2.size();
+        vector<int> dp(n2, 0);
+        for (int i = 0; i < n1; ++i) {
+            int last, now = 0;
+            for (int j = 0; j < n2; ++j) {
+                last = dp[j];
+                if (nums1[i] == nums2[j]) {
+                    dp[j] = now+1;
+                } else {
+                    dp[j] = max(dp[j], j ? dp[j-1] : 0);
+                }
+                now = last;
+            }
+        }
+        return dp.back();
+    }
+};
+
 
 //--- method 2-2: dp, O(n) space
 class Solution {

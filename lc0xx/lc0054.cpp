@@ -1,6 +1,31 @@
 //--- Q: 054. Spiral Matrix
 
-//--- method 1: boundary condition, better
+//--- method 1: clean code use dir
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<vector<int>> dir = {{0,1}, {1,0}, {0,-1}, {-1,0}};
+        int row = matrix.size(), col = matrix[0].size();
+        int total = row*col, id = 0, r = 0, c = 0;
+        vector<int> res;
+        while (total--) {
+            res.push_back(matrix[r][c]);
+            matrix[r][c] = 101;
+            int nr = r + dir[id][0];
+            int nc = c + dir[id][1];
+            if (nr < 0 || nr >= row || nc < 0 || nc >= col || matrix[nr][nc] == 101) {
+                id = (id+1) % 4;
+                r += dir[id][0];
+                c += dir[id][1];
+            } else {
+                r = nr, c = nc;
+            }
+        }
+        return res;
+    }
+};
+
+//--- method 2: boundary condition, better
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
@@ -37,7 +62,7 @@ public:
     }
 };
 
-//--- method 1-2: iter
+//--- method 2-2: iter
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
@@ -68,7 +93,7 @@ public:
     }
 };
 
-//--- method 2: fill min_val with boundary condition
+//--- method 3: fill min_val with boundary condition
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {

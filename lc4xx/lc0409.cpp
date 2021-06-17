@@ -4,21 +4,19 @@
 class Solution {
 public:
     int longestPalindrome(string s) {
-        int up[26] = {0};
-        int lw[26] = {0};
-        int len = 0, odd = 0;
-        for (int i = 0; i < s.size(); ++i)
-        {
-            if (s[i] < 'a') up[s[i]-'A']++;
-            else lw[s[i]-'a']++;
+        vector<int> cnt(128, 0);
+        for (auto &ch: s) {
+            ++cnt[ch];
         }
-        for (int i = 0; i < 26; ++i)
-        {
-            if (lw[i] % 2 == 1) odd++;
-            if (up[i] % 2 == 1) odd++;
+        int odd = 0, res = 0;
+        for (int i = 0; i < 128; ++i) {
+            if (cnt[i]&1) {
+                odd = 1;
+                --cnt[i];
+            }
+            res += cnt[i];
         }
-        if (!odd) return s.length();
-        else return s.length()-odd+1;
+        return res + odd;
     }
 };
 

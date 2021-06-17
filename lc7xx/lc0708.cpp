@@ -25,20 +25,20 @@ public:
 class Solution {
 public:
     Node* insert(Node* head, int insertVal) {
-        Node *now = head;
+        Node *node = new Node(insertVal);
         if (!head) {
-            head = new Node(insertVal);
-            head->next = head;
-        } else {
-            while (!(now->val <= insertVal && insertVal <= now->next->val 
-                     || now->val > now->next->val && (now->val <= insertVal || insertVal <= now->next->val) 
-                     || now->next == head)) {
-                now = now->next;
-            }
-            Node *tmp = now->next;
-            now->next = new Node(insertVal);
-            now->next->next = tmp;
+            node->next = node;
+            return node;
         }
+        auto now = head;
+        while (now->next != head) {
+            if (now->val <= insertVal && insertVal <= now->next->val || now->next->val < now->val && (now->val <= insertVal || insertVal <= now->next->val)) {
+                break;
+            }
+            now = now->next;
+        }
+        node->next = now->next;
+        now->next = node;
         return head;
     }
 };

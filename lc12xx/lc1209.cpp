@@ -42,7 +42,7 @@ public:
                 sk.push_back({s[i], 1});
             }
         }
-        if (sk.back().second >= k) {
+        if (sk.size() && sk.back().second >= k) {
             sk.pop_back();
         }
         for (int i = 0; i < sk.size(); ++i) {

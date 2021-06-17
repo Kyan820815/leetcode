@@ -51,34 +51,32 @@ public:
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
-        for (int i = nestedList.size()-1; i >= 0; --i)
-            sk.push(nestedList[i]);
+        get(nestedList);
     }
-
+    
     int next() {
+        auto val = sk.back().getInteger();
+        sk.pop_back();
         return val;
     }
-
-    bool hasNext() {
-        if (sk.size())
-        {
-            while (sk.size() && !sk.top().isInteger())
-            {
-                vector<NestedInteger> tmp = sk.top().getList();
-                sk.pop();
-                for (int i = tmp.size()-1; i >= 0; --i)
-                    sk.push(tmp[i]);
-            }
-            if (!sk.size()) return false;
-            val = sk.top().getInteger();
-            sk.pop();
-            return true;
+    
+    void get(vector<NestedInteger> &nestedList) {
+        int n = nestedList.size();
+        for (int i = n-1; i >= 0; --i) {
+            sk.push_back(nestedList[i]);
         }
-        else return false;
     }
-private:
-    stack<NestedInteger> sk;
-    int val;
+    
+    bool hasNext() {
+        while (sk.size() && !sk.back().isInteger()) {
+            auto now = sk.back();
+            sk.pop_back();
+            get(now.getList());
+        }
+        return sk.size();
+    }
+    
+    vector<NestedInteger> sk;
 };
 
 /**

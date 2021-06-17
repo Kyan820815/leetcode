@@ -15,28 +15,37 @@ class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
         if (!root)
-        {
-        	root = new TreeNode(val);
-        	return root;
-        }
-        dfs(root, val);
+            return new TreeNode (val);
+        if (root->val < val)
+            root->right = insertIntoBST(root->right, val);
+        else
+            root->left = insertIntoBST(root->left, val);
         return root;
     }
-    void dfs(TreeNode *root, int val)
-    {
-    	if (root->val < val)
-    	{
-    		if (root->right)
-    			dfs(root->right, val);
-    		else
-    			root->right = new TreeNode(val);
-    	}
-    	else
-    	{
-    		if (root->left)
-    			dfs(root->left, val);
-    		else
-    			root->left = new TreeNode(val);
-    	}
+};
+
+//--- method 2: iteration, O(1) space
+class Solution {
+public:
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        int dir = 0;
+        TreeNode *dummy = new TreeNode(-1), *now = root, *p = dummy;
+        dummy->left = root;
+        while (now) {
+            p = now;
+            if (now->val < val) {
+                dir = 1;
+                now = now->right;
+            } else {
+                dir = 0;
+                now = now->left;
+            }
+        }
+        if (dir) {
+            p->right = new TreeNode(val);
+        } else {
+            p->left = new TreeNode(val);
+        }
+        return dummy->left;
     }
 };

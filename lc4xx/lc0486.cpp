@@ -49,16 +49,37 @@ public:
 class Solution {
 public:
     bool PredictTheWinner(vector<int>& nums) {
-    	vector<vector<int>> dp(nums.size(), vector<int>(nums.size(), -1));
+        int n = nums.size();
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        for (int len = 0; len < n; ++len) {
+            for (int i = 0; i < n-len; ++i) {
+                int j = i+len;
+                if (i == j) {
+                    dp[i][j] = nums[i];
+                } else {
+                    dp[i][j] = max(nums[i]-dp[i+1][j], nums[j]-dp[i][j-1]);
+                }
+            }
+        }
+        return dp[0][n-1] >= 0;
+    }
+};
 
-    	for (int len = 1; len <= nums.size(); ++len)
-    	{
-    		for (int i = 0; i <= nums.size()-len; ++i)
-    		{
-    			int j = i+len-1;
-    			dp[i][j] = (i == j) ? nums[i] : max(nums[j] - dp[i][j-1], nums[i]-dp[i+1][j]);
-    		}
-    	}
-    	return dp[0][nums.size()-1] >= 0;
+//--- method 3-2: dp iteration, O(n) space
+class Solution {
+public:
+    bool PredictTheWinner(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> dp(n, 0);
+        for (int i = n-1; i >= 0; --i) {
+            for (int j = i; j < n; ++j) {
+                if (i == j) {
+                    dp[i] = nums[i];
+                } else {
+                    dp[j] = max(nums[i]-dp[j], nums[j]-dp[j-1]);
+                }
+            }
+        }
+        return dp[n-1] >= 0;
     }
 };

@@ -53,3 +53,38 @@ public:
     	return root;
     }
 };
+
+//--- method 3: morris traversal
+class Solution {
+public:
+    TreeNode* convertBST(TreeNode* root) {
+        TreeNode *now = root, *last = NULL;
+        while (now) {
+            if (now->right) {
+                auto prev = now;
+                now = now->right;
+                while (now->left && now->left != prev) {
+                    now = now->left;
+                }
+                if (!now->left) {
+                    now->left = prev;
+                    now = prev->right;
+                } else {
+                    if (last) {
+                        prev->val += last->val;
+                    }
+                    last = prev;
+                    now->left = NULL;
+                    now = prev->left;
+                }
+            } else {
+                if (last) {
+                    now->val += last->val;
+                }
+                last = now;
+                now = now->left;
+            }
+        }
+        return root;
+    }
+};

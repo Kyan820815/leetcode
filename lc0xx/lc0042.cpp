@@ -47,3 +47,23 @@ public:
     	return res;
     }
 };
+
+//--- method 3: stack
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        vector<int> sk;
+        int res = 0;
+        for (int i = 0; i < height.size(); ++i) {
+            while (sk.size() && height[sk.back()] < height[i]) {
+                auto idx = sk.back();
+                sk.pop_back();
+                if (sk.size()) {
+                    res += (min(height[sk.back()], height[i])-height[idx])*(i-sk.back()-1);
+                }
+            }
+            sk.push_back(i);
+        }
+        return res;
+    }
+};

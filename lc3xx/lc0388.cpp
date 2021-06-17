@@ -3,41 +3,33 @@
 //--- method 1: stack operation
 class Solution {
 public:
-    int len = 0, depth = 0;
-    vector<string> sk;
     int lengthLongestPath(string input) {
-        int maxv = 0;
-        for (int i = 0; i < input.size();) {
-            if (input[i] == '\t') {
-                depth = 0;
-                while (i < input.size() && input[i] == '\t') {
-                    ++i, ++depth;
+        vector<int> sk;
+        int i = 0, tcnt = 0, dotcnt = 0, sum = 0, res = 0;
+        string str = "";
+        while (i <= input.size()) {
+            if (i == input.size() || input[i] == '\n') {
+                while (sk.size() > tcnt) {
+                    sum -= sk.back();
+                    sk.pop_back();
                 }
-                pop_stack();
-            } else if (input[i] == '\n'){
-                ++i;                
+                if (dotcnt) {
+                    res = max(res, (int)str.size()+sum);
+                } else {
+                    sk.push_back(str.size()+1);
+                    sum += str.size()+1;
+                }
+                str = "", tcnt = 0, dotcnt = 0, ++i;
+            } else if (input[i] == '\t') {
+                ++tcnt, ++i;
             } else {
-                string str = "";
-                while (isalpha(input[i]) || isdigit(input[i]) || input[i] == '.' || input[i] == ' ') {
-                    str += input[i++];
+                if (input[i] == '.') {
+                    ++dotcnt;
                 }
-                pop_stack();
-                len += str.size();
-                sk.push_back(str);
-                len += sk.size() > 1;
-                if (str.find(".") != string::npos && len > maxv) {
-                    maxv = len;
-                }
-                depth = 0;
+                str.push_back(input[i++]);
             }
         }
-        return maxv;
-    }
-    void pop_stack() {
-        while (sk.size() && depth != sk.size()) {
-            len -= sk.back().size();
-            len -= sk.size() > 1;
-            sk.pop_back();
-        }
+        
+        return res;
     }
 };

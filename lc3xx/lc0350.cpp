@@ -1,6 +1,27 @@
 //---  Q: 350. Intersection of Two Arrays II
 
-//--- method 1: O(1) space
+//--- method 1: map solution
+class Solution {
+public:
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int, int> m1;
+        vector<int> res;
+        for (auto &num: nums1) {
+            ++m1[num];
+        }
+        for (auto &num: nums2) {
+            if (m1.find(num) != m1.end()) {
+                res.push_back(num);
+                if (!--m1[num]) {
+                    m1.erase(num);
+                }
+            }
+        }
+        return res;
+    }
+};
+
+//--- method 2: O(1) space
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {

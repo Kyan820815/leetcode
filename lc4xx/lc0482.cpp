@@ -3,20 +3,18 @@
 //--- method 1: linear processing
 class Solution {
 public:
-    string licenseKeyFormatting(string S, int K) {
+    string licenseKeyFormatting(string s, int k) {
         string res = "";
         int cnt = 0;
-        for (int i = S.size()-1; i >= 0; --i) {
-            if (S[i] != '-') {
-                res += toupper(S[i]);
-                if (++cnt == K) {
+        for (int i = s.size()-1; i >= 0; --i) {
+            if (s[i] != '-') {
+                if (cnt == k) {
+                    res.push_back('-');
                     cnt = 0;
-                    res += '-';
                 }
+                res.push_back(toupper(s[i]));
+                ++cnt;
             }
-        }
-        if (res.back() == '-') {
-            res.pop_back();
         }
         reverse(res.begin(), res.end());
         return res;

@@ -37,21 +37,16 @@ public:
 class Solution {
 public:
     int leastInterval(vector<char>& tasks, int n) {
-    	int max_len = INT_MIN, max_cnt;
-    	if (n == 0) return tasks.size();
-    	vector<int> cnt(26, 0);
-        for (int i = 0; i < tasks.size(); ++i)
-			cnt[tasks[i]-'A']++;
-        for (int i = 0; i < 26; ++i)
-        {
-        	if (cnt[i] > max_len)
-        	{
-        		max_len = cnt[i];
-        		max_cnt = 1;
-        	}
-        	else if (cnt[i] == max_len)
-        		max_cnt++;
+        vector<int> cnt(26, 0);
+        int maxcnt = 0, kind = 0;
+        for (auto &ch: tasks) {
+            if (++cnt[ch-'A'] > maxcnt) {
+                maxcnt = cnt[ch-'A'];
+                kind = 1;
+            } else if (cnt[ch-'A'] == maxcnt) {
+                ++kind;
+            }
         }
-        return max((int)tasks.size(), (max_len-1) * (n+1) + max_cnt);
+        return max((maxcnt-1)*(1+n)+kind, (int)tasks.size());
     }
 };

@@ -15,23 +15,25 @@
 //--- method 1: postorder
 class Solution {
 public:
+    int res = 0;
     int longestUnivaluePath(TreeNode* root) {
-        int res = 0;
+        int v = 0;
         if (root) {
-            postorder(root, res, root->val);
-            return res - 1;
+            postorder(root, v, -1);
         }
-        return 0;
+        return res;
     }
-    int postorder(TreeNode *root, int &res, int parent) {
+    void postorder(TreeNode *root, int &v, int p) {
         int lv = 0, rv = 0;
         if (root->left) {
-            lv = postorder(root->left, res, root->val);
+            postorder(root->left, lv, root->val);
         }
         if (root->right) {
-            rv = postorder(root->right, res, root->val);
+            postorder(root->right, rv, root->val);
         }
-        res = max(res, lv + rv + 1);
-        return parent == root->val ? max(lv, rv) + 1 : 0;
+        if (p == root->val) {
+            v = max(lv, rv) + 1;
+        }
+        res = max(res, lv+rv);
     }
 };

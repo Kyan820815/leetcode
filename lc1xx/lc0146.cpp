@@ -4,36 +4,45 @@
 class LRUCache {
 public:
     LRUCache(int capacity) {
-        cap = capacity;
+        cap = capacity;        
     }
     
     int get(int key) {
-        auto it = map.find(key);
-        if (it == map.end()) return -1;
-        pair<int,int> get_pair = *(it->second);
-        ls.erase(it->second);
-        ls.insert(ls.begin(), get_pair);
-        map[key] = ls.begin();
-        return ls.front().second;
+        if (map.find(key) == map.end()) {
+            return -1;
+        }
+        auto pk = *map[key];
+        ll.erase(map[key]);
+        ll.push_front(pk);
+        map[key] = ll.begin();
+        return ll.begin()->second;
     }
     
     void put(int key, int value) {
-        auto it = map.find(key);
-        if (it != map.end())
-            ls.erase(it->second);
-        ls.push_front(make_pair(key, value));
-        map[key] = ls.begin();
-        if (map.size() > cap)
-        {
-            map.erase(ls.back().first);
-            ls.pop_back();
+        pair<int,int> pk;
+        if (get(key) != -1) {
+            map[key]->second = value;
+            return;
+        }
+        pk = {key, value};
+        ll.push_front(pk);
+        map[key] = ll.begin();
+        if (ll.size() > cap) {
+            map.erase(ll.back().first);
+            ll.pop_back();
         }
     }
-private:
-    unordered_map<int, list<pair<int, int>>::iterator> map;
-    list<pair<int,int>> ls;
+    unordered_map<int, list<pair<int,int>>::iterator> map;
+    list<pair<int,int>> ll;
     int cap;
 };
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
 
 /**
  * Your LRUCache object will be instantiated and called as such:

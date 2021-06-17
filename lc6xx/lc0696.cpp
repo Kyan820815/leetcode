@@ -4,19 +4,19 @@
 class Solution {
 public:
     int countBinarySubstrings(string s) {
-        int res = 0, cur = 1, pre = 0;
-        for (int i = 0; i < s.size(); ++i) {
-            if (i == s.size()-1 || s[i] != s[i+1]) {
-                res += min(pre, cur);
-                pre = cur;
-                cur = 1;
-            } else {
-                ++cur;
+        int res = 0, lastcnt = 0, cnt = 1;
+        for (int i = 1; i <= s.size(); ++i) {
+            if (i == s.size() || s[i] != s[i-1]) {
+                res += min(cnt, lastcnt);
+                lastcnt = cnt;
+                cnt = 0;
             }
+            ++cnt;
         }
         return res;
     }
 };
+
 //--- method 2: my version, not good
 class Solution {
 public:

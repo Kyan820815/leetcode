@@ -3,45 +3,39 @@
 //--- method 1: O(nlogn) divide & conquer
 class Solution {
 public:
+    vector<int> idx, res;
     vector<int> countSmaller(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> cnt(n, 0), idx;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < nums.size(); ++i) {
             idx.push_back(i);
         }
-        divide(0, n-1, idx, nums, cnt);
-        return cnt;
+        res.resize(nums.size(), 0);
+        divide(0, nums.size()-1, nums);
+        return res;
     }
-    void divide(int start, int end, vector<int> &idx, vector<int> &nums, vector<int> &cnt) { 
+    void divide(int start, int end, vector<int> &nums) {
         if (start < end) {
-            int mid = (end - start) / 2 + start;
-            divide(start, mid, idx, nums, cnt);
-            divide(mid+1, end, idx, nums, cnt);
-            conquer(start, mid, end, idx, nums, cnt);
+            int mid = start + (end-start)/2;
+            divide(start, mid, nums);
+            divide(mid+1, end, nums);
+            conquer(start, mid, end, nums);
         }
     }
-    void conquer(int start, int mid, int end, vector<int> &idx, vector<int> &nums, vector<int> &cnt) { 
-        int i = start, j = mid+1;
-        int lower = 0;
-        vector<int> cp_idx;
-        while (i <= mid && j <= end) {
-            if (nums[idx[i]] > nums[idx[j]]) {
-                cp_idx.push_back(idx[j++]);
-                ++lower;
-            } else {
-                cnt[idx[i]] += lower;
-                cp_idx.push_back(idx[i++]);
-            }
-        }
+    void conquer(int start, int mid, int end, vector<int> &nums) {
+        int i = start, j = mid+1, lower = 0;
+        vector<int> cpy;
         while (i <= mid) {
-            cnt[idx[i]] += lower;
-            cp_idx.push_back(idx[i++]);
+            while (j <= end && nums[idx[i]] > nums[idx[j]]) {
+                ++lower;
+                cpy.push_back(idx[j++]);
+            }
+            res[idx[i]] += lower;
+            cpy.push_back(idx[i++]);
         }
         while (j <= end) {
-            cp_idx.push_back(idx[j++]);
+            cpy.push_back(idx[j++]);
         }
-        for (int i = start; i <= end; ++i) {
-            idx[i] = cp_idx[i-start];
+        for (int i = 0; i < cpy.size(); ++i) {
+            idx[i+start] = cpy[i];
         }
     }
 };

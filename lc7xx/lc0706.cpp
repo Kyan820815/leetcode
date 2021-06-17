@@ -43,22 +43,24 @@ public:
     
     /** value will always be non-negative. */
     void put(int key, int value) {
-        int hashv = h(key)%1000;
-        for (auto l = map[hashv].begin(); l != map[hashv].end(); ++l) {
-            if (l->first == key) {
-                l->second = value;
-                return;                
+        int loc = h(key)%1000;
+        auto &ll = map[loc];
+        for (auto &p: ll) {
+            if (p.first == key) {
+                p.second = value;
+                return;
             }
         }
-        map[hashv].push_back({key, value});
+        ll.push_back({key, value});
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     int get(int key) {
-        int hashv = h(key)%1000;
-        for (auto l = map[hashv].begin(); l != map[hashv].end(); ++l) {
-            if (l->first == key) {
-                return l->second;
+        int loc = h(key)%1000;
+        auto &ll = map[loc];
+        for (auto &p: ll) {
+            if (p.first == key) {
+                return p.second;
             }
         }
         return -1;
@@ -66,10 +68,11 @@ public:
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     void remove(int key) {
-        int hashv = h(key)%1000;
-        for (auto l = map[hashv].begin(); l != map[hashv].end(); ++l) {
-            if (l->first == key) {
-                map[hashv].erase(l);
+        int loc = h(key)%1000;
+        auto &ll = map[loc];
+        for (auto p = ll.begin(); p != ll.end(); ++p) {
+            if (p->first == key) {
+                ll.erase(p);
                 return;
             }
         }

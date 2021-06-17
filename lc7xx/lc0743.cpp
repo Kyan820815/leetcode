@@ -3,40 +3,37 @@
 //--- method 1: bfs with dijkstra
 class Solution {
 public:
-    int networkDelayTime(vector<vector<int>>& times, int N, int K) {
-        vector<int> nodeval(N+1, INT_MAX);
-        vector<vector<int>> rel(N+1, vector<int>(N+1, -1));
-        int res = 0;
-        for (int i = 0; i < times.size(); ++i) {
-            rel[times[i][0]][times[i][1]] = times[i][2];
+    int networkDelayTime(vector<vector<int>>& times, int n, int k) {
+        vector<vector<int>> val(n, vector<int>(n, -1));
+        vector<int> dist(n, INT_MAX);
+        for (auto &time: times) {
+            val[time[0]-1][time[1]-1] = time[2];
         }
-        nodeval[K] = 0;
-        auto comp = [&nodeval](int a, int b) {
-            return nodeval[a] > nodeval[b];
+        auto comp = [](pair<int,int> &a, pair<int,int> &b){
+            return a.second > b.second;
         };
-        priority_queue<int, vector<int>, decltype(comp)> que(comp);
-        que.push(K);
+        priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(comp)> que(comp);
+        int res = 0;
+        que.push({k-1,0});
+        dist[k-1] = 0;
         while (que.size()) {
-            auto node = que.top();
+            auto now = que.top();
             que.pop();
-            int now = node;
-            for (int i = 1; i <= N; ++i) {
-                if (rel[now][i] != -1) {
-                    nodeval[i] = min(nodeval[i], nodeval[now]+rel[now][i]);
-                    que.push(i);
-                    rel[now][i] = -1;
+            int node = now.first, weight = now.second;
+            for (int i = 0; i < val[node].size(); ++i) {
+                if (val[node][i] != -1) {
+                    int next_weight = weight + val[node][i];
+                    if (next_weight < dist[i]) {
+                        dist[i] = next_weight;
+                        que.push({i,next_weight});
+                    }
                 }
-                // or
-                // if (rel[now][i] != -1 && nodeval[i] > nodeval[now]+rel[now][i]) {
-                //     nodeval[i] = nodeval[now]+rel[now][i];
-                //     que.push(i);
-                // }
             }
         }
-        for (int i = 1; i <= N; ++i) {
-            res = max(res, nodeval[i]);
+        for (int i = 0; i < n; ++i) {
+            res = max(res, dist[i]);
         }
-        return res == INT_MAX ? -1 : res;
+        return res == INT_MAX ? -1 :res;
     }
 };
 

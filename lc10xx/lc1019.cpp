@@ -9,7 +9,27 @@
  * };
  */
 
-//--- method 1: two pass O(n) backtrack, better
+//--- method 1: one pass better
+class Solution {
+public:
+    vector<int> nextLargerNodes(ListNode* head) {
+        vector<pair<ListNode *, int>> sk;
+        int len = 0, idx = 0;
+        vector<int> res;
+        while (head) {
+            while (sk.size() && sk.back().first->val < head->val) {
+                res[sk.back().second] = head->val;
+                sk.pop_back();
+            }
+            sk.push_back({head, idx++});
+            res.push_back(0);
+            head = head->next;
+        }
+        return res;
+    }
+};
+
+//--- method 2: two pass O(n) backtrack, better
 class Solution {
 public:
     vector<int> nextLargerNodes(ListNode* head) {
@@ -35,37 +55,6 @@ public:
         		res[i] = sk.top();
         	sk.push(val);
         }
-        return res;
-    }
-};
-
-//--- method 2: two pass O(n)
-class Solution {
-public:
-    vector<int> nextLargerNodes(ListNode* head) {
-        vector<int> res;
-        ListNode *cur;
-        stack<pair<int,int>> sk;
-        int cnt;
-        cur = head, cnt = 0;
-        while(cur)
-        {
-        	cur = cur->next;
-        	cnt++;
-        }
-        res = vector<int>(cnt, 0);
-        cur = head, cnt = 0;
-        while (cur)
-        {
-        	while (sk.size() != 0 && sk.top().second < cur->val)
-        	{
-        		res[sk.top().first] = cur->val;
-        		sk.pop();
-        	}
-        	sk.push({cnt++, cur->val});
-        	cur = cur->next;
-        }
-
         return res;
     }
 };

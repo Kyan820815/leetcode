@@ -28,28 +28,26 @@ public:
 class Solution {
 public:
     vector<string> res;
-    vector<int> h, m;
-    vector<string> readBinaryWatch(int num) {
-        h = {1,2,4,8}, m = {1,2,4,8,16,32};
-        dfs(0, num, 0, 0);
+    vector<string> readBinaryWatch(int turnedOn) {
+        vector<int> arr = {8,4,2,1,32,16,8,4,2,1};
+        dfs(0, arr, turnedOn, 0, 0);
         return res;
     }
-    void dfs(int idx, int num, int hour, int min) {
-        if (hour >= 12 || min >= 60) {
+    void dfs(int now, vector<int> &arr, int cnt, int h, int m) {
+        if (h > 11 || m > 59) {
             return;
         }
-        if (!num) {
-            string hour_str = to_string(hour), min_str = to_string(min);
-            string time = hour_str + ":" + (min_str.size() == 1 ? "0"+min_str : min_str);
-            res.push_back(time);
+        if (!cnt) {
+            string hour = to_string(h), min = to_string(m);
+            min = min.size() == 1 ? "0"+min : min;
+            res.push_back(hour+":"+min);
             return;
         }
-        for (int i = idx; i < h.size()+m.size(); ++i) {
-            if (i < h.size()) {
-                dfs(i+1, num-1, hour+h[i], min);
+        for (int i = now; i < arr.size(); ++i) {
+            if (i < 4) {
+                dfs(i+1, arr, cnt-1, h+arr[i], m);
             } else {
-                dfs(i+1, num-1, hour, min+m[i-h.size()]);
-                
+                dfs(i+1, arr, cnt-1, h, m+arr[i]);
             }
         }
     }

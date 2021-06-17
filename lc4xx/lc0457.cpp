@@ -4,50 +4,46 @@
 class Solution {
 public:
     bool circularArrayLoop(vector<int>& nums) {
-        int n = nums.size();
-        for (int i = 0; i < n; ++i) {
-            if (nums[i] == 0) {
+        for (int i = 0; i < nums.size(); ++i) {
+            if (!nums[i]) {
                 continue;
             }
             int slow = i, fast = i;
             while (1) {
-                slow = nextIndex(slow, n, nums[slow]);
-                fast = nextIndex(fast, n, nums[fast]);
-                fast = nextIndex(fast, n, nums[fast]);
+                slow = next(slow, nums);
+                fast = next(fast, nums);
+                fast = next(fast, nums);
                 if (slow == fast) {
                     break;
                 }
             }
+            // since there is only one loop in array
             if (!nums[slow]) {
                 break;
             }
-            // find start point of cycle
-            slow = i;
-            while (slow != fast) {
-                int jump = nums[slow];
-                nums[slow] = 0;
-                slow = nextIndex(slow, n, jump);
-                fast = nextIndex(fast, n, nums[fast]);
-            }
-            int begin = fast, step = 0, valid = 1, dir = -1;
-            // check if cyles step > 1 and correct direction
-            while (dir == -1 || fast != begin) {
-                if (dir != -1 && dir > 0 != nums[fast] > 0) {
-                    valid = 0;
+            int pos = slow, step = 0, ps = 0, ng = 0;
+            while (1) {
+                int next_pos = next(pos, nums);
+                if (nums[pos] > 0) {
+                    ++ps;
+                } else {
+                    ++ng;
                 }
-                dir = nums[fast] > 0;
-                int jump = nums[fast];
-                nums[fast] = 0;
-                fast = nextIndex(fast, n, jump);
+                nums[pos] = 0;
                 ++step;
-            }
-            if (step > 1 && valid) {
-                return true;
+                pos = next_pos;
+                if (pos == slow) {
+                    if (step > 1 && (ps == 0 || ng == 0)) {
+                        return true;
+                    }
+                    break;
+                }
             }
         }
         return false;
     }
-    int nextIndex(int idx, int n, int jump) {
-        return (((idx+jump)%n)+n)%n;
+    int next(int i, vector<int> &nums) {
+        int pos = (i+nums[i]+nums.size())%nums.size();
+        return pos;
     }
 };

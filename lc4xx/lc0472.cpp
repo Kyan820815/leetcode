@@ -29,30 +29,33 @@ public:
 //--- method 2: dp recursion with record times using set
 class Solution {
 public:
+    unordered_map<string, int> map;
     vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
         vector<string> res;
+        map[""] = 0;
         unordered_set<string> set(words.begin(), words.end());
-        for (int i = 0; i < words.size(); ++i) {
-            unordered_map<int, int> map;
-            if (dfs(0, words[i], map, set) > 1)
-                res.push_back(words[i]);
+        for (auto &word: words) {
+            if (dfs(word, set) > 1) {
+                res.push_back(word);
+            }
         }
         return res;
     }
-    int dfs(int pos, string &now, unordered_map<int, int> &map, unordered_set<string> &set) {
-        if (map.find(pos) != map.end())
-            return map[pos];
-        if (pos == now.size())
-            return map[pos] = 0;
-        for (int i = pos; i < now.size(); ++i) {
-            string tmp = now.substr(pos, i-pos+1);
-            if (set.find(tmp) == set.end())
-                continue;
-            int next_len = dfs(i+1, now, map, set);
-            if (next_len != -1)
-                return map[pos] = next_len + 1;
-
+    int dfs(string &word, unordered_set<string> &set) {
+        if (map.find(word) != map.end()) {
+            return map[word];
         }
-        return map[pos] = -1;
+        for (int i = 0; i < word.size(); ++i) {
+            string now = word.substr(0, i+1);
+            if (set.find(now) == set.end()) {
+                continue;
+            }
+            int len;
+            string next = word.substr(i+1);
+            if ((len=dfs(next, set)) != -1) {
+                return map[word] = len+1;
+            }
+        }
+        return map[word] = -1;
     }
 };

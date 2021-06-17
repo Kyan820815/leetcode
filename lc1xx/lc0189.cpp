@@ -12,25 +12,41 @@ public:
     }
 };
 
-//--- method 2: shift, record last nums[i]
+//--- method 2-1: shift, record last nums[i]
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        int n = nums.size();
-        k = k % n;
-        if (k == 0 || !n) return;
-        int cur = 0, idx = 0, pre = nums[0], start = 0;
-        for (int i = 0; i < n; ++i)
-        {
-        	cur = nums[(idx+k)%n];
-        	nums[(idx+k)%n] = pre;
-        	pre = cur;
-        	idx = (idx+k)%n;
-            if (idx == start)
-            {
-                idx = ++start;
+        int n = nums.size(), pre = nums[0], idx = 0, start = 0;
+        k %= n;
+        for (int i = 0; i < n; ++i) {
+            int cur = nums[(idx+k)%n];
+            nums[(idx+k)%n] = pre;
+            pre = cur;
+            idx = (idx+k)%n;
+            if (idx == start) {
+                idx = (++start)%n;
                 pre = nums[idx];
             }
+        }
+    }
+};
+
+//--- method 2-2: shift, record last nums[i], my version
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size(), cnt = n, start = 0;
+        while (cnt) {
+            int next = (start+k)%n, last = nums[start];
+            while (next != start) {
+                int tmp = nums[next];
+                nums[next] = last;
+                next = (next+k)%n;
+                last = tmp;
+                --cnt;
+            }
+            nums[start++] = last;
+            --cnt;
         }
     }
 };

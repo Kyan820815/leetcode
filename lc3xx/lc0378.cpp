@@ -3,44 +3,39 @@
 //--- method 1: partition, O(n)
 class Solution {
 public:
+    int row, col, res;
     int kthSmallest(vector<vector<int>>& matrix, int k) {
- 		return divide(matrix, 0, matrix.size()*matrix[0].size()-1, k-1);
+        row = matrix.size(), col = matrix[0].size();
+        divide(0, row*col-1, matrix, k-1);
+        return res;
     }
-    int divide(vector<vector<int>> &matrix, int left, int right, int k)
-    {
-    	int col = matrix[0].size();
-    	int mid = partition(matrix, left, right, col);
-    	if (k == mid)
-    		return matrix[mid/col][mid%col];
-    	else if (k < mid)
-    		return divide(matrix, left, mid-1, k);
-    	else
-    		return divide(matrix, mid+1, right, k);
+    void divide(int left, int right, vector<vector<int>> &matrix, int k) {
+        while (left < right) {
+            int mid = find(left, right, matrix);
+            if (mid < k) {
+                left = mid+1;
+            } else {
+                right = mid;
+            }
+        }
+        res = matrix[left/col][left%col];
     }
-    int partition(vector<vector<int>> &matrix, int left, int right, int col)
-    {	
-    	int pivot = rand() % (right-left+1) + left;
-    	int pr, pc;
-    	swap(matrix[right/col][right%col], matrix[pivot/col][pivot%col]);
-    	pr = right/col, pc = right%col;
-    	int mid = left-1;
-
-    	for (int i = left; i <right; ++i)
-    	{
-    		int r = i/col, c = i%col;
-    		if (matrix[r][c] < matrix[pr][pc])
-    		{
-    			mid++;
-    			swap(matrix[r][c], matrix[mid/col][mid%col]);
-    		}
-    	}
-    	mid++;
-    	swap(matrix[pr][pc], matrix[mid/col][mid%col]);
-    	return mid;
+    int find(int left, int right, vector<vector<int>> &matrix) {
+        int len = right-left+1, pivot = left + random()%len, idx = left-1;
+        swap(matrix[pivot/col][pivot%col], matrix[right/col][right%col]);
+        for (int i = left; i < right; ++i) {
+            if (matrix[i/col][i%col] < matrix[right/col][right%col]) {
+                ++idx;
+                swap(matrix[idx/col][idx%col], matrix[i/col][i%col]);
+            }
+        }
+        ++idx;
+        swap(matrix[idx/col][idx%col], matrix[right/col][right%col]);
+        return idx;
     }
 };
 
-//--- method 2: priority queue, O(klogN)
+//--- method 2: priority queue, O(nlogk)
 class Solution {
 public:
 	int kthSmallest(vector<vector<int>>& matrix, int k) {

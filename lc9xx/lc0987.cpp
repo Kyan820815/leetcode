@@ -13,26 +13,27 @@
 //--- method 1: dfs (preorder) with hashmap
 class Solution {
 public:
+    map<int, map<int, multiset<int>>> loc;
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-    	vector<vector<int>> res;
-    	map<int, map<int, set<int>>> info;
-    	preorder(root, info, 0, 0);
-    	for (auto &in: info)
-    	{
-    		vector<int> res_vec;
-    		for (auto &ii: in.second)
-    			res_vec.insert(res_vec.end(), ii.second.begin(), ii.second.end());
-    		res.push_back(res_vec);
-    	}
-    	return res;
+        vector<vector<int>> res;
+        preorder(root, 0, 0);
+        for (auto &col: loc) {
+            vector<int> tmp;
+            for (auto &pt: col.second) {
+                tmp.insert(tmp.end(), pt.second.begin(), pt.second.end());
+            }
+            res.push_back(tmp);
+        }
+        return res;
     }
-    void preorder(TreeNode *root, map<int, map<int, set<int>>> &info, int x, int y)
-    {
-    	info[x][y].insert(root->val);
-    	if (root->left)
-    		preorder(root->left, info, x-1, y+1);
-    	if (root->right)
-    		preorder(root->right, info, x+1, y+1);
+    void preorder(TreeNode *root, int x, int y) {
+        loc[x][y].insert(root->val);
+        if (root->left) {
+            preorder(root->left, x-1, y+1);
+        }
+        if (root->right) {
+            preorder(root->right, x+1, y+1);
+        }
     }
 };
 

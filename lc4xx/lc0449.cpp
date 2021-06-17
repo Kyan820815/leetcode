@@ -100,6 +100,49 @@ public:
     }
 };
 
+//--- method 3: use bst
+class Codec {
+public:
+
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        ostringstream ss;
+        encode(root, ss);
+        return ss.str();
+    }
+    void encode(TreeNode *root, ostringstream &ss) {
+        if (!root) {
+            return;
+        }
+        ss << " " + to_string(root->val);
+        encode(root->left, ss);
+        encode(root->right, ss);
+    }
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        istringstream ss(data);
+        string str;
+        while (ss >> str) {
+            que.push(stoi(str));
+        }
+        if (!que.size()) {
+            return NULL;
+        }
+        return decode(INT_MIN, INT_MAX);
+    }
+    TreeNode *decode(int minv, int maxv) {
+        if (!que.size() || que.front() <= minv || que.front() >= maxv) {
+            return NULL;
+        }
+        auto now = new TreeNode(que.front());
+        que.pop();
+        now->left = decode(minv, now->val);
+        now->right = decode(now->val, maxv);
+        return now;
+    }
+    queue<int> que;
+};
+
 // Your Codec object will be instantiated and called as such:
 // Codec codec;
 // codec.deserialize(codec.serialize(root));

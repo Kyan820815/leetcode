@@ -4,30 +4,35 @@
 class Solution {
 public:
     bool backspaceCompare(string S, string T) {
-        int sidx = S.size()-1, tidx = T.size()-1;
+        int i = S.size()-1, j = T.size()-1;
         while (1) {
-            int sj = 0, tj = 0;
-            while (sidx >= 0 && (sj || S[sidx] == '#')) {
-                if (S[sidx] == '#')
-                    ++sj;
-                else
-                    --sj;
-                --sidx;
+            int cnt = 0;
+            while (i >= 0 && (!isalpha(S[i]) || cnt)) {
+                if (S[i] == '#') {
+                    ++cnt;
+                } else if (cnt) {
+                    --cnt;
+                }
+                --i;
             }
-            while (tidx >= 0 && (tj || T[tidx] == '#')) {
-                if (T[tidx] == '#')
-                    ++tj;
-                else
-                    --tj;
-                --tidx;
+            cnt = 0;
+            while (j >= 0 && (!isalpha(T[j]) || cnt)) {
+                if (T[j] == '#') {
+                    ++cnt;
+                } else if (cnt) {
+                    --cnt;
+                }
+                --j;
             }
-            if (sidx >= 0 && tidx >= 0 && S[sidx] == T[tidx]) {
-                --sidx;
-                --tidx;
-            } else
+            if (i < 0 || j < 0) {
                 break;
+            }
+            if (S[i] != T[j]) {
+                return false;
+            }
+            --i, --j;
         }
-        return sidx == -1 && tidx == -1;
+        return i < 0 && j < 0;
     }
 };
 

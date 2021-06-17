@@ -37,3 +37,34 @@ public:
     	return root;
     }
 };
+
+//--- method 2: iteration
+class Solution {
+public:
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        vector<TreeNode *> sk;
+        int ni = inorder.size()-1;
+        TreeNode *root = NULL, *last = NULL;
+        for (int i = postorder.size()-1; i >= 0;) {
+            if (sk.size() && sk.back()->val == inorder[ni]) {
+                last = sk.back();
+                sk.pop_back();
+                --ni;
+            } else if (last) {
+                last->left = new TreeNode(postorder[i--]);
+                sk.push_back(last->left);
+                last = NULL;
+            } else {
+                auto now = new TreeNode(postorder[i--]);
+                if (sk.size()) {
+                    sk.back()->right = now;
+                }
+                sk.push_back(now);
+                if (!root) {
+                    root = now;
+                }
+            }
+        }
+        return root;
+    }
+};

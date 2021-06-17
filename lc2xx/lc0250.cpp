@@ -39,21 +39,24 @@ public:
 //--- method 2: postorder with compare parent and child node。
 class Solution {
 public:
+    int res = 0;
     int countUnivalSubtrees(TreeNode* root) {
-        int res = 0;
-        postorder(root, res, -1);
+        if (root) {
+            postorder(root, -1);
+        }
         return res;
     }
-    bool postorder(TreeNode *root, int &res, int parent) {
-        if (!root)
-            return true;
-        bool find = true;
-        find &= postorder(root->left, res, root->val);
-        find &= postorder(root->right, res, root->val);
-        if (!find)
-            return false;
-        cout << "qq\n";
-        ++res;
-        return root->val == parent;
+    bool postorder(TreeNode *root, int p) {
+        bool valid = true;
+        if (root->left) {
+            valid &= postorder(root->left, root->val);
+        }
+        if (root->right) {
+            valid &= postorder(root->right, root->val);
+        }
+        if (valid) {
+            ++res;
+        }
+        return root->val == p && valid;
     }
 };

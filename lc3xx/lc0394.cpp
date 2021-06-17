@@ -82,3 +82,31 @@ public:
     	return now_str;
     }
 };
+
+//--- follow up:
+string dfs2(int &idx, string &s) {
+    string res = "";
+    while (idx < s.size()) {
+        if (s[idx] == '(') {
+            ++idx;
+            string rtn = dfs2(idx, s);
+            res += rtn;
+        } else if (s[idx] == ')') {
+            idx += 2;
+            int sum = 0;
+            while (s[idx] != '}') {
+                sum = sum *10 + s[idx++]-'0';
+            }
+            ++idx;
+            string tmp = "";
+            while (sum) {
+                sum--;
+                tmp += res;
+            }
+            return tmp;
+        } else {
+            res.push_back(s[idx++]);
+        }
+    }
+    return res;
+}

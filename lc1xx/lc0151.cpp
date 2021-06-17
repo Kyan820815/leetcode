@@ -3,36 +3,23 @@
 //--- method 1: in place reverse
 class Solution {
 public:
-    void reverseWord(int i, int j, string &s) {
-        while (i < j) {
-            swap(s[i], s[j]);
-            ++i, --j;
-        }
-    }
     string reverseWords(string s) {
-        int left = 0, right = 0, n = s.size();
-        bool first = true;
-        while (1) {
-            while (right < n && s[right] == ' ') {
-                ++right;
+        int i = 0, ri = 0;
+        while (i < s.size()) {
+            if (s[i] == ' ') {
+                ++i;
+                continue;
             }
-            if (right == n) {
-                break;
+            int start = ri;
+            while (i < s.size() && s[i] != ' ') {
+                s[ri++] = s[i++];
             }
-            if (!first) {
-                s[left++] = ' ';
-            }
-            int go = left;
-            while (right < n && s[right] != ' ') {
-                s[go++] = s[right++];
-            }
-            reverseWord(left, go-1, s);
-            first = false;
-            left = go;
+            s[ri++] = ' ';
+            reverse(s.begin()+start, s.begin()+ri-1);
         }
-        s.resize(left);
-        reverseWord(0, left-1, s);
-        return s;
+        string res = s.substr(0, ri-1);
+        reverse(res.begin(), res.end());
+        return res;
     }
 };
 

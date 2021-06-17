@@ -36,3 +36,22 @@ public:
     }
 };
 
+//--- follow up: 312 pattern
+class Solution {
+public:
+    bool find312pattern(vector<int>& nums) {
+        vector<int> sk;
+        int one = INT_MIN;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (one > nums[i])
+                return true;
+            while (sk.size() && sk.back() < nums[i]) {
+                one = sk.back();
+                sk.pop_back();
+            }
+            sk.push_back(nums[i]);
+        }
+        return false;
+    }
+};
+

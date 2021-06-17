@@ -3,16 +3,17 @@
 //--- method 1: dfs+bfs
 class Solution {
 public:
-    queue<pair<int, int>> que;
-    vector<vector<int>> dir = {{-1,0}, {1,0}, {0,-1}, {0,1}};
-    int shortestBridge(vector<vector<int>>& A) {
-        int row = A.size(), col = A[0].size();
-        bool find = false;
+    int row, col;
+    vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+    queue<pair<int,int>> que;
+    int shortestBridge(vector<vector<int>>& grid) {
+        row = grid.size(), col = grid[0].size();
+        int find = 0;
         for (int i = 0; i < row; ++i) {
             for (int j = 0; j < col; ++j) {
-                if (A[i][j]) {
-                    dfs(i, j, A);
-                    find = true;
+                if (grid[i][j]) {
+                    dfs(i, j, grid);
+                    find = 1;
                     break;
                 }
             }
@@ -22,46 +23,43 @@ public:
         }
         int res = 0;
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                for (int k = 0; k < 4; ++k) {
-                    int ni = now.first + dir[k][0];
-                    int nj = now.second + dir[k][1];
-                    if (ni < 0 || ni >= row || nj < 0 || nj >= col) {
+                for (auto &dir: dirs) {
+                    int nr = now.first+dir[0];
+                    int nc = now.second+dir[1];
+                    if (nr < 0 || nr >= row || nc < 0 || nc >= col || grid[nr][nc] == -1) {
                         continue;
                     }
-                    if (!A[ni][nj]) {
-                        A[ni][nj] = -1;
-                        que.push({ni, nj});
-                    } else if (A[ni][nj] == 1) {
+                    if (grid[nr][nc] == 1) {
                         return res;
                     }
+                    grid[nr][nc] = -1;
+                    que.push({nr,nc});
                 }
             }
             ++res;
         }
         return -1;
     }
-    void dfs(int i, int j, vector<vector<int>> &A) {
-        int row = A.size(), col = A[0].size();
-        A[i][j] = -1;
-        bool find = false;
-        for (int k = 0; k < 4; ++k) {
-            int ni = i + dir[k][0];
-            int nj = j + dir[k][1];
-            if (ni < 0 || ni >= row || nj < 0 || nj >= col) {
+    void dfs(int r, int c, vector<vector<int>> &grid) {
+        bool edge = false;
+        grid[r][c] = -1;
+        for (auto &dir: dirs) {
+            int nr = r+dir[0];
+            int nc = c+dir[1];
+            if (nr < 0 || nr >= row || nc < 0 || nc >= col || !grid[nr][nc]) {
+                edge = true;
                 continue;
             }
-            if (!A[ni][nj]) {
-                find = true;
-            } else if (A[ni][nj] == 1){
-                dfs(ni, nj, A);
+            if (grid[nr][nc] == 1) {
+                dfs(nr, nc, grid);
             }
         }
-        if (find) {
-            que.push({i, j});
+        if (edge) {
+            que.push({r,c});
         }
     }
 };

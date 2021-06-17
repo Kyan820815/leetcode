@@ -56,40 +56,40 @@ class Solution {
 public:
     Node* treeToDoublyList(Node* root) {
         if (!root) {
-            return root;
+            return NULL;
         }
-        Node *head = NULL, *now = root, *pre = NULL;
+        Node *now = root, *last = NULL, *nh = NULL;
         while (now) {
             if (now->left) {
-                Node *parent = now;
+                auto prev = now;
                 now = now->left;
-                while (now->right && now->right != parent) {
+                while (now->right && now->right != prev) {
                     now = now->right;
                 }
                 if (!now->right) {
-                    now->right = parent;
-                    now = parent->left;
+                    now->right = prev;
+                    now = prev->left;
                 } else {
-                    if (pre) {
-                        parent->left = pre;
+                    if (last) {
+                        prev->left = last;
                     }
-                    pre = parent;
-                    now = parent->right;
+                    last = prev;                    
+                    now = prev->right;
                 }
             } else {
-                if (!head) {
-                    head = now;
+                if (last) {
+                    last->right = now;
+                    now->left = last;
                 }
-                if (pre) {
-                    now->left = pre;
-                    pre->right = now;
+                if (!nh) {
+                    nh = now;
                 }
-                pre = now;
+                last = now;
                 now = now->right;
             }
         }
-        head->left = pre;
-        pre->right = head;
-        return head;
+        last->right = nh;
+        nh->left = last;
+        return nh;        
     }
 };

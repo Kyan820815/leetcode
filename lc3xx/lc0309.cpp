@@ -18,3 +18,18 @@ public:
     	return max(S_rest, S_sell);
     }
 };
+
+//--- method 2: state machine another view
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int buy = prices[0], sell = 0, cool = 0;
+        for (int i = 1; i < prices.size(); ++i) {
+            int lsell = sell, lbuy = buy;
+            buy = min(buy, prices[i]-cool);
+            cool = sell;
+            sell = max(sell, prices[i]-buy);
+        }
+        return sell;
+    }
+};

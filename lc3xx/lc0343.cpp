@@ -4,17 +4,13 @@
 class Solution {
 public:
     int integerBreak(int n) {
-        vector<int> dp(n+1, 0);
-        dp[0] = dp[1] = 1;
-
-        for (int i = 2; i <= n; ++i)
-        {
-        	int l_max = INT_MIN;
-        	for (int j = 1; j < i; ++j)
-        		l_max = max(max(dp[i-j] * j, (i-j)*j), l_max);
-        	dp[i] = l_max;
+        vector<int> dp(n+1, 1);
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 1; j <= i/2; ++j) {
+                dp[i] = max(dp[i], max(i-j, dp[i-j])*max(j, dp[j]));
+            }
         }
-        return dp[n];
+        return dp.back();
     }
 };
 
@@ -32,7 +28,6 @@ public:
         return dp[n];
     }
 };
-
 
 //--- method 2: math solution
 class Solution {

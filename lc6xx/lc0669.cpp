@@ -27,3 +27,36 @@ public:
         }
     }
 };
+
+//--- method 2: trim iteration O(1) space
+class Solution {
+public:
+    TreeNode* trimBST(TreeNode* root, int low, int high) {
+        while (root) {
+            if (root->val < low) {
+                root = root->right;
+            } else if (root->val > high) {
+                root = root->left;
+            } else {
+                break;
+            }
+        }
+        auto now = root;
+        while (now) {
+            if (now->left && now->left->val < low) {
+                now->left = now->left->right;
+            } else {
+                now = now->left;
+            }
+        }
+        now = root;
+        while (now) {
+            if (now->right && now->right->val > high) {
+                now->right = now->right->left;
+            } else {
+                now = now->right;
+            }
+        }
+        return root;
+    }
+};

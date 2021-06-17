@@ -4,24 +4,18 @@
 class Solution {
 public:
     int pathSum(vector<int>& nums) {
-        vector<vector<int>> map(5, vector<int>(9, 0));
-        int res = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            int depth = nums[i]/100 - 1;
-            int idx = nums[i] % 100 / 10 - 1; 
-            int val = nums[i] % 10;
-            map[depth][idx] = val;
-            if (depth > 0) {
-                int p_val = map[depth-1][idx/2];
-                if (p_val > 0) {
-                    res -= p_val;
-                    map[depth-1][idx/2] = -p_val;
-                }
-                map[depth][idx] += abs(p_val);
+        vector<vector<int>> res(5, vector<int>(8, 0));
+        int sum = 0;
+        for (auto &num: nums) {
+            int id = num%100/10-1, lv = num%1000/100, val = num%10;
+            if (res[lv-1][id/2] > 0) {
+                sum -= res[lv-1][id/2];
+                res[lv-1][id/2] *= -1;
             }
-            res += map[depth][idx];
+            res[lv][id] = val + abs(res[lv-1][id/2]);
+            sum += res[lv][id];
         }
-        return res;
+        return sum;
     }
 };
 

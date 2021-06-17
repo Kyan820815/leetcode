@@ -32,3 +32,21 @@ public:
         return n;
     }
 };
+
+//--- method 3: O(1) space iteration
+class Solution {
+public:
+    int minSteps(int n) {
+        int res = 0;
+        while (n != 1) {
+            for (int i = n-1; i >= 1; --i) {
+                if (n%i == 0) {
+                    res += n/i;
+                    n = i;
+                    break;
+                }
+            }
+        }
+        return res;
+    }
+};

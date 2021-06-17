@@ -21,30 +21,20 @@ public:
 
     TreeNode *dfs(int &now, int start, int end, vector<int> &preorder, vector<int> &inorder)
     {
-    	TreeNode *root;
     	int root_idx;
-    	
-    	if (start == end) return new TreeNode(inorder[start]);
 
-    	for (int i = start; i <= end; ++i)
-    	{
-    		if (inorder[i] == preorder[now])
-    		{
+        if (start > end) {
+            return NULL;
+        }
+    	for (int i = start; i <= end; ++i) {
+    		if (inorder[i] == preorder[now]) {
     			root_idx = i;
     			break;
     		}
     	}
-    	root = new TreeNode(inorder[root_idx]);
-    	if (root_idx != start)
-    	{
-    		now++;
-    		root->left = dfs(now, start, root_idx-1, preorder, inorder);
-    	}
-    	if (root_idx != end)
-    	{
-    		now++;
-    		root->right = dfs(now, root_idx+1, end, preorder, inorder);
-    	}
+    	auto root = new TreeNode(inorder[root_idx]);
+        root->left = dfs(now, start root_idx-1, preorder, inporder);
+        root->right = dfs(now, root_idx+1 end, preorder, inporder);
     	return root;
     }
 };

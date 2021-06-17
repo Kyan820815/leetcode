@@ -35,30 +35,45 @@ public:
     }
 };
 
-//--- method 2: map operation
+//--- method 2: 2 sum stack
 class Solution {
 public:
     bool findTarget(TreeNode* root, int k) {
-		vector<int> res;
-		inorder(root, res);
-		int left = 0, right = res.size()-1;
-		while (left < right)
-		{
-			if (res[left] + res[right] == k) return true;
-			else if (res[left] + res[right] < k)
-				++left;
-			else
-				--right;
-		}
-		return false;
-    }
-    void inorder(TreeNode *root, vector<int> &res)
-    {
-    	if (root->left)
-    		inorder(root->left, res);
-    	res.push_back(root->val);
-    	if (root->right)
-    		inorder(root->right, res);
-
+        vector<TreeNode *> sk1, sk2;
+        TreeNode *now = root;
+        while (now) {
+            sk1.push_back(now);
+            now = now->left;
+        }
+        now = root;
+        while (now) {
+            sk2.push_back(now);
+            now = now->right;
+        }
+        while (sk1.size() && sk2.size()) {
+            auto lnode = sk1.back();
+            auto rnode = sk2.back();
+            if (lnode == rnode) {
+                return false;
+            }
+            if (lnode->val + rnode->val < k) {
+                sk1.pop_back();
+                lnode = lnode->right;
+                while (lnode) {
+                    sk1.push_back(lnode);
+                    lnode = lnode->left;
+                }
+            } else if (lnode->val + rnode->val > k) {
+                sk2.pop_back();
+                rnode = rnode->left;
+                while (rnode) {
+                    sk2.push_back(rnode);
+                    rnode = rnode->right;
+                }
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 };

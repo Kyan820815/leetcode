@@ -67,3 +67,32 @@ public:
         return res;
     }
 };
+
+//--- method 3: better version of method 2, from O(m+n) space to O(n) space
+class Solution {
+public:
+    int findLonelyPixel(vector<vector<char>>& picture) {
+        int row = picture.size(), col = picture[0].size(), res = 0;
+        vector<int> cc(col, 0);
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (picture[i][j] == 'B') {
+                    ++cc[j];
+                }
+            }
+        }
+        for (int i = 0; i < row; ++i) {
+            int cnt = 0, c;
+            for (int j = 0; j < col; ++j) {
+                if (picture[i][j] == 'B') {
+                    c = j;
+                    ++cnt;
+                }
+            }
+            if (cnt == 1 && cc[c] == 1) {
+                ++res;
+            }
+        }
+        return res;
+    }
+};

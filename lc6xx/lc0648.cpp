@@ -6,23 +6,20 @@ public:
     string replaceWords(vector<string>& dictionary, string sentence) {
         sort(dictionary.begin(), dictionary.end());
         vector<vector<string>> cnt(26);
-        for (int i = 0; i < dictionary.size(); ++i) {
-            cnt[dictionary[i][0]-'a'].push_back(dictionary[i]);
-        }
-        istringstream ss(sentence);
+        istringstream ii(sentence);
         string str, res = "";
-        while (ss >> str) {
-            bool find = false;
-            for (int i = 0; i < cnt[str[0]-'a'].size(); ++i) {
-                if (str.substr(0, cnt[str[0]-'a'][i].size()) == cnt[str[0]-'a'][i]) {
-                    find = true;
-                    res += (cnt[str[0]-'a'][i]) + ' ';
+        for (auto &wd: dictionary) {
+            cnt[wd[0]-'a'].push_back(wd);
+        }
+        while (ii >> str) {
+            string newwd = str;
+            for (auto &wd: cnt[str[0]-'a']) {
+                if (str.substr(0, wd.size()) == wd) {
+                    newwd = wd;
                     break;
                 }
             }
-            if (!find) {
-                res += str + ' ';
-            }
+            res += newwd + " ";
         }
         res.pop_back();
         return res;

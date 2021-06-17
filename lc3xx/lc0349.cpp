@@ -1,6 +1,6 @@
 //--- Q: 349. Intersection of Two Arrays
 
-//--- method 1: unordered_map solution
+//--- method 1: unordered_set solution
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {

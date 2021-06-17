@@ -4,8 +4,11 @@
 class Solution {
 public:
     string toLowerCase(string str) {
-        for (int i = 0; i < str.size(); ++i)
-            str[i] = (isupper(str[i])) ? str[i]^32 : str[i];
+        for (auto &ch: str) {
+            if (isupper(ch)) {
+                ch ^= 32;
+            }
+        }
         return str;
     }
 };

@@ -4,25 +4,23 @@
 class Solution {
 public:
     bool canReach(vector<int>& arr, int start) {
-        vector<int> visit(arr.size(), 0);
-        visit[start] = 1;
         queue<int> que;
         que.push(start);
         while (que.size()) {
             int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            while (qsize--) {
                 auto now = que.front();
-                que.pop();
                 if (!arr[now]) {
                     return true;
                 }
-                if (now+arr[now] < arr.size() && !visit[now+arr[now]]) {
-                    visit[arr[now]+now] = 1;
-                    que.push(arr[now]+now);
+                que.pop();
+                int move = arr[now];
+                arr[now] = -1;
+                if (now+move < arr.size() && arr[now+move] >= 0) {
+                    que.push(now+move);
                 }
-                if (now-arr[now] >= 0 && !visit[now-arr[now]]) {
-                    visit[now-arr[now]] = 1;
-                    que.push(now-arr[now]);
+                if (now-move >= 0 && arr[now-move] >= 0) {
+                    que.push(now-move);
                 }
             }
         }

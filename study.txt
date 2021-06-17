@@ -198,7 +198,7 @@ while(cur || stack不是空)
 	printf;
 	if (cur->right) stack.push(cur->right);
 	cur = cur->left;
-	if (cur == NULL)
+	if (cur == NULL && sk.size())
 	{
 		cur = stack.top();
 		stack.pop();
@@ -214,9 +214,11 @@ while(cur || stack不是空)
 		stack.push(cur);
 		cur = cur->left;
 	}
-	cur = stack.pop();
-	printf;
-	cur = cur->right;
+	if (stack.size()) {
+		cur = stack.pop();
+		printf;
+		cur = cur->right;
+	}
 }
 
 postorder：
@@ -525,9 +527,13 @@ lc1188，lc1279。
 ************************************************************************************
 
 點對點最短路徑或最長路徑 (Dijkstra 演算法)
-可用priority queue。
+可用priority queue，且速度在有些時候會>一般bfs。
 
-最短路徑問題也可以用bfs，但是注意只要當前可以被更新，就要丟入queue，Dijkstra則是加入後就不能再加入。
+最短路徑問題也可以用bfs，但是注意只要當前可以被更新，就要丟入queue，Dijkstra也類似。
+同時，做bfs洋蔥法時，不可遇到終點就跳出，一定要跑完que。
+
+而dijkstra，若node攜帶的有[比較value]，則遇到終點即可跳出，否則要跑完queue。
+且通常dijkstra會攜帶[比較value]。
 
 一般來說找最短路徑用bfs，O(V+E)，用Dijkstra，O(V+E+ElogE)。
 若data structure是adjacent matrix，bfs: (V^2)，Dijkstra: O(V^2+ElogE)。
@@ -635,5 +641,40 @@ In C++, a Copy Constructor may be called in following cases:
 count bits，計算有幾個一有兩種做法：
 	(a) cnt += n&1, n >>= 1
 	(b) cnt++, n = n&(n-1)
+
+************************************************************************************
+
+string matching:
+
+s is subsequence of t
+
+(1) 若s很多個，check one by one，lc392 method 2
+(2) 若s很多個，check together，lc392 method 3 or lc 792 method 2
+
+************************************************************************************
+
+做binary tree traversal，若想要O(1) space: morris traversal。
+
+若題目是bst: inorder traversal，區間控制: preorder traversal。
+
+************************************************************************************
+
+recursive anaylasis
+
+lc 95, lc 131, lc 241, lc 301。
+
+************************************************************************************
+
+看到sorted array，都可以用binary search去做。
+
+************************************************************************************
+
+找subtree存形狀要用preorder或是postorder順序去存。
+(1) string str = left + " " + right + " " + to_string(root->val);
+(2) string str = left + " " + to_string(root->val) + " " + right;
+
+************************************************************************************
+
+dfs visit改條件可以放在function一開始，但bfs visit改條件一定要加入在recursion前面。
 
 ************************************************************************************

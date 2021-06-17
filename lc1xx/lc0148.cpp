@@ -53,7 +53,62 @@ public:
     }
 };
 
-//--- method 2: quick sort
+//--- method 2: bottom up O(1) space O(nlogn) time
+class Solution {
+public:
+    ListNode* sortList(ListNode* head) {
+        int len = 0;
+        ListNode *now = head;
+        while (now) {
+            now = now->next;
+            ++len;
+        }
+        ListNode *dummy = new ListNode(-1);
+        dummy->next = head;
+        for (int i = 1; i < len; i*=2) {
+            ListNode *cur = dummy->next, *tail = dummy;
+            while (cur) {
+                auto left = cur;
+                auto right = split(left, i);
+                cur = split(right, i);
+                tail = merge(left, right, tail);
+            }
+        }
+        return dummy->next;
+    }
+    ListNode *split(ListNode *now, int step) {
+        for (int i = 1; now && i < step; ++i) {
+            now = now->next;
+        }
+        if (!now) {
+            return NULL;
+        }
+        auto next_start = now->next;
+        now->next = NULL;
+        return next_start;
+    }
+    ListNode *merge(ListNode *left, ListNode *right, ListNode *tail) {
+        ListNode *cur = tail;
+        while (left && right) {
+            if (left->val < right->val) {
+                cur->next = left;
+                cur = left;
+                left = left->next;
+            } else {
+                cur->next = right;
+                cur = right;
+                right = right->next;
+            }
+        }
+        cur->next = !left ? right : left;
+        while (cur->next) {
+            cur = cur->next;
+        }
+        return cur;
+    }
+};
+
+//--- method 3: quick sort
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {

@@ -5,27 +5,22 @@
  * struct ListNode {
  *     int val;
  *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-
-//--- method 1: link list operation
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode *cur, *dummy = new ListNode(-1), pre;
+        ListNode *dummy = new ListNode(-1), *now = head, *prev = dummy;
         dummy->next = head;
-        pre = dummy, cur = head;
-        while (cur)
-        {
-        	if (cur->next && cur->val == cur->next->val)
-        	{
-    	    	while (cur->next && cur->val == cur->next->val)
-	        		cur = cur->next;
-	        	pre->next = cur;
-        	}
-        	pre = cur;
-        	cur = cur->next;
+        while (now) {
+            if (!now->next || now->next && now->val != now->next->val) {
+                prev->next = now;
+                prev = now;
+            }
+            now = now->next;
         }
         return dummy->next;
     }

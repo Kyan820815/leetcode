@@ -41,3 +41,27 @@ public:
         return min(lv, rv);
     }
 };
+
+//--- method 2: preorder
+class Solution {
+public:
+    int res = INT_MAX;
+    bool find = false;
+    int findSecondMinimumValue(TreeNode* root) {
+        preorder(root, root->val);
+        return find ? res : -1;
+    }
+    void preorder(TreeNode *root, int p) {
+        if (root->val != p) {
+            find = true;
+            res = min(res, root->val);
+            return;
+        }
+        if (root->left) {
+            preorder(root->left, root->val);
+        }
+        if (root->right) {
+            preorder(root->right, root->val);
+        }
+    }
+};

@@ -14,44 +14,29 @@
 class BSTIterator {
 public:
     BSTIterator(TreeNode* root) {
-        dfs(root, sk);
+        auto now = root;
+        while (now) {
+            sk.push_back(now);
+            now = now->left;
+        }
     }
     
-    /** @return the next smallest number */
     int next() {
-    	TreeNode *node;
-        int val;
-        node = sk.top();
-        sk.pop();
-        val = node->val;
-        if (node->right)
-        {
-        	node = node->right;
-        	while(node)
-        	{
-	        	sk.push(node);
-	        	node = node->left;
-        	}
+        auto now = sk.back();
+        sk.pop_back();
+        int val = now->val;
+        now = now->right;
+        while (now) {
+            sk.push_back(now);
+            now = now->left;
         }
         return val;
     }
     
-    /** @return whether we have a next smallest number */
     bool hasNext() {
-		return (sk.empty()) ? false : true;        	
+        return sk.size();
     }
-
-private:
-	stack<TreeNode *> sk;
-	void dfs(TreeNode *root, stack<TreeNode *> &sk)
-	{
-		TreeNode *node = root;
-		while(node)
-		{
-			sk.push(node);
-			node = node->left;
-		}
-	}
+    vector<TreeNode *> sk;
 };
 
 //--- method 2: moris traversal

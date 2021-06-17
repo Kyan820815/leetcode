@@ -14,30 +14,24 @@
 class Solution {
 public:
     int findBottomLeftValue(TreeNode* root) {
-        return bfs(root);
-    }
-    int bfs(TreeNode *root)
-    {
-    	int first = root->val;
-    	int qsize = 1;
-    	queue<TreeNode *> que;
-    	TreeNode *now;
-    	que.push(root);
-    	while(!que.empty())
-    	{
-    		now = que.front();
-    		if (now->left)
-    			que.push(now->left);
-    		if (now->right)
-    			que.push(now->right);
-    		que.pop();
-    		if (--qsize == 0)
-    		{
-    			qsize = que.size();
-    			first = (!que.empty()) ? que.front()->val : first;
-    		}
-    	}
-    	return first;
+        queue<TreeNode *> que;
+        que.push(root);
+        int res;
+        while (que.size()) {
+            int qsize = que.size();
+            res = que.front()->val;
+            for (int i = 0; i < qsize; ++i) {
+                auto now = que.front();
+                que.pop();
+                if (now->left) {
+                    que.push(now->left);
+                }
+                if (now->right) {
+                    que.push(now->right);
+                }
+            }
+        }
+        return res;
     }
 };
 
