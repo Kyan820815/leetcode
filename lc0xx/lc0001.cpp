@@ -1,4 +1,4 @@
-//--- Q: 001. Two Sum
+//--- Q: 0001. Two Sum
 
 //--- method 1-1: sort then find index from left and right, better
 class Solution {
@@ -79,20 +79,17 @@ public:
 //--- method 2: hash map one way (unordered map)
 class Solution {
 public:
-    vector<int> twoSum(vector<int> &nums, int target)
-    {
+    vector<int> twoSum(vector<int> &nums, int target) {
         unordered_map<int, int> sumMap;
-        vector<int> ans;
-        for (int i = 0; i < nums.size(); ++i)
-        {
-            if (sumMap.count(nums[i]))
-            {
-                ans.push_back(sumMap[nums[i]]);
-                ans.push_back(i);
-            }
-            else
+        vector<int> res;
+        for (int i = 0; i < nums.size(); ++i) {
+            if (sumMap.find(nums[i]) != sumMap.end()) {
+                res.push_back(sumMap[nums[i]]);
+                res.push_back(i);
+            } else {
                 sumMap[target-nums[i]] = i;
+            }
         }
-        return ans;
+        return res;
     }
 };

@@ -1,140 +1,49 @@
-//--- Q: 005. Longest Palindromic Substring
+//--- Q: 0005. Longest Palindromic Substring
 
-//--- method 1: linear search, my version, better
+//--- method 1: linear search
 class Solution {
 public:
     string longestPalindrome(string s) {
-        int left, right, start = 0, maxL = 0;
-        for (int i = 0; i < s.size();)
-        {
-            if (s.size()-i <= maxL/2) break;
-            left = right = i;
-            while(right < s.size())
-            {
-                if (s[right] == s[left]) right++;
-                else break;
+        int idx = 0, maxlen = 1, start = 0;
+        while (idx < s.size()) {
+            int left = idx-1, right;
+            if (s.size()-idx < maxlen/2) {
+                break;
             }
-
-            i = right; left--;
-
-            while(left >= 0 && right < s.size())
-            {
-                if (s[left] == s[right])
-                    left--; right++;
-                else break;
+            while (idx < s.size()-1 && s[idx] == s[idx+1]) {
+                ++idx;
             }
-            if (right-left-1 > maxL)
-            {
+            right = ++idx;
+            while (left >= 0 && right < s.size() && s[left] == s[right]) {
+                --left, ++right;
+            }
+            if (right-left-1 > maxlen) {
+                maxlen = right-left-1;
                 start = left+1;
-                maxL = right-left-1;
-            }
-        }
-        return s.substr(start,maxL);
-    }
-};
-
-//--- method 2: linear search, better
-class Solution {
-public:
-    string longestPalindrome(string s) {
-    	int start=0, maxLength=0;
-    	int left, right;
-    	
-    	if (s.size() < 2)
-    		return s;
-
-    	for (int i = 0; i < s.size();)
-    	{
-    		left = right = i;
-    		
-    		if (s.size()-i <= maxLength/2)
-    			break;
-
-    		while(right < s.size())
-    		{
-				if (s[right] == s[right+1])
-					right++;
-				else
-				{
-					left--;
-					right++;
-					i = right;
-					break;    			
-				}
-    		}
-
-    		while(left>=0 && right<s.size() && s[left]==s[right])
-    		{
-    			left--;
-    			right++;
-    		}
-
-    		if ((right-1)-(left+1)+1 > maxLength)
-    		{
-    			maxLength = (right-1)-(left+1)+1;
-    			start = left+1;
-    		}
-    	}
-		return s.substr(start,maxLength);	
-    }
-};
-
-//--- method 3: dp
-class Solution {
-public:
-    string longestPalindrome(string s) {
-        int n = s.size(), start = 0, maxlen = 1;
-        vector<vector<int>> dp(n, vector<int>(n, 0));
-        for (int i = n-1; i >= 0; --i) {
-            dp[i][i] = 1;
-            for (int j = i+1; j < n; ++j) {
-                if (s[i] == s[j] && (i == j-1 || dp[i+1][j-1])) {
-                    dp[i][j] = 1;
-                    if (j-i+1 > maxlen) {
-                        maxlen = j-i+1;
-                        start = i;
-                    }
-                }
             }
         }
         return s.substr(start, maxlen);
     }
 };
 
-//--- method 4: brute force
+//--- method 2: dynamic programming
 class Solution {
 public:
     string longestPalindrome(string s) {
-    	int pLength = s.size();
-    	int start;
-    	int shift;
-    	int idx;
-    	bool find = false;
-    	while(pLength > 1)
-    	{
-    		start = 0;
-    		while(start+pLength <= s.size())
-    		{
-    			shift = 0;
-    			for (idx = start; idx < start+pLength/2; idx++)
-	    		{
-	    			if (s[idx] != s[start+pLength-1-shift])
-	    				break;
-	    			shift++;
-	    		}
-	    		if (idx >= start+pLength/2)
-	    		{
-	    			find = true;
-	    			break;
-	    		}
-	    		start++;
-    		}
-    		if (find)
-    		{
-    			return s.substr(start, pLength);
-    		}
-    		pLength--;
-    	}
-		return s.substr(0,1);	
+        int n = s.size(), start = 0, res = 1;
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        for (int i = n-1; i >= 0; --i) {
+            dp[i][i] = 1;
+            for (int j = i+1; j < n; ++j) {
+                if ((j-i == 1 || dp[i+1][j-1]) && s[i] == s[j]) {
+                    dp[i][j] = 1;
+                    if (res < j-i+1) {
+                        res = j-i+1;
+                        start = i;
+                    }
+                }
+            }
+        }
+        return s.substr(start, res);
     }
 };

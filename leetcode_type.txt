@@ -1,5 +1,4 @@
 --- Binary Search:
-	0009(e): Palindrome Number 
 	0023(h): Merge k Sorted Lists
 	0029(m): Divide Two Integers
 	0033(m): Search in Rotated Sorted Array
@@ -48,10 +47,12 @@
 	1389(e): Create Target Array in the Given Order
 	1539(e): Kth Missing Positive Number
 
---- Sliding Window, Double Pointer Shifting:
+--- Two Pointers:
 	0001(e): Two Sum
 	0003(m): Longest Substring Without Repeating Characters
+	0004(h): Median of Two Sorted Arrays
 	0005(m): Longest Palindromic Substring 
+	0009(e): Palindrome Number 
 	0011(m): Container With Most Water
 	0015(m): 3Sum
 	0016(m): 3Sum Closest
@@ -485,7 +486,7 @@
 	1824(m): Minimum Sideway Jumps
 	1871(m): Jump Game VII
 
---- Subarray, Subsequences:
+--- Subarray:
 	0053(e): Maximum Subarray
 	0152(m): Maximum Product Subarray
 	0159(m): Longest Substring with At Most Two Distinct Characters
@@ -694,7 +695,7 @@
 	0647(m): Palindromic Substrings
 	0680(e): Valid Palindrome II
 
---- Array Operations:
+--- Array:
 	0004(h): Median of Two Sorted Arrays
 	0006(m): ZigZag Conversion
 	0008(m): String to Integer (atoi)
@@ -1003,6 +1004,7 @@
 	0235(e): Lowest Common Ancestor of a Binary Search Tree
 	0236(m): Lowest Common Ancestor of a Binary Tree
 	0237(e): Delete Node in a Linked List
+	0250(m): Count Univalue Subtrees
 	0255(m): Verify Preorder Sequence in Binary Search Tree
 	0257(e): Binary Tree Paths
 	0270(e): Closest Binary Search Tree Value
@@ -1024,6 +1026,7 @@
 	0449(m): Serialize and Deserialize BST
 	0450(m): Delete Node in a BST
 	0501(e): Find Mode in Binary Search Tree
+	0508(m): Most Frequent Subtree Sum
 	0510(m): Inorder Successor in BST II
 	0513(m): Find Bottom Left Tree Value
 	0515(m): Find Largest Value in Each Tree Row
@@ -1035,6 +1038,7 @@
 	0549(m): Binary Tree Longest Consecutive Sequence II
 	0559(e): Maximum Depth of N-ary Tree
 	0563(e): Binary Tree Tilt
+	0572(e): Subtree of Another Tree
 	0582(m): Kill Process
 	0589(e): N-ary Tree Preorder Traversal
 	0590(e): N-ary Tree Postorder Traversal
@@ -1043,6 +1047,7 @@
 	0623(m): Add One Row to Tree
 	0637(e): Average of Levels in Binary Tree
 	0648(m): Replace Words
+	0652(m): Find Duplicate Subtrees
 	0653(e): Two Sum IV - Input is a BST
 	0654(m): Maximum Binary Tree
 	0655(m): Print Binary Tree
@@ -1126,12 +1131,6 @@
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
 	1740(m): Find Distance in a Binary Tree
 
---- Subtree:
-	0250(m): Count Univalue Subtrees
-	0508(m): Most Frequent Subtree Sum
-	0572(e): Subtree of Another Tree
-	0652(m): Find Duplicate Subtrees
-
 --- Permutations or Combinations:
 	0031(m): Next Permutation
 	0039(m): Combination Sum
@@ -1150,6 +1149,8 @@
 
 --- Math:
 	0007(e): Reverse Integer
+	0008(m): String to Integer (atoi)
+	0009(e): Palindrome Number 
 	0012(m): Integer to Roman
 	0013(e): Roman to Integer
 	0029(m): Divide Two Integers
