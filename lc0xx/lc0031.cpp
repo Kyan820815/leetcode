@@ -1,35 +1,27 @@
-//--- Q: 031. Next Permutation
+//--- Q: 0031. Next Permutation
 
-//--- method 1:
-// find first lower number than last (from right to left), 
-// then find the first number larger than it (left to right) and swap
-// sort idx_lower+1, end
+//--- method 1: find the pattern
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        int small = nums.size()-1, big;
-        for (int i = nums.size()-1; i > 0; i--)
-        {
-        	if (nums[i] > nums[i-1])
-        	{
-        		small = i-1;
-        		break;
-        	}
+        int idx = nums.size();
+        for (int i = nums.size()-1; i >=1; --i) {
+            if (nums[i-1] < nums[i]) {
+                idx = i-1;
+                break;
+            }
         }
-        if (small == nums.size()-1)
-        {
-        	reverse(nums.begin(), nums.end());
-        	return;
-        }
-        else
-        {
-        	for (big = small+1; big < nums.size(); big++)
-        	{
-        		if (nums[small] >= nums[big])
-        			break;
-        	}
-        	swap(nums[small], nums[big-1]);
-        	sort(nums.begin()+small+1, nums.end());
+        if (idx == nums.size()) {
+            reverse(nums.begin(), nums.end());
+        } else {
+            int last;
+            for (int i = idx+1; i < nums.size(); ++i) {
+                if (nums[i] > nums[idx]) {
+                    last = i;
+                }
+            }
+            swap(nums[last], nums[idx]);
+            sort(nums.begin()+idx+1, nums.end());
         }
     }
 };

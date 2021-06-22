@@ -1,4 +1,4 @@
-//--- Q: 24. Swap Nodes in Pairs
+//--- Q: 0024. Swap Nodes in Pairs
 
 /**
  * Definition for singly-linked list.
@@ -13,23 +13,14 @@
 class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
-        ListNode *last, *prev, *now;
-        ListNode *dummy = new ListNode(-1);
-        dummy->next = head;
-
-        last = dummy;
-        prev = last->next;
-        if (!prev) return dummy->next;
-        now = prev->next;
-        while(now)
-        {
-        	prev->next = now->next;
-        	now->next = prev;
-        	last->next = now;
-        	last = prev;
-        	prev = prev->next;
-        	if (!prev) return dummy->next;
-        	now = prev->next;
+        ListNode *dummy = new ListNode(-1, head), *last = dummy, *now = head;
+        while (now && now->next) {
+            auto next_now = now->next->next;
+            last->next = now->next;
+            now->next->next = now;
+            now->next = next_now;
+            last = now;
+            now = next_now;
         }
         return dummy->next;
     }

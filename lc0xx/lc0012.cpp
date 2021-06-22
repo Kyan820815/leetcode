@@ -1,21 +1,22 @@
-//--- Q: 012. Integer to Roman
+//--- Q: 0012. Integer to Roman
 
 //--- method 1: elegant solution, better
 class Solution {
 public:
     string intToRoman(int num) {
-        string table[4][10] = { {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
-                                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
-                                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
-                                {"", "M", "MM", "MMM"}};
-        int rem, count=0;
-        string out;
-        while(num != 0)
-        {            
-            out = table[count++][num % 10] + out;
-            num = num / 10;
+        vector<vector<string>> map = {{"", "I", "II", "III", "VI", "V", "IV", "IIV", "IIIV", "XI"},
+                                      {"", "X", "XX", "XXX", "LX", "L", "XL", "XXL", "XXXL", "CX"},
+                                      {"", "C", "CC", "CCC", "DC", "D", "CD", "CCD", "CCCD", "MC"},
+                                      {"", "M", "MM", "MMM"}};
+        string res = "";
+        int lv = 0;
+        while (num) {
+            int idx = num%10;
+            num /= 10;
+            res += map[lv++][idx];
         }
-        return out;
+        reverse(res.begin(), res.end());
+        return res;
     }
 };
 
@@ -23,64 +24,30 @@ public:
 class Solution {
 public:
     string intToRoman(int num) {
-    	int rem, digit = 0;
-    	string out;
-
-    	while(num != 0)
-    	{
-    		rem = num % 10;
-    		num = num / 10;
-
-			while(rem > 0)
-			{
-				if (rem == 9)
-				{
-					out = rom(10*pow(10,digit)) + out;
-					out = rom(pow(10,digit)) + out;
-					rem = 0;
-				}
-				else if (rem == 5)
-				{
-					out = rom(5*pow(10,digit)) + out;
-					rem = 0;
-				}
-				else if (rem == 4)
-				{
-					out = rom(5*pow(10,digit)) + out;
-					out = rom(pow(10,digit)) + out;
-					rem = 0;
-				}
-				else
-				{
-					out = rom(pow(10,digit)) + out;
-					rem--;
-				}
-			}
-    		digit++;
-    	}
-
-    	return out;
-    }
-
-    char rom(int num) {
-    	switch (num)
-    	{
-    		case 1:
-    			return 'I';
-    		case 5:
-    			return 'V';
-    		case 10:
-    			return 'X';
-    		case 50:
-    			return 'L';
-    		case 100:
-    			return 'C';
-    		case 500:
-    			return 'D';
-    		case 1000:
-    			return 'M';
-    		default:
-    			return '0';
-    	}
+        unordered_map<int, char> map = {{1,'I'},{5,'V'},{10,'X'},{50,'L'},
+                                        {100,'C'},{500,'D'},{1000,'M'}};
+        string res = "";
+        int level = 1;
+        while (num) {
+            int rem = num%10;
+            if (rem == 4 || rem == 9) {
+                res += map[(rem+1)*level]; 
+                res += map[level];
+            } else if (rem == 5) {
+                res += map[rem*level];
+            } else {
+                auto v = rem%5;
+                while (v--) {
+                    res += map[level];
+                }
+                if (rem/5) {
+                    res += map[5*level];
+                }
+            }
+            num /= 10;
+            level *= 10;
+        }
+        reverse(res.begin(), res.end());
+        return res;
     }
 };

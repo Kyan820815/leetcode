@@ -1,15 +1,15 @@
-//--- Q: 27. Remove Element
+//--- Q: 0027. Remove Element
 
 //--- method 1: partition tech of quick select
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-    	int start = -1;
-        for (int i = 0; i < nums.size(); ++i)
-        {
-        	if (nums[i] != val)
-        		nums[++start] = nums[i];
+        int idx = -1;
+        for (auto &num: nums) {
+            if (num != val) {
+                swap(nums[++idx], num);
+            }
         }
-        return start+1;
+        return idx+1;
     }
 };

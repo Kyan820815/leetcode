@@ -1,26 +1,17 @@
-//--- Q: 011. Container With Most Water
+//--- Q: 0011. Container With Most Water
 
-//--- always find max idx & keep it
+//--- method 1: always find min idx & keep it
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        int left = 0;
-        int right = height.size()-1;
-        int h_val;
-        int volume, max_volume=0;      
-
-     	while(left < right)
-     	{
-     		h_val = (height[left] <= height[right]) ? height[left] : height[right];
-     		volume = h_val*(right-left);
-     		if (volume > max_volume)
-     			max_volume = volume;
-
-     		if (height[left] <= height[right])
-     			left++;
-     		else
-     			right--;
-     	}
-     	return max_volume;
+        int left = 0, right = height.size()-1, res = 0;
+        while (left < right) {
+            if (height[left] < height[right]) {
+                res = max(res, (right-left)*height[left++]);
+            } else {
+                res = max(res, (right-left)*height[right--]);
+            }
+        }
+        return res;
     }
 };

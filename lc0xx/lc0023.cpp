@@ -1,4 +1,4 @@
-//--- Q: 23. Merge k Sorted Lists
+//--- Q: 0023. Merge k Sorted Lists
 
 /**
  * Definition for singly-linked list.
@@ -9,65 +9,72 @@
  * };
  */
 
-//--- method 1: divide & conquer
+//--- method 1: recursive merge
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-    	if (!lists.size()) return NULL;
-        return divide(lists, 0, lists.size()-1);
+        if (!lists.size()) {
+            return NULL;
+        }
+        return divide(0, lists.size()-1, lists);
     }
-    ListNode *divide(vector<ListNode*> &lists, int left, int right)
-    {
-    	ListNode *left_list, *right_list, *general_list;
-    	if (left < right)
-    	{
-    		int mid = (left+right) / 2;
-    		left_list = divide(lists, left, mid);
-    		right_list = divide(lists, mid+1, right);
-    		general_list = conquer(left_list, right_list);
-    	} else return lists[left];
-    	return general_list;
+    ListNode *divide(int start, int end, vector<ListNode*>& lists) {
+        if (start < end) {
+            int mid = start + (end-start)/2;
+            auto left = divide(start, mid, lists);
+            auto right = divide(mid+1, end, lists);
+            return conquer(left, right);
+        }
+        return lists[start];
     }
-    ListNode *conquer(ListNode *l1, ListNode *l2)
-    {
-    	if (!l1) return l2;
-    	if (!l2) return l1;
-    	if (l1->val < l2->val)
-    	{
-    		l1->next = conquer(l1->next, l2);
-    		return l1;
-    	}
-    	else
-    	{
-    		l2->next = conquer(l1, l2->next);
-    		return l2;
-    	}
-    	return NULL;
+    ListNode *conquer(ListNode *l1, ListNode *l2) {
+        if (!l1) {
+            return l2;
+        } else if (!l2) {
+            return l1;
+        } else {
+            if (l1->val < l2->val) {
+                l1->next = conquer(l1->next, l2);
+                return l1;
+            } else {
+                l2->next = conquer(l1, l2->next);
+                return l2;
+            }
+        }
     }
 };
 
-//--- method 2: priority_queue
+//--- method 1-2: iterative merge
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-    	ListNode *cur, *dummy = new ListNode(-1);
-    	cur = dummy;
-    	auto comp = [](ListNode *a, ListNode *b)
-    	{
-    		return a->val > b->val;
-    	};
-    	priority_queue<ListNode *, vector<ListNode *>, decltype(comp)> que(comp);
-    	for (int i = 0; i < lists.size(); ++i)
-            if (lists[i]) que.push(lists[i]);
-    	while (que.size())
-    	{
-    		ListNode *tmp = que.top();
-    		que.pop();
-            if (tmp->next)
-                que.push(tmp->next);
-    		cur->next = tmp;
-    		cur = tmp;
-    	}
-    	return dummy->next;
+        if (!lists.size()) {
+            return NULL;
+        }
+        return divide(0, lists.size()-1, lists);
+    }
+    ListNode *divide(int start, int end, vector<ListNode*>& lists) {
+        if (start < end) {
+            int mid = start + (end-start)/2;
+            auto left = divide(start, mid, lists);
+            auto right = divide(mid+1, end, lists);
+            return conquer(left, right);
+        }
+        return lists[start];
+    }
+    ListNode *conquer(ListNode *l1, ListNode *l2) {
+        ListNode *dummy = new ListNode(-1), *cur = dummy;
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
+            } else {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
+        }
+        cur->next = l1 ? l1 : l2;
+        return dummy->next;
     }
 };

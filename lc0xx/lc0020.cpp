@@ -1,4 +1,4 @@
-//--- Q: 020. Valid Parentheses
+//--- Q: 0020. Valid Parentheses
 
 //--- method 1: stack
 class Solution {

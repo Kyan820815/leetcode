@@ -1,5 +1,6 @@
 --- Binary Search:
-	0023(h): Merge k Sorted Lists
+	0004(h): Median of Two Sorted Arrays
+	0014(m): Longest Common Prefix
 	0029(m): Divide Two Integers
 	0033(m): Search in Rotated Sorted Array
 	0034(m): Find First and Last Position of Element in Sorted Array
@@ -47,6 +48,10 @@
 	1389(e): Create Target Array in the Given Order
 	1539(e): Kth Missing Positive Number
 
+--- Divide and Conquer
+	0014(m): Longest Common Prefix
+	0023(h): Merge k Sorted Lists
+
 --- Two Pointers:
 	0001(e): Two Sum
 	0003(m): Longest Substring Without Repeating Characters
@@ -57,6 +62,7 @@
 	0015(m): 3Sum
 	0016(m): 3Sum Closest
 	0018(m): 4Sum
+	0019(m): Remove Nth Node From End of List
 	0042(m): Trapping Rain Water
 	0045(h): Jump Game II
 	0055(m): Jump Game
@@ -69,6 +75,7 @@
 	0148(m): Sort List
 	0151(m): Reverse Words in a String
 	0159(m): Longest Substring with At Most Two Distinct Characters
+	0161(m): One Edit Distance
 	0165(m): Compare Version Numbers
 	0202(e): Happy Number
 	0209(m): Minimum Size Subarray Sum
@@ -88,6 +95,7 @@
 	0345(e): Reverse Vowels of a String
 	0349(e): Intersection of Two Arrays
 	0350(e): Intersection of Two Arrays II
+	0360(m): Sort Transformed Array
 	0392(e): Is Subsequence
 	0395(m): Longest Substring with At Least K Repeating Characters
 	0424(m): Longest Repeating Character Replacement
@@ -95,7 +103,9 @@
 	0443(m): String Compression
 	0455(e): Assign Cookies
 	0457(m): Circular Array Loop
+	0480(h): Sliding Window Median
 	0487(m): Max Consecutive Ones II
+	0524(m): Longest Word in Dictionary through Deleting
 	0567(m): Permutation in String 
 	0594(e): Longest Harmonious Subsequence
 	0611(m): Valid Triangle Number
@@ -107,6 +117,7 @@
 	0763(m): Partition Labels
 	0769(m): Max Chunks To Make Sorted
 	0777(m): Swap Adjacent in LR String
+	0792(m): Number of Matching Subsequences
 	0809(m): Expressive Words
 	0838(m): Push Dominoes
 	0844(e): Backspace String Compare
@@ -144,10 +155,15 @@
 	1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum
 	1544(e): Make The String Great
 	1570(m): Dot Product of Two Sparse Vectors
+	1695(m): Maximum Erasure Value
 	1696(m): Jump Game VI
 	1700(e): Number of Students Unable to Eat Lunch
 	1708(e): Largest Subarray Length K
 	1754(m): Largest Merge Of Two Strings
+	1769(m): Minimum Number of Operations to Move All Balls to Each Box
+	1800(e): Maximum Ascending Subarray Sum
+	1839(m): Longest Substring Of All Vowels in Order
+	1869(e): Longer Contiguous Segments of Ones than Zeros
 
 --- Quick Select:
 	0215(m): Kth Largest Element in an Array
@@ -210,6 +226,8 @@
 	1636(e): Sort Array by Increasing Frequency
 	1657(m): Determine if Two Strings Are Close
 	1700(e): Number of Students Unable to Eat Lunch
+	1874(m): Minimize Product Sum of Two Arrays
+	1897(e): Redistribute Characters to Make All Strings Equal
 
 --- Union Find:
 	0261(m): Graph Valid Tree
@@ -232,6 +250,7 @@
 
 --- Stack:
 	0020(m): Valid Parentheses 
+	0032(h): Longest Valid Parentheses
 	0042(m): Trapping Rain Water
 	0071(m): Simplify Path
 	0084(h): Largest Rectangle in Histogram
@@ -286,8 +305,10 @@
 	1598(e): Crawler Log Folder
 	1614(e): Maximum Nesting Depth of the Parentheses
 	1673(m): Find the Most Competitive Subsequence
+	1762(m): Buildings With an Ocean View
 
 --- Queue:
+	0017(m): Letter Combinations of a Phone Number
 	0100(e): Same Tree
 	0101(e): Symmetric Tree
 	0102(m): Binary Tree Level Order Traversal 
@@ -350,6 +371,7 @@
 	1429(m): First Unique Number
 	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
 	1654(m): Minimum Jumps to Reach Home 
+	1670(m): Design Front Middle Back Queue
 	1696(m): Jump Game VI
 	1730(m): Shortest Path to Get Food
 	1824(m): Minimum Sideway Jumps
@@ -359,6 +381,7 @@
 	0017(m): Letter Combinations of a Phone Number
 	0022(m): Generate Parentheses
 	0051(h): N-Queens
+	0052(h): N-Queens II
 	0079(m): Word Search
 	0093(m): Restore IP Addresses
 	0131(m): Palindrome Partitioning
@@ -403,8 +426,21 @@
 	1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
 	1666(m): Change the Root of a Binary Tree
 
+--- Greedy:
+	1647(m): Minimum Deletions to Make Character Frequencies Unique
+	1758(e): Minimum Changes To Make Alternating Binary String
+	1762(m): Buildings With an Ocean View
+	1769(m): Minimum Number of Operations to Move All Balls to Each Box
+	1827(e): Minimum Operations to Make the Array Increasing
+	1874(m): Minimize Product Sum of Two Arrays
+	1893(e): Check if All the Integers in a Range Are Covered
+	1897(e): Redistribute Characters to Make All Strings Equal
+	1903(e): Largest Odd Number in String
+
 --- Dynamic Programming:
 	0005(m): Longest Palindromic Substring
+	0022(m): Generate Parentheses
+	0032(h): Longest Valid Parentheses
 	0045(h): Jump Game II
 	0055(m): Jump Game
 	0070(m): Climbing Stairs
@@ -465,6 +501,7 @@
 	0769(m): Max Chunks To Make Sorted
 	0801(m): Minimum Swaps To Make Sequences Increasing
 	0823(m): Binary Trees With Factors
+	0828(h): Count Unique Characters of All Substrings of a Given String
 	0861(m): Score After Flipping Matrix
 	0896(e): Monotonic Array
 	0915(m): Partition Array into Disjoint Intervals
@@ -497,6 +534,7 @@
 	0392(e): Is Subsequence
 	0491(m): Increasing Subsequences
 	0523(m): Continuous Subarray Sum
+	0524(m): Longest Word in Dictionary through Deleting
 	0560(m): Subarray Sum Equals K
 	0594(e): Longest Harmonious Subsequence
 	0643(e): Maximum Average Subarray I
@@ -532,6 +570,9 @@
 
 --- Map:
 	0001(e): Two Sum
+	0012(m): Integer to Roman
+	0013(e): Roman to Integer
+	0015(m): 3Sum
 	0036(m): Valid Sudoku
 	0049(m): Group Anagrams
 	0126(h): Word Ladder II
@@ -557,6 +598,7 @@
 	0414(e): Third Maximum Number
 	0451(m): 4Sum II
 	0460(h): LFU Cache
+	0480(h): Sliding Window Median
 	0488(h): Zuma Game
 	0489(h): Robot Room Cleaner
 	0500(e): Keyboard Row
@@ -605,6 +647,7 @@
 	1660(m): Correct a Binary Tree
 	1666(m): Change the Root of a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
+	1902(m): Depth of BST Given Insertion Order
 
 --- Design:
 	0146(m): LRU Cache
@@ -633,6 +676,7 @@
 	1603(e): Design Parking System
 	1628(m): Design an Expression Tree With Evaluate Function 
 	1656(e): Design an Ordered Stream
+	1670(m): Design Front Middle Back Queue
 
 --- Linked List:
 	0002(m): Add Two Numbers 
@@ -673,6 +717,7 @@
 	1474(e): Delete N Nodes After M Nodes of a Linked List
 	1485(m): Clone Binary Tree With Random Pointer
 	1669(m): Merge In Between Linked Lists
+	1670(m): Design Front Middle Back Queue
 	1721(m): Swapping Nodes in a Linked List
 	1836(m): Remove Duplicates From an Unsorted Linked List
 
@@ -695,17 +740,33 @@
 	0647(m): Palindromic Substrings
 	0680(e): Valid Palindrome II
 
---- Array:
-	0004(h): Median of Two Sorted Arrays
+--- String:
+	0003(m): Longest Substring Without Repeating Characters
+	0005(m): Longest Palindromic Substring 
 	0006(m): ZigZag Conversion
 	0008(m): String to Integer (atoi)
+	0012(m): Integer to Roman
+	0013(e): Roman to Integer
 	0014(m): Longest Common Prefix
+	0017(m): Letter Combinations of a Phone Number
+	0020(m): Valid Parentheses 
+	0022(m): Generate Parentheses
+	0028(e): Implement strStr()
+	0032(h): Longest Valid Parentheses
+	0161(m): One Edit Distance
+	1773(e): Count Items Matching a Rule
+	1832(e): Check if the Sentence Is Pangram
+
+--- Array:
+	0004(h): Median of Two Sorted Arrays
 	0015(m): 3Sum
 	0016(m): 3Sum Closest
 	0018(m): 4Sum
 	0026(e): Remove Duplicates from Sorted Array
 	0027(e): Remove Element
-	0028(e): Implement strStr()
+	0031(m): Next Permutation
+	0033(m): Search in Rotated Sorted Array
+	0034(m): Find First and Last Position of Element in Sorted Array
 	0035(m): Search Insert Position
 	0041(h): First Missing Positive
 	0048(m): Rotate Image
@@ -859,6 +920,7 @@
 	1732(e): Find the Highest Altitude
 	1736(e): Latest Time by Replacing Hidden Digits
 	1753(m): Maximum Score From Removing Stones
+	1769(m): Minimum Number of Operations to Move All Balls to Each Box
 	1784(e): Check if Binary String Has at Most One Segment of Ones
 
 --- Bit Operations
@@ -889,6 +951,7 @@
 	1470(e): Shuffle the Array
 	1486(e): XOR Operation in an Array
 	1506(m): Find Root of N-Ary Tree
+	1832(e): Check if the Sentence Is Pangram
 
 --- Intervals:
 	0056(m): Merge Intervals
@@ -905,6 +968,7 @@
 	1229(m): Meeting Scheduler
 	1272(m): Remove Interval
 	1450(e): Number of Students Doing Homework at a Given Time
+	1893(e): Check if All the Integers in a Range Are Covered
 
 --- Graph:
 	0062(m): Unique Paths
@@ -1130,8 +1194,9 @@
 	1660(m): Correct a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
 	1740(m): Find Distance in a Binary Tree
+	1902(m): Depth of BST Given Insertion Order
 
---- Permutations or Combinations:
+--- Sequence:
 	0031(m): Next Permutation
 	0039(m): Combination Sum
 	0040(m): Combination Sum II
@@ -1167,6 +1232,7 @@
 	0231(e): Power of Two
 	0258(e): Add Digits
 	0311(m): Sparse Matrix Multiplication 
+	0360(m): Sort Transformed Array
 	0415(e): Add Strings
 	0463(e): Island Perimeter
 	0507(e): Perfect Number
@@ -1175,6 +1241,7 @@
 	0724(e): Find Pivot Index
 	0754(m): Reach a Number
 	0914(e): X of a Kind in a Deck of Cards
+	0977(e): Squares of a Sorted Array
 	0991(m): Broken Calculator
 	1037(e): Valid Boomerang
 	1128(e): Number of Equivalent Domino Pairs
@@ -1185,8 +1252,9 @@
 	1359(h): Count All Valid Pickup and Delivery Options
 	1518(e): Water Bottles
 	1716(e): Calculate Money in Leetcode Bank
+	1822(e): Sign of the Product of an Array
 
---- Resivoir Sampling:
+--- Reservoir Sampling:
 	0382(m): Linked List Random Node
 	0384(m): Shuffle an Array
 	0398(m): Random Pick Index

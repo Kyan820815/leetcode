@@ -1,3 +1,5 @@
+//--- Q: 0025. Reverse Nodes in k-Group
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -8,28 +10,30 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+//--- method 1: initialize revH as next start of reverse list 
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode *dummy = new ListNode(-1), *now = head, *prev = dummy;
-        dummy->next = head;
+        ListNode *dummy = new ListNode(-1, head), *now = head, *last = dummy;
         while (now) {
-            ListNode *tmp = now;
-            for (int i = 0; i < k; ++i) {
-                if (!tmp) {
-                    return dummy->next;
-                }
-                tmp = tmp->next;
+            int i = 0;
+            auto cur = now;
+            for (i = 0; i < k && cur; ++i) {
+                cur = cur->next;
             }
-            ListNode *revH = tmp, *last_now = now;
-            while (now != tmp) {
-                ListNode *next_n = now->next;
+            if (i != k) {
+                break;
+            }
+            ListNode *revH = cur, *nlast = now;
+            while (now != cur) {
+                auto tmp = now->next;
                 now->next = revH;
                 revH = now;
-                now = next_n;
+                now = tmp;
             }
-            prev->next = revH;
-            prev = last_now;
+            last->next = revH;
+            last = nlast;
         }
         return dummy->next;
     }

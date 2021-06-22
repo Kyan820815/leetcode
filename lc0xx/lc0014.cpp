@@ -1,21 +1,18 @@
-//--- Q: 014. Longest Common Prefix
+//--- Q: 0014. Longest Common Prefix
 
 //--- method 1: vertical scanning, better
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-    	if (strs.size() == 0)
-    		return "";
-
-    	for (int i = 0; i < strs[0].size(); ++i)
-    	{
-    		for (int j = 1; j < strs.size(); ++j)
-    		{ 
-				if ((i+1) > strs[j].size() || strs[0][i] != strs[j][i])
-                    return strs[0].substr(0, i);
-    		}
-    	}
-    	return strs[0];
+        int len = strs[0].size();
+        for (int i = 0; i < len; ++i) {
+            for (int j = 1; j < strs.size(); ++j) {
+                if (strs[j][i] != strs[0][i]) {
+                    return strs[0].substr(0,i);
+                }
+            }
+        }
+        return strs[0];
     }
 };
 
@@ -23,28 +20,18 @@ public:
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        int minIdx;
-
-        if (strs.size() == 0)
-            return "";
-
-        minIdx = strs[0].size();
-
-        for (int i = 0; i < strs.size()-1; ++i)
-        {
-            minIdx = (minIdx < strs[i+1].size()) ? minIdx : strs[i+1].size();
-            for (int j = 0; j < minIdx; ++j)
-            {
-                if (strs[i][j] != strs[i+1][j])
-                {
-                    minIdx = j;
+        int len = strs[0].size();
+        for (int i = 1; i < strs.size(); ++i) {
+            int cur_len = min(len, (int)strs[i].size());
+            for (int j = 0; j < cur_len; ++j) {
+                if (strs[0][j] != strs[i][j]) {
+                    cur_len = j;
                     break;
                 }
             }
-            if (minIdx == 0)   
-                break;
+            len = cur_len;
         }
-        return strs[0].substr(0,minIdx);
+        return strs[0].substr(0,len);
     }
 };
 
@@ -52,40 +39,25 @@ public:
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        string long_str;
-        if (strs.size() == 0) return "";
-        mergesort(strs, 0, strs.size()-1, long_str);
-        return long_str;
+        return divide(0, strs.size()-1, strs);
     }
-
-    void mergesort(vector<string>& strs, int start, int end, string &long_str)
-    {
-        int mid;
-        string long_l, long_r;
-        if (start < end)
-        {
-            mid = (start+end)/2;
-            mergesort(strs, start, mid, long_l);
-            mergesort(strs, mid+1, end, long_r);
-            merge(long_l, long_r, long_str);
+    string divide(int start, int end, vector<string>& strs) {
+        if (start < end) {
+            int mid = start + (end-start)/2;
+            auto left = divide(start, mid, strs);
+            auto right = divide(mid+1, end, strs);
+            return conquer(left, right);
         }
-        else long_str = strs[start];
+        return strs[start];
     }
-
-    void merge(string left, string right, string &long_str)
-    {
-        int minIdx;
-        minIdx = (left.size() < right.size()) ? left.size() : right.size();
-
-        for (int i = 0; i < minIdx; ++i)
-        {
-            if (left[i] != right[i])
-            {
-                minIdx = i;
-                break;
+    string conquer(string &left, string &right) {
+        int len = min(left.size(), right.size());
+        for (int i = 0; i < len; ++i) {
+            if (left[i] != right[i]) {
+                return left.substr(0,i);
             }
         }
-        long_str = left.substr(0,minIdx);
+        return left.substr(0,len);
     }
 };
 
@@ -93,38 +65,31 @@ public:
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        string long_str;
-        int low, high;
-        int mid, minL;
-        
-        if (strs.size() == 0) return "";
-        minL = strs[0].size();
-        for (int i = 1; i < strs.size(); ++i)
-            if (strs[i].size() < minL)
-                minL = strs[i].size();
-
-        low = 0, high = minL-1;
-
-        while(low < high)
-        {
-            mid = (low+high)/2;
-            if (!findLCP(strs,mid))
-                high = mid;
-            else
-                low = mid+1;
+        int len = INT_MAX;
+        for (auto &str: strs) {
+            len = min(len, (int)str.size());
         }
-        if (findLCP(strs,low))
-            return strs[0].substr(0,low+1);
-        else return strs[0].substr(0,low);
+        int left = 0, right = len;
+        while (left < right) {
+            int mid = left + (right-left)/2;
+            if (isCommon(mid, strs)) {
+                left =  mid+1;
+            } else {
+                right = mid;
+            }
+        }
+        if (!left) {
+            return "";
+        }
+        return isCommon(left, strs) ? strs[0].substr(0,left) : strs[0].substr(0,left-1);
     }
-
-    bool findLCP(vector<string>& strs, int L)
-    {
-        string comp = strs[0].substr(0,L+1);
-        for (int i = 1; i < strs.size(); ++i)
-        {
-            if (comp.compare(strs[i].substr(0,L+1)) != 0)
-                return false;
+    bool isCommon(int len, vector<string> &strs) {
+        for (int i = 0; i < len; ++i) {
+            for (int j = 1; j < strs.size(); ++j) {
+               if (strs[j][i] != strs[0][i]) {
+                    return false;
+                }
+            }
         }
         return true;
     }

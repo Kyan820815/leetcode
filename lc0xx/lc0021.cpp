@@ -1,4 +1,4 @@
-//--- Q: 021. Merge Two Sorted Lists
+//--- Q: 0021. Merge Two Sorted Lists
 
 /**
  * Definition for singly-linked list.
@@ -9,73 +9,42 @@
  * };
  */
 
- //--- method 1: divide & conquer
+ //--- method 1: iterative merge
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        ListNode *l3 = NULL, *rear, *cur;
-
-        while(l1 != NULL && l2 != NULL)
-        {
-        	if (l1->val < l2->val)
-        	{
-        		cur = new ListNode(l1->val);
-        		l1 = l1->next;
-        	}
-        	else
-        	{
-        		cur = new ListNode(l2->val);
-        		l2 = l2->next;
-        	}
-        	if (l3 == NULL) l3 = rear = cur;
-        	else
-        	{
-        		rear->next = cur;
-        		rear = cur;
-        	}
+        ListNode *dummy = new ListNode(-1), *cur = dummy;
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
+            } else {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
         }
-        while(l1 != NULL)
-        {
-        	cur = new ListNode(l1->val);
-        	if (l3 == NULL) l3 = rear = cur;
-        	else
-        	{
-        		rear->next = cur;
-        		rear = cur;
-        	}
-        	l1 = l1->next;
-        }
-        while(l2 != NULL)
-        {
-        	cur = new ListNode(l2->val);
-        	if (l3 == NULL) l3 = rear = cur;
-        	else
-        	{
-        		rear->next = cur;
-        		rear = cur;
-        	}
-        	l2 = l2->next;
-        }
-        return l3;
+        cur->next = l1 ? l1 : l2;
+        return dummy->next;
     }
 };
 
-//--- method 2: recursive solution
+//--- method 2: recursive merge
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        if (l1 == NULL) return l2;
-        if (l2 == NULL) return l1;
-
-        if (l1->val <= l2->val)
-        {
-        	l1->next = mergeTwoLists(l1->next, l2);
-        	return l1;
-        }
-        else
-        {
-        	l2->next = mergeTwoLists(l1, l2->next);
-        	return l2;
+        if (!l1) {
+            return l2;
+        } else if (!l2) {
+            return l1;
+        } else {
+            if (l1->val < l2->val) {
+                l1->next = mergeTwoLists(l1->next, l2);
+                return l1;
+            } else {
+                l2->next = mergeTwoLists(l1, l2->next);
+                return l2;
+            }
         }
     }
 };
