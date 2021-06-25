@@ -29,6 +29,7 @@
 	0540(m): Single Element in a Sorted Array
 	0658(m): Find K Closest Elements
 	0704(e): Binary Search
+	0744(e): Find Smallest Letter Greater Than Target
 	0852(e): Peak Index in a Mountain Array
 	0875(m): Koko Eating Bananas
 	0981(m): Time Based Key-Value Store
@@ -37,6 +38,7 @@
 	1064(e): Fixed Point
 	1095(h): Find in Mountain Array
 	1150(e): Check If a Number Is Majority Element in a Sorted Array
+	1198(m): Find Smallest Common Element in All Rows
 	1228(e): Missing Number In Arithmetic Progression
 	1231(h): Divide Chocolate
 	1268(m): Search Suggestions System
@@ -47,6 +49,7 @@
 	1337(e): The K Weakest Rows in a Matrix
 	1389(e): Create Target Array in the Given Order
 	1539(e): Kth Missing Positive Number
+	1608(e): Special Array With X Elements Greater Than or Equal X
 
 --- Divide and Conquer
 	0014(m): Longest Common Prefix
@@ -112,6 +115,7 @@
 	0622(m): Design Circular Queue
 	0641(m): Design Circular Deque
 	0643(e): Maximum Average Subarray I
+	0678(m): Valid Parenthesis String
 	0696(e): Count Binary Substrings
 	0713(m): Subarray Product Less Than K
 	0763(m): Partition Labels
@@ -155,11 +159,13 @@
 	1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum
 	1544(e): Make The String Great
 	1570(m): Dot Product of Two Sparse Vectors
+	1662(e): Check If Two String Arrays are Equivalent
 	1695(m): Maximum Erasure Value
 	1696(m): Jump Game VI
 	1700(e): Number of Students Unable to Eat Lunch
 	1708(e): Largest Subarray Length K
 	1754(m): Largest Merge Of Two Strings
+	1768(e): Merge Strings Alternately
 	1769(m): Minimum Number of Operations to Move All Balls to Each Box
 	1800(e): Maximum Ascending Subarray Sum
 	1839(m): Longest Substring Of All Vowels in Order
@@ -299,6 +305,7 @@
 	1381(m): Design a Stack With Increment Operation
 	1472(m): Design Browser History
 	1475(e): Final Prices With a Special Discount in a Shop
+	1504(m): Count Submatrices With All Ones
 	1541(m): Minimum Insertions to Balance a Parentheses String
 	1544(e): Make The String Great
 	1586(m): Binary Search Tree Iterator II
@@ -357,6 +364,7 @@
 	1059(m): All Paths from Source Lead to Destination
 	1091(m): Shortest Path in Binary Matrix
 	1129(m): Shortest Path with Alternating Colors 
+	1136(m): Parallel Courses
 	1161(m): Maximum Level Sum of a Binary Tree
 	1162(m): As Far from Land as Possible
 	1245(m): Tree Diameter
@@ -427,6 +435,7 @@
 	1666(m): Change the Root of a Binary Tree
 
 --- Greedy:
+	0678(m): Valid Parenthesis String
 	1647(m): Minimum Deletions to Make Character Frequencies Unique
 	1758(e): Minimum Changes To Make Alternating Binary String
 	1762(m): Buildings With an Ocean View
@@ -493,6 +502,7 @@
 	0647(m): Palindromic Substrings
 	0650(m): 2 Keys Keyboard
 	0659(m): Split Array into Consecutive Subsequences
+	0678(m): Valid Parenthesis String
 	0673(m): Number of Longest Increasing Subsequence
 	0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
 	0718(m): Maximum Length of Repeated Subarray
@@ -520,6 +530,7 @@
 	1277(m): Count Square Submatrices with All Ones
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1314(m): Matrix Block Sum
+	1504(m): Count Submatrices With All Ones
 	1824(m): Minimum Sideway Jumps
 	1871(m): Jump Game VII
 
@@ -614,9 +625,11 @@
 	0729(m): My Calendar I
 	0731(m): My Calendar II
 	0740(m): Delete and Earn
+	0760(e): Find Anagram Mappings
 	0811(e): Subdomain Visit Count
 	0819(e): Most Common Word
 	0874(e): Walking Robot Simulation
+	0884(e): Uncommon Words from Two Sentences
 	0888(e): Fair Candy Swap
 	0890(m): Find and Replace Pattern
 	0893(e): Groups of Special-Equivalent Strings
@@ -647,6 +660,7 @@
 	1660(m): Correct a Binary Tree
 	1666(m): Change the Root of a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
+	1684(e): Count the Number of Consistent Strings
 	1902(m): Depth of BST Given Insertion Order
 
 --- Design:
@@ -754,9 +768,21 @@
 	0028(e): Implement strStr()
 	0032(h): Longest Valid Parentheses
 	0161(m): One Edit Distance
+	0678(m): Valid Parenthesis String
+	0884(e): Uncommon Words from Two Sentences
+	1422(e): Maximum Score After Splitting a String
+	1624(e): Largest Substring Between Two Equal Characters
+	1662(e): Check If Two String Arrays are Equivalent
+	1684(e): Count the Number of Consistent Strings
+	1704(e): Determine if String Halves Are Alike
+	1768(e): Merge Strings Alternately
 	1773(e): Count Items Matching a Rule
+	1796(e): Second Largest Digit in a String
+	1816(e): Truncate Sentence
 	1832(e): Check if the Sentence Is Pangram
-
+	1844(e): Replace All Digits with Characters
+	1859(e): Sorting the Sentence
+	
 --- Array:
 	0004(h): Median of Two Sorted Arrays
 	0015(m): 3Sum
@@ -825,6 +851,7 @@
 	0724(e): Find Pivot Index
 	0738(m): Monotone Increasing Digits
 	0747(e): Largest Number At Least Twice of Others
+	0760(e): Find Anagram Mappings
 	0766(e): Toeplitz Matrix
 	0796(e): Rotate String
 	0807(m): Max Increase to Keep City Skyline
@@ -850,6 +877,7 @@
 	0944(e): Delete Columns to Make Sorted
 	0950(m): Reveal Cards In Increasing Order
 	0957(m): Prison Cells After N Days
+	0961(e): N-Repeated Element in Size 2N Array
 	0969(m): Pancake Sorting
 	0976(e): Largest Perimeter Triangle
 	0978(m): Longest Turbulent Subarray
@@ -873,6 +901,7 @@
 	1160(e): Find Words That Can Be Formed by Characters
 	1180(e): Count Substrings with Only One Distinct Letter
 	1184(e): Distance Between Bus Stops
+	1198(m): Find Smallest Common Element in All Rows
 	1217(e): Play with Chips
 	1221(e): Split a String in Balanced Strings
 	1243(e): Array Transformation
@@ -906,11 +935,13 @@
 	1464(e): Maximum Product of Two Elements in an Array
 	1491(e): Average Salary Excluding the Minimum and Maximum Salary
 	1502(e): Can Make Arithmetic Progression From Sequence
+	1504(m): Count Submatrices With All Ones
 	1507(e): Reformat Date
 	1528(e): Shuffle String
 	1550(e): Three Consecutive Odds
 	1572(e): Matrix Diagonal Sum
 	1578(m): Minimum Deletion Cost to Avoid Repeating Letters
+	1608(e): Special Array With X Elements Greater Than or Equal X
 	1619(e): Mean of Array After Removing Some Elements
 	1629(e): Slowest Key
 	1668(e): Maximum Repeating Substring
@@ -1021,6 +1052,7 @@
 	1102(m): Path With Maximum Minimum Value
 	1129(m): Shortest Path with Alternating Colors 
 	1135(m): Connecting Cities With Minimum Cost
+	1136(m): Parallel Courses
 	1162(m): As Far from Land as Possible
 	1192(h): Critical Connections in a Network
 	1219(m): Path with Maximum Gold
