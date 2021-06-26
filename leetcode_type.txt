@@ -170,11 +170,13 @@
 	1800(e): Maximum Ascending Subarray Sum
 	1839(m): Longest Substring Of All Vowels in Order
 	1869(e): Longer Contiguous Segments of Ones than Zeros
+	1877(m): Minimize Maximum Pair Sum in Array
 
 --- Quick Select:
 	0215(m): Kth Largest Element in an Array
 	0378(m): Kth Smallest Element in a Sorted Matrix
 	0973(m): K Closest Points to Origin
+	1387(m): Sort Integers by The Power Value
 
 --- Priority Queue:
 	0215(m): Kth Largest Element in an Array
@@ -427,12 +429,14 @@
 	0784(e): Letter Case Permutation
 	0802(m): Find Eventual Safe States
 	0841(m): Keys and Rooms
+	1020(m): Number of Enclaves
 	1137(e): N-th Tribonacci Number
 	1197(m): Minimum Knight Moves
 	1236(m): Web Crawler
 	1340(h): Jump Game V
 	1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
 	1666(m): Change the Root of a Binary Tree
+	1905(m): Count Sub Islands
 
 --- Greedy:
 	0678(m): Valid Parenthesis String
@@ -442,6 +446,7 @@
 	1769(m): Minimum Number of Operations to Move All Balls to Each Box
 	1827(e): Minimum Operations to Make the Array Increasing
 	1874(m): Minimize Product Sum of Two Arrays
+	1877(m): Minimize Maximum Pair Sum in Array
 	1893(e): Check if All the Integers in a Range Are Covered
 	1897(e): Redistribute Characters to Make All Strings Equal
 	1903(e): Largest Odd Number in String
@@ -661,6 +666,7 @@
 	1666(m): Change the Root of a Binary Tree
 	1676(m): Lowest Common Ancestor of a Binary Tree IV
 	1684(e): Count the Number of Consistent Strings
+	1772(m): Sort Features by Popularity
 	1902(m): Depth of BST Given Insertion Order
 
 --- Design:
@@ -769,20 +775,24 @@
 	0032(h): Longest Valid Parentheses
 	0161(m): One Edit Distance
 	0678(m): Valid Parenthesis String
+	0791(m): Custom Sort String
 	0884(e): Uncommon Words from Two Sentences
+	1065(e): Index Pairs of a String
+	1165(e): Single-Row Keyboard
 	1422(e): Maximum Score After Splitting a String
 	1624(e): Largest Substring Between Two Equal Characters
 	1662(e): Check If Two String Arrays are Equivalent
 	1684(e): Count the Number of Consistent Strings
 	1704(e): Determine if String Halves Are Alike
 	1768(e): Merge Strings Alternately
+	1772(m): Sort Features by Popularity
 	1773(e): Count Items Matching a Rule
 	1796(e): Second Largest Digit in a String
 	1816(e): Truncate Sentence
 	1832(e): Check if the Sentence Is Pangram
 	1844(e): Replace All Digits with Characters
 	1859(e): Sorting the Sentence
-	
+
 --- Array:
 	0004(h): Median of Two Sorted Arrays
 	0015(m): 3Sum
@@ -887,6 +897,7 @@
 	1005(e): Maximize Sum Of Array After K Negations
 	1007(m): Minimum Domino Rotations For Equal Row
 	1013(e): Partition Array Into Three Parts With Equal Sum
+	1020(m): Number of Enclaves
 	1025(e): Divisor Game
 	1029(e): Two City Scheduling
 	1041(m): Robot Bounded In Circle
@@ -922,6 +933,7 @@
 	1351(e): Count Negative Numbers in a Sorted Matrix
 	1380(e): Lucky Numbers in a Matrix 
 	1385(e): Find the Distance Value Between Two Arrays
+	1387(m): Sort Integers by The Power Value
 	1395(m): Count Number of Teams
 	1399(e): Count Largest Group
 	1408(e): String Matching in an Array
@@ -953,6 +965,8 @@
 	1753(m): Maximum Score From Removing Stones
 	1769(m): Minimum Number of Operations to Move All Balls to Each Box
 	1784(e): Check if Binary String Has at Most One Segment of Ones
+	1877(m): Minimize Maximum Pair Sum in Array
+	1905(m): Count Sub Islands
 
 --- Bit Operations
 	0067(e): Add Binary 
@@ -1047,6 +1061,7 @@
 	0994(e): Rotting Oranges
 	0997(e): Find the Town Judge
 	0999(e): Available Captures for Rook
+	1020(m): Number of Enclaves
 	1034(m): Coloring A Border
 	1059(m): All Paths from Source Lead to Destination
 	1102(m): Path With Maximum Minimum Value
@@ -1062,6 +1077,7 @@
 	1391(m): Check if There is a Valid Path in a Grid
 	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
 	1557(m): Minimum Number of Vertices to Reach All Nodes
+	1905(m): Count Sub Islands
 
 --- Tree:
 	0094(m): Binary Tree Inorder Traversal
@@ -1182,6 +1198,7 @@
 	1026(m): Maximum Difference Between Node and Ancestor
 	1028(h): Recover a Tree From Preorder Traversal
 	1038(m): Binary Search Tree to Greater Sum Tree
+	1065(e): Index Pairs of a String
 	1080(m): Insufficient Nodes in Root to Leaf Paths
 	1104(m): Path In Zigzag Labelled Binary Tree
 	1110(m): Delete Nodes And Return Forest
