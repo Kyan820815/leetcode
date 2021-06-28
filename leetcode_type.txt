@@ -1,6 +1,6 @@
 --- Binary Search:
 	0004(h): Median of Two Sorted Arrays
-	0014(m): Longest Common Prefix
+	0014(e): Longest Common Prefix
 	0029(m): Divide Two Integers
 	0033(m): Search in Rotated Sorted Array
 	0034(m): Find First and Last Position of Element in Sorted Array
@@ -52,7 +52,7 @@
 	1608(e): Special Array With X Elements Greater Than or Equal X
 
 --- Divide and Conquer
-	0014(m): Longest Common Prefix
+	0014(e): Longest Common Prefix
 	0023(h): Merge k Sorted Lists
 
 --- Two Pointers:
@@ -66,9 +66,8 @@
 	0016(m): 3Sum Closest
 	0018(m): 4Sum
 	0019(m): Remove Nth Node From End of List
-	0042(m): Trapping Rain Water
-	0045(h): Jump Game II
-	0055(m): Jump Game
+	0042(h): Trapping Rain Water
+	0058(e): Length of Last Word
 	0076(h): Minimum Window Substring
 	0088(e): Merge Sorted Array
 	0125(e): Valid Palindrome
@@ -257,9 +256,9 @@
 	1319(m): Number of Operations to Make Network Connected
 
 --- Stack:
-	0020(m): Valid Parentheses 
+	0020(e): Valid Parentheses 
 	0032(h): Longest Valid Parentheses
-	0042(m): Trapping Rain Water
+	0042(h): Trapping Rain Water
 	0071(m): Simplify Path
 	0084(h): Largest Rectangle in Histogram
 	0105(m): Construct Binary Tree from Preorder and Inorder Traversal
@@ -390,8 +389,14 @@
 --- Recursion:
 	0017(m): Letter Combinations of a Phone Number
 	0022(m): Generate Parentheses
-	0051(h): N-Queens
+	0039(m): Combination Sum
+	0040(m): Combination Sum II
+	0046(m): Permutations
+	0047(m): Permutations II
+	0050(m): Pow(x, n)
+	0051(h): N-queens
 	0052(h): N-Queens II
+	0060(h): Permutation Sequence
 	0079(m): Word Search
 	0093(m): Restore IP Addresses
 	0131(m): Palindrome Partitioning
@@ -439,6 +444,8 @@
 	1905(m): Count Sub Islands
 
 --- Greedy:
+	0045(m): Jump Game II
+	0055(m): Jump Game
 	0678(m): Valid Parenthesis String
 	1647(m): Minimum Deletions to Make Character Frequencies Unique
 	1758(e): Minimum Changes To Make Alternating Binary String
@@ -455,7 +462,8 @@
 	0005(m): Longest Palindromic Substring
 	0022(m): Generate Parentheses
 	0032(h): Longest Valid Parentheses
-	0045(h): Jump Game II
+	0045(m): Jump Game II
+	0053(e): Maximum Subarray
 	0055(m): Jump Game
 	0070(m): Climbing Stairs
 	0072(h): Edit Distance
@@ -767,12 +775,16 @@
 	0008(m): String to Integer (atoi)
 	0012(m): Integer to Roman
 	0013(e): Roman to Integer
-	0014(m): Longest Common Prefix
+	0014(e): Longest Common Prefix
 	0017(m): Letter Combinations of a Phone Number
-	0020(m): Valid Parentheses 
+	0020(e): Valid Parentheses 
 	0022(m): Generate Parentheses
 	0028(e): Implement strStr()
 	0032(h): Longest Valid Parentheses
+	0038(m): Count and Say
+	0043(m): Multiply Strings
+	0049(m): Group Anagrams
+	0058(e): Length of Last Word
 	0161(m): One Edit Distance
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
@@ -803,11 +815,22 @@
 	0031(m): Next Permutation
 	0033(m): Search in Rotated Sorted Array
 	0034(m): Find First and Last Position of Element in Sorted Array
-	0035(m): Search Insert Position
+	0035(e): Search Insert Position
+	0036(m): Valid Sudoku
+	0039(m): Combination Sum
+	0040(m): Combination Sum II
 	0041(h): First Missing Positive
+	0042(h): Trapping Rain Water
+	0045(m): Jump Game II
+	0046(m): Permutations
+	0047(m): Permutations II
 	0048(m): Rotate Image
+	0051(h): N-queens
+	0052(h): N-Queens II
 	0054(m): Spiral Matrix
-	0058(e): Length of Last Word
+	0055(m): Jump Game
+	0056(m): Merge Intervals
+	0057(m): Insert Interval
 	0059(m): Spiral Matrix II
 	0073(m): Set Matrix Zeroes
 	0074(m): Search a 2D Matrix
@@ -1000,7 +1023,7 @@
 
 --- Intervals:
 	0056(m): Merge Intervals
-	0057(h): Insert Interval
+	0057(m): Insert Interval
 	0252(e): Meeting Rooms
 	0435(m): Non-overlapping Intervals
 	0452(m): Minimum Number of Arrows to Burst Balloons
@@ -1268,7 +1291,6 @@
 	0012(m): Integer to Roman
 	0013(e): Roman to Integer
 	0029(m): Divide Two Integers
-	0038(e): Count and Say
 	0043(m): Multiply Strings
 	0050(m): Pow(x, n)
 	0066(e): Plus One

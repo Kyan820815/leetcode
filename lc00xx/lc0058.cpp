@@ -1,17 +1,20 @@
-//--- Q: 58. Length of Last Word
+//--- Q: 0058. Length of Last Word
 
 //--- method 1: string operation
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        if (!s.size()) return 0;
-        int cnt = 0;
-        for (int i = 0; i < s.size(); ++i)
-        {
-            if (s[i] == ' ') continue;
-            if (i > 0 && s[i-1] == ' ' && s[i]-'A' >= 0) cnt = 1;
-            else ++cnt;
+        int i, j;
+        for (i = s.size()-1; i >= 0; --i) {
+            if (s[i] != ' ') {
+                break;
+            }
         }
-        return cnt;
+        for (j = i; j >= 0; --j) {
+            if (s[j] == ' ') {
+                break;
+            }
+        }
+        return i-j;
     }
 };

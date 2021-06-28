@@ -1,4 +1,4 @@
-//--- Q: 049. Group Anagrams
+//--- Q: 0049. Group Anagrams
 
 //--- method 1: map and O(n*m) conting sort
 class Solution {
@@ -6,21 +6,20 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         vector<vector<string>> res;
         unordered_map<string, int> map;
-        for (int i = 0; i < strs.size(); ++i) {
-            string now = "";
+        for (auto &str: strs) {
             vector<int> cnt(26, 0);
-            for (int j = 0; j < strs[i].size(); ++j) {
-                ++cnt[strs[i][j]-'a'];
+            string tmp = "";
+            for (auto &ch : str) {
+                ++cnt[ch-'a'];
             }
-            for (int j = 0; j < 26; ++j) {
-                now.push_back(cnt[j]+'0');
-                now.push_back(',');
+            for (auto &v: cnt) {
+                tmp += v+'0 ';
             }
-            if (map.find(now) == map.end()) {
-                map[now] = res.size();
-                res.push_back({strs[i]});
+            if (map.find(tmp) == map.end()) {
+                map[tmp] = res.size();
+                res.push_back({str});
             } else {
-                res[map[now]].push_back(strs[i]);
+                res[map[tmp]].push_back(str);
             }
         }
         return res;
@@ -33,14 +32,14 @@ public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         vector<vector<string>> res;
         unordered_map<string, int> map;
-        for (int i = 0; i < strs.size(); ++i) {
-            string now = strs[i];
-            sort(now.begin(), now.end());
-            if (map.find(now) == map.end()) {
-                map[now] = res.size();
-                res.push_back({strs[i]});
+        for (auto &str: strs) {
+            auto tmp = str;
+            sort(tmp.begin(), tmp.end());
+            if (map.find(tmp) == map.end()) {
+                map[tmp] = res.size();
+                res.push_back({str});
             } else {
-                res[map[now]].push_back(strs[i]);
+                res[map[tmp]].push_back(str);
             }
         }
         return res;

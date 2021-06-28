@@ -1,27 +1,22 @@
-//--- Q: 060. Permutation Sequence
+//--- Q: 0060. Permutation Sequence
 
-//--- method 1: O(n)
+//--- method 1: O(n) find pattern
 class Solution {
 public:
     string getPermutation(int n, int k) {
-        vector<int> perm(n,1);
-        vector<int> nums(n,1);
-        string res;
-        int cnt = n-1;
-
-        for (int i = 1; i < n; ++i)
-        {
-        	perm[i] = perm[i-1]*i; 
-        	nums[i] = i+1;
+        vector<int> idx = {1}, block = {1};
+        for (int i = 2; i <= n; ++i) {
+            block.push_back(block.back()*idx.back());
+            idx.push_back(i);
         }
+        string res = "";
         --k;
-        while (nums.size())
-        {
-        	int q = k/perm[cnt];
-        	k = k % perm[cnt];
-        	--cnt;
-        	res.push_back(nums[q]+'0');
-        	nums.erase(nums.begin()+q);
+        while (idx.size()) {
+            auto pos = k/block.back();
+            k %= block.back();
+            block.pop_back();
+            res += idx[pos]+'0';
+            idx.erase(idx.begin()+pos);
         }
         return res;
     }

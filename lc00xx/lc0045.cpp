@@ -1,42 +1,24 @@
-//--- Q: Jump Game II
+//--- Q: 0045. Jump Game II
 
-//--- method 1: O(n) space, O(n) time
+//--- method 1: O(1) space, O(n) time
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        if (nums.size() == 1)
+        if (nums.size() == 1) {
             return 0;
-        int maxv = 0;
-        vector<int> dp(nums.size(), INT_MAX);
-        dp[0] = 0;
-        for (int i = 0; i < nums.size(); ++i) {
-            if (i+nums[i] >= nums.size()-1)
-                return dp[i]+1;
-            else if (i+nums[i] <= maxv)
-                continue;
-            for (int j = maxv+1; j <= i+nums[i]; ++j)
-                dp[j] = dp[i]+1;
-            maxv = i+nums[i];
+        } else if (nums[0] >= nums.size()-1) {
+            return 1;
         }
-        return dp[nums.size()-1];
-    }
-};
-
-//--- method 2: O(1) space, O(n) time
-class Solution {
-public:
-    int jump(vector<int>& nums) {
-        int res = 0, cur = 0, last = 0;
-        for (int i = 0; i < nums.size()-1; ++i) {
-            cur = max(cur, i+nums[i]);
+        int last = nums[0], maxv = 0, res = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            maxv = max(maxv, i+nums[i]);
             if (i == last) {
+                last = maxv;
+                if (last >= nums.size()-1) {
+                    return res+2;
+                }
                 ++res;
-                last = cur;
-                if (cur >= nums.size()-1)
-                    return res;
             }
-            if (i > last)
-                return -1;
         }
         return res;
     }

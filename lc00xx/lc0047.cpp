@@ -1,32 +1,30 @@
-//--- Q: 047. Permutations II
+//--- Q: 0047. Permutations II
 
 //--- method 1: dfs
 class Solution {
 public:
+    vector<int> res, visit;
+    vector<vector<int>> res_vec;
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        vector<int> out, visit(nums.size(), 0);
-        vector<vector<int>> out_vec;
         sort(nums.begin(), nums.end());
-        dfs(nums, visit, out, out_vec);
-        return out_vec;
+        visit.resize(nums.size(), 0);
+        dfs(nums);
+        return res_vec;
     }
-    void dfs(vector<int> &nums, vector<int> &visit, vector<int> &out, vector<vector<int>> &out_vec)
-    {
-    	bool finish = true;
-    	for (int i = 0; i < nums.size(); ++i)
-    	{
-    		if (i > 0 && nums[i] == nums[i-1] && !visit[i-1]) continue;
-    		if (!visit[i])
-    		{
-    			finish = false;
-	    		out.push_back(nums[i]);
-	    		visit[i] = 1;
-	    		dfs(nums, visit, out, out_vec);
-	    		visit[i] = 0;
-	    		out.pop_back();
-    		}
-    	}
-    	if (finish)
-    		out_vec.push_back(out);
+    void dfs(vector<int> &nums) {
+        if (res.size() == nums.size()) {
+            res_vec.push_back(res);
+            return;
+        }
+        for (int i = 0; i < nums.size(); ++i) {
+            if (visit[i] || i && !visit[i-1] && nums[i] == nums[i-1]) {
+                continue;
+            }
+            visit[i] = 1;
+            res.push_back(nums[i]);
+            dfs(nums);
+            visit[i] = 0;
+            res.pop_back();
+        }
     }
 };
