@@ -1,82 +1,41 @@
-//--- Q: 064. Minimum Path Sum
+//--- Q: 0064. Minimum Path Sum
 
-//--- method 1: dfs, space O(mn)
+//--- method 1: dp iteration
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
-    	if (grid.empty()) return 0;
-		vector<vector<int>> path(grid.size(), vector<int>(grid[0].size(), 0));
-		dfs(grid, path, grid.size()-1, grid[0].size()-1);
-		return path[grid.size()-1][grid[0].size()-1];        
-    }
-    void dfs(vector<vector<int>> &grid, vector<vector<int>> &path, int r, int c)
-    {
-    	if (!path[r][c])
-    	{
-    		if (r == 0 && c== 0)
-    			path[r][c] = grid[r][c];
-    		else if (r == 0)
-    			path[r][c] = path[r][c-1]+grid[r][c];
-    		else if (c == 0)
-    			path[r][c] = path[r-1][c]+grid[r][c];
-    		else
-    		{
-    			dfs(grid, path, r-1, c);
-    			dfs(grid, path, r, c-1);
-    			path[r][c] = min(path[r][c-1], path[r-1][c])+grid[r][c];
-    		}
-    	}
+        int row = grid.size(), col = grid[0].size();
+        for (int i = 1; i < row; ++i) {
+            grid[i][0] += grid[i-1][0];
+        }
+        for (int j = 1; j < col; ++j) {
+            grid[0][j] += grid[0][j-1];
+        }
+        for (int i = 1; i < row; ++i) {
+            for (int j = 1; j < col; ++j) {
+                grid[i][j] += min(grid[i-1][j], grid[i][j-1]);
+            }
+        }
+        return grid[row-1][col-1];
     }
 };
 
-//--- method 2: iteration, space O(mn)
+//--- method 2: dp recursion, space O(mn)
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
-    	if (grid.empty()) return 0;
-		int row = grid.size(), col = grid[0].size();
-		vector<vector<int>> path(row, vector<int>(col, 0));
-
-		for (int i = 0; i < row; ++i)
-		{
-			for (int j = 0; j < col; ++j)
-			{
-				if (i == 0 && j == 0)
-					path[0][0] = grid[0][0];
-				else if (i == 0)
-					path[i][j] = path[i][j-1]+grid[i][j];
-				else if (j == 0)
-					path[i][j] = path[i-1][j]+grid[i][j];
-				else
-					path[i][j] = min(path[i][j-1],path[i-1][j])+grid[i][j];
-			}
-		}
-		return path[row-1][col-1];        
+        int row = grid.size(), col = grid[0].size();
+        vector<vector<int>> visit(row, vector<int>(col, -1));
+        return dfs(row-1, col-1, grid, visit);
     }
-};
-
-//--- method 3: iteration, space O(n)
-class Solution {
-public:
-    int minPathSum(vector<vector<int>>& grid) {
-    	if (grid.empty()) return 0;
-		int row = grid.size(), col = grid[0].size();
-		vector<int> path(col, 0);
-
-		for (int i = 0; i < row; ++i)
-		{
-			for (int j = 0; j < col; ++j)
-			{
-				if (i == 0 && j == 0)
-					path[0] = grid[0][0];
-				else if (i == 0)
-					path[j] = path[j-1]+grid[i][j];
-				else if (j == 0)
-					path[j] = path[j]+grid[i][j];
-				else
-					path[j] = min(path[j-1],path[j])+grid[i][j];
-			}
-		}
-		return path[col-1];        
+    int dfs(int i, int j, vector<vector<int>> &grid, vector<vector<int>> &visit) {
+        if (i < 0 || j < 0) {
+            return INT_MAX;
+        }
+        if (visit[i][j] != -1) {
+            return visit[i][j];
+        }
+        int minv = min(dfs(i-1, j, grid, visit), dfs(i, j-1, grid, visit));
+        return visit[i][j] = grid[i][j] + (minv == INT_MAX ? 0 : minv);
     }
 };

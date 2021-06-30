@@ -5,6 +5,7 @@
 	0033(m): Search in Rotated Sorted Array
 	0034(m): Find First and Last Position of Element in Sorted Array
 	0035(e): Search Insert Position
+	0069(e): Sqrt(x)
 	0074(m): Search a 2D Matrix
 	0081(m): Search in Rotated Sorted Array II
 	0108(e): Convert Sorted Array to Binary Search Tree
@@ -397,6 +398,8 @@
 	0051(h): N-queens
 	0052(h): N-Queens II
 	0060(h): Permutation Sequence
+	0062(m): Unique Paths
+	0063(m): Unique Paths II
 	0079(m): Word Search
 	0093(m): Restore IP Addresses
 	0131(m): Palindrome Partitioning
@@ -465,7 +468,10 @@
 	0045(m): Jump Game II
 	0053(e): Maximum Subarray
 	0055(m): Jump Game
-	0070(m): Climbing Stairs
+	0062(m): Unique Paths
+	0063(m): Unique Paths II
+	0064(m): Minimum Path Sum 
+	0070(e): Climbing Stairs
 	0072(h): Edit Distance
 	0091(m): Decode Ways
 	0085(h): Maximal Rectangle
@@ -785,6 +791,7 @@
 	0043(m): Multiply Strings
 	0049(m): Group Anagrams
 	0058(e): Length of Last Word
+	0067(e): Add Binary 
 	0161(m): One Edit Distance
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
@@ -832,6 +839,7 @@
 	0056(m): Merge Intervals
 	0057(m): Insert Interval
 	0059(m): Spiral Matrix II
+	0066(e): Plus One
 	0073(m): Set Matrix Zeroes
 	0074(m): Search a 2D Matrix
 	0075(m): Sort Colors
@@ -991,7 +999,7 @@
 	1877(m): Minimize Maximum Pair Sum in Array
 	1905(m): Count Sub Islands
 
---- Bit Operations
+--- Bit Manipulation:
 	0067(e): Add Binary 
 	0136(e): Single Number
 	0137(m): Single Number II

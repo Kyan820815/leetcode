@@ -1,45 +1,47 @@
-//--- Q: 062. Unique Paths
+//--- Q: 0062. Unique Paths
 
 //--- method 1: iterative, dp
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-    	vector<vector<int>> path(n,vector<int>(m));
-    	path[0][0] = 1;
-    	for (int i = 0; i < n; ++i)
-    	{
-    		for (int j = 0; j < m; ++j)
-    		{
-    			if (i == 0 || j == 0)
-    				path[i][j] = 1;
-    			else
-    				path[i][j] = path[i-1][j]+path[i][j-1];
-    		}
-    	}
-        return path[n-1][m-1];
+        vector<vector<int>> dp(m, vector<int>(n, 0));
+        dp[0][0] = 1;
+        for (int i = 1; i < m; ++i) {
+            dp[i][0] += dp[i-1][0];
+        }
+        for (int j = 1; j < n; ++j) {
+            dp[0][j] += dp[0][j-1];
+        }
+        for (int i = 1; i < m; ++i) {
+            for (int j = 1; j < n; ++j) {
+                dp[i][j] += dp[i-1][j] + dp[i][j-1];
+            }
+        }
+        return dp[m-1][n-1];
     }
 };
 
-//--- method 2: dfs
+//--- method 2: dfs with memo
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-    	vector<vector<int>> visit(n, vector<int>(m));
-    	return dfs(m-1,n-1, visit);
+        vector<vector<int>> dp(m, vector<int>(n, -1));
+        return dfs(m-1, n-1, dp);
     }
-    int dfs(int m, int n, vector<vector<int>> &visit)
-    {	
-    	if (m == 0 && n == 0)
-    	{
-    		visit[0][0] = 1;
-    		return visit[n][m];
-    	} 
-    	int left = 0, top = 0;
-    	if (m-1 >= 0)
-    		left = (visit[n][m-1] != 0) ? visit[n][m-1] : dfs(m-1,n,visit);
-    	if (n-1 >= 0)
-    		top = (visit[n-1][m] != 0) ? visit[n-1][m] : dfs(m,n-1,visit);
-    	visit[n][m] = left+top;
-    	return visit[n][m];
+    int dfs(int i, int j, vector<vector<int>> &dp) {
+        if (!i && !j) {
+            return 1;
+        }
+        if (dp[i][j] != -1) {
+            return dp[i][j];
+        }
+        int v = 0;
+        if (i) {
+            v += dfs(i-1, j, dp);
+        }
+        if (j) {
+            v += dfs(i, j-1, dp);
+        }
+        return dp[i][j] = v;
     }
 };

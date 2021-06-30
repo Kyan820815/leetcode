@@ -1,4 +1,4 @@
-//--- Q: 061. Rotate List
+//--- Q: 0061. Rotate List
 
 /**
  * Definition for singly-linked list.
@@ -13,29 +13,24 @@
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        int len=0, go;
-        ListNode *cur, *prev, *rear;
-
-        if (!head) return head;
-        cur = head;
-        while(cur)
-        {
-        	len++;
-        	if (!cur->next) rear = cur;
-        	cur = cur->next;
+        int len = 0;
+        ListNode *dummy = new ListNode(-1, head), *now = head, *pre = dummy;
+        while (now) {
+            pre = now;
+            now = now->next;
+            ++len;
         }
-        k = k%len;
-        if (!k) return head;
-        go = len-k;
-        cur = head;
-
-        for (int i = 0; i < go; ++i)
-        {
-        	prev = cur;
-        	cur = cur->next;
+        pre->next = head;
+        if (!len) {
+            return NULL;
         }
-        prev->next = NULL;
-        rear->next = head;
-        return cur;
+        k = len-k%len;
+        now = dummy;
+        while (k--) {
+            now = now->next;
+        }
+        auto nh = now->next;
+        now->next = NULL;
+        return nh;
     }
 };
