@@ -1,4 +1,4 @@
-//--- Q: 098. Validate Binary Search Tree
+//--- Q: 0098. Validate Binary Search Tree
 
 /**
  * Definition for a binary tree node.
@@ -14,23 +14,16 @@
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        bool valid = true;
-        dfs(root, LONG_MIN, LONG_MAX, valid);
-        return valid;
+        return preorder(root, LONG_MIN, LONG_MAX);
     }
-    void dfs(TreeNode *root, long int min, long int max, bool &valid)
-    {
-    	if (!root) return;
-    	if (root->val <= min || root->val >= max)
-    	{
-    		valid = false;
-    		return;
-    	}
-    	if (root->left)
-    		dfs(root->left, min, root->val, valid);
-    	if (valid && root->right)
-    		dfs(root->right,  root->val, max, valid);
-    	if (!valid) return;
+    bool preorder(TreeNode *root, long long minv, long long maxv) {
+        if (!root) {
+            return true;
+        }
+        if (root->val <= minv || root->val >= maxv) {
+            return false;
+        }
+        return preorder(root->left, minv, root->val) && preorder(root->right, root->val, maxv);
     }
 };
 
@@ -38,24 +31,34 @@ public:
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        bool valid = true, first = false;
-        int last = INT_MIN;
-        if (!root) return valid;
-        inorder(root, last, first, valid);
-        return valid;
-    }
-    void inorder(TreeNode *root, int &last, bool &first, bool &valid)
-    {
-    	if (root->left)
-    		inorder(root->left, last, first, valid);
-    	if (first && root->val <= last)
-    	{
-    		valid = false;
-    		return;
-    	}
-        first = true;
-    	last = root->val;
-    	if (root->right)
-    		inorder(root->right, last, first, valid);
+        TreeNode *now = root, *last = NULL;
+        bool find = true;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right && now->right != prev) {
+                    now = now->right;
+                }
+                if (!now->right) {
+                    now->right = prev;
+                    now = prev->left;
+                } else {
+                    if (last && last->val >= prev->val) {
+                        find = false;
+                    }
+                    now->right = NULL;
+                    last = prev;
+                    now = prev->right;
+                }
+            } else {
+                if (last && last->val >= now->val) {
+                    find = false;
+                }
+                last = now;
+                now = now->right;
+            }
+        }
+        return find;
     }
 };

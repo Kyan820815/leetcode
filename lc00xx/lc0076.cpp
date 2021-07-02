@@ -1,54 +1,25 @@
-//--- Q: 076. Minimum Window Substring
+//--- Q: 0076. Minimum Window Substring
 
-//--- method 1: sliding window:
+//--- method 1: sliding window
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int left = 0, res_minv = INT_MAX, cnt = 0;
-        string res_str = "";
-        vector<int> str(128, 0);
-        for (int i = 0; i < t.size(); ++i)
-            ++str[t[i]];
-        for (int i = 0; i < s.size(); ++i) {
-            if (--str[s[i]] >= 0)
-                ++cnt;
-            if (cnt == t.size()) {
-                while (str[s[left]] < 0)
-                    ++str[s[left++]];
-                if (i-left+1 < res_minv) {
-                    res_minv = i-left+1;
-                    res_str = s.substr(left, res_minv);
-                }
-            }
+        vector<int> cnt(128, 0);
+        for (int i = 0; i < t.size(); ++i) {
+            ++cnt[t[i]];
         }
-        return res_str;
-    }
-};
-
-//--- method 2: faster code based on method 1
-class Solution {
-public:
-    string minWindow(string s, string t) {
-        int left = 0, res_minv = INT_MAX, cnt = 0, head = 0;
-        vector<int> str(128, 0);
-        for (int i = 0; i < t.size(); ++i)
-            ++str[t[i]];
-        bool find = false;
-        for (int i = 0; i < s.size(); ++i) {
-            if (--str[s[i]] >= 0)
-                ++cnt;
-            while (cnt == t.size()) {
-                if (++str[s[left++]] > 0) {
-                    --cnt;
-                    find = true;
-                }
+        int left = 0, right = 0, times = 0, start, maxlen = INT_MAX;
+        while (right < s.size()) {
+            times += (--cnt[s[right]] >= 0);
+            while (cnt[s[left]] < 0) {
+                ++cnt[s[left++]];
             }
-            if (find && i-(left-1)+1 < res_minv) {
-                res_minv = i-(left-1)+1;
-                head = left-1;
-                find = false;
+            if (times == t.size() && right-left+1 < maxlen) {
+                maxlen = right-left+1;
+                start = left;
             }
+            ++right;
         }
-        return res_minv == INT_MAX ? "" : s.substr(head, res_minv);
+        return maxlen == INT_MAX ? "" : s.substr(start, maxlen);
     }
 };

@@ -69,7 +69,9 @@
 	0019(m): Remove Nth Node From End of List
 	0042(h): Trapping Rain Water
 	0058(e): Length of Last Word
+	0075(m): Sort Colors
 	0076(h): Minimum Window Substring
+	0080(m): Remove Duplicates from Sorted Array II
 	0088(e): Merge Sorted Array
 	0125(e): Valid Palindrome
 	0141(e): Linked List Cycle
@@ -262,6 +264,8 @@
 	0042(h): Trapping Rain Water
 	0071(m): Simplify Path
 	0084(h): Largest Rectangle in Histogram
+	0085(h): Maximal Rectangle
+	0094(m): Binary Tree Inorder Traversal
 	0105(m): Construct Binary Tree from Preorder and Inorder Traversal
 	0150(m): Evaluate Reverse Polish Notation
 	0155(e): Min Stack
@@ -400,8 +404,13 @@
 	0060(h): Permutation Sequence
 	0062(m): Unique Paths
 	0063(m): Unique Paths II
+	0077(m): Combinations
+	0078(m): Subsets
 	0079(m): Word Search
+	0090(m): Subsets II
 	0093(m): Restore IP Addresses
+	0094(m): Binary Tree Inorder Traversal
+	0100(e): Same Tree
 	0131(m): Palindrome Partitioning
 	0224(h): Basic Calculator
 	0234(e): Palindrome Linked List
@@ -473,8 +482,10 @@
 	0064(m): Minimum Path Sum 
 	0070(e): Climbing Stairs
 	0072(h): Edit Distance
-	0091(m): Decode Ways
 	0085(h): Maximal Rectangle
+	0091(m): Decode Ways
+	0095(m): Unique Binary Search Trees II
+	0096(m): Unique Binary Search Trees
 	0118(e): Pascal's Triangle
 	0119(e): Pascal's Triangle II
 	0120(m): Triangle
@@ -792,6 +803,11 @@
 	0049(m): Group Anagrams
 	0058(e): Length of Last Word
 	0067(e): Add Binary 
+	0071(m): Simplify Path
+	0072(h): Edit Distance
+	0076(h): Minimum Window Substring
+	0091(m): Decode Ways
+	0093(m): Restore IP Addresses
 	0161(m): One Edit Distance
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
@@ -843,8 +859,15 @@
 	0073(m): Set Matrix Zeroes
 	0074(m): Search a 2D Matrix
 	0075(m): Sort Colors
+	0077(m): Combinations
+	0078(m): Subsets
+	0079(m): Word Search
 	0080(m): Remove Duplicates from Sorted Array II
 	0081(m): Search in Rotated Sorted Array II
+	0084(h): Largest Rectangle in Histogram
+	0085(h): Maximal Rectangle
+	0088(e): Merge Sorted Array
+	0090(m): Subsets II
 	0151(m): Reverse Words in a String
 	0163(e): Missing Ranges
 	0169(e): Majority Element
@@ -1115,7 +1138,7 @@
 	0095(m): Unique Binary Search Trees II
 	0096(m): Unique Binary Search Trees
 	0098(m): Validate Binary Search Tree
-	0099(h): Recover Binary Search Tree
+	0099(m): Recover Binary Search Tree
 	0100(e): Same Tree
 	0101(e): Symmetric Tree
 	0102(m): Binary Tree Level Order Traversal 

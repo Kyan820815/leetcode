@@ -1,4 +1,4 @@
-//--- Q: 082. Remove Duplicates from Sorted List II
+//--- Q: 0082. Remove Duplicates from Sorted List II
 
 /**
  * Definition for singly-linked list.
@@ -13,18 +13,18 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode *dummy = new ListNode(-1), *prev = dummy, *now = head;
-        dummy->next = head; 
-        while (now) {
-            while (now->next && now->val == now->next->val) {
-                now = now->next;
-            }
-            if (prev->next != now) {
-                prev->next = now->next;
+        ListNode *dummy = new ListNode(-1, head), *pre = dummy, *cur = head;
+        dummy->next = head;
+        while (cur) {
+            if (cur->next && cur->val == cur->next->val) {
+                while (cur->next && cur->val == cur->next->val) {
+                    cur = cur->next;
+                }
+                pre->next = cur->next;
             } else {
-                prev = now;
+                pre = cur;
             }
-            now = now->next;
+            cur = cur->next;
         }
         return dummy->next;
     }

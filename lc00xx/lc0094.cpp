@@ -1,4 +1,4 @@
-//--- Q: 094. Binary Tree Inorder Traversal
+//--- Q: 0094. Binary Tree Inorder Traversal
 
 /**
  * Definition for a binary tree node.
@@ -10,47 +10,47 @@
  * };
  */
 
-//--- method 1: inorder recursion
+
+//--- method 1: iterative solution using stack
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> out;
-        if (!root) return out;
-        inorder(root, out);
-        return out;
-    }
-    void inorder(TreeNode* root, vector<int> &out)
-    {
-    	if (root->left) inorder(root->left, out);
-    	out.push_back(root->val);
-    	if (root->right) inorder(root->right, out);
+        vector<int> res;
+        vector<TreeNode *> sk;
+        auto now = root;
+        while (now || sk.size()) {
+            while (now) {
+                sk.push_back(now);
+                now = now->left;
+            }
+            if (sk.size()) {
+                now = sk.back();
+                sk.pop_back();
+                res.push_back(now->val);
+                now = now->right;
+            }
+        }
+        return res;
     }
 };
 
-//--- method 2: iterative solution using stack
+//--- method 2: inorder recursion
 class Solution {
 public:
+    vector<int> res;
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> out;
-        inorder(root, out);
-        return out;
+        if (root) {
+            inorder(root);
+        }
+        return res;
     }
-    void inorder(TreeNode* root, vector<int> &out)
-    {
-        stack<TreeNode*> sk;
-        TreeNode *cur;
-        cur = root;
-        while (cur || !sk.empty())
-        {
-            while(cur)
-            {
-                sk.push(cur);
-                cur = cur->left;
-            }
-            cur = sk.top();
-            sk.pop();
-            out.push_back(cur->val);
-            cur = cur->right;
+    void inorder(TreeNode *root) {
+        if (root->left) {
+            inorder(root->left);
+        }
+        res.push_back(root->val);
+        if (root->right) {
+            inorder(root->right);
         }
     }
 };
@@ -59,38 +59,28 @@ public:
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> out;
-        inorder(root, out);
-        return out;
-    }
-    void inorder(TreeNode* root, vector<int> &out)
-    {
-        TreeNode *cur, *prev;
-        cur = root;
-        while (cur)
-        {
-            if (cur->left)
-            {
-                prev = cur;
-                cur = cur->left;
-                while (cur->right && cur->right != prev) cur = cur->right;
-                if (!cur->right)
-                {
-                    cur->right = prev;
-                    cur = prev->left;
+        vector<int> res;
+        auto now = root;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right && now->right != prev) {
+                    now = now->right;
                 }
-                else 
-                {
-                    cur->right = NULL;
-                    out.push_back(prev->val);
-                    cur = prev->right;
+                if (now->right) {
+                    res.push_back(prev->val);
+                    now->right = NULL;
+                    now = prev->right;
+                } else {
+                    now->right = prev;
+                    now = prev->left;
                 }
-            }
-            else
-            {
-                out.push_back(cur->val);
-                cur = cur->right;
+            } else {
+                res.push_back(now->val);
+                now = now->right;
             }
         }
+        return res;
     }
 };
