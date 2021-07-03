@@ -1,4 +1,4 @@
-//--- Q: Binary Tree Level Order Traversal II
+//--- Q: 0107. Binary Tree Level Order Traversal II
 
 /**
  * Definition for a binary tree node.
@@ -10,56 +10,59 @@
  * };
  */
 
-//--- method 1: bfs
+//--- method 1: dfs
 class Solution {
 public:
+    vector<vector<int>> res;
     vector<vector<int>> levelOrderBottom(TreeNode* root) {
-        vector<vector<int>> res;
-        vector<int> level_val;
-        queue<TreeNode *> que;
-        if (!root) return {};
-        int qsize = 1;
-        que.push(root);
-        while (que.size())
-        {
-        	TreeNode *now = que.front();
-        	if (now->left)
-        		que.push(now->left);
-        	if (now->right)
-        		que.push(now->right);
-        	que.pop();
-        	level_val.push_back(now->val);
-        	--qsize;
-        	if (qsize == 0)
-        	{
-        		qsize = que.size();
-        		res.insert(res.begin(), level_val);
-        		level_val.resize(0);
-        	}
+        if (root) {
+            preorder(0, root);
         }
-        return res;
-    }
-};
-
-//--- method 2: dfs
-class Solution {
-public:
-    vector<vector<int>> levelOrderBottom(TreeNode* root) {
-        if (!root) return {};
-		vector<vector<int>> res;
-        dfs(res, root, 0);
         reverse(res.begin(), res.end());
         return res;
     }
-    void dfs(vector<vector<int>> &res, TreeNode *root, int level)
-    {
-    	if (level == res.size())
-    		res.push_back({root->val});
-    	else
-    		res[level].push_back(root->val);
-    	if (root->left)
-    		dfs(res, root->left, level+1);
-    	if (root->right)
-    		dfs(res, root->right, level+1);
+    void preorder(int h, TreeNode *root) {
+        if (h == res.size()) {
+            res.push_back({root->val});
+        } else {
+            res[h].push_back(root->val);
+        }
+        if (root->left) {
+            preorder(h+1, root->left);
+        }
+        if (root->right) {
+            preorder(h+1, root->right);
+        }
+    }
+};
+
+//--- method 2: bfs
+class Solution {
+public:
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        if (!root) {
+            return {};
+        }
+        vector<vector<int>> res;
+        queue<TreeNode *> que;
+        que.push(root);
+        while (que.size()) {
+            auto qsize = que.size();
+            vector<int> tmp;
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                tmp.push_back(now->val);
+                if (now->left) {
+                    que.push(now->left);
+                }
+                if (now->right) {
+                    que.push(now->right);
+                }
+            }
+            res.push_back(tmp);
+        }
+        reverse(res.begin(), res.end());
+        return res;
     }
 };

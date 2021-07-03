@@ -1,4 +1,4 @@
-//--- Q: 102. Binary Tree Level Order Traversal
+//--- Q: 0102. Binary Tree Level Order Traversal
 
 /**
  * Definition for a binary tree node.
@@ -13,22 +13,25 @@
 //--- mehtod 1: dfs (preorder), better cuz more clean
 class Solution {
 public:
+    vector<vector<int>> res;
     vector<vector<int>> levelOrder(TreeNode* root) {
-    	vector<vector<int>> out;
-        preorder(root, 0, out);
-    	return out;
+        if (root) {
+            preorder(0, root);
+        }
+        return res;
     }
-    void preorder(TreeNode* root, int level, vector<vector<int>> &out)
-    {
-    	if (root != NULL)
-    	{
-    		if (out.size() <= level)
-    			out.push_back({root->val});
-    		else
-    			out[level].push_back(root->val);
-    		preorder(root->left, level+1, out);
-    		preorder(root->right, level+1, out);
-    	}	
+    void preorder(int h, TreeNode *root) {
+        if (h == res.size()) {
+            res.push_back({root->val});
+        } else {
+            res[h].push_back(root->val);
+        }
+        if (root->left) {
+            preorder(h+1, root->left);
+        }
+        if (root->right) {
+            preorder(h+1, root->right);
+        }
     }
 };
 
@@ -36,32 +39,28 @@ public:
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
-    	vector<vector<int>> out;
-        bfs(root, out);
-    	return out;
-    }
-    void bfs(TreeNode* root, vector<vector<int>> &out)
-    {
-        int q_size = 1;
-        queue<TreeNode*> que;
-        std::vector<int> row;
-
-        if (root == NULL) return;
+        if (!root) {
+            return {};
+        }
+        vector<vector<int>> res;
+        queue<TreeNode *> que;
         que.push(root);
-    	while(!que.empty())
-    	{
-            if (que.front()->left)
-                que.push(que.front()->left);
-            if (que.front()->right)
-                que.push(que.front()->right);
-            row.push_back(que.front()->val);
-            que.pop();
-            if (--q_size == 0)
-            {
-                out.push_back(row);
-                row.clear();
-                q_size = que.size();
+        while (que.size()) {
+            auto qsize = que.size();
+            vector<int> tmp;
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                tmp.push_back(now->val);
+                if (now->left) {
+                    que.push(now->left);
+                }
+                if (now->right) {
+                    que.push(now->right);
+                }
             }
-    	}
+            res.push_back(tmp);
+        }
+        return res;
     }
 };

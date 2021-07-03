@@ -1,4 +1,4 @@
-//--- Q: 103. Binary Tree Zigzag Level Order Traversal
+//--- Q: 0103. Binary Tree Zigzag Level Order Traversal
 
 /**
  * Definition for a binary tree node.
@@ -14,123 +14,32 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> out;
-        if (!root) return out;
-        bfs(root, out);
-        return out;
-    }
-    void bfs(TreeNode *root, vector<vector<int>> &out)
-    {
-        TreeNode *now;
-        queue<TreeNode *> que;
-        int dir = 1, qsize = 1, count = 1;
-        vector<int> one_vec(qsize);
-        que.push(root);
-        while(!que.empty())
-        {
-            now = que.front();
-            if (now->left)
-                que.push(now->left);
-            if (now->right)
-                que.push(now->right);
-            que.pop();
-
-            if (dir == 1)
-                one_vec[count-qsize] = now->val;
-            else
-                one_vec[qsize-1] = now->val;
-            if (--qsize == 0)
-            {
-                out.push_back(one_vec);
-                count = qsize = que.size();
-                one_vec.resize(qsize);
-                dir *= -1;
-            }
+        if (!root) {
+            return {};
         }
-    }
-};
-
-//--- method 2: double stack without reverse vector
-class Solution {
-public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> out;
-        if (!root) return out;
-        bfs(root, out);
-        return out;
-    }
-    void bfs(TreeNode *root, vector<vector<int>> &out)
-    {
-    	TreeNode *now;
-    	stack<TreeNode *> sk_now, sk_next;
-    	int dir = 1;
-    	vector<int> one_vec;
-
-    	sk_now.push(root);
-    	while(!sk_now.empty())
-    	{
-    		now = sk_now.top();
-    		one_vec.push_back(now->val);
-            if (dir == 1)
-            {
-                if (now->left)
-                    sk_next.push(now->left);
-                if (now->right)
-                    sk_next.push(now->right);
+        vector<vector<int>> res;
+        queue<TreeNode *> que;
+        que.push(root);
+        int dir = 1;
+        while (que.size()) {
+            auto qsize = que.size();
+            int start = dir == 1 ? 0 : qsize-1;
+            vector<int> tmp(qsize);
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                tmp[start] = now->val;
+                if (now->left) {
+                    que.push(now->left);
+                }
+                if (now->right) {
+                    que.push(now->right);
+                }
+                start += dir;
             }
-            else
-            {
-                if (now->right)
-                    sk_next.push(now->right);
-                if (now->left)
-                    sk_next.push(now->left);
-            }
-    		sk_now.pop();
-    		if (sk_now.empty())
-    		{
-    			out.push_back(one_vec);
-    			one_vec.clear();
-                sk_now = sk_next;
-                stack<TreeNode*>().swap(sk_next);
-    			dir *= -1;
-    		}
-    	}
-    }
-};
-
-//--- method 3: reverse vector
-class Solution {
-public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> out;
-        if (!root) return out;
-        bfs(root, out);
-        return out;
-    }
-    void bfs(TreeNode *root, vector<vector<int>> &out)
-    {
-    	TreeNode *now;
-    	queue<TreeNode *> que;
-    	int dir = 1, qsize = 1;
-    	vector<int> one_vec;
-    	que.push(root);
-    	while(!que.empty())
-    	{
-    		now = que.front();
-    		one_vec.push_back(now->val);
-    		if (now->left)
-				que.push(now->left);
-			if (now->right)
-				que.push(now->right);
-    		que.pop();
-    		if (--qsize == 0)
-    		{
-    			if (dir == -1) reverse(one_vec.begin(), one_vec.end());
-    			out.push_back(one_vec);
-    			one_vec.clear();
-    			qsize = que.size();
-    			dir *= -1;
-    		}
-    	}
+            dir *= -1;
+            res.push_back(tmp);
+        }
+        return res;
     }
 };

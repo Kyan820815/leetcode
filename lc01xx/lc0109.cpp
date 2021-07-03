@@ -1,4 +1,4 @@
-//--- Q: 109. Convert Sorted List to Binary Search Tree
+//--- Q: 0109. Convert Sorted List to Binary Search Tree
 
 /**
  * Definition for singly-linked list.
@@ -22,56 +22,22 @@
 class Solution {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
-        TreeNode *root = divide(head, NULL);
-        return root;
+        return dfs(head, nullptr);
     }
-    TreeNode *divide(ListNode *head, ListNode *rear)
-    {
-    	TreeNode *node;
-    	ListNode *slow, *fast;
-
-    	fast = slow = head;
-    	if (head == rear) return NULL;
-
-    	while(fast != rear && fast->next != rear)
-    	{
-    		slow = slow->next;
-    		fast = fast->next->next;
-    	}
-    	node = new TreeNode(slow->val);
-    	node->left = divide(head, slow);
-    	node->right = divide(slow->next, rear);
-    	return node;
-    }
-};
-
-//--- method 2: same with method 1 but using double pointer
-class Solution {
-public:
-    TreeNode* sortedListToBST(ListNode* head) {
-        TreeNode ** root;
-        root = (TreeNode **)malloc(sizeof(TreeNode *));
-        divide(head, NULL, root);
-        return *root;
-    }
-    void divide(ListNode *head, ListNode *rear, TreeNode **node)
-    {
-        ListNode *slow, *fast;
-
-        fast = slow = head;
-        if (head == rear)
-        {
-            *node = NULL;
-            return;
+    TreeNode *dfs(ListNode *head, ListNode *end) {
+        if (head == end) {
+            return NULL;
         }
-
-        while(fast != rear && fast->next != rear)
-        {
+        auto slow = head, fast = head;
+        while (fast != end && fast->next != end) {
             slow = slow->next;
             fast = fast->next->next;
         }
-        *node = new TreeNode(slow->val);
-        divide(head, slow, &(*node)->left);
-        divide(slow->next, rear, &(*node)->right);
+        auto right = slow->next;
+        slow->next = NULL;
+        auto now = new TreeNode(slow->val);
+        now->left = dfs(head, slow);
+        now->right = dfs(right, end);
+        return now;
     }
 };

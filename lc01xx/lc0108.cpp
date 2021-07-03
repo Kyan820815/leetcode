@@ -1,4 +1,4 @@
-//--- Q: 108. Convert Sorted Array to Binary Search Tree
+//--- Q: 0108. Convert Sorted Array to Binary Search Tree
 
 /**
  * Definition for a binary tree node.
@@ -14,46 +14,16 @@
 class Solution {
 public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-    	TreeNode *root = divide(nums, 0, nums.size()-1);
-    	return root;
+        return dfs(0, nums.size()-1, nums);
     }
-    TreeNode *divide(vector<int> &nums, int start, int end)
-    {
-    	int mid;
-    	TreeNode *node;
-    	if (start <= end)
-    	{
-    		mid = (start+end)/2;
-    		node = new TreeNode(nums[mid]);
-    		node->left = divide(nums, start, mid-1);
-    		node->right = divide(nums, mid+1, end);
-    		return node;
-    	}
-    	return NULL;
-    }
-};
-
-//--- 1-2: OTHER binary search
-class Solution {
-public:
-    TreeNode* sortedArrayToBST(vector<int>& nums) {
-        TreeNode *root = divide(nums, 0, nums.size()-1);
-        return root;
-    }
-    TreeNode *divide(vector<int> &nums, int start, int end)
-    {
-        int mid;
-        TreeNode *node;
-        if (start > end) return NULL;
-        if (start == end) return new TreeNode(nums[start]);
-        if (start < end)
-        {
-            mid = (start+end)/2;
-            node = new TreeNode(nums[mid]);
-            node->left = divide(nums, start, mid-1);
-            node->right = divide(nums, mid+1, end);
-            return node;
+    TreeNode *dfs(int start, int end, vector<int> &nums) {
+        if (start > end) {
+            return nullptr;
         }
-        return NULL;
+        int mid = start + (end-start)/2;
+        auto now = new TreeNode(nums[mid]);
+        now->left = dfs(start, mid-1, nums);
+        now->right = dfs(mid+1, end, nums);
+        return now;
     }
 };

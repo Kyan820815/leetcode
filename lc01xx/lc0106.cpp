@@ -1,4 +1,4 @@
-//--- Q: 106. Construct Binary Tree from Inorder and Postorder Traversal
+//--- Q: 0106. Construct Binary Tree from Inorder and Postorder Traversal
 
 /**
  * Definition for a binary tree node.
@@ -14,27 +14,24 @@
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        int now = postorder.size()-1;
-        if (!inorder.size()) return NULL;
-    	return maketree(inorder, postorder, 0, inorder.size()-1, now);
+        int idx = postorder.size()-1;
+        return dfs(idx, 0, inorder.size()-1, inorder, postorder);
     }
-    TreeNode *maketree(vector<int> &inorder, vector<int> &postorder, int left, int right, int &now)
-    {
-    	int mid;
-    	TreeNode *root = new TreeNode(postorder[now]);
-    	for (int i = left; i <= right; ++i)
-    	{
-    		if (inorder[i] == postorder[now])
-    		{
-    			mid = i;
-    			break;
-    		}
-    	}
-    	if (mid+1 <= right)
-    		root->right = maketree(inorder, postorder, mid+1, right, --now);
-    	if (left <= mid-1)
-    		root->left = maketree(inorder, postorder, left, mid-1, --now);
-    	return root;
+    TreeNode *dfs(int &idx, int start, int end, vector<int>& inorder, vector<int>& postorder) {
+        if (start > end) {
+            return NULL;
+        }
+        int mid;
+        for (int i = start; i <= end; ++i) {
+            if (inorder[i] == postorder[idx]) {
+                mid = i;
+                break;
+            }
+        }
+        auto now = new TreeNode(postorder[idx--]);
+        now->right = dfs(idx, mid+1, end, inorder, postorder);
+        now->left = dfs(idx, start, mid-1, inorder, postorder);
+        return now;
     }
 };
 
@@ -42,27 +39,26 @@ public:
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        TreeNode *last = NULL, *root = NULL;
         vector<TreeNode *> sk;
-        int ni = inorder.size()-1;
-        TreeNode *root = NULL, *last = NULL;
-        for (int i = postorder.size()-1; i >= 0;) {
-            if (sk.size() && sk.back()->val == inorder[ni]) {
+        for (int i = postorder.size()-1, j = inorder.size()-1; i >= 0;) {
+            if (sk.size() && sk.back()->val == inorder[j]) {
                 last = sk.back();
                 sk.pop_back();
-                --ni;
+                --j;
             } else if (last) {
-                last->left = new TreeNode(postorder[i--]);
-                sk.push_back(last->left);
+                auto now = new TreeNode(postorder[i--]);
+                last->left = now;
+                sk.push_back(now);
                 last = NULL;
             } else {
                 auto now = new TreeNode(postorder[i--]);
                 if (sk.size()) {
                     sk.back()->right = now;
-                }
-                sk.push_back(now);
-                if (!root) {
+                } else if (!root) {
                     root = now;
                 }
+                sk.push_back(now);
             }
         }
         return root;

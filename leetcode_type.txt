@@ -8,8 +8,6 @@
 	0069(e): Sqrt(x)
 	0074(m): Search a 2D Matrix
 	0081(m): Search in Rotated Sorted Array II
-	0108(e): Convert Sorted Array to Binary Search Tree
-	0109(m): Convert Sorted List to Binary Search Tree
 	0153(m): Find Minimum in Rotated Sorted Array
 	0162(m): Find Peak Element
 	0167(e): Two Sum II - Input array is sorted
@@ -267,6 +265,7 @@
 	0085(h): Maximal Rectangle
 	0094(m): Binary Tree Inorder Traversal
 	0105(m): Construct Binary Tree from Preorder and Inorder Traversal
+	0106(m): Construct Binary Tree from Inorder and Postorder Traversal 
 	0150(m): Evaluate Reverse Polish Notation
 	0155(e): Min Stack
 	0225(e): Implement Stack using Queues
@@ -326,6 +325,7 @@
 	0101(e): Symmetric Tree
 	0102(m): Binary Tree Level Order Traversal 
 	0103(m): Binary Tree Zigzag Level Order Traversal
+	0107(m): Binary Tree Level Order Traversal II
 	0127(m): Word Ladder
 	0199(m): Binary Tree Right Side View
 	0200(m): Number of Islands
@@ -411,6 +411,10 @@
 	0093(m): Restore IP Addresses
 	0094(m): Binary Tree Inorder Traversal
 	0100(e): Same Tree
+	0105(m): Construct Binary Tree from Preorder and Inorder Traversal
+	0106(m): Construct Binary Tree from Inorder and Postorder Traversal 
+	0108(e): Convert Sorted Array to Binary Search Tree
+	0109(m): Convert Sorted List to Binary Search Tree
 	0131(m): Palindrome Partitioning
 	0224(h): Basic Calculator
 	0234(e): Palindrome Linked List
@@ -735,6 +739,7 @@
 	0083(e): Remove Duplicates from Sorted List 
 	0086(m): Partition List
 	0092(m): Reverse Linked List II
+	0109(m): Convert Sorted List to Binary Search Tree
 	0114(m): Flatten Binary Tree to Linked List 
 	0116(m): Populating Next Right Pointers in Each Node
 	0117(m): Populating Next Right Pointers in Each Node II
@@ -868,6 +873,7 @@
 	0085(h): Maximal Rectangle
 	0088(e): Merge Sorted Array
 	0090(m): Subsets II
+	0108(e): Convert Sorted Array to Binary Search Tree
 	0151(m): Reverse Words in a String
 	0163(e): Missing Ranges
 	0169(e): Majority Element
@@ -1146,7 +1152,7 @@
 	0104(e): Maximum Depth of Binary Tree
 	0105(m): Construct Binary Tree from Preorder and Inorder Traversal
 	0106(m): Construct Binary Tree from Inorder and Postorder Traversal 
-	0107(e): Binary Tree Level Order Traversal II
+	0107(m): Binary Tree Level Order Traversal II
 	0108(e): Convert Sorted Array to Binary Search Tree
 	0109(m): Convert Sorted List to Binary Search Tree
 	0110(e): Balanced Binary Tree

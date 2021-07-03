@@ -1,4 +1,4 @@
-//--- Q: Maximum Depth of Binary Tree
+//--- Q: 0104. Maximum Depth of Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -14,16 +14,9 @@
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        if (!root) return 0;
-        return postorder(root);
-    }
-    int postorder(TreeNode *root)
-    {
-    	int lv = 0, rv = 0, val;
-    	if (root->left)
-    		lv = postorder(root->left);
-    	if (root->right)
-    		rv = postorder(root->right);
-    	return max(lv, rv) + 1;
+        if (!root) {
+            return 0;
+        }
+        return max(maxDepth(root->left), maxDepth(root->right))+1;
     }
 };
