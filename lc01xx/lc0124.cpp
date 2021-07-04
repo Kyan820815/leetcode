@@ -1,4 +1,4 @@
-//--- Q: 124. Binary Tree Maximum Path Sum
+//--- Q: 0124. Binary Tree Maximum Path Sum
 
 /**
  * Definition for a binary tree node.
@@ -21,13 +21,12 @@ public:
     int postorder(TreeNode *root) {
         int lv = 0, rv = 0;
         if (root->left) {
-            lv = max(postorder(root->left), 0);
+            lv = max(0, postorder(root->left));
         }
         if (root->right) {
-            rv = max(postorder(root->right), 0);
+            rv = max(0, postorder(root->right));
         }
-        int val = root->val + lv + rv;
-        res = max(res, val);
-        return root->val + max(lv, rv);
+        res = max(res, root->val+lv+rv);
+        return root->val+max(lv, rv);
     }
 };

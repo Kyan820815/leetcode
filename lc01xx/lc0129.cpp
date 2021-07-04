@@ -1,4 +1,4 @@
-//--- Q: 129. Sum Root to Leaf Numbers
+//--- Q: 0129. Sum Root to Leaf Numbers
 
 /**
  * Definition for a binary tree node.
@@ -13,24 +13,21 @@
 //--- method 1: dfs recursion
 class Solution {
 public:
+    int res = 0;
     int sumNumbers(TreeNode* root) {
-    	int sum = 0;
-    	if (!root) return sum;
-        dfs(root, sum, 0);
-        return sum;
+        preorder(root, 0);
+        return res;
     }
-    void dfs(TreeNode *root, int &sum, int now)
-    {
-    	now = now * 10;
-    	now += root->val;
-    	if (!root->left && !root->right)
-    	{
-    		sum += now;
-    		return;
-    	}
-    	if (root->left)
-    		dfs(root->left, sum ,now);
-    	if (root->right)
-    		dfs(root->right, sum, now);
+    void preorder(TreeNode *root, int val) {
+        val = val*10 + root->val;
+        if (!root->left && !root->right) {
+            res += val;
+        }
+        if (root->left) {
+            preorder(root->left, val);
+        }
+        if (root->right) {
+            preorder(root->right, val);
+        }
     }
 };

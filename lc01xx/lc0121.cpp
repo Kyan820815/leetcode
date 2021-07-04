@@ -1,18 +1,17 @@
-//--- Q: 121. Best Time to Buy and Sell Stock
+//--- Q: 0121. Best Time to Buy and Sell Stock
 
 //--- method 1: O(n) one pass
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int max = INT_MIN;
-        int min = INT_MAX;
-        for (int i = 0; i < prices.size(); ++i)
-        {
-        	if (prices[i] < min)
-        		min = prices[i];
-        	if (prices[i] - min > max)
-        		max = prices[i] - min;
+        int res = 0, minv = prices[0];
+        for (int i = 1; i < prices.size(); ++i) {
+            if (minv > prices[i]) {
+                minv = prices[i];
+            } else {
+                res = max(res, prices[i]-minv);
+            }
         }
-        return max == INT_MIN ? 0 : max;
+        return res;
     }
 };

@@ -1,4 +1,4 @@
-//--- Q: 116. Populating Next Right Pointers in Each Node 
+//--- Q: 0116. Populating Next Right Pointers in Each Node 
 
 /*
 // Definition for a Node.
@@ -24,64 +24,25 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
-        Node *now = root;
-        Node *head = NULL, *last = NULL;
-        while (now)
-        {
-            if (!head)
-                head = now->left;
+        Node *now = root, *head = nullptr, *last = nullptr;
+        while (now) {
             if (now->left) {
-                now->left->next = now->right;
-                if (last)
+                if (!head) {
+                    head = now->left;
+                }
+                if (last) {
                     last->next = now->left;
+                }
                 last = now->right;
-            } else
-                break;
+                now->left->next = now->right;
+            }
             now = now->next;
             if (!now) {
                 now = head;
-                last = head = NULL;
+                head = last = NULL;
             }
         }
         return root;
-    }
-};
-
-//--- method 2: bfs
-class Solution {
-public:
-    Node* connect(Node* root) {
-        bfs(root);
-        return root;
-    }
-    void bfs(Node *root)
-    {
-        Node *head = NULL, *rear = NULL;
-        Node *now = root;
-        while (now)
-        {
-            if (!head)
-                head = rear = now->left;
-            else
-            {
-                rear->next = now->left;
-                rear = rear->next;
-            }
-            if (!head)
-                head = rear = now->right;
-            else
-            {
-                rear->next = now->right;
-                rear = rear->next;
-            }
-
-            now = now->next;
-            if (!now)
-            {
-                now = head;
-                head = rear = NULL;
-            }
-        }
     }
 };
 

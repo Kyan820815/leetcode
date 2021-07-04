@@ -1,4 +1,4 @@
-//--- Q: 112. Path Sum
+//--- Q: 0112. Path Sum
 
 /**
  * Definition for a binary tree node.
@@ -13,12 +13,18 @@
 //--- method 1: recursive solution
 class Solution {
 public:
-    bool hasPathSum(TreeNode* root, int sum) {
-		if (!root) return false;
-		if (!root->left && !root->right)
-	    	if (sum == root->val) return true;
-		if (!root->left) return hasPathSum(root->right, sum-root->val);
-		if (!root->right) return hasPathSum(root->left, sum-root->val);
-		return hasPathSum(root->left, sum-root->val) || hasPathSum(root->right, sum-root->val);
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (!root) {
+            return false;
+        }
+        if (!root->left && !root->right) {
+            return !(targetSum-root->val);
+        }
+        if (!root->left) {
+            return hasPathSum(root->right, targetSum-root->val);
+        } else if (!root->right) {
+            return hasPathSum(root->left, targetSum-root->val);
+        }
+        return hasPathSum(root->left, targetSum-root->val) || hasPathSum(root->right, targetSum-root->val);
     }
 };

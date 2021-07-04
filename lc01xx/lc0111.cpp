@@ -1,4 +1,4 @@
-//--- Q: 111. Minimum Depth of Binary Tree
+//--- Q: 0111. Minimum Depth of Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -10,23 +10,42 @@
  * };
  */
 
-//--- method 1-1: choose path method
+//--- method 1: choose path method
 class Solution {
 public:
     int minDepth(TreeNode* root) {
-        if (!root) return 0;
-    	if (!root->left) return minDepth(root->right)+1;
-    	if (!root->right) return minDepth(root->left)+1;
-    	return min(minDepth(root->left), minDepth(root->right)) + 1;
+        if (!root) {
+            return 0;
+        }
+        if (!root->left) {
+            return minDepth(root->right)+1;
+        }
+        if (!root->right) {
+            return minDepth(root->left)+1;
+        }
+        return min(minDepth(root->left), minDepth(root->right))+1;
     }
 };
 
-//--- method 1-2: INT_MAX method
+//--- method 2: preorder
 class Solution {
 public:
+    int res = INT_MAX;
     int minDepth(TreeNode* root) {
-        if (!root) return 0;
-    	if (!root->left && !root->right) return 1;
-    	return min((root->left ? minDepth(root->left) : INT_MAX), (root->right ? minDepth(root->right) : INT_MAX)) + 1;
+        if (root) {
+            preorder(root, 1);
+        }
+        return res == INT_MAX ? 0 : res;
+    }
+    void preorder(TreeNode *root, int h) {
+        if (!root->left && !root->right) {
+            res = min(res, h);
+        }
+        if (root->left) {
+            preorder(root->left, h+1);
+        }
+        if (root->right) {
+            preorder(root->right, h+1);
+        }
     }
 };

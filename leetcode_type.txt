@@ -326,7 +326,8 @@
 	0102(m): Binary Tree Level Order Traversal 
 	0103(m): Binary Tree Zigzag Level Order Traversal
 	0107(m): Binary Tree Level Order Traversal II
-	0127(m): Word Ladder
+	0126(h): Word Ladder II
+	0127(h): Word Ladder
 	0199(m): Binary Tree Right Side View
 	0200(m): Number of Islands
 	0207(m): Course Schedule
@@ -415,6 +416,13 @@
 	0106(m): Construct Binary Tree from Inorder and Postorder Traversal 
 	0108(e): Convert Sorted Array to Binary Search Tree
 	0109(m): Convert Sorted List to Binary Search Tree
+	0111(e): Minimum Depth of Binary Tree
+	0112(e): Path Sum
+	0113(m): Path Sum II
+	0124(h): Binary Tree Maximum Path Sum
+	0126(h): Word Ladder II
+	0129(m): Sum Root to Leaf Numbers
+	0130(m): Surrounded Regions
 	0131(m): Palindrome Partitioning
 	0224(h): Basic Calculator
 	0234(e): Palindrome Linked List
@@ -621,7 +629,7 @@
 	0036(m): Valid Sudoku
 	0049(m): Group Anagrams
 	0126(h): Word Ladder II
-	0127(m): Word Ladder
+	0127(h): Word Ladder
 	0128(h): Longest Consecutive Sequence
 	0133(m): Clone Graph
 	0146(h): LRU Cache
@@ -813,6 +821,9 @@
 	0076(h): Minimum Window Substring
 	0091(m): Decode Ways
 	0093(m): Restore IP Addresses
+	0125(e): Valid Palindrome
+	0126(h): Word Ladder II
+	0127(h): Word Ladder
 	0161(m): One Edit Distance
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
@@ -874,6 +885,12 @@
 	0088(e): Merge Sorted Array
 	0090(m): Subsets II
 	0108(e): Convert Sorted Array to Binary Search Tree
+	0118(e): Pascal's Triangle
+	0119(e): Pascal's Triangle II
+	0120(m): Triangle
+	0121(e): Best Time to Buy and Sell Stock
+	0128(h): Longest Consecutive Sequence
+	0130(m): Surrounded Regions
 	0151(m): Reverse Words in a String
 	0163(e): Missing Ranges
 	0169(e): Majority Element
@@ -1080,10 +1097,6 @@
 	0063(m): Unique Paths II
 	0064(m): Minimum Path Sum 
 	0085(h): Maximal Rectangle
-	0112(e): Path Sum
-	0113(m): Path Sum II
-	0126(h): Word Ladder II
-	0127(m): Word Ladder
 	0130(m): Surrounded Regions
 	0133(m): Clone Graph
 	0200(m): Number of Islands
@@ -1157,6 +1170,8 @@
 	0109(m): Convert Sorted List to Binary Search Tree
 	0110(e): Balanced Binary Tree
 	0111(e): Minimum Depth of Binary Tree
+	0112(e): Path Sum
+	0113(m): Path Sum II
 	0114(m): Flatten Binary Tree to Linked List 
 	0116(m): Populating Next Right Pointers in Each Node
 	0117(m): Populating Next Right Pointers in Each Node II

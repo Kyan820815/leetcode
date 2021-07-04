@@ -1,40 +1,47 @@
-//--- Q: 130. Surrounded Regions
+//--- Q: 0130. Surrounded Regions
 
 //--- method 1: dfs
 class Solution {
 public:
+    vector<vector<int>> dirs = {{-1,0}, {1,0}, {0,-1}, {0,1}};
+    int row, col;
     void solve(vector<vector<char>>& board) {
-    	int row = board.size(), col = board[0].size();
-        for (int i = 0; i < row; ++i)
-        {
-        	for (int j = 0; j < col; ++j)
-        	{
-        		if ((i == 0 || j == 0 || i == row-1 || j == col-1) && board[i][j] == 'O')
-        			dfs(board, i, j);
-        	}
+        row = board.size(), col = board[0].size();
+        for (int i = 0; i < row; ++i) {
+            if (board[i][0] == 'O') {
+                dfs(i,0,board);
+            }
+            if (board[i][col-1] == 'O') {
+                dfs(i, col-1, board);
+            }
         }
-        for (int i = 0; i < row; ++i)
-        {
-        	for (int j = 0; j < col; ++j)
-        	{
-        		if (board[i][j] == 'Z')
-        			board[i][j] = 'O';
-        		else if (board[i][j] == 'O')
-        			board[i][j] = 'X';
-        	}
+        for (int j = 0; j < col; ++j) {
+            if (board[0][j] == 'O') {
+                dfs(0, j, board);
+            }
+            if (board[row-1][j] == 'O') {
+                dfs(row-1, j, board);
+            }
+        }
+        for (int i = 0 ; i < row; ++i) {
+            for (int j = 0 ; j < col; ++j) {
+                if (board[i][j] == 'V') {
+                    board[i][j] = 'O';
+                } else if (board[i][j] == 'O') {
+                    board[i][j] = 'X';
+                }
+            }
         }
     }
-    void dfs(vector<vector<char>> &board, int r, int c)
-    {
-    	int row = board.size(), col = board[0].size();
-    	board[r][c] = 'Z';
-    	if (r-1 > 0 && board[r-1][c] == 'O')
-    		dfs(board, r-1, c);
-    	if (r+1 < row && board[r+1][c] == 'O')
-    		dfs(board, r+1, c);
-    	if (c-1 > 0 && board[r][c-1] == 'O')
-    		dfs(board, r, c-1);
-    	if (c+1 < col && board[r][c+1] == 'O')
-    		dfs(board, r, c+1);
+    void dfs(int r, int c, vector<vector<char>> &board) {
+        board[r][c] = 'V';
+        for (auto &dir: dirs) {
+            int nr = r + dir[0];
+            int nc = c + dir[1];
+            if (nr < 0 || nr >= row || nc < 0 || nc >= col || board[nr][nc] == 'X' || board[nr][nc] == 'V') {
+                continue;
+            }
+            dfs(nr, nc, board);
+        }
     }
 };
