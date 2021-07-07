@@ -1,4 +1,4 @@
-//--- Q: 141. Linked List Cycle
+//--- Q: 0141. Linked List Cycle
 
 /**
  * Definition for singly-linked list.
@@ -13,15 +13,14 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        ListNode *slow, *fast;
-        slow = fast = head;
-        while (fast && fast->next)
-        {
-        	slow = slow->next;
-        	fast = fast->next->next;
-        	if (!fast || !fast->next || slow == fast)
-        	    break;
+        auto slow = head, fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                return true;
+            }
         }
-        return  (!fast || !fast->next) ? false: true;
+        return false;
     }
 };

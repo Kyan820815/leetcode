@@ -1,4 +1,4 @@
-//--- Q: 173. Binary Search Tree Iterator
+//--- Q: 0173. Binary Search Tree Iterator
 
 /**
  * Definition for a binary tree node.
@@ -14,10 +14,9 @@
 class BSTIterator {
 public:
     BSTIterator(TreeNode* root) {
-        auto now = root;
-        while (now) {
-            sk.push_back(now);
-            now = now->left;
+        while (root) {
+            sk.push_back(root);
+            root = root->left;
         }
     }
     
@@ -26,9 +25,11 @@ public:
         sk.pop_back();
         int val = now->val;
         now = now->right;
-        while (now) {
-            sk.push_back(now);
-            now = now->left;
+        if (now) {
+            while (now) {
+                sk.push_back(now);
+                now = now->left;
+            }
         }
         return val;
     }
@@ -43,51 +44,53 @@ public:
 class BSTIterator {
 public:
     BSTIterator(TreeNode* root) {
-    	p = root;
+        now = root;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right) {
+                    now = now->right;
+                }
+                now->right = prev;
+                now = prev->left;
+            } else {
+                break;
+            }
+        }
     }
     
-    /** @return the next smallest number */
     int next() {
-    	int val;
-    	while(p)
-    	{
-	    	if (p->left)
-	    	{
-	    		TreeNode *pre = p;
-	    		p = p->left;
-	    		while (p->right != NULL && p->right != pre)
-	    			p = p->right;
-	    		if (p->right == NULL)
-	    		{
-	    			p->right = pre;
-	    			p = pre->left;
-	    		}
-	    		else if (p->right == pre)
-	    		{
-	    			val = pre->val;
-	    			p->right = NULL;
-	    			p = pre->right;
-	    			break;
-	    		}
-	    	}
-	    	else
-	    	{
-	    		val = p->val;
-	    		p = p->right;
-	    		break;
-	    	}
-    	}
-
+        int val;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right && now->right != prev) {
+                    now = now->right;
+                }
+                if (now->right) {
+                    val = prev->val;
+                    now->right = NULL;
+                    now = prev->right;
+                    break;
+                } else {
+                    now->right = prev;
+                    now = prev->left;
+                }
+            } else {
+                val = now->val;
+                now = now->right;
+                break;
+            }
+        }
         return val;
     }
-
-    /** @return whether we have a next smallest number */
+    
     bool hasNext() {
-		return (!p) ? false : true;        	
+        return now != nullptr;
     }
-
-private:
-	TreeNode *p;
+    TreeNode *now;
 };
 
 /**

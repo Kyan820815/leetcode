@@ -1,4 +1,4 @@
-//--- Q: 143. Reorder List
+//--- Q: 0143. Reorder List
 
 /**
  * Definition for singly-linked list.
@@ -13,83 +13,25 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        if (!head) return;
-        ListNode *slow, *fast;
-        slow = fast = head;
-        while (fast && fast->next)
-        {
+        ListNode *slow = head, *fast = head;
+        while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
-        ListNode *cur = slow->next, *last = NULL;
+        ListNode *cur = slow->next, *revH = nullptr;
         slow->next = NULL;
-        while (cur)
-        {
-            ListNode *next_node = cur->next;
-            cur->next = last;
-            last = cur;
-            cur = next_node;
+        while (cur) {
+            auto tmp = cur->next;
+            cur->next = revH;
+            revH = cur;
+            cur = tmp;
         }
-        cur = head;
-        while (last)
-        {
-            ListNode *tmp = last;
-            last = last->next;
-            tmp->next = cur->next;
-            cur->next = tmp;
-            cur = tmp->next;
+        auto left = head, right = revH;
+        while (left && right) {
+            auto nleft = left->next, nright = right->next;
+            left->next = right;
+            right->next = nleft;
+            left = nleft, right = nright;
         }
-    }
-};
-
-//--- method 2: O(1) space
-class Solution {
-public:
-    void reorderList(ListNode* head) {
-        
-    	ListNode *slow, *fast;
-    	slow = fast = head;
-    	while(fast && fast->next)
-    	{
-    		slow = slow->next;
-    		fast = fast->next->next;
-    	}
-    	ListNode *right, *right_head, tmp;
-    	right = slow;
-    	right_head = NULL;
-    	while(right)
-    	{
-    		tmp = right;
-    		right = right->next;
-    		tmp->next = right_head;
-    		right_head = tmp;
-    	}
-    	ListNode *left;
-    	left = head;
-    	//--- version 1
-    	while(left != slow || left->next != slow)
-    	{
-    		tmp = left->next;
-    		left->next = right_head;
-    		right_head = right_head->next;
-    		left->next->next = tmp;
-    		left = tmp;
-    	}
-    	left->next = right_head;
-    	
-    	//--- version 2
-    	while(left != slow)
-    	{
-    		tmp = left->next;
-    		left->next = right_head;
-    		right_head = right_head->next;
-    		left->next->next = tmp;
-            if (left->next == left->next->next)
-            {
-                left->next->next = NULL;
-                break;
-            }
-    		left = tmp;
-    	}
     }
 };

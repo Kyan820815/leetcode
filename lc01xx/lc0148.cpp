@@ -1,4 +1,4 @@
-//--- Q: 148. Sort List
+//--- Q: 0148. Sort List
 
 /**
  * Definition for singly-linked list.
@@ -13,43 +13,37 @@
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        return divide(head, NULL);
+        return dfs(head, nullptr);
     }
-    ListNode *divide(ListNode *head, ListNode *rear)
-    {
-    	ListNode *slow, *fast;
-    	ListNode *left, *right;
-    	ListNode *new_head;
-    	if (head == rear)
-    		return head;
-    	fast = slow = head;
-    	while(fast != rear && fast->next != rear)
-    	{
-    		slow = slow->next;
-    		fast = fast->next->next;
-    	}
-    	right = slow->next;
-    	slow->next = NULL;
-    	left = divide(head, slow);
-    	right = divide(right, rear);
-    	return conquer(left, right);
+    ListNode *dfs(ListNode *head, ListNode *rear) {
+        if (head == rear) {
+            return head;
+        }
+        auto slow = head, fast = head;
+        while (fast != rear && fast->next != rear) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        auto rhead = slow->next;
+        slow->next = NULL;
+        auto left = dfs(head, slow);
+        auto right = dfs(rhead, rear);
+        return merge(left, right);
     }
-    ListNode *conquer(ListNode *left, ListNode *right)
-    {
-    	if (left == NULL)
-    		return right;
-    	else if (right == NULL)
-    		return left;
-    	if (left->val < right->val)
-    	{
-    		left->next = conquer(left->next, right);
-    		return left;
-    	}
-    	else
-    	{
-    		right->next = conquer(left, right->next);
-    		return right;
-    	}
+    ListNode *merge(ListNode *l1, ListNode *l2) {
+        auto dummy = new ListNode(-1), cur = dummy;
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
+            } else {
+                cur->next = l2;
+                l2 = l2->next;
+            }
+            cur = cur->next;
+        }
+        cur->next = l1 ? l1 : l2;
+        return dummy->next;
     }
 };
 
@@ -58,111 +52,53 @@ class Solution {
 public:
     ListNode* sortList(ListNode* head) {
         int len = 0;
-        ListNode *now = head;
-        while (now) {
-            now = now->next;
+        ListNode *dummy = new ListNode(-1, head), *cur = head;
+        while (cur) {
+            cur = cur->next;
             ++len;
         }
-        ListNode *dummy = new ListNode(-1);
-        dummy->next = head;
+        cur = head;
         for (int i = 1; i < len; i*=2) {
-            ListNode *cur = dummy->next, *tail = dummy;
+            auto last = dummy, cur = dummy->next;
             while (cur) {
                 auto left = cur;
-                auto right = split(left, i);
-                cur = split(right, i);
-                tail = merge(left, right, tail);
+                auto right = findnext(left, i);
+                if (right) {
+                }
+                auto next_left = findnext(right, i);
+                last = merge(left, right, last);
+                cur = next_left;
             }
         }
         return dummy->next;
     }
-    ListNode *split(ListNode *now, int step) {
-        for (int i = 1; now && i < step; ++i) {
-            now = now->next;
+    ListNode *findnext(ListNode *cur, int sz) {
+        for (int i = 1; i < sz && cur; ++i) {
+            cur = cur->next;
         }
-        if (!now) {
-            return NULL;
+        if (!cur) {
+            return nullptr;
         }
-        auto next_start = now->next;
-        now->next = NULL;
-        return next_start;
+        auto rtn_node = cur->next;
+        cur->next = nullptr;
+        return rtn_node;
     }
-    ListNode *merge(ListNode *left, ListNode *right, ListNode *tail) {
-        ListNode *cur = tail;
-        while (left && right) {
-            if (left->val < right->val) {
-                cur->next = left;
-                cur = left;
-                left = left->next;
+    ListNode *merge(ListNode *l1, ListNode *l2, ListNode *last) {
+        auto cur = last;
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                cur->next = l1;
+                l1 = l1->next;
             } else {
-                cur->next = right;
-                cur = right;
-                right = right->next;
+                cur->next = l2;
+                l2 = l2->next;
             }
+            cur = cur->next;
         }
-        cur->next = !left ? right : left;
+        cur->next = l1 ? l1 : l2;
         while (cur->next) {
             cur = cur->next;
         }
         return cur;
-    }
-};
-
-//--- method 3: quick sort
-class Solution {
-public:
-    ListNode* sortList(ListNode* head) {
-    	return divide(head);
-    }
-    ListNode *divide(ListNode *head)
-    {
-    	if (!head)  return NULL;
-    	else if (!head->next) return head;
-
-    	ListNode *small_head = new ListNode(0), *small_rear = small_head;
-    	ListNode *equal_head = new ListNode(0), *equal_rear = equal_head;
-    	ListNode *large_head = new ListNode(0), *large_rear = large_head;
-    	ListNode *merge_head = new ListNode(0), *merge_rear = merge_head;
-    	ListNode *cur = head;
-
-    	while(cur)
-    	{
-    		if (cur->val == head->val)
-    		{
-    			equal_rear->next = cur;
-    			equal_rear = cur;
-    		}
-    		else if (cur->val > head->val)
-    		{
-    			large_rear->next = cur;
-    			large_rear = cur;
-    		}
-    		else if (cur->val < head->val)
-    		{
-    			small_rear->next = cur;
-    			small_rear = cur;
-    		}
-    		cur = cur->next;
-    	}
-    	equal_rear->next = NULL;
-    	large_rear->next = NULL;
-    	small_rear->next = NULL;
-
-    	cur = divide(small_head->next);
-    	if (cur)
-    	{
-    		merge_rear->next = cur;
-    	 	merge_rear = cur;
-    		while(cur->next)
-	    		cur = cur->next;
-	    	cur->next = equal_head->next;
-    	}
-    	else
-    	{
-    		merge_rear->next = equal_head->next;
-    	 	merge_rear = equal_head->next;
-    	}
-    	equal_rear->next = divide(large_head->next);
-    	return merge_head->next;
     }
 };

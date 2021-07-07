@@ -37,6 +37,40 @@ public:
     }
 };
 
+class Solution {
+public:
+    vector<vector<int>> rel;
+    vector<int> visit, deg;
+    int n;
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        n = numCourses;
+        rel.resize(n);
+        deg.resize(n, 0);
+        for (auto &pair: prerequisites) {
+            rel[pair[1]].push_back(pair[0]);
+            ++deg[pair[0]];
+        }
+        for (int i = 0; i < numCourses; ++i) {
+            if (!deg[i]) {
+               dfs(i);
+            }
+        }
+        return !n;
+    }
+    void dfs(int now) {
+        if (deg[now] == -1) {
+            return;
+        }
+        --n;
+        deg[now] = -1;
+        for (auto &node: rel[now]) {
+            if (!--deg[node]) {
+                dfs(node);
+            }
+        }
+    }
+};
+
 //--- method 2: bfs
 class Solution {
 public:

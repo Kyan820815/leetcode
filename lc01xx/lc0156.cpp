@@ -1,4 +1,4 @@
-//--- Q: 156. Binary Tree Upside Down
+//--- Q: 0156. Binary Tree Upside Down
 
 /**
  * Definition for a binary tree node.
@@ -14,27 +14,28 @@
 class Solution {
 public:
     TreeNode* upsideDownBinaryTree(TreeNode* root) {
-        if (!root)
-            return NULL;
-        TreeNode *nr = NULL;
-        postorder(root, &nr);
+        if (!root) {
+            return nullptr;
+        }
+        TreeNode *nr = nullptr;
+        dfs(root, &nr);
         return nr;
     }
-    void postorder(TreeNode *root, TreeNode **nr) {
-        if (root->left)
-            postorder(root->left, nr);
-        if (root->right)
-            postorder(root->right, nr);
-        
-        if (*nr == NULL)
-            *nr = root;
-        
+    TreeNode *dfs(TreeNode *root, TreeNode **nr) {
+        TreeNode *left_child = nullptr, *new_root = nullptr;
         if (root->left) {
-            root->left->right = root;
-            root->left->left = root->right;            
+            new_root = dfs(root->left, nr);
         }
-        root->left = NULL;
-        root->right = NULL;
+        if (root->right) {
+            left_child = dfs(root->right, nr);
+        }
+        if (!(*nr)) {
+            *nr = root;
+        } else if (new_root) {
+            new_root->left = left_child;
+            new_root->right = root;
+        }
+        root->left = root->right = nullptr;
+        return root;
     }
 };
-

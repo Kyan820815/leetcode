@@ -1,75 +1,71 @@
-//--- Q: 131. Palindrome Partitioning
+//--- Q: 0131. Palindrome Partitioning
 
-//--- method 1: dfs with pre-computed palidrome, better
+//--- method 1: dfs with check palidrome every time 
 class Solution {
 public:
+    vector<string> res;
+    vector<vector<string>> res_vec;
     vector<vector<string>> partition(string s) {
-        vector<string> res_v;
-        vector<vector<string>> res;
-        vector<vector<int>> dp(s.size(), vector<int>(s.size(), 0));
-        for (int i = s.size()-1; i >= 0; --i)
-        {
-        	for (int j = i; j < s.size(); ++j)
-        	{
-        		if ((j-i < 2 || dp[i+1][j-1]) && s[i] == s[j])
-        			dp[i][j] = 1;
-        	}
+        dfs(0, s);
+        return res_vec;
+    }
+    void dfs(int idx, string &s) {
+        if (idx == s.size()) {
+            res_vec.push_back(res);
         }
-        dfs(s, 0, dp, res_v, res);
-        return res;
+        string tmp = "";
+        for (int i = idx; i < s.size(); ++i) {
+            tmp += s[i];
+            if (ispal(tmp)) {
+                res.push_back(tmp);
+                dfs(i+1, s);
+                res.pop_back();
+            }
+        }
     }
-    void dfs(string s, int start, vector<vector<int>> &dp, vector<string> &res_v, vector<vector<string>> &res)
-    {
-    	if (start == s.size())
-    	{
-    		res.push_back(res_v);
-			return;    	 	
-    	}
-    	//--- cut
-    	for (int i = start; i < s.size(); ++i)
-    	{
-	    	string s_str = s.substr(start, i-start+1);
-    		if (dp[start][i] == 0) continue;
-	    	res_v.push_back(s_str);
-    		dfs(s, i+1, dp, res_v, res);
-	    	res_v.pop_back();
-    	}
+    bool ispal(string &str) {
+        int left = 0, right = str.size()-1;
+        while (left < right) {
+            if (str[left++] != str[right--]) {
+                return false;
+            }
+        }
+        return true;
     }
 };
 
-//--- method 2: dfs with check palidrome every time 
+//--- method 2: dfs with pre-computed palidrome, better
 class Solution {
 public:
+    vector<string> res;
+    vector<vector<string>> res_vec;
+    vector<vector<int>> dp;
     vector<vector<string>> partition(string s) {
-        vector<string> res_v;
-        vector<vector<string>> res;
-        dfs(s, 0, res_v, res);
-        return res;
+        dp.resize(s.size(), vector<int>(s.size(), 0));
+        for (int i = s.size()-1; i >= 0; --i) {
+            dp[i][i] = 1;
+            for (int j = i+1; j < s.size(); ++j) {
+                if ((i+1 == j || dp[i+1][j-1]) && s[i] == s[j]) {
+                    dp[i][j] = 1;
+                }
+            }
+        }
+        dfs(0, s);
+        return res_vec;
     }
-    void dfs(string s, int start, vector<string> &res_v, vector<vector<string>> &res)
-    {
-    	if (start == s.size())
-    	{
-    		res.push_back(res_v);
-			return;    	 	
-    	}
-    	//--- cut
-    	for (int i = start; i < s.size(); ++i)
-    	{
-	    	string s_str = s.substr(start, i-start+1);
-	    	if (!isPal(s_str)) continue;
-	    	res_v.push_back(s_str);
-    		dfs(s, i+1, res_v, res);
-	    	res_v.pop_back();
-    	}
-    }
-    bool isPal(string s)
-    {
-    	for (int i = 0; i < s.size()/2; ++i)
-    	{
-    		if (s[i] != s[s.size()-i-1])
-    			return false;
-    	}
-    	return true;
+    void dfs(int idx, string &s) {
+        if (idx == s.size()) {
+            res_vec.push_back(res);
+        }
+        string tmp = "";
+        for (int i = idx; i < s.size(); ++i) {
+            tmp += s[i];
+            if (dp[idx][i]) {
+                res.push_back(tmp);
+                dfs(i+1, s);
+                res.pop_back();
+            }
+        }
     }
 };
+

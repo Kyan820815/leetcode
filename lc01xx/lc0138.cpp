@@ -1,4 +1,4 @@
-//--- Q: 138. Copy List with Random Pointer
+//--- Q: 0138. Copy List with Random Pointer
 
 /*
 // Definition for a Node.
@@ -22,101 +22,28 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        Node *findNode, *cur;
-        Node *root, *rear;
-
-        if (head == NULL)
-            return head;
-
-        cur = head;
-
-        while(cur != NULL)
-        {
-            findNode = (Node *)malloc(sizeof(Node));
-            findNode->val = cur->val;
-            findNode->next = cur->next;
-
-            cur->next = findNode;
-
-            cur = cur->next->next;
+        auto now = head;
+        while (now) {
+            auto tmp = now->next;
+            now->next = new Node(now->val);
+            now->next->next = tmp;
+            now = tmp;
         }
-
-        cur = head;
-        root = rear = NULL;
-        while(cur != NULL)
-        {
-            if(cur->random != NULL)
-                findNode = cur->random->next;
-            else
-                findNode = NULL;
-
-            cur->next->random = findNode;
-            
-            cur = cur->next->next;
-        }
-
-        cur = head;
-        root = rear = cur->next;
-        while(rear->next != NULL)
-        {
-            cur->next = cur->next->next;
-            cur = cur->next;
-            rear->next = rear->next->next;
-            rear = rear->next;
-        }
-        cur->next = NULL;
-
-        return root;
-    }
-};
-
-//--- method 2: map
-class Solution {
-public:
-    Node* copyRandomList(Node* head) {
-        map<Node*, Node*> mapNode;
-        Node *findNode, *cur;
-        Node *root, *rear;
-
-        if (head == NULL)
-            return head;
-
-        cur = head;
-        root = rear = NULL;
-
-        while(cur != NULL)
-        {
-            findNode = (Node *)malloc(sizeof(Node));
-            findNode->val = cur->val;
-            findNode->next = NULL;
-
-            if (root == NULL && rear == NULL)
-                root = rear = findNode;
-            else
-            {
-                rear->next = findNode;
-                rear = rear->next;
+        now = head;
+        while (now) {
+            if (now->random) {
+                now->next->random = now->random->next;
             }
-
-            mapNode.insert(pair<Node*,Node*>(cur,findNode));
-
-            cur = cur->next;
+            now = now->next->next;
         }
-
-        cur = head;
-        rear = root;
-        while(cur != NULL)
-        {
-            if(cur->random != NULL)
-                findNode = mapNode[cur->random];
-            else
-                findNode = NULL;
-
-            rear->random = findNode;
-            rear = rear->next;
+        auto dummy = new Node(-1), cur = dummy;
+        now = head;
+        while (now) {
+            cur->next = now->next;
+            now->next = now->next->next;
             cur = cur->next;
+            now = now->next;
         }
-
-        return root;
+        return dummy->next;
     }
 };

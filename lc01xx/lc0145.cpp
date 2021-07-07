@@ -1,4 +1,4 @@
-//--- Q: 145. Binary Tree Postorder Traversal
+//--- Q: 0145. Binary Tree Postorder Traversal
 
 /**
  * Definition for a binary tree node.
@@ -10,53 +10,49 @@
  * };
  */
 
-//--- method 1: postorder recursion
+//--- method 1: iterative solution using stack
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-     	vector<int> out;
-     	if (!root) return out;
-     	postorder(root, out);
-     	return out;   
-    }
-    void postorder(TreeNode *root, vector<int> &out)
-    {	
-    	if (root->left) postorder(root->left, out);
-    	if (root->right) postorder(root->right, out);
-    	out.push_back(root->val);
+        if (!root) {
+            return {};
+        }
+        TreeNode *last = root;
+        vector<TreeNode *> sk;
+        vector<int> res;
+        sk.push_back(root);
+        while (sk.size()) {
+            auto now = sk.back();
+            if (!now->left && !now->right || now->left == last || now->right == last) {
+                last = now;
+                res.push_back(now->val);
+                sk.pop_back();
+            } else {
+                if (now->right) {
+                    sk.push_back(now->right);
+                }
+                if (now->left) {
+                    sk.push_back(now->left);
+                }
+            }
+        }
+        return res;
     }
 };
-
-//--- method 2: iterative solution using stack
+//--- method 2: postorder recursion
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-    	vector<int> out;
-    	postorder(root, out);
-    	return out;
+        vector<int> out;
+        if (!root) return out;
+        postorder(root, out);
+        return out;   
     }
     void postorder(TreeNode *root, vector<int> &out)
-    {
-    	TreeNode *cur, *finish;
-    	stack<TreeNode*> sk;
-    	cur = root;
-    	if (!cur) return;
-    	sk.push(root);
-    	while(!sk.empty())
-    	{
-    		cur = sk.top();
-    		if (cur->left == finish || cur->right == finish || (!cur->left && !cur->right))
-    		{
-    			out.push_back(cur->val);
-    			finish = cur;
-    			sk.pop();
-    		}
-			else
-			{
-				if (cur->right) sk.push(cur->right);
-				if(cur->left) sk.push(cur->left);
-			}    		
-    	}	
+    {   
+        if (root->left) postorder(root->left, out);
+        if (root->right) postorder(root->right, out);
+        out.push_back(root->val);
     }
 };
 
@@ -64,51 +60,33 @@ public:
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> out;
-        postorder(root, out);
-        return out;
-    }
-    void postorder(TreeNode *root, vector<int> &out)
-    {
-    	TreeNode *sproot = new TreeNode(0);
-        TreeNode *cur, *prev, *tmp;
-        vector<int> tmpVec;
-
-        sproot->left = root;
-        cur = sproot;
-
-        while(cur)
-        {
-            if (cur->left)
-            {
-                prev = cur;
-                cur = cur->left;
-                while(cur->right && cur->right != prev) cur = cur->right;
-                
-                if (!cur->right)
-                {
-                    cur->right = prev;
-                    cur = prev->left;
+        auto dummy = new TreeNode(-1, root, nullptr), now = dummy;
+        vector<int> res;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = prev->left;
+                while (now->right && now->right != prev) {
+                    now = now->right;
                 }
-                else if (cur->right == prev)
-                {
-                    //--- back process from cur->right to prev->left
-                    tmpVec.clear();
-                    tmp = prev->left;
-                    while(tmp != prev)
-                    {
-                        tmpVec.insert(tmpVec.begin(), tmp->val);
-                        tmp = tmp->right;                        
+                if (now->right) {
+                    auto cur = prev->left;
+                    int start_sz = res.size();
+                    while (cur != prev) {
+                        res.push_back(cur->val);
+                        cur = cur->right;
                     }
-                    out.insert(out.end(), tmpVec.begin(), tmpVec.end());
-                    cur->right = NULL;
-                    cur = prev->right;
+                    reverse(res.begin()+start_sz, res.end());
+                    now->right = NULL;
+                    now = prev->right;
+                } else {
+                    now->right = prev;
+                    now = prev->left;
                 }
-            }
-            else
-            {
-                cur = cur->right;
-            }
+            } else {
+                now = now->right;
+            } 
         }
+        return res;
     }
 };

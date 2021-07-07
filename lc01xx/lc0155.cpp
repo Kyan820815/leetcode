@@ -1,28 +1,27 @@
-//--- Q: 155. Min Stack
+//--- Q: 0155. Min Stack
 
 //--- method 1: one stack O(1) operation
 class MinStack {
 public:
     /** initialize your data structure here. */
     MinStack() {
-        minv = INT_MAX;
+        sk.push_back(minv);
     }
     
-    void push(int x) {
-        if (minv >= x) {
+    void push(int val) {
+        if (val <= minv) {
             sk.push_back(minv);
-            minv = x;
+            minv = val;
         }
-        sk.push_back(x);
+        sk.push_back(val);
     }
     
     void pop() {
-        int tmp = sk.back();
-        sk.pop_back();
-        if (minv == tmp) {
-            minv = sk.back();
+        if (minv == sk.back()) {
             sk.pop_back();
+            minv = sk.back();
         }
+        sk.pop_back();
     }
     
     int top() {
@@ -33,7 +32,7 @@ public:
         return minv;
     }
     vector<int> sk;
-    int minv;
+    int minv = INT_MAX;
 };
 
 /**

@@ -23,12 +23,10 @@ public:
                 sk.push_back(now);
                 now = now->left;
             }
-            if (sk.size()) {
-                now = sk.back();
-                sk.pop_back();
-                res.push_back(now->val);
-                now = now->right;
-            }
+            now = sk.back();
+            sk.pop_back();
+            res.push_back(now->val);
+            now = now->right;
         }
         return res;
     }

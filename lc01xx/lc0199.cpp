@@ -1,4 +1,4 @@
-//--- Q: 199. Binary Tree Right Side View
+//--- Q: 0199. Binary Tree Right Side View
 
 /**
  * Definition for a binary tree node.
@@ -14,53 +14,49 @@
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
-    	int q_size;
-		queue<TreeNode *> que;
-		vector<int> ans;
-		TreeNode *now;
-		if (!root) return vector<int>{};
-		que.push(root);
-		q_size = 1;
-
-		while(que.size() != 0)
-		{
-			now = que.front();
-			que.pop();
-			if (now->left)
-				que.push(now->left);
-			if (now->right)
-				que.push(now->right);
-			q_size--;
-			if (q_size == 0)
-			{
-				q_size = que.size();
-				ans.push_back(now->val);
-			}
-		}
-	    return ans;
+        if (!root) {
+            return {};
+        }
+        vector<int> res;
+        queue<TreeNode *> que;
+        que.push(root);
+        while (que.size()) {
+            auto qsize = que.size();
+            res.push_back(que.front()->val);
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                if (now->right) {
+                    que.push(now->right);
+                }
+                if (now->left) {
+                    que.push(now->left);
+                }
+            }
+        }
+        return res;
     }
 };
 
 //--- method 2: dfs
 class Solution {
 public:
+    vector<int> res;
     vector<int> rightSideView(TreeNode* root) {
-    	vector<int> ans;
-    	int max = INT_MIN;
-    	if (!root) return ans;
-    	dfs(root, 0, max, ans);
-    	return ans;
+        if (root) {
+            dfs(0, root);
+        }
+        return res;
     }
-    void dfs(TreeNode *root, int level, int &max, vector<int> &ans)
-    {
-    	if (level > max)
-    	{
-    		max = level;
-			ans.push_back(root->val);    		
-    	}
-    	if (root->right)
-    		dfs(root->right, level+1, max, ans);
-    	if (root->left)
-    		dfs(root->left, level+1, max, ans);
+    void dfs(int h, TreeNode *root) {
+        if (h == res.size()) {
+            res.push_back(root->val);
+        }
+        if (root->right) {
+            dfs(h+1, root->right);
+        }
+        if (root->left) {
+            dfs(h+1, root->left);
+        }
     }
 };

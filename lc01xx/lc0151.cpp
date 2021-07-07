@@ -1,40 +1,24 @@
-//--- Q: 151. Reverse Words in a String
+//--- Q: 0151. Reverse Words in a String
 
 //--- method 1: in place reverse
 class Solution {
 public:
     string reverseWords(string s) {
-        int i = 0, ri = 0;
-        while (i < s.size()) {
-            if (s[i] == ' ') {
-                ++i;
+        int cur = 0, idx = 0;
+        while (idx < s.size()) {
+            if (s[idx] == ' ') {
+                ++idx;
                 continue;
             }
-            int start = ri;
-            while (i < s.size() && s[i] != ' ') {
-                s[ri++] = s[i++];
+            int pre = cur;
+            while (idx < s.size() && s[idx] != ' ') {
+                s[cur++] = s[idx++];
             }
-            s[ri++] = ' ';
-            reverse(s.begin()+start, s.begin()+ri-1);
+            reverse(s.begin()+pre, s.begin()+cur);
+            s[cur++] = ' ';
         }
-        string res = s.substr(0, ri-1);
-        reverse(res.begin(), res.end());
-        return res;
-    }
-};
-
-//--- method 2: built-in function
-class Solution {
-public:
-    string reverseWords(string s) {
-        istringstream ss(s);
-        string str, res = "";
-        while (ss >> str) {
-            res = str + " " + res;
-        }
-        if (res.size()) {
-            res.pop_back();
-        }
-        return res;
+        s = s.substr(0, cur-1);
+        reverse(s.begin(), s.end());
+        return s;
     }
 };

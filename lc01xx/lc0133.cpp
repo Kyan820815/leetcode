@@ -1,4 +1,4 @@
-//--- Q: 133. Clone Graph
+//--- Q: 0133. Clone Graph
 
 /*
 // Definition for a Node.
@@ -17,21 +17,23 @@ public:
 */
 
 //--- method 1: dfs
-
 class Solution {
 public:
     unordered_map<Node *, Node *> map;
     Node* cloneGraph(Node* node) {
         if (!node) {
-            return NULL;
+            return nullptr;
         }
-        if (map.find(node) != map.end()) {
-            return map[node];
+        return dfs(node);
+    }
+    Node *dfs(Node *now) {
+        if (map.find(now) != map.end()) {
+            return map[now];
         }
-        map[node] = new Node(node->val);
-        for (auto &neigh: node->neighbors) {
-            map[node]->neighbors.push_back(cloneGraph(neigh));
+        map[now] = new Node(now->val);
+        for (auto &neib: now->neighbors) {
+            map[now]->neighbors.push_back(dfs(neib));
         }
-        return map[node];
+        return map[now];
     }
 };

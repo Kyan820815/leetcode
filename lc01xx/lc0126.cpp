@@ -32,7 +32,7 @@ public:
                                 rel[nextWord].push_back(curWord);
                             }
                             find = true;
-                        } else if (pool.find(nextWord) != data[end].end()) {
+                        } else if (pool.find(nextWord) != pool.end()) {
                             data[next].insert(nextWord);
                             if (start < end) {
                                 rel[curWord].push_back(nextWord);

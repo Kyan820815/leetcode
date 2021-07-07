@@ -1,4 +1,4 @@
-//--- Q: 147. Insertion Sort List
+//--- Q: 0147. Insertion Sort List
 
 /**
  * Definition for singly-linked list.
@@ -13,68 +13,20 @@
 class Solution {
 public:
     ListNode* insertionSortList(ListNode* head) {
-        ListNode *dummy = new ListNode(0);
-        ListNode *prev, *cur, *tmp, *insertion;
-        if (!head) return NULL;
-        prev = head, cur = head->next;
-        dummy->next = head;
-
-        while(cur)
-        {
-            insertion = dummy;
-            tmp = cur;
-            cur = cur->next;            
-            while(insertion->next != tmp && insertion->next->val < tmp->val)
-                insertion = insertion->next;
-            if (insertion->next != tmp)
-            {
-                tmp->next = insertion->next;
-                insertion->next = tmp;
-                prev->next = cur;
+        ListNode *dummy = new ListNode(-1, head), *pre = dummy, *cur = head;
+        while (cur) {
+            auto now = dummy;
+            while (now->next != cur && now->next->val <= cur->val) {
+                now = now->next;
             }
-            else
-                prev = tmp;
-        }
-        return dummy->next;
-    }
-};
-
-//--- method 2: normal inserton sort, O(n) space
-class Solution {
-public:
-    ListNode* insertionSortList(ListNode* head) {
-        vector<ListNode*> sort;
-        ListNode *dummy = new ListNode(-1);
-        dummy->next = head;
-        ListNode *now = dummy;
-        while(now)
-        {
-        	sort.push_back(now);
-        	now = now->next;
-        }
-        for (int i = 2; i < sort.size(); ++i)
-        {
-        	int j, happen = 0;
-        	ListNode *ch = sort[i];
-        	for (j = i-1; j >= 1; --j)
-        	{
-        		if (sort[j]->val > ch->val)
-        		{
-        			if (!happen)
-        			{
-	        			sort[j]->next = sort[j+1]->next;
-	        			happen = 1;
-        			}
-        			sort[j+1] = sort[j];
-        		}
-        		else break;
-        	}
-        	if (happen)
-        	{
-	        	ch->next = sort[j]->next;
-	   	     	sort[j]->next = ch;
-        	}
-        	sort[j+1] = ch;
+            if (now->next->val > cur->val) {
+                pre->next = cur->next;
+                cur->next = now->next;
+                now->next = cur;
+            } else {
+                pre = cur;
+            }
+            cur = pre->next;
         }
         return dummy->next;
     }
