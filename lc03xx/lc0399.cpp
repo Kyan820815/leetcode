@@ -49,51 +49,33 @@ public:
 //--- method 2: dfs
 class Solution {
 public:
+    unordered_map<string, unordered_map<string, double>> rel;
     vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
-        vector<double> res;
-        map<pair<string, string>, double> m;
-        unordered_map<string, vector<string>> rel;
         for (int i = 0; i < equations.size(); ++i) {
-            rel[equations[i][0]].push_back(equations[i][1]);
-            rel[equations[i][1]].push_back(equations[i][0]);
-            m.insert({{equations[i][0], equations[i][1]}, values[i]});
-            m.insert({{equations[i][1], equations[i][0]}, 1/values[i]});
+            rel[equations[i][0]][equations[i][1]] = values[i];
+            rel[equations[i][1]][equations[i][0]] = 1/values[i];
         }
-        for (int i = 0; i < queries.size(); ++i) {
-            string cur = queries[i][0], dst = queries[i][1];
-            if (!rel[cur].size() || !rel[dst].size()) {
-                res.push_back(-1.0);
-            } else if (cur == dst) {
-                res.push_back(1.0);
-            } else {
-                double nowv = dfs("-", cur, dst, rel, m);
-                if (nowv == 0) {
-                    res.push_back(-1.0);
-                } else {
-                    m.insert({{cur, dst}, nowv});
-                    m.insert({{dst, cur}, 1/nowv});
-                    res.push_back(nowv);
-                }
-            }
+        vector<double> res;
+        for (auto &query: queries) {
+            unordered_set<string> set;
+            res.push_back(dfs(query[0], query[1], set));
         }
         return res;
     }
-    double dfs(string last, string &now, string &dst, unordered_map<string, vector<string>> &rel, map<pair<string, string>, double> &m) {
-        if (m.find({now, dst}) != m.end()) {
-            return m[{now, dst}];
+    double dfs(string &now, string &end, unordered_set<string> &set) {
+        if (rel[now].find(end) != rel[now].end()) {
+            return rel[now][end];
         }
-        if (now == dst) {
-            return 1.0;
-        }
-        for (int i = 0; i < rel[now].size(); ++i) {
-            if (rel[now][i] == last) {
-                continue;
-            }
-            double curv = dfs(now, rel[now][i], dst, rel, m);
-            if (curv != 0) {
-                return m[{now, rel[now][i]}] * curv;
+        for (auto &next: rel[now]) {
+            if (set.find(next.first) == set.end()) {
+                set.insert(next.first);
+                auto next_c = next.first;
+                auto rtn_val = dfs(next_c, end, set);
+                if (rtn_val != -1.0) {
+                    return rtn_val*next.second;
+                }
             }
         }
-        return 0;
+        return -1.0;
     }
 };

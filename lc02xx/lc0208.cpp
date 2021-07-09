@@ -1,68 +1,59 @@
-//--- Q: 208. Implement Trie (Prefix Tree)
+//--- Q: 0208. Implement Trie (Prefix Tree)
 
 //--- method 1: trie tree data structure
-class TrieNode
-{
+class TNode {
 public:
-    TrieNode *next[26];
-    bool isWord;
-    TrieNode()
-    {
-        memset(next, NULL, sizeof(TrieNode *)*26);
-        isWord = false;
+    TNode() {
+        isend = false;
+        next.resize(26, nullptr);
     }
+    bool isend;
+    vector<TNode *> next;
 };
+
 class Trie {
 public:
     /** Initialize your data structure here. */
     Trie() {
-        root = new TrieNode();
+        root = new TNode();
     }
     
     /** Inserts a word into the trie. */
-    void insert(string word)
-    {
-        TrieNode *now = root;
-        for (int i = 0; i < word.size(); ++i)
-        {
-            int idx = word[i] - 'a';
-            if (!now->next[idx])
-                now->next[idx] = new TrieNode();
-            now = now->next[idx];
+    void insert(string word) {
+        auto now = root;
+        for (auto &ch: word) {
+            if (!now->next[ch-'a']) {
+                now->next[ch-'a'] = new TNode();
+            }
+            now = now->next[ch-'a'];
         }
-        now->isWord = true;            
+        now->isend = true;
     }
     
     /** Returns if the word is in the trie. */
-    bool search(string word)
-    {
-        TrieNode *now = root;
-        for (int i = 0; i < word.size(); ++i)
-        {
-            int idx = word[i] - 'a';
-            if (!now->next[idx])
+    bool search(string word) {
+        auto now = root;
+        for (auto &ch: word) {
+            now = now->next[ch-'a'];
+            if (!now) {
                 return false;
-            now = now->next[idx];
+            }
         }
-        return (now->isWord) ? true : false;
+        return now->isend;
     }
     
     /** Returns if there is any word in the trie that starts with the given prefix. */
-    bool startsWith(string prefix)
-    {
-        TrieNode *now = root;
-        for (int i = 0; i < prefix.size(); ++i)
-        {
-            int idx = prefix[i] - 'a';
-            if (!now->next[idx])
-                return false;
-            now = now->next[idx];
+    bool startsWith(string prefix) {
+        auto now = root;
+        for (auto &ch: prefix) {
+            now = now->next[ch-'a'];
+            if (!now) {
+                break;
+            }
         }
-        return true;
+        return now != nullptr;
     }
-
-private:
-   TrieNode *root;
+    TNode *root;
 };
 
 /**

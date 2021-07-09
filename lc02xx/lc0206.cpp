@@ -1,4 +1,4 @@
-//--- Q: 206. Reverse Linked List
+//--- Q: 0206. Reverse Linked List
 
 /**
  * Definition for singly-linked list.
@@ -9,41 +9,17 @@
  * };
  */
 
-//--- method 1: recursion
+//--- method 1: iteration
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-    	ListNode *rev = NULL;
-    	recur(head, &rev);
-        return rev;
-    }
-    void recur(ListNode *head, ListNode **rev)
-    {
-    	ListNode *cur;
-    	if (!head) return;
-    	
-        cur = head;
-    	head = head->next;
-		cur->next = *rev;
-		*rev = cur;
-
-    	recur(head, rev);
-    }
-};
-
-//--- method 2: iteration
-class Solution {
-public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode *rev = NULL, *cur;
-
-        while(head)
-        {
-        	cur = head;
-        	head = head->next;
-        	cur->next = rev;
-            rev = cur;
+        ListNode *revH = nullptr, *cur = head;
+        while (cur) {
+            auto tmp = cur->next;
+            cur->next = revH;
+            revH = cur;
+            cur = tmp;
         }
-        return rev;
+        return revH;
     }
 };

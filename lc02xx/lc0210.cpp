@@ -1,86 +1,73 @@
-//--- Q: 210. Course Schedule II
+//--- Q: 0210. Course Schedule II
 
-//--- method 1: dfs
+//--- method 1: bfs
 class Solution {
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
-		vector<vector<int>> connect;
-		vector<int> path(numCourses, 0);
-        vector<int> out;
-		bool find = true;
-        connect.resize(numCourses);
-		for (int i = 0; i < prerequisites.size(); ++i)
-			connect[prerequisites[i][0]].push_back(prerequisites[i][1]);
-    	for (int i = 0; i < numCourses; ++i)
-    	{
-            if (path[i] == 0)
-    		  dfs(path, connect, find, i, out);
-    		if (!find) break;
-    	}
-    	return find ? out : vector<int>{};
-    }
-    void dfs(vector<int> &path, vector<vector<int>> &connect, bool &find, int now, vector<int> &out)
-    {
-    	path[now] = 1;
-    	for (int i = 0; i < connect[now].size(); ++i)
-    	{
-			if (path[connect[now][i]] == 1)
-    		{
-    			find = false;
-    			return;
-    		}
-    		else if (path[connect[now][i]] == 2)
-    			continue;
-    		else
-				dfs(path, connect, find, connect[now][i], out);
-    	}
-        out.push_back(now);
-    	path[now] = 2;
+        int n = numCourses;
+        vector<vector<int>> rel(n);
+        vector<int> deg(n, 0), res;
+        for (auto &courses: prerequisites) {
+            rel[courses[1]].push_back(courses[0]);
+            ++deg[courses[0]];
+        }
+        queue<int> que;
+        for (int i = 0; i < n; ++i) {
+            if (!deg[i]) {
+                que.push(i);
+            }
+        }
+        while (que.size()) {
+            auto qsize = que.size();
+            n -= qsize;
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                res.push_back(now);
+                for (auto &next: rel[now]) {
+                    if (!--deg[next]) {
+                        que.push(next);
+                    }
+                }
+            }
+        }
+        return !n ? res : vector<int>{};
     }
 };
 
-//--- method 2: bfs
+//--- method 2: dfs
 class Solution {
 public:
+    int n;
+    vector<int> res;
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
-        vector<vector<int>> connect;
-        vector<int> in_degree(numCourses, 0);
-        vector<int> out;
-        bool find = true;
-
-        connect.resize(numCourses);
-        for (int i = 0; i < prerequisites.size(); ++i)
-        {
-            connect[prerequisites[i][1]].push_back(prerequisites[i][0]);
-            in_degree[prerequisites[i][0]]++;
+        n = numCourses;
+        vector<vector<int>> rel(n);
+        vector<int> visit(n, -1);
+        for (auto &courses: prerequisites) {
+            rel[courses[1]].push_back(courses[0]);
         }
-        return (bfs(in_degree, connect, numCourses, out)) ? out : vector<int>{};
-    }
-    bool bfs(vector<int> &in_degree, vector<vector<int>> &connect, int numCourses, vector<int> &out)
-    {
-        int top;
-        queue<int> que; 
-        for (int i = 0; i < numCourses; ++i)
-        {
-            if (in_degree[i] == 0)
-                que.push(i);
-        }
-        int count = que.size();
-        while(!que.empty())
-        {
-            top = que.front();
-            for (int i = 0; i < connect[top].size(); ++i)
-            {
-                in_degree[connect[top][i]]--;
-                if (in_degree[connect[top][i]] == 0)
-                {
-                    que.push(connect[top][i]);
-                    count++;
+        for (int i = 0; i < numCourses; ++i) {
+            if (visit[i] == -1) {
+                if (!dfs(i, visit, rel)) {
+                    return vector<int>{};
                 }
             }
-            out.push_back(top);
-            que.pop();
         }
-        return (count != numCourses) ? false : true;
+        reverse(res.begin(), res.end());
+        return res;
+    }
+    bool dfs(int now, vector<int> &visit, vector<vector<int>> &rel) {
+        if (visit[now] != -1) {
+            return visit[now];
+        }
+        visit[now] = 0;
+        for (auto &next: rel[now]) {
+            if (!dfs(next, visit, rel)) {
+                return visit[now];
+            }
+        }
+        res.push_back(now);
+        return visit[now] = 1;
     }
 };

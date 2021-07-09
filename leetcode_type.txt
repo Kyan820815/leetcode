@@ -57,6 +57,7 @@
 	0109(m): Convert Sorted List to Binary Search Tree
 	0148(m): Sort List
 	0179(m): Largest Number
+	0215(m): Kth Largest Element in an Array
 
 --- Two Pointer:
 	0001(e): Two Sum
@@ -90,6 +91,7 @@
 	0189(m): Rotate Array
 	0202(e): Happy Number
 	0209(m): Minimum Size Subarray Sum
+	0219(e): Contains Duplicate II
 	0234(e): Palindrome Linked List
 	0239(h): Sliding Window Maximum
 	0243(e): Shortest Word Distance
@@ -246,6 +248,7 @@
 	1897(e): Redistribute Characters to Make All Strings Equal
 
 --- Union Find:
+	0200(m): Number of Islands
 	0261(m): Graph Valid Tree
 	0305(h): Number of Islands II
 	0399(m): Evaluate Division
@@ -441,6 +444,12 @@
 	0156(m): Binary Tree Upside Down
 	0199(m): Binary Tree Right Side View
 	0200(m): Number of Islands
+	0207(m): Course Schedule
+	0208(m): Implement Trie (Prefix Tree)
+	0210(m): Course Schedule II
+	0211(m): Design Add and Search Words Data Structure
+	0212(h): Word Search II
+	0216(m): Combination Sum III
 	0224(h): Basic Calculator
 	0234(e): Palindrome Linked List
 	0247(m): Strobogrammatic Number II
@@ -621,6 +630,7 @@
 	1588(e): Sum of All Odd Length Subarrays
 
 --- Prefix Sum:
+	0209(m): Minimum Size Subarray Sum
 	0304(m): Range Sum Query 2D - Immutable
 	0325(m): Maximum Size Subarray Sum Equals k
 	0327(h): Count of Range Sum
@@ -656,6 +666,7 @@
 	0187(m): Repeated DNA Sequences
 	0205(e): Isomorphic Strings
 	0217(e): Contains Duplicate
+	0219(e): Contains Duplicate II
 	0249(m): Group Shifted Strings
 	0253(m): Meeting Rooms II
 	0266(e): Palindrome Permutation
@@ -730,6 +741,7 @@
 	0146(m): LRU Cache
 	0155(e): Min Stack
 	0173(m): Binary Search Tree Iterator
+	0211(m): Design Add and Search Words Data Structure
 	0348(m): Design Tic-Tac-Toe
 	0359(e): Logger Rate Limiter
 	0362(m): Design Hit Counter
@@ -858,6 +870,7 @@
 	0171(e): Excel Sheet Column Number
 	0179(m): Largest Number
 	0187(m): Repeated DNA Sequences
+	0205(e): Isomorphic Strings
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
 	0884(e): Uncommon Words from Two Sentences
@@ -935,6 +948,13 @@
 	0189(m): Rotate Array
 	0198(m): House Robber
 	0200(m): Number of Islands
+	0204(e): Count Primes
+	0212(h): Word Search II
+	0213(m): House Robber II
+	0215(m): Kth Largest Element in an Array
+	0216(m): Combination Sum III
+	0217(e): Contains Duplicate
+	0219(e): Contains Duplicate II
 	0228(m): Summary Ranges
 	0229(m): Majority Element II
 	0238(m): Product of Array Except Self
@@ -1142,7 +1162,6 @@
 	0200(m): Number of Islands
 	0207(m): Course Schedule
 	0210(m): Course Schedule II
-	0212(h): Word Search II
 	0221(m): Maximal Square
 	0277(m): Find the Celebrity
 	0286(m): Walls and Gates

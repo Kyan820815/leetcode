@@ -1,4 +1,4 @@
-//--- Q: 203. Remove Linked List Elements
+//--- Q: 0203. Remove Linked List Elements
 
 /**
  * Definition for singly-linked list.
@@ -13,16 +13,15 @@
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-    	ListNode *pre, *cur, *dummy = new ListNode(-1);
-    	dummy->next = head, pre = dummy, cur = head;
-    	while (cur)
-    	{
-    		if (cur->val == val)
-    			pre->next = cur->next;
-    		else
-    			pre = cur;
-    		cur = cur->next;
-    	}
-    	return dummy->next;
+        auto dummy = new ListNode(-1, head), pre = dummy, cur = head;
+        while (cur) {
+            if (cur->val == val) {
+                pre->next = cur->next;
+            } else {
+                pre = cur;
+            }
+            cur = cur->next;
+        }
+        return dummy->next;
     }
 };

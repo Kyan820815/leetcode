@@ -1,16 +1,16 @@
-//--- Q: 211. Design Add and Search Words Data Structure
+//--- Q: 0211. Design Add and Search Words Data Structure
 
 //--- method 1: trie tree
 class TNode {
 public:
     TNode() {
-        memset(next, NULL, 26*sizeof(TNode *));
         isend = false;
+        next.resize(26, NULL);
     }
-    
-    TNode *next[26];
     bool isend;
+    vector<TNode *> next;
 };
+
 class WordDictionary {
 public:
     /** Initialize your data structure here. */
@@ -18,44 +18,37 @@ public:
         root = new TNode();
     }
     
-    void insert(string &word) {
-        TNode *now = root;
-        for (auto &c: word) {
-            if (!now->next[c-'a']) {
-                now->next[c-'a'] = new TNode();
+    void addWord(string word) {
+        auto now = root;
+        for (auto &ch: word) {
+            if (!now->next[ch-'a']) {
+                now->next[ch-'a'] = new TNode();
             }
-            now = now->next[c-'a'];
+            now = now->next[ch-'a'];
         }
         now->isend = true;
     }
-
-    bool searchW(string &word, int idx, TNode *now) {
-        if (!now) {
-            return false;
-        }
-        if (idx == word.size()) {
-            return now->isend;
-        }
-        if (word[idx] == '.') {
-            for (int i = 0; i < 26; ++i) {
-                if (searchW(word, idx+1, now->next[i])) {
-                    return true;
-                }
-            }
-        } else {
-            return searchW(word, idx+1, now->next[word[idx]-'a']);
-        }
-        return false;
-    }
     
-    /** Adds a word into the data structure. */
-    void addWord(string word) {
-        insert(word);
-    }
-    
-    /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
     bool search(string word) {
-        return searchW(word, 0, root);
+        return findWord(0, word, root);
+    }
+    bool findWord(int idx, string &word, TNode *now) {
+        for (int i = idx; i < word.size(); ++i) {
+            if (word[i] == '.') {
+                for (auto &next_node: now->next) {
+                    if (next_node && findWord(i+1, word, next_node)) {
+                        return true;
+                    }
+                }
+                return false;
+            } else {
+                now = now->next[word[i]-'a'];
+            }
+            if (!now) {
+                return false;
+            }
+        }
+        return now->isend;
     }
     TNode *root;
 };
