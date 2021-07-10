@@ -1,4 +1,4 @@
-//--- Q: 224. Basic Calculator
+//--- Q: 0224. Basic Calculator
 
 //--- method 1: dfs recurision
 class Solution {
@@ -8,7 +8,7 @@ public:
         return dfs(idx, s);
     }
     int dfs(int &idx, string &s) {
-        int total = 0, cur = 0;
+        int cur_sum = 0, total = 0;
         char lastop = '+';
         while (idx < s.size()) {
             if (s[idx] == ' ') {
@@ -17,26 +17,25 @@ public:
             }
             if (s[idx] == '(') {
                 ++idx;
-                cur = dfs(idx, s);
+                cur_sum = dfs(idx, s);
             } else if (s[idx] == ')') {
                 ++idx;
-                total = count(lastop, cur, total);
-                return total;
-            } else if (s[idx] == '+' || s[idx] == '-') {
-                total = count(lastop, cur, total);
-                lastop = s[idx++];
-                cur = 0;                
+                return combine(total, cur_sum, lastop);
+            } else if (isdigit(s[idx])) {
+                cur_sum = cur_sum*10 + (s[idx++]-'0');
             } else {
-                cur = cur*10+(s[idx++]-'0');
+                total = combine(total, cur_sum, lastop);
+                cur_sum = 0;
+                lastop = s[idx++];
             }
         }
-        return count(lastop, cur, total);
+        return combine(total, cur_sum, lastop);
     }
-    int count(char lastop, int cur, int total) {
-        if (lastop == '-') {
-            cur *= -1;
+    int combine(int total, int cur_sum, char lastop) {
+        if (lastop == '+') {
+            return total += cur_sum; 
+        } else {
+            return total -= cur_sum;
         }
-        total += cur;
-        return total;
     }
 };

@@ -1,4 +1,4 @@
-//--- Q: 250. Count Univalue Subtrees
+//--- Q: 0250. Count Univalue Subtrees
 
 /**
  * Definition for a binary tree node.
@@ -10,53 +10,29 @@
  * };
  */
 
-//--- method 1: postorder with compare with leaf value
-class Solution {
-public:
-    int countUnivalSubtrees(TreeNode* root) {
-        int res = 0, comp = 0;
-        if (root)
-            postorder(root, res, comp);
-        return res;
-    }
-    void postorder(TreeNode *root, int &res, int &comp) {
-        int lcomp = INT_MIN, rcomp = INT_MIN;
-        comp = INT_MIN;
-        if (!root->left && !root->right)
-            lcomp = rcomp = root->val;
-        if (root->left)
-            postorder(root->left, res, lcomp);
-        if (root->right)
-            postorder(root->right, res, rcomp);
-        if ((!root->left || lcomp == root->val)
-            && (!root->right || rcomp == root->val)) {
-            comp = max(lcomp, rcomp);
-            ++res;
-        }
-    }
-};
-
-//--- method 2: postorder with compare parent and child node。
+//--- method 1: postorder with compare parent and child node。
 class Solution {
 public:
     int res = 0;
     int countUnivalSubtrees(TreeNode* root) {
         if (root) {
-            postorder(root, -1);
+            postorder(root, -1001);
         }
         return res;
     }
-    bool postorder(TreeNode *root, int p) {
-        bool valid = true;
+    int postorder(TreeNode *root, int p) {
+        int lb = 1, rb = 1;
         if (root->left) {
-            valid &= postorder(root->left, root->val);
+            lb = postorder(root->left, root->val);
         }
         if (root->right) {
-            valid &= postorder(root->right, root->val);
+            rb = postorder(root->right, root->val);
         }
-        if (valid) {
+        if (lb && rb) {
             ++res;
+        } else {
+            return false;
         }
-        return root->val == p && valid;
+        return p == root->val;
     }
 };

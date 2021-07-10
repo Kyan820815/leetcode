@@ -1,4 +1,4 @@
-//--- Q: 237. Delete Node in a Linked List
+//--- Q: 0237. Delete Node in a Linked List
 
 /**
  * Definition for singly-linked list.
@@ -13,17 +13,12 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-    	ListNode *cur;
-    	cur = node;
-    	while (cur->next)
-    	{
-    		cur->val = cur->next->val;
-            if (!cur->next->next)
-            {
-                cur->next = NULL;
-                break;
-            }
-    		cur = cur->next;
-    	}
+        ListNode *pre, *cur = node;
+        while (cur->next) {
+            cur->val = cur->next->val;
+            pre = cur;
+            cur = cur->next;
+        }
+        pre->next = nullptr;
     }
 };

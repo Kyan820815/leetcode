@@ -1,22 +1,25 @@
-//--- Q: 249. Group Shifted Strings
+//--- Q: 0249. Group Shifted Strings
 
 //--- method 1: map operation
 class Solution {
 public:
     vector<vector<string>> groupStrings(vector<string>& strings) {
-        unordered_map<string, vector<string>> map;
+        unordered_map<string, int> map;
         vector<vector<string>> res;
-        for (int i = 0 ; i < strings.size(); ++i) {
-            string m = "";
-            for (int j = 0; j < strings[i].size()-1; ++j) {
-                int diff = strings[i][j+1]-strings[i][j];
-                diff = (diff + 26) % 26;
-                m += 'a' + diff;
+        for (auto &str: strings) {
+            string tmp = "a";
+            auto diff = str[0]-'a';
+            for (int i = 1; i < str.size(); ++i) {
+                auto idx = ((str[i]-'a')-diff+26)%26;
+                tmp.push_back('a'+idx);
             }
-            map[m].push_back(strings[i]);
+            if (map.find(tmp) == map.end()) {
+                map[tmp] = res.size();
+                res.push_back({str});
+            } else {
+                res[map[tmp]].push_back(str);
+            }
         }
-        for (auto &m: map)
-            res.push_back(m.second);
         return res;
     }
 };

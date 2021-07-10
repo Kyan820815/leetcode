@@ -1,41 +1,42 @@
-//--- Q: 241. Different Ways to Add Parentheses
+//--- Q: 0241. Different Ways to Add Parentheses
 
-//--- method 1: divide & conpuer with memorization
+//--- method 1: divide & conpuer
 class Solution {
 public:
-    vector<int> diffWaysToCompute(string input) {
-        int n = input.size();
-        unordered_map<int, unordered_map<int, vector<int>>> dp;
-        return dfs(0, n-1, dp, input);
+    vector<int> diffWaysToCompute(string expression) {
+        return dfs(0, expression.size()-1, expression);
     }
-    vector<int> dfs(int start, int end, unordered_map<int, unordered_map<int, vector<int>>> &dp, string &input) {
-        if (dp[start][end].size()) {
-            return dp[start][end];
-        }
-        vector<int> res;
+    vector<int> dfs(int start, int end, string &expression) {
         int sum = 0;
+        vector<int> res;
         for (int i = start; i <= end; ++i) {
-            if (input[i] == '+' || input[i] == '-' || input[i] == '*') {
-                vector<int> left = dfs(start, i-1, dp, input);
-                vector<int> right = dfs(i+1, end, dp, input);
-                for (int j = 0; j < left.size(); ++j) {
-                    for (int k = 0; k < right.size(); ++k) {
-                        if (input[i] == '+') {
-                            res.push_back(left[j] + right[k]);
-                        } else if (input[i] == '-') {
-                            res.push_back(left[j] - right[k]);
-                        } else {
-                            res.push_back(left[j] * right[k]);
-                        }
+            if (isdigit(expression[i])) {
+                sum = sum * 10 + expression[i]-'0';
+                continue;
+            }
+            auto left = dfs(start, i-1, expression);
+            auto right = dfs(i+1, end, expression);
+            if (expression[i] == '+') {
+                for (auto &lv: left) {
+                    for (auto &rv: right) {
+                        res.push_back(lv+rv);
                     }
                 }
+            } else if (expression[i] == '-') {
+                for (auto &lv: left) {
+                    for (auto &rv: right) {
+                        res.push_back(lv-rv);
+                    }
+                }
+                
             } else {
-                sum = sum * 10 + (input[i]-'0');
+                for (auto &lv: left) {
+                    for (auto &rv: right) {
+                        res.push_back(lv*rv);
+                    }
+                }
             }
         }
-        if (!res.size()) {
-            res.push_back(sum);
-        }
-        return dp[start][end] = res;
+        return !res.size() ? vector<int>{sum} : res;
     }
 };

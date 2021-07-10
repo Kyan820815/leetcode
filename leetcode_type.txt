@@ -10,7 +10,6 @@
 	0081(m): Search in Rotated Sorted Array II
 	0153(m): Find Minimum in Rotated Sorted Array
 	0162(m): Find Peak Element
-	0241(m): Different Ways to Add Parentheses
 	0278(e): First Bad Version
 	0287(m): Find the Duplicate Number
 	0300(m): Longest Increasing Subsequence
@@ -93,11 +92,14 @@
 	0209(m): Minimum Size Subarray Sum
 	0219(e): Contains Duplicate II
 	0234(e): Palindrome Linked List
+	0238(m): Product of Array Except Self
 	0239(h): Sliding Window Maximum
 	0243(e): Shortest Word Distance
 	0244(m): Shortest Word Distance II
 	0245(m): Shortest Word Distance III
 	0246(e): Strobogrammatic Number
+	0247(m): Strobogrammatic Number II
+	0248(h): Strobogrammatic Number III
 	0253(m): Meeting Rooms II
 	0259(m): 3Sum Smaller
 	0263(e): Ugly Number
@@ -346,6 +348,8 @@
 	0200(m): Number of Islands
 	0207(m): Course Schedule
 	0210(m): Course Schedule II
+	0225(e): Implement Stack using Queues
+	0232(e): Implement Queue using Stacks
 	0239(h): Sliding Window Maximum
 	0261(m): Graph Valid Tree
 	0286(m): Walls and Gates
@@ -437,7 +441,7 @@
 	0126(h): Word Ladder II
 	0129(m): Sum Root to Leaf Numbers
 	0130(m): Surrounded Regions
-	0131(m): Palindrome Partitioning
+	0131(m): Palindrome Partitioning	
 	0133(m): Clone Graph
 	0144(e): Binary Tree Preorder Traversal
 	0145(e): Binary Tree Postorder Traversal
@@ -450,10 +454,15 @@
 	0211(m): Design Add and Search Words Data Structure
 	0212(h): Word Search II
 	0216(m): Combination Sum III
+	0222(m): Count Complete Tree Nodes
 	0224(h): Basic Calculator
+	0226(e): Invert Binary Tree
 	0234(e): Palindrome Linked List
+	0236(m): Lowest Common Ancestor of a Binary Tree
+	0241(m): Different Ways to Add Parentheses
 	0247(m): Strobogrammatic Number II
 	0248(h): Strobogrammatic Number III
+	0250(m): Count Univalue Subtrees
 	0273(h): Integer to English Words
 	0301(h): Remove Invalid Parentheses
 	0329(h): Longest Increasing Path in a Matrix
@@ -540,7 +549,6 @@
 	0198(m): House Robber
 	0213(m): House Robber II
 	0221(m): Maximal Square
-	0238(m): Product of Array Except Self
 	0241(m): Different Ways to Add Parentheses
 	0256(e): Paint House
 	0276(e): Paint Fence
@@ -667,6 +675,8 @@
 	0205(e): Isomorphic Strings
 	0217(e): Contains Duplicate
 	0219(e): Contains Duplicate II
+	0242(e): Valid Anagram
+	0244(m): Shortest Word Distance II
 	0249(m): Group Shifted Strings
 	0253(m): Meeting Rooms II
 	0266(e): Palindrome Permutation
@@ -741,7 +751,11 @@
 	0146(m): LRU Cache
 	0155(e): Min Stack
 	0173(m): Binary Search Tree Iterator
+	0208(m): Implement Trie (Prefix Tree)
 	0211(m): Design Add and Search Words Data Structure
+	0225(e): Implement Stack using Queues
+	0232(e): Implement Queue using Stacks
+	0244(m): Shortest Word Distance II
 	0348(m): Design Tic-Tac-Toe
 	0359(e): Logger Rate Limiter
 	0362(m): Design Hit Counter
@@ -794,6 +808,8 @@
 	0160(e): Intersection of Two Linked Lists
 	0203(e): Remove Linked List Elements
 	0206(e): Reverse Linked List
+	0234(e): Palindrome Linked List
+	0237(e): Delete Node in a Linked List
 	0328(m): Odd Even Linked List
 	0339(e): Nested List Weight Sum
 	0369(m): Plus One Linked List
@@ -871,6 +887,17 @@
 	0179(m): Largest Number
 	0187(m): Repeated DNA Sequences
 	0205(e): Isomorphic Strings
+	0224(h): Basic Calculator
+	0227(m): Basic Calculator II
+	0241(m): Different Ways to Add Parentheses
+	0242(e): Valid Anagram
+	0243(e): Shortest Word Distance
+	0244(m): Shortest Word Distance II
+	0245(m): Shortest Word Distance III
+	0246(e): Strobogrammatic Number
+	0247(m): Strobogrammatic Number II
+	0248(h): Strobogrammatic Number III
+	0249(m): Group Shifted Strings
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
 	0884(e): Uncommon Words from Two Sentences
@@ -955,11 +982,15 @@
 	0216(m): Combination Sum III
 	0217(e): Contains Duplicate
 	0219(e): Contains Duplicate II
-	0228(m): Summary Ranges
+	0221(m): Maximal Square
+	0228(e): Summary Ranges
 	0229(m): Majority Element II
 	0238(m): Product of Array Except Self
+	0239(h): Sliding Window Maximum
 	0240(m): Search a 2D Matrix II
-	0242(e): Valid Anagram
+	0243(e): Shortest Word Distance
+	0244(m): Shortest Word Distance II
+	0245(m): Shortest Word Distance III
 	0280(m): Wiggle Sort
 	0283(e): Move Zeroes
 	0289(m): Game of Life
@@ -1249,7 +1280,6 @@
 	0230(m): Kth Smallest Element in a BST
 	0235(e): Lowest Common Ancestor of a Binary Search Tree
 	0236(m): Lowest Common Ancestor of a Binary Tree
-	0237(e): Delete Node in a Linked List
 	0250(m): Count Univalue Subtrees
 	0255(m): Verify Preorder Sequence in Binary Search Tree
 	0257(e): Binary Tree Paths
@@ -1411,6 +1441,8 @@
 	0172(e): Factorial Trailing Zeroes
 	0202(e): Happy Number
 	0204(e): Count Primes
+	0224(h): Basic Calculator
+	0227(m): Basic Calculator II
 	0231(e): Power of Two
 	0258(e): Add Digits
 	0311(m): Sparse Matrix Multiplication 

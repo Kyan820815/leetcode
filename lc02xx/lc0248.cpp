@@ -1,71 +1,41 @@
-//--- Q: 248. Strobogrammatic Number III
+//--- Q: 0248. Strobogrammatic Number III
 
-//--- method 1: count when now.size() == len
+//--- method 1: fill with given size
 class Solution {
 public:
+    int res = 0, ll, rl;
     int strobogrammaticInRange(string low, string high) {
-        vector<string> map({"11", "88", "00", "69", "96"});
-        int res = 0;
-        for (int i = low.size(); i <= high.size(); ++i) {
-            dfs(i, low, high, "", res, map);
-            dfs(i, low, high, "0", res, map);
-            dfs(i, low, high, "1", res, map);
-            dfs(i, low, high, "8", res, map);
+        ll = low.size(), rl = high.size();
+        for (int i = ll; i <= rl; ++i) {
+            string str(i, '.');
+            dfs(0, i-1, str, low, high);
         }
         return res;
     }
-    void dfs(int len, string &low, string &high, string now, int &res, vector<string> &map) {
-        if (now.size() < len-1) {
-            for (int k = 0; k < 5; ++k) {
-                dfs(len, low, high, map[k][0] + now + map[k][1], res, map);
-            }
-        } else if (now.size() == len) {
-            if ((len != 1 && now[0] == '0')
-                || (now.size() == low.size() && now.compare(low) < 0) 
-                || (now.size() == high.size() && now.compare(high) > 0))
-                return;
-            ++res;
-        }
-    }
-};
-
-//--- method 2: fill with given size
-class Solution {
-public:
-    int strobogrammaticInRange(string low, string high) {
-        int res = 0;
-        for (int i = low.size(); i <= high.size(); ++i) {
-            string now(i, '0');
-            dfs(0, i-1, now, low, high, res);
-        }
-        return res;
-    }
-    void dfs(int left, int right, string &now, string &low, string &high, int &res) {
+    void dfs(int left, int right, string &str, string &low, string &high) {
         if (left > right) {
-            if (now.size() == low.size() && now.compare(low) < 0 || now.size() == high.size() && now.compare(high) > 0) {
+            if (str.size() == low.size() && str < low
+               || str.size() == high.size() && str > high) {
                 return;
             }
             ++res;
-            return;
-        }
-        if (now.size() == 1 || left) {
-            now[left] = '0';
-            now[right] = '0';
-            dfs(left+1, right-1, now, low, high, res);
-        }
-        now[left] = '8';
-        now[right] = '8';
-        dfs(left+1, right-1, now, low, high, res);
-        now[left] = '1';
-        now[right] = '1';
-        dfs(left+1, right-1, now, low, high, res);
-        
-        if (left < right) {
-            now[left] = '6';
-            now[right] = '9';
-            dfs(left+1, right-1, now, low, high, res);
-            swap(now[left], now[right]);
-            dfs(left+1, right-1, now, low, high, res);
+        } else {
+            if (str.size() == 1 || left) {
+                str[left] = str[right] = '0';
+                dfs(left+1, right-1, str, low, high);
+            }
+            str[left] = str[right] = '1';
+            dfs(left+1, right-1, str, low, high);
+
+            str[left] = str[right] = '8';
+            dfs(left+1, right-1, str, low, high);
+
+            if (left < right) {
+                str[left] = '6', str[right] = '9';
+                dfs(left+1, right-1, str, low, high);
+                str[left] = '9', str[right] = '6';
+                dfs(left+1, right-1, str, low, high);
+            }
         }
     }
 };

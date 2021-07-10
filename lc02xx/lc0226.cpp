@@ -1,4 +1,4 @@
-//--- Q: 226. Invert Binary Tree
+//--- Q: 0226. Invert Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -10,28 +10,17 @@
  * };
  */
 
-//--- method 1:
+//--- method 1: postorder traversal
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
-    	if (!root) return root;
-        dfs(root);
-    	return root;
-    }
-    void dfs(TreeNode *root)
-    {
-    	TreeNode *copy;
-    	if (!root->left && !root->right)
-    		return;
-    	else
-    	{
-    		copy = root->left;
-    		root->left = root->right;
-    		root->right = copy;
-    		if (root->left)
-    			dfs(root->left);
-    		if (root->right)
-    			dfs(root->right);
-    	}
+        if (!root) {
+            return nullptr;
+        }
+        auto nright = invertTree(root->left);
+        auto nleft = invertTree(root->right);
+        root->left = nleft;
+        root->right = nright;
+        return root;
     }
 };
