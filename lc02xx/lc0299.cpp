@@ -1,6 +1,26 @@
-//--- Q: 299. Bulls and Cows
+//--- Q: 0299. Bulls and Cows
 
-//--- method 1: two pass find share character
+//--- method 1: one pass find current digit positive or negative
+class Solution {
+public:
+    string getHint(string secret, string guess) {
+        vector<int> cnt(10, 0);
+        int n = secret.size(), bull = 0, cow = 0;
+        for (int i = 0; i < n; ++i) {
+            if (secret[i] == guess[i]) {
+                ++bull;
+            } else {
+                cow += cnt[secret[i]-'0'] > 0;
+                cow += cnt[guess[i]-'0'] < 0;
+                --cnt[secret[i]-'0'];
+                ++cnt[guess[i]-'0'];
+            }
+        }
+        return to_string(bull) + "A" + to_string(cow) + "B";
+    }
+};
+
+//--- method 2: two pass find share character
 class Solution {
 public:
     string getHint(string secret, string guess) {
@@ -19,29 +39,5 @@ public:
             }
         }
         return to_string(a) + "A" + to_string(total-a) + "B";
-    }
-};
-
-//--- method 2: one pass find current digit positive or negative
-class Solution {
-public:
-    string getHint(string secret, string guess) {
-        vector<int> cnt(10, 0);
-        int a = 0, b = 0;
-        for (int i = 0; i < secret.size(); ++i) {
-            if (secret[i] == guess[i]) {
-                ++a;
-            } else {
-                if (cnt[guess[i]-'0'] < 0) {
-                    ++b;
-                }
-                if (cnt[secret[i]-'0'] > 0) {
-                    ++b;
-                }
-                --cnt[secret[i]-'0'];
-                ++cnt[guess[i]-'0'];
-            }
-        }
-        return to_string(a) + "A" + to_string(b) + "B";
     }
 };

@@ -1,42 +1,42 @@
-//--- Q: 253. Meeting Rooms II
+//--- Q: 0253. Meeting Rooms II
 
-//--- method 1: sort start time and end time
+//--- method 1: map count
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& intervals) {
-        vector<int> start, end;
-        for (int i = 0; i < intervals.size(); ++i)
-        {
-            start.push_back(intervals[i][0]);
-            end.push_back(intervals[i][1]);
+        map<int, int> time;
+        for (auto &interval: intervals) {
+            ++time[interval[0]];
+            --time[interval[1]];
         }
-        sort(start.begin(), start.end());
-        sort(end.begin(), end.end());
-        int res = 0, idx = 0;
-        for (int i = 0; i < start.size(); ++i)
-        {
-            if (start[i] < end[idx]) ++res;
-            else ++idx;
+        int room = 0, res = 0;
+        for (auto &t: time) {
+            room += t.second;
+            res = max(res, room);
         }
         return res;
     }
 };
 
-//--- method 2: map count
+//--- method 2: sort start time and end time
 class Solution {
 public:
     int minMeetingRooms(vector<vector<int>>& intervals) {
-        int res = 0;
-        map<int, int> schedule;
-        for (int i = 0; i < intervals.size(); ++i) {
-            ++schedule[intervals[i][0]];
-            --schedule[intervals[i][1]];
+        vector<int> start, end;
+        for (auto &interval: intervals) {
+            start.push_back(interval[0]);
+            end.push_back(interval[1]);
         }
-        int event = 0;
-        for (auto &p: schedule) {
-            event += p.second;
-            res = max(res, event);
+        sort(start.begin(), start.end());
+        sort(end.begin(), end.end());
+        int room = 0;
+        for (int i = 0, j = 0; i < start.size(); ++i) {
+            if (start[i] < end[j]) {
+                ++room;
+            } else {
+                ++j;
+            }
         }
-        return res;
+        return room;
     }
 };

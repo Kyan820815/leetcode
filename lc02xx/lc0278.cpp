@@ -1,20 +1,20 @@
-//--- Q: 278. First Bad Version
+//--- Q: 0278. First Bad Version
 
 // Forward declaration of isBadVersion API.
 bool isBadVersion(int version);
 
 //--- method 1: binary search
-class Solution {
 public:
     int firstBadVersion(int n) {
-        long long int left = 0, right = n-1;
+        int left = 1, right = n;
         while (left < right) {
-            long long int mid = (left+right) / 2;
-            if (isBadVersion(mid+1))
-                right = mid;
-            else
+            int mid = left + (right-left)/2;
+            if (!isBadVersion(mid)) {
                 left = mid+1;
+            } else {
+                right = mid;
+            }
         }
-        return left+1;
+        return left;
     }
 };

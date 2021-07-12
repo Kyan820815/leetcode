@@ -1,26 +1,11 @@
-//--- Q: 268. Missing Number
+//--- Q: 0268. Missing Number
 
-//--- method 1: sum method
+//--- method 1: bit manipulation
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-    	int res = 0, sum = 0;
-        for (int i = 0; i < nums.size(); ++i)
-        {
-        	sum += i;
-        	res += nums[i];
-        }
-        return sum+nums.size()-res;
-    }
-};
-
-//--- method 2: bit operation method
-class Solution {
-public:
-    int missingNumber(vector<int>& nums) {
-        int res = 0;
-        for (int i = 0; i < nums.size(); ++i)
-        {
+        int n = nums.size(), res = 0;
+        for (int i = 0; i < n; ++i) {
             res ^= (i+1);
             res ^= nums[i];
         }
@@ -32,15 +17,16 @@ public:
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-    	sort(nums.begin(), nums.end());
-    	int left = 0, right = nums.size();
-    	while (left < right)
-    	{
-    		int mid = (left+right)/2;
-    		if (nums[mid] > mid)
-    			right = mid;
-    		else left = mid+1;
-    	}
-    	return right;
+        sort(nums.begin(), nums.end());
+        int left = 0, right = nums.size()-1;
+        while (left < right) {
+            int mid = left + (right-left)/2;
+            if (nums[mid] > mid) {
+                right = mid;
+            } else {
+                left = mid+1;
+            }
+        }
+        return nums[left] == left ? left+1 : left;
     }
 };

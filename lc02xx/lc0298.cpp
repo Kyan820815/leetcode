@@ -1,4 +1,4 @@
-//--- Q: 298. Binary Tree Longest Consecutive Sequence
+//--- Q: 0298. Binary Tree Longest Consecutive Sequence
 
 /**
  * Definition for a binary tree node.
@@ -15,55 +15,33 @@
 //--- method 1-1: postorder
 class Solution {
 public:
-    int longestConsecutive(TreeNode* root) {
-        int res = 0;
-        if (root) {
-            postorder(root, root->val, res);
-            return res + 1;
-        }
-        return 0;
-    }
-    int postorder(TreeNode *root, int p, int &res) {
-        int lv = 0, rv = 0;
-        if (root->left) {
-            lv = postorder(root->left, root->val, res);
-        }
-        if (root->right) {
-            rv = postorder(root->right, root->val, res);
-        }
-        int now;
-        if (root->val - 1 == p) {
-            now = max(lv, rv) + 1;
-            res = max(now, res);
-        } else {
-            now = 0;
-        }
-        return now;
-    }
-};
-
-//--- method 1-2: another view of postorder
-class Solution {
-public:
     int res = 0;
     int longestConsecutive(TreeNode* root) {
         int len = 0;
         postorder(root, -1, len);
         return res;
     }
-    bool postorder(TreeNode *root, int p, int &len) {
-        int llen = 0, rlen = 0;
-        bool lv = true, rv = true;
+    int postorder(TreeNode *root, int p, int &len) {
+        int lv = 0, rv = 0, lb = 1, rb = 1;
         if (root->left) {
-            lv = postorder(root->left, root->val, llen);
+            lb = postorder(root->left, root->val, lv);
         }
         if (root->right) {
-            rv = postorder(root->right, root->val, rlen);
+            rb = postorder(root->right, root->val, rv);
         }
-        llen = lv ? llen : 0;
-        rlen = rv ? rlen : 0;
-        len = max(llen, rlen) + 1;
-        res = max(res, len);
-        return root->val-p == 1;
+        res = max(res, max(lv, rv)+1);
+        int diff = p-root->val == -1;
+        if (diff) {
+            if (lb && rb) {
+                len = max(lv,rv)+1;
+            } else if (lb) {
+                len = lv+1;
+            } else if (rb) {
+                len = rv+1;
+            } else {
+                len = 1;
+            }
+        }
+        return diff;
     }
 };

@@ -1,27 +1,30 @@
-//--- Q: 290. Word Pattern
+//--- Q: 0290. Word Pattern
 
 //--- method 1: double hashmap to record 1 to 1 relation
 class Solution {
 public:
-    bool wordPattern(string pattern, string str) {
-    	unordered_map<string, char> foward;
-    	unordered_map<char, string> back;
-        istringstream ss(str);
-        string word;
-        int idx = 0;
-        while (ss >> word)
-        {
-            if (!foward.count(word))
-        	{
-        		foward[word] = pattern[idx];
-        		if (back.count(pattern[idx])) return false;
-        		else
-        			back[pattern[idx]] = word;
-        	}
-        	else if (foward[word] != pattern[idx] || back[pattern[idx]] != word)
-        		return false;
-        	++idx;
+    bool wordPattern(string pattern, string s) {
+        unordered_map<char, string> fw;
+        unordered_map<string, char> bw;
+        string str = "";
+        int j = 0;
+        for (int i = 0; i <= s.size(); ++i) {
+            if (i == s.size() || s[i] == ' ') {
+                if (fw.find(pattern[j]) == fw.end()) {
+                    fw[pattern[j]] = str;
+                    if (bw.find(str) != bw.end()) {
+                        return false;
+                    }
+                    bw[str] = pattern[j];
+                } else if (fw[pattern[j]] != str) {
+                    return false;
+                }
+                ++j;
+                str = "";
+            } else {
+                str += s[i];
+            }
         }
-        return idx == pattern.size() ? true : false;
+        return j == pattern.size();
     }
 };

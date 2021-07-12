@@ -1,29 +1,27 @@
-//--- Q: 283. Move Zeroes
+//--- Q: 0283. Move Zeroes
 
 //--- method 1: swap
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-        int zero = -1;
-        for (int i = 0; i < nums.size(); ++i)
-        {
-        	if (nums[i] != 0)
-        		swap(nums[i], nums[++zero]);
+        int idx = -1;
+        for (auto &num: nums) {
+            if (num) {
+                swap(nums[++idx], num);
+            }
         }
     }
 };
 
-//--- method 2: add zero after iteration
+//--- follow up:
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-        int zero = -1;
-        for (int i = 0; i < nums.size(); ++i)
-        {
-        	if (nums[i] != 0)
-        		nums[++zero] = nums[i];
+        int idx = nums.size();
+        for (int i = nums.size()-1; i >= 0; --i) {
+            if (nums[i]) {
+                swap(nums[--idx], nums[i]);
+            }
         }
-        for (int i = zero+1; i < nums.size(); ++i)
-        	nums[i] = 0;
     }
 };

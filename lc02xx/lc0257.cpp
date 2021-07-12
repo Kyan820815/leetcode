@@ -1,4 +1,4 @@
-//--- Q: 257. Binary Tree Paths
+//--- Q: 0257. Binary Tree Paths
 
 /**
  * Definition for a binary tree node.
@@ -13,27 +13,23 @@
 //--- method 1: dfs
 class Solution {
 public:
+    vector<string> res;
     vector<string> binaryTreePaths(TreeNode* root) {
-        vector<string> res;
-        string now;
-        if (root) dfs(root, res, now);
+        preorder(root, "");
         return res;
     }
-    void dfs(TreeNode * root, vector<string> &res, string now)
-    {
-    	now = now + to_string(root->val);
-    	if (!root->left && !root->right)
-    	{
-    		res.push_back(now);
-    		return;
-    	}
-    	else
-    	{
-    		now += "->";
-    		if (root->left)
-    			dfs(root->left, res, now);
-    		if (root->right)
-    			dfs(root->right, res, now);
-    	}
+    void preorder(TreeNode *root, string path) {
+        path += to_string(root->val);
+        if (!root->left && !root->right) {
+            res.push_back(path);
+            return;
+        }
+        path += "->";
+        if (root->left) {
+            preorder(root->left, path);
+        }
+        if (root->right) {
+            preorder(root->right, path);
+        }
     }
 };

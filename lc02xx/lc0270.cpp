@@ -1,4 +1,4 @@
-//--- Q: 270. Closest Binary Search Tree Value
+//--- Q: 0270. Closest Binary Search Tree Value
 
 /**
  * Definition for a binary tree node.
@@ -10,23 +10,22 @@
  * };
  */
 
-//--- method 1: preorder with bst attribute
+//--- method 1: binary search with bst attribute
 class Solution {
 public:
     int closestValue(TreeNode* root, double target) {
-        double diff = DBL_MAX;
-        int res;
-        preorder(root, target, diff, res);
-        return res;
-    }
-    void preorder(TreeNode *root, double target, double &diff, int &res) {
-        if (diff > abs(target-root->val)) {
-            diff = abs(target-root->val);
-            res = root->val;
+        double diff = 10001, res;
+        while (root) {
+            if (diff > abs(target-root->val)) {
+                diff = abs(target-root->val);
+                res = root->val;
+            }
+            if (root->val < target) {
+                root = root->right;
+            } else {
+                root = root->left;
+            }
         }
-        if (root->val > target && root->left)
-            preorder(root->left, target, diff, res);
-        else if (root->val < target && root->right)
-            preorder(root->right, target, diff, res);
+        return res;
     }
 };

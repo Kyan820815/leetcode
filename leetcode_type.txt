@@ -10,7 +10,10 @@
 	0081(m): Search in Rotated Sorted Array II
 	0153(m): Find Minimum in Rotated Sorted Array
 	0162(m): Find Peak Element
+	0268(e): Missing Number
+	0270(e): Closest Binary Search Tree Value
 	0278(e): First Bad Version
+	0285(m): Inorder Successor in BST 
 	0287(m): Find the Duplicate Number
 	0300(m): Longest Increasing Subsequence
 	0315(h): Count of Smaller Numbers After Self
@@ -102,8 +105,7 @@
 	0248(h): Strobogrammatic Number III
 	0253(m): Meeting Rooms II
 	0259(m): 3Sum Smaller
-	0263(e): Ugly Number
-	0264(m): Ugly Number II
+	0283(e): Move Zeroes
 	0287(m): Find the Duplicate Number
 	0313(m): Super Ugly Number
 	0340(h): Longest Substring with At Most K Distinct Characters
@@ -287,6 +289,7 @@
 	0225(e): Implement Stack using Queues
 	0227(m): Basic Calculator II
 	0232(e): Implement Queue using Stacks
+	0255(m): Verify Preorder Sequence in Binary Search Tree
 	0316(m): Remove Duplicate Letters
 	0332(m): Reconstruct Itinerary
 	0341(m): Flatten Nested List Iterator
@@ -463,7 +466,10 @@
 	0247(m): Strobogrammatic Number II
 	0248(h): Strobogrammatic Number III
 	0250(m): Count Univalue Subtrees
+	0257(e): Binary Tree Paths
 	0273(h): Integer to English Words
+	0297(h): Serialize and Deserialize Binary Tree
+	0298(m): Binary Tree Longest Consecutive Sequence
 	0301(h): Remove Invalid Parentheses
 	0329(h): Longest Increasing Path in a Matrix
 	0332(m): Reconstruct Itinerary
@@ -507,6 +513,8 @@
 	0055(m): Jump Game
 	0134(m): Gas Station
 	0179(m): Largest Number
+	0277(m): Find the Celebrity
+	0280(m): Wiggle Sort
 	0678(m): Valid Parenthesis String
 	1647(m): Minimum Deletions to Make Character Frequencies Unique
 	1758(e): Minimum Changes To Make Alternating Binary String
@@ -551,7 +559,7 @@
 	0221(m): Maximal Square
 	0241(m): Different Ways to Add Parentheses
 	0256(e): Paint House
-	0276(e): Paint Fence
+	0276(m): Paint Fence
 	0279(m): Perfect Squares
 	0303(e): Range Sum Query - Immutable
 	0309(m): Best Time to Buy and Sell Stock with Cooldown
@@ -756,6 +764,8 @@
 	0225(e): Implement Stack using Queues
 	0232(e): Implement Queue using Stacks
 	0244(m): Shortest Word Distance II
+	0295(h): Find Median from Data Stream
+	0297(h): Serialize and Deserialize Binary Tree
 	0348(m): Design Tic-Tac-Toe
 	0359(e): Logger Rate Limiter
 	0362(m): Design Hit Counter
@@ -831,6 +841,10 @@
 	1836(m): Remove Duplicates From an Unsorted Linked List
 
 --- Duplicate:
+	0026(e): Remove Duplicates from Sorted Array
+	0080(m): Remove Duplicates from Sorted Array II
+	0082(m): Remove Duplicates from Sorted List II
+	0083(e): Remove Duplicates from Sorted List 
 	0217(e): Contains Duplicate
 	0219(e): Contains Duplicate II
 	0287(m): Find the Duplicate Number
@@ -844,6 +858,7 @@
 	0125(e): Valid Palindrome
 	0131(m): Palindrome Partitioning
 	0234(e): Palindrome Linked List
+	0266(e): Palindrome Permutation
 	0409(e): Longest Palindrome
 	0516(m): Longest Palindromic Subsequence
 	0647(m): Palindromic Substrings
@@ -898,6 +913,12 @@
 	0247(m): Strobogrammatic Number II
 	0248(h): Strobogrammatic Number III
 	0249(m): Group Shifted Strings
+	0257(e): Binary Tree Paths
+	0266(e): Palindrome Permutation
+	0273(h): Integer to English Words
+	0290(e): Word Pattern
+	0297(h): Serialize and Deserialize Binary Tree
+	0299(m): Bulls and Cows
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
 	0884(e): Uncommon Words from Two Sentences
@@ -991,10 +1012,18 @@
 	0243(e): Shortest Word Distance
 	0244(m): Shortest Word Distance II
 	0245(m): Shortest Word Distance III
+	0252(e): Meeting Rooms
+	0253(m): Meeting Rooms II
+	0255(m): Verify Preorder Sequence in Binary Search Tree
+	0256(e): Paint House
+	0259(m): 3Sum Smaller
+	0260(m): Single Number III
+	0268(e): Missing Number
 	0280(m): Wiggle Sort
 	0283(e): Move Zeroes
+	0286(m): Walls and Gates
+	0287(m): Find the Duplicate Number
 	0289(m): Game of Life
-	0299(m): Bulls and Cows
 	0344(e): Reverse String
 	0348(m): Design Tic-Tac-Toe
 	0406(m): Queue Reconstruction by Height
@@ -1145,7 +1174,7 @@
 	0191(e): Number of 1 Bits
 	0231(e): Power of Two
 	0260(m): Single Number III
-	0268(m): Missing Number
+	0268(e): Missing Number
 	0338(m): Counting Bits
 	0389(e): Find the Difference
 	0401(e): Binary Watch
@@ -1170,6 +1199,7 @@
 	0056(m): Merge Intervals
 	0057(m): Insert Interval
 	0252(e): Meeting Rooms
+	0253(m): Meeting Rooms II
 	0435(m): Non-overlapping Intervals
 	0452(m): Minimum Number of Arrows to Burst Balloons
 	0646(m): Maximum Length of Pair Chain
@@ -1194,6 +1224,7 @@
 	0207(m): Course Schedule
 	0210(m): Course Schedule II
 	0221(m): Maximal Square
+	0261(m): Graph Valid Tree
 	0277(m): Find the Celebrity
 	0286(m): Walls and Gates
 	0310(m): Minimum Height Trees
@@ -1283,6 +1314,7 @@
 	0250(m): Count Univalue Subtrees
 	0255(m): Verify Preorder Sequence in Binary Search Tree
 	0257(e): Binary Tree Paths
+	0261(m): Graph Valid Tree
 	0270(e): Closest Binary Search Tree Value
 	0285(m): Inorder Successor in BST 
 	0297(h): Serialize and Deserialize Binary Tree
@@ -1445,6 +1477,10 @@
 	0227(m): Basic Calculator II
 	0231(e): Power of Two
 	0258(e): Add Digits
+	0263(e): Ugly Number
+	0264(m): Ugly Number II
+	0273(h): Integer to English Words
+	0279(m): Perfect Squares
 	0311(m): Sparse Matrix Multiplication 
 	0360(m): Sort Transformed Array
 	0415(e): Add Strings

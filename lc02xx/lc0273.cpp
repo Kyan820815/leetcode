@@ -1,38 +1,36 @@
-//--- Q: 273. Integer to English Words
+//--- Q: 0273. Integer to English Words
 
 //--- method 1: dfs recursion
 class Solution {
 public:
-    vector<string> undertwenty = {"", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ", "Nine ", "Ten ", "Eleven ", "Twelve ", "Thirteen ",
-                                 "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ", "Eighteen ", "Nineteen "};
-    vector<string> underhundred = {"", "Ten ", "Twenty ", "Thirty ", "Forty ", "Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninety "};
-    vector<string> underthousand = {"", "Thousand ", "Million ", "Billion "};
-    
+    vector<string> under20 = {"", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ", "Nine ", "Ten ", 
+                              "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ", "Eighteen ", "Nineteen "};
+    vector<string> under100 = {"", "Ten ", "Twenty ", "Thirty ", "Forty ", "Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninety "};
+    vector<string> level = {"", "Thousand ", "Million ", "Billion "};
     string numberToWords(int num) {
         if (!num) {
             return "Zero";
         }
         string res = "";
-        int i = 0;
+        int lv = 0;
         while (num) {
-            if (num%1000) {
-                res = dfs(num%1000) + underthousand[i] + res;
+            int rem = num % 1000;
+            if (rem) {
+                res = dfs(rem) + level[lv] + res;
             }
+            ++lv;
             num /= 1000;
-            ++i;
         }
         res.pop_back();
         return res;
     }
     string dfs(int num) {
-        string wd = "";
         if (num < 20) {
-            wd = undertwenty[num];
+            return under20[num];
         } else if (num < 100) {
-            wd = underhundred[num/10] + undertwenty[num%10];
+            return under100[num/10] + under20[num%10];
         } else {
-            wd = undertwenty[num/100] + "Hundred " + dfs(num%100);
+            return under20[num/100] + "Hundred " + dfs(num%100);
         }
-        return wd;
     }
 };

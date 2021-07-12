@@ -1,34 +1,17 @@
-//--- Q: 266. Palindrome Permutation
-
-//--- method 1: count odd number
-class Solution {
-public:
-    bool canPermutePalindrome(string s) {
-        vector<int> cnt(128, 0);
-        int res = 0;
-        for (auto &ch: s) {
-            if ((++cnt[ch])&1) {
-                ++res;
-            } else {
-                --res;
-            }
-        }
-        return res <= 1;
-    }
-};
+//--- Q: 0266. Palindrome Permutation
 
 //--- method 2: set
 class Solution {
 public:
     bool canPermutePalindrome(string s) {
-        unordered_set<char> odds;
+        unordered_set<char> set;
         for (auto &ch: s) {
-            if (odds.find(ch) == odds.end()) {
-                odds.insert(ch);
+            if (set.find(ch) != set.end()) {
+                set.erase(ch);
             } else {
-                odds.erase(ch);
+                set.insert(ch);
             }
         }
-        return odds.size() <= 1;
+        return set.size() <= 1;
     }
 };

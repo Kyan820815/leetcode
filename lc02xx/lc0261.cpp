@@ -1,29 +1,29 @@
-//--- Q: 261. Graph Valid Tree
+//--- Q: 0261. Graph Valid Tree
 
 //--- method 1: union find
 class Solution {
 public:
+    vector<int> parent;
     bool validTree(int n, vector<vector<int>>& edges) {
-        vector<int> parent(n);
-        for (int i = 0; i < n; ++i) {
-            parent[i] = i;
-        }
-        for (int i = 0; i < edges.size(); ++i) {
-            int ap = findP(edges[i][0], parent);
-            int bp = findP(edges[i][1], parent);
+        parent.resize(n, -1);
+        for (auto &edge: edges) {
+            int ap = findp(edge[0]);
+            int bp = findp(edge[1]);
             if (ap != bp) {
+                --n;
                 parent[ap] = bp;
             } else {
                 return false;
             }
         }
-        return edges.size() == n-1;
+        return n == 1;
     }
-    int findP(int now, vector<int> &parent) {
-        while (now != parent[now]) {
-            now = parent[now];
+    int findp(int now) {
+        if (parent[now] == now) {
+            return now;
+        } else {
+            return parent[now] = parent[now] == -1 ? now : findp(parent[now]);
         }
-        return now;
     }
 };
 
@@ -33,12 +33,11 @@ public:
     bool validTree(int n, vector<vector<int>>& edges) {
         vector<vector<int>> rel(n);
         vector<int> deg(n, 0);
-        int node = n;
-        for (int i = 0; i < edges.size(); ++i) {
-            rel[edges[i][0]].push_back(edges[i][1]);
-            rel[edges[i][1]].push_back(edges[i][0]);
-            ++deg[edges[i][0]];
-            ++deg[edges[i][1]];
+        for (auto &edge: edges) {
+            rel[edge[0]].push_back(edge[1]);
+            rel[edge[1]].push_back(edge[0]);
+            ++deg[edge[0]];
+            ++deg[edge[1]];
         }
         queue<int> que;
         for (int i = 0; i < n; ++i) {
@@ -46,19 +45,20 @@ public:
                 que.push(i);
             }
         }
+        int cnt = n;
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
-                int now = que.front();
+            auto qsize = que.size();
+            cnt -= qsize;
+            while (qsize--) {
+                auto now = que.front();
                 que.pop();
-                --n;
-                for (int j = 0; j < rel[now].size(); ++j) {
-                    if (--deg[rel[now][j]] == 1) {
-                        que.push(rel[now][j]);
+                for (auto &next: rel[now]) {
+                    if (--deg[next] == 1) {
+                        que.push(next);
                     }
                 }
             }
         }
-        return n <= 1 && edges.size() == node-1;
+        return cnt <= 1 && edges.size() == n-1;
     }
 };

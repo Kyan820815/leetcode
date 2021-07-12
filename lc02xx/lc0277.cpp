@@ -1,4 +1,4 @@
-//--- Q: 277. Find the Celebrity
+//--- Q: 0277. Find the Celebrity
 
 /* The knows API is defined for you.
       bool knows(int a, int b); */
@@ -7,17 +7,17 @@
 class Solution {
 public:
     int findCelebrity(int n) {
-        int cel = 0, cnt = 0;
+        int res = 0;
         for (int i = 1; i < n; ++i) {
-            if (knows(cel, i)) {
-                cel = i;
-            }                
+            if (!knows(i, res)) {
+                res = i;
+            }
         }
         for (int i = 0; i < n; ++i) {
-            if (i != cel && (!knows(i, cel) || knows(cel, i))) {
+            if (res != i && (!knows(i, res) || knows(res, i))) {
                 return -1;
             }
         }
-        return cel;
+        return res;
     }
 };

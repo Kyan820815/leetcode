@@ -9,20 +9,21 @@ public:
     }
     
     void addNum(int num) {
-        small.push(num);
-        big.push(-small.top());
-        small.pop();
-        if (small.size() < big.size())
-        {
-            small.push(-big.top());
-            big.pop();
+        left.push(num);
+        while (left.size() >= right.size()) {
+            right.push(-left.top());
+            left.pop();
+        }
+        if (left.size() < right.size()) {
+            left.push(-right.top());
+            right.pop();
         }
     }
     
     double findMedian() {
-        return (small.size() > big.size()) ? small.top() : (double)(small.top()-big.top())/2;
+        return left.size() > right.size() ? left.top() : (double)(left.top()-right.top())/2;
     }
-    priority_queue<long> small, big;
+    priority_queue<int> left, right;
 };
 
 /**
