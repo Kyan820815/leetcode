@@ -1,16 +1,11 @@
-//--- Q: 344. Reverse String
+//--- Q: 0344. Reverse String
 
 //--- method 1: change with n-i-1
 class Solution {
 public:
     void reverseString(vector<char>& s) {
-        char temp;
-
-        for (int i = 0; i < s.size()/2; ++i)
-        {
-        	temp = s[i];
-        	s[i] = s[s.size()-1-i];
-        	s[s.size()-1-i] = temp;
+        for (int i = 0, j = s.size()-1; i < j; ++i, --j) {
+            swap(s[i], s[j]);
         }
     }
 };

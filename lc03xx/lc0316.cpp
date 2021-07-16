@@ -1,25 +1,27 @@
-//--- Q: 316. Remove Duplicate Letters
+//--- Q: 0316. Remove Duplicate Letters
 
 //--- method 1: stack iteration
 class Solution {
 public:
     string removeDuplicateLetters(string s) {
-        vector<int> cnt(26, 0), exist(26, 0);
-        string res = "";
-        for (auto &c: s) {
-            ++cnt[c-'a'];
+        vector<int> cnt(26, 0);
+        unordered_set<char> set;
+        string sk = "";
+        for (int i = 0; i < s.size(); ++i) {
+            ++cnt[s[i]-'a'];
         }
-        for (auto &c: s) {
-            if (!exist[c-'a']) {
-                exist[c-'a'] = 1;
-                while (res.size() && c < res.back() && cnt[res.back()-'a']) {
-                    exist[res.back()-'a'] = 0;
-                    res.pop_back();
-                }
-                res.push_back(c);
+        for (int i = 0; i < s.size(); ++i) {
+            --cnt[s[i]-'a'];
+            if (set.find(s[i]) != set.end()) {
+                continue;
             }
-            --cnt[c-'a'];
+            while (sk.size() && sk.back() > s[i] && cnt[sk.back()-'a'] > 0) {
+                set.erase(sk.back());
+                sk.pop_back();
+            }
+            set.insert(s[i]);
+            sk.push_back(s[i]);
         }
-        return res;
+        return sk;
     }
 };

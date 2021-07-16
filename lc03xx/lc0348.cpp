@@ -1,14 +1,13 @@
-//--- Q: 348. Design Tic-Tac-Toe
+//--- Q: 0348. Design Tic-Tac-Toe
 
 //--- method 1: O(1) time, O(n) space
 class TicTacToe {
 public:
     /** Initialize your data structure here. */
     TicTacToe(int n) {
-        row_v.resize(n);
-        col_v.resize(n);
-        side = n;
-        rd_v = ld_v = win = 0;
+        rcnt.resize(n, 0);
+        ccnt.resize(n, 0);
+        dig = idig = 0, cnt = n;
     }
     
     /** Player {player} makes a move at ({row}, {col}).
@@ -20,23 +19,18 @@ public:
                 1: Player 1 wins.
                 2: Player 2 wins. */
     int move(int row, int col, int player) {
-        int add = (player == 1) ? 1 : -1;
-        row_v[row] += add;
-        col_v[col] += add;
-        if (row == col) {
-            rd_v += add;
+        int val = player == 1 ? 1 : -1;
+        rcnt[row] += val;
+        ccnt[col] += val;
+        dig += row == col ? val : 0;
+        idig += row+col == cnt-1 ? val : 0;
+        if (abs(rcnt[row]) == cnt || abs(ccnt[col]) == cnt || abs(dig) == cnt || abs(idig) == cnt) {
+            return player;
         }
-        if (row + col == side-1) {
-            ld_v += add;
-        }
-        if (abs(row_v[row]) == side || abs(col_v[col]) == side || abs(rd_v) == side || abs(ld_v) == side) {
-            win = player;
-        }
-        return win;
+        return 0;
     }
-    vector<int> row_v, col_v;
-    int rd_v, ld_v;
-    int win, side;
+    vector<int> rcnt, ccnt;
+    int dig, idig, cnt;
 };
 
 /**

@@ -1,69 +1,68 @@
-//--- Q: 336. Palindrome Pairs
+//--- Q: 0336. Palindrome Pairs
 
 //--- method 1: trie tree
 class TNode {
-public:
+public:    
     TNode() {
-        next.resize(26, NULL);
         index = -1;
-        list.clear();
+        next.resize(26, nullptr);
     }
     int index;
+    vector<int> index_list;
     vector<TNode *> next;
-    vector<int> list;
 };
+
 class Solution {
 public:
+    vector<vector<int>> res;
     vector<vector<int>> palindromePairs(vector<string>& words) {
-        vector<vector<int>> res;
         root = new TNode();
         for (int i = 0; i < words.size(); ++i) {
-            addword(words[i], i);
+            insert(i, words[i]);
         }
         for (int i = 0; i < words.size(); ++i) {
-            search(words[i], res, i);
+            search(i, words[i]);
         }
         return res;
     }
-    void addword(string &str, int idx) {
+    void insert(int idx, string &s) {
         auto now = root;
-        for (int i = str.size()-1; i >= 0; --i) {
-            if (!now->next[str[i]-'a']) {
-                now->next[str[i]-'a'] = new TNode();
+        for (int i = s.size()-1; i >= 0; --i) {
+            if (ispal(s, 0, i)) {
+                now->index_list.push_back(idx);
             }
-            if (ispal(str, 0, i)) {
-                now->list.push_back(idx);
+            if (!now->next[s[i]-'a']) {
+                now->next[s[i]-'a'] = new TNode();
             }
-            now = now->next[str[i]-'a'];
+            now = now->next[s[i]-'a'];
         }
         now->index = idx;
-        now->list.push_back(idx);
+        now->index_list.push_back(idx);
     }
-    void search(string &str, vector<vector<int>> &res, int idx) {
+    void search(int idx, string &s) {
         auto now = root;
-        for (int i = 0; i < str.size(); ++i) {
-            if (now->index >= 0 && now->index != idx && ispal(str, i, str.size()-1)) {
-                res.push_back({idx,now->index});
+        for (int i = 0; i < s.size() && now; ++i) {
+            if (now->index != -1 && now->index != idx && ispal(s, i, s.size()-1)) {
+                res.push_back({idx, now->index});
             }
-            now = now->next[str[i]-'a'];
-            if (!now) {
-                return;
-            }
+            now = now->next[s[i]-'a'];
         }
-        for (auto &id: now->list) {
-            if (idx == id) {
-                continue;
+        if (!now) {
+            return;
+        }
+        for (auto &pair_id: now->index_list) {
+            if (pair_id != idx) {
+                res.push_back({idx, pair_id});
             }
-            res.push_back({idx,id});
         }
     }
-    TNode *root;
-    bool ispal(string &str, int i, int j) {
-        while (i < j) {
-            if (str[i++] != str[j--]) {
+    bool ispal(string &s, int left, int right) {
+        for (;left < right; ++left, --right) {
+            if (s[left] != s[right]) {
                 return false;
             }
         }
         return true;
     }
+    TNode *root;
 };

@@ -1,4 +1,4 @@
-//--- Q: 333. Largest BST Subtree
+//--- Q: 0333. Largest BST Subtree
 
 /**
  * Definition for a binary tree node.
@@ -15,26 +15,26 @@ class Solution {
 public:
     int largestBSTSubtree(TreeNode* root) {
         int minv = INT_MIN, maxv = INT_MAX;
-        if (!root)
-            return 0;
-        return postorder(root, minv, maxv);
+        if (root) {
+            return postorder(root, minv, maxv);
+        }
+        return 0;
     }
     int postorder(TreeNode *root, int &minv, int &maxv) {
-        int lcnt = 0, rcnt = 0;
-        int lmaxv = INT_MAX, lminv = INT_MIN;
-        int rmaxv = INT_MAX, rminv = INT_MIN;
-        
-        if (root->left)
-            lcnt = postorder(root->left, lminv, lmaxv);
-        if (root->right)
-            rcnt = postorder(root->right, rminv, rmaxv);
-        
-        if (root->left && root->val <= lmaxv || root->right && root->val >= rminv) {
-            return max(lcnt, rcnt);
-        } else {
-            minv = (root->left) ? lminv : root->val;
-            maxv = (root->right) ? rmaxv : root->val;
-            return 1 + lcnt + rcnt;
+        int lminv, lmaxv, rminv, rmaxv, lv, rv;
+        lminv = rminv = INT_MIN, lmaxv = rmaxv = INT_MAX;
+        lv = rv = 0;
+        if (root->left) {
+            lv = postorder(root->left, lminv, lmaxv);
         }
+        if (root->right) {
+            rv = postorder(root->right, rminv, rmaxv);
+        }
+        if (root->left && lmaxv >= root->val || root->right && rminv <= root->val) {
+            return max(lv, rv);
+        }
+        minv = root->left ? lminv : root->val;
+        maxv = root->right ? rmaxv : root->val;
+        return lv+rv+1;
     }
 };

@@ -1,44 +1,39 @@
-//---  Q: 350. Intersection of Two Arrays II
+//---  Q: 0350. Intersection of Two Arrays II
 
-//--- method 1: map solution
+//--- method 1: two pointer
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-        unordered_map<int, int> m1;
         vector<int> res;
-        for (auto &num: nums1) {
-            ++m1[num];
-        }
-        for (auto &num: nums2) {
-            if (m1.find(num) != m1.end()) {
-                res.push_back(num);
-                if (!--m1[num]) {
-                    m1.erase(num);
-                }
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+        for (int i = 0, j = 0; i < nums1.size() && j < nums2.size();) {
+            if (nums1[i] < nums2[j]) {
+                ++i;
+            } else if (nums1[i] > nums2[j]) {
+                ++j;
+            } else {
+                res.push_back(nums1[i]);
+                ++i, ++j;
             }
         }
         return res;
     }
 };
 
-//--- method 2: O(1) space
+//--- method 2: map solution
 class Solution {
 public:
     vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
-        sort(nums1.begin(), nums1.end());
-        sort(nums2.begin(), nums2.end());
+        unordered_map<int, int> map;
         vector<int> res;
-        int i = 0, j = 0;
-        while (i < nums1.size() && j < nums2.size())
-        {
-            if (nums1[i] == nums2[j])
-            {
-                res.push_back(nums1[i]);
-                ++i;
-                ++j;
+        for (auto &num: nums1) {
+            ++map[num];
+        }
+        for (auto &num: nums2) {
+            if (--map[num] >= 0) {
+                res.push_back(num);
             }
-            else if (nums1[i] > nums2[j]) ++j;
-            else ++i;
         }
         return res;
     }

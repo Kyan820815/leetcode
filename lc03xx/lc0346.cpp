@@ -1,25 +1,24 @@
-//--- Q: 346. Moving Average from Data Stream
+//--- Q: 0346. Moving Average from Data Stream
 
 //--- method 1: O(1) time
 class MovingAverage {
 public:
     /** Initialize your data structure here. */
     MovingAverage(int size) {
-        window = size;
-        sum = 0;
+        sum = 0, sz = size;                
     }
     
     double next(int val) {
-        if (que.size() == window) {
-            sum -= que.front();
-            que.pop();
-        }
+        que.push_back(val);
         sum += val;
-        que.push(val);
+        if (que.size() > sz) {
+            sum -= que.front();
+            que.pop_front();
+        }
         return (double)sum/que.size();
     }
-    int window, sum;
-    queue<int> que;
+    deque<int> que;
+    int sum, sz;
 };
 
 /**

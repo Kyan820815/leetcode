@@ -1,83 +1,79 @@
-//--- Q: 301. Remove Invalid Parentheses
+//--- Q: 0301. Remove Invalid Parentheses
 
-//--- method 1: remove right first then left, recursion
+//--- method 1: bfs
 class Solution {
 public:
     vector<string> removeInvalidParentheses(string s) {
+        queue<string> que;
+        que.push(s);
         vector<string> res;
-        dfs(0, 0, s, {'(', ')'}, res);
+        while (que.size()) {
+            auto qsize = que.size();
+            bool finish = false;
+            unordered_set<string> set;
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                int left = 0;
+                for (auto &ch: now) {
+                    if (ch == '(') {
+                        ++left;
+                    } else if (ch == ')' && --left < 0) {
+                        break;
+                    }
+                }
+                if (!left) {
+                    finish = true;
+                    res.push_back(now);
+                } else {
+                    for (int i = 0; i < now.size(); ++i) {
+                        if (now[i] == '(' || now[i] == ')') {
+                            auto next_str = now.substr(0, i) + now.substr(i+1);
+                            set.insert(next_str);
+                        }
+                    }
+                }
+            }
+            if (finish) {
+                break;
+            } else {
+                for (auto &str: set) {
+                    que.push(str);
+                }
+            }
+        }
         return res;
     }
-    void dfs(int last_i, int last_j, string &now, vector<char> par, vector<string> &res) {
+};
+
+//--- method 2: remove right first then left, recursion
+class Solution {
+public:
+    vector<string> res;
+    vector<string> removeInvalidParentheses(string s) {
+        dfs(0, 0, s, {'(',')'});
+        return res;
+    }
+    void dfs(int lasti, int lastj, string &s, pair<char, char> p) {
         int left = 0;
-        for (int i = last_i; i < now.size(); ++i) {
-            if (now[i] == par[0])
+        for (int i = lasti; i < s.size(); ++i) {
+            if (s[i] == p.first) {
                 ++left;
-            else if (now[i] == par[1])
-                --left;
-            if (left < 0) {
-                for (int j = last_j; j <= i; ++j) {
-                	// --- delete every invalid paratheness and go recursion
-                    if (now[j] == par[1] && (j == last_j || now[j] != now[j-1])) {
-                        string next = now.substr(0, j) + now.substr(j+1);
-                        dfs(i, j, next, par, res);
+            } else if (s[i] == p.second && --left < 0) {
+                for (int j = lastj; j <= i; ++j) {
+                    if ((j == lastj || s[j] != s[j-1]) && s[j] == p.second) {
+                        string next_str = s.substr(0, j) + s.substr(j+1);
+                        dfs(i, j, next_str, p);
                     }
                 }
                 return;
             }
         }
-        reverse(now.begin(), now.end());
-        if (par[0] == '(')
-            dfs(0, 0, now, {')', '('}, res);
-        else
-            res.push_back(now);
-    }
-};
-
-//--- method 2: bfs
-class Solution {
-public:
-    vector<string> removeInvalidParentheses(string s) {
-        queue<string> que;
-        vector<string> res;
-        unordered_set<string> set;
-        que.push(s);
-        int qsize = 1;
-        bool find = false;
-        while (que.size()) {
-            for (int q = 0; q < qsize; ++q) {
-                auto now = que.front();
-                que.pop();
-                if (isValid(now)) {
-                    find = true;
-                    res.push_back(now);
-                }
-                if (find)
-                    continue;
-                for (int i = 0; i < now.size(); ++i) {
-                    if (now[i] != '(' && now[i] != ')')
-                        continue;
-                    string next = now.substr(0, i) + now.substr(i+1);
-                    if (set.find(next) == set.end()) {
-                        set.insert(next);
-                        que.push(next);
-                    }
-                }
-            }
-            qsize = que.size();
+        reverse(s.begin(), s.end());
+        if (p.first == '(') {
+            dfs(0, 0, s, {')','('});
+        } else {
+            res.push_back(s);
         }
-        return res;
-    }
-    bool isValid(string s) {
-        int left = 0;
-        for (int i = 0; i < s.size(); ++i) {
-            if (s[i] != '(' && s[i] != ')')
-                continue;
-            if (s[i] == '(')
-                ++left;
-            else if (--left < 0)
-                return false;
-        }
-        return left == 0;
     }
 };

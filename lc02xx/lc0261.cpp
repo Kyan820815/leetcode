@@ -62,3 +62,43 @@ public:
         return cnt <= 1 && edges.size() == n-1;
     }
 };
+
+//--- method 3: dfs recursion
+class Solution {
+public:
+    vector<vector<int>> rel;
+    vector<int> visit;
+    bool validTree(int n, vector<vector<int>>& edges) {
+        rel.resize(n);
+        visit.resize(n, -1);
+        for (auto &edge: edges) {
+            rel[edge[0]].push_back(edge[1]);
+            rel[edge[1]].push_back(edge[0]);
+        }
+        int cnt = 0;
+        for (int i = 0; i < n; ++i) {
+            if (visit[i] == -1) {
+                if (!dfs(i, -1)) {
+                    return false;
+                }
+                ++cnt;
+            }
+        }
+        return cnt <= 1;
+    }
+    int dfs(int now, int p) {
+        if (visit[now] != -1) {
+            return visit[now];
+        }
+        visit[now] = 0;
+        for (auto &next: rel[now]) {
+            if (next == p) {
+                continue;
+            }
+            if (!dfs(next, now)) {
+                return visit[now];
+            }
+        }
+        return visit[now] = 1;
+    }
+};

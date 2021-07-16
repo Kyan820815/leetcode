@@ -1,89 +1,75 @@
-//--- Q: 307. Range Sum Query - Mutable
+//--- Q: 0307. Range Sum Query - Mutable
 
 //--- method 1: segement tree
-class Node {
+class TNode {
 public:
-    int start, end, sum;
-    Node *left, *right;
-    Node() {
-        start = end = sum = 0;
-        left = right = NULL;
+    TNode(int s, int e) {
+        left = right = nullptr;        
+        start = s, end = e;
     }
+    TNode *left, *right;
+    int val, start, end;
 };
-class SegTree {
+
+class NumArray {
 public:
-    SegTree(vector<int> &nums) {
-        if (!nums.size()) {
-            root = NULL;
-        } else {
-            root = BuildTree(nums, 0, nums.size()-1);
-        }
+    TNode *root;    
+    
+    NumArray(vector<int>& nums) {
+        root = buildTree(0, nums.size()-1, nums);
     }
-    Node *BuildTree(vector<int> &nums, int start, int end) {
-        Node *root = new Node();
-        root->start = start;
-        root->end = end;
+    
+    TNode *buildTree(int start, int end, vector<int> &nums) {
+        auto cur = new TNode(start, end);
         if (start == end) {
-            root->sum = nums[start];
-            return root;
-        }
-        int mid = (end-start)/2 + start;
-        root->left = BuildTree(nums, start, mid);
-        root->right = BuildTree(nums, mid+1, end);
-        root->sum = root->left->sum + root->right->sum;
-        return root;
-    }
-    int UpdateTree(Node *root, int i, int val) {
-        int diff;
-        if (root->start == i && root->end == i) {
-            diff = root->sum - val;
-            root->sum = val;
+            cur->val = nums[start];
         } else {
-            int mid = (root->end-root->start) / 2 + root->start;
-            if (mid >= i) {
-                diff = UpdateTree(root->left, i, val);
+            int mid = start + (end-start)/2;
+            cur->left = buildTree(start, mid, nums);
+            cur->right = buildTree(mid+1, end, nums);
+            cur->val = cur->left->val + cur->right->val;
+        }
+        return cur;
+    }
+    
+    int update(int index, int val, TNode *cur) {
+        int diff;
+        if (cur->start == index && cur->end == index) {
+            diff = cur->val-val;
+            cur->val = val;
+        } else {
+            int mid = cur->start + (cur->end-cur->start)/2;
+            if (mid < index) {
+                diff = update(index, val, cur->right);
             } else {
-                diff = UpdateTree(root->right, i, val);
+                diff = update(index, val, cur->left);
             }
-            root->sum -= diff;
+            cur->val -= diff;
         }
         return diff;
     }
-    void UpdateTree(int i, int val) {
-        UpdateTree(root, i, val);
-    }
-    int QueryTree(Node *root, int i, int j) {
-        if (root->start == i && root->end == j) {
-            return root->sum;
-        }
-        int mid = (root->end-root->start) / 2 + root->start;
-        if (mid >= j) {
-            return QueryTree(root->left, i, j);
-        } else if (i > mid) {
-            return QueryTree(root->right, i, j);
-        }
-        return QueryTree(root->left, i, mid) + QueryTree(root->right, mid+1, j);
-    }
-    int QueryTree(int i, int j) {
-        return QueryTree(root, i, j);
-    }
-private:
-    Node *root;
-};
-class NumArray {
-public:
-    NumArray(vector<int>& nums) {
-        segt = new SegTree(nums);
+    
+    void update(int index, int val) {
+        update(index, val, root);
     }
     
-    void update(int i, int val) {
-       segt->UpdateTree(i, val);
+    int query(int left, int right, TNode *cur) {
+        if (cur->start == left && cur->end == right) {
+            return cur->val;
+        }
+        int mid = cur->start + (cur->end-cur->start)/2;
+        if (right <= mid) {
+            return query(left, right, cur->left);
+        } else if (left > mid) {
+            return query(left, right, cur->right);
+        } else {
+            return query(left, mid, cur->left) + query(mid+1, right, cur->right);
+        }
     }
     
-    int sumRange(int i, int j) {
-       return segt->QueryTree(i, j);
+    int sumRange(int left, int right) {
+        return query(left, right, root);
     }
-    SegTree *segt;
 };
 
 /**

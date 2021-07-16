@@ -1,4 +1,4 @@
-//--- Q: 339. Nested List Weight Sum
+//--- Q: 0339. Nested List Weight Sum
 
 /**
  * // This is the interface that allows for creating nested lists.
@@ -30,22 +30,42 @@
  * };
  */
 
-//--- method 1: dfs
+//--- method 1: iteartion
 class Solution {
 public:
     int depthSum(vector<NestedInteger>& nestedList) {
-       return dfs(nestedList, 1);
-    }
-    int dfs(vector<NestedInteger> &nestedList, int val)
-    {
-        int res = 0;
-        for (int i = 0; i < nestedList.size(); ++i)
-        {
-            if (nestedList[i].isInteger())
-                res += val*nestedList[i].getInteger();
-            else
-                res += dfs(nestedList[i].getList(), val+1);
+        int level = 1, val = 0;
+        for (;nestedList.size();) {
+            vector<NestedInteger> tmp;
+            for (auto &element: nestedList) {
+                if (element.isInteger()) {
+                    val += element.getInteger() * level;
+                } else {
+                    auto list = element.getList();
+                    tmp.insert(tmp.end(), list.begin(), list.end());
+                }
+            }
+            nestedList = tmp;
+            ++level;
         }
-        return res;
+        return val;
+    }
+};
+
+//--- method 2: dfs recursion
+class Solution {
+public:
+    int depthSum(vector<NestedInteger>& nestedList, int level=0) {
+        int val = 0;
+        ++level;
+        for (auto &element: nestedList) {
+            if (element.isInteger()) {
+                val += element.getInteger() * level;
+            } else {
+                auto next_list = element.getList();
+                val += depthSum(next_list, level);
+            }
+        }
+        return val;
     }
 };

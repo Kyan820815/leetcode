@@ -1,4 +1,4 @@
-//--- Q: 341. Flatten Nested List Iterator
+//--- Q: 0341. Flatten Nested List Iterator
 
 /**
  * // This is the interface that allows for creating nested lists.
@@ -18,64 +18,31 @@
  * };
  */
 
-//--- method 1: dfs recursion
+//--- method 1: stack recursion
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
-    	dfs(nestedList, res);
-    	nIdx = 0;
-    }
-
-    int next() {
-    	return res[nIdx++];
-    }
-    bool hasNext() {
-    	return (nIdx < res.size()) ? true : false;
-    }
-	void dfs(vector<NestedInteger> &nestedList, vector<int> &res)
-	{
-		for (int i = 0; i < nestedList.size(); ++i)
-		{
-			if (nestedList[i].isInteger())
-				res.push_back(nestedList[i].getInteger());
-			else
-				dfs(nestedList[i].getList(), res);
-		}
-	}
- private:
- 	vector<int> res;
- 	int nIdx;
-};
-
-//--- method 2: stack recursion
-class NestedIterator {
-public:
-    NestedIterator(vector<NestedInteger> &nestedList) {
-        get(nestedList);
-    }
-    
-    int next() {
-        auto val = sk.back().getInteger();
-        sk.pop_back();
-        return val;
-    }
-    
-    void get(vector<NestedInteger> &nestedList) {
-        int n = nestedList.size();
-        for (int i = n-1; i >= 0; --i) {
-            sk.push_back(nestedList[i]);
+        for (auto it = nestedList.rbegin(); it != nestedList.rend(); ++it) {
+            sk.push_back(*it);
         }
+    }
+    
+    int next() {
+        auto val = sk.back();
+        sk.pop_back();
+        return val.getInteger();
     }
     
     bool hasNext() {
         while (sk.size() && !sk.back().isInteger()) {
-            auto now = sk.back();
+            auto back = sk.back().getList();
             sk.pop_back();
-            get(now.getList());
+            for (auto it = back.rbegin(); it != back.rend(); ++it) {
+                sk.push_back(*it);
+            }
         }
         return sk.size();
     }
-    
     vector<NestedInteger> sk;
 };
 

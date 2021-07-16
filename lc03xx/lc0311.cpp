@@ -1,20 +1,18 @@
-//--- Q: 311. Sparse Matrix Multiplication
+//--- Q: 0311. Sparse Matrix Multiplication
 
 //--- method 1: skip 0 computation
 class Solution {
 public:
-    vector<vector<int>> multiply(vector<vector<int>>& A, vector<vector<int>>& B) {
-        int res_row = A.size(), res_col = B[0].size();
-        int midlen = A[0].size();
-        vector<vector<int>> res(res_row, vector<int>(res_col, 0));
-        
-        for (int i = 0; i < res_row; ++i) {
-            for (int k = 0; k < midlen; ++k) {
-                if (A[i][k]) {
-                    for (int j = 0; j < res_col; ++j) {
-                        if (B[k][j])
-                            res[i][j] += A[i][k]*B[k][j];
-                    }
+    vector<vector<int>> multiply(vector<vector<int>>& mat1, vector<vector<int>>& mat2) {
+        int m = mat1.size(), n = mat1[0].size(), o = mat2[0].size();
+        vector<vector<int>> res(m, vector<int>(o, 0));
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (!mat1[i][j]) {
+                    continue;
+                }
+                for (int k = 0; k < o; ++k) {
+                    res[i][k] += mat1[i][j]*mat2[j][k];
                 }
             }
         }

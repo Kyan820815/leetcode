@@ -39,3 +39,47 @@ public:
         }
     }
 };
+
+//--- method 2: stack iteration
+class Solution {
+public:
+    int calculate(string s) {
+        vector<pair<int,char>> gsk;
+        char lastop = '+';
+        int total = 0, val = 0;
+        for (int i = 0; i < s.size();) {
+            if (s[i] == ' ') {
+                ++i;
+                continue;
+            }
+            if (s[i] == '(') {
+                gsk.push_back({total,lastop});
+                total = 0;
+                lastop = '+';
+                ++i;
+            } else if (s[i] == ')') {
+                total = put(val, total, lastop);
+                val = total, lastop = gsk.back().second;
+                total = gsk.back().first;
+                gsk.pop_back();
+                ++i;
+            } else if (isdigit(s[i])) {
+                val = val *10 + (s[i++]-'0');
+            } else {
+                total = put(val, total, lastop);
+                val = 0;
+                lastop = s[i++];
+            }
+        }
+        total = put(val, total, lastop);
+        return total;
+    }
+    int put(int val, int total, char &lastop) {
+        if (lastop == '+') {
+            total += val;
+        } else {
+            total -= val;
+        }
+        return total;
+    }
+};
