@@ -13,6 +13,7 @@
 	0209(m): Minimum Size Subarray Sum
 	0268(e): Missing Number
 	0270(e): Closest Binary Search Tree Value
+	0272(h): Closest Binary Search Tree Value II
 	0278(e): First Bad Version
 	0285(m): Inorder Successor in BST 
 	0287(m): Find the Duplicate Number
@@ -106,6 +107,7 @@
 	0248(h): Strobogrammatic Number III
 	0253(m): Meeting Rooms II
 	0259(m): 3Sum Smaller
+	0272(h): Closest Binary Search Tree Value II
 	0283(e): Move Zeroes
 	0287(m): Find the Duplicate Number
 	0301(h): Remove Invalid Parentheses
@@ -172,7 +174,8 @@
 	1385(e): Find the Distance Value Between Two Arrays
 	1423(m): Maximum Points You Can Obtain from Cards
 	1470(e): Shuffle the Array
-	1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum
+	1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum\
+	1493(m): Longest Subarray of 1's After Deleting One Element
 	1544(e): Make The String Great
 	1570(m): Dot Product of Two Sparse Vectors
 	1662(e): Check If Two String Arrays are Equivalent
@@ -294,6 +297,7 @@
 	0227(m): Basic Calculator II
 	0232(e): Implement Queue using Stacks
 	0255(m): Verify Preorder Sequence in Binary Search Tree
+	0272(h): Closest Binary Search Tree Value II
 	0316(m): Remove Duplicate Letters
 	0332(m): Reconstruct Itinerary
 	0341(m): Flatten Nested List Iterator
@@ -408,6 +412,7 @@
 	1306(m): Jump Game III
 	1311(m): Get Watched Videos by Your Friends
 	1345(h): Jump Game IV
+	1376(m): Time Needed to Inform All Employees
 	1391(m): Check if There is a Valid Path in a Grid
 	1425(h): Constrained Subsequence Sum
 	1429(m): First Unique Number
@@ -513,7 +518,9 @@
 	1197(m): Minimum Knight Moves
 	1236(m): Web Crawler
 	1340(h): Jump Game V
+	1376(m): Time Needed to Inform All Employees
 	1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
+	1462(m): Course Schedule IV
 	1666(m): Change the Root of a Binary Tree
 	1905(m): Count Sub Islands
 
@@ -528,6 +535,7 @@
 	0334(m): Increasing Triplet Subsequence
 	0376(m): Wiggle Subsequence
 	0678(m): Valid Parenthesis String
+	1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
 	1647(m): Minimum Deletions to Make Character Frequencies Unique
 	1758(e): Minimum Changes To Make Alternating Binary String
 	1762(m): Buildings With an Ocean View
@@ -613,6 +621,7 @@
 	0915(m): Partition Array into Disjoint Intervals
 	0926(m): Flip String to Monotone Increasing
 	0931(m): Minimum Falling Path Sum
+	0935(m): Knight Dialer
 	0983(m): Minimum Cost For Tickets
 	1035(m): Uncrossed Lines
 	1043(m): Partition Array for Maximum Sum
@@ -627,6 +636,8 @@
 	1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
 	1314(m): Matrix Block Sum
 	1504(m): Count Submatrices With All Ones
+	1525(m): Number of Good Ways to Split a String
+	1664(m): Ways to Make a Fair Array
 	1824(m): Minimum Sideway Jumps
 	1871(m): Jump Game VII
 
@@ -654,10 +665,12 @@
 	0792(m): Number of Matching Subsequences
 	1048(m): Longest String Chain
 	1186(m): Maximum Subarray Sum with One Deletion
+	1493(m): Longest Subarray of 1's After Deleting One Element
 	1588(e): Sum of All Odd Length Subarrays
 
 --- Prefix Sum:
 	0209(m): Minimum Size Subarray Sum
+	0238(m): Product of Array Except Self
 	0303(e): Range Sum Query - Immutable
 	0304(m): Range Sum Query 2D - Immutable
 	0315(h): Count of Smaller Numbers After Self
@@ -766,6 +779,7 @@
 	1396(m): Design Underground System
 	1429(m): First Unique Number
 	1436(e): Destination City
+	1462(m): Course Schedule IV
 	1472(m): Design Browser History
 	1496(e): Path Crossing
 	1570(m): Dot Product of Two Sparse Vectors
@@ -807,6 +821,7 @@
 	0641(m): Design Circular Deque
 	0705(e): Design HashSet
 	0706(e): Design HashMap
+	0707(m): Design Linked List
 	0716(e): Max Stack
 	0767(m): Reorganize String
 	1114(e): Print in Order
@@ -855,6 +870,7 @@
 	0426(m): Convert Binary Search Tree to Sorted Doubly Linked List
 	0430(m): Flatten a Multilevel Doubly Linked List
 	0445(m): Add Two Numbers II
+	0707(m): Design Linked List
 	0708(m): Insert into a Sorted Circular Linked List
 	0725(m): Split Linked List in Parts
 	0817(m): Linked List Components
@@ -969,6 +985,8 @@
 	1065(e): Index Pairs of a String
 	1165(e): Single-Row Keyboard
 	1422(e): Maximum Score After Splitting a String
+	1525(m): Number of Good Ways to Split a String
+	1573(m): Number of Ways to Split a String
 	1624(e): Largest Substring Between Two Equal Characters
 	1662(e): Check If Two String Arrays are Equivalent
 	1684(e): Count the Number of Consistent Strings
@@ -1217,6 +1235,7 @@
 	1502(e): Can Make Arithmetic Progression From Sequence
 	1504(m): Count Submatrices With All Ones
 	1507(e): Reformat Date
+	1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
 	1528(e): Shuffle String
 	1550(e): Three Consecutive Odds
 	1572(e): Matrix Diagonal Sum
@@ -1224,6 +1243,7 @@
 	1608(e): Special Array With X Elements Greater Than or Equal X
 	1619(e): Mean of Array After Removing Some Elements
 	1629(e): Slowest Key
+	1664(m): Ways to Make a Fair Array
 	1668(e): Maximum Repeating Substring
 	1672(e): Richest Customer Wealth
 	1710(e): Maximum Units on a Truck
@@ -1247,6 +1267,7 @@
 	0260(m): Single Number III
 	0268(e): Missing Number
 	0338(e): Counting Bits
+	0342(e): Power of Four
 	0389(e): Find the Difference
 	0401(e): Binary Watch
 	0461(e): Hamming Distance
@@ -1282,6 +1303,7 @@
 	1229(m): Meeting Scheduler
 	1272(m): Remove Interval
 	1450(e): Number of Students Doing Homework at a Given Time
+	1573(m): Number of Ways to Split a String
 	1893(e): Check if All the Integers in a Range Are Covered
 
 --- Graph:
@@ -1322,6 +1344,7 @@
 	0802(m): Find Eventual Safe States
 	0863(m): All Nodes Distance K in Binary Tree
 	0934(m): Shortest Bridge
+	0935(m): Knight Dialer
 	0947(m): Most Stones Removed with Same Row or Column 
 	0959(m): Regions Cut By Slashes
 	0980(h): Unique Paths III
@@ -1342,6 +1365,7 @@
 	1311(m): Get Watched Videos by Your Friends
 	1340(h): Jump Game V
 	1391(m): Check if There is a Valid Path in a Grid
+	1462(m): Course Schedule IV
 	1466(m): Reorder Routes to Make All Paths Lead to the City Zero
 	1557(m): Minimum Number of Vertices to Reach All Nodes
 	1905(m): Count Sub Islands
@@ -1400,6 +1424,7 @@
 	0257(e): Binary Tree Paths
 	0261(m): Graph Valid Tree
 	0270(e): Closest Binary Search Tree Value
+	0272(h): Closest Binary Search Tree Value II
 	0285(m): Inorder Successor in BST 
 	0297(h): Serialize and Deserialize Binary Tree
 	0298(m): Binary Tree Longest Consecutive Sequence
@@ -1502,6 +1527,7 @@
 	1339(m): Maximum Product of Splitted Binary Tree
 	1367(m): Linked List in Binary Tree
 	1372(m): Longest ZigZag Path in a Binary Tree
+	1376(m): Time Needed to Inform All Employees
 	1379(m): Find a Corresponding Node of a Binary Tree in a Clone of That Tree
 	1382(m): Balance a Binary Search Tree
 	1408(e): String Matching in an Array
@@ -1578,6 +1604,7 @@
 	0311(m): Sparse Matrix Multiplication 
 	0313(m): Super Ugly Number
 	0338(e): Counting Bits
+	0342(e): Power of Four
 	0343(m): Integer Break
 	0356(m): Line Reflection
 	0360(m): Sort Transformed Array
@@ -1607,6 +1634,7 @@
 	1304(e); Find N Unique Integers Sum up to Zero
 	1359(h): Count All Valid Pickup and Delivery Options
 	1518(e): Water Bottles
+	1573(m): Number of Ways to Split a String
 	1716(e): Calculate Money in Leetcode Bank
 	1822(e): Sign of the Product of an Array
 
