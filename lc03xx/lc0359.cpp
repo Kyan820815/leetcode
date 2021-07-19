@@ -1,4 +1,4 @@
-//--- Q: 359. Logger Rate Limiter
+//--- Q: 0359. Logger Rate Limiter
 
 //--- method 1: map
 class Logger {
@@ -12,14 +12,11 @@ public:
         If this method returns false, the message will not be printed.
         The timestamp is in seconds granularity. */
     bool shouldPrintMessage(int timestamp, string message) {
-        if (map.find(message) == map.end()) {
+        if (map.find(message) == map.end() || map[message]+10 <= timestamp) {
             map[message] = timestamp;
             return true;
-        } else if (timestamp - map[message] < 10) {
-            return false;
         } else {
-            map[message] = timestamp;
-            return true;
+            return false;
         }
     }
     unordered_map<string, int> map;
@@ -37,17 +34,12 @@ public:
         If this method returns false, the message will not be printed.
         The timestamp is in seconds granularity. */
     bool shouldPrintMessage(int timestamp, string message) {
-        {
-            unique_lock<mutex> lk(mtx);
-            if (map.find(message) == map.end()) {
-                map[message] = timestamp;
-                return true;
-            } else if (timestamp - map[message] < 10) {
-                return false;
-            } else {
-                map[message] = timestamp;
-                return true;
-            }
+        unique_lock<mutex> ulock(mtx);
+        if (map.find(message) == map.end() || map[message]+10 <= timestamp) {
+            map[message] = timestamp;
+            return true;
+        } else {
+            return false;
         }
     }
     unordered_map<string, int> map;
@@ -66,20 +58,20 @@ public:
         If this method returns false, the message will not be printed.
         The timestamp is in seconds granularity. */
     bool shouldPrintMessage(int timestamp, string message) {
-        while (que.size() && que.front().second+10 <= timestamp) {
-            set.erase(que.front().first);
+        while (que.size() && que.front().first+10 <= timestamp) {
+            set.erase(que.front().second);
             que.pop();
         }
         if (set.find(message) != set.end()) {
             return false;
-        } else {
-            que.push({message, timestamp});
-            set.insert(message);
-            return true;
         }
+        que.push({timestamp, message});
+        set.insert(message);
+        return true;
     }
+    
+    queue<pair<int, string>> que;
     unordered_set<string> set;
-    queue<pair<string, int>> que;
 };
 
 /**

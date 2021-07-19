@@ -1,4 +1,4 @@
-//--- Q: 374. Guess Number Higher or Lower
+//--- Q: 0374. Guess Number Higher or Lower
 
 //--- method 1: binary search
 // Forward declaration of guess API.
@@ -9,16 +9,14 @@ int guess(int num);
 class Solution {
 public:
     int guessNumber(int n) {
-        long left = 1, right = n;
-        while (left < right)
-        {
-            int mid = (left+right) / 2;
-            int t = guess(mid);
-            if (t == -1)
-                right = mid;
-            else if (t == 1)
+        int left, right;
+        for (left = 1, right = n; left < right;) {
+            int mid = left + (right-left)/2;
+            if (guess(mid) == 1) {
                 left = mid+1;
-            else return mid;
+            } else {
+                right = mid;
+            }
         }
         return left;
     }

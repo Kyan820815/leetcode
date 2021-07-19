@@ -1,4 +1,4 @@
-//--- Q: 381. Insert Delete GetRandom O(1) - Duplicates allowed
+//--- Q: 0381. Insert Delete GetRandom O(1) - Duplicates allowed
 
 //--- method 1: map operation
 class RandomizedCollection {
@@ -10,37 +10,34 @@ public:
     
     /** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
     bool insert(int val) {
-        bool have = map.find(val) == map.end();
-        arr.push_back({map[val].size(), val});
-        map[val].push_back(arr.size()-1);
-        return have;
+        bool find = !map[val].size();
+        map[val].push_back(arr.size());
+        arr.push_back({val,map[val].size()-1});
+        return find;
     }
     
     /** Removes a value from the collection. Returns true if the collection contained the specified element. */
     bool remove(int val) {
-        bool have = map.find(val) != map.end();
-        if (have) {
-            auto last = arr.back();
-            int pos = map[val].back();
-            map[last.second][last.first] = pos;
-            swap(arr[map[val].back()], arr.back());
-            arr.pop_back();
-            map[val].pop_back();
-            if (!map[val].size()) {
-                map.erase(val);
-            }
+        if (!map[val].size()) {
+            return false;
         }
-
-        return have;
+        auto last = arr.back();
+        map[last.first][last.second] = map[val].back();
+        swap(arr.back(), arr[map[val].back()]);
+        map[val].pop_back();
+        arr.pop_back();
+        return true;
     }
     
     /** Get a random element from the collection. */
     int getRandom() {
-        return arr[random()%arr.size()].second;
+        return arr[random()%arr.size()].first;
     }
     vector<pair<int, int>> arr;
-    unordered_map<int, vector<int>> map;
+    map<int, vector<int>> map;
 };
+
+
 
 /**
  * Your RandomizedCollection object will be instantiated and called as such:

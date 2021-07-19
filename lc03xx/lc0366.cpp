@@ -1,4 +1,4 @@
-//--- Q: 366. Find Leaves of Binary Tree
+//--- Q: 0366. Find Leaves of Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -13,21 +13,21 @@
 //--- method 1: postorder
 class Solution {
 public:
+    vector<vector<int>> res;
     vector<vector<int>> findLeaves(TreeNode* root) {
-        vector<vector<int>> res;
-        postorder(root, res);
+        postorder(root);
         return res;
     }
-    int postorder(TreeNode *root, vector<vector<int>> &res) {
-        if (!root)
+    int postorder(TreeNode *root) {
+        if (!root) {
             return 0;
-        int l = postorder(root->left, res);
-        int r = postorder(root->right, res);
-        int h = max(l, r) + 1;
-        if (res.size() <= h-1)
+        }
+        int h = max(postorder(root->left), postorder(root->right));
+        if (res.size() == h) {
             res.push_back({root->val});
-        else
-            res[h-1].push_back(root->val);
-        return h;
+        } else {
+            res[h].push_back(root->val);
+        }
+        return h+1;
     }
 };

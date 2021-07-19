@@ -1,48 +1,32 @@
-//--- Q: 394. Decode String
+//--- Q: 0394. Decode String
 
 //--- method 1: dfs recursion
 class Solution {
 public:
     string decodeString(string s) {
-    	string ans = "";
-    	int jump;
-        dfs(s, 0, ans, jump);
-        return ans;
+        int idx = 0;
+        return dfs(idx, s);
     }
-    void dfs(string s, int start, string &ans, int &jump)
-    {
-    	string now_str = "";
-    	int cnt;
-    	for (int i = start; i < s.size(); ++i)
-    	{
-    		if (s[i] >= '0' && s[i] <= '9')
-    		{
-    			cnt = 0;
-    			while (s[i] >= '0' && s[i] <= '9')
-    			{
-    				cnt = cnt*10 + s[i]-'0';
-    				++i;
-    			}
-	    		//--- dfs
-	    		dfs(s, i+1, ans, jump);
-
-	    		string tmp = ans;
-	    		for (int j = 0; j < cnt; ++j)
-	    			now_str = now_str + tmp;
-	    		i = i + jump;
-    		}
-    		else if (s[i] != '[' && s[i] != ']')
-    		{
-    			now_str.push_back(s[i]);
-    		}
-    		else if (s[i] == ']')
-    		{
-    			ans = now_str;
-    			jump = i-start+1;
-    			return;
-    		}
-    	}
-    	ans = now_str;
+    string dfs(int &idx, string &s) {
+        string res = "";
+        int sum = 0;
+        for (; idx < s.size();) {
+            if (s[idx] == '[') {
+                ++idx;
+                auto rtn_str = dfs(idx, s);
+                for (; sum; sum--) {
+                    res += rtn_str;
+                }
+            } else if (s[idx] == ']') {
+                ++idx;
+                return res;
+            } else if (isdigit(s[idx])) {
+                sum = sum*10 + (s[idx++]-'0');
+            } else {
+                res += s[idx++];
+            }
+        }
+        return res;
     }
 };
 
@@ -50,62 +34,52 @@ public:
 class Solution {
 public:
     string decodeString(string s) {
-    	stack<string> str_sk;
-    	stack<int> cnt_sk;
-    	int cnt = 0;
-    	string now_str = "";
-    	for (int i = 0; i < s.size(); ++i)
-    	{
-    		if (s[i] >= '0' && s[i] <= '9')
-    			cnt = cnt*10 + s[i] - '0';
-    		else if (s[i] == '[')
-    		{
-    			str_sk.push(now_str);
-    			cnt_sk.push(cnt);
-    			cnt = 0;
-    			now_str.clear();
-    		}
-    		else if (s[i] == ']')
-    		{
-    			string tmp = str_sk.top();
-    			for (int i = 0; i < cnt_sk.top(); ++i)
-    			{
-    				tmp += now_str;
-    			}
-    			cnt_sk.pop();
-    			str_sk.pop();
-    			now_str = tmp;
-    		}
-    		else
-    			now_str += s[i];
-    	}
-    	return now_str;
+        string cstr = "";
+        int sum = 0;
+        vector<pair<string, int>> sk;
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '[') {
+                sk.push_back({cstr, sum});
+                sum = 0;
+                cstr = "";
+            } else if (s[i] == ']') {
+                sum = sk.back().second;
+                auto tmp = cstr;
+                cstr = sk.back().first;
+                for (; sum; sum--) {
+                    cstr += tmp;
+                }
+                sk.pop_back();
+            } else if (isdigit(s[i])) {
+                sum = sum*10 + (s[i]-'0');
+            } else {
+                cstr += s[i];
+            }
+        }
+        return cstr;
     }
 };
 
 //--- follow up:
-string dfs2(int &idx, string &s) {
+string dfs(int &idx, string &s) {
     string res = "";
-    while (idx < s.size()) {
+    for (; idx < s.size();) {
         if (s[idx] == '(') {
             ++idx;
-            string rtn = dfs2(idx, s);
-            res += rtn;
-        } else if (s[idx] == ')') {
-            idx += 2;
+            auto rtn_str = dfs(idx, s);
             int sum = 0;
-            while (s[idx] != '}') {
-                sum = sum *10 + s[idx++]-'0';
+            for (++idx; s[idx] != '}'; ++idx){
+                sum = sum*10 + (s[idx]-'0');
+            }
+            for (; sum; --sum) {
+                res += rtn_str;
             }
             ++idx;
-            string tmp = "";
-            while (sum) {
-                sum--;
-                tmp += res;
-            }
-            return tmp;
+        } else if (s[idx] == ')') {
+            ++idx;
+            return res;
         } else {
-            res.push_back(s[idx++]);
+            res += s[idx++];
         }
     }
     return res;

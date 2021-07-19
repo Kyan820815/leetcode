@@ -1,46 +1,42 @@
-//--- Q: 380. Insert Delete GetRandom O(1)
+//--- Q: 0380. Insert Delete GetRandom O(1)
 
 //--- method 1: map and vector
 class RandomizedSet {
 public:
     /** Initialize your data structure here. */
     RandomizedSet() {
-        now = 0;
+        
     }
     
     /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
     bool insert(int val) {
-        if (!set.count(val))
-        {
-            set[val] = nums.size();
-            nums.push_back(val);
-            return true;
+        if (map.find(val) != map.end()) {
+            return false;
         }
-        else return false;
+        map[val] = arr.size();
+        arr.push_back(val);
+        return true;
     }
     
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     bool remove(int val) {
-        if (set.count(val))
-        {
-            int idx = set[val];
-            swap(nums[idx], nums.back());
-            set[nums[idx]] = idx;
-            set.erase(val);
-            nums.pop_back();
-            return true;
+        if (map.find(val) == map.end()) {
+            return false;
         }
-        else return false;
+        auto last = arr.back();
+        map[arr.back()] = map[val];
+        swap(arr.back(), arr[map[val]]);
+        arr.pop_back();
+        map.erase(val);
+        return true;
     }
     
     /** Get a random element from the set. */
     int getRandom() {
-        return nums.size() == 0 ? 0 : nums[rand()%nums.size()];
+        return arr[random()%arr.size()];
     }
-private:
-    unordered_map<int,int> set;
-    vector<int> nums;
-    int now;
+    unordered_map<int, int> map;
+    vector<int> arr;
 };
 
 /**

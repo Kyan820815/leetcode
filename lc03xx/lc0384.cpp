@@ -1,26 +1,50 @@
-//--- Q: 384. Shuffle an Array
+//--- Q: 0384. Shuffle an Array
 
 //--- method 1: resivoir sampling
 class Solution {
 public:
     Solution(vector<int>& nums) {
-        cpy = nums;
+        arr = nums;        
     }
     
     /** Resets the array to its original configuration and return it. */
     vector<int> reset() {
-    	return cpy;  
+        return arr;
     }
     
     /** Returns a random shuffling of the array. */
     vector<int> shuffle() {
-    	vector<int> res = cpy;
-        for (int i = 0; i < res.size(); ++i)
-        	swap(res[rand()%(i+1)], res[i]);
-        return res;
+        vector<int> rtn = arr;
+        for (int i = 0; i < rtn.size(); ++i) {
+            swap(rtn[random()%(i+1)], rtn[i]);
+        }
+        return rtn;
     }
-private:
-	vector<int> cpy;
+    vector<int> arr;
+};
+
+//--- method 2: swap with last element
+class Solution {
+public:
+    Solution(vector<int>& nums) {
+        arr = nums;        
+    }
+    
+    /** Resets the array to its original configuration and return it. */
+    vector<int> reset() {
+        return arr;
+    }
+    
+    /** Returns a random shuffling of the array. */
+    vector<int> shuffle() {
+        vector<int> rtn = arr;
+        for (int i = rtn.size(); i >= 1;) {
+            auto idx = random()%i;
+            swap(rtn[idx], rtn[--i]);
+        }
+        return rtn;
+    }
+    vector<int> arr;
 };
 
 /**

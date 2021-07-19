@@ -1,4 +1,4 @@
-//--- Q: 364. Nested List Weight Sum II
+//--- Q: 0364. Nested List Weight Sum II
 
 /**
  * // This is the interface that allows for creating nested lists.
@@ -34,23 +34,19 @@
 class Solution {
 public:
     int depthSumInverse(vector<NestedInteger>& nestedList) {
-        int weighted = 0, unweighted = 0;
-        while (nestedList.size()) {
-            vector<NestedInteger> nextLevel, nextInt;
-            for (int i = 0; i < nestedList.size(); ++i) {
-                if (nestedList[i].isInteger()) {
-                    nextInt.push_back(nestedList[i].getInteger());
-                    unweighted += nestedList[i].getInteger();
+        int tsum = 0, csum = 0;
+        for (; nestedList.size();) {
+            vector<NestedInteger> next_list;
+            for (auto &element: nestedList) {
+                if (element.isInteger()) {
+                    csum += element.getInteger();
                 } else {
-                    auto list = nestedList[i].getList();
-                    for (int j = 0; j < list.size(); ++j) {
-                        nextLevel.push_back(list[j]);
-                    }
+                    next_list.insert(next_list.end(), element.getList().begin(), element.getList().end());
                 }
             }
-            nestedList = nextLevel;
-            weighted += unweighted;
+            nestedList = next_list;
+            tsum += csum;
         }
-        return weighted;
+        return tsum;
     }
 };

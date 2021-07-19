@@ -1,4 +1,4 @@
-//--- Q: 382. Linked List Random Node
+//--- Q: 0382. Linked List Random Node
 
 /**
  * Definition for singly-linked list.
@@ -15,25 +15,21 @@ public:
     /** @param head The linked list's head.
         Note that the head is guaranteed to be not null, so it contains at least one node. */
     Solution(ListNode* head) {
-    	cpy = head;
+        hd = head;
     }
     
     /** Returns a random node's value. */
     int getRandom() {
-    	ListNode *now = cpy->next;
-    	int len = 2, res = cpy->val;
-        while(now != NULL)
-        {
-        	if (rand()%len == 0)
-        		res = now->val;
-        	now = now->next;
-        	len++;
-        	
+        auto now = hd;
+        int res;
+        for (int cnt = 0; now; now=now->next, ++cnt) {
+            if (random()%(cnt+1) == cnt) {
+                res = now->val;
+            }
         }
-    	return res;
+        return res;
     }
-private:
-	ListNode *cpy;
+    ListNode *hd;
 };
 
 /**

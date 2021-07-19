@@ -4,28 +4,21 @@
 class Solution {
 public:
     vector<int> sortTransformedArray(vector<int>& nums, int a, int b, int c) {
-        int left = 0, right = nums.size()-1, idx, dir, d;
         vector<int> res(nums.size());
-        if (a < 0) {
-            idx = 0, dir = 1, d = -1;
-        } else {
-            idx = nums.size()-1, dir = -1, d = 1;
-        }
-        while (left <= right) {
-            int lv = compute(nums[left], a, b, c);
-            int rv = compute(nums[right], a, b, c);
-            if (lv*d < rv*d) {
-                res[idx] = rv;
-                --right;
+        int start = a >= 0 ? nums.size()-1 : 0;
+        int dir = a >= 0 ? -1 : 1;
+        int left = 0, right = nums.size()-1;
+        for (; left <= right;) {
+            if (a >= 0) {
+                res[start] = func(a,b,c,nums[left]) > func(a,b,c,nums[right]) ? func(a,b,c,nums[left++]) : func(a,b,c,nums[right--]);
             } else {
-                res[idx] = lv;
-                ++left;
+                res[start] = func(a,b,c,nums[left]) < func(a,b,c,nums[right]) ? func(a,b,c,nums[left++]) : func(a,b,c,nums[right--]);
             }
-            idx += dir;
+            start += dir;
         }
         return res;
     }
-    int compute(int x, int a, int b, int c) {
-        return a*x*x+b*x+c;
+    int func(int a, int b, int c, int v) {
+        return a*v*v + b*v + c;
     }
 };

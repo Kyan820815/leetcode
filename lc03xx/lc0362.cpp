@@ -1,36 +1,37 @@
-//--- Q: 362. Design Hit Counter
+//--- Q: 0362. Design Hit Counter
 
 //--- method 1: fancy array method
 class HitCounter {
 public:
     /** Initialize your data structure here. */
     HitCounter() {
-        time.resize(300, 0);
-        hitcnt.resize(300, 0);
+        idx.resize(300, -1);
+        val.resize(300, 0);
     }
     
     /** Record a hit.
         @param timestamp - The current timestamp (in seconds granularity). */
     void hit(int timestamp) {
-        int slot = timestamp % 300;
-        if (time[slot] != timestamp) {
-            hitcnt[slot] = 1;
-            time[slot] = timestamp;
-        } else
-            ++hitcnt[slot];
+        int loc = timestamp%300;
+        if (idx[loc] != timestamp) {
+            idx[loc] = timestamp;
+            val[loc] = 0;
+        }
+        ++val[loc];
     }
     
     /** Return the number of hits in the past 5 minutes.
         @param timestamp - The current timestamp (in seconds granularity). */
     int getHits(int timestamp) {
-        int cnt = 0;
+        int res = 0;
         for (int i = 0; i < 300; ++i) {
-            if (time[i] > timestamp-300)
-                cnt += hitcnt[i];
+            if (idx[i] > timestamp-300) {
+                res += val[i];
+            }
         }
-        return cnt;
+        return res;
     }
-    vector<int> time, hitcnt;
+    vector<int> idx, val;
 };
 
 //--- method 2: queue operation

@@ -1,35 +1,33 @@
-//--- Q: 388. Longest Absolute File Path
+//--- Q: 0388. Longest Absolute File Path
 
 //--- method 1: stack operation
 class Solution {
 public:
     int lengthLongestPath(string input) {
+        int res = 0, len = 0, tcnt, hasdot;
         vector<int> sk;
-        int i = 0, tcnt = 0, dotcnt = 0, sum = 0, res = 0;
         string str = "";
-        while (i <= input.size()) {
-            if (i == input.size() || input[i] == '\n') {
-                while (sk.size() > tcnt) {
-                    sum -= sk.back();
+        for (int i = 0; i < input.size();) {
+            if (input[i] == '\n') {
+                tcnt = 0;
+                for (++i, tcnt = 0; input[i] == '\t'; ++tcnt, ++i);
+                for (; sk.size() > tcnt;) {
+                    len -= sk.back();
                     sk.pop_back();
                 }
-                if (dotcnt) {
-                    res = max(res, (int)str.size()+sum);
-                } else {
-                    sk.push_back(str.size()+1);
-                    sum += str.size()+1;
-                }
-                str = "", tcnt = 0, dotcnt = 0, ++i;
-            } else if (input[i] == '\t') {
-                ++tcnt, ++i;
             } else {
-                if (input[i] == '.') {
-                    ++dotcnt;
+                for (hasdot = 0; i < input.size() && input[i] != '\n'; ++i) {
+                    hasdot += input[i] == '.';
+                    str += input[i];
                 }
-                str.push_back(input[i++]);
+                sk.push_back(str.size()+1);
+                len += str.size()+1;
+                str = "";
+                if (hasdot) {
+                    res = max(res, len-1);
+                }
             }
         }
-        
         return res;
     }
 };

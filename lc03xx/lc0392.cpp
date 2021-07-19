@@ -1,4 +1,4 @@
-//--- Q: 392. Is Subsequence
+//--- Q: 0392. Is Subsequence
 
 //--- method 1: two pointer O(n) space
 class Solution {
@@ -19,24 +19,23 @@ public:
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
-        vector<vector<int>> cnt(t.size(), vector<int>(26, t.size()));
+        vector<vector<int>> map(t.size(), vector<int>(26, t.size()));
         for (int i = t.size()-1; i >= 0; --i) {
-            if (i < t.size()-1) {
-                cnt[i] = cnt[i+1];
+            map[i][t[i]-'a'] = i;
+            if (i > 0) {
+                map[i-1] = map[i];
             }
-            cnt[i][t[i]-'a'] = i;
         }
-        int index = 0;
-        for (int i = 0; i < s.size(); ++i) {
-            if (index == t.size() || cnt[index][s[i]-'a'] == t.size()) {
+        int i, j;
+        for (i = 0, j = 0; i < s.size(); ++i) {
+            if (j == t.size() || map[j][s[i]-'a'] == t.size()) {
                 return false;
             }
-            index = cnt[index][s[i]-'a']+1;
+            j = map[j][s[i]-'a']+1;
         }
-        return true;
+        return i == s.size();
     }
 };
-
 //--- follow up method 2:
 class Solution {
 public:
@@ -47,14 +46,13 @@ public:
         vector<vector<int>> list(26);
         list[s[0]-'a'].push_back(0);
         for (int i = 0; i < t.size(); ++i) {
-            vector<int> tmp = list[t[i]-'a'];
+            auto vec = list[t[i]-'a'];
             list[t[i]-'a'].clear();
-            for (int j = 0; j < tmp.size(); ++j) {
-                if (tmp[j]+1 == s.size()) {
+            for (auto &j: vec) {
+                if (j+1 == s.size()) {
                     return true;
-                } else {
-                    list[s[tmp[j]+1]-'a'].push_back(tmp[j]+1);
                 }
+                list[s[j+1]-'a'].push_back(j+1);
             }
         }
         return false;

@@ -1,24 +1,25 @@
-//--- Q: 398. Random Pick Index
+//--- Q: 0398. Random Pick Index
 
 //--- method 1: resivoir sampling
 class Solution {
 public:
-	vector<int> idx;
     Solution(vector<int>& nums) {
-    	idx = nums;
+        arr = nums;        
     }
     
     int pick(int target) {
-    	int cnt = 0, res;
-    	for (int i = 0; i < idx.size(); ++i)
-    	{
-    		if (target != idx[i]) continue;
-    		cnt++;
-    		if (rand()%cnt == 0)
-    			res = i;
-    	}
-    	return res;
+        int cnt = 0, res;
+        for (int i = 0; i < arr.size(); ++i) {
+            if (arr[i] == target) {
+                if (random()%(cnt+1) == cnt) {
+                    res = i;                    
+                }
+                ++cnt;
+            }
+        }
+        return res;
     }
+    vector<int> arr;
 };
 
 /**

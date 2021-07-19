@@ -18,7 +18,6 @@
 	0287(m): Find the Duplicate Number
 	0300(m): Longest Increasing Subsequence
 	0374(e): Guess Number Higher or Lower
-	0378(m): Kth Smallest Element in a Sorted Matrix
 	0410(h): Split Array Largest Sum
 	0441(e): Arranging Coins
 	0493(h): Reverse Pairs
@@ -224,6 +223,7 @@
 
 --- Bucket Sort:
 	0347(m): Top K Frequent Elements
+	0383(e): Ransom Note
 	0387(e): First Unique Character in a String
 	0451(m): Sort Characters By Frequency
 	0539(m): Minimum Time Difference
@@ -298,6 +298,7 @@
 	0332(m): Reconstruct Itinerary
 	0341(m): Flatten Nested List Iterator
 	0388(m): Longest Absolute File Path
+	0394(m): Decode String
 	0402(m): Remove K Digits
 	0430(m): Flatten a Multilevel Doubly Linked List
 	0445(m): Add Two Numbers II
@@ -484,11 +485,10 @@
 	0333(m): Largest BST Subtree
 	0337(m): House Robber III
 	0339(m): Nested List Weight Sum
-	0364(m): Nested List Weight Sum II
-	0386(m): Lexicographical Numbers
+	0366(m): Find Leaves of Binary Tree
+	0375(m): Guess Number Higher or Lower II
 	0394(m): Decode String
 	0395(m): Longest Substring with At Least K Repeating Characters
-	0397(m): Integer Replacement
 	0399(m): Evaluate Division
 	0401(e): Binary Watch
 	0403(h): Frog Jump
@@ -526,6 +526,7 @@
 	0280(m): Wiggle Sort
 	0316(m): Remove Duplicate Letters
 	0334(m): Increasing Triplet Subsequence
+	0376(m): Wiggle Subsequence
 	0678(m): Valid Parenthesis String
 	1647(m): Minimum Deletions to Make Character Frequencies Unique
 	1758(e): Minimum Changes To Make Alternating Binary String
@@ -639,6 +640,7 @@
 	0300(m): Longest Increasing Subsequence
 	0325(m): Maximum Size Subarray Sum Equals k
 	0392(e): Is Subsequence
+	0395(m): Longest Substring with At Least K Repeating Characters
 	0491(m): Increasing Subsequences
 	0523(m): Continuous Subarray Sum
 	0524(m): Longest Word in Dictionary through Deleting
@@ -713,9 +715,12 @@
 	0350(e): Intersection of Two Arrays II
 	0356(m): Line Reflection
 	0359(e): Logger Rate Limiter
+	0362(m): Design Hit Counter
+	0375(m): Guess Number Higher or Lower II
 	0380(m): Insert Delete GetRandom O(1)
 	0381(h): Insert Delete GetRandom O(1) - Duplicates allowed
-	0383(e): Ransom Note
+	0399(m): Evaluate Division
+	0392(e): Is Subsequence
 	0414(e): Third Maximum Number
 	0451(m): 4Sum II
 	0460(h): LFU Cache
@@ -846,6 +851,7 @@
 	0237(e): Delete Node in a Linked List
 	0328(m): Odd Even Linked List
 	0369(m): Plus One Linked List
+	0382(m): Linked List Random Node
 	0426(m): Convert Binary Search Tree to Sorted Doubly Linked List
 	0430(m): Flatten a Multilevel Doubly Linked List
 	0445(m): Add Two Numbers II
@@ -950,6 +956,13 @@
 	0340(m): Longest Substring with At Most K Distinct Characters
 	0344(e): Reverse String
 	0345(e): Reverse Vowels of a String
+	0383(e): Ransom Note
+	0387(e): First Unique Character in a String
+	0388(m): Longest Absolute File Path
+	0389(e): Find the Difference
+	0392(e): Is Subsequence
+	0394(m): Decode String
+	0395(m): Longest Substring with At Least K Repeating Characters
 	0678(m): Valid Parenthesis String
 	0791(m): Custom Sort String
 	0884(e): Uncommon Words from Two Sentences
@@ -1071,6 +1084,19 @@
 	0348(m): Design Tic-Tac-Toe
 	0349(e): Intersection of Two Arrays
 	0350(e): Intersection of Two Arrays II
+	0356(m): Line Reflection
+	0360(m): Sort Transformed Array
+	0362(m): Design Hit Counter
+	0364(m): Nested List Weight Sum II
+	0368(m): Largest Divisible Subset
+	0373(m): Find K Pairs with Smallest Sums
+	0375(m): Guess Number Higher or Lower II
+	0376(m): Wiggle Subsequence
+	0378(m): Kth Smallest Element in a Sorted Matrix
+	0384(m): Shuffle an Array
+	0386(m): Lexicographical Numbers
+	0398(m): Random Pick Index
+	0399(m): Evaluate Division
 	0406(m): Queue Reconstruction by Height
 	0412(e): Fizz Buzz
 	0414(e): Third Maximum Number
@@ -1519,6 +1545,7 @@
 	0298(m): Binary Tree Longest Consecutive Sequence
 	0300(m): Longest Increasing Subsequence
 	0334(m): Increasing Triplet Subsequence
+	0392(e): Is Subsequence
 	0491(m): Increasing Subsequences
 	0556(m): Next Greater Element III
 	1079(m): Letter Tile Possibilities
@@ -1552,7 +1579,16 @@
 	0313(m): Super Ugly Number
 	0338(e): Counting Bits
 	0343(m): Integer Break
+	0356(m): Line Reflection
 	0360(m): Sort Transformed Array
+	0368(m): Largest Divisible Subset
+	0369(m): Plus One Linked List
+	0382(m): Linked List Random Node
+	0384(m): Shuffle an Array
+	0386(m): Lexicographical Numbers
+	0397(m): Integer Replacement
+	0398(m): Random Pick Index
+	0399(m): Evaluate Division
 	0415(e): Add Strings
 	0463(e): Island Perimeter
 	0507(e): Perfect Number
@@ -1579,4 +1615,3 @@
 	0384(m): Shuffle an Array
 	0398(m): Random Pick Index
 	0497(m): Random Point in Non-overlapping Rectangles
-

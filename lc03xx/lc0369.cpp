@@ -1,4 +1,4 @@
-//--- Q: 369. Plus One Linked List
+//--- Q: 0369. Plus One Linked List
 
 /**
  * Definition for singly-linked list.
@@ -15,46 +15,16 @@
 class Solution {
 public:
     ListNode* plusOne(ListNode* head) {
-        ListNode *dummy = new ListNode(0);
-        dummy->next = head;
-        ListNode *now = head, *last_non_nine = dummy;
-        while (now) {
+        ListNode *dummy = new ListNode(0, head), *lastnot9 = dummy;
+        for (auto now=head; now; now=now->next) {
             if (now->val != 9) {
-                last_non_nine = now;
+                lastnot9 = now;
             }
-            now = now->next;
         }
-        last_non_nine->val += 1;
-        now = last_non_nine->next;
-        while (now) {
-            now->val = 0;
-            now = now->next;
+        ++lastnot9->val;
+        for (auto cur=lastnot9->next; cur; cur=cur->next) {
+            cur->val = 0;
         }
-        return last_non_nine == dummy ? last_non_nine : dummy->next;
-    }
-};
-
-//--- method 2: O(n) space
-class Solution {
-public:
-    ListNode* plusOne(ListNode* head) {
-        int val = dfs(head);
-        if (val) {
-            ListNode *nh = new ListNode(val);
-            nh->next = head;
-            return nh;
-        }
-        return head;
-    }
-    int dfs(ListNode *now) {
-        if (!now->next) {
-            now->val += 1;
-        } else {
-            int val = dfs(now->next);
-            now->val += val;
-        }
-        int q = now->val / 10;
-        now->val %= 10;
-        return q;
+        return lastnot9 == dummy ? dummy : dummy->next;
     }
 };
