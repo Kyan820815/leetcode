@@ -1,4 +1,4 @@
-//--- Q: 427. Construct Quad Tree
+//--- Q: 0427. Construct Quad Tree
 
 /*
 // Definition for a QuadTree node.
@@ -44,28 +44,22 @@ public:
 class Solution {
 public:
     Node* construct(vector<vector<int>>& grid) {
-        return postorder(grid, grid.size(), 0, 0);
+        int n = grid.size();
+        return dfs(0, 0, n/2, grid);
     }
-    Node *postorder(vector<vector<int>> &grid, int len, int r, int c) {
-        if (len == 1) {
+    Node *dfs(int r, int c, int n, vector<vector<int>> &grid) {
+        if (!n) {
             return new Node(grid[r][c], true);
         }
-        Node *topLeft = postorder(grid, len/2, r, c);
-        Node *topRight = postorder(grid, len/2, r, c+len/2);
-        Node *bottomLeft = postorder(grid, len/2, r+len/2, c);
-        Node *bottomRight = postorder(grid, len/2, r+len/2, c+len/2);
-        Node *now = new Node();
-        if (topLeft->isLeaf && topRight->isLeaf && bottomLeft->isLeaf && bottomRight->isLeaf && 
-            topLeft->val == topRight->val && topLeft->val == bottomLeft->val && topLeft->val == bottomRight->val) {
-            now->val = topLeft->val;
-            now->isLeaf = true;
+        auto tl = dfs(r, c, n/2, grid);
+        auto tr = dfs(r, c+n, n/2, grid);
+        auto bl = dfs(r+n, c, n/2, grid);
+        auto br = dfs(r+n, c+n, n/2, grid);
+        if (tl->isLeaf && tr->isLeaf && bl->isLeaf && br->isLeaf && 
+            tl->val == tr->val && tl->val == bl->val && tl->val == br->val) {
+            return new Node(grid[r][c], true);
         } else {
-            now->val = 1;
-            now->topLeft = topLeft;
-            now->topRight = topRight;
-            now->bottomLeft = bottomLeft;
-            now->bottomRight = bottomRight;
+            return new Node(grid[r][c], false, tl, tr, bl, br);
         }
-        return now;
     }
 };

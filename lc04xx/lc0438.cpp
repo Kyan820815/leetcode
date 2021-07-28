@@ -1,24 +1,23 @@
-//--- Q: 438. Find All Anagrams in a String
+//--- Q: 0438. Find All Anagrams in a String
 
 //--- method 1: sliding window
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
-        vector<int> res, cnt(128, 0);
-        int left = 0, right = 0;
+        int left, right;
+        vector<int> cnt(26, 0);
         for (auto &ch: p) {
-            ++cnt[ch];
+            ++cnt[ch-'a'];
         }
-        int times = 0;
-        while (right < s.size()) {
-            --cnt[s[right]];
-            while (cnt[s[right]] < 0) {
-                ++cnt[s[left++]];
+        vector<int> res;
+        for (left = 0, right = 0; right < s.size(); ++right) {
+            --cnt[s[right]-'a'];
+            for (; cnt[s[right]-'a'] < 0;) {
+                ++cnt[s[left++]-'a'];
             }
             if (right-left+1 == p.size()) {
                 res.push_back(left);
             }
-            ++right;
         }
         return res;
     }

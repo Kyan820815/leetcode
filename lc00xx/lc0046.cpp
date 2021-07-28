@@ -27,3 +27,23 @@ public:
         }
     }
 };
+
+//--- method 2: iterative method
+class Solution {
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> res_vec = {{}};
+        for (auto &num: nums) {
+            vector<vector<int>> tmp_vec;
+            for (auto &vec: res_vec) {
+                for (int i = 0; i <= vec.size(); ++i) {
+                    auto tmp = vec;
+                    tmp.insert(tmp.begin()+i, num);
+                    tmp_vec.push_back(tmp);
+                }
+            }
+            res_vec = tmp_vec;
+        }
+        return res_vec;
+    }
+};

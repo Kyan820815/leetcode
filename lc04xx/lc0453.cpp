@@ -1,15 +1,14 @@
-//--- Q: 453. Minimum Moves to Equal Array Elements
+//--- Q: 0453. Minimum Moves to Equal Array Elements
 
 //--- method 1: make all to minimum value
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
-        long long int sum = 0;
-        int minv = INT_MAX;
-        for (int i = 0; i < nums.size(); ++i) {
-            minv = min(minv, nums[i]);
-            sum += nums[i];
+        int minv = INT_MAX, sum = 0;
+        for (auto &num: nums) {
+            sum += num;
+            minv = min(minv, num);
         }
-        return sum - minv*nums.size();
+        return sum-minv*nums.size();
     }
 };

@@ -1,42 +1,43 @@
-//--- Q: 407. Trapping Rain Water II
+//--- Q: 0407. Trapping Rain Water II
 
 //--- method 1: dijkstra
 class Solution {
 public:
     int trapRainWater(vector<vector<int>>& heightMap) {
-        int row = heightMap.size(), col = heightMap[0].size();
-        vector<vector<int>> visit(row, vector<int>(col, 0));
-        auto comp = [](vector<int> &a, vector<int> &b) {
-            return a[2] > b[2];
+        int row = heightMap.size(), col = heightMap[0].size(), res = 0;
+        vector<vector<int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}}, visit(row, vector<int>(col, 0));
+        auto comp = [](pair<int,int> &a, pair<int,int> &b) {
+            return a.second > b.second;
         };
-        priority_queue<vector<int>, vector<vector<int>>, decltype(comp)> que(comp);
+        priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(comp)> que(comp);
         for (int i = 0; i < row; ++i) {
-            for (int j = 0; j < col; ++j) {
-                if (!(!i || !j || i==row-1 || j==col-1)) {
-                    continue;
-                }
-                que.push({i,j,heightMap[i][j]});
-                visit[i][j] = 1;
-            }
+            visit[i][0] = visit[i][col-1] = 1;
+            que.push({i*col,heightMap[i][0]});
+            que.push({i*col+col-1,heightMap[i][col-1]});
         }
-        vector<vector<int>> dir = {{1,0}, {-1,0}, {0,1}, {0,-1}};
-        int mh = 0, res = 0;
+        for (int j = 0; j < col; ++j) {
+            visit[0][j] = visit[row-1][j] = 1;
+            que.push({j, heightMap[0][j]});
+            que.push({(row-1)*col+j, heightMap[row-1][j]});
+        }
+        int maxv = 0;
         while (que.size()) {
-            auto node = que.top();
+            auto now = que.top();
             que.pop();
-            int r = node[0], c = node[1];
-            mh = max(mh, node[2]);
-            for (int i = 0; i < 4; ++i) {
-                int nr = r+dir[i][0];
-                int nc = c+dir[i][1];
+            if (maxv > now.second) {
+                res += maxv-now.second;
+            } else {
+                maxv = now.second;
+            }
+            int r = now.first/col, c = now.first%col;
+            for (auto &dir: dirs) {
+                int nr = r + dir[0];
+                int nc = c + dir[1];
                 if (nr < 0 || nr >= row || nc < 0 || nc >= col || visit[nr][nc]) {
                     continue;
                 }
-                if (heightMap[nr][nc] < mh) {
-                    res += mh-heightMap[nr][nc];
-                }
-                que.push({nr, nc, heightMap[nr][nc]});
                 visit[nr][nc] = 1;
+                que.push({nr*col+nc, heightMap[nr][nc]});
             }
         }
         return res;

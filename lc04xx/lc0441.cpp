@@ -1,18 +1,18 @@
-//--- Q: 441. Arranging Coins
+//--- Q: 0441. Arranging Coins
 
 //--- method 1: binary search
 class Solution {
 public:
     int arrangeCoins(int n) {
-        int left = 1, right = n;
-        while (left < right) {
+        int left, right;
+        for (left = 1, right = n; left < right;) {
             int mid = left + (right-left)/2;
-            if ((double)(mid+1)/2 > (double)n/mid) {
-                right = mid;
-            } else {
+            if ((double)(1+mid)/2 < (double)n/mid) {
                 left = mid+1;
+            } else {
+                right = mid;
             }
         }
-        return (double)(left+1)/2 <= (double)n/left ? left : left-1;
+        return (double)(1+left)/2 > (double)n/left ? left-1 : left;
     }
 };

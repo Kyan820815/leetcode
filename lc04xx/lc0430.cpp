@@ -1,4 +1,4 @@
-//--- Q: 430. Flatten a Multilevel Doubly Linked List
+//--- Q: 0430. Flatten a Multilevel Doubly Linked List
 
 /*
 // Definition for a Node.
@@ -24,55 +24,22 @@ public:
 class Solution {
 public:
     Node* flatten(Node* head) {
-        Node *cur = head, *last, *next;
-
-        while(cur)
-        {
-            if (cur->child)
-            {
-                next = cur->next;
-                last = cur->child;
-                while (last->next)
-                    last = last->next;
-                last->next = next;
-                if (next) next->prev = last;
-                cur->next = cur->child;
-                cur->next->prev = cur;
-                cur->child = NULL;
+        auto now = head;
+        while (now) {
+            if (now->child) {
+                auto cur = now->child;
+                while (cur->next) {
+                    cur = cur->next;
+                }
+                cur->next = now->next;
+                if (now->next) {
+                    now->next->prev = cur;
+                }
+                now->next = now->child;
+                now->child->prev = now;
+                now->child = nullptr;
             }
-            cur = cur->next;
-        }
-        return head;
-    }
-};
-
-//--- method 2: stack operation
-class Solution {
-public:
-    Node* flatten(Node* head) {
-        stack<Node *> sk;
-        Node *dummy = new Node(-1, NULL, head, NULL), *cur, *pre;
-        cur = head, pre = dummy;
-
-        while(cur || sk.size())
-        {
-            if (cur->child)
-            {
-                if (cur->next) sk.push(cur->next);
-                cur->next = cur->child;
-                cur->next->prev = cur;
-                cur->child = NULL;
-            }
-            pre = cur;
-            cur = cur->next;
-
-            if (!cur && sk.size())
-            {
-                cur = sk.top();
-                pre->next = cur;
-                cur->prev = pre;
-                sk.pop();
-            }
+            now = now->next;
         }
         return head;
     }

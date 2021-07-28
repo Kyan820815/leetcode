@@ -1,60 +1,56 @@
-//--- Q: 460. LFU Cache
+//--- Q: 0460. LFU Cache
 
-//--- method 1:
+//--- method 1: vector of list with key count data structure
 class LFUCache {
 public:
     LFUCache(int capacity) {
-        cap = capacity;
-        min_cnt = 1;
-        sz = 0;
+        cap = capacity, sz = 0, min_cnt = 0; 
     }
     
     int get(int key) {
-        if (map.find(key) == map.end()) {
+        if (loc_map.find(key) == loc_map.end()) {
             return -1;
         }
-        int cur_cnt = key_cnt[key]++;
-        auto pk = *map[key];
-        ll[cur_cnt].erase(map[key]);
-        ll[key_cnt[key]].push_front(pk);
-        map[key] = ll[key_cnt[key]].begin();
-        if (!ll[min_cnt].size()) {
+        auto pkg = *loc_map[key];
+        auto key_cnt = key_cnt_map[key]++;
+        cache[key_cnt].erase(loc_map[key]);
+        key_cnt = key_cnt_map[key];
+        cache[key_cnt].push_front(pkg);
+        loc_map[key] = cache[key_cnt].begin();
+        if (!cache[min_cnt].size()) {
             ++min_cnt;
         }
-        return pk.second;
+        return pkg.second;
     }
     
     void put(int key, int value) {
         if (!cap) {
             return;
         }
-        pair<int,int> pk;
         if (get(key) != -1) {
-            map[key]->second = value;
+            loc_map[key]->second = value;
             return;
         }
-        pk = {key, value};
         if (sz == cap) {
-            auto pk = ll[min_cnt].back();
-            map.erase(pk.first);
-            --key_cnt[pk.first];
-            ll[min_cnt].pop_back();
-            if (!ll[min_cnt].size()) {
-                ++min_cnt;
-            }
+            auto key = cache[min_cnt].back().first;
+            cache[min_cnt].pop_back();
+            key_cnt_map[key] = 0;
+            loc_map.erase(key);
             --sz;
         }
-        ll[1].push_front(pk);
-        map[key] = ll[1].begin();
-        key_cnt[key] = 1;
-        min_cnt = 1;
-        ++sz;
+        pair<int,int> pkg = {key,value};
+        min_cnt = 1, ++sz;
+        cache[min_cnt].push_front(pkg);
+        key_cnt_map[key] = 1;
+        loc_map[key] = cache[min_cnt].begin();
     }
-    unordered_map<int,list<pair<int,int>>::iterator> map;
-    unordered_map<int, list<pair<int,int>>> ll;
-    unordered_map<int,int> key_cnt;
+    unordered_map<int, list<pair<int,int>>::iterator> loc_map;
+    unordered_map<int, list<pair<int,int>>> cache;
+    unordered_map<int, int> key_cnt_map;
     int min_cnt, cap, sz;
 };
+
+
 
 /**
  * Your LFUCache object will be instantiated and called as such:

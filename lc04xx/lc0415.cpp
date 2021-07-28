@@ -1,17 +1,27 @@
-//--- Q: 415. Add Strings
+//--- Q: 0415. Add Strings
 
 //--- method 1: linear processing
 class Solution {
 public:
     string addStrings(string num1, string num2) {
-        string res = "";
-        int carry = 0, i = num1.size()-1, j = num2.size()-1;
+        int s1 = num1.size(), s2 = num2.size(), i = s1-1, j = s2-1;
+        string res(max(s1,s2)+1, '0');
+        int idx = res.size()-1, carry = 0;
         while (i >= 0 || j >= 0 || carry) {
-            int iv = (i >= 0) ? num1[i--]-'0' : 0;
-            int jv = (j >= 0) ? num2[j--]-'0' : 0;
-            res = to_string((iv + jv + carry) % 10) + res;
-            carry = (iv + jv + carry) / 10;
+            if (i >= 0) {
+                carry += (num1[i--]-'0');
+            }
+            if (j >= 0) {
+                carry += (num2[j--]-'0');
+            }
+            res[idx--] = carry%10+'0';
+            carry /= 10;
         }
-        return res;
+        for (int i = 0; i < res.size(); ++i) {
+            if (res[i] != '0') {
+                return res.substr(i);
+            }
+        }
+        return "0";
     }
 };

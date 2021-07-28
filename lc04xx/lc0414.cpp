@@ -1,28 +1,27 @@
-//--- Q: 414. Third Maximum Number
+//--- Q: 0414. Third Maximum Number
 
 //--- method 1: use pointer to store value
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        int *a, *b, *c;
-        a = b = c = NULL;
-        for (int i = 0; i < nums.size(); ++i) {
-            if (!a || nums[i] >= *a) {
-                if (a && nums[i] > *a) {
-                    c = b;
-                    b = a;
-                }
-                a = &nums[i];
-            } else if (!b || nums[i] >= *b) {
-                if (b && nums[i] > *b) {
-                    c = b;
-                }
-                b = &nums[i];
-            } else if (!c || nums[i] >= *c) {
-                c = &nums[i];
+        int *n1, *n2, *n3;
+        n1 = n2 = n3 = nullptr;
+        for (auto &num: nums) {
+            if (n1 && *n1 == num || n2 && *n2 == num) {
+                continue;
+            }
+            if (!n1 || *n1 < num) {
+                n3 = n2;
+                n2 = n1;
+                n1 = &num;
+            } else if (!n2 || *n2 < num) {
+                n3 = n2;
+                n2 = &num;
+            } else if (!n3 || *n3 < num) {
+                n3 = &num;
             }
         }
-        return !c ? *a : *c;
+        return !n3 ? *n1 : *n3;
     }
 };
 
@@ -31,10 +30,10 @@ class Solution {
 public:
     int thirdMax(vector<int>& nums) {
         set<int> s;
-        for (int i = 0; i < nums.size(); ++i) {
-            s.insert(nums[i]);
+        for (auto &num: nums) {
+            s.insert(num);
             if (s.size() > 3) {
-                s.erase(*s.begin());
+                s.erase(s.begin());
             }
         }
         return s.size() == 3 ? *s.begin() : *s.rbegin();

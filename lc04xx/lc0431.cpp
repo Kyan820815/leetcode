@@ -1,4 +1,4 @@
-//--- Q: 431. Encode N-ary Tree to Binary Tree
+//--- Q: 0431. Encode N-ary Tree to Binary Tree
 
 /*
 // Definition for a Node.
@@ -36,43 +36,41 @@ public:
     // Encodes an n-ary tree to a binary tree.
     TreeNode* encode(Node* root) {
         if (!root) {
-            return NULL;
+            return nullptr;
         }
-        vector<Node *> same = {root};
-        return encode_binary(same);
+        vector<Node *> sibs = {root};
+        return encode1(sibs);
     }
     
-    TreeNode *encode_binary(vector<Node *> &same) {
-        Node *root = NULL;
-        TreeNode *dummy = new TreeNode(-1), *cur = dummy;
-        for (int i = 0; i < same.size(); ++i) {
-            cur->right = new TreeNode(same[i]->val);
-            cur = cur->right;
-            cur->left = encode_binary(same[i]->children);
+    TreeNode *encode1(vector<Node *> &sibs) {
+        auto dummy = new TreeNode(-1), now = dummy;
+        for (auto &sib: sibs) {
+            now->right = new TreeNode(sib->val);
+            now = now->right;
+            if (sib->children.size()) {
+                now->left = encode1(sib->children);
+            }
         }
         return dummy->right;
     }
     
     // Decodes your binary tree to an n-ary tree.
-    Node *decode(TreeNode* root) {
-        if (!root) {
-            return NULL;
-        }
-        vector<Node *> rtn = decode_nary(root);
-        return rtn[0];
+    Node* decode(TreeNode* root) {
+        auto sibs = decode1(root);
+        return sibs.size() ? sibs[0] : nullptr;
     }
     
-    vector<Node *> decode_nary(TreeNode* root) {
-        vector<Node *> rtn;
+    vector<Node *> decode1(TreeNode *root) {
+        vector<Node *> sibs;
         while (root) {
-            Node *now = new Node(root->val);
+            auto now = new Node(root->val);
+            sibs.push_back(now);
             if (root->left) {
-                now->children = decode_nary(root->left);
+                now->children = decode1(root->left);
             }
-            rtn.push_back(now);
             root = root->right;
         }
-        return rtn;
+        return sibs;
     }
 };
 

@@ -11,17 +11,17 @@ public:
             if (k&1) {
                 res.push_back(*median);
             } else {
-                res.push_back((double(*median) + *prev(median))/2);
+                res.push_back(((double)*median+*prev(median))/2);
             }
             if (i == nums.size()) {
                 break;
             }
             set.insert(nums[i]);
             if (nums[i] < *median) {
-                --median;
+                median = prev(median);
             }
             if (nums[i-k] <= *median) {
-                ++median;
+                median = next(median);
             }
             set.erase(set.lower_bound(nums[i-k]));
         }
@@ -33,31 +33,27 @@ public:
 class Solution {
 public:
     vector<double> medianSlidingWindow(vector<int>& nums, int k) {
-        auto left_cmp = [&nums](int i, int j) {
-            return nums[i] > nums[j] || nums[i] == nums[j] && i > j;
+        vector<double> res;
+        auto comp_left = [&nums](int a, int b) {
+            return nums[a] > nums[b] || nums[a] == nums[b] && a > b;
         };
-        auto right_cmp = [&nums](int i, int j) {
-            return nums[i] < nums[j] || nums[i] == nums[j] && i < j;
+        auto comp_right = [&nums](int a, int b) {
+            return nums[a] < nums[b] || nums[a] == nums[b] && a > b;
         };
-        set<int, decltype(left_cmp)> left(left_cmp);
-        set<int, decltype(right_cmp)> right(right_cmp);        
+        set<int, decltype(comp_left)> left(comp_left);
+        set<int, decltype(comp_right)> right(comp_right);
         auto balance = [&left, &right, &nums]() {
             while (left.size() >= right.size()) {
                 right.insert(*left.begin());
                 left.erase(left.begin());
             }
-            if (left.size() < right.size()) {
+            if (right.size() > left.size()) {
                 left.insert(*right.begin());
                 right.erase(right.begin());
             }
         };
-        vector<double> res;
-        auto median = [&nums, &left, &right, k]() -> double {
-            if (k&1) {
-                return (double)nums[*left.begin()];
-            } else {
-                return ((double)nums[*left.begin()]+nums[*right.begin()])/2;
-            }
+        auto median = [&left, &right, &nums]() {
+            return left.size() > right.size() ? nums[*left.begin()] : ((double)nums[*left.begin()]+nums[*right.begin()])/2;
         };
         for (int i = 0; i < k; ++i) {
             left.insert(i);
@@ -65,15 +61,16 @@ public:
         balance();
         res.push_back(median());
         for (int i = k; i < nums.size(); ++i) {
+            left.insert(i);
             if (left.find(i-k) != left.end()) {
                 left.erase(i-k);
             } else {
                 right.erase(i-k);
             }
-            left.insert(i);
             balance();
             res.push_back(median());
         }
         return res;
     }
 };
+

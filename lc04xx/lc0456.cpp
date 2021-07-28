@@ -1,4 +1,4 @@
-//--- Q: 456. 132 Pattern
+//--- Q: 0456. 0132 Pattern
 
 //--- method 1: stack
 class Solution {
@@ -19,16 +19,17 @@ public:
     }
 };
 
-//--- follow up: find all 132 pattern
+//--- follow up 1: find all 132 pattern
 class Solution {
 public:
     vector<vector<int>> find132pattern(vector<int>& nums) {
         vector<vector<int>> res;
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                for (int k = j + 1; k < nums.length; k++) {
-                    if (nums[i] < nums[k] && nums[k] < nums[j])
-                        res.push_back({nums[i], nums[j], nums[k]})                        
+        for (int i = 0; i < nums.size()-2; ++i) {
+            for (int j = i+1; j < nums.size()-1; ++j) {
+                for (int k = j+1; k < nums.size(); ++k) {
+                    if (nums[i] < nums[k] && nums[k] < nums[j]) {
+                        res.push_back({nums[i], nums[j], nums[k]});
+                    }
                 }
             }
         }
@@ -36,17 +37,18 @@ public:
     }
 };
 
-//--- follow up: 312 pattern
+//--- follow up 2: 312 pattern
 class Solution {
 public:
     bool find312pattern(vector<int>& nums) {
         vector<int> sk;
-        int one = INT_MIN;
+        int minv = INT_MIN;
         for (int i = 0; i < nums.size(); ++i) {
-            if (one > nums[i])
+            if (nums[i] < minv) {
                 return true;
+            }
             while (sk.size() && sk.back() < nums[i]) {
-                one = sk.back();
+                minv = sk.back();
                 sk.pop_back();
             }
             sk.push_back(nums[i]);
@@ -54,4 +56,3 @@ public:
         return false;
     }
 };
-

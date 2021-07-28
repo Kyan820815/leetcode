@@ -1,27 +1,15 @@
-//--- Q: 476. Number Complement
+//--- Q: 0476. Number Complement
 
 //--- method 1: bit operation
 class Solution {
 public:
     int findComplement(int num) {
-    	int bit = 0, res = 0;
-    	while (num > 0) {
-    		res |= (((num&1)^1) << bit++);
-    		num >>= 1;
-    	}
-        return res;
+        int mask = 0, tmp = num;
+        while (tmp) {
+            mask = (mask << 1) | 1;
+            tmp >>= 1;
+        }
+        return (~num)&mask;
     }
 };
 
-//--- method 2:
-class Solution {
-public:
-    int findComplement(int num) {
-        int len = 0, mask = 0, res = ~num;
-        while (num) {
-            num >>= 1;
-            mask = (mask << 1) | 1;
-        }
-        return mask&res;
-    }
-};

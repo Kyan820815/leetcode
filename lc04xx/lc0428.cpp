@@ -1,4 +1,4 @@
-//--- Q: 428. Serialize and Deserialize N-ary Tree
+//--- Q: 0428. Serialize and Deserialize N-ary Tree
 
 /*
 // Definition for a Node.
@@ -24,41 +24,40 @@ public:
 class Codec {
 public:
     // Encodes a tree to a single string.
-    void serialize(Node *root, ostringstream &ostr) {
-        if (root) {
-            ostr << " " + to_string(root->val);
-            for (int i = 0; i < root->children.size(); ++i) {
-                serialize(root->children[i], ostr);
-            }
-        }
-        ostr << " #";
-    }
-    
-    Node *deserialize(istringstream &istr) {
-        string val;
-        istr >> val;
-        if (val == "#") {
-            return NULL;
-        }
-        Node *root = new Node(stoi(val));
-        Node *get;
-        while ((get = deserialize(istr)) != NULL) {
-            root->children.push_back(get);
-        }
-        return root;
-    }
-    
     string serialize(Node* root) {
-        ostringstream ostr;
-        serialize(root, ostr);
-        return ostr.str();
+        if (!root) {
+            return "#";
+        }
+        ostringstream ss;
+        encode(root, ss);
+        return ss.str();
     }
-	
+    
+    void encode(Node *root, ostringstream &ss) {
+        ss << to_string(root->val) + " ";
+        for (auto &next: root->children) {
+            encode(next, ss);
+        }
+        ss << "# ";
+    }
+    
     // Decodes your encoded data to tree.
     Node* deserialize(string data) {
-        istringstream istr(data);
-        Node *root = deserialize(istr);
-        return root;
+        istringstream ss(data);
+        return decode(ss);
+    }
+    
+    Node *decode(istringstream &ss) {
+        string str;
+        ss >> str;
+        if (str == "#") {
+            return nullptr;
+        }
+        Node *now = new Node(stoi(str)), *next;
+        while (next = decode(ss)) {
+            now->children.push_back(next);
+        }
+        return now;
     }
 };
 

@@ -18,3 +18,20 @@ public:
         }
     }
 };
+
+//--- method 2: iteration
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res_vec = {{}};
+        for (auto &num: nums) {
+            int sz = res_vec.size();
+            for (int i = 0; i < sz; ++i) {
+                auto vec = res_vec[i];
+                vec.push_back(num);
+                res_vec.push_back(vec);
+            }
+        }
+        return res_vec;
+    }
+};

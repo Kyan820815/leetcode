@@ -22,3 +22,23 @@ public:
         }
     }
 };
+
+//--- method 2: iteration
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> res_vec = {{}};
+        sort(nums.begin(), nums.end());
+        int last = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            int start = i && nums[i] == nums[i-1] ? last : 0;
+            last = res_vec.size();
+            for (int j = start; j < last; ++j) {
+                auto tmp = res_vec[j];
+                tmp.push_back(nums[i]);
+                res_vec.push_back(tmp);
+            }
+        }
+        return res_vec;
+    }
+};

@@ -1,34 +1,66 @@
-//--- Q: 416. Partition Equal Subset Sum
+//--- Q: 0416. Partition Equal Subset Sum
 
-//--- method 1: bit method, O(n)
+//--- method 1: coin change adding, O(nm)
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
-        bitset<10001> sum_bit(1);
         int sum = 0;
-        for (int i = 0; i < nums.size(); ++i)
-            sum += nums[i];
-        if (sum % 2 == 1) return 0;
-        for (int i = 0; i < nums.size(); ++i)
-        return sum_bit[sum/2];
+        for (auto &num: nums) {
+            sum += num;
+        }
+        if (sum % 2 == 1) {
+            return false;
+        }
+        vector<int> dp(sum/2+1, 0);
+        dp[0] = 1;
+        for (auto &num: nums) {
+            auto tmp = dp;
+            for (int i = num; i <= sum/2; ++i) {
+                tmp[i] |= dp[i-num];
+            }
+            dp = tmp;
+        }
+        return dp.back();
     }
 };
 
-//--- method 2: dp, O(n^2)
+//--- method 2: bit method, O(n)
 class Solution {
 public:
     bool canPartition(vector<int>& nums) {
         int sum = 0;
-        for (int i = 0; i < nums.size(); ++i)      
-            sum += nums[i];
-        if (sum%2 == 1) return false;
-        vector<bool> dp(sum/2+1,false);
+        for (auto &num: nums) {
+            sum += num;
+        }
+        if (sum % 2 == 1) {
+            return false;
+        }
+        bitset<10001> set(1);
+        for (auto &num: nums) {
+            set |= (set << num);
+        }
+        return set[sum/2];
+    }
+};
 
-        dp[0] = true;
-        for (int i = 0; i < nums.size(); ++i)
-            for (int j = sum/2; j >= nums[i]; --j)
-                if (dp[j-nums[i]])
-                    dp[j] = true;
-        return dp[sum/2];
+//--- method 2: dp, O(nm)
+class Solution {
+public:
+    bool canPartition(vector<int>& nums) {
+        int sum = 0;
+        for (auto &num: nums) {
+            sum += num;
+        }
+        if (sum % 2 == 1) {
+            return false;
+        }
+        vector<int> dp(sum/2+1, 0);
+        dp[0] = 1;
+        for (auto &num: nums) {
+            for (int i = sum/2; i >= num; --i) {
+                dp[i] |= dp[i-num];
+            }
+        }
+        return dp.back();
     }
 };

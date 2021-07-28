@@ -1,55 +1,51 @@
-//--- Q: 488. Zuma Game
+//--- Q: 0488. Zuma Game
 
 //--- method 1: dfs with memorization
 class Solution {
 public:
-    vector<int> cnt;
     unordered_map<string, int> map;
     int findMinStep(string board, string hand) {
-        cnt.resize(26, 0);
-        for (int i = 0; i < hand.size(); ++i) {
-            ++cnt[hand[i]-'A'];
+        vector<int> cnt(26, 0);
+        for (auto &ch: hand) {
+            ++cnt[ch-'A'];
         }
-        map["#"] = 0;
-        board.push_back('#');
-        int res = dfs(board);
-        return res == 6 ? -1 : res;
+        map[""] = 0;
+        auto res = dfs(board, cnt);
+        return res == INT_MAX ? -1 : res;
     }
-    int dfs(string &s) {
-        if (map.find(s) != map.end()) {
-            return map[s];
+    int dfs(string &board, vector<int> &cnt) {
+        board = remove(board);
+        if (map.find(board) != map.end()) {
+            return map[board];
         }
-        string now_str = remove(s);
-        if (map.find(now_str) != map.end()) {
-            return map[now_str];
-        }
-        int mincnt = 6;
-        for (int i = 0; i < now_str.size()-1; ++i) {
+        int times = INT_MAX;
+        for (int i = 0; i <= board.size(); ++i) {
             for (int j = 0; j < 26; ++j) {
-                int times = cnt[j];
-                if (cnt[j] > 0) {
-                    char ch = 'A'+j;
-                    string next = now_str.substr(0, i) + ch + now_str.substr(i);
+                if (cnt[j]) {
                     --cnt[j];
-                    mincnt = min(mincnt, 1+dfs(next));
+                    string mid(1,j+'A');
+                    string next = board.substr(0,i) + mid + board.substr(i);
+                    auto rtn_cnt = dfs(next, cnt);
+                    if (rtn_cnt != INT_MAX) {
+                        times = min(times, rtn_cnt+1);
+                    }
                     ++cnt[j];
                 }
             }
         }
-        return map[now_str] = mincnt;
+        return map[board] = times;
     }
-    string remove(string &s) {
-        for (int i = 1, j = 0; i < s.size(); ++i) {
-            if (s[i] == s[i-1]) {
-                continue;
-            }
-            if (i-j >= 3) {
-                string next = s.substr(0, j) + s.substr(i);
-                return remove(next);
-            } else {
-                j = i;
+    string remove(string &board) {
+        for (int i = 1, j = 0; i <= board.size(); ++i) {
+            if (i == board.size() || board[i] != board[j]) {
+                if (i-j >= 3) {
+                    string next = board.substr(0,j) + board.substr(i);
+                    return remove(next);
+                } else {
+                    j = i;
+                }
             }
         }
-        return s;
+        return board;
     }
 };

@@ -1,4 +1,4 @@
-//--- Q: 489. Robot Room Cleaner
+//--- Q: 0489. Robot Room Cleaner
 
 //--- method 1: dfs with dynamic diretion
 /**
@@ -23,24 +23,21 @@
 //--- method 1: dfs
 class Solution {
 public:
+    unordered_set<string> visit;
     vector<vector<int>> dirs = {{-1,0}, {0,1}, {1,0}, {0,-1}};
     void cleanRoom(Robot& robot) {
-        unordered_set<string> set;
-        dfs(robot, 0, 0, 0, set);
+        visit.insert("0_0");
+        dfs(0, 0, 0, robot);
     }
-    void dfs(Robot& robot, int r, int c, int dir, unordered_set<string> &set)
-    {
+    void dfs(int r, int c, int d, Robot& robot) {
         robot.clean();
-        for (int i = 0; i < 4; ++i)
-        {
-            int cur = (dir+i) % 4;
-            int nr = r+dirs[cur][0];
-            int nc = c+dirs[cur][1];
-            string str = to_string(nr) + "," + to_string(nc);
-            if (set.find(str) == set.end() && robot.move())
-            {
-                set.insert(str);
-                dfs(robot, nr, nc, cur, set);
+        for (int i = 0; i < 4; ++i) {
+            auto nd = (d+i) % 4;
+            auto nr = r + dirs[nd][0], nc = c + dirs[nd][1];
+            string tag = to_string(nr) + "," + to_string(nc);
+            if (visit.find(tag) == visit.end() && robot.move()) {
+                visit.insert(tag);
+                dfs(nr, nc, nd, robot);
                 robot.turnRight();
                 robot.turnRight();
                 robot.move();

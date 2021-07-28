@@ -1,4 +1,4 @@
-//--- Q: 450. Delete Node in a BST
+//--- Q: 0450. Delete Node in a BST
 
 /**
  * Definition for a binary tree node.
@@ -10,106 +10,151 @@
  * };
  */
 
-//--- method 1: preorder
-class Solution {
-public:
-    TreeNode* deleteNode(TreeNode* root, int key) {
-        if (!root) return root;
-        if (root->val == key)
-    	{
-    		TreeNode *now;
-            if (!root->left && !root->right) return NULL;
-            else if (!root->left || !root->right)
-                return (root->left) ? root->left : root->right;
-            else
-            {
-                now = root->left;
-                while (now->right)
-                    now = now->right;
-                now->right = root->right;
-                return root->left;
-            }
-    	}
-    	else if (root->val < key)
-    		root->right = deleteNode(root->right, key);
-    	else if (root->val > key)
-    		root->left = deleteNode(root->left, key);
-    	return root;
-    }
-};
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 
-//--- method 1-2: recursion
+//--- method 1: iteration deletion
 class Solution {
 public:
     TreeNode* deleteNode(TreeNode* root, int key) {
-        if (!root) {
-            return NULL;
-        }
-        if (root->val < key) {
-            root->right = deleteNode(root->right, key);
-        } else if (root->val > key) {
-            root->left = deleteNode(root->left, key);
-        } else {
-            if (root->right) {
-                TreeNode *min;
-                root->right = findMin(root->right, &min);
-                min->left = root->left;
-                min->right = root->right;
-                root->left = NULL;
-                root->right = NULL;
-                delete(root);
-                return min;
-            } else {
-                return root->left;
-            }
-        }
-        return root;
-    }
-    TreeNode *findMin(TreeNode *root, TreeNode **min) {
-        if (root->left) {
-            root->left = findMin(root->left, min);
-            return root;
-        } else {
-            *min = root;
-            return root->right;
-        }
-    }
-};
-
-//--- method 2: iteration
-class Solution {
-public:
-    TreeNode* deleteNode(TreeNode* root, int key) {
-        TreeNode *now = root, *dummy = new TreeNode(-1);
-        dummy->left = root;
-        TreeNode *p = dummy;
         int dir = 0;
-        while (now) {
-            if (now->val < key) {
+        auto dummy = new TreeNode(-1), parent = dummy;
+        dummy->left = root;
+        while (root) {
+            if (root->val < key) {
                 dir = 1;
-                p = now;
-                now = now->right;
-            } else if (now->val > key) {
+                parent = root;
+                root = root->right;
+            } else if (root->val > key) {
                 dir = 0;
-                p = now;
-                now = now->left;
+                parent = root;
+                root = root->left;
             } else {
-                TreeNode *node;
-                if (now->left) {
-                    node = now->left;
-                    TreeNode *cur = now->left;
-                    while (cur->right)
-                        cur = cur->right;
-                    cur->right = now->right;
+                TreeNode *new_node;
+                if (!root->left) {
+                    new_node = root->right;
+                } else if (!root->right) {
+                    new_node = root->left;
                 } else {
-                   node = now->right;
+                    auto now = root->right;
+                    while (now->left) {
+                        now = now->left;
+                    }
+                    now->left = root->left;
+                    new_node = root->right;
                 }
-                if (!dir) {
-                    p->left = node;
+                if (dir) {
+                    parent->right = new_node;
                 } else {
-                    p->right = node;
+                    parent->left = new_node;
                 }
-                return dummy->left;
+                break;
+            }
+        }
+        return dummy->left;
+    }
+};
+
+//--- method 2: balanced deletion with recursion
+class Solution {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        int dir = 0;
+        auto dummy = new TreeNode(-1), parent = dummy;
+        dummy->left = root;
+        while (root) {
+            if (root->val < key) {
+                dir = 1;
+                parent = root;
+                root = root->right;
+            } else if (root->val > key) {
+                dir = 0;
+                parent = root;
+                root = root->left;
+            } else {
+                TreeNode *new_node;
+                if (!root->left) {
+                    new_node = root->right;
+                } else if (!root->right) {
+                    new_node = root->left;
+                } else {
+                    root->right = findMin(root->right, &new_node);
+                    new_node->left = root->left;
+                    new_node->right = root->right;
+                }
+                if (dir) {
+                    parent->right = new_node;
+                } else {
+                    parent->left = new_node;
+                }
+                break;
+            }
+        }
+        return dummy->left;
+    }
+    TreeNode *findMin(TreeNode *now, TreeNode **min) {
+        if (now->left) {
+            now->left = findMin(now->left, min);
+            return now;
+        } else {
+            *min = now;
+            return now->right;
+        }
+    }
+};
+
+//--- method 3: balanced deletion with itertion
+class Solution {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        int dir = 0;
+        auto dummy = new TreeNode(-1), parent = dummy;
+        dummy->left = root;
+        while (root) {
+            if (root->val < key) {
+                dir = 1;
+                parent = root;
+                root = root->right;
+            } else if (root->val > key) {
+                dir = 0;
+                parent = root;
+                root = root->left;
+            } else {
+                TreeNode *new_node;
+                if (!root->left) {
+                    new_node = root->right;
+                } else if (!root->right) {
+                    new_node = root->left;
+                } else {
+                    auto now = root->right, p = root;
+                    while (now->left) {
+                        p = now;
+                        now = now->left;
+                    }
+                    if (p == root) {
+                        p->right = now->right;
+                    } else {
+                        p->left = now->right;
+                    }
+                    new_node = now;
+                    new_node->left = root->left;
+                    new_node->right = root->right;
+                }
+                if (dir) {
+                    parent->right = new_node;
+                } else {
+                    parent->left = new_node;
+                }
+                break;
             }
         }
         return dummy->left;

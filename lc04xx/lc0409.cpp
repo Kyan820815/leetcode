@@ -1,22 +1,20 @@
-//--- Q: 409. Longest Palindrome
+//--- Q: 0409. Longest Palindrome
 
-//--- method 1: elegant version
+//--- method 1: set operation
 class Solution {
 public:
     int longestPalindrome(string s) {
-        vector<int> cnt(128, 0);
+        unordered_set<char> set;
+        int res = 0;
         for (auto &ch: s) {
-            ++cnt[ch];
-        }
-        int odd = 0, res = 0;
-        for (int i = 0; i < 128; ++i) {
-            if (cnt[i]&1) {
-                odd = 1;
-                --cnt[i];
+            if (set.find(ch) != set.end()) {
+                set.erase(ch);
+                res += 2;
+            } else {
+                set.insert(ch);
             }
-            res += cnt[i];
         }
-        return res + odd;
+        return res + (set.size() > 0);
     }
 };
 
@@ -24,23 +22,17 @@ public:
 class Solution {
 public:
     int longestPalindrome(string s) {
-  		int ch[256] = {0};
-  		int len = 0, odd = 0;
-  		for (int i = 0; i < s.size(); ++i)
-  			ch[s[i]] += 1;
-  		for (int i = 0; i < 256; ++i)
-  		{
-  			if (ch[i] > 0)
-  			{
-  				if (ch[i] % 2 == 0)
-  					len += ch[i];
-  				else
-  				{
-  					odd = 1;
-  					len += ch[i]-1;
-  				}
-  			}
-  		}
-  		return len+odd;
+        vector<int> cnt(128, 0);
+        int one = 0, res = 0;
+        for (auto &ch: s) {
+            if (++cnt[ch] == 2) {
+                res += 2;
+                cnt[ch] = 0;
+                --one;
+            } else {
+                ++one;
+            }
+        }
+        return res + (one > 0);
     }
 };

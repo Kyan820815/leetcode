@@ -1,4 +1,4 @@
-//--- Q: 404. Sum of Left Leaves
+//--- Q: 0404. Sum of Left Leaves
 
 /**
  * Definition for a binary tree node.
@@ -13,21 +13,20 @@
 //--- method 1: dfs
 class Solution {
 public:
+    int res = 0;
     int sumOfLeftLeaves(TreeNode* root) {
-        if (!root) return 0;
-        int res = 0;
-        dfs(root, res, 0);
+        preorder(root);
         return res;
     }
-    void dfs(TreeNode *root, int &res, int left)
-    {
-    	if (left && !root->left && !root->right)
-    		res += root->val;
-    	if (root->left)
-    	{
-    		dfs(root->left, res, 1);
-    	}
-    	if (root->right)
-    		dfs(root->right, res, 0);
+    void preorder(TreeNode *root) {
+        if (root->left && !root->left->left && !root->left->right) {
+            res += root->left->val;
+        }
+        if (root->left) {
+            preorder(root->left);
+        }
+        if (root->right) {
+            preorder(root->right);
+        }
     }
 };
