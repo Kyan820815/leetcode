@@ -1,4 +1,4 @@
-//--- Q: 501. Find Mode in Binary Search Tree
+//--- Q: 0501. Find Mode in Binary Search Tree
 
 /**
  * Definition for a binary tree node.
@@ -15,8 +15,8 @@ class Solution {
 public:
     vector<int> findMode(TreeNode* root) {
         vector<int> res;
-        TreeNode *last = NULL;
-        int maxv = 0, cnt = 0;
+        TreeNode *last = nullptr;
+        int maxcnt = 0, cnt = 0;
         while (root) {
             if (root->left) {
                 auto prev = root;
@@ -24,30 +24,30 @@ public:
                 while (root->right && root->right != prev) {
                     root = root->right;
                 }
-                if (!root->right) {
-                    root->right = prev;
-                    root = prev->left;
-                } else {
+                if (root->right) {
                     if (last && last->val != prev->val) {
-                        if (cnt > maxv) {
-                            maxv = cnt;
+                        if (cnt > maxcnt) {
                             res = {last->val};
-                        } else if (cnt == maxv) {
+                            maxcnt = cnt;
+                        } else if (cnt == maxcnt) {
                             res.push_back(last->val);
                         }
                         cnt = 0;
                     }
                     ++cnt;
+                    root->right = nullptr;
                     last = prev;
-                    root->right = NULL;
                     root = prev->right;
+                } else {
+                    root->right = prev;
+                    root = prev->left;
                 }
             } else {
                 if (last && last->val != root->val) {
-                    if (cnt > maxv) {
-                        maxv = cnt;
+                    if (cnt > maxcnt) {
                         res = {last->val};
-                    } else if (cnt == maxv) {
+                        maxcnt = cnt;
+                    } else if (cnt == maxcnt) {
                         res.push_back(last->val);
                     }
                     cnt = 0;
@@ -57,10 +57,9 @@ public:
                 root = root->right;
             }
         }
-        if (cnt > maxv) {
-            maxv = cnt;
+        if (cnt > maxcnt) {
             res = {last->val};
-        } else if (cnt == maxv) {
+        } else if (cnt == maxcnt) {
             res.push_back(last->val);
         }
         return res;

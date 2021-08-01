@@ -1,4 +1,4 @@
-//--- Q: 508. Most Frequent Subtree Sum
+//--- Q: 0508. Most Frequent Subtree Sum
 
 /**
  * Definition for a binary tree node.
@@ -13,32 +13,29 @@
 //--- method 1: dfs recursion
 class Solution {
 public:
+    unordered_map<int, int> map;
+    vector<int> res;
+    int maxcnt = 0;
     vector<int> findFrequentTreeSum(TreeNode* root) {
-		unordered_map<int, int> map;
-		vector<int> out;
-		int cnt = 0;
-		if (!root) return out;
-				
-		dfs(root, map, cnt);
-		for (auto &a: map)
-		{
-			if (a.second == cnt)
-				out.push_back(a.first);
-		}
-		return out;
+        postorder(root);
+        return res;
     }
-    int dfs(TreeNode *root, unordered_map<int,int> &map, int &cnt)
-    {
-    	int sum, left_sum = 0, right_sum = 0;
-    	if (root->left)
-    		left_sum = dfs(root->left, map, cnt);
-    	if (root->right)
-    		right_sum = dfs(root->right, map, cnt);
-
-    	sum = left_sum + right_sum + root->val;
-    	map[sum]++;
-    	if (cnt < map[sum])
-    		cnt = map[sum];
-    	return sum;
+    int postorder(TreeNode *root) {
+        int lv = 0, rv = 0;
+        if (root->left) {
+            lv = postorder(root->left);
+        }
+        if (root->right) {
+            rv = postorder(root->right);
+        }
+        int sum = lv+rv+root->val;
+        if (maxcnt < ++map[sum]) {
+            maxcnt = map[sum];
+            res.clear();
+            res.push_back(sum);
+        } else if (maxcnt == map[sum]) {
+            res.push_back(sum);
+        }
+        return sum;
     }
 };

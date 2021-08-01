@@ -1,93 +1,46 @@
-//--- Q: 529. Minesweeper
-
-//--- method 1: dfs
-class Solution {
-public:
-    vector<vector<char>> updateBoard(vector<vector<char>>& board, vector<int>& click) {
-        row = board.size(), col = board[0].size();
-        dir = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
-        dfs(click[0], click[1], board);
-        return board;
-    }
-    bool dfs(int r, int c, vector<vector<char>>& board) {
-        if (board[r][c] == 'M') {
-            board[r][c] = 'X';
-            return true;
-        } else {
-            int cnt = 0;
-            for (int i = 0; i < 8; ++i) {
-                int nr = r + dir[i][0], nc = c + dir[i][1];
-                if (nr < 0 || nr >= row || nc < 0 || nc >= col) {
-                    continue;
-                }
-                if (board[nr][nc] == 'M') {
-                    ++cnt;
-                }
-            }
-            if (cnt > 0) {
-                board[r][c] = cnt + '0';
-            } else {
-                board[r][c] = 'B';
-                for (int i = 0; i < 8; ++i) {
-                    int nr = r + dir[i][0], nc = c + dir[i][1];
-                    if (nr < 0 || nr >= row || nc < 0 || nc >= col) {
-                        continue;
-                    }
-                    if (board[nr][nc] == 'E' && dfs(nr, nc, board)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-    vector<vector<int>> dir;
-    int row, col;
-};
+//--- Q: 0529. Minesweeper
 
 //--- method 2: bfs
 class Solution {
 public:
     vector<vector<char>> updateBoard(vector<vector<char>>& board, vector<int>& click) {
-        queue<pair<int, int>> que;
+        vector<vector<int>> dirs = {{-1,0}, {1,0}, {0,-1}, {0,1}, {1,1}, {-1,-1}, {1,-1}, {-1,1}};
         int row = board.size(), col = board[0].size();
-        vector<vector<int>> dir = {{-1,0},{1,0},{0,-1},{0,1},{-1,-1},{-1,1},{1,-1},{1,1}};
+        queue<pair<int,int>> que;
+        if (board[click[0]][click[1]] == 'M') {
+            board[click[0]][click[1]] = 'X';
+            return board;
+        }
         que.push({click[0], click[1]});
+        board[click[0]][click[1]] = 'B';
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                int r = now.first, c = now.second;
-                if (board[r][c] == 'M') {
-                    board[r][c] = 'X';
-                    return board;
-                } else {
-                    int cnt = 0;
-                    for (int i = 0; i < 8; ++i) {
-                        int nr = r + dir[i][0], nc = c + dir[i][1];
-                        if (nr < 0 || nr >= row || nc < 0 || nc >= col) {
+                int cnt = 0;
+                for (auto &dir: dirs) {
+                    int nr = now.first + dir[0];
+                    int nc = now.second + dir[1];
+                    if (nr < 0 || nr >= row || nc < 0 || nc >= col) {
+                        continue;
+                    }
+                    if (board[nr][nc] == 'M') {
+                        ++cnt;                        
+                    }
+                }
+                if (!cnt) {
+                    for (auto &dir: dirs) {
+                        int nr = now.first + dir[0];
+                        int nc = now.second + dir[1];
+                        if (nr < 0 || nr >= row || nc < 0 || nc >= col || board[nr][nc] != 'E') {
                             continue;
                         }
-                        if (board[nr][nc] == 'M') {
-                            ++cnt;
-                        }
+                        board[nr][nc] = 'B';
+                        que.push({nr,nc});
                     }
-                    if (cnt > 0) {
-                        board[r][c] = cnt + '0';
-                    } else {
-                        board[r][c] = 'B';
-                        for (int i = 0; i < 8; ++i) {
-                            int nr = r + dir[i][0], nc = c + dir[i][1];
-                            if (nr < 0 || nr >= row || nc < 0 || nc >= col) {
-                                continue;
-                            }
-                            if (board[nr][nc] == 'E') {
-                                que.push({nr, nc});
-                                board[nr][nc] = 'B';
-                            }
-                        }
-                    }
+                } else {
+                    board[now.first][now.second] = cnt+'0';
                 }
             }
         }

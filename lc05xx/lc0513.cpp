@@ -1,4 +1,4 @@
-//--- Q: 513. Find Bottom Left Tree Value
+//--- Q: 0513. Find Bottom Left Tree Value
 
 /**
  * Definition for a binary tree node.
@@ -10,17 +10,40 @@
  * };
  */
 
-//--- method 1: bfs
+//--- method 1: dfs
+class Solution {
+public:
+    int res;
+    int findBottomLeftValue(TreeNode* root) {
+        int maxh = -1;
+        preorder(root, 0, maxh);
+        return res;
+    }
+    void preorder(TreeNode *root, int h, int &maxh) {
+        if (maxh < h) {
+            maxh = h;
+            res = root->val;
+        }
+        if (root->left) {
+            preorder(root->left, h+1, maxh);
+        }
+        if (root->right) {
+            preorder(root->right, h+1, maxh);
+        }
+    }
+};
+
+//--- method 2: bfs
 class Solution {
 public:
     int findBottomLeftValue(TreeNode* root) {
+        int res;
         queue<TreeNode *> que;
         que.push(root);
-        int res;
         while (que.size()) {
-            int qsize = que.size();
+            auto qsize = que.size();
             res = que.front()->val;
-            for (int i = 0; i < qsize; ++i) {
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
                 if (now->left) {
@@ -32,27 +55,5 @@ public:
             }
         }
         return res;
-    }
-};
-
-//--- method 2: dfs
-class Solution {
-public:
-    int findBottomLeftValue(TreeNode* root) {
-    	int first, maxh = -1, height = 0;
-    	dfs(root, height, maxh, first);
-    	return first;
-    }
-    void dfs(TreeNode *root, int height, int &maxh, int &first)
-    {
-    	if (height > maxh)
-    	{
-    		first = root->val;
-    		maxh = height;
-    	}
-    	if (root->left)
-    		dfs(root->left, height+1, maxh, first);
-    	if (root->right)
-    		dfs(root->right, height+1, maxh, first);
     }
 };

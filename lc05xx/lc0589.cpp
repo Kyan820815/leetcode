@@ -1,4 +1,4 @@
-//--- Q: 589. N-ary Tree Preorder Traversal
+//--- Q: 0589. N-ary Tree Preorder Traversal
 
 /*
 // Definition for a Node.
@@ -20,26 +20,44 @@ public:
 class Solution {
 public:
     vector<int> preorder(Node* root) {
-        stack<Node *> sk;
         vector<int> res;
-        Node *cur = root;
-        while (cur || sk.size())
-        {
-        	res.push_back(cur->val);
-        	for (int i = cur->children.size()-1; i > 0; --i)
-        		sk.push(cur->children[i]);
-        	if (cur->children.size())
-        		cur = cur->children[0];
-        	else
-        	{
-        		if (sk.size())
-        		{
-        			cur = sk.top();
-        			sk.pop();
-        		}
-                else cur = NULL;
-        	}
+        if (!root) {
+            return res;
+        }
+        vector<Node *> sk;
+        while (root) {
+            res.push_back(root->val);
+            if (root->children.size()) {
+                for (int i = root->children.size()-1; i > 0; --i) {
+                    sk.push_back(root->children[i]);
+                }
+                root = root->children[0];
+            } else {
+                root = nullptr;
+            }
+            if (!root && sk.size()) {
+                root = sk.back();
+                sk.pop_back();
+            }
         }
         return res;
+    }
+};
+
+//--- method 2: recursion
+class Solution {
+public:
+    vector<int> res;
+    vector<int> preorder(Node* root) {
+        if (root) {
+            dfs(root);
+        }
+        return res;
+    }
+    void dfs(Node *root) {
+        res.push_back(root->val);
+        for (auto &child: root->children) {
+            dfs(child);
+        }
     }
 };

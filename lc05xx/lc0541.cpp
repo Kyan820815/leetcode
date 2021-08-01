@@ -1,32 +1,15 @@
-//--- Q: 541. Reverse String II
+//--- Q: 0541. Reverse String II
 
 //--- method 1: reverse string in k
 class Solution {
 public:
     string reverseStr(string s, int k) {
-        int strlen = s.size();
-        for (int i = 0; i < s.size();) {
-            int len = min(k, strlen-i);
-            for (int j = 0; j < len/2; ++j) {
-                swap(s[i+j], s[i+len-j-1]);
+        int n = s.size();
+        for (int i = 0; i < n; i += 2*k) {
+            int edge = min(n, i+k);
+            for (int l = i, r = edge-1; l < r; ++l, --r) {
+                swap(s[l], s[r]);
             }
-            i += len*2;
-        }
-        return s;
-    }
-};
-
-//--- method 2: another view
-class Solution {
-public:
-    string reverseStr(string s, int k) {
-        for (int i = 0; i < s.size(); i += k) {
-            if (i+k <= s.size()) {
-                reverse(s.begin()+i, s.begin()+i+k);
-            } else {
-                reverse(s.begin()+i, s.end());
-            }
-            i += k;
         }
         return s;
     }

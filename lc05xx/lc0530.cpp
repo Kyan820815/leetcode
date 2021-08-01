@@ -1,4 +1,4 @@
-//--- Q: 530. Minimum Absolute Difference in BST
+//--- Q: 0530. Minimum Absolute Difference in BST
 
 /**
  * Definition for a binary tree node.
@@ -14,39 +14,53 @@
 class Solution {
 public:
     int getMinimumDifference(TreeNode* root) {
-        int last = INT_MIN, diff = INT_MAX;
-        inorder(root, last, diff);
-        return diff;
-    }
-    void inorder(TreeNode *root, int &last, int &diff)
-    {
-    	if (root->left)
-    		inorder(root->left, last, diff);
-    	if (last != INT_MIN && diff > root->val-last)
-    		diff = root->val-last;
-    	last = root->val;
-    	if (root->right)
-    		inorder(root->right, last, diff);
+        int res = INT_MAX, last = -100000;
+        while (root) {
+            if (root->left) {
+                auto prev = root;
+                root = root->left;
+                while (root->right && root->right != prev) {
+                    root = root->right;
+                }
+                if (root->right) {
+                    res = min(res, prev->val-last);
+                    last = prev->val;
+                    root->right = nullptr;
+                    root = prev->right;
+                } else {
+                    root->right = prev;
+                    root = prev->left;
+                }
+            } else {
+                res = min(res, root->val-last);
+                last = root->val;
+                root = root->right;
+            }
+        }
+        return res;
     }
 };
 
 //--- method 2: preorder
 class Solution {
 public:
+    int res = 10000;
     int getMinimumDifference(TreeNode* root) {
-        int diff = INT_MAX;
-        preorder(root, INT_MIN, INT_MAX, diff);
-        return diff;
+        preorder(root, INT_MIN, INT_MAX);
+        return res;
     }
-    void preorder(TreeNode *root, int minv, int maxv, int &diff)
-    {
-    	if (maxv != INT_MAX)
-    		diff = min(diff, maxv-root->val);
-    	if (minv != INT_MIN)
-    		diff = min(diff, root->val-minv);
-    	if (root->left)
-    		preorder(root->left,  minv, root->val, diff);
-    	if (root->right)
-    		preorder(root->right, root->val, maxv, diff);
+    void preorder(TreeNode *root, int minv, int maxv) {
+        if (minv != INT_MIN) {
+            res = min(res, root->val-minv);
+        }
+        if (maxv != INT_MAX) {
+            res = min(res, maxv-root->val);
+        }
+        if (root->left) {
+            preorder(root->left, minv, root->val);
+        }
+        if (root->right) {
+            preorder(root->right, root->val, maxv);
+        }
     }
 };

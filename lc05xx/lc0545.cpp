@@ -1,4 +1,4 @@
-//--- Q: 545. Boundary of Binary Tree
+//--- Q: 0545. Boundary of Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -15,14 +15,12 @@ class Solution {
 public:
     vector<int> res;
     vector<int> boundaryOfBinaryTree(TreeNode* root) {
-        if (root) {
-            res.push_back(root->val);
-            dfs(root->left, true, false);
-            dfs(root->right, false, true);
-        }
+        res.push_back(root->val);
+        preorder(root->left, 1, 0);
+        preorder(root->right, 0, 1);
         return res;
     }
-    void dfs(TreeNode *root, bool left, bool right) {
+    void preorder(TreeNode *root, int left, int right) {
         if (!root) {
             return;
         }
@@ -33,8 +31,8 @@ public:
         if (left) {
             res.push_back(root->val);
         }
-        dfs(root->left, left, right&&!root->right);
-        dfs(root->right, left&&!root->left, right);
+        preorder(root->left, left, right && !root->right);
+        preorder(root->right, left && !root->left, right);
         if (right) {
             res.push_back(root->val);
         }

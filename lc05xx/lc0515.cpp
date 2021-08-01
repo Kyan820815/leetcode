@@ -1,4 +1,4 @@
-//--- Q: 515. Find Largest Value in Each Tree Row
+//--- Q: 0515. Find Largest Value in Each Tree Row
 
 /**
  * Definition for a binary tree node.
@@ -10,54 +10,57 @@
  * };
  */
 
-//--- method 1: bfs
+//--- method 1: dfs
 class Solution {
 public:
+    vector<int> res;
     vector<int> largestValues(TreeNode* root) {
-        if (!root) return{};
-    	queue<TreeNode *> que;
-    	vector<int> res;
-    	que.push(root);
-    	int qsize = 1, maxval = INT_MIN;
-    	while (que.size())
-    	{
-    		for (int i = 0; i < qsize; ++i)
-    		{
-    			TreeNode *now = que.front();
-    			if (now->left)
-    				que.push(now->left);
-    			if (now->right)
-    				que.push(now->right);
-    			if (maxval < now->val)
-    				maxval = now->val;
-    			que.pop();
-    		}
-    		res.push_back(maxval);
-    		maxval = INT_MIN;
-    		qsize = que.size();
-    	}
+        if (root) {
+            preorder(root, 0);
+        }
         return res;
+    }
+    void preorder(TreeNode *root, int h) {
+        if (h == res.size()) {
+            res.push_back(root->val);
+        } else {
+            res[h] = max(res[h], root->val);
+        }
+        if (root->left) {
+            preorder(root->left, h+1);
+        }
+        if (root->right) {
+            preorder(root->right, h+1);
+        }
     }
 };
 
-//--- method 2: dfs
+//--- method 2: bfs
 class Solution {
 public:
     vector<int> largestValues(TreeNode* root) {
-        if (!root) return{};
-    	vector<int> res;
-    	dfs(root, res, 0);
+        vector<int> res;
+        if (!root) {
+            return res;
+        }
+        queue<TreeNode *> que;
+        que.push(root);
+        while (que.size()) {
+            auto qsize = que.size();
+            auto val = INT_MIN;
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                val = max(val, now->val);
+                if (now->left) {
+                    que.push(now->left);
+                }
+                if (now->right) {
+                    que.push(now->right);
+                }
+            }
+            res.push_back(val);
+        }
         return res;
-    }
-    void dfs(TreeNode *root, vector<int> &res, int h)
-    {
-    	if (h >= res.size())
-    		res.push_back(root->val);
-    	else
-    		res[h] = max(res[h], root->val);
-    	if (root->left)
-    		dfs(root->left, res, h+1);
-    	if (root->right)
-    		dfs(root->right, res, h+1);
     }
 };

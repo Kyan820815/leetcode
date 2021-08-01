@@ -1,4 +1,4 @@
-//--- Q: 572. Subtree of Another Tree
+//--- Q: 0572. Subtree of Another Tree
 
 /**
  * Definition for a binary tree node.
@@ -13,65 +13,49 @@
 //--- method 1: preorder traversal
 class Solution {
 public:
-    bool isSubtree(TreeNode* s, TreeNode* t) {
-        if (!s && !t) return true;
-        else if (!s || !t) return false;
-        if (s->val == t->val && isSameTree(s,t))
-        		return true;
-        return isSubtree(s->left, t) || isSubtree(s->right, t);
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        if (!root) {
+            return false;
+        }
+        if (root->val == subRoot->val && sametree(root, subRoot)) {
+            return true;
+        } else {
+            return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+        }
     }
-    bool isSameTree(TreeNode *s, TreeNode *t)
-    {
-    	if (!s & !t) return true;
-    	if (!s || !t) return false;
-    	if (s->val != t->val) return false;
-    	return isSameTree(s->left, t->left) && isSameTree(s->right, t->right);
+    bool sametree(TreeNode *n1, TreeNode *n2) {
+        if (!n1 && !n2) {
+            return true;
+        } else if (!n1 || !n2 || n1->val != n2->val) {
+            return false;
+        } else {
+            return sametree(n1->left, n2->left) && sametree(n1->right, n2->right);
+        }
     }
 };
 
 //--- method 2: string recording for substree
 class Solution {
 public:
-    bool isSubtree(TreeNode* s, TreeNode* t) {
-        string sstr = postorder(s);
-        string tstr = postorder(t);
-        return sstr.find(tstr) != string::npos;
-    }
-    string postorder(TreeNode *root)
-    {
-    	string strl = ",#", strr = ",#";
-    	if (root->left)
-    		strl = postorder(root->left);
-    	if (root->right)
-    		strr = postorder(root->right);
-    	string now = "," + to_string(root->val) + strl + strr;
-    	return now;
-    }
-};
-
-//--- method 2: antoher view
-class Solution {
-public:
-    string tag = "";
     bool find = false;
+    string sub = "";
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        string str = "";
-        postorder(subRoot, tag);
-        return postorder(root, str);
+        sub = postorder(subRoot);
+        postorder(root);
+        return find;
     }
-    bool postorder(TreeNode *root, string &curstr) {
-        string lv = "#", rv = "#";
-        bool find = false;
+    string postorder(TreeNode *root) {
+        string lstr = "", rstr = "";
         if (root->left) {
-            find |= postorder(root->left, lv);
+            lstr = postorder(root->left);
         }
-        if (!find && root->right) {
-            find |= postorder(root->right, rv);
+        if (root->right) {
+            rstr = postorder(root->right);
         }
-        curstr = lv + " " + rv + " " + to_string(root->val);
-        if (!find && curstr == tag) {
+        string str = lstr + " " + rstr + " " + to_string(root->val);
+        if (str == sub) {
             find = true;
         }
-        return find;
+        return str;
     }
 };

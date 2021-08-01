@@ -1,32 +1,32 @@
-//--- Q: 535. Encode and Decode TinyURL
+//--- Q: 0535. Encode and Decode TinyURL
 
 //--- method 1: random pick index
 class Solution {
 public:
-    string set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    string code = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     // Encodes a URL to a shortened URL.
+    unordered_map<string, string> long2short, short2long;
     string encode(string longUrl) {
-        while (url2code.find(longUrl) == url2code.end()) {
-            string code = "";
-            for (int i = 0; i < 6; ++i) {
-                char c = set[random()%set.size()];
-                code.push_back(c);
+        while (long2short.find(longUrl) == long2short.end()) {
+            string shortUrl = "";
+            while (shortUrl.size() < 6) {
+                auto ch = code[random()%code.size()];
+                shortUrl += ch;
             }
-            if (code2url.find(code) == code2url.end()) {
-                code2url[code] = longUrl;
-                url2code[longUrl] = code;
+            if (short2long.find(shortUrl) == short2long.end()) {
+                short2long[shortUrl] = longUrl;
+                long2short[longUrl] = shortUrl;
+                break;
             }
+            shortUrl = "";
         }
-        return "http://tinyurl.com/" + url2code[longUrl];
+        return "http://tinyurl.com/" + long2short[longUrl];
     }
 
     // Decodes a shortened URL to its original URL.
     string decode(string shortUrl) {
-        string code = shortUrl.substr(19);
-        return code2url[code];
+        return short2long[shortUrl.substr(19)];
     }
-    unordered_map<string, string> url2code;
-    unordered_map<string, string> code2url;
 };
 
 // Your Solution object will be instantiated and called as such:

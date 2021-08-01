@@ -1,4 +1,4 @@
-//--- Q: 543. Diameter of Binary Tree
+//--- Q: 0543. Diameter of Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -13,20 +13,20 @@
 //--- method 1: postorder
 class Solution {
 public:
+    int res = 0;
     int diameterOfBinaryTree(TreeNode* root) {
-    	int res = INT_MIN;
-        int h = postorder(root, res);
-        return res==INT_MIN ? 0 : res;
+        postorder(root);
+        return res;
     }
-    int postorder(TreeNode *root, int &res)
-    {
-    	int lh = 0, rh = 0;
-    	if (!root) return 0;
-    	if (root->left)
-    		lh = postorder(root->left, res);
-    	if (root->right)
-    		rh = postorder(root->right, res);
-    	res = max(res, lh+rh);
-    	return max(lh, rh) + 1;
+    int postorder(TreeNode *root) {
+        int lv = 0, rv = 0;
+        if (root->left) {
+            lv = postorder(root->left);
+        }
+        if (root->right) {
+            rv = postorder(root->right);
+        }
+        res = max(res, lv+rv);
+        return max(lv, rv)+1;
     }
 };

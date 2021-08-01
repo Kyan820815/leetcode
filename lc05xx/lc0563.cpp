@@ -1,4 +1,4 @@
-//--- Q: 563. Binary Tree Tilt
+//--- Q: 0563. Binary Tree Tilt
 
 /**
  * Definition for a binary tree node.
@@ -13,20 +13,22 @@
 //--- method 1: record sum and tilt every step, postorder
 class Solution {
 public:
+    int res = 0;
     int findTilt(TreeNode* root) {
-    	if (!root) return 0;
-    	int res = 0;
-        postorder(root, res);
+        if (root) {
+            postorder(root);
+        }
         return res;
     }
-    int postorder(TreeNode *root, int &res)
-    {
-    	int left_sum = 0, right_sum = 0;
-    	if (root->left)
-    		left_sum = postorder(root->left, res);
-    	if (root->right)
-    		right_sum = postorder(root->right, res);
-    	res += abs(left_sum-right_sum);
-    	return left_sum+right_sum+root->val;
+    int postorder(TreeNode *root) {
+        int lv = 0, rv = 0;
+        if (root->left) {
+            lv = postorder(root->left);
+        }
+        if (root->right) {
+            rv = postorder(root->right);
+        }
+        res += abs(lv-rv);
+        return lv+rv+root->val;
     }
 };

@@ -1,60 +1,47 @@
-//--- Q: 539. Minimum Time Difference
+//--- Q: 0539. Minimum Time Difference
 
-//--- method 1: O(nlogn)
+//--- method 1: O(n) bucket sort
 class Solution {
 public:
     int findMinDifference(vector<string>& timePoints) {
-    	vector<int> times;
-    	int diff, min_diff = INT_MAX;
-    	for (int i = 0; i < timePoints.size(); ++i)
-    	{
-    		int hours = (timePoints[i][0]-'0')*10 + timePoints[i][1]-'0';
-    		int mins = (timePoints[i][3]-'0')*10 + timePoints[i][4]-'0';
-    		times.push_back(hours*60+mins);
-    	}
-    	sort(times.begin(), times.end());
-    	for (int i = 0; i < times.size()-1; ++i)
-    	{
-    		diff = times[i+1] - times[i];
-    		if (diff < min_diff)
-    			min_diff = diff;
-    	}
-    	return min_diff < times[0]+1440 - times.back() ? min_diff : times[0]+1440 - times.back();
+        vector<int> bucket(1440, 0);
+        for (auto &time: timePoints) {
+            auto h = (time[0]-'0')*10 + (time[1]-'0');
+            auto m = (time[3]-'0')*10 + (time[4]-'0');
+            if (++bucket[h*60+m] > 1) {
+                return 0;
+            }
+        }
+        int last = -1440, start = -1, res = 1440;
+        for (int i = 0; i < 1440; ++i) {
+            if (bucket[i]) {
+                if (start == -1) {
+                    start = i;
+                }
+                res = min(res, i-last);
+                last = i;
+            }
+        }
+        return min(res, start+1440-last);
     }
 };
 
-//--- method 2: O(n) 
+//--- method 2: O(nlogn) sort
 class Solution {
 public:
     int findMinDifference(vector<string>& timePoints) {
-        int first = INT_MAX, back = INT_MIN, min_diff = INT_MAX;
-        int pre = -1;
-        vector<int> times(1440, 0);
-        for (int i = 0; i < timePoints.size(); ++i)
-        {
-        	int hours = (timePoints[i][0]-'0')*10 + timePoints[i][1]-'0';
-        	int mins = (timePoints[i][3]-'0')*10 + timePoints[i][4]-'0';
-        	times[hours*60+mins]++;
-        	if (times[hours*60+mins] > 1)
-        		return 0;
+        vector<int> arr;
+        for (auto &time: timePoints) {
+            auto h = (time[0]-'0')*10 + (time[1]-'0');
+            auto m = (time[3]-'0')*10 + (time[4]-'0');
+            arr.push_back(h*60+m);
         }
-        for (int i = 0; i < 1440; ++i)
-        {
-        	if (!times[i]) continue;
-        	
-        	if (first > i)
-        		first = i;
-        	if (back < i)
-        		back = i;
-			if (pre == -1)
-        	{
-        		pre = i;
-        		continue;
-        	}
-        	if (i-pre < min_diff)
-				min_diff = i-pre;        	
-        	pre = i;
+        int last = -1440, res = 1440;
+        sort(arr.begin(), arr.end());
+        for (auto &num: arr) {
+            res = min(res, num-last);
+            last = num;
         }
-        return min_diff < first+1440-back ? min_diff : first+1440-back;
+        return min(res, arr.front()+1440-arr.back());
     }
 };

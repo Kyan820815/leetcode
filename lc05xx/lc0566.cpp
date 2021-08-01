@@ -1,20 +1,20 @@
-//--- Q: 566. Reshape the Matrix
+//--- Q: 0566. Reshape the Matrix
 
 //--- method 1: O(n*m)
 class Solution {
 public:
-    vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
-        int row = nums.size(), col = nums[0].size();
-        if (row*col != r*c) {
-            return nums;
-        }
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
         vector<vector<int>> res(r, vector<int>(c, 0));
-        int idx = 0;
-        for (int i = 0; i < r; ++i) {
-            for (int j = 0; j < c; ++j) {
-                int ri = idx/col, ci = idx%col;
-                res[i][j] = nums[ri][ci];
-                ++idx;
+        int row = mat.size(), col = mat[0].size(), ri = 0, cj = 0;
+        if (row*col != r*c) {
+            return mat;
+        }
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                res[ri][cj++] = mat[i][j];
+                if (cj == c) {
+                    ++ri, cj = 0;
+                }
             }
         }
         return res;

@@ -1,4 +1,4 @@
-//--- Q: 559. Maximum Depth of N-ary Tree
+//--- Q: 0559. Maximum Depth of N-ary Tree
 
 /*
 // Definition for a Node.
@@ -20,14 +20,16 @@ public:
 class Solution {
 public:
     int maxDepth(Node* root) {
-    	if (!root) return 0;
-    	int max_depth = 0;
-		for (int i = 0; i < root->children.size(); ++i)
-		{
-			int depth = maxDepth(root->children[i]);
-			if (max_depth < depth)
-				max_depth = depth;
-		}
-		return max_depth+1;
+        if (!root) {
+            return 0;
+        }
+        return postorder(root);
+    }
+    int postorder(Node *root) {
+        int maxd = 0;
+        for (auto &child: root->children) {
+            maxd = max(maxd, postorder(child));
+        }
+        return maxd+1;
     }
 };

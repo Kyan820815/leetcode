@@ -1,51 +1,52 @@
-//--- Q: 526. Beautiful Arrangement
+//--- Q: 0526. Beautiful Arrangement
 
-//--- method 1: visit array and start from head
+//--- method 1: swap and start from back
 class Solution {
 public:
     int res = 0;
     int countArrangement(int n) {
-        vector<int> used(n+1, 0);
-        dfs(1, used);
+        vector<int> idx;
+        for (int i = 1; i <= n; ++i) {
+            idx.push_back(i);
+        }
+        dfs(idx.size()-1, idx);
         return res;
     }
-    void dfs(int now, vector<int> &used) {
-        if (now == used.size()) {
+    void dfs(int start, vector<int> &idx) {
+        if (start == -1) {
             ++res;
             return;
         }
-        for (int i = 1; i < used.size(); ++i) {
-            if (used[i] == 0 && (i%now == 0 || now%i == 0)) {
-                used[i] = 1;
-                dfs(now+1, used);
-                used[i] = 0;
+        for (int i = start; i >= 0; --i) {
+            if (idx[i] % (start+1) == 0 || (start+1) % idx[i] == 0) {
+                swap(idx[i], idx[start]);
+                dfs(start-1, idx);
+                swap(idx[i], idx[start]);
             }
         }
     }
 };
 
-//--- method 2: swap and start from back
+//--- method 2: visit array and start from back
 class Solution {
 public:
+    int res = 0;
     int countArrangement(int n) {
-        vector<int> arr = {0};
-        for (int i = 1; i <= n; ++i) {
-            arr.push_back(i);
-        }
-        return dfs(n, arr);
+        vector<int> visit(n, 0);
+        dfs(n, visit);
+        return res;
     }
-    int dfs(int idx, vector<int> &arr) {
-        if (idx == 0) {
-            return 1;
+    void dfs(int val, vector<int> &visit) {
+        if (val == 0) {
+            ++res;
+            return;
         }
-        int cnt = 0;
-        for (int i = idx; i >= 1; --i) {
-            if (idx%arr[i] == 0 || arr[i]%idx == 0) {
-                swap(arr[idx], arr[i]);
-                cnt += dfs(idx-1, arr);
-                swap(arr[idx], arr[i]);
+        for (int i = visit.size()-1; i >= 0; --i) {
+            if (!visit[i] && ((i+1)%val == 0 || val%(i+1) == 0)) {
+                visit[i] = 1;
+                dfs(val-1, visit);
+                visit[i] = 0;
             }
         }
-        return cnt;
     }
 };

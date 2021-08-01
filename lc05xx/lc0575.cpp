@@ -1,19 +1,26 @@
-//--- Q: 575. Distribute Candies
+//--- Q: 0575. Distribute Candies
 
-//--- method 1: sort then find # of kinds
+//--- method 1: set
 class Solution {
 public:
-    int distributeCandies(vector<int>& candies) {
-        int val = INT_MAX, cnt = 0;
-        sort(candies.begin(), candies.end());
-        for (int i = 0; i < candies.size(); ++i)
-        {
-            if (candies[i] != val)
-            {
-                val = candies[i];
-                ++cnt;
-            }
+    int distributeCandies(vector<int>& candyType) {
+        unordered_set<int> set;
+        for (auto &type: candyType) {
+            set.insert(type);
         }
-        return ((cnt < candies.size()/2) ? cnt : candies.size()/2);
+        return min((int)set.size(), (int)candyType.size()/2);
+    }
+};
+
+//--- method 2: sort then find # of kinds
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        sort(candyType.begin(), candyType.end());
+        int types = 0;
+        for (int i = 1; i <= candyType.size(); ++i) {
+            types += (i == candyType.size() || candyType[i] != candyType[i-1]);
+        }
+        return min(types, (int)candyType.size()/2);
     }
 };

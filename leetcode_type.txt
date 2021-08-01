@@ -23,6 +23,7 @@
     0441(e): Arranging Coins
     0450(m): Delete Node in a BST
     0497(m): Random Point in Non-overlapping Rectangles
+    0510(m): Inorder Successor in BST II
     0528(m): Random Pick with Weight
     0540(m): Single Element in a Sorted Array
     0658(m): Find K Closest Elements
@@ -130,7 +131,11 @@
     0486(m): Predict the Winner
     0487(m): Max Consecutive Ones II
     0524(m): Longest Word in Dictionary through Deleting
+    0541(e): Reverse String II
+    0556(m): Next Greater Element III
+    0557(e): Reverse Words in a String III
     0567(m): Permutation in String 
+    0581(m): Shortest Unsorted Continuous Subarray
     0594(e): Longest Harmonious Subsequence
     0611(m): Valid Triangle Number
     0622(m): Design Circular Queue
@@ -209,6 +214,7 @@
     0407(h): Trapping Rain Water II
     0451(m): Sort Characters By Frequency
     0480(h): Sliding Window Median
+    0505(m): The Maze II
     0692(m): Top K Frequent Words
     0703(e): Kth Largest Element in a Stream
     0933(e): Number of Recent Calls
@@ -234,6 +240,7 @@
     0387(e): First Unique Character in a String
     0451(m): Sort Characters By Frequency
     0539(m): Minimum Time Difference
+    0561(e): Array Partition I
     0692(m): Top K Frequent Words
     0771(e): Jewels and Stones
     1057(m): Campus Bikes
@@ -266,6 +273,7 @@
     0305(h): Number of Islands II
     0323(m): Number of Connected Components in an Undirected Graph
     0399(m): Evaluate Division
+    0547(m): Number of Provinces
     0684(m): Redundant Connection
     0721(m): Accounts Merge 
     0734(e): Sentence Similarity
@@ -313,6 +321,9 @@
     0456(m): 132 Pattern
     0496(e): Next Greater Element I
     0503(m): Next Greater Element II
+    0536(m): Construct Binary Tree from String
+    0589(e): N-ary Tree Preorder Traversal
+    0590(e): N-ary Tree Postorder Traversal
     0636(m): Exclusive Time of Functions 
     0653(e): Two Sum IV - Input is a BST
     0654(m): Maximum Binary Tree
@@ -385,6 +396,9 @@
     0505(m): The Maze II
     0513(m): Find Bottom Left Tree Value
     0515(m): Find Largest Value in Each Tree Row
+    0529(m): Minesweeper
+    0582(m): Kill Process
+    0594(e): Longest Harmonious Subsequence
     0622(m): Design Circular Queue
     0641(m): Design Circular Deque
     0637(e): Average of Levels in Binary Tree
@@ -519,10 +533,22 @@
     0489(h): Robot Room Cleaner
     0491(m): Increasing Subsequences
     0494(m): Target Sum
-    0509(m): Fibonacci Number
+    0508(m): Most Frequent Subtree Sum
+    0513(m): Find Bottom Left Tree Value
+    0515(m): Find Largest Value in Each Tree Row
     0526(m): Beautiful Arrangement
+    0530(e): Minimum Absolute Difference in BST
     0536(m): Construct Binary Tree from String
-    0547(m): Friend Circles
+    0543(e): Diameter of Binary Tree
+    0545(m): Boundary of Binary Tree
+    0547(m): Number of Provinces
+    0549(m): Binary Tree Longest Consecutive Sequence II
+    0559(e): Maximum Depth of N-ary Tree
+    0563(e): Binary Tree Tilt
+    0572(e): Subtree of Another Tree
+    0582(m): Kill Process
+    0589(e): N-ary Tree Preorder Traversal
+    0590(e): N-ary Tree Postorder Traversal
     0638(m): Shopping Offers
     0650(m): 2 Keys Keyboard
     0726(h): Number of Atoms
@@ -559,6 +585,9 @@
     0435(m): Non-overlapping Intervals
     0452(m): Minimum Number of Arrows to Burst Balloons
     0455(e): Assign Cookies
+    0561(e): Array Partition I
+    0575(e): Distribute Candies
+    0581(m): Shortest Unsorted Continuous Subarray
     0678(m): Valid Parenthesis String
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -623,10 +652,9 @@
     0474(m): Ones and Zeroes
     0486(m): Predict the Winner
     0494(m): Target Sum
+    0509(e): Fibonacci Number
     0516(m): Longest Palindromic Subsequence
     0518(m): Coin Change 2
-    0542(m): 01 Matrix
-    0581(e): Shortest Unsorted Continuous Subarray
     0583(m): Delete Operation for Two Strings
     0638(m): Shopping Offers
     0647(m): Palindromic Substrings
@@ -687,7 +715,10 @@
     0487(m): Max Consecutive Ones II
     0523(m): Continuous Subarray Sum
     0524(m): Longest Word in Dictionary through Deleting
+    0525(m): Contiguous Array
     0560(m): Subarray Sum Equals K
+    0567(m): Permutation in String 
+    0581(m): Shortest Unsorted Continuous Subarray
     0594(e): Longest Harmonious Subsequence
     0643(e): Maximum Average Subarray I
     0671(e): Second Minimum Node In a Binary Tree
@@ -712,6 +743,7 @@
     0497(m): Random Point in Non-overlapping Rectangles
     0523(m): Continuous Subarray Sum
     0525(m): Contiguous Array
+    0528(m): Random Pick with Weight
     0560(m): Subarray Sum Equals K
     0862(m): Shortest Subarray with Sum at Least K
     0974(m): Subarray Sums Divisible by K
@@ -784,7 +816,18 @@
     0494(m): Target Sum
     0496(e): Next Greater Element I
     0500(e): Keyboard Row
-    0532(e): K-diff Pairs in an Array
+    0505(m): The Maze II
+    0508(m): Most Frequent Subtree Sum
+    0523(m): Continuous Subarray Sum
+    0524(m): Longest Word in Dictionary through Deleting
+    0525(m): Contiguous Array
+    0531(m): Lonely Pixel I
+    0532(m): K-diff Pairs in an Array
+    0535(m): Encode and Decode TinyURL
+    0547(m): Number of Provinces
+    0560(m): Subarray Sum Equals K
+    0575(e): Distribute Candies
+    0582(m): Kill Process
     0594(e): Longest Harmonious Subsequence
     0599(e): Minimum Index Sum of Two Lists
     0652(m): Find Duplicate Subtrees
@@ -1046,6 +1089,20 @@
     0482(e): License Key Formatting
     0488(h): Zuma Game
     0500(e): Keyboard Row
+    0506(e): Relative Ranks
+    0516(m): Longest Palindromic Subsequence
+    0524(m): Longest Word in Dictionary through Deleting
+    0535(m): Encode and Decode TinyURL
+    0536(m): Construct Binary Tree from String
+    0537(m): Complex Number Multiplication
+    0539(m): Minimum Time Difference
+    0541(e): Reverse String II
+    0556(m): Next Greater Element III
+    0557(e): Reverse Words in a String III
+    0567(m): Permutation in String 
+    0572(e): Subtree of Another Tree
+    0583(m): Delete Operation for Two Strings
+    0599(e): Minimum Index Sum of Two Lists
     0678(m): Valid Parenthesis String
     0791(m): Custom Sort String
     0884(e): Uncommon Words from Two Sentences
@@ -1212,15 +1269,24 @@
     0496(e): Next Greater Element I
     0498(m): Diagonal Traverse
     0500(e): Keyboard Row
+    0503(m): Next Greater Element II
+    0505(m): The Maze II
     0506(e): Relative Ranks
+    0518(m): Coin Change 2
+    0526(m): Beautiful Arrangement
     0531(m): Lonely Pixel I
-    0541(e): Reverse String II
-    0557(e): Reverse Words in a String III
+    0532(m): K-diff Pairs in an Array
+    0539(m): Minimum Time Difference
+    0540(m): Single Element in a Sorted Array
+    0542(m): 01 Matrix
+    0547(m): Number of Provinces
     0561(e): Array Partition I
     0565(m): Array Nesting
     0566(e): Reshape the Matrix
     0575(e): Distribute Candies
+    0582(m): Kill Process
     0598(e): Range Addition II
+    0599(e): Minimum Index Sum of Two Lists
     0605(e): Can Place Flowers
     0624(e): Maximum Distance in Arrays 
     0657(e): Robot Return to Origin
@@ -1424,6 +1490,7 @@
     0498(m): Diagonal Traverse
     0505(m): The Maze II
     0529(m): Minesweeper
+    0547(m): Number of Provinces
     0684(m): Redundant Connection
     0694(m): Number of Distinct Islands
     0695(m): Max Area of Island
@@ -1547,7 +1614,7 @@
     0515(m): Find Largest Value in Each Tree Row
     0530(e): Minimum Absolute Difference in BST
     0536(m): Construct Binary Tree from String
-    0538(e): Convert BST to Greater Tree
+    0538(m): Convert BST to Greater Tree
     0543(e): Diameter of Binary Tree
     0545(m): Boundary of Binary Tree
     0549(m): Binary Tree Longest Consecutive Sequence II
@@ -1668,6 +1735,8 @@
     0376(m): Wiggle Subsequence
     0392(e): Is Subsequence
     0491(m): Increasing Subsequences
+    0516(m): Longest Palindromic Subsequence
+    0526(m): Beautiful Arrangement
     0556(m): Next Greater Element III
     1079(m): Letter Tile Possibilities
     1087(m): Brace Expansion
@@ -1722,7 +1791,12 @@
     0486(m): Predict the Winner
     0497(m): Random Point in Non-overlapping Rectangles
     0507(e): Perfect Number
+    0509(e): Fibonacci Number
+    0528(m): Random Pick with Weight
     0537(m): Complex Number Multiplication
+    0539(m): Minimum Time Difference
+    0556(m): Next Greater Element III
+    0598(e): Range Addition II
     0628(e): Maximum Product of Three Numbers
     0724(e): Find Pivot Index
     0754(m): Reach a Number

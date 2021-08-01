@@ -1,41 +1,34 @@
-//--- Q: Complex Number Multiplication
+//--- Q: 0537. Complex Number Multiplication
 
-//--- method 1: 
+//--- method 1: math computation
 class Solution {
 public:
-    string complexNumberMultiply(string a, string b) {
-    	int first_left, first_right;
-    	int second_left, second_right;
-    	int left, right;
-    	string res;
-    	getNum(a, first_left, first_right);
-    	getNum(b, second_left, second_right);
-    	left = first_left * second_left - first_right * second_right;
-    	right = first_left * second_right + first_right * second_left;
-    	res = to_string(left) + "+" + to_string(right) + "i";
-    	return res;
+    string complexNumberMultiply(string num1, string num2) {
+        int l1 = 0, r1 = 0, l2 = 0, r2 = 0, l = 0, r = 0;
+        str2int(num1, l1, r1);
+        str2int(num2, l2, r2);
+        l = l1*l2-r1*r2;
+        r = l1*r2+l2*r1;
+        return to_string(l) + "+" + to_string(r) + "i";
     }
-    void getNum(string str, int &a, int &b)
-    {
-    	int i = 0, sign = 1;
-    	a = b = 0;
-    	if (str[i] == '-')
-    	{
-    		++i;
-    		sign = -1;
-    	}
-    	while (str[i] != '+')
-    		a = a*10 + (str[i++]-'0');
-    	a *= sign;
-    	sign = 1;
-    	++i;
-    	if (str[i] == '-')
-    	{
-    		++i;
-    		sign = -1;
-    	}
-    	while (str[i] != 'i')
-    		b = b*10 + (str[i++]-'0');
-    	b *= sign;
+    void str2int(string &str, int &left, int &right) {
+        int i = 0, sign = 1;
+        if (str[i] == '-') {
+            sign = -1;
+            ++i;
+        }
+        for (; str[i] != '+'; ++i) {
+            left = left*10 + (str[i]-'0');
+        }
+        left *= sign;
+        sign = 1;
+        if (str[++i] == '-') {
+            sign = -1;
+            ++i;
+        }
+        for (; str[i] != 'i'; ++i) {
+            right = right*10 + (str[i]-'0');
+        }
+        right *= sign;
     }
 };
