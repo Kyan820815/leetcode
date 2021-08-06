@@ -1,4 +1,4 @@
-//--- Q: 652. Find Duplicate Subtrees
+//--- Q: 0652. Find Duplicate Subtrees
 
 /**
  * Definition for a binary tree node.
@@ -13,24 +13,24 @@
 //--- method 1: postorder with recording string
 class Solution {
 public:
+    unordered_map<string, int> map;
+    vector<TreeNode *> res;
     vector<TreeNode*> findDuplicateSubtrees(TreeNode* root) {
-    	vector<TreeNode *> res;
-    	unordered_map<string, int> map;
-    	if (!root) return res;
-    	string str = postorder(root, map, res);
-    	return res;
+        postorder(root);
+        return res;
     }
-    string postorder(TreeNode *root, unordered_map<string, int> &map, vector<TreeNode *> &res)
-    {
-    	string strl = "#", strr = "#", str;
-    	if (root->left)
-    		strl = postorder(root->left, map, res);
-    	if (root->right)
-    		strr = postorder(root->right, map, res);
-    	str = to_string(root->val) + "," + strl + "," + strr;
-    	if (map[str] == 1)
-    		res.push_back(root);
-    	++map[str];
-    	return str;
+    string postorder(TreeNode *root) {
+        string lstr = "", rstr = "", cstr = "";
+        if (root->left) {
+            lstr = postorder(root->left);
+        }
+        if (root->right) {
+            rstr = postorder(root->right);
+        }
+        cstr = to_string(root->val) + " " + lstr + " " + rstr;
+        if (++map[cstr] == 2) {
+            res.push_back(root);
+        }
+        return cstr;
     }
 };

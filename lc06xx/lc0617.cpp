@@ -1,4 +1,4 @@
-//--- Q: 617. Merge Two Binary Trees
+//--- Q: 0617. Merge Two Binary Trees
 
 /**
  * Definition for a binary tree node.
@@ -13,45 +13,25 @@
 //--- method 1: dfs, clean code, better
 class Solution {
 public:
-    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
-        if (!t1)
-            return t2;
-        if (!t2)
-            return t1;
-        TreeNode *now = new TreeNode(t1->val + t2->val);
-        now->left = mergeTrees(t1->left, t2->left);
-        now->right = mergeTrees(t1->right, t2->right);
-        return now;
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        if (!root1) {
+            return deepcopy(root2);
+        } else if (!root2) {
+            return deepcopy(root1);
+        } else {
+            auto now = new TreeNode(root1->val+root2->val);
+            now->left = mergeTrees(root1->left, root2->left);
+            now->right = mergeTrees(root1->right, root2->right);
+            return now;
+        }
     }
-};
-
-//--- method 2: dfs
-class Solution {
-public:
-    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
-    	if (!t1 && !t2) return NULL;
-    	TreeNode *node;
-    	if (t1 && t2)
-    	{
-    		node = t1;
-    		node->val += t2->val;
-    		node->left = mergeTrees(t1->left, t2->left);
-    		node->right = mergeTrees(t1->right, t2->right);
-    	}
-    	else if (t1 && !t2)
-    	{
-    		node = t1;
-    		node->left = mergeTrees(t1->left, NULL);
-    		node->right = mergeTrees(t1->right, NULL);
-
-    	}
-    	else if (!t1 && t2)
-    	{
-    		node = t2;
-    		node->left = mergeTrees(NULL, t2->left);
-    		node->right = mergeTrees(NULL, t2->right);
-
-    	}
-        return node;
+    TreeNode *deepcopy(TreeNode *root) {
+        if (!root) {
+            return nullptr;
+        }
+        auto now = new TreeNode(root->val);
+        now->left = deepcopy(root->left);
+        now->right = deepcopy(root->right);
+        return now;
     }
 };

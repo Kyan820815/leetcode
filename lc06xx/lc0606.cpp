@@ -1,4 +1,4 @@
-//--- Q: 606. Construct String from Binary Tree
+//--- Q: 0606. Construct String from Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -13,22 +13,19 @@
 //--- method 1: dfs and find the law
 class Solution {
 public:
-    string tree2str(TreeNode* t) {
-    	string res = "", lstr = "", rstr = "";
-        if (!t) return "";
-    	res += to_string(t->val);
-		if (!t->left && t->right)
-			res += "()";        
-		if (t->left)
-        {
-            lstr = tree2str(t->left);
-            res += "(" + lstr + ")";
+    string tree2str(TreeNode* root) {
+        string str = to_string(root->val);
+        if (root->left) {
+            str += '(';
+            str += tree2str(root->left);
+            str += ')';
         }
-		if (t->right)
-        {
-			rstr = tree2str(t->right);
-            res += "(" + rstr + ")";
+        if (root->right) {
+            str += !root->left ? "()" : "";
+            str += '(';
+            str += tree2str(root->right);
+            str += ')';
         }
-		return res;
+        return str;
     }
 };

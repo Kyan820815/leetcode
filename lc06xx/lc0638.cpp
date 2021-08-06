@@ -1,30 +1,29 @@
-//--- Q: 638. Shopping Offers
+//--- Q: 0638. Shopping Offers
 
 //--- method 1: dfs recursion
 class Solution {
 public:
     int shoppingOffers(vector<int>& price, vector<vector<int>>& special, vector<int>& needs) {
-        int res = 0;
-        for (int i = 0; i < needs.size(); ++i) {
-            res += needs[i] * price[i];
+        int sum = 0;
+        for (int i = 0; i < price.size(); ++i) {
+            sum += price[i]*needs[i];
         }
-        for (int i = 0; i < special.size(); ++i) {
-            vector<int> remain = sub(special[i], needs);
-            if (!remain.size()) {
-                continue;
+        for (auto &sp: special) {
+            auto new_needs = count(needs, sp);
+            if (new_needs.size()) {
+                sum = min(sum, sp.back()+shoppingOffers(price, special, new_needs));
             }
-            res = min(res, special[i].back() + shoppingOffers(price, special, remain));
         }
-        return res;
+        return sum;
     }
-    vector<int> sub(vector<int> &special, vector<int> &needed) {
-        vector<int> r(needed.size(), 0);
-        for (int i = 0; i < r.size(); ++i) {
-            if (needed[i]-special[i] < 0) {
-                return vector<int>();
+    vector<int> count(vector<int> &needs, vector<int> &special) {
+        vector<int> new_needs = needs;
+        for (int i = 0; i < needs.size(); ++i) {
+            if (needs[i] < special[i]) {
+                return {};
             }
-            r[i] = needed[i] - special[i];
+            new_needs[i] -= special[i];
         }
-        return r;
+        return new_needs;
     }
 };

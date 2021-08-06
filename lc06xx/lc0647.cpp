@@ -1,47 +1,41 @@
-//--- Q: 647. Palindromic Substrings
+//--- Q: 0647. Palindromic Substrings
 
-//--- method 1: O(n) one pass
+//--- method 1: dp, O(n^2)
 class Solution {
 public:
     int countSubstrings(string s) {
-    	int left, right, cnt = 0;
-    	for (int i = 0; i < s.size(); ++i)
-    	{
-    		left = right = i;
-    		while(s[left] == s[right])
-    		{
-    			cnt++;
-    			right++;
-    		}
-    		left--;
-    		while(left >= 0 && s[left] == s[right])
-    		{
-    			left--;
-    			right++;
-    			cnt++;
-    		}
-    	}
-    	return cnt;
+        int n = s.size(), res = n;
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        for (int i = n-1; i >= 0; --i) {
+            dp[i][i] = 1;
+            for (int j = i+1; j < n; ++j) {
+                if ((j-i == 1 || dp[i+1][j-1]) && s[i] == s[j]) {
+                    ++res;
+                    dp[i][j] = 1;
+                }
+            }
+        }
+        return res;
     }
 };
 
-//--- method 2: dp, O(n^2)
+//--- method 2: O(n^2)
 class Solution {
 public:
     int countSubstrings(string s) {
-    	vector<vector<int>> dp(s.size(), vector<int>(s.size(), 0));
-    	int n = s.size(), res = 0;
-    	for (int i = n-1; i >= 0; --i)
-    	{
-    		for (int j = i; j < n; ++j)
-    		{
-    			if (s[i] == s[j] && (j-i < 2 || dp[i+1][j-1]))
-    			{
-    				dp[i][j] = 1;
-    				res++;
-    			}
-    		}
-    	}
-    	return res;
+        int n = s.size(), res = n;
+        for (int i = 0; i < s.size();) {
+            int right = i, left = i-1;
+            while (right < n-1 && s[right] == s[right+1]) {
+                ++right;
+                res += right-i;
+            }
+            i = ++right;
+            while (left >= 0 && right < n && s[left] == s[right]) {
+                ++res;
+                --left, ++right;
+            }
+        }
+        return res;
     }
 };

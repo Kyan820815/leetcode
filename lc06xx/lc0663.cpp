@@ -1,4 +1,4 @@
-//--- Q: 663. Equal Tree Partition
+//--- Q: 0663. Equal Tree Partition
 
 /**
  * Definition for a binary tree node.
@@ -12,26 +12,53 @@
  * };
  */
 
-//--- method 1: one pass postorder
+//--- method 1: two pass postorder
 class Solution {
 public:
+    int sum = 0, find = 0;
     bool checkEqualTree(TreeNode* root) {
-        unordered_set<int> val;
-        int sum = postorder(root, true, val);
-        return !(sum % 2) && val.find(sum>>1) != val.end();
+        sum = postorder(root);
+        find = 0;
+        if (sum&1) {
+            return find;
+        }
+        postorder(root);
+        return find;
     }
-    int postorder(TreeNode *root, bool isroot, unordered_set<int> &val) {
+    int postorder(TreeNode *root) {
         int lv = 0, rv = 0;
         if (root->left) {
-            lv = postorder(root->left, false, val);
+            lv = postorder(root->left);
         }
         if (root->right) {
-            rv = postorder(root->right, false, val);
+            rv = postorder(root->right);
         }
-        int now = lv + rv + root->val;
+        if (root->left && lv == sum-lv || root->right && rv == sum-rv) {
+            find = 1;
+        }
+        return root->val+lv+rv;
+    }
+};
+
+//--- method 2: one pass and set
+class Solution {
+public:
+    unordered_set<int> set;
+    bool checkEqualTree(TreeNode* root) {
+        int sum = postorder(root, true);
+        return !(sum&1) && set.find(sum>>1) != set.end();
+    }
+    int postorder(TreeNode *root, bool isroot) {
+        int lv = 0, rv = 0;
+        if (root->left) {
+            lv = postorder(root->left, false);
+        }
+        if (root->right) {
+            rv = postorder(root->right, false);
+        }
         if (!isroot) {
-            val.insert(now);
+            set.insert(root->val+lv+rv);
         }
-        return now;
+        return root->val+lv+rv;
     }
 };

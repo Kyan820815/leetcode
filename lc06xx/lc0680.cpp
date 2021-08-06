@@ -1,21 +1,20 @@
-//--- Q: 680. Valid Palindrome II
+//--- Q: 0680. Valid Palindrome II
 
 //--- method 1: check left and right
 class Solution {
 public:
-    int used = 1;
+    int chance = 1;
     bool validPalindrome(string s) {
-        return find(s, 0, s.size()-1);        
+        return findpali(0, s.size()-1, s);
     }
-    bool find(string &s, int left, int right) {
-        while (left < right) {
-            if (s[left] == s[right]) {
-                ++left, --right;
-            } else if (used) {
-                used = 0;
-                return find(s, left+1, right) || find(s, left, right-1);
-            } else {
-                return false;
+    bool findpali(int left, int right, string &s) {
+        for (; left < right; ++left, --right) {
+            if (s[left] != s[right]) {
+                if (--chance < 0) {
+                    return false;
+                } else {
+                    return findpali(left+1, right, s) || findpali(left, right-1, s);
+                }
             }
         }
         return true;

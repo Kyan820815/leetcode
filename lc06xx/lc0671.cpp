@@ -1,4 +1,4 @@
-//--- Q: 671. Second Minimum Node In a Binary Tree
+//--- Q: 0671. Second Minimum Node In a Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -12,56 +12,26 @@
  * };
  */
 
-//--- method 1: postorder
+//--- method 1: preorder
 class Solution {
 public:
+    int find = 0;
     int findSecondMinimumValue(TreeNode* root) {
-        int now = 0;
-        if (root) {
-            now = postorder(root, root->val);
-        }
-        return now != 0 ? now : -1;
+        int v = preorder(root, root->val);
+        return find ? v : -1;
     }
-    int postorder(TreeNode *root, int val) {
-        if (root->val != val) {
+    int preorder(TreeNode *root, int p) {
+        if (p != root->val) {
+            find = 1;
             return root->val;
         }
-        int lv = 0, rv = 0;
+        int lv = INT_MAX, rv = INT_MAX;
         if (root->left) {
-            lv = postorder(root->left, val);
+            lv = preorder(root->left, root->val);
         }
         if (root->right) {
-            rv = postorder(root->right, val);
-        }
-        if (!lv) {
-            return rv;
-        } else if (!rv) {
-            return lv;
+            rv = preorder(root->right, root->val);
         }
         return min(lv, rv);
-    }
-};
-
-//--- method 2: preorder
-class Solution {
-public:
-    int res = INT_MAX;
-    bool find = false;
-    int findSecondMinimumValue(TreeNode* root) {
-        preorder(root, root->val);
-        return find ? res : -1;
-    }
-    void preorder(TreeNode *root, int p) {
-        if (root->val != p) {
-            find = true;
-            res = min(res, root->val);
-            return;
-        }
-        if (root->left) {
-            preorder(root->left, root->val);
-        }
-        if (root->right) {
-            preorder(root->right, root->val);
-        }
     }
 };

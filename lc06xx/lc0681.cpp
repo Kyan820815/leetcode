@@ -1,35 +1,39 @@
-//--- 681. Next Closest Time
+//--- 0681. Next Closest Time
 
-//--- method 1:
+//--- method 1: set finding upper bound
 class Solution {
 public:
-    set<char> set;
     string nextClosestTime(string time) {
-        char ori;
-        set = {time[0], time[1], time[3], time[4]};
-        string result = time;
-        ori = result[4];
-        result[4] = findnext(ori, '9');
-        if (result[4] > ori) {
-            return result;
-        }
-        ori = result[3];
-        result[3] = findnext(ori, '5');
-        if (result[3] > ori) {
-            return result;
-        }
-        ori = result[1];
-        result[1] = result[0] == '2' ? findnext(ori, '3') : findnext(ori, '9');
-        if (result[1] > ori) {
-            return result;
-        }
-        ori = result[0];
-        result[0] = findnext(ori, '2');
-        return result;
+        set<char> set = {time[0], time[1], time[3], time[4]};
+        char now;
+        string res = time;
         
+        now = time[4];
+        res[4] = findnext(now, '9', set);
+        if (res[4] > now) {
+            return res;
+        }
+        
+        now = time[3];
+        res[3] = findnext(now, '5', set);
+        if (res[3] > now) {
+            return res;
+        }
+        
+        now = time[1];
+        char boundary = time[0] <= '1' ? '9' : '3';
+        res[1] = findnext(now, boundary, set);
+        if (res[1] > now) {
+            return res;
+        }
+        
+        now = time[0];
+        res[0] = findnext(now, '2', set);
+        return res;
     }
-    char findnext(char cur, char upper) {
-        auto next = set.upper_bound(cur);
-        return next != set.end() && *next <= upper ? *next : *set.begin();
+    char findnext(char now, char boundary, set<char> &set) {
+        auto next = set.upper_bound(now);
+        return next == set.end() || *next > boundary ? *set.begin() : *next;
     }
 };
+

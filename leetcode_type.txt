@@ -26,7 +26,10 @@
     0510(m): Inorder Successor in BST II
     0528(m): Random Pick with Weight
     0540(m): Single Element in a Sorted Array
+    0611(m): Valid Triangle Number
     0658(m): Find K Closest Elements
+    0669(m): Trim a Binary Search Tree
+    0700(e): Search in a Binary Search Tree
     0704(e): Binary Search
     0744(e): Find Smallest Letter Greater Than Target
     0852(e): Peak Index in a Mountain Array
@@ -63,7 +66,9 @@
     0215(m): Kth Largest Element in an Array
     0315(h): Count of Smaller Numbers After Self
     0327(h): Count of Range Sum
+    0427(m): Construct Quad Tree
     0493(h): Reverse Pairs
+    0654(m): Maximum Binary Tree
 
 --- Two Pointers:
     0001(e): Two Sum
@@ -140,8 +145,10 @@
     0611(m): Valid Triangle Number
     0622(m): Design Circular Queue
     0641(m): Design Circular Deque
-    0643(e): Maximum Average Subarray I
+    0647(m): Palindromic Substrings
+    0653(e): Two Sum IV - Input is a BST
     0678(m): Valid Parenthesis String
+    0680(e): Valid Palindrome II
     0696(e): Count Binary Substrings
     0713(m): Subarray Product Less Than K
     0763(m): Partition Labels
@@ -280,6 +287,7 @@
     0737(m): Sentence Similarity II
     0765(h): Couples Holding Hands
     0685(h): Redundant Connection II
+    0695(m): Max Area of Island
     0924(h): Minimize Malware Spread
     0947(m): Most Stones Removed with Same Row or Column 
     0959(m): Regions Cut By Slashes
@@ -327,6 +335,7 @@
     0636(m): Exclusive Time of Functions 
     0653(e): Two Sum IV - Input is a BST
     0654(m): Maximum Binary Tree
+    0682(e): Baseball Game
     0716(e): Max Stack
     0735(m): Asteroid Collision
     0739(m): Daily Temperatures
@@ -400,12 +409,12 @@
     0582(m): Kill Process
     0594(e): Longest Harmonious Subsequence
     0622(m): Design Circular Queue
+    0623(m): Add One Row to Tree
     0641(m): Design Circular Deque
     0637(e): Average of Levels in Binary Tree
     0662(m): Maximum Width of Binary Tree
     0684(m): Redundant Connection
     0690(e): Employee Importance
-    0695(m): Max Area of Island
     0721(m): Accounts Merge 
     0742(m): Closest Leaf in a Binary Tree
     0743(m): Network Delay Time
@@ -549,8 +558,21 @@
     0582(m): Kill Process
     0589(e): N-ary Tree Preorder Traversal
     0590(e): N-ary Tree Postorder Traversal
+    0606(e): Construct String from Binary Tree
+    0617(e): Merge Two Binary Trees
+    0623(m): Add One Row to Tree
     0638(m): Shopping Offers
     0650(m): 2 Keys Keyboard
+    0652(m): Find Duplicate Subtrees
+    0653(e): Two Sum IV - Input is a BST
+    0654(m): Maximum Binary Tree
+    0655(m): Print Binary Tree
+    0663(m): Equal Tree Partition
+    0671(e): Second Minimum Node In a Binary Tree
+    0687(m): Longest Univalue Path
+    0694(m): Number of Distinct Islands
+    0695(m): Max Area of Island
+    0700(e): Search in a Binary Search Tree
     0726(h): Number of Atoms
     0756(m): Pyramid Transition Matrix
     0772(h): Basic Calculator III
@@ -588,6 +610,13 @@
     0561(e): Array Partition I
     0575(e): Distribute Candies
     0581(m): Shortest Unsorted Continuous Subarray
+    0605(e): Can Place Flowers
+    0611(m): Valid Triangle Number
+    0621(m): Task Scheduler
+    0624(m): Maximum Distance in Arrays 
+    0646(m): Maximum Length of Pair Chain
+    0659(m): Split Array into Consecutive Subsequences
+    0670(m): Maximum Swap
     0678(m): Valid Parenthesis String
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -659,9 +688,8 @@
     0638(m): Shopping Offers
     0647(m): Palindromic Substrings
     0650(m): 2 Keys Keyboard
-    0659(m): Split Array into Consecutive Subsequences
-    0678(m): Valid Parenthesis String
     0673(m): Number of Longest Increasing Subsequence
+    0678(m): Valid Parenthesis String
     0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
     0718(m): Maximum Length of Repeated Subarray
     0740(m): Delete and Earn
@@ -721,7 +749,8 @@
     0581(m): Shortest Unsorted Continuous Subarray
     0594(e): Longest Harmonious Subsequence
     0643(e): Maximum Average Subarray I
-    0671(e): Second Minimum Node In a Binary Tree
+    0647(m): Palindromic Substrings
+    0659(m): Split Array into Consecutive Subsequences
     0673(m): Number of Longest Increasing Subsequence
     0674(e): Longest Continuous Increasing Subsequence
     0713(m): Subarray Product Less Than K
@@ -830,8 +859,17 @@
     0582(m): Kill Process
     0594(e): Longest Harmonious Subsequence
     0599(e): Minimum Index Sum of Two Lists
+    0621(m): Task Scheduler
+    0648(m): Replace Words
     0652(m): Find Duplicate Subtrees
     0653(e): Two Sum IV - Input is a BST
+    0659(m): Split Array into Consecutive Subsequences
+    0663(m): Equal Tree Partition
+    0673(m): Number of Longest Increasing Subsequence
+    0681(m): Next Closest Time
+    0684(m): Redundant Connection
+    0690(e): Employee Importance
+    0692(m): Top K Frequent Words
     0697(e): Degree of an Array
     0716(e): Max Stack
     0720(e): Longest Word in Dictionary
@@ -987,7 +1025,9 @@
     0316(m): Remove Duplicate Letters
     0442(m): Find All Duplicates in an Array
     0448(e): Find All Numbers Disappeared in an Array
+    0572(e): Subtree of Another Tree
     0645(e): Set Mismatch
+    0652(m): Find Duplicate Subtrees
 
 --- Palindrome:
     0005(m): Longest Palindromic Substring 
@@ -1103,7 +1143,18 @@
     0572(e): Subtree of Another Tree
     0583(m): Delete Operation for Two Strings
     0599(e): Minimum Index Sum of Two Lists
+    0606(e): Construct String from Binary Tree
+    0648(m): Replace Words
+    0647(m): Palindromic Substrings
+    0652(m): Find Duplicate Subtrees
+    0657(e): Robot Return to Origin
+    0670(m): Maximum Swap
     0678(m): Valid Parenthesis String
+    0680(e): Valid Palindrome II
+    0681(m): Next Closest Time
+    0682(e): Baseball Game
+    0692(m): Top K Frequent Words
+    0696(e): Count Binary Substrings
     0791(m): Custom Sort String
     0884(e): Uncommon Words from Two Sentences
     1065(e): Index Pairs of a String
@@ -1288,13 +1339,26 @@
     0598(e): Range Addition II
     0599(e): Minimum Index Sum of Two Lists
     0605(e): Can Place Flowers
-    0624(e): Maximum Distance in Arrays 
-    0657(e): Robot Return to Origin
+    0611(m): Valid Triangle Number
+    0621(m): Task Scheduler
+    0622(m): Design Circular Queue
+    0624(m): Maximum Distance in Arrays 
+    0628(e): Maximum Product of Three Numbers
+    0636(m): Exclusive Time of Functions 
+    0638(m): Shopping Offers
+    0641(m): Design Circular Deque
+    0645(e): Set Mismatch
+    0646(m): Maximum Length of Pair Chain
+    0654(m): Maximum Binary Tree
+    0658(m): Find K Closest Elements
     0661(e): Image Smoother
-    0665(e): Non-decreasing Array
+    0665(m): Non-decreasing Array
     0666(m): Path Sum IV
-    0670(m): Maximum Swap
     0682(e): Baseball Game
+    0692(m): Top K Frequent Words
+    0694(m): Number of Distinct Islands
+    0695(m): Max Area of Island
+    0697(e): Degree of an Array
     0709(e): To Lower Case
     0717(e): 1-bit and 2-bit Characters
     0722(m): Remove Comments
@@ -1421,6 +1485,7 @@
     0231(e): Power of Two
     0260(m): Single Number III
     0268(e): Missing Number
+    0289(m): Game of Life
     0326(e): Power of Three
     0338(e): Counting Bits
     0342(e): Power of Four
@@ -1429,6 +1494,7 @@
     0461(e): Hamming Distance
     0476(e): Number Complement
     0477(m): Total Hamming Distance
+    0661(e): Image Smoother
     1048(m): Longest String Chain
     1072(m): Flip Columns For Maximum Number of Equal Rows
     1018(e): Binary Prefix Divisible By 5
@@ -1492,6 +1558,7 @@
     0529(m): Minesweeper
     0547(m): Number of Provinces
     0684(m): Redundant Connection
+    0685(h): Redundant Connection II
     0694(m): Number of Distinct Islands
     0695(m): Max Area of Island
     0733(e): Flood Fill
@@ -1533,6 +1600,7 @@
     0211(m): Design Add and Search Words Data Structure
     0212(h): Word Search II
     0336(h): Palindrome Pairs
+    0648(m): Replace Words
 
 --- Segment Tree:
     0307(m): Range Sum Query - Mutable
@@ -1635,9 +1703,10 @@
     0655(m): Print Binary Tree
     0662(m): Maximum Width of Binary Tree
     0663(m): Equal Tree Partition
-    0669(e): Trim a Binary Search Tree
+    0666(m): Path Sum IV
+    0669(m): Trim a Binary Search Tree
     0671(e): Second Minimum Node In a Binary Tree
-    0687(e): Longest Univalue Path
+    0687(m): Longest Univalue Path
     0700(e): Search in a Binary Search Tree
     0701(m): Insert into a Binary Search Tree
     0720(e): Longest Word in Dictionary
@@ -1738,6 +1807,9 @@
     0516(m): Longest Palindromic Subsequence
     0526(m): Beautiful Arrangement
     0556(m): Next Greater Element III
+    0659(m): Split Array into Consecutive Subsequences
+    0673(m): Number of Longest Increasing Subsequence
+    0674(e): Longest Continuous Increasing Subsequence
     1079(m): Letter Tile Possibilities
     1087(m): Brace Expansion
 
@@ -1798,6 +1870,9 @@
     0556(m): Next Greater Element III
     0598(e): Range Addition II
     0628(e): Maximum Product of Three Numbers
+    0637(e): Average of Levels in Binary Tree
+    0650(m): 2 Keys Keyboard
+    0670(m): Maximum Swap
     0724(e): Find Pivot Index
     0754(m): Reach a Number
     0914(e): X of a Kind in a Deck of Cards

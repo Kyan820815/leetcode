@@ -4,26 +4,25 @@
 class Solution {
 public:
     bool checkValidString(string s) {
-        int low = 0, high = 0;
+        int upper = 0, lower = 0;
         for (auto &ch: s) {
             if (ch == '(') {
-                ++low;
-                ++high;
+                ++upper, ++lower;
             } else if (ch == ')') {
-                if (low > 0) {
-                    --low;
+                --upper;
+                if (--lower < 0) {
+                    lower = 0;
                 }
-                --high;
             } else {
-                if (low > 0) {
-                    --low;
+                ++upper;
+                if (--lower < 0) {
+                    lower = 0;
                 }
-                ++high;
             }
-            if (high < 0) {
+            if (upper < 0) {
                 return false;
             }
         }
-        return !low;
+        return lower == 0;
     }
 };

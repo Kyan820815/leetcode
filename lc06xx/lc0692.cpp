@@ -1,39 +1,30 @@
-//--- Q: 692. Top K Frequent Words
+//--- Q: 0692. Top K Frequent Words
 
 //--- method 1: priority queue
 class Solution {
 public:
-	static bool comp(pair<string,int> &a, pair<string,int> &b)
-	{
-		return (a.second > b.second) || (a.second == b.second && a.first < b. first);
-	}
     vector<string> topKFrequent(vector<string>& words, int k) {
-		unordered_map<string,int> appear;
-		priority_queue<pair<string,int>, vector<pair<string,int>>, decltype(&comp)> que(&comp);
-		vector<string> res(k);
-		int cnt = 0;
-		for (int i = 0; i < words.size(); ++i)
-			appear[words[i]]++;
-
-		for (auto &a: appear)
-		{
-			if (que.size() < k)
-				que.push({a.first, a.second});
-			else
-			{
-				if (que.top().second < a.second || (que.top().second == a.second && a.first < que.top().first))
-				{
-					que.pop();
-					que.push({a.first, a.second});
-				}
-			}
-		}
-		for (int i = k-1; i >= 0; --i)
-		{
-			res[i] = que.top().first;
-			que.pop();
-		}
-		return res;
+        unordered_map<string, int> cnt;
+        auto comp = [&cnt](string &a, string &b) {
+            return cnt[a] > cnt[b] || cnt[a] == cnt[b] && a < b;
+        };
+        priority_queue<string, vector<string>, decltype(comp)> que(comp);
+        for (auto &word: words) {
+            ++cnt[word];
+        }
+        for (auto &wd: cnt) {
+            que.push(wd.first);
+            if (que.size() > k) {
+                que.pop();
+            }
+        }
+        vector<string> res;
+        while (que.size()) {
+            res.push_back(que.top());
+            que.pop();
+        }
+        reverse(res.begin(), res.end());
+        return res;
     }
 };
 
@@ -41,23 +32,20 @@ public:
 class Solution {
 public:
     vector<string> topKFrequent(vector<string>& words, int k) {
-		unordered_map<string,int> appear;
-		vector<string> res(k);
-		vector<vector<string>> bucket(words.size()+1);
-		int cnt = 0;
-		for (int i = 0; i < words.size(); ++i)
-			appear[words[i]]++;
-
-		for (auto &a: appear)
-			bucket[a.second].push_back(a.first);
-		for (int i = bucket.size()-1; i >= 0; --i)
-		{
-			if (bucket[i].size() == 0) continue;
-			sort(bucket[i].begin(), bucket[i].end());
-			for (int j = 0; j < bucket[i].size() && cnt < k; ++j)
-				res[cnt++] = bucket[i][j];
-			if (cnt == k) break;
-		}
-		return res;
+        unordered_map<string, int> cnt;
+        for (auto &word: words) {
+            ++cnt[word];
+        }
+        vector<set<string>> bucket(words.size()+1);
+        for (auto &wd: cnt) {
+            bucket[wd.second].insert(wd.first);
+        }
+        vector<string> res;
+        for (int i = words.size()-1; i >= 1 && k; --i) {
+            for (auto it = bucket[i].begin(); it != bucket[i].end() && k; ++it, --k) {
+                res.push_back(*it);
+            }
+        }
+        return res;
     }
 };

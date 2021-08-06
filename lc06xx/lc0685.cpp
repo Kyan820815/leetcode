@@ -1,42 +1,43 @@
-//--- Q: 685. Redundant Connection II
+//--- Q: 0685. Redundant Connection II
 
 //--- method 1: union find
 class Solution {
 public:
+    vector<int> parent;
     vector<int> findRedundantDirectedConnection(vector<vector<int>>& edges) {
         int n = edges.size();
-        vector<int> parent(n+1, 0);
+        parent.resize(n+1, -1);
         vector<int> first, second;
-        for (int i = 0; i < edges.size(); ++i) {
-            if (parent[edges[i][1]] == 0) {
-                parent[edges[i][1]] = edges[i][0];
-            } else {
-                first = {parent[edges[i][1]], edges[i][1]};
-                second = edges[i];
-                edges[i][1] = 0;
+        for (auto &edge: edges) {
+            if (parent[edge[1]] != -1) {
+                second = edge;
+                first = {parent[edge[1]], edge[1]};
+                edge[0] = -1;
+                break;
             }
+            parent[edge[1]] = edge[0];
         }
-        for (int i = 1; i <= n; ++i) {
-            parent[i] = i;
-        }
-        for (int i = 0; i < edges.size(); ++i) {
-            if (edges[i][1] == 0) {
+        parent.clear();
+        parent.resize(n+1, -1);
+        for (auto &edge: edges) {
+            if (edge[0] == -1) {
                 continue;
             }
-            int ap = findP(edges[i][0], parent);
-            int bp = findP(edges[i][1], parent);
+            int ap = findp(edge[0]);
+            int bp = findp(edge[1]);
             if (ap != bp) {
                 parent[ap] = bp;
             } else {
-                return first.size() ? first : edges[i];
+                return first.size() ? first : edge;
             }
         }
         return second;
     }
-    int findP(int now, vector<int> &parent) {
-        while (now != parent[now]) {
-            now = parent[now];
+    int findp(int now) {
+        if (parent[now] == now) {
+            return now;
+        } else {
+            return parent[now] = parent[now] == -1 ? now : findp(parent[now]);
         }
-        return now;
     }
 };

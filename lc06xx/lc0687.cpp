@@ -1,4 +1,4 @@
-//--- Q: 687. Longest Univalue Path
+//--- Q: 0687. Longest Univalue Path
 
 /**
  * Definition for a binary tree node.
@@ -17,23 +17,48 @@ class Solution {
 public:
     int res = 0;
     int longestUnivaluePath(TreeNode* root) {
-        int v = 0;
         if (root) {
-            postorder(root, v, -1);
+            postorder(root, -1);
         }
         return res;
     }
-    void postorder(TreeNode *root, int &v, int p) {
+    int postorder(TreeNode *root, int p) {
         int lv = 0, rv = 0;
         if (root->left) {
-            postorder(root->left, lv, root->val);
+            lv = postorder(root->left, root->val);
         }
         if (root->right) {
-            postorder(root->right, rv, root->val);
-        }
-        if (p == root->val) {
-            v = max(lv, rv) + 1;
+            rv = postorder(root->right, root->val);
         }
         res = max(res, lv+rv);
+        int len = root->val == p ? max(lv,rv)+1 : 0;
+        return len;
+    }
+};
+
+//--- follow up:
+class Solution {
+public:
+    int res = 0;
+    int longestUnivaluePath(TreeNode* root) {
+        if (root) {
+            postorder(root, -1);
+        }
+        return res;
+    }
+    int postorder(TreeNode *root, int p) {
+        int lv = 0, rv = 0;
+        if (root->left) {
+            lv = postorder(root->left, root->val);
+        }
+        if (root->right) {
+            rv = postorder(root->right, root->val);
+        }
+        if (root->left && !lv && root->right && !rv) {
+            return 0;
+        }
+        res = max(res, lv+rv);
+        int len = root->val == p ? max(lv,rv)+1 : 0;
+        return len;
     }
 };

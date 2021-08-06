@@ -1,24 +1,25 @@
-//--- Q: 682. Baseball Game
+//--- Q: 0682. Baseball Game
 
 //--- method 1: one pass
 class Solution {
 public:
     int calPoints(vector<string>& ops) {
-        vector<int> scores;
         int res = 0;
-        for (auto op: ops) {
+        vector<int> sk;
+        for (auto &op: ops) {
             if (op == "+") {
-                scores.push_back(scores.back() + scores[scores.size()-2]);
+                auto n = sk.size();
+                sk.push_back(sk[n-1]+sk[n-2]);
             } else if (op == "D") {
-                scores.push_back(scores.back()*2);
+                sk.push_back(sk.back()*2);
             } else if (op == "C") {
-                res -= scores.back();
-                scores.pop_back();
+                res -= sk.back();
+                sk.pop_back();
                 continue;
             } else {
-                scores.push_back(stoi(op));
+                sk.push_back(stoi(op));
             }
-            res += scores.back();
+            res += sk.back();
         }
         return res;
     }

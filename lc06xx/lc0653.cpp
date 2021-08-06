@@ -1,4 +1,4 @@
-//--- Q: 653. Two Sum IV - Input is a BST
+//--- Q: 0653. Two Sum IV - Input is a BST
 
 /**
  * Definition for a binary tree node.
@@ -10,70 +10,68 @@
  * };
  */
 
-//--- method 1: map operation
+//--- method 1: 2 sum stack
 class Solution {
 public:
     bool findTarget(TreeNode* root, int k) {
-        bool find = false;
-        unordered_set<int> map;
-        preorder(root, k, map, find);
-        return find;
-    }
-    void preorder(TreeNode *root, int k, unordered_set<int> &map, bool &find)
-    {
-    	if (map.count(root->val))
-    	{
-    		find = true;
-    		return;
-    	}
-    	map.insert(k-root->val);
-    	if (root->left)
-    		preorder(root->left, k, map, find);
-    	if (root->right)
-    		preorder(root->right, k, map, find);
-
-    }
-};
-
-//--- method 2: 2 sum stack
-class Solution {
-public:
-    bool findTarget(TreeNode* root, int k) {
-        vector<TreeNode *> sk1, sk2;
-        TreeNode *now = root;
+        vector<TreeNode *> left, right;
+        auto now = root;
         while (now) {
-            sk1.push_back(now);
+            left.push_back(now);
             now = now->left;
         }
         now = root;
         while (now) {
-            sk2.push_back(now);
+            right.push_back(now);
             now = now->right;
         }
-        while (sk1.size() && sk2.size()) {
-            auto lnode = sk1.back();
-            auto rnode = sk2.back();
+        while (1) {
+            auto lnode = left.back();
+            auto rnode = right.back();
             if (lnode == rnode) {
-                return false;
+                break;
             }
             if (lnode->val + rnode->val < k) {
-                sk1.pop_back();
+                left.pop_back();
                 lnode = lnode->right;
                 while (lnode) {
-                    sk1.push_back(lnode);
+                    left.push_back(lnode);
                     lnode = lnode->left;
                 }
             } else if (lnode->val + rnode->val > k) {
-                sk2.pop_back();
+                right.pop_back();
                 rnode = rnode->left;
                 while (rnode) {
-                    sk2.push_back(rnode);
+                    right.push_back(rnode);
                     rnode = rnode->right;
                 }
             } else {
                 return true;
             }
         }
-        return false;
+        return false;      
+    }
+};
+
+//--- method 2: map operation
+class Solution {
+public:
+    unordered_set<int> set;
+    bool find = false;
+    bool findTarget(TreeNode* root, int k) {
+        preorder(root, k);
+        return find;
+    }
+    void preorder(TreeNode *root, int k) {
+        if (set.find(root->val) != set.end()) {
+            find = true;
+        }
+        set.insert(k-root->val);
+        if (root->left) {
+            preorder(root->left, k);
+        }
+        if (root->right) {
+            preorder(root->right, k);
+        }
     }
 };

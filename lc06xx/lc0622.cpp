@@ -1,118 +1,52 @@
-//--- Q: 622. Design Circular Queue
+//--- Q: 0622. Design Circular Queue
 
 //--- method 1: use lenth as tag
-class MyCircularQueue {
+cclass MyCircularQueue {
 public:
-    /** Initialize your data structure here. Set the size of the queue to be k. */
     MyCircularQueue(int k) {
-        size = k;
-        que.resize(size, 0);
-        start = 0, end = -1;
-        cnt = 0;
+        len = k;
+        arr.resize(k, 0);
+        start = end = 0;
+        empty = 1;
     }
     
-    /** Insert an element into the circular queue. Return true if the operation is successful. */
     bool enQueue(int value) {
-        if (cnt == size)
+        if (isFull()) {
             return false;
-        ++end;
-        if (end >= size)
-            end %= size;
-        que[end] = value;
-        cnt++;
+        }
+        arr[end] = value;
+        end = end == len-1 ? 0 : end+1;
+        empty = !(start == end);
         return true;
     }
     
-    /** Delete an element from the circular queue. Return true if the operation is successful. */
     bool deQueue() {
-        if (!cnt)
+        if (isEmpty()) {
             return false;
-        ++start;
-        if (start >= size)
-            start %= size;
-        cnt--;
+        }
+        start = start == len-1 ? 0 : start+1;
+        empty = (start == end);
         return true;
     }
     
-    /** Get the front item from the queue. */
     int Front() {
-        return !cnt ? -1 : que[start];
+        return isEmpty() ? -1 : arr[start];
     }
     
-    /** Get the last item from the queue. */
     int Rear() {
-        return !cnt ? -1 : que[end];
+        auto ridx = !end ? len-1 : end-1;
+        return isEmpty() ? -1 : arr[ridx];
     }
     
-    /** Checks whether the circular queue is empty or not. */
-    bool isEmpty() {
-        return cnt == 0;
-    }
-    
-    /** Checks whether the circular queue is full or not. */
-    bool isFull() {
-        return cnt == size;
-    }
-    vector<int> que;
-    int start, end;
-    int cnt, size;
-};
-
-//--- method 2: use boolean as tag
-class MyCircularQueue {
-public:
-    /** Initialize your data structure here. Set the size of the queue to be k. */
-    MyCircularQueue(int k) {
-        size = k;
-        que.resize(size, 0);
-        start = 0, end = 0;
-    }
-    
-    /** Insert an element into the circular queue. Return true if the operation is successful. */
-    bool enQueue(int value) {
-    	if (isFull())
-    		return false;
-    	if (start == end && empty)
-    		empty = false;
-        que[end] = value;
-        end = (end+1+size) % size;
-        return true;
-    }
-    
-    /** Delete an element from the circular queue. Return true if the operation is successful. */
-    bool deQueue() {
-    	if (isEmpty())
-    		return false;
-        ++start;
-        if (start >= size)
-            start %= size;
-    	if (start == end && !empty)
-            empty = true;
-        return true;
-    }
-    
-    /** Get the front item from the queue. */
-    int Front() {
-        return isEmpty() ? -1 : que[start];
-    }
-    
-    /** Get the last item from the queue. */
-    int Rear() {
-        return isEmpty() ? -1 : que[(end-1+size) % size];
-    }
-    
-    /** Checks whether the circular queue is empty or not. */
     bool isEmpty() {
         return start == end && empty;
     }
     
-    /** Checks whether the circular queue is full or not. */
     bool isFull() {
         return start == end && !empty;
     }
-    vector<int> que;
-    int start, end, size;
-    bool empty = true;
+    int start, end, len, empty;
+    vector<int> arr;
 };
 
 /**

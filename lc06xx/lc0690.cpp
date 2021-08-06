@@ -1,4 +1,4 @@
-//--- Q: 690. Employee Importance
+//--- Q: 0690. Employee Importance
 
 /*
 // Definition for Employee.
@@ -14,23 +14,24 @@ public:
 class Solution {
 public:
     int getImportance(vector<Employee*> employees, int id) {
-        unordered_map<int, Employee*> data;
-        for (int i = 0; i < employees.size(); ++i) {
-            data[employees[i]->id] = employees[i];
+        unordered_map<int, Employee *> map;
+        for (auto &employee: employees) {
+            map[employee->id] = employee;
         }
-        queue<int> que({id});
+        queue<int> que;
+        que.push(id);
         int res = 0;
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
-                auto get = data[que.front()];
+            auto qsize = que.size();
+            while (qsize--) {
+                auto now = map[que.front()];
                 que.pop();
-                res += get->importance;
-                for (int j = 0; j < get->subordinates.size(); ++j) {
-                    que.push(get->subordinates[j]);
+                res += now->importance;
+                for (auto &sub: now->subordinates) {
+                    que.push(sub);
                 }
             }
         }
-        return res;        
+        return res;
     }
 };

@@ -1,4 +1,4 @@
-//--- Q: 654. Maximum Binary Tree
+//--- Q: 0654. Maximum Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -10,49 +10,47 @@
  * };
  */
 
-//--- method 1: beautiful code using descendent order vector
+//--- method 1: dfs recursion
 class Solution {
 public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-    	vector<TreeNode*> vec;
-    	for (int i = 0; i < nums.size(); ++i)
-    	{
-    		TreeNode *cur = new TreeNode(nums[i]);
-    		while (vec.size() != 0 && vec.back()->val < nums[i])
-    		{
-    			cur->left = vec.back();
-    			vec.pop_back();
-    		}
-    		if (vec.size() != 0)
-    			vec.back()->right = cur;
-    		vec.push_back(cur);
-    	}
-    	return vec.front();
+        return dfs(0, nums.size()-1, nums);
+    }
+    TreeNode *dfs(int start, int end, vector<int> &nums) {
+        if (start > end) {
+            return nullptr;
+        }
+        int maxv = INT_MIN, maxi;
+        for (int i = start; i <= end; ++i) {
+            if (nums[i] > maxv) {
+                maxv = nums[i];
+                maxi = i;
+            }
+        }
+        TreeNode *now = new TreeNode(maxv);
+        now->left = dfs(start, maxi-1, nums);
+        now->right = dfs(maxi+1, end, nums);
+        return now;
     }
 };
 
-//--- method 2: dfs recursion
+//--- method 2: beautiful code using descendent order vector
 class Solution {
 public:
     TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
-        return make_tree(nums, 0, nums.size()-1);
-    }
-    TreeNode *make_tree(vector<int> &nums, int left, int right)
-    {
-    	if (left > right) return NULL;
-    	int max = INT_MIN, max_idx;
-    	for (int i = left; i <= right; ++i)
-    	{
-    		if (nums[i] > max)
-    		{
-    			max = nums[i];
-    			max_idx = i;
-    		}
-    	}
-    	TreeNode *root = new TreeNode(max);
-    	root->left = make_tree(nums, left, max_idx-1);
-    	root->right = make_tree(nums, max_idx+1, right);
-    	return root;
+        vector<TreeNode *> sk;
+        for (int i = 0; i < nums.size(); ++i) {
+            TreeNode *now = new TreeNode(nums[i]), *last = nullptr;
+            while (sk.size() && sk.back()->val < nums[i]) {
+                last = sk.back();
+                sk.pop_back();
+            }
+            now->left = last;
+            if (sk.size()) {
+                sk.back()->right = now; 
+            }
+            sk.push_back(now);
+        }
+        return sk[0];
     }
 };
-
