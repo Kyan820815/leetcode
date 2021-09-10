@@ -1,30 +1,27 @@
-//--- Q: 703. Kth Largest Element in a Stream
+//--- Q: 0703. Kth Largest Element in a Stream
 
-//--- method 1: 
+//--- method 1: priority queue
 class KthLargest {
 public:
     KthLargest(int k, vector<int>& nums) {
-    	for (int i = 0; i < nums.size(); ++i)
-    	{
-    		if (que.size() < k)
-    			que.push(nums[i]);
-    		else if (que.top() < nums[i])
-    		{
-				que.pop();
-				que.push(nums[i]);
-    		}
-    	}
+        sz = k;
+        for (auto &num: nums) {
+            que.push(num);
+            if (que.size() > k) {
+                que.pop();
+            }
+        }
     }
     
     int add(int val) {
-        if (que.size() && que.top() < val)
-		{
-			que.pop();
-			que.push(val);
-		}
-		return que.top();
+        que.push(val);
+        if (que.size() > sz) {
+            que.pop();
+        }
+        return que.top();
     }
-  	priority_queue<int, vector<int>, greater<int>> que;
+    int sz;
+    priority_queue<int, vector<int>, greater<int>> que;
 };
 
 /**

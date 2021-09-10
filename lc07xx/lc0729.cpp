@@ -1,6 +1,6 @@
-//--- Q: 729. My Calendar I
+//--- Q: 0729. My Calendar I
 
-//--- method 1: nlogn find
+//--- method 1: O(n) find
 class MyCalendar {
 public:
     MyCalendar() {
@@ -8,20 +8,23 @@ public:
     }
     
     bool book(int start, int end) {
-        auto event = calendar.upper_bound(start);
-        if (event != calendar.end() && end > event->first) {
-            return false;
+        ++calendar[start];
+        --calendar[end];
+        int event = 0;
+        for (auto &m: calendar) {
+            event += m.second;
+            if (event > 1) {
+                --calendar[start];
+                ++calendar[end];
+                return false;
+            }
         }
-        if (event != calendar.begin() && (--event)->second > start) {
-            return false;
-        }
-        calendar[start] = end;
         return true;
     }
-    map<int, int> calendar;
+    map<int,int> calendar;
 };
 
-//--- method 2: n^2 find
+//--- method 2: O(n) find
 class MyCalendar {
 public:
     MyCalendar() {
@@ -29,15 +32,15 @@ public:
     }
     
     bool book(int start, int end) {
-        for (auto &p: calendar) {
-            if (max(p.first, start) <  min(p.second, end)) {
+        for (auto &date: calendar) {
+            if (max(date.first, start) < min(date.second, end)) {
                 return false;
             }
         }
         calendar.push_back({start, end});
         return true;
     }
-    vector<pair<int, int>> calendar;
+    vector<pair<int,int>> calendar;
 };
 
 

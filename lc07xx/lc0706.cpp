@@ -1,66 +1,31 @@
-//--- Q: 706. Design HashMap
+//--- Q: 0706. Design HashMap
 
-//--- method 1: double array
+//--- method 1: array of list
 class MyHashMap {
 public:
     /** Initialize your data structure here. */
     MyHashMap() {
-        map.resize(1000);
+        data.resize(1000);
     }
     
     /** value will always be non-negative. */
     void put(int key, int value) {
-        int hashv = key%1000, posv = key/1000;
-        if (!map[hashv].size())
-            map[hashv].resize(1000 + ((!posv) ? 1 : 0), -1);
-        map[hashv][posv] = value;
-    }
-    
-    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
-    int get(int key) {
-        int hashv = key%1000, posv = key/1000;
-        if (map[hashv].size())
-            return map[hashv][posv];
-        return -1;
-    }
-    
-    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
-    void remove(int key) {
-        int hashv = key%1000, posv = key/1000;
-        if (map[hashv].size())
-            map[hashv][posv] = -1;
-    }
-    vector<vector<int>> map;
-};
-
-//--- method 2: array of list
-class MyHashMap {
-public:
-    /** Initialize your data structure here. */
-    MyHashMap() {
-        map.resize(1000);
-    }
-    
-    /** value will always be non-negative. */
-    void put(int key, int value) {
-        int loc = h(key)%1000;
-        auto &ll = map[loc];
-        for (auto &p: ll) {
-            if (p.first == key) {
-                p.second = value;
+        int pos = h(key)%1000;
+        for (auto it = data[pos].begin(); it != data[pos].end(); ++it) {
+            if (it->first == key) {
+                it->second = value;
                 return;
             }
         }
-        ll.push_back({key, value});
+        data[pos].push_back({key,value});
     }
     
     /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     int get(int key) {
-        int loc = h(key)%1000;
-        auto &ll = map[loc];
-        for (auto &p: ll) {
-            if (p.first == key) {
-                return p.second;
+        int pos = h(key)%1000;
+        for (auto it = data[pos].begin(); it != data[pos].end(); ++it) {
+            if (it->first == key) {
+                return it->second;
             }
         }
         return -1;
@@ -68,17 +33,16 @@ public:
     
     /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     void remove(int key) {
-        int loc = h(key)%1000;
-        auto &ll = map[loc];
-        for (auto p = ll.begin(); p != ll.end(); ++p) {
-            if (p->first == key) {
-                ll.erase(p);
+        int pos = h(key)%1000;
+        for (auto it = data[pos].begin(); it != data[pos].end(); ++it) {
+            if (it->first == key) {
+                data[pos].erase(it);
                 return;
             }
         }
     }
+    vector<list<pair<int,int>>> data;
     hash<int> h;
-    vector<list<pair<int, int>>> map;
 };
 
 /**

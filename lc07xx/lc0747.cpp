@@ -1,23 +1,19 @@
-//--- Q: 747. Largest Number At Least Twice of Others
+//--- Q: 0747. Largest Number At Least Twice of Others
 
 //--- method 1: linear processing
 class Solution {
 public:
     int dominantIndex(vector<int>& nums) {
-        if (!nums.size()) {
-            return -1;
-        } else if (nums.size() == 1) {
-            return 0;
-        }
-        int first = -1, second = -1;
+        int first = -1, second = -1, fi, si;
         for (int i = 0; i < nums.size(); ++i) {
-            if (first == -1 || nums[first] < nums[i]) {
-                second = first;
-                first = i;
-            } else if (second == -1 || nums[second] < nums[i]) {
-                second = i;
+            if (nums[i] >= first) {
+                second = first, first = nums[i];
+                si = fi, fi = i;
+            } else if (nums[i] > second) {
+                second = nums[i];
+                si = i;
             }
         }
-        return nums[second] * 2 <= nums[first] ? first : -1;
+        return first >= second*2 ? fi : -1;
     }
 };

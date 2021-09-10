@@ -1,4 +1,4 @@
-//--- Q: 783. Minimum Distance Between BST Nodes
+//--- Q: 0783. Minimum Distance Between BST Nodes
 
 /**
  * Definition for a binary tree node.
@@ -14,18 +14,34 @@
 class Solution {
 public:
     int minDiffInBST(TreeNode* root) {
-        int diff = INT_MAX, last = INT_MIN;
-        inorder(root, diff, last);
-        return diff;
-    }
-    void inorder(TreeNode *root, int &diff, int &last)
-    {
-    	if (root->left)
-    		inorder(root->left, diff, last);
-    	if (last != INT_MIN)
-    		diff = min(diff, abs(root->val-last));
-    	last = root->val;
-    	if (root->right)
-    		inorder(root->right, diff, last);
+        int last = -1, res = INT_MAX;
+        auto now = root;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right && now->right != prev) {
+                    now = now->right;
+                }
+                if (now->right) {
+                    if (last != -1) {
+                        res = min(res, prev->val-last);
+                    }
+                    now->right = nullptr;
+                    last = prev->val;
+                    now = prev->right;
+                } else {
+                    now->right = prev;
+                    now = prev->left;
+                }
+            } else {
+                if (last != -1) {
+                    res = min(res, now->val-last);
+                }
+                last = now->val;
+                now = now->right;
+            }
+        }
+        return res;
     }
 };

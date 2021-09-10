@@ -1,4 +1,4 @@
-//--- Q: 776. Split BST
+//--- Q: 0776. Split BST
 
 /**
  * Definition for a binary tree node.
@@ -12,19 +12,20 @@
  * };
  */
 
+//--- method 1: binary search
 class Solution {
 public:
-    vector<TreeNode*> splitBST(TreeNode* root, int V) {
-        vector<TreeNode *> res(2, NULL);
+    vector<TreeNode*> splitBST(TreeNode* root, int target) {
         if (!root) {
-            return res;
+            return {nullptr, nullptr};
         }
-        if (root->val > V) {
-            res = splitBST(root->left, V);
+        vector<TreeNode *> res;
+        if (root->val > target) {
+            res = splitBST(root->left, target);
             root->left = res[1];
             res[1] = root;
         } else {
-            res = splitBST(root->right, V);
+            res = splitBST(root->right, target);
             root->right = res[0];
             res[0] = root;
         }

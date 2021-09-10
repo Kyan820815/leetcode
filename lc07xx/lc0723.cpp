@@ -1,4 +1,4 @@
-//--- Q: 723. Candy Crush
+//--- Q: 0723. Candy Crush
 
 //--- method 1: brute force, negative tag of candy
 class Solution {
@@ -14,31 +14,33 @@ public:
                         continue;
                     }
                     int val = abs(board[i][j]);
-                    if (i+2 < row && val == abs(board[i+1][j]) && val == abs(board[i+2][j])) {
-                        int idx = i;
+                    if (i < row-2 && val == abs(board[i+1][j]) && val == abs(board[i+2][j])) {
                         find = true;
+                        int idx = i;
                         while (idx < row && abs(board[idx][j]) == val) {
                             board[idx++][j] = -val;
                         }
                     }
-                    if (j+2 < col && val == abs(board[i][j+1]) && val == abs(board[i][j+2])) {
-                        int idx = j;
+                    if (j < col-2 && val == abs(board[i][j+1]) && val == abs(board[i][j+2])) {
                         find = true;
+                        int idx = j;
                         while (idx < col && abs(board[i][idx]) == val) {
                             board[i][idx++] = -val;
                         }
                     }
                 }
             }
-            for (int c = 0; c < col; ++c) {
-                int cur = row-1;
-                for (int r = row-1; r >= 0; --r) {
-                    if (board[r][c] > 0) {
-                        swap(board[cur--][c], board[r][c]);
+            if (find) {
+                for (int j = 0; j < col; ++j) {
+                    int last = row-1;
+                    for (int i = row-1; i >= 0; --i) {
+                        if (board[i][j] > 0) {
+                            swap(board[i][j], board[last--][j]);
+                        }
                     }
-                }
-                for (int r = cur; r >= 0; --r) {
-                    board[r][c] = 0;
+                    while (last >= 0) {
+                        board[last--][j] = 0;
+                    }
                 }
             }
         }

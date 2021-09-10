@@ -1,45 +1,24 @@
-//--- Q: 718. Maximum Length of Repeated Subarray
+//--- Q: 0718. Maximum Length of Repeated Subarray
 
 //--- method 1: dp iteration, better
 class Solution {
 public:
-    int findLength(vector<int>& A, vector<int>& B) {
-        vector<int> dp(B.size(), 0);
-        int res = INT_MIN;
-        for (int i = 0; i < A.size(); ++i) {
-            int now = 0, last = 0;
-            for (int j = 0; j < B.size(); ++j) {
-                last = dp[j];
-                if (A[i] == B[j])
-                    dp[j] = now+1;
-                else
+    int findLength(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size(), m = nums2.size(), res = 0;
+        vector<int> dp(m+1, 0);
+        for (int i = 1; i <= n; ++i) {
+            int pre = 0, now;
+            for (int j = 1; j <= m; ++j) {
+                now = dp[j];
+                if (nums1[i-1] == nums2[j-1]) {
+                    dp[j] = pre+1;
+                } else {
                     dp[j] = 0;
+                }
+                pre = now;
                 res = max(res, dp[j]);
-                now = last;
             }
         }
         return res;
-    }
-};
-
-//--- method 2: dp iteration
-class Solution {
-public:
-    int findLength(vector<int>& A, vector<int>& B) {
-    	int maxv = INT_MIN;
-        vector<int> dp(B.size(), 0);
-        for (int i = 0; i < A.size(); ++i)
-        {
-            vector<int> tmp(B.size());
-            int j;
-        	for (j = 0; j < B.size(); ++j)
-        	{
-        		if (A[i] == B[j])
-        			tmp[j] = max(tmp[j], ((j == 0) ? 0 : dp[j-1]) + 1);
-        	    maxv = max(maxv, tmp[j]);
-        	}
-            dp = tmp;
-        }
-        return maxv;
     }
 };

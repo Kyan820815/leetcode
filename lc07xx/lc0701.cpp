@@ -1,4 +1,4 @@
-//--- Q: 701. Insert into a Binary Search Tree
+//--- Q: 0701. Insert into a Binary Search Tree
 
 /**
  * Definition for a binary tree node.
@@ -14,12 +14,14 @@
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
-        if (!root)
-            return new TreeNode (val);
-        if (root->val < val)
-            root->right = insertIntoBST(root->right, val);
-        else
+        if (!root) {
+            return new TreeNode(val);
+        }
+        if (root->val > val) {
             root->left = insertIntoBST(root->left, val);
+        } else {
+            root->right = insertIntoBST(root->right, val);
+        }
         return root;
     }
 };
@@ -28,23 +30,23 @@ public:
 class Solution {
 public:
     TreeNode* insertIntoBST(TreeNode* root, int val) {
-        int dir = 0;
-        TreeNode *dummy = new TreeNode(-1), *now = root, *p = dummy;
-        dummy->left = root;
+        TreeNode *dummy = new TreeNode(INT_MAX, root, nullptr), *now = dummy, *parent = nullptr;
+        int dir;
         while (now) {
-            p = now;
-            if (now->val < val) {
-                dir = 1;
-                now = now->right;
-            } else {
+            parent = now;
+            if (now->val > val) {
                 dir = 0;
                 now = now->left;
+            } else {
+                dir = 1;
+                now = now->right;
             }
         }
-        if (dir) {
-            p->right = new TreeNode(val);
+        auto new_node = new TreeNode(val);
+        if (!dir) {
+            parent->left = new_node;
         } else {
-            p->left = new TreeNode(val);
+            parent->right = new_node;
         }
         return dummy->left;
     }

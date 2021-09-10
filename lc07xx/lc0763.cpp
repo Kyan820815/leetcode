@@ -1,25 +1,22 @@
-//--- Q: 763. Partition Labels
+//--- Q: 0763. Partition Labels
 
 //--- method 1: two pass O(n)
 class Solution {
 public:
-    vector<int> partitionLabels(string S) {
-        vector<int> times(26), res;
-        int start = 0, end;
-        for (int i = 0; i < S.size(); ++i)
-        	times[S[i]-'a'] = i;
-
-        end = times[S[0]-'a'];
-        for (int i = 1; i < S.size(); ++i)
-        {
-        	if (i > end)
-        	{
-        		res.push_back(end-start+1);
-        		start = end+1;
-        	}
-        	end = max(end, times[S[i]-'a']);
+    vector<int> partitionLabels(string s) {
+        vector<int> cnt(26, -1), res;
+        for (int i = 0; i < s.size(); ++i) {
+            cnt[s[i]-'a'] = i;
         }
-        res.push_back(end-start+1);
+        int last = cnt[s[0]-'a'], pre = 0;
+        for (int i = 1; i < s.size(); ++i) {
+            if (i > last) {
+                res.push_back(i-pre);
+                pre = i;
+            }
+            last = max(last, cnt[s[i]-'a']);
+        }
+        res.push_back(s.size()-pre);
         return res;
     }
 };

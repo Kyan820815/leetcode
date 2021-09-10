@@ -1,39 +1,34 @@
 //--- Q: 0707. Design Linked List
 
 //--- method 1: dummy and linear finding index node
-class TNode {
+class LNode {
 public:
-    TNode(int v) {
-        next = NULL;
+    LNode(int v) {
         val = v;
+        next = nullptr;
     }
-    TNode *next;
     int val;
+    LNode *next;
 };
 
 class MyLinkedList {
 public:
     /** Initialize your data structure here. */
     MyLinkedList() {
+        dummy = new LNode(-1);
         sz = 0;
-        dummy = new TNode(-1);
     }
     
     /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
-    
-    TNode *getNode(int index) {
-        auto cur = dummy;
-        for (int i = 0; i < index; ++i) {
-            cur = cur->next;
-        }
-        return cur;
-    }
-    
     int get(int index) {
         if (index >= sz) {
             return -1;
         }
-        return getNode(index)->next->val;
+        auto now = dummy->next;
+        while (index--) {
+            now = now->next;
+        }
+        return now->val;
     }
     
     /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
@@ -51,12 +46,14 @@ public:
         if (index > sz) {
             return;
         }
-        TNode *node = new TNode(val);
-        auto cur = getNode(index);
-        auto tmp = cur->next;
-        cur->next = node;
-        node->next = tmp;
         ++sz;
+        auto now = dummy->next, pre = dummy;
+        while (index--)  {
+            pre = now;
+            now = now->next;
+        }
+        pre->next = new LNode(val);
+        pre->next->next = now;
     }
     
     /** Delete the index-th node in the linked list, if the index is valid. */
@@ -65,13 +62,14 @@ public:
             return;
         }
         --sz;
-        auto cur = getNode(index);
-        auto deleteNode = cur->next;
-        cur->next = cur->next->next;
-        delete(deleteNode);
+        auto now = dummy;
+        while (index--) {
+            now = now->next;
+        }
+        now->next = now->next->next;
     }
     int sz;
-    TNode *dummy;
+    LNode *dummy;
 };
 
 /**

@@ -1,24 +1,24 @@
-//--- Q: 796. Rotate String
+//--- Q: 0796. Rotate String
 
-//--- method 1: inspect every char
+//--- method 1: combine two A and check B in it
 class Solution {
 public:
-    bool rotateString(string A, string B) {
-        if (A.size() != B.size()) return false;
-        else if (!A.size()) return true;
-        for (int i = 0; i < A.size(); ++i)
-        {
-        	string tmp = A.substr(i+1, A.size()-i-1) + A.substr(0, i+1);
-        	if (tmp == B) return true;
+    bool rotateString(string s, string goal) {
+        if (s.size() != goal.size()) {
+            return false;
+        }
+        string str = s + s;
+        for (int i = 0; i < s.size(); ++i) {
+            int j;
+            for (j = 0; j < goal.size(); ++j) {
+                if (str[i+j] != goal[j]) {
+                    break;
+                }
+            }
+            if (j == goal.size()) {
+                return true;
+            }
         }
         return false;
-    }
-};
-
-//--- method 2: combine two A and check B in it
-class Solution {
-public:
-    bool rotateString(string A, string B) {
-        return (A.size() == B.size() && (A+A).find(B) != string::npos) ? true : false;
     }
 };

@@ -1,199 +1,164 @@
-//--- Q: 705. Design HashSet
+//--- Q: 0705. Design HashSet
 
-//--- method 1: double array
+//--- method 1: array of list
 class MyHashSet {
 public:
     /** Initialize your data structure here. */
     MyHashSet() {
-        set.resize(1000);
+        data.resize(1000);
     }
     
     void add(int key) {
-        int pos = key/1000, hash = key%1000;
-        if (!set[hash].size())
-            set[hash].resize(1000 + (!hash ? 1 : 0), 0);
-        set[hash][pos] = 1;
-    }
-    
-    void remove(int key) {
-        int pos = key/1000, hash = key%1000;
-        if (set[hash].size())
-            set[hash][pos] = 0;
-    }
-    
-    /** Returns true if this set contains the specified element */
-    bool contains(int key) {
-        int pos = key/1000, hash = key%1000;
-        return (!set[hash].size() || !set[hash][pos]) ? false : true;
-    }
-    vector<vector<int>> set;
-};
-
-//--- method 2: array of list
-class MyHashSet {
-public:
-    /** Initialize your data structure here. */
-    MyHashSet() {
-        set.resize(1000);
-    }
-    
-    void add(int key) {
-        int hashv = h(key) % 1000;
-        for (auto s = set[hashv].begin(); s != set[hashv].end(); ++s) {
-            if (*s == key)
-                return;
+        if (!contains(key)) {
+            int pos = h(key)%1000;
+            data[pos].push_back(key);
         }
-        set[hashv].push_back(key);
     }
     
     void remove(int key) {
-        int hashv = h(key) % 1000;
-        for (auto s = set[hashv].begin(); s != set[hashv].end(); ++s) {
-            if (*s == key) {
-                set[hashv].erase(s);
-                return;
+        int pos = h(key)%1000;
+        for (auto it = data[pos].begin(); it != data[pos].end(); ++it) {
+            if (*it == key) {
+                data[pos].erase(it);
+                break;
             }
         }
     }
     
     /** Returns true if this set contains the specified element */
     bool contains(int key) {
-        int hashv = h(key) % 1000;
-        for (auto s = set[hashv].begin(); s != set[hashv].end(); ++s) {
-            if (*s == key) {
+        int pos = h(key)%1000;
+        for (auto it = data[pos].begin(); it != data[pos].end(); ++it) {
+            if (*it == key) {
                 return true;
             }
         }
         return false;
     }
-    vector<list<int>> set;
+    vector<list<int>> data;
     hash<int> h;
 };
 
-//--- method 3: bst
-class Node {
+//--- method 2: bst
+class TNode {
 public:
-    Node (int value) {
-        val = value;
-        left = right = NULL;
+    TNode(int v) {
+        val = v;
+        left = right = nullptr;
     }
-    
-    ~Node () {
-        if (left)
-            delete left;
-        if (right)
-            delete right;
-    }
-    
-    Node *left, *right;
     int val;
+    TNode *left, *right;
 };
 
 class BST {
 public:
     BST() {
-        root = NULL;
+        dummy = new TNode(-1);
     }
-    
-    void insert(int key) {
-        if (find(root, key))
-            return;
-        root = insert(root, key);
-    }
-    
-    Node *insert(Node *root, int key) {
-        if (!root)
-            return new Node(key);
-        if (root->val < key)
-            root->right = insert(root->right, key);
-        else if (root->val > key)
-            root->left = insert(root->left, key);
-        return root;
-    }
-    
-    void remove(int key) {
-        if (!find(root, key))
-            return;
-        root = remove(root, key);
-    }
-    
-    Node *findMin(Node *root, Node **min) {
-        if (root->left)
-            root->left = findMin(root->left, min);
-        else {
-            Node *now = root->right;
-            *min = root;
-            return now;
-        }
-        return root;
-    }
-    
-    Node *remove(Node *root, int key) {
-        if (!root)
-            return NULL;
-        if (root->val < key)
-            root->right = remove(root->right, key);
-        else if (root->val > key)
-            root->left = remove(root->left, key);
-        else {
-            Node *now;
-            if (root->left && root->right) {
-                Node *min = NULL;
-                root->right = findMin(root->right, &min);
-                min->right = root->right;
-                min->left = root->left;
-                root->left = root->right = NULL;
-                delete root;
-                return min;
-            } else {
-                now = root->left ? root->left : root->right;
-                root->left = root->right = NULL;
-                delete root;
-            }
-            return now;
-        }
-        return root;
-    }
-    
-    bool find(int key) {
-        return find(root, key);
-    }
-    
-    bool find(Node *root, int key) {
+    bool contains(int key) {
+        auto root = dummy->left;
         while (root) {
-            if (root->val < key)
+            if (root->val < key) {
                 root = root->right;
-            else if (root->val > key)
+            } else if (root->val > key) {
                 root = root->left;
-            else
+            } else {
                 return true;
+            }
         }
         return false;
     }
-    
-    Node *root;
+    void add(int key) {
+        TNode *p = dummy;
+        auto root = dummy->left;
+        int dir = 0;
+        while (root) {
+            if (root->val < key) {
+                dir = 1;
+                p = root;
+                root = root->right;
+            } else if (root->val > key) {
+                dir = 0;
+                p = root;
+                root = root->left;
+            } else {
+                return;
+            }
+        }
+        if (dir) {
+            p->right = new TNode(key);
+        } else {
+            p->left = new TNode(key);
+        }
+    }
+    TNode *findmin(TNode *node, TNode *p) {
+        while (node->left) {
+            p = node;
+            node = node->left;
+        }
+        if (p->right == node) {
+            p->right = node->right;
+        } else {
+            p->left = node->right;
+        }
+        return node;
+    }
+    void remove(int key) {
+        TNode *p = dummy;
+        auto root = dummy->left;
+        int dir = 0;
+        while (root) {
+            if (root->val < key) {
+                dir = 1;
+                p = root;
+                root = root->right;
+            } else if (root->val > key) {
+                dir = 0;
+                p = root;
+                root = root->left;
+            } else {
+                TNode *minnode;
+                if (!root->left) {
+                    minnode = root->right;
+                } else if (!root->right) {
+                    minnode = root->left;
+                } else {
+                    minnode = findmin(root->right, root);
+                    minnode->left = root->left;
+                    minnode->right = root->right;
+                }
+                if (dir) {
+                    p->right = minnode;
+                } else {
+                    p->left = minnode;
+                }
+                break;
+            }
+        }
+    }
+    TNode *dummy;
 };
 
 class MyHashSet {
 public:
     /** Initialize your data structure here. */
     MyHashSet() {
-        bst = new BST();
+        data = new BST();
     }
     
     void add(int key) {
-        bst->insert(key);
+        data->add(key);
     }
     
     void remove(int key) {
-        bst->remove(key);
+        data->remove(key);
     }
     
     /** Returns true if this set contains the specified element */
     bool contains(int key) {
-        return bst->find(key);
+        return data->contains(key);
     }
-    BST *bst;
+    BST *data;
 };
 
 /**

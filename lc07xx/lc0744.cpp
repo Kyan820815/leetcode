@@ -13,10 +13,6 @@ public:
                 right = mid;
             }
         }
-        if (left == letters.size()-1 && target >= letters[left]) {
-            return letters[0];
-        } else {
-            return letters[left];
-        }
+        return left == letters.size()-1 && letters[left] <= target ? letters[0] : letters[left];
     }
 };

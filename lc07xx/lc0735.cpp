@@ -1,4 +1,4 @@
-//--- Q: 735. Asteroid Collision
+//--- Q: 0735. Asteroid Collision
 
 //--- method 1: stack iteration
 class Solution {
@@ -6,22 +6,14 @@ public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
         vector<int> sk;
         for (auto &stone: asteroids) {
-            int push = 1;
             if (stone < 0) {
-                while (sk.size() && sk.back() > 0) {
-                    if (sk.back() < abs(stone)) {
-                        sk.pop_back();
-                    } else if (sk.back() == abs(stone)) {
-                        push = 0;
-                        sk.pop_back();
-                        break;
-                    } else {
-                        push = 0;
-                        break;
-                    }
+                while (sk.size() && sk.back() > 0 && sk.back() < abs(stone)) {
+                    sk.pop_back();
                 }
-                if (push) {
+                if (!sk.size() || sk.back() < 0) {
                     sk.push_back(stone);
+                } else if (sk.size() && sk.back() == abs(stone)) {
+                    sk.pop_back();
                 }
             } else {
                 sk.push_back(stone);

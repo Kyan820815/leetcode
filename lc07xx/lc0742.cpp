@@ -1,4 +1,4 @@
-//--- Q: 742. Closest Leaf in a Binary Tree
+//--- Q: 0742. Closest Leaf in a Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -15,42 +15,40 @@
 //--- method 1: dfs+bfs
 class Solution {
 public:
+    unordered_map<int, vector<int>> rel;
+    unordered_set<int> visit;
     int findClosestLeaf(TreeNode* root, int k) {
-        rel.resize(1001);
-        visit.resize(1001);
-        dfs(root, 0);
+        preorder(root, 0);
         queue<int> que;
         que.push(k);
-        visit[k] = visit[0] = 1;
+        visit.insert(k);
+        visit.insert(0);
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
                 if (rel[now].size() == 1) {
                     return now;
                 }
-                for (int j = 0; j < rel[now].size(); ++j) {
-                    if (visit[rel[now][j]]) {
-                        continue;
+                for (auto &next: rel[now]) {
+                    if (visit.find(next) == visit.end()) {
+                        visit.insert(next);
+                        que.push(next);
                     }
-                    visit[rel[now][j]] = 1;
-                    que.push(rel[now][j]);
                 }
             }
         }
         return -1;
     }
-    void dfs(TreeNode *root, int parent) {
-        rel[parent].push_back(root->val);
-        rel[root->val].push_back(parent);
+    void preorder(TreeNode *root, int p) {
+        rel[root->val].push_back(p);
+        rel[p].push_back(root->val);
         if (root->left) {
-            dfs(root->left, root->val);
+            preorder(root->left, root->val);
         }
         if (root->right) {
-            dfs(root->right, root->val);
+            preorder(root->right, root->val);
         }
     }
-    vector<vector<int>> rel;
-    vector<int> visit;
 };

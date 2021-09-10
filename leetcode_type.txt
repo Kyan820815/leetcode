@@ -30,8 +30,11 @@
     0658(m): Find K Closest Elements
     0669(m): Trim a Binary Search Tree
     0700(e): Search in a Binary Search Tree
+    0701(m): Insert into a Binary Search Tree
     0704(e): Binary Search
+    0705(e): Design HashSet
     0744(e): Find Smallest Letter Greater Than Target
+    0776(m): Split BST
     0852(e): Peak Index in a Mountain Array
     0875(m): Koko Eating Bananas
     0981(m): Time Based Key-Value Store
@@ -151,6 +154,7 @@
     0680(e): Valid Palindrome II
     0696(e): Count Binary Substrings
     0713(m): Subarray Product Less Than K
+    0734(e): Sentence Similarity
     0763(m): Partition Labels
     0769(m): Max Chunks To Make Sorted
     0777(m): Swap Adjacent in LR String
@@ -224,6 +228,7 @@
     0505(m): The Maze II
     0692(m): Top K Frequent Words
     0703(e): Kth Largest Element in a Stream
+    0743(m): Network Delay Time
     0933(e): Number of Recent Calls
     0973(m): K Closest Points to Origin
     1046(e): Last Stone Weight
@@ -250,6 +255,7 @@
     0561(e): Array Partition I
     0692(m): Top K Frequent Words
     0771(e): Jewels and Stones
+    0791(m): Custom Sort String
     1057(m): Campus Bikes
     1196(e): How Many Apples Can You Put into the Basket
     1122(e): Relative Sort Array
@@ -282,12 +288,12 @@
     0399(m): Evaluate Division
     0547(m): Number of Provinces
     0684(m): Redundant Connection
-    0721(m): Accounts Merge 
-    0734(e): Sentence Similarity
-    0737(m): Sentence Similarity II
-    0765(h): Couples Holding Hands
     0685(h): Redundant Connection II
     0695(m): Max Area of Island
+    0721(m): Accounts Merge 
+    0737(m): Sentence Similarity II
+    0765(h): Couples Holding Hands
+    0785(m): Is Graph Bipartite?
     0924(h): Minimize Malware Spread
     0947(m): Most Stones Removed with Same Row or Column 
     0959(m): Regions Cut By Slashes
@@ -416,10 +422,13 @@
     0684(m): Redundant Connection
     0690(e): Employee Importance
     0721(m): Accounts Merge 
+    0733(e): Flood Fill
     0742(m): Closest Leaf in a Binary Tree
     0743(m): Network Delay Time
     0752(m): Open the Lock
+    0784(m): Letter Case Permutation
     0785(m): Is Graph Bipartite?
+    0797(m): All Paths From Source to Target
     0862(m): Shortest Subarray with Sum at Least K
     0864(h): Shortest Path to Get All Keys
     0886(m): Possible Bipartition
@@ -573,10 +582,14 @@
     0694(m): Number of Distinct Islands
     0695(m): Max Area of Island
     0700(e): Search in a Binary Search Tree
+    0701(m): Insert into a Binary Search Tree
     0726(h): Number of Atoms
+    0733(e): Flood Fill
     0756(m): Pyramid Transition Matrix
     0772(h): Basic Calculator III
-    0784(e): Letter Case Permutation
+    0776(m): Split BST
+    0784(m): Letter Case Permutation
+    0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
     0841(m): Keys and Rooms
     1020(m): Number of Enclaves
@@ -593,6 +606,7 @@
 --- Greedy:
     0045(m): Jump Game II
     0055(m): Jump Game
+    0122(e): Best Time to Buy and Sell Stock II
     0134(m): Gas Station
     0179(m): Largest Number
     0277(m): Find the Celebrity
@@ -618,6 +632,10 @@
     0659(m): Split Array into Consecutive Subsequences
     0670(m): Maximum Swap
     0678(m): Valid Parenthesis String
+    0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
+    0738(m): Monotone Increasing Digits
+    0765(h): Couples Holding Hands
+    0769(m): Max Chunks To Make Sorted
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1647(m): Minimum Deletions to Make Character Frequencies Unique
     1758(e): Minimum Changes To Make Alternating Binary String
@@ -694,7 +712,6 @@
     0718(m): Maximum Length of Repeated Subarray
     0740(m): Delete and Earn
     0746(e): Min Cost Climbing Stairs
-    0769(m): Max Chunks To Make Sorted
     0801(m): Minimum Swaps To Make Sequences Increasing
     0823(m): Binary Trees With Factors
     0828(h): Count Unique Characters of All Substrings of a Given String
@@ -774,6 +791,7 @@
     0525(m): Contiguous Array
     0528(m): Random Pick with Weight
     0560(m): Subarray Sum Equals K
+    0724(e): Find Pivot Index
     0862(m): Shortest Subarray with Sum at Least K
     0974(m): Subarray Sums Divisible by K
     1010(e): Pairs of Songs With Total Durations Divisible by 60
@@ -871,13 +889,24 @@
     0690(e): Employee Importance
     0692(m): Top K Frequent Words
     0697(e): Degree of an Array
+    0705(e): Design HashSet
+    0706(e): Design HashMap
     0716(e): Max Stack
     0720(e): Longest Word in Dictionary
+    0721(m): Accounts Merge 
     0726(h): Number of Atoms
     0729(m): My Calendar I
     0731(m): My Calendar II
+    0734(e): Sentence Similarity
+    0737(m): Sentence Similarity II
     0740(m): Delete and Earn
+    0742(m): Closest Leaf in a Binary Tree
+    0743(m): Network Delay Time
+    0752(m): Open the Lock
     0760(e): Find Anagram Mappings
+    0763(m): Partition Labels
+    0771(e): Jewels and Stones
+    0791(m): Custom Sort String
     0811(e): Subdomain Visit Count
     0819(e): Most Common Word
     0874(e): Walking Robot Simulation
@@ -946,10 +975,12 @@
     0621(m): Task Scheduler
     0622(m): Design Circular Queue
     0641(m): Design Circular Deque
+    0703(e): Kth Largest Element in a Stream
     0705(e): Design HashSet
     0706(e): Design HashMap
     0707(m): Design Linked List
     0716(e): Max Stack
+    0729(m): My Calendar I
     0767(m): Reorganize String
     1114(e): Print in Order
     1188(m): Design Bounded Blocking Queue
@@ -999,6 +1030,8 @@
     0430(m): Flatten a Multilevel Doubly Linked List
     0445(m): Add Two Numbers II
     0460(h): LFU Cache
+    0705(e): Design HashSet
+    0706(e): Design HashMap
     0707(m): Design Linked List
     0708(m): Insert into a Sorted Circular Linked List
     0725(m): Split Linked List in Parts
@@ -1155,7 +1188,17 @@
     0682(e): Baseball Game
     0692(m): Top K Frequent Words
     0696(e): Count Binary Substrings
+    0709(e): To Lower Case
+    0721(m): Accounts Merge 
+    0734(e): Sentence Similarity
+    0737(m): Sentence Similarity II
+    0752(m): Open the Lock
+    0763(m): Partition Labels
+    0771(e): Jewels and Stones
+    0777(m): Swap Adjacent in LR String
+    0784(m): Letter Case Permutation
     0791(m): Custom Sort String
+    0796(e): Rotate String
     0884(e): Uncommon Words from Two Sentences
     1065(e): Index Pairs of a String
     1165(e): Single-Row Keyboard
@@ -1219,6 +1262,9 @@
     0118(e): Pascal's Triangle
     0119(e): Pascal's Triangle II
     0120(m): Triangle
+    0121(e): Best Time to Buy and Sell Stock
+    0122(e): Best Time to Buy and Sell Stock II
+    0123(h): Best Time to Buy and Sell Stock III
     0128(m): Longest Consecutive Sequence
     0130(m): Surrounded Regions
     0134(m): Gas Station
@@ -1230,6 +1276,7 @@
     0163(e): Missing Ranges
     0167(e): Two Sum II - Input array is sorted
     0169(e): Majority Element
+    0188(h): Best Time to Buy and Sell Stock IV
     0189(m): Rotate Array
     0198(m): House Robber
     0200(m): Number of Islands
@@ -1359,16 +1406,28 @@
     0694(m): Number of Distinct Islands
     0695(m): Max Area of Island
     0697(e): Degree of an Array
-    0709(e): To Lower Case
+    0704(e): Binary Search
+    0705(e): Design HashSet
+    0706(e): Design HashMap
+    0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
     0717(e): 1-bit and 2-bit Characters
+    0718(m): Maximum Length of Repeated Subarray
+    0721(m): Accounts Merge 
     0722(m): Remove Comments
     0723(m): Candy Crush
     0724(e): Find Pivot Index
-    0738(m): Monotone Increasing Digits
+    0733(e): Flood Fill
+    0734(e): Sentence Similarity
+    0735(m): Asteroid Collision
+    0737(m): Sentence Similarity II
+    0739(m): Daily Temperatures
+    0740(m): Delete and Earn
+    0744(e): Find Smallest Letter Greater Than Target
+    0746(e): Min Cost Climbing Stairs
     0747(e): Largest Number At Least Twice of Others
     0760(e): Find Anagram Mappings
     0766(e): Toeplitz Matrix
-    0796(e): Rotate String
+    0769(m): Max Chunks To Make Sorted
     0807(m): Max Increase to Keep City Skyline
     0821(e): Shortest Distance to a Character
     0824(e): Goat Latin
@@ -1495,6 +1554,7 @@
     0476(e): Number Complement
     0477(m): Total Hamming Distance
     0661(e): Image Smoother
+    0709(e): To Lower Case
     1048(m): Longest String Chain
     1072(m): Flip Columns For Maximum Number of Equal Rows
     1018(e): Binary Prefix Divisible By 5
@@ -1561,9 +1621,11 @@
     0685(h): Redundant Connection II
     0694(m): Number of Distinct Islands
     0695(m): Max Area of Island
+    0721(m): Accounts Merge 
     0733(e): Flood Fill
+    0742(m): Closest Leaf in a Binary Tree
     0743(m): Network Delay Time
-    0752(m): Open the Lock
+    0765(h): Couples Holding Hands
     0785(m): Is Graph Bipartite?
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
@@ -1709,6 +1771,7 @@
     0687(m): Longest Univalue Path
     0700(e): Search in a Binary Search Tree
     0701(m): Insert into a Binary Search Tree
+    0705(e): Design HashSet
     0720(e): Longest Word in Dictionary
     0742(m): Closest Leaf in a Binary Tree
     0776(m): Split BST
@@ -1873,7 +1936,7 @@
     0637(e): Average of Levels in Binary Tree
     0650(m): 2 Keys Keyboard
     0670(m): Maximum Swap
-    0724(e): Find Pivot Index
+    0738(m): Monotone Increasing Digits
     0754(m): Reach a Number
     0914(e): X of a Kind in a Deck of Cards
     0977(e): Squares of a Sorted Array

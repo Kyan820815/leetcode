@@ -1,25 +1,51 @@
-//--- Q: 797. All Paths From Source to Target
+//--- Q: 0797. All Paths From Source to Target
 
 //--- method 1: dfs recursion
 class Solution {
 public:
+    vector<int> res;
+    vector<vector<int>> res_vec;
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-    	vector<vector<int>> path;
-    	vector<int> now_path;
-    	dfs(graph, path, 0, now_path);
-    	return path;
+        dfs(0, graph);
+        return res_vec;
     }
-    void dfs(vector<vector<int>> &graph, vector<vector<int>> &path, int idx, vector<int> &now_path)
-    {
-    	now_path.push_back(idx);
-    	if (graph[idx].size() == 0)
-    	{
-    		path.push_back(now_path);
-    	}
-    	for (int i = 0; i < graph[idx].size(); ++i)
-    	{
-    		dfs(graph, path, graph[idx][i], now_path);
-    	}
-    	now_path.pop_back();
+    void dfs(int now, vector<vector<int>>& graph) {
+        res.push_back(now);
+        if (now == graph.size()-1) {
+            res_vec.push_back(res);
+            res.pop_back();
+            return;
+        }
+        for (auto &next: graph[now]) {
+            dfs(next, graph);
+        }
+        res.pop_back();
+    }
+};
+
+//--- method 2: bfs
+class Solution {
+public:
+    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
+        queue<pair<int, vector<int>>> que;
+        que.push({0, {0}});
+        vector<vector<int>> res_vec;
+        while (que.size()) {
+            auto qsize = que.size();
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                if (now.first == graph.size()-1) {
+                    res_vec.push_back(now.second);
+                } else {
+                    for (auto &next: graph[now.first]) {
+                        auto nvec = now.second;
+                        nvec.push_back(next);
+                        que.push({next, nvec});
+                    }
+                }
+            }
+        }
+        return res_vec;
     }
 };
