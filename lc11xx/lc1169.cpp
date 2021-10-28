@@ -1,43 +1,6 @@
 //--- Q: 1169. Invalid Transactions
 
-//--- method 1: map
-class Solution {
-public:
-    vector<string> invalidTransactions(vector<string>& transactions) {
-        unordered_set<string> set;
-        unordered_map<string, vector<vector<string>>> map;
-        for (int i = 0; i < transactions.size(); ++i) {
-            vector<string> now_trans;
-            string str = "";
-            for (int j = 0; j <= transactions[i].size(); ++j) {
-                if (j == transactions[i].size() || transactions[i][j] == ',') {
-                    now_trans.push_back(str);
-                    str = "";
-                } else {
-                    str.push_back(transactions[i][j]);
-                }
-            }
-            if (stoi(now_trans[2]) > 1000) {
-                set.insert(transactions[i]);
-            }
-            for (auto &m: map[now_trans[0]]) {
-                if (m[3] != now_trans[3] && abs(stoi(m[1])-stoi(now_trans[1])) <= 60) {
-                    string cur_trans = m[0]+","+m[1]+","+m[2]+","+m[3];
-                    if (set.find(cur_trans) == set.end()) {
-                        set.insert(cur_trans);
-                    }
-                    if (set.find(transactions[i]) == set.end()) {
-                        set.insert(transactions[i]);
-                    }
-                }
-            }
-            map[now_trans[0]].push_back(now_trans);
-        }
-        return vector<string>(set.begin(), set.end());
-    }
-};
-
-//--- method 2: vector search
+//--- method 1: vector search
 class Solution {
 public:
     vector<string> invalidTransactions(vector<string>& transactions) {

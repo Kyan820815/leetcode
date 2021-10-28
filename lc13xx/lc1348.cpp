@@ -1,7 +1,7 @@
 //--- Q: 1348. Tweet Counts Per Frequency
 
 //--- method 1: multiset
-class TweetCounts {
+cclass TweetCounts {
 public:
     TweetCounts() {
         diff["minute"] = 60;
@@ -14,27 +14,23 @@ public:
     }
     
     vector<int> getTweetCountsPerFrequency(string freq, string tweetName, int startTime, int endTime) {
-        int d = diff[freq];
-        auto it = map.find(tweetName);
+        auto pos = map[tweetName].lower_bound(startTime);
         vector<int> res;
-        if (it != map.end()) {
-            auto &set = it->second;
-            auto pos = set.lower_bound(startTime);
-            int i = 0;
-            while (startTime + i*d <= endTime) {
-                int cnt = 0;
-                for (; pos != set.end() && *pos < min(startTime+(i+1)*d, endTime+1); ++pos) {
-                    ++cnt;
-                }
-                ++i;
-                res.push_back(cnt);
+        int time = startTime, block = diff[freq], i = 0;
+        while (startTime + i*block <= endTime) {
+            int cnt = 0;
+            for(; pos != map[tweetName].end() && *pos < min(startTime+(i+1)*block, endTime+1); ++pos) {
+                ++cnt;
             }
+            ++i;
+            res.push_back(cnt);
         }
         return res;
     }
     unordered_map<string, multiset<int>> map;
     unordered_map<string, int> diff;
 };
+
 
 //--- method 2: O(n) search
 class TweetCounts {

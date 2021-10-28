@@ -49,33 +49,35 @@ public:
 class Solution {
 public:
     void printLinkedListInReverse(ImmutableListNode* head) {
-        int len = 0;
+        int sz = 0;
         auto now = head;
         while (now) {
             now = now->getNext();
-            ++len;
+            ++sz;
         }
-        int blocksize = sqrt(len), cnt = 0;
+        int len = sqrt(sz);
         vector<ImmutableListNode *> sk;
         now = head;
-        while (now) {
-            if ((cnt++) % blocksize == 0) {
-                sk.push_back(now);
+        while (sk.size() < len) {
+            sk.push_back(now);
+            for (int i = 0; i < len; ++i) {
+                now = now->getNext();
             }
-            now = now->getNext();
         }
-        sk.push_back(NULL);
-        for (int i = sk.size()-2; i >= 0; --i) {
+        ImmutableListNode *last = nullptr;
+        while (sk.size()) {
             vector<ImmutableListNode *> tmpsk;
-            auto cur = sk[i];
-            while (cur != sk[i+1]) {
-                tmpsk.push_back(cur);
-                cur = cur->getNext();
+            auto now = sk.back(), next_last = now;
+            sk.pop_back();
+            while (now != last) {
+                tmpsk.push_back(now);
+                now = now->getNext();
             }
             while (tmpsk.size()) {
                 tmpsk.back()->printValue();
                 tmpsk.pop_back();
             }
+            last = next_last;
         }
     }
 };

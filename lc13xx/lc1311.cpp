@@ -4,37 +4,45 @@
 class Solution {
 public:
     vector<string> watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {
-        int n = friends.size(), l = -1;
-        vector<int> visit(n, 0);
+        unordered_map<string,int> map;
+        unordered_set<int> visit;
+        vector<pair<string,int>> vec;
         vector<string> res;
-        set<pair<int, string>> s;
-        unordered_map<string, int> cnt;
-
-        queue<int> que{{id}};
-        visit[id] = 1;
-        while (que.size() && ++l <= level) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+        queue<int> que;
+        que.push(id);
+        visit.insert(id);
+        while (que.size()) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                if (l == level) {
-                    for (int j = 0; j < watchedVideos[now].size(); ++j) {
-                        ++cnt[watchedVideos[now][j]];
+                if (!level) {
+                    for (auto &video: watchedVideos[now]) {
+                        if (map.find(video) == map.end()) {
+                            map[video] = vec.size();
+                            vec.push_back({video,1});
+                        } else {
+                            ++vec[map[video]].second;
+                        }
                     }
                 } else {
-                    for (int j = 0; j < friends[now].size(); ++j) {
-                        if (!visit[friends[now][j]]) {
-                            visit[friends[now][j]] = 1;
-                            que.push(friends[now][j]);
+                    for (auto &next: friends[now]) {
+                        if (visit.find(next) != visit.end()) {
+                            continue;
                         }
+                        visit.insert(next);
+                        que.push(next);
                     }
                 }
             }
+            level--;
         }
-        for (auto &p: cnt)
-            s.insert({ p.second, p.first });
-        for (auto &p: s)
-            res.push_back(p.second);
+        sort(vec.begin(), vec.end(), [](pair<string,int> &a, pair<string,int> &b){
+            return a.second < b.second || a.second == b.second && a.first < b.first;
+        });
+        for (auto &node: vec) {
+            res.push_back(node.first);
+        }
         return res;
     }
 };

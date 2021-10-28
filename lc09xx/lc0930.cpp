@@ -14,7 +14,7 @@ public:
             while (left < right && !(nums[left]&1)) {
                 ++prefix, ++left;
             }
-            if (!k) { 
+            if (!k && left <= right) { 
                 res += prefix+1;
             }
             ++right;

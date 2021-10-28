@@ -1,4 +1,4 @@
-//--- Q: 708. Insert into a Sorted Circular Linked List
+//--- Q: 0708. Insert into a Sorted Circular Linked List
 
 /*
 // Definition for a Node.
@@ -25,20 +25,21 @@ public:
 class Solution {
 public:
     Node* insert(Node* head, int insertVal) {
-        Node *node = new Node(insertVal);
         if (!head) {
-            node->next = node;
-            return node;
-        }
-        auto now = head;
-        while (now->next != head) {
-            if (now->val <= insertVal && insertVal <= now->next->val || now->next->val < now->val && (now->val <= insertVal || insertVal <= now->next->val)) {
-                break;
+            auto now = new Node(insertVal);
+            now->next = now;
+            return now;
+        } else {
+            auto now = head, insertNode = new Node(insertVal);
+            while (now->next != head) {
+                if (now->val <= insertVal && insertVal <= now->next->val || now->val > now->next->val && (now->val <= insertVal || insertVal <= now->next->val)) {
+                    break;
+                }
+                now = now->next;
             }
-            now = now->next;
+            insertNode->next = now->next;
+            now->next = insertNode;
         }
-        node->next = now->next;
-        now->next = node;
         return head;
     }
 };

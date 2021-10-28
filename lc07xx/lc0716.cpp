@@ -1,4 +1,4 @@
-//--- Q: 716. Max Stack
+//--- Q: 0716. Max Stack
 
 //--- method 1: map operation
 class MaxStack {
@@ -9,40 +9,41 @@ public:
     }
     
     void push(int x) {
-        lst.push_back(x);
-        mp[x].push_back(prev(lst.end()));
+        sk.push_back(x);
+        map[x].push_back(prev(sk.end()));
     }
     
     int pop() {
-        int v = lst.back();
-        mp[v].pop_back();
-        if (!mp[v].size()) {
-            mp.erase(v);
+        auto val = sk.back();
+        sk.pop_back();
+        map[val].pop_back();
+        if (!map[val].size()) {
+            map.erase(val);
         }
-        lst.pop_back();
-        return v;
+        return val;
     }
     
     int top() {
-        return lst.back();
+        return sk.back();
     }
     
     int peekMax() {
-        return mp.rbegin()->first;
+        return map.rbegin()->first;
     }
     
     int popMax() {
-        int v = mp.rbegin()->first;
-        lst.erase(mp[v].back());
-        mp[v].pop_back();
-        if (!mp[v].size()) {
-            mp.erase(v);
+        auto pos = map.rbegin()->second.back();
+        auto val = *pos;
+        map.rbegin()->second.pop_back();
+        sk.erase(pos);
+        if (!map.rbegin()->second.size()) {
+            map.erase(val);
         }
-        return v;
+        return val;
     }
     
-    map<int, vector<list<int>::iterator>> mp;
-    list<int> lst;
+    list<int> sk;
+    map<int, vector<list<int>::iterator>> map;
 };
 
 /**

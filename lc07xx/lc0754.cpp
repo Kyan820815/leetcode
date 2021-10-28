@@ -1,21 +1,19 @@
-//--- Q: 754. Reach a Number
+//--- Q: 0754. Reach a Number
 
 //--- method 1: determine the diff odd or even
 class Solution {
 public:
     int reachNumber(int target) {
-    	int sum = 0, now = 1, cnt = 0;
         target = abs(target);
-    	while (sum < target)
-    	{
-    		sum += now;
-    		++now;
-    		++cnt;
-    	}
-    	if (sum == target) return cnt;
-    	else if ((sum-target) % 2 == 0)
-    		return cnt;
-    	else
-    		return (now % 2) ? cnt+1 : cnt+2;
+        int res = 0, step = 1, num = 0;
+        while (num < target) {
+            num += step++;
+            ++res;
+        }
+        if ((num-target) % 2 == 0) {
+            return res;
+        } else {
+            return step&1 ? res+1 : res+2;
+        }
     }
 };

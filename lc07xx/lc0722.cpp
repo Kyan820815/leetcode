@@ -1,40 +1,36 @@
-//--- Q: 722. Remove Comments
+//--- Q: 0722. Remove Comments
 
 //--- method 1: string operation
 class Solution {
 public:
     vector<string> removeComments(vector<string>& source) {
         vector<string> res;
-        int use_block = 0, block_line = -1;
+        int use_block = 0, start_line = -1;
         for (int i = 0; i < source.size(); ++i) {
-            string res_line = "", &line = source[i];
-            int last = 0, use_slash = 0, connect = 0;
-            for (int j = 0; j <= line.size(); ++j) {
-                if (j == line.size() && !use_block) {
-                    res_line += line.substr(last, j-last);
-                } else if (j+1 < line.size() && line[j] == '/' && line[j+1] == '/' && !use_block) {
-                    res_line += line.substr(last, j-last);
-                    use_slash = 1;
+            string res_line = "";
+            int last = 0, same_line = 0;
+            for (int j = 0; j < source[i].size(); ++j) {
+                if (!use_block && j+1 < source[i].size() && source[i][j] == '/' && source[i][j+1] == '/') {
+                    res_line += source[i].substr(last, j-last);
+                    last = source[i].size();
                     break;
-                } else if (j+1 < line.size() && line[j] == '/' && line[j+1] == '*' && !use_block) {
+                } else if (!use_block && j+1 < source[i].size() && source[i][j] == '/' && source[i][j+1] == '*') {
+                    res_line += source[i].substr(last, j-last);
+                    ++j;
+                    start_line = i;
                     use_block = 1;
-                    block_line = i;
-                    res_line += line.substr(last, j-last);
-                    j += 1;
-                } else if (line[j] == '*' && line[j+1] == '/' && use_block) {
+                } else if (use_block && j+1 < source[i].size() && source[i][j] == '*' && source[i][j+1] == '/') {
+                    ++j;
+                    last = j+1;
+                    same_line |= (i != start_line);
                     use_block = 0;
-                    if (!connect && block_line != i) {
-                        connect = 1;
-                    }
-                    block_line = -1;
-                    last = j+2;
-                    j += 1;
                 }
             }
-            if (!use_block && !use_slash && !last) {
-                res.push_back(line);
-            } else if (res_line.size()) {
-                if (res.size() && connect) {
+            if (!use_block && last < source[i].size()) {
+                res_line += source[i].substr(last, source[i].size()-last);
+            }
+            if (res_line.size()) {
+                if (same_line && res.size()) {
                     res.back() += res_line;
                 } else {
                     res.push_back(res_line);

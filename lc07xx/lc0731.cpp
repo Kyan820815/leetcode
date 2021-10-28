@@ -1,30 +1,6 @@
-//--- Q: 731. My Calendar II
+//--- Q: 0731. My Calendar II
 
-//--- method 1: map count
-class MyCalendarTwo {
-public:
-    MyCalendarTwo() {
-        
-    }
-    
-    bool book(int start, int end) {
-        ++calendar[start];
-        --calendar[end];
-        int event = 0;
-        for (auto &p: calendar) {
-            event += p.second;
-            if (event == 3) {
-                --calendar[start];
-                ++calendar[end];
-                return false;
-            }
-        }
-        return true;
-    }
-    map<int, int> calendar;
-};
-
-//--- method 2: two vector
+//--- method 1: two vector
 class MyCalendarTwo {
 public:
     MyCalendarTwo() {
@@ -38,15 +14,38 @@ public:
             }
         }
         for (auto &p: one) {
-            int st = max(p.first, start), ed = min(p.second, end);
-            if (st < ed) {
-                two.push_back({st, ed});
+            if (max(p.first, start) < min(p.second, end)) {
+                two.push_back({max(p.first, start), min(p.second, end)});
             }
         }
         one.push_back({start, end});
         return true;
     }
-    vector<pair<int, int>> one, two;
+    vector<pair<int,int>> one, two;
+};
+
+//--- method 2: map count
+class MyCalendarTwo {
+public:
+    MyCalendarTwo() {
+        
+    }
+    
+    bool book(int start, int end) {
+        ++count[start];
+        --count[end];
+        int times = 0;
+        for (auto &event: count) {
+            times += event.second;
+            if (times > 2) {
+                --count[start];
+                ++count[end];
+                return false;
+            }
+        }
+        return true;
+    }
+    map<int,int> count;
 };
 
 /**

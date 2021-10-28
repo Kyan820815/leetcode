@@ -22,14 +22,11 @@ public:
 class Solution {
 public:
     int minDifference(vector<int>& nums) {
-        if (nums.size() < 4) {
-            return 0;
-        }
         sort(nums.begin(), nums.end());
-        int res = INT_MAX;
-        for (int i = 0, j = nums.size()-1; i <= 3; ++i) {
-            res = min(res, abs(nums[i]-nums[j-(3-i)]));
+        int res = INT_MAX, block = nums.size()-3;
+        for (int i = 0; i+block-1 < nums.size(); ++i) {
+            res = min(res, nums[i+block-1]-nums[i]);
         }
-        return res;
+        return res == INT_MAX ? 0 : res;
     }
 };

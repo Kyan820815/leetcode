@@ -72,6 +72,7 @@
     0427(m): Construct Quad Tree
     0493(h): Reverse Pairs
     0654(m): Maximum Binary Tree
+    0759(h): Employee Free Time
 
 --- Two Pointers:
     0001(e): Two Sum
@@ -254,6 +255,7 @@
     0539(m): Minimum Time Difference
     0561(e): Array Partition I
     0692(m): Top K Frequent Words
+    0767(m): Reorganize String
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
     1057(m): Campus Bikes
@@ -343,6 +345,7 @@
     0654(m): Maximum Binary Tree
     0682(e): Baseball Game
     0716(e): Max Stack
+    0726(h): Number of Atoms
     0735(m): Asteroid Collision
     0739(m): Daily Temperatures
     0768(h): Max Chunks To Make Sorted II
@@ -586,6 +589,7 @@
     0726(h): Number of Atoms
     0733(e): Flood Fill
     0756(m): Pyramid Transition Matrix
+    0759(h): Employee Free Time
     0772(h): Basic Calculator III
     0776(m): Split BST
     0784(m): Letter Case Permutation
@@ -635,6 +639,8 @@
     0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
     0738(m): Monotone Increasing Digits
     0765(h): Couples Holding Hands
+    0767(m): Reorganize String
+    0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -892,7 +898,7 @@
     0705(e): Design HashSet
     0706(e): Design HashMap
     0716(e): Max Stack
-    0720(e): Longest Word in Dictionary
+    0720(m): Longest Word in Dictionary
     0721(m): Accounts Merge 
     0726(h): Number of Atoms
     0729(m): My Calendar I
@@ -903,10 +909,12 @@
     0742(m): Closest Leaf in a Binary Tree
     0743(m): Network Delay Time
     0752(m): Open the Lock
+    0756(m): Pyramid Transition Matrix
     0760(e): Find Anagram Mappings
     0763(m): Partition Labels
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
+    0792(m): Number of Matching Subsequences
     0811(e): Subdomain Visit Count
     0819(e): Most Common Word
     0874(e): Walking Robot Simulation
@@ -981,7 +989,7 @@
     0707(m): Design Linked List
     0716(e): Max Stack
     0729(m): My Calendar I
-    0767(m): Reorganize String
+    0731(m): My Calendar II
     1114(e): Print in Order
     1188(m): Design Bounded Blocking Queue
     1195(m): Fizz Buzz Multithreaded
@@ -1034,6 +1042,7 @@
     0706(e): Design HashMap
     0707(m): Design Linked List
     0708(m): Insert into a Sorted Circular Linked List
+    0716(e): Max Stack
     0725(m): Split Linked List in Parts
     0817(m): Linked List Components
     1019(m): Next Greater Node In Linked Lis
@@ -1189,15 +1198,22 @@
     0692(m): Top K Frequent Words
     0696(e): Count Binary Substrings
     0709(e): To Lower Case
+    0720(m): Longest Word in Dictionary
     0721(m): Accounts Merge 
+    0722(m): Remove Comments
+    0726(h): Number of Atoms
     0734(e): Sentence Similarity
     0737(m): Sentence Similarity II
     0752(m): Open the Lock
+    0756(m): Pyramid Transition Matrix
     0763(m): Partition Labels
+    0767(m): Reorganize String
     0771(e): Jewels and Stones
+    0772(h): Basic Calculator III
     0777(m): Swap Adjacent in LR String
     0784(m): Letter Case Permutation
     0791(m): Custom Sort String
+    0792(m): Number of Matching Subsequences
     0796(e): Rotate String
     0884(e): Uncommon Words from Two Sentences
     1065(e): Index Pairs of a String
@@ -1412,6 +1428,7 @@
     0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
     0717(e): 1-bit and 2-bit Characters
     0718(m): Maximum Length of Repeated Subarray
+    0720(m): Longest Word in Dictionary
     0721(m): Accounts Merge 
     0722(m): Remove Comments
     0723(m): Candy Crush
@@ -1427,6 +1444,7 @@
     0747(e): Largest Number At Least Twice of Others
     0760(e): Find Anagram Mappings
     0766(e): Toeplitz Matrix
+    0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
     0807(m): Max Increase to Keep City Skyline
     0821(e): Shortest Distance to a Character
@@ -1578,6 +1596,7 @@
     0435(m): Non-overlapping Intervals
     0452(m): Minimum Number of Arrows to Burst Balloons
     0646(m): Maximum Length of Pair Chain
+    0708(m): Insert into a Sorted Circular Linked List
     0729(m): My Calendar I
     0731(m): My Calendar II
     0759(h): Employee Free Time
@@ -1663,6 +1682,7 @@
     0212(h): Word Search II
     0336(h): Palindrome Pairs
     0648(m): Replace Words
+    0720(m): Longest Word in Dictionary
 
 --- Segment Tree:
     0307(m): Range Sum Query - Mutable
@@ -1772,7 +1792,7 @@
     0700(e): Search in a Binary Search Tree
     0701(m): Insert into a Binary Search Tree
     0705(e): Design HashSet
-    0720(e): Longest Word in Dictionary
+    0720(m): Longest Word in Dictionary
     0742(m): Closest Leaf in a Binary Tree
     0776(m): Split BST
     0783(e): Minimum Distance Between BST Nodes
@@ -1938,6 +1958,7 @@
     0670(m): Maximum Swap
     0738(m): Monotone Increasing Digits
     0754(m): Reach a Number
+    0772(h): Basic Calculator III
     0914(e): X of a Kind in a Deck of Cards
     0977(e): Squares of a Sorted Array
     0991(m): Broken Calculator

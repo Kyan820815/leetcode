@@ -1,24 +1,22 @@
-//--- Q: 768. Max Chunks To Make Sorted II
+//--- Q: 0768. Max Chunks To Make Sorted II
 
 //--- method 1: O(n) space
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
-    	int res = 1, maxv = INT_MIN, minv = INT_MAX;
-    	vector<int> left_max(arr.size()), right_min(arr.size());
-    	for (int i = 0; i < arr.size(); ++i)
-    	{
-    		maxv = max(maxv, arr[i]);
-            left_max[i] = maxv;
-    		minv = min(minv, arr[arr.size()-i-1]);
-            right_min[arr.size()-i-1] = minv;
-    	}
-    	for (int i = 0; i < arr.size()-1; ++i)
-    	{
-    		if (left_max[i] <= right_min[i+1])
-    			++res;
-    	}
-    	return res;
+        vector<int> min_arr(arr.size()), max_arr(arr.size());
+        int minv = INT_MAX, maxv = INT_MIN;
+        for (int i = 0, j = arr.size()-1; i < arr.size(); ++i, --j) {
+            maxv = max(maxv, arr[i]);
+            minv = min(minv, arr[j]);
+            max_arr[i] = maxv;
+            min_arr[j] = minv;
+        }
+        int res = 1;
+        for (int i = 0; i < arr.size()-1; ++i) {
+            res += max_arr[i] <= min_arr[i+1];
+        }
+        return res;
     }
 };
 
@@ -26,19 +24,19 @@ public:
 class Solution {
 public:
     int maxChunksToSorted(vector<int>& arr) {
-    	stack<int> sk;
-    	for (int i = 0; i < arr.size(); ++i)
-    	{
-    		if (sk.size() && arr[sk.top()] > arr[i])
-    		{
-    			int maxv = sk.top();
-    			sk.pop();
-    			while (sk.size() && arr[sk.top()] > arr[i])
-    				sk.pop();
-    			sk.push(maxv);
-    		}
-    		else sk.push(i);
-    	}
-    	return sk.size();
+        vector<int> sk;
+        for (auto &num: arr) {
+            if (sk.size() && sk.back() > num) {
+                auto maxv = sk.back();
+                sk.pop_back();
+                while (sk.size() && sk.back() > num) {
+                    sk.pop_back();
+                }
+                sk.push_back(maxv);
+            } else {
+                sk.push_back(num);
+            }
+        }
+        return sk.size();
     }
 };

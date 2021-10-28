@@ -1,4 +1,4 @@
-//--- Q: 772. Basic Calculator III
+//--- Q: 0772. Basic Calculator III
 
 //--- method 1: recursion + stack
 class Solution {
@@ -8,45 +8,96 @@ public:
         return dfs(idx, s);
     }
     int dfs(int &idx, string &s) {
-        char lastop = '+';
-        int cur = 0;
         vector<int> sk;
+        char lastop = '+';
+        int sum = 0, val = 0;
         while (idx < s.size()) {
             if (s[idx] == '(') {
                 ++idx;
-                cur = dfs(idx, s);
+                val = dfs(idx, s);
             } else if (s[idx] == ')') {
                 ++idx;
-                count(cur, lastop, sk);
-                return pop(sk);
+                push(sk, lastop, val);
+                return combine(sk);
             } else if (isdigit(s[idx])) {
-                cur = cur * 10 + (s[idx++]-'0');
+                val = val*10 + s[idx++]-'0';
             } else {
-                count(cur, lastop, sk);
-                cur = 0;
+                push(sk, lastop, val);
                 lastop = s[idx++];
+                val = 0;
             }
         }
-        count(cur, lastop, sk);
-        return pop(sk);
+        push(sk, lastop, val);
+        return combine(sk);
     }
-    int pop(vector<int> &sk) {
-        int total = 0;
-        while (sk.size()) {
-            total += sk.back();
-            sk.pop_back();
-        }
-        return total;
-    }
-    void count(int cur, char lastop, vector<int> &sk) {
-        if (lastop == '+') {
-            sk.push_back(cur);
-        } else if (lastop == '-') {
-            sk.push_back(-cur);
-        } else if (lastop == '*') {
-            sk.back() *= cur;
+    void push(vector<int> &sk, char op, int val) {
+        if (op == '+') {
+            sk.push_back(val);
+        } else if (op == '-') {
+            sk.push_back(-val);
+        } else if (op == '*') {
+            sk.back() *= val;
         } else {
-            sk.back() /= cur;
+            sk.back() /= val;
         }
+    }
+    int combine(vector<int> &sk) {
+        int sum = 0;
+        for (auto &val: sk) {
+            sum += val;
+        }
+        return sum;
+    }
+};
+
+//--- method 2: two stack iteration
+class Solution {
+public:
+    int calculate(string s) {
+        vector<int> cur;
+        vector<pair<vector<int>, char>> cache;
+        char lastop = '+';
+        int idx = 0, val = 0;
+        while (idx < s.size()) {
+            if (s[idx] == '(') {
+                ++idx;
+                cache.push_back({cur,lastop});
+                lastop = '+';
+                cur.clear();
+            } else if (s[idx] == ')') {
+                ++idx;
+                push(cur, lastop, val);
+                val = combine(cur);
+                cur = cache.back().first;
+                lastop = cache.back().second;
+                cache.pop_back();
+            } else if (isdigit(s[idx])) {
+                val = val*10 + s[idx++]-'0';
+            } else {
+                push(cur, lastop, val);
+                lastop = s[idx++];
+                val = 0;
+            }
+        }
+        push(cur, lastop, val);
+        return combine(cur);
+    }
+    void push(vector<int> &sk, char op, int val) {
+        if (op == '+') {
+            sk.push_back(val);
+        } else if (op == '-') {
+            sk.push_back(-val);
+        } else if (op == '*') {
+            sk.back() *= val;
+        } else {
+            sk.back() /= val;
+        }
+    }
+    int combine(vector<int> &sk) {
+        int sum = 0;
+        for (auto &val: sk) {
+            sum += val;
+        }
+        return sum;
     }
 };
