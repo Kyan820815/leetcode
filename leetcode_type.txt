@@ -198,6 +198,7 @@
     1493(m): Longest Subarray of 1's After Deleting One Element
     1544(e): Make The String Great
     1570(m): Dot Product of Two Sparse Vectors
+    1616(m): Split Two Strings to Make Palindrome
     1662(e): Check If Two String Arrays are Equivalent
     1695(m): Maximum Erasure Value
     1696(m): Jump Game VI
@@ -216,6 +217,7 @@
     0378(m): Kth Smallest Element in a Sorted Matrix
     0973(m): K Closest Points to Origin
     1387(m): Sort Integers by The Power Value
+    1985(m): Find the Kth Largest Integer in the Array
 
 --- Heap:
     0215(m): Kth Largest Element in an Array
@@ -304,6 +306,7 @@
     1202(m): Smallest String With Swaps 
     1135(m): Connecting Cities With Minimum Cost
     1319(m): Number of Operations to Make Network Connected
+    1971(e): Find if Path Exists in Graph
 
 --- Stack:
     0020(e): Valid Parentheses 
@@ -454,6 +457,7 @@
     1306(m): Jump Game III
     1311(m): Get Watched Videos by Your Friends
     1345(h): Jump Game IV
+    1361(m): Validate Binary Tree Nodes
     1376(m): Time Needed to Inform All Employees
     1391(m): Check if There is a Valid Path in a Grid
     1425(h): Constrained Subsequence Sum
@@ -463,6 +467,7 @@
     1670(m): Design Front Middle Back Queue
     1696(m): Jump Game VI
     1730(m): Shortest Path to Get Food
+    1791(e): Find Center of Star Graph
     1824(m): Minimum Sideway Jumps
     1871(m): Jump Game VII
 
@@ -601,11 +606,16 @@
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
     1340(h): Jump Game V
+    1361(m): Validate Binary Tree Nodes
     1376(m): Time Needed to Inform All Employees
     1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
     1462(m): Course Schedule IV
     1666(m): Change the Root of a Binary Tree
     1905(m): Count Sub Islands
+    1971(e): Find if Path Exists in Graph
+    1973(m): Count Nodes Equal to Sum of Descendants
+    2039(m): The Time When the Network Becomes Idle
+    2049(m): Count Nodes With the Highest Score
 
 --- Greedy:
     0045(m): Jump Game II
@@ -643,6 +653,7 @@
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
+    1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
     1758(e): Minimum Changes To Make Alternating Binary String
     1762(m): Buildings With an Ocean View
@@ -654,6 +665,7 @@
     1893(e): Check if All the Integers in a Range Are Covered
     1897(e): Redistribute Characters to Make All Strings Equal
     1903(e): Largest Odd Number in String
+    2077(m): Paths in Maze That Lead to Same Room
 
 --- Dynamic Programming:
     0005(m): Longest Palindromic Substring
@@ -879,6 +891,7 @@
     0535(m): Encode and Decode TinyURL
     0547(m): Number of Provinces
     0560(m): Subarray Sum Equals K
+    0562(m): Longest Line of Consecutive One in Matrix
     0575(e): Distribute Candies
     0582(m): Kill Process
     0594(e): Longest Harmonious Subsequence
@@ -953,6 +966,8 @@
     1684(e): Count the Number of Consistent Strings
     1772(m): Sort Features by Popularity
     1902(m): Depth of BST Given Insertion Order
+    1985(m): Find the Kth Largest Integer in the Array
+    2077(m): Paths in Maze That Lead to Same Room
 
 --- Design:
     0146(m): LRU Cache
@@ -1221,6 +1236,7 @@
     1422(e): Maximum Score After Splitting a String
     1525(m): Number of Good Ways to Split a String
     1573(m): Number of Ways to Split a String
+    1616(m): Split Two Strings to Make Palindrome
     1624(e): Largest Substring Between Two Equal Characters
     1662(e): Check If Two String Arrays are Equivalent
     1684(e): Count the Number of Consistent Strings
@@ -1233,6 +1249,7 @@
     1832(e): Check if the Sentence Is Pangram
     1844(e): Replace All Digits with Characters
     1859(e): Sorting the Sentence
+    1985(m): Find the Kth Largest Integer in the Array
 
 --- Array:
     0004(h): Median of Two Sorted Arrays
@@ -1395,6 +1412,7 @@
     0542(m): 01 Matrix
     0547(m): Number of Provinces
     0561(e): Array Partition I
+    0562(m): Longest Line of Consecutive One in Matrix
     0565(m): Array Nesting
     0566(e): Reshape the Matrix
     0575(e): Distribute Candies
@@ -1551,6 +1569,7 @@
     1784(e): Check if Binary String Has at Most One Segment of Ones
     1877(m): Minimize Maximum Pair Sum in Array
     1905(m): Count Sub Islands
+    1985(m): Find the Kth Largest Integer in the Array
 
 --- Bit Manipulation:
     0067(e): Add Binary 
@@ -1674,7 +1693,11 @@
     1462(m): Course Schedule IV
     1466(m): Reorder Routes to Make All Paths Lead to the City Zero
     1557(m): Minimum Number of Vertices to Reach All Nodes
+    1791(e): Find Center of Star Graph
     1905(m): Count Sub Islands
+    1971(e): Find if Path Exists in Graph
+    2039(m): The Time When the Network Becomes Idle
+    2077(m): Paths in Maze That Lead to Same Room
 
 --- Trie Tree:
     0208(m): Implement Trie (Prefix Tree)
@@ -1838,6 +1861,7 @@
     1315(m): Sum of Nodes with Even-Valued Grandparent
     1325(m): Delete Leaves With a Given Value
     1339(m): Maximum Product of Splitted Binary Tree
+    1361(m): Validate Binary Tree Nodes
     1367(m): Linked List in Binary Tree
     1372(m): Longest ZigZag Path in a Binary Tree
     1376(m): Time Needed to Inform All Employees
@@ -1867,6 +1891,8 @@
     1676(m): Lowest Common Ancestor of a Binary Tree IV
     1740(m): Find Distance in a Binary Tree
     1902(m): Depth of BST Given Insertion Order
+    1973(m): Count Nodes Equal to Sum of Descendants
+    2049(m): Count Nodes With the Highest Score
 
 --- Sequence:
     0031(m): Next Permutation
@@ -1974,6 +2000,7 @@
     1716(e): Calculate Money in Leetcode Bank
     1780(m): Check if Number is a Sum of Powers of Three
     1822(e): Sign of the Product of an Array
+    2039(m): The Time When the Network Becomes Idle
 
 --- Reservoir Sampling:
     0382(m): Linked List Random Node
