@@ -1,34 +1,60 @@
-//--- Q: 0838. Push Dominoes
+//--- Q: 838. Push Dominoes
 
 //--- method 1: in place linear time
 class Solution {
 public:
     string pushDominoes(string dominoes) {
-        int last = -1;
-        for (int i = 0; i < dominoes.size(); ++i) {
+        int n = dominoes.size(), idx, last = -1;
+        for (int i = last+1; i < n; ++i) {
             if (dominoes[i] == '.') {
-                if (last != -1 && dominoes[last] == 'R') {
+                if (last >= 0 && dominoes[last] == 'R') {
                     dominoes[i] = 'R';
                 }
-            } else {
-                if (dominoes[i] == 'L') {
-                    int start;
-                    if (last != -1 && dominoes[last] == 'R') {
-                        int mid = last+(i-last)/2;
-                        if (!((last+i)&1)) {
-                            dominoes[mid] = '.';
-                        }
-                        start = mid+1;
-                    } else {
-                        start = last+1;
-                    }
-                    for (int j = start; j < i; ++j) {
-                        dominoes[j] = 'L';
+                continue;
+            } else if (dominoes[i] == 'L' && i-last > 1) {
+                int end = last;
+                if (last >= 0 && dominoes[last] == 'R') {
+                    end = (last+i)/2;
+                    if ((last+i) % 2 == 0) {
+                        dominoes[end] = '.';
                     }
                 }
-                last = i;
+                for (int j = i-1; j > end; --j) {
+                    dominoes[j] = 'L';
+                }
             }
+            last = i;
         }
         return dominoes;
+    }
+};
+
+//--- method 2: two pointer
+class Solution {
+public:
+    string pushDominoes(string dominoes) {
+        dominoes = "L" + dominoes + "R";
+        int left = 0, right = 1;
+        string res = "";
+        while (right < dominoes.size()) {
+            if (dominoes[right] == '.') {
+                ++right;
+                continue;
+            }
+            int midlen = right-left-1;
+            if (midlen) {
+                if (dominoes[left] == dominoes[right]) {
+                    res += string(midlen, dominoes[left]);
+                } else if (dominoes[left] == 'R' && dominoes[right] == 'L') {
+                    res += string(midlen/2, 'R') + string(midlen%2, '.') + string(midlen/2, 'L');
+                } else if (dominoes[right] == 'R' && dominoes[left] == 'L') {
+                    res += string(midlen, '.');
+                }
+            }
+            res += dominoes[right];
+            left = right++;
+        }
+        res.pop_back();
+        return res;
     }
 };
