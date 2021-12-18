@@ -44,7 +44,7 @@ public:
                 parent[ap] = bp;
             }
         }
-        return start == end || parent[start] != -1 && findp(start) == findp(end);
+        return findp(start) == findp(end);
     }
     int findp(int now) {
         if (parent[now] == now) {

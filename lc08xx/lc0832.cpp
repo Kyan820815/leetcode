@@ -1,26 +1,21 @@
-//--- Q: 832. Flipping an Image
+//--- Q: 0832. Flipping an Image
 
-//--- method 1: 
+//--- method 1: find equal value and xor
 class Solution {
 public:
-    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
-        for (int i = 0; i < A.size(); ++i)
-        	reverse(A[i].begin(), A[i].end());
-        for (int i = 0; i < A.size(); ++i)
-        	for (int j = 0; j < A[i].size(); ++j)
-				A[i][j] ^= 1;
-		return A;        		
-    }
-};
-
-//--- method 2: copy then rewrite
-class Solution {
-public:
-    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
-    	vector<vector<int>> B(A.size());
-        for (int i = 0; i < A.size(); ++i)
-        	for (int j = A[i].size()-1; j >= 0; --j)
-				B[i].push_back(A[i][j]^1);
-		return B;        		
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& image) {
+        int row = image.size(), col = image[0].size();
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col/2; ++j) {
+                if (image[i][j] == image[i][col-j-1]) {
+                    image[i][j] ^= 1;
+                    image[i][col-j-1] ^= 1;
+                }
+            }
+            if (col&1) {
+                image[i][col/2] ^= 1;
+            }
+        }
+        return image;
     }
 };
