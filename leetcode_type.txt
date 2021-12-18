@@ -161,6 +161,7 @@
     0777(m): Swap Adjacent in LR String
     0792(m): Number of Matching Subsequences
     0809(m): Expressive Words
+    0830(e): Positions of Large Groups
     0838(m): Push Dominoes
     0844(e): Backspace String Compare
     0845(m): Longest Mountain in Array
@@ -211,6 +212,8 @@
     1839(m): Longest Substring Of All Vowels in Order
     1869(e): Longer Contiguous Segments of Ones than Zeros
     1877(m): Minimize Maximum Pair Sum in Array
+    2062(e): Count Vowel Substrings of a String
+    2095(m): Delete the Middle Node of a Linked List
 
 --- Quick Select:
     0215(m): Kth Largest Element in an Array
@@ -283,6 +286,9 @@
     1700(e): Number of Students Unable to Eat Lunch
     1874(m): Minimize Product Sum of Two Arrays
     1897(e): Redistribute Characters to Make All Strings Equal
+    1941(e): Check if All Characters Have Equal Number of Occurrences
+    2068(e): Check Whether Two Strings are Almost Equivalent
+    2089(e): Find Target Indices After Sorting Array
 
 --- Union Find:
     0200(m): Number of Islands
@@ -400,6 +406,7 @@
     0232(e): Implement Queue using Stacks
     0239(h): Sliding Window Maximum
     0261(m): Graph Valid Tree
+    0281(m): Zigzag Iterator
     0286(m): Walls and Gates
     0301(h): Remove Invalid Parentheses
     0310(m): Minimum Height Trees
@@ -470,6 +477,7 @@
     1791(e): Find Center of Star Graph
     1824(m): Minimum Sideway Jumps
     1871(m): Jump Game VII
+    2073(e): Time Needed to Buy Tickets
 
 --- Recursion:
     0017(m): Letter Combinations of a Phone Number
@@ -611,6 +619,7 @@
     1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
     1462(m): Course Schedule IV
     1666(m): Change the Root of a Binary Tree
+    1804(m): Implement Trie II (Prefix Tree)
     1905(m): Count Sub Islands
     1971(e): Find if Path Exists in Graph
     1973(m): Count Nodes Equal to Sum of Descendants
@@ -665,7 +674,9 @@
     1893(e): Check if All the Integers in a Range Are Covered
     1897(e): Redistribute Characters to Make All Strings Equal
     1903(e): Largest Odd Number in String
+    2027(e): Minimum Moves to Convert String
     2077(m): Paths in Maze That Lead to Same Room
+    2078(e): Two Furthest Houses With Different Colors
 
 --- Dynamic Programming:
     0005(m): Longest Palindromic Substring
@@ -757,6 +768,7 @@
     1664(m): Ways to Make a Fair Array
     1824(m): Minimum Sideway Jumps
     1871(m): Jump Game VII
+    2016(e): Maximum Difference Between Increasing Elements
 
 --- Sub Series:
     0003(m): Longest Substring Without Repeating Characters
@@ -821,6 +833,8 @@
     1352(m): Product of the Last K Numbers
     1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum
     1512(m): Number of Good Pairs
+    1991(e): Find the Middle Index in Array
+    2083(m): Substrings That Begin and End With the Same Letter
 
 --- Map:
     0001(e): Two Sum
@@ -965,9 +979,15 @@
     1676(m): Lowest Common Ancestor of a Binary Tree IV
     1684(e): Count the Number of Consistent Strings
     1772(m): Sort Features by Popularity
+    1858(m): Longest Word With All Prefixes
     1902(m): Depth of BST Given Insertion Order
+    1941(e): Check if All Characters Have Equal Number of Occurrences
     1985(m): Find the Kth Largest Integer in the Array
+    2021(m): Brightest Position on Street
+    2068(e): Check Whether Two Strings are Almost Equivalent
     2077(m): Paths in Maze That Lead to Same Room
+    2083(m): Substrings That Begin and End With the Same Letter
+    2085(e): Count Common Words With One Occurrence
 
 --- Design:
     0146(m): LRU Cache
@@ -978,6 +998,7 @@
     0225(e): Implement Stack using Queues
     0232(e): Implement Queue using Stacks
     0244(m): Shortest Word Distance II
+    0281(m): Zigzag Iterator
     0295(h): Find Median from Data Stream
     0297(h): Serialize and Deserialize Binary Tree
     0303(e): Range Sum Query - Immutable
@@ -1016,6 +1037,7 @@
     1628(m): Design an Expression Tree With Evaluate Function 
     1656(e): Design an Ordered Stream
     1670(m): Design Front Middle Back Queue
+    1804(m): Implement Trie II (Prefix Tree)
 
 --- Linked List:
     0002(m): Add Two Numbers 
@@ -1070,6 +1092,9 @@
     1670(m): Design Front Middle Back Queue
     1721(m): Swapping Nodes in a Linked List
     1836(m): Remove Duplicates From an Unsorted Linked List
+    2046(m): Sort Linked List Already Sorted Using Absolute Values
+    2058(m): Find the Minimum and Maximum Number of Nodes Between Critical Points
+    2095(m): Delete the Middle Node of a Linked List
 
 --- Duplicate:
     0026(e): Remove Duplicates from Sorted Array
@@ -1230,6 +1255,8 @@
     0791(m): Custom Sort String
     0792(m): Number of Matching Subsequences
     0796(e): Rotate String
+    0830(e): Positions of Large Groups
+    0838(m): Push Dominoes
     0884(e): Uncommon Words from Two Sentences
     1065(e): Index Pairs of a String
     1165(e): Single-Row Keyboard
@@ -1248,8 +1275,18 @@
     1816(e): Truncate Sentence
     1832(e): Check if the Sentence Is Pangram
     1844(e): Replace All Digits with Characters
+    1858(m): Longest Word With All Prefixes
     1859(e): Sorting the Sentence
+    1941(e): Check if All Characters Have Equal Number of Occurrences
     1985(m): Find the Kth Largest Integer in the Array
+    2000(e): Reverse Prefix of Word
+    2011(e): Final Value of Variable After Performing Operations
+    2027(e): Minimum Moves to Convert String
+    2062(e): Count Vowel Substrings of a String
+    2068(e): Check Whether Two Strings are Almost Equivalent
+    2083(m): Substrings That Begin and End With the Same Letter
+    2085(e): Count Common Words With One Occurrence
+    2096(m): Step-By-Step Directions From a Binary Tree Node to Another
 
 --- Array:
     0004(h): Median of Two Sorted Arrays
@@ -1337,6 +1374,7 @@
     0260(m): Single Number III
     0268(e): Missing Number
     0280(m): Wiggle Sort
+    0281(m): Zigzag Iterator
     0283(e): Move Zeroes
     0286(m): Walls and Gates
     0287(m): Find the Duplicate Number
@@ -1567,9 +1605,20 @@
     1753(m): Maximum Score From Removing Stones
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1784(e): Check if Binary String Has at Most One Segment of Ones
+    1858(m): Longest Word With All Prefixes
     1877(m): Minimize Maximum Pair Sum in Array
     1905(m): Count Sub Islands
     1985(m): Find the Kth Largest Integer in the Array
+    1991(e): Find the Middle Index in Array
+    2011(e): Final Value of Variable After Performing Operations
+    2016(e): Maximum Difference Between Increasing Elements
+    2021(m): Brightest Position on Street
+    2022(e): Convert 1D Array Into 2D Array
+    2057(e): Smallest Index With Equal Value
+    2073(e): Time Needed to Buy Tickets
+    2078(e): Two Furthest Houses With Different Colors
+    2085(e): Count Common Words With One Occurrence
+    2089(e): Find Target Indices After Sorting Array
 
 --- Bit Manipulation:
     0067(e): Add Binary 
@@ -1626,6 +1675,7 @@
     1450(e): Number of Students Doing Homework at a Given Time
     1573(m): Number of Ways to Split a String
     1893(e): Check if All the Integers in a Range Are Covered
+    2021(m): Brightest Position on Street
 
 --- Graph:
     0062(m): Unique Paths
@@ -1706,6 +1756,8 @@
     0336(h): Palindrome Pairs
     0648(m): Replace Words
     0720(m): Longest Word in Dictionary
+    1804(m): Implement Trie II (Prefix Tree)
+    1858(m): Longest Word With All Prefixes
 
 --- Segment Tree:
     0307(m): Range Sum Query - Mutable
@@ -1890,9 +1942,12 @@
     1660(m): Correct a Binary Tree
     1676(m): Lowest Common Ancestor of a Binary Tree IV
     1740(m): Find Distance in a Binary Tree
+    1804(m): Implement Trie II (Prefix Tree)
+    1858(m): Longest Word With All Prefixes
     1902(m): Depth of BST Given Insertion Order
     1973(m): Count Nodes Equal to Sum of Descendants
     2049(m): Count Nodes With the Highest Score
+    2096(m): Step-By-Step Directions From a Binary Tree Node to Another
 
 --- Sequence:
     0031(m): Next Permutation
@@ -2001,6 +2056,7 @@
     1780(m): Check if Number is a Sum of Powers of Three
     1822(e): Sign of the Product of an Array
     2039(m): The Time When the Network Becomes Idle
+    2083(m): Substrings That Begin and End With the Same Letter
 
 --- Reservoir Sampling:
     0382(m): Linked List Random Node

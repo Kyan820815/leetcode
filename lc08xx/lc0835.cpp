@@ -1,29 +1,30 @@
-//--- Q: 835. Image Overlap
+//--- Q: 0835. Image Overlap
 
 //--- method 1: find difference for each pixel
 class Solution {
 public:
     int largestOverlap(vector<vector<int>>& img1, vector<vector<int>>& img2) {
-        int row = img1.size(), col = img1[0].size(), res = 0;
-        unordered_map<int, int> cnt;
-        unordered_set<int> cnt1, cnt2;
+        int row = img1.size(), col = img2.size();
+        unordered_set<int> set1, set2;
         for (int i = 0; i < row; ++i) {
             for (int j = 0; j < col; ++j) {
                 if (img1[i][j]) {
-                    cnt1.insert(i*100+j);
+                    set1.insert(i*100+j);
                 }
                 if (img2[i][j]) {
-                    cnt2.insert(i*100+j);
+                    set2.insert(i*100+j);
                 }
             }
         }
-        for (auto &n1: cnt1) {
-            for (auto &n2: cnt2) {
-                ++cnt[n2-n1];
+        unordered_map<int,int> cnt;
+        for (auto &v1: set1) {
+            for (auto &v2: set2) {
+                ++cnt[v1-v2];
             }
         }
-        for (auto &num: cnt) {
-            res = max(res, num.second);
+        int res = 0;
+        for (auto &v: cnt) {
+            res = max(res, v.second);
         }
         return res;
     }
