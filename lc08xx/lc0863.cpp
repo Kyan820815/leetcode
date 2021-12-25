@@ -1,4 +1,4 @@
-//--- Q: 863. All Nodes Distance K in Binary Tree
+//--- Q: 0863. All Nodes Distance K in Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -13,48 +13,43 @@
 //--- method 1: dfs+bfs
 class Solution {
 public:
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
-        unordered_map<TreeNode*,vector<TreeNode*>> graph;
-        unordered_set<TreeNode *> exist;
-        queue<TreeNode *> que;
-        int qsize = 1, dis = 0;
+    unordered_map<int, vector<int>> rel;
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        dfs(root, -1);
+        unordered_set<int> visit;
+        visit.insert(-1);
+        visit.insert(target->val);
         vector<int> res;
-        preorder(root, NULL, graph);
-        que.push(target);
-        exist.insert(target);
-        while (que.size())
-        {
-            for (int i = 0; i < qsize; ++i)
-            {
-                TreeNode *now = que.front();
+        queue<int> que;
+        que.push(target->val);
+        while (que.size() && k >= 0) {
+            auto qsize = que.size();
+            while (qsize--) {
+                auto now = que.front();
                 que.pop();
-                if (dis == K)
-                    res.push_back(now->val);
-                for (int j = 0; j < graph[now].size(); ++j)
-                {
-                    if (exist.count(graph[now][j])) continue;
-                    que.push(graph[now][j]);
-                    exist.insert(graph[now][j]);
+                if (!k) {
+                    res.push_back(now);
+                } else {
+                    for (auto &next: rel[now]) {
+                        if (visit.find(next) == visit.end()) {
+                            visit.insert(next);
+                            que.push(next);
+                        }
+                    }
                 }
             }
-            ++dis;
-            if (dis > K) break;
-            qsize = que.size();
+            --k;
         }
         return res;
     }
-    void preorder(TreeNode *root, TreeNode *parent, unordered_map<TreeNode*,vector<TreeNode*>> &graph)
-    {
-        if (parent)
-        {
-            graph[root].push_back(parent);
-            graph[parent].push_back(root);
+    void dfs(TreeNode *root, int p) {
+        rel[root->val].push_back(p);
+        rel[p].push_back(root->val);
+        if (root->left) {
+            dfs(root->left, root->val);
         }
-        parent = root;
-        if (root->left)
-            preorder(root->left, parent, graph);
-        if (root->right)
-            preorder(root->right, parent, graph);
+        if (root->right) {
+            dfs(root->right, root->val);
+        }
     }
-
 };

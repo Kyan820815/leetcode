@@ -1,62 +1,56 @@
-//--- Q: 819. Most Common Word
+//--- Q: 0819. Most Common Word
 
-//--- method 1: string operation, clean code
+//--- method 1: string operation
 class Solution {
 public:
     string mostCommonWord(string paragraph, vector<string>& banned) {
-    	string str, res = "";
-    	int maxv = INT_MIN;
-    	unordered_map<string, int> map;
-    	for (int i = 0; i < banned.size(); ++i)
-    		map[banned[i]] = -1;
-    	for (int i = 0; i < paragraph.size(); ++i)
-    		paragraph[i] = (isalpha(paragraph[i])) ? tolower(paragraph[i]) : ' ';
-    	istringstream ss(paragraph);
-    	while (ss >> str)
-    	{
-    		if (map[str] != -1)
-    			++map[str];
-    		if (map[str] > maxv)
-    		{
-    			maxv = map[str];
-    			res = str;
-    		}
-    	}
-    	return res;
+        istringstream ss(paragraph);
+        string str = "";
+        map<string,int> map;
+        unordered_set<string> ban_set(banned.begin(), banned.end());
+        for (int i = 0; i <= paragraph.size(); ++i) {
+            if (i == paragraph.size() || !isalpha(paragraph[i])) {
+                if (str.size() && ban_set.find(str) == ban_set.end()) {
+                    ++map[str];
+                }
+                str = "";
+            } else {
+                str.push_back(tolower(paragraph[i]));
+            }
+        }
+        int res = 0;
+        string resstr = "";
+        for (auto &node: map) {
+            if (node.second > res) {
+                res = node.second;
+                resstr = node.first;
+            }
+        }
+        return resstr;
     }
 };
 
-//--- method 2: string operation
+//--- method 2: string operation with stringstream
 class Solution {
 public:
     string mostCommonWord(string paragraph, vector<string>& banned) {
-    	string str;
-    	int maxv = INT_MIN, idx = 0;
-    	unordered_map<string, int> map;
-    	for (int i = 0; i < banned.size(); ++i)
-    		map[banned[i]] = -1;
-    	while (idx < paragraph.size())
-    	{
-    		string now = "";
-    		while (idx < paragraph.size() && ((paragraph[idx] >= 'a' && paragraph[idx] <= 'z') 
-    			                           || (paragraph[idx] >= 'A' && paragraph[idx] <= 'Z')))
-    		{
-    			if (paragraph[idx] >= 'A' && paragraph[idx] <= 'Z')
-    				paragraph[idx] ^= 32;
-    			now.push_back(paragraph[idx++]);
-    		}
-    		if (now != "" && map[now] != -1)
-    			++map[now];
-    		++idx;
-    	}
-    	for (auto &m: map)
-    	{
-    		if (m.second > maxv)
-    		{
-    			maxv = m.second;
-    			str = m.first;
-    		}
-    	}
-    	return str;
+        map<string,int> map;
+        unordered_set<string> ban_set(banned.begin(), banned.end());
+        for (int i = 0; i < paragraph.size(); ++i) {
+            paragraph[i] = isalpha(paragraph[i]) ? tolower(paragraph[i]) : ' ';
+        }
+        istringstream ss(paragraph);
+        string word, resstr;
+        int res = 0;
+        while (ss >> word) {
+            if (ban_set.find(word) != ban_set.end()) {
+                continue;
+            }
+            if (++map[word] > res) {
+                res = map[word];
+                resstr = word;
+            }
+        }
+        return resstr;
     }
 };

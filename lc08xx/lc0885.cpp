@@ -1,66 +1,23 @@
-//--- Q: Spiral Matrix III
+//--- Q: 0885. Spiral Matrix III
 
 //--- method 1: boundary condition
 class Solution {
 public:
-    vector<vector<int>> spiralMatrixIII(int R, int C, int r0, int c0) {
-        int cnt = R*C-1, hor = 1, ver = 1, now;
-        vector<vector<int>> res;
-        res.push_back({r0, c0});
-        
+    vector<vector<int>> spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
+        vector<vector<int>> res = {{rStart, cStart}}, dirs = {{0,1},{1,0}};
+        int cnt = rows*cols-1, r = rStart, c = cStart, sign = 1, len = 1;
         while (cnt) {
-            // right
-            now = hor++;
-            while (now--) {
-                c0++;
-                if (c0 < C && c0 >= 0 && r0 < R && r0 >= 0) {
-                    res.push_back({r0, c0});
-                    if (!--cnt)
-                        break;
+            for (auto &dir: dirs) {
+                for (int i = 0; i < len; ++i) {
+                    r += dir[0]*sign;
+                    c += dir[1]*sign;
+                    if (r >= 0 && r < rows && c >= 0 && c < cols) {
+                        res.push_back({r,c});
+                        cnt--;
+                    }
                 }
             }
-            if (!cnt)
-                break;
-            
-            // down
-            now = ver++;
-            while (now--) {
-                r0++;
-                if (c0 < C && c0 >= 0 && r0 < R && r0 >= 0) {
-                    res.push_back({r0, c0});
-                    if (!--cnt)
-                        break;
-                }
-            }
-            if (!cnt)
-                break;
-            
-            // left
-            now = hor++;
-            while (now--) {
-                c0--;
-                if (c0 < C && c0 >= 0 && r0 < R && r0 >= 0) {
-                    res.push_back({r0, c0});
-                    if (!--cnt)
-                        break;
-                }
-            }
-            if (!cnt)
-                break;
-
-            // up
-            now = ver++;
-            while (now--) {
-                r0--;
-                if (c0 < C && c0 >= 0 && r0 < R && r0 >= 0) {
-                    res.push_back({r0, c0});
-                    if (!--cnt)
-                        break;
-                }
-            }
-            if (!cnt)
-                break;
-
+            ++len, sign *= -1;
         }
         return res;
     }

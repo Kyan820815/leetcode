@@ -1,19 +1,20 @@
-//--- Q: 821. Shortest Distance to a Character
+//--- Q: 0821. Shortest Distance to a Character
 
-//---method 1: two pass, O(1) space
+//---method 1: count distance by difference
 class Solution {
 public:
-    vector<int> shortestToChar(string S, char C) {
-        int n = S.size(), lastloc = -n;
-        vector<int> res(n, INT_MAX);
+    vector<int> shortestToChar(string s, char c) {
+        int n = s.size(), lastloc = -n;
+        vector<int> res(n, 0);
         for (int i = 0; i < n; ++i) {
-            if (S[i] == C) {
+            if (s[i] == c) {
                 lastloc = i;
+            } else {
+                res[i] = i-lastloc;
             }
-            res[i] = min(res[i], i-lastloc);
         }
         for (int i = lastloc-1; i >= 0; --i) {
-            if (S[i] == C) {
+            if (s[i] == c) {
                 lastloc = i;
             } else {
                 res[i] = min(res[i], lastloc-i);
@@ -23,26 +24,24 @@ public:
     }
 };
 
-//--- method 2: additional array to store idx, two pointer
+//--- method 2: count distance by addition
 class Solution {
 public:
-    vector<int> shortestToChar(string S, char C) {
-        int len = S.size();
-        vector<int> idx = {-len}, res;
-        for (int i = 0; i < len; ++i) {
-            if (S[i] == C) {
-                idx.push_back(i);
+    vector<int> shortestToChar(string s, char c) {
+        int n = s.size();
+        vector<int> res(n, 0);
+        for (int i = 0, cnt = n; i < n; ++i, ++cnt) {
+            if (s[i] == c) {
+                cnt = 0;
+            } else {
+                res[i] = cnt;
             }
         }
-        idx.push_back(2*len);
-        int left = 0, right = 1;
-        while (left < len) {
-            if (left <= idx[right]) {
-                int minval = min(left-idx[right-1], idx[right]-left);
-                res.push_back(minval);
-                ++left;
+        for (int i = n-1, cnt = n; i >= 0; --i, ++cnt) {
+            if (s[i] == c) {
+                cnt = 0;
             } else {
-                ++right;
+                res[i] = min(res[i], cnt);
             }
         }
         return res;

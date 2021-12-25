@@ -1,4 +1,4 @@
-//--- Q: 897. Increasing Order Search Tree
+//--- Q: 0897. Increasing Order Search Tree
 
 /**
  * Definition for a binary tree node.
@@ -14,45 +14,45 @@
 class Solution {
 public:
     TreeNode* increasingBST(TreeNode* root) {
-        stack<TreeNode *> sk;
-        TreeNode *now = root, *last, *dummy = new TreeNode(-1);
-        last = dummy;
-       	while (sk.size() || now)
-       	{
-       		while (now)
-       		{
-       			sk.push(now);
-       			now = now->left;
-       		}
-
-   			now = sk.top();
-   			sk.pop();
-   			//--- do something
-			last->right = now;
-			now->left = NULL;
-			last = now;
-   			now = now->right;
-       	}
-       	return dummy->right;
+        TreeNode *now = root, *dummy = new TreeNode(-1), *last = dummy;
+        vector<TreeNode *> sk;
+        while (now || sk.size()) {
+            while (now) {
+                sk.push_back(now);
+                now = now->left;
+            }
+            now = sk.back();
+            sk.pop_back();
+            now->left = nullptr;
+            last->right = now;
+            last = now;
+            now = now->right;
+        }
+        return dummy->right;
     }
 };
 
-//--- method 2: inorder recursion
-
+//--- method 2: O(1) traversal
 class Solution {
 public:
     TreeNode* increasingBST(TreeNode* root) {
-        TreeNode *dummy = new TreeNode(-1), *last = dummy;
-        inorder(root, &dummy, &last);
+        TreeNode *now = root, *dummy = new TreeNode(-1, nullptr, root), *last = dummy;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right) {
+                    now = now->right;
+                }
+                now->right = prev;
+                now = prev->left;
+                prev->left = nullptr;
+                last->right = now;
+            } else {
+                last = now;
+                now = now->right;
+            }
+        }
         return dummy->right;
-    }
-    void inorder(TreeNode *now, TreeNode **root, TreeNode **last) {
-        if (now->left)
-            inorder(now->left, root, last);
-        (*last)->right = now;
-        now->left = NULL;
-        *last = now;
-        if (now->right)
-            inorder(now->right, root, last);
     }
 };

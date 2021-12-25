@@ -7143,7 +7143,7 @@ https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-giv
 
 (1) 用prefix sum和deque，
     若A[right] - A[que.front()] >= K，表示這可能是最短，需要pop_front。
-    若A[right] - A[que.front()] <= 0，表示這段是負的，對於後面算>=k沒有幫助，需要pop_back
+    若A[right] - A[que.back()] <= 0，表示這段是負的，對於後面算>=k沒有幫助，需要pop_back
     space: O(n)，time：O(n)。
 
 ///////////////////////////////////////////////////////////////
@@ -9960,7 +9960,7 @@ follow up: >= k
 ///////////////////////////////////////////////////////////////
 
 最佳解： method 1
-
+類似875
 (1) binary search，left = 1, right = max(nums)
     time: O(nlog(right))
     注意round up，可以用(nums[i]+val-1) / val。

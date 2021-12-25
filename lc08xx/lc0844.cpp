@@ -1,25 +1,25 @@
-//--- Q: 844. Backspace String Compare
+//--- Q: 0844. Backspace String Compare
 
 //--- method 1: O(1) space
 class Solution {
 public:
-    bool backspaceCompare(string S, string T) {
-        int i = S.size()-1, j = T.size()-1;
-        while (1) {
+    bool backspaceCompare(string s, string t) {
+        int i = s.size()-1, j = t.size()-1;
+        while (i >= 0 || j >= 0) {
             int cnt = 0;
-            while (i >= 0 && (!isalpha(S[i]) || cnt)) {
-                if (S[i] == '#') {
+            while (i >= 0 && (cnt || s[i] == '#')) {
+                if (s[i] == '#') {
                     ++cnt;
-                } else if (cnt) {
+                } else {
                     --cnt;
                 }
                 --i;
             }
             cnt = 0;
-            while (j >= 0 && (!isalpha(T[j]) || cnt)) {
-                if (T[j] == '#') {
+            while (j >= 0 && (cnt || t[j] == '#')) {
+                if (t[j] == '#') {
                     ++cnt;
-                } else if (cnt) {
+                } else {
                     --cnt;
                 }
                 --j;
@@ -27,7 +27,7 @@ public:
             if (i < 0 || j < 0) {
                 break;
             }
-            if (S[i] != T[j]) {
+            if (s[i] != t[j]) {
                 return false;
             }
             --i, --j;
@@ -39,20 +39,26 @@ public:
 //--- method 2: O(n) space
 class Solution {
 public:
-    bool backspaceCompare(string S, string T) {
-        string s = "", t = "";
-        for (int i = 0; i < S.size(); ++i) {
-            if (S[i] == '#' && s.size())
-                s.pop_back();
-            else if (S[i] != '#')
-                s.push_back(S[i]);
+    bool backspaceCompare(string s, string t) {
+        string ns = "", nt = "";
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] == '#') {
+                if (ns.size()) {
+                    ns.pop_back();
+                }
+            } else {
+                ns += s[i];
+            }
         }
-        for (int i = 0; i < T.size(); ++i) {
-            if (T[i] == '#' && t.size())
-                t.pop_back();
-            else if (T[i] != '#')
-                t.push_back(T[i]);
+        for (int i = 0; i < t.size(); ++i) {
+            if (t[i] == '#') {
+                if (nt.size()) {
+                    nt.pop_back();
+                }
+            } else {
+                nt += t[i];
+            }
         }
-        return s == t;
+        return ns == nt;
     }
 };

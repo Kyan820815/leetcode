@@ -1,23 +1,24 @@
-//--- Q: 888. Fair Candy Swap
+//--- Q: 0888. Fair Candy Swap
 
 //--- method 1: unordered_set, find pair
 class Solution {
 public:
-    vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {
+    vector<int> fairCandySwap(vector<int>& aliceSizes, vector<int>& bobSizes) {
+        unordered_set<int> bset;
         int suma = 0, sumb = 0;
-        unordered_set<int> map(A.begin(), A.end());
-        for (int i = 0; i < A.size(); ++i) {
-            suma += A[i];
+        for (auto &v: aliceSizes) {
+            suma += v;
         }
-        for (int i = 0; i < B.size(); ++i) {
-            sumb += B[i];
+        for (auto &v: bobSizes) {
+            sumb += v;
+            bset.insert(v);
         }
-        int difa = (sumb - suma) / 2;
-        for (int i = 0; i < B.size(); ++i) {
-            if (map.find(B[i]-difa) != map.end()) {
-                return {B[i]-difa, B[i]};
+        int diff = (suma-sumb)/2;
+        for (auto &v: aliceSizes) {
+            if (bset.find(v-diff) != bset.end()) {
+                return {v, v-diff};
             }
         }
-        return {};
+        return {-1,-1};
     }
 };

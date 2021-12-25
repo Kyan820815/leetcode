@@ -1,4 +1,4 @@
-//--- Q: 865. Smallest Subtree with all the Deepest Nodes
+//--- Q: 0865. Smallest Subtree with all the Deepest Nodes
 
 /**
  * Definition for a binary tree node.
@@ -14,31 +14,23 @@
 class Solution {
 public:
     TreeNode* subtreeWithAllDeepest(TreeNode* root) {
-    	int depth = 0;
-        return postorder(root, depth);
+        int val = 0;
+        return postorder(root, val);
     }
-    TreeNode *postorder(TreeNode *root, int &depth)
-    {
-    	int ldepth = 0, rdepth = 0;
-    	TreeNode *lnode = NULL, *rnode = NULL;
-    	if (root->left)
-    		lnode = postorder(root->left, ldepth);
-    	if (root->right)
-    		rnode = postorder(root->right, rdepth);
-    	if (ldepth > rdepth)
-    	{
-    		depth = ldepth+1;
-    		return lnode;
-    	}
-    	else if (rdepth > ldepth)
-    	{
-    		depth = rdepth+1;
-    		return rnode;
-    	}
-    	else
-    	{
-    		depth = rdepth+1;
-    		return root;
-    	}
+    TreeNode *postorder(TreeNode *root, int &val) {
+        if (!root) {
+            return root;
+        }
+        int lv = 0, rv = 0;
+        auto left = postorder(root->left, lv);
+        auto right = postorder(root->right, rv);
+        val = max(lv,rv)+1;
+        if (lv == rv) {
+            return root;
+        } else if (lv > rv) {
+            return left;
+        } else {
+            return right;
+        }
     }
 };

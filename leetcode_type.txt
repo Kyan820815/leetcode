@@ -161,11 +161,11 @@
     0777(m): Swap Adjacent in LR String
     0792(m): Number of Matching Subsequences
     0809(m): Expressive Words
+    0821(e): Shortest Distance to a Character
     0830(e): Positions of Large Groups
     0838(m): Push Dominoes
     0844(e): Backspace String Compare
     0845(m): Longest Mountain in Array
-    0862(m): Shortest Subarray with Sum at Least K
     0876(e): Middle of the Linked List
     0881(m): Boats to Save People 
     0904(m): Fruit Into Baskets
@@ -235,6 +235,7 @@
     0692(m): Top K Frequent Words
     0703(e): Kth Largest Element in a Stream
     0743(m): Network Delay Time
+    0864(h): Shortest Path to Get All Keys
     0933(e): Number of Recent Calls
     0973(m): K Closest Points to Origin
     1046(e): Last Stone Weight
@@ -304,6 +305,7 @@
     0737(m): Sentence Similarity II
     0765(h): Couples Holding Hands
     0785(m): Is Graph Bipartite?
+    0886(m): Possible Bipartition
     0924(h): Minimize Malware Spread
     0947(m): Most Stones Removed with Same Row or Column 
     0959(m): Regions Cut By Slashes
@@ -359,7 +361,10 @@
     0739(m): Daily Temperatures
     0768(h): Max Chunks To Make Sorted II
     0772(h): Basic Calculator III
+    0844(e): Backspace String Compare
+    0856(m): Score of Parentheses
     0889(m): Construct Binary Tree from Preorder and Postorder Traversal
+    0897(e): Increasing Order Search Tree
     0901(m): Online Stock Span
     0907(m): Sum of Subarray Minimums
     0946(m): Validate Stack Sequences
@@ -442,7 +447,9 @@
     0784(m): Letter Case Permutation
     0785(m): Is Graph Bipartite?
     0797(m): All Paths From Source to Target
-    0862(m): Shortest Subarray with Sum at Least K
+    0841(m): Keys and Rooms
+    0862(h): Shortest Subarray with Sum at Least K
+    0863(m): All Nodes Distance K in Binary Tree
     0864(h): Shortest Path to Get All Keys
     0886(m): Possible Bipartition
     0909(m): Snakes and Ladders
@@ -498,6 +505,7 @@
     0090(m): Subsets II
     0093(m): Restore IP Addresses
     0094(e): Binary Tree Inorder Traversal
+    0095(m): Unique Binary Search Trees II
     0100(e): Same Tree
     0105(m): Construct Binary Tree from Preorder and Inorder Traversal
     0106(m): Construct Binary Tree from Inorder and Postorder Traversal 
@@ -609,6 +617,10 @@
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
     0841(m): Keys and Rooms
+    0863(m): All Nodes Distance K in Binary Tree
+    0865(m): Smallest Subtree with all the Deepest Nodes
+    0889(m): Construct Binary Tree from Preorder and Postorder Traversal
+    0894(m): All Possible Full Binary Trees
     1020(m): Number of Enclaves
     1137(e): N-th Tribonacci Number
     1197(m): Minimum Knight Moves
@@ -661,6 +673,10 @@
     0767(m): Reorganize String
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
+    0807(m): Max Increase to Keep City Skyline
+    0860(e): Lemonade Change
+    0861(m): Score After Flipping Matrix
+    0881(m): Boats to Save People 
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -741,11 +757,10 @@
     0718(m): Maximum Length of Repeated Subarray
     0740(m): Delete and Earn
     0746(e): Min Cost Climbing Stairs
-    0801(m): Minimum Swaps To Make Sequences Increasing
+    0801(h): Minimum Swaps To Make Sequences Increasing
     0823(m): Binary Trees With Factors
     0828(h): Count Unique Characters of All Substrings of a Given String
-    0861(m): Score After Flipping Matrix
-    0896(e): Monotonic Array
+    0894(m): All Possible Full Binary Trees
     0915(m): Partition Array into Disjoint Intervals
     0926(m): Flip String to Monotone Increasing
     0931(m): Minimum Falling Path Sum
@@ -822,7 +837,7 @@
     0528(m): Random Pick with Weight
     0560(m): Subarray Sum Equals K
     0724(e): Find Pivot Index
-    0862(m): Shortest Subarray with Sum at Least K
+    0862(h): Shortest Subarray with Sum at Least K
     0974(m): Subarray Sums Divisible by K
     1010(e): Pairs of Songs With Total Durations Divisible by 60
     1109(m): Corporate Flight Bookings
@@ -942,13 +957,18 @@
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
     0792(m): Number of Matching Subsequences
-    0811(e): Subdomain Visit Count
+    0811(m): Subdomain Visit Count
+    0817(m): Linked List Components
     0819(e): Most Common Word
-    0874(e): Walking Robot Simulation
+    0823(m): Binary Trees With Factors
+    0863(m): All Nodes Distance K in Binary Tree
+    0864(h): Shortest Path to Get All Keys
+    0874(m): Walking Robot Simulation
     0884(e): Uncommon Words from Two Sentences
+    0886(m): Possible Bipartition
     0888(e): Fair Candy Swap
     0890(m): Find and Replace Pattern
-    0893(e): Groups of Special-Equivalent Strings
+    0893(m): Groups of Special-Equivalent Strings
     0939(m): Minimum Area Rectangle
     0981(m): Time Based Key-Value Store
     0987(m): Vertical Order Traversal of a Binary Tree
@@ -1082,6 +1102,7 @@
     0716(e): Max Stack
     0725(m): Split Linked List in Parts
     0817(m): Linked List Components
+    0876(e): Middle of the Linked List
     1019(m): Next Greater Node In Linked Lis
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
     1265(m): Print Immutable Linked List in Reverse
@@ -1255,9 +1276,22 @@
     0791(m): Custom Sort String
     0792(m): Number of Matching Subsequences
     0796(e): Rotate String
+    0809(m): Expressive Words
+    0811(m): Subdomain Visit Count
+    0819(e): Most Common Word
+    0821(e): Shortest Distance to a Character
+    0828(h): Count Unique Characters of All Substrings of a Given String
+    0824(e): Goat Latin
     0830(e): Positions of Large Groups
     0838(m): Push Dominoes
+    0844(e): Backspace String Compare
+    0848(m): Shifting Letters
+    0856(m): Score of Parentheses
+    0872(e): Leaf-Similar Trees
+    0880(m): Decoded String at Index
     0884(e): Uncommon Words from Two Sentences
+    0890(m): Find and Replace Pattern
+    0893(m): Groups of Special-Equivalent Strings
     1065(e): Index Pairs of a String
     1165(e): Single-Row Keyboard
     1422(e): Maximum Score After Splitting a String
@@ -1502,20 +1536,34 @@
     0766(e): Toeplitz Matrix
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
+    0801(h): Minimum Swaps To Make Sequences Increasing
     0807(m): Max Increase to Keep City Skyline
+    0809(m): Expressive Words
+    0811(m): Subdomain Visit Count
     0821(e): Shortest Distance to a Character
-    0824(e): Goat Latin
+    0823(m): Binary Trees With Factors
     0830(e): Positions of Large Groups
     0832(e): Flipping an Image
     0835(m): Image Overlap
-    0840(e): Magic Squares In Grid
+    0840(m): Magic Squares In Grid
+    0845(m): Longest Mountain in Array
     0848(m): Shifting Letters
-    0849(e): Maximize Distance to Closest Person
-    0856(m): Score of Parentheses
+    0849(m): Maximize Distance to Closest Person
+    0852(e): Peak Index in a Mountain Array
     0860(e): Lemonade Change
+    0861(m): Score After Flipping Matrix
+    0862(h): Shortest Subarray with Sum at Least K
     0867(e): Transpose Matrix
+    0874(m): Walking Robot Simulation
+    0875(m): Koko Eating Bananas
+    0881(m): Boats to Save People 
     0885(m): Spiral Matrix III
+    0888(e): Fair Candy Swap
+    0889(m): Construct Binary Tree from Preorder and Postorder Traversal
+    0890(m): Find and Replace Pattern
     0892(e): Surface Area of 3D Shapes
+    0893(m): Groups of Special-Equivalent Strings
+    0896(e): Monotonic Array
     0905(e): Sort Array By Parity
     0908(e): Smallest Range I
     0912(m): Sort an Array
@@ -1641,6 +1689,8 @@
     0477(m): Total Hamming Distance
     0661(e): Image Smoother
     0709(e): To Lower Case
+    0861(m): Score After Flipping Matrix
+    0864(h): Shortest Path to Get All Keys
     1048(m): Longest String Chain
     1072(m): Flip Columns For Maximum Number of Equal Rows
     1018(e): Binary Prefix Divisible By 5
@@ -1717,7 +1767,10 @@
     0785(m): Is Graph Bipartite?
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
+    0841(m): Keys and Rooms
     0863(m): All Nodes Distance K in Binary Tree
+    0864(h): Shortest Path to Get All Keys
+    0886(m): Possible Bipartition
     0934(m): Shortest Bridge
     0935(m): Knight Dialer
     0947(m): Most Stones Removed with Same Row or Column 
@@ -1756,6 +1809,7 @@
     0336(h): Palindrome Pairs
     0648(m): Replace Words
     0720(m): Longest Word in Dictionary
+    0809(m): Expressive Words
     1804(m): Implement Trie II (Prefix Tree)
     1858(m): Longest Word With All Prefixes
 
@@ -1878,7 +1932,7 @@
     0872(e): Leaf-Similar Trees
     0889(m): Construct Binary Tree from Preorder and Postorder Traversal
     0894(m): All Possible Full Binary Trees
-    0896(e): Increasing Order Search Tree
+    0897(e): Increasing Order Search Tree
     0919(m): Complete Binary Tree Inserter
     0938(e): Range Sum of BST
     0951(m): Flip Equivalent Binary Trees
@@ -2040,6 +2094,9 @@
     0738(m): Monotone Increasing Digits
     0754(m): Reach a Number
     0772(h): Basic Calculator III
+    0840(m): Magic Squares In Grid
+    0888(e): Fair Candy Swap
+    0892(e): Surface Area of 3D Shapes
     0914(e): X of a Kind in a Deck of Cards
     0977(e): Squares of a Sorted Array
     0991(m): Broken Calculator

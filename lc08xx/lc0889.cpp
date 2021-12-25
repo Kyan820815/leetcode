@@ -1,4 +1,4 @@
-//--- Q: 889. Construct Binary Tree from Preorder and Postorder Traversal
+//--- Q: 0889. Construct Binary Tree from Preorder and Postorder Traversal
 
 /**
  * Definition for a binary tree node.
@@ -15,39 +15,41 @@
 //--- method 1: dfs
 class Solution {
 public:
-    int pre_idx = 0, post_idx = 0;
-    TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& post) {
-        TreeNode *root = new TreeNode(pre[pre_idx++]);
-        if (root->val != post[post_idx]) {
-            root->left = constructFromPrePost(pre, post);
+    int preidx = 0, postidx = 0;
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        TreeNode *now = new TreeNode(preorder[preidx++]);
+        if (now->val != postorder[postidx]) {
+            now->left = constructFromPrePost(preorder, postorder);
         }
-        if (root->val != post[post_idx]) {
-            root->right = constructFromPrePost(pre, post);
+        if (now->val != postorder[postidx]) {
+            now->right = constructFromPrePost(preorder, postorder);
         }
-        ++post_idx;
-        return root;
+        ++postidx;
+        return now;
     }
 };
 
 //--- method 2: stack iteration
 class Solution {
 public:
-    TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& post) {
-        vector<TreeNode *> tree;
-        tree.push_back(new TreeNode(pre[0]));
-        for (int i = 1, j = 0; i < pre.size(); ++i) {
-            TreeNode *now = new TreeNode(pre[i]);
-            while (tree.back()->val == post[j]) {
-                ++j;
-                tree.pop_back();
+    TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+        vector<TreeNode *> sk;
+        int preidx = 0, postidx = 0, n = preorder.size();
+        while (preidx < n) {
+            TreeNode *last = nullptr;
+            while (sk.size() && sk.back()->val == postorder[postidx]) {
+                last = sk.back();
+                sk.pop_back();
+                ++postidx;
             }
-            if (!tree.back()->left) {
-                tree.back()->left = now;
-            } else {
-                tree.back()->right = now;
+            auto now = new TreeNode(preorder[preidx++]);
+            if (last) {
+                sk.back()->right = now;
+            } else if (sk.size()) {
+                sk.back()->left = now;
             }
-            tree.push_back(now);
+            sk.push_back(now);
         }
-        return tree[0];
+        return sk[0];
     }
 };

@@ -4,28 +4,53 @@
 class Solution {
 public:
     vector<string> uncommonFromSentences(string s1, string s2) {
-        unordered_map<string, int> map;
         vector<string> res;
-        string str = "";
+        string word = "";
+        unordered_map<string, int> map;
         for (int i = 0; i <= s1.size(); ++i) {
             if (i == s1.size() || s1[i] == ' ') {
-                ++map[str];
-                str = "";
+                ++map[word];
+                word = "";
             } else {
-                str += s1[i];
+                word += s1[i];
             }
         }
         for (int i = 0; i <= s2.size(); ++i) {
             if (i == s2.size() || s2[i] == ' ') {
-                ++map[str];
-                str = "";
+                ++map[word];
+                word = "";
             } else {
-                str += s2[i];
+                word += s2[i];
             }
         }
-        for (auto &wd: map) {
-            if (wd.second == 1) {
-                res.push_back(wd.first);
+        for (auto &word: map) {
+            if (word.second == 1) {
+                res.push_back(word.first);
+            }
+        }
+        return res;
+    }
+};
+
+//--- method 2: istringstream parser
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string s1, string s2) {
+        vector<string> res;
+        istringstream ss(s1);
+        unordered_map<string, int> map;
+        string str;
+        while (ss >> str) {
+            ++map[str];
+        }
+        ss.clear();
+        ss.str(s2);
+        while (ss >> str) {
+            ++map[str];
+        }
+        for (auto &str: map) {
+            if (str.second == 1) {
+                res.push_back(str.first);
             }
         }
         return res;

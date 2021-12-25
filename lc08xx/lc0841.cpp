@@ -1,56 +1,51 @@
-//--- Q: 841. Keys and Rooms
+//--- Q: 0841. Keys and Rooms
 
-//--- method 1: bfs
+//--- method 1: dfs
 class Solution {
 public:
+    vector<int> visit;
+    int n;
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
-        int n = rooms.size(), qsize = 1;
-        vector<bool> exist(n, false);
-        exist[0] = true;
-        queue<int> que;
-        que.push(0);
-        while (que.size())
-        {
-        	for (int i = 0; i < qsize; ++i)
-        	{
-        		int now = que.front();
-        		n--;
-        		que.pop();
-        		for (int j = 0; j < rooms[now].size(); ++j)
-        		{
-        			if (!exist[rooms[now][j]])
-        			{
-        				que.push(rooms[now][j]);
-        				exist[rooms[now][j]] = true;
-        			}
-        		}
-        	}
-        	qsize = que.size();
+        n = rooms.size();
+        visit.resize(n, 0);
+        dfs(0, rooms);
+        return !n;
+    }
+    void dfs(int now, vector<vector<int>> &rooms) {
+        visit[now] = 1;
+        --n;
+        for (auto &next: rooms[now]) {
+            if (!visit[next]) {
+                dfs(next, rooms);
+            }
         }
-        return (n == 0) ? true : false;
     }
 };
 
-//--- method 2: dfs
+//--- method 2: bfs
 class Solution {
 public:
+    int res = 0;
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
         int n = rooms.size();
-        vector<bool> exist(n, false);
-        exist[0] = true;
-        dfs(rooms, exist, n, 0);
-        return (n == 0) ? true : false;
-    }
-    void dfs(vector<vector<int>> &rooms, vector<bool> &exist, int &n, int now)
-    {
-    	--n;
-    	for (int i = 0; i < rooms[now].size(); ++i)
-    	{
-    		if (!exist[rooms[now][i]])
-    		{
-    			exist[rooms[now][i]] = true;
-    			dfs(rooms, exist, n, rooms[now][i]);
-    		}
-    	}
+        vector<int> visit(n, 0);
+        queue<int> que;
+        que.push(0);
+        visit[0] = 1;
+        while (que.size()) {
+            auto qsize = que.size();
+            n -= qsize;
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                for (auto &next: rooms[now]) {
+                    if (!visit[next]) {
+                        visit[next] = 1;
+                        que.push(next);
+                    }
+                }
+            }
+        }
+        return !n;
     }
 };

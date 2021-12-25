@@ -1,54 +1,106 @@
-//--- Q: 864. Shortest Path to Get All Keys
+//--- Q: 0864. Shortest Path to Get All Keys
 
 //--- method 1: bfs with recording keys for each position
 class Solution {
 public:
     int shortestPathAllKeys(vector<string>& grid) {
-        vector<vector<int>> dir = {{-1,0}, {1,0}, {0,-1}, {0,1}};
-        int res = 0, row = grid.size(), col = grid[0].size();
-        int sr, sc, key = 0;
+        int row = grid.size(), col = grid[0].size(), tkey = 0, rstart, cstart;
+        vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        vector<vector<vector<int>>> visit(row, vector<vector<int>>(col, vector<int>(pow(2,7)-1, 0)));
         for (int i = 0; i < row; ++i) {
             for (int j = 0; j < col; ++j) {
-                if (grid[i][j] == '@') {
-                    sr = i, sc = j;
-                } else if (islower(grid[i][j])) {
-                    key |= (1 << (grid[i][j]-'a'));
+                if (islower(grid[i][j])) {
+                    tkey |= (1 << (grid[i][j]-'a'));
+                } else if (grid[i][j] == '@') {
+                    rstart = i, cstart = j;
                 }
             }
         }
         queue<vector<int>> que;
-        que.push({sr, sc, 0});
-        unordered_set<string> set;
-        set.insert(to_string(sr) + "_" + to_string(sc) + "_" + to_string(0));
+        que.push({0,rstart,cstart});
+        visit[rstart][cstart][0] = 1;
+        int dis = 0;
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                for (int j = 0; j < 4; ++j) {
-                    int nr = now[0] + dir[j][0];
-                    int nc = now[1] + dir[j][1];
+                int ckey = now[0], r = now[1], c = now[2];
+                if (ckey == tkey) {
+                    return dis;
+                }
+                for (auto &dir: dirs) {
+                    int nr = r+dir[0];
+                    int nc = c+dir[1];
+                    int nkey = ckey;
                     if (nr < 0 || nr >= row || nc < 0 || nc >= col || grid[nr][nc] == '#') {
                         continue;
                     }
-                    if (isupper(grid[nr][nc]) && ((1 << (tolower(grid[nr][nc])-'a')) & now[2]) == 0) {
+                    if (isupper(grid[nr][nc]) && !(ckey&(1<<(grid[nr][nc]-'A')))) {
                         continue;
                     }
-                    int nextkey = now[2];
                     if (islower(grid[nr][nc])) {
-                        nextkey |= (1 << (grid[nr][nc]-'a'));
+                        nkey |= (1 << (grid[nr][nc]-'a'));
                     }
-                    string tag = to_string(nr) + "_" + to_string(nc) + "_" + to_string(nextkey);
-                    if (nextkey == key) {
-                        return res+1;
-                    }
-                    if (set.find(tag) == set.end()) {
-                        set.insert(tag);
-                        que.push({nr, nc, nextkey});
+                    if (!visit[nr][nc][nkey]) {
+                        visit[nr][nc][nkey] = 1;
+                        que.push({nkey, nr, nc});
                     }
                 }
             }
-            ++res;
+            ++dis;
+        }
+        return -1;
+    }
+};
+
+//--- method 2: dijkstra
+class Solution {
+public:
+    int shortestPathAllKeys(vector<string>& grid) {
+        int row = grid.size(), col = grid[0].size(), tkey = 0, rstart, cstart;
+        vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        vector<vector<vector<int>>> visit(row, vector<vector<int>>(col, vector<int>(pow(2,7)-1, 0)));
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (islower(grid[i][j])) {
+                    tkey |= (1 << (grid[i][j]-'a'));
+                } else if (grid[i][j] == '@') {
+                    rstart = i, cstart = j;
+                }
+            }
+        }
+        auto comp = [](const vector<int> &a, const vector<int> &b) {
+            return a[0] > b[0];
+        };
+        priority_queue<vector<int>, vector<vector<int>>, decltype(comp)> que(comp);
+        que.push({0,0,rstart,cstart});
+        visit[rstart][cstart][0] = 1;
+        while (que.size()) {
+            auto now = que.top();
+            que.pop();
+            int dis = now[0], ckey = now[1], r = now[2], c = now[3];
+            if (ckey == tkey) {
+                return dis;
+            }
+            for (auto &dir: dirs) {
+                int nr = r+dir[0];
+                int nc = c+dir[1];
+                int nkey = ckey;
+                if (nr < 0 || nr >= row || nc < 0 || nc >= col || grid[nr][nc] == '#') {
+                    continue;
+                }
+                if (isupper(grid[nr][nc]) && !(ckey&(1<<(grid[nr][nc]-'A')))) {
+                    continue;
+                }
+                if (islower(grid[nr][nc])) {
+                    nkey |= (1 << (grid[nr][nc]-'a'));
+                }
+                if (!visit[nr][nc][nkey]) {
+                    visit[nr][nc][nkey] = 1;
+                    que.push({dis+1, nkey, nr, nc});
+                }
+            }
         }
         return -1;
     }

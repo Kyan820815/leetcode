@@ -1,4 +1,4 @@
-//--- Q: 814. Binary Tree Pruning
+//--- Q: 0814. Binary Tree Pruning
 
 /**
  * Definition for a binary tree node.
@@ -10,21 +10,20 @@
  * };
  */
 
-//--- method 1: dfs
+//--- method 1: postorder
 class Solution {
 public:
-    TreeNode* pruneTree(TreeNode* root) {
-        return dfs(root);
-    }
-    TreeNode *dfs(TreeNode *root)
-    {
-    	if (root->left)
-    		root->left = dfs(root->left);
-    	if (root->right)
-    		root->right = dfs(root->right);
-
-    	if (root->val == 0 && !root->left && !root->right)
-    		root = NULL;
-    	return root;
+    TreeNode *pruneTree(TreeNode *root) {
+        if (root->left) {
+            root->left = pruneTree(root->left);
+        }
+        if (root->right) {
+            root->right = pruneTree(root->right);
+        }
+        if (!root->left && !root->right && !root->val) {
+            return nullptr;
+        } else {
+            return root;
+        }
     }
 };

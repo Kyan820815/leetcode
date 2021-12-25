@@ -1,4 +1,4 @@
-//--- Q: 872. Leaf-Similar Trees
+//--- Q: 0872. Leaf-Similar Trees
 
 /**
  * Definition for a binary tree node.
@@ -10,22 +10,23 @@
  * };
  */
 
-//--- method 1: postorder
-class Solution {
+//--- method 1: preorder
 public:
     bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-		string str1 = "", str2 = "";
-		postorder(root1, str1);
-		postorder(root2, str2);
-		return str1 == str2;
+        string str1 = "", str2 = "";
+        preorder(root1, str1);
+        preorder(root2, str2);
+        return str1 == str2;
     }
-    void postorder(TreeNode *root, string &res)
-    {
-    	if (root->left)
-    		postorder(root->left, res);
-    	if (root->right)
-    		postorder(root->right, res);
-    	if (!root->left && !root->right)
-    		res.push_back(root->val+'0');
+    void preorder(TreeNode *root, string &str) {
+        if (!root->left && !root->right) {
+            str += (root->val+'0');
+        }
+        if (root->left) {
+            preorder(root->left, str);
+        }
+        if (root->right) {
+            preorder(root->right, str);
+        }
     }
 };

@@ -1,27 +1,33 @@
-//--- Q: 802. Find Eventual Safe States
+//--- Q: 0802. Find Eventual Safe States
 
 //--- method 1: dfs recursion
 class Solution {
 public:
+    vector<int> visit;
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
         int n = graph.size();
-        vector<int> visit(n, -1), res;
+        visit.resize(n, -1);
+        vector<int> res;
         for (int i = 0; i < n; ++i) {
-            if (dfs(i, graph, visit)) {
+            if (visit[i] == -1) {
+                dfs(i, graph);
+            }
+            if (visit[i]) {
                 res.push_back(i);
             }
         }
         return res;
     }
-    bool dfs(int now, vector<vector<int>>& graph, vector<int> &visit) {
-        // if visit before, return directly
+    int dfs(int now, vector<vector<int>> &graph) {
+        if (!graph[now].size()) {
+            return visit[now] = 1;
+        }
         if (visit[now] != -1) {
             return visit[now];
         }
-        // set current value to 0, will be updated after dfs from this point
         visit[now] = 0;
-        for (int i = 0; i < graph[now].size(); ++i) {
-            if (!dfs(graph[now][i], graph, visit)) {
+        for (auto &next: graph[now]) {
+            if (!dfs(next, graph)) {
                 return visit[now];
             }
         }

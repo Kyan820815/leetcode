@@ -1,37 +1,29 @@
-//--- Q: 890. Find and Replace Pattern
+//--- Q: 0890. Find and Replace Pattern
 
 //--- method 1: bijection vector
 class Solution {
 public:
     vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
         vector<string> res;
-        for (int i = 0; i < words.size(); ++i)
-        {
-        	string str = words[i];
-	        vector<int> go(26, -1);
-	        vector<int> inv(26, -1);
-        	bool right = true;
-        	for (int j = 0; j < str.size(); ++j)
-        	{
-        		if (go[str[j]-'a'] == -1)
-        		{
-        			go[str[j]-'a'] = pattern[j]-'a';
-        			if (inv[pattern[j]-'a'] == -1)
-        				inv[pattern[j]-'a'] = str[j]-'a';
-        			else if (inv[pattern[j]-'a'] != str[j]-'a')
-        			{
-        				right = false;
-        				break;
-        			}
-        		}
-        		else if (inv[pattern[j]-'a'] != str[j]-'a')
-        		{
-        			right = false;
-        			break;
-        		}
-        	}
-        	if (right)
-        		res.push_back(str);
+        for (auto &word: words) {
+            vector<int> fw(26, -1), bw(26, -1);
+            int find = 1;
+            for (int i = 0; i < word.size(); ++i) {
+                if (fw[word[i]-'a'] == -1) {
+                    fw[word[i]-'a'] = pattern[i]-'a';
+                    if (bw[pattern[i]-'a'] != -1) {
+                        find = 0;
+                        break;
+                    }
+                    bw[pattern[i]-'a'] = word[i]-'a';
+                } else if (fw[word[i]-'a'] != pattern[i]-'a') {
+                    find = 0;
+                    break;
+                }
+            }
+            if (find) {
+                res.push_back(word);
+            }
         }
         return res;
     }

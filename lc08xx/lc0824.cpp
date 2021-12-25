@@ -1,16 +1,19 @@
-//--- Q: 824. Goat Latin
+//--- Q: 0824. Goat Latin
 
 //--- method 1: linear processing
 class Solution {
 public:
-    string toGoatLatin(string S) {
-        string last = "a", word, res = "";
-        unordered_set<char> set({'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'});
-        istringstream ss(S);
-        while (ss >> word) {
-            res += set.find(word[0]) != set.end() ? word : string() + word.substr(1) + word[0];
-            res += "ma" + last + " ";
-            last += 'a';
+    string toGoatLatin(string sentence) {
+        istringstream ss(sentence);
+        string str, astr = "a", res = "";
+        unordered_set<char> set = {'a', 'e', 'i', 'o', 'u'};
+        while (ss >> str) {
+            if (set.find(str[0]) != set.end() || set.find(str[0]^32) != set.end()) {
+                res += str + "ma" + astr + " ";
+            } else {
+                res += str.substr(1) + str[0] + "ma" + astr + " ";
+            }
+            astr += 'a';
         }
         res.pop_back();
         return res;
