@@ -1,4 +1,4 @@
-//--- Q: 938. Range Sum of BST
+//--- Q: 0938. Range Sum of BST
 
 /**
  * Definition for a binary tree node.
@@ -13,18 +13,62 @@
 //--- method 1: inorder recursion
 class Solution {
 public:
-    int rangeSumBST(TreeNode* root, int L, int R) {
-        int res = 0;
-        if (root->val >= L && root->val <= R) {
+    int res = 0;
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        preorder(root, low, high);
+        return res;
+    }
+    void preorder(TreeNode *root, int low, int high) {
+        if (!root) {
+            return;
+        }
+        while (root) {
+            if (root->val < low) {
+                root = root->right;
+            } else if (root->val > high) {
+                root = root->left;
+            } else {
+                break;
+            }
+        }
+        if (root) {
             res += root->val;
-            if (root->left)
-                res += rangeSumBST(root->left, L, R);
-            if (root->right)
-                res += rangeSumBST(root->right, L, R);
-        } else if (root->left && root->val > R)
-            res += rangeSumBST(root->left, L, R);
-        else if (root->right && root->val < L)
-            res += rangeSumBST(root->right, L, R);
+            preorder(root->left, low, high);
+            preorder(root->right, low, high);
+        }
+    }
+};
+
+//--- method 2: morris traversal
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        auto now = root;
+        int res = 0;
+        while (now) {
+            if (now->left) {
+                auto prev = now;
+                now = now->left;
+                while (now->right && now->right != prev) {
+                    now = now->right;
+                }
+                if (now->right) {
+                    if (prev->val >= low && prev->val <= high) {
+                        res += prev->val;
+                    }
+                    now->right = nullptr;
+                    now = prev->right;
+                } else {
+                    now->right = prev;
+                    now = prev->left;
+                }
+            } else {
+                if (now->val >= low && now->val <= high) {
+                    res += now->val;
+                }
+                now = now->right;
+            }
+        }
         return res;
     }
 };

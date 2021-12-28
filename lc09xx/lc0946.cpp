@@ -1,33 +1,37 @@
-//--- Q: 946. Validate Stack Sequences
+//--- Q: 0946. Validate Stack Sequences
 
-//--- method 1: O(1) space two pointer
+//--- method 1: O(n) space
 class Solution {
 public:
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
         int idx = -1, j = 0;
-        for (int i = 0; i < pushed.size(); ++i) {
-            pushed[++idx] = pushed[i];
-            while (idx >= 0 && pushed[idx] == popped[j]) {
-                ++j, --idx;
+        for (int i = 0; i <= pushed.size(); ++i) {
+            while (idx >= 0 && j < popped.size() && pushed[idx] == popped[j]) {
+                --idx, ++j;
             }
+            if (i == pushed.size()) {
+                break;
+            }
+            swap(pushed[++idx], pushed[i]);
         }
-        return j == popped.size();
+        return idx == -1;
     }
 };
 
-//--- method 2: O(n) space
+//--- method 2: O(1) space two pointer
 class Solution {
 public:
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
-        vector<int> sk;
-        int i = 0, j = 0, n = pushed.size();
-        while (i < n && j < n) {
-            sk.push_back(pushed[i++]);
-            while (sk.size() && popped[j] == sk.back()) {
-                sk.pop_back();
-                ++j;
+        int idx = -1, j = 0;
+        for (int i = 0; i <= pushed.size(); ++i) {
+            while (idx >= 0 && j < popped.size() && pushed[idx] == popped[j]) {
+                --idx, ++j;
             }
+            if (i == pushed.size()) {
+                break;
+            }
+            swap(pushed[++idx], pushed[i]);
         }
-        return j == n;
+        return idx == -1;
     }
 };

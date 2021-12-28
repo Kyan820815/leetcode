@@ -1,14 +1,14 @@
-//--- Q: 908. Smallest Range I
+//--- Q: 0908. Smallest Range I
 
 //--- method 1: find max and min
 class Solution {
 public:
-    int smallestRangeI(vector<int>& A, int K) {
-        int maxv = INT_MIN, minv = INT_MAX;
-        for (int i = 0; i < A.size(); ++i) {
-            maxv = max(maxv, A[i]);
-            minv = min(minv, A[i]);
+    int smallestRangeI(vector<int>& nums, int k) {
+        int minv = INT_MAX, maxv = INT_MIN;
+        for (auto &num: nums) {
+            minv = min(minv, num);
+            maxv = max(maxv, num);
         }
-        return maxv-minv <= 2*K ? 0 : maxv-minv-2*K;
+        return maxv-minv > 2*k ? maxv-minv-2*k : 0;
     }
 };

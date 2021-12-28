@@ -1,17 +1,16 @@
-//--- Q: 933. Number of Recent Calls
+//--- Q: 0933. Number of Recent Calls
 
 //--- method 1: queue
 class RecentCounter {
 public:
     RecentCounter() {
-        
     }
     
     int ping(int t) {
-        while (que.size() && que.front() < t-3000) {
+        que.push(t);
+        while (que.size() && t-3000 > que.front()) {
             que.pop();
         }
-        que.push(t);
         return que.size();
     }
     queue<int> que;
@@ -21,18 +20,16 @@ public:
 class RecentCounter {
 public:
     RecentCounter() {
-        idx.resize(3001, -3000);
+        idx.resize(3001, 0);
     }
     
     int ping(int t) {
-        int cnt = 0;
         idx[t%3001] = t;
-        for (int i = 0; i < 3001; ++i)  {
-            if (t-idx[i] <= 3000) {
-                ++cnt;
-            }
+        int res = 0;
+        for (int i = 0; i < 3001; ++i) {
+            res += t-3000 <= idx[i] && idx[i] > 0;
         }
-        return cnt;
+        return res;
     }
     vector<int> idx;
 };

@@ -1,21 +1,23 @@
-//--- Q: 930. Binary Subarrays With Sum
+//--- Q: 0930. Binary Subarrays With Sum
 
 //--- method 1: sliding window one pass
 class Solution {
 public:
-    int numberOfSubarrays(vector<int>& nums, int k) {
-        int n = nums.size(), res = 0, prefix = 0, left = 0, right = 0;
-        while (right < nums.size()) {
-            k -= nums[right]&1;
-            if (k < 0) {
-                while (!(nums[left++]&1));
-                k = prefix = 0;
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
+        int left = 0, right = 0, n = nums.size(), res = 0, prefix = 0;
+        while (right < n) {
+            goal -= nums[right];
+            if (goal < 0) {
+                prefix = 0;
+                while (goal < 0) {
+                    goal += nums[left++];
+                }
             }
-            while (left < right && !(nums[left]&1)) {
+            while (left < right && !nums[left]) {
                 ++prefix, ++left;
             }
-            if (!k && left <= right) { 
-                res += prefix+1;
+            if (!goal && left <= right) {
+                res += 1+prefix;
             }
             ++right;
         }

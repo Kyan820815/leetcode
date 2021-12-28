@@ -1,4 +1,4 @@
-//--- Q: 919. Complete Binary Tree Inserter
+//--- Q: 0919. Complete Binary Tree Inserter
 
 /**
  * Definition for a binary tree node.
@@ -14,38 +14,40 @@
 class CBTInserter {
 public:
     CBTInserter(TreeNode* root) {
-        rt = root;
-        que.push(rt);
+        _root = root;
+        que.push(root);
         while (que.size()) {
             auto now = que.front();
-            if (now->left && now->right) {
-                que.pop();
+            if (now->left) {
                 que.push(now->left);
+            }
+            if (now->right) {
                 que.push(now->right);
+                que.pop();
             } else {
                 break;
             }
         }
     }
     
-    int insert(int v) {
+    int insert(int val) {
+        auto node = new TreeNode(val);
         auto now = que.front();
-        if (!que.front()->left) {
-            now->left = new TreeNode(v);
+        if (!now->left) {
+            now->left = node;
         } else {
-            now->right = new TreeNode(v);
-            que.push(now->left);
-            que.push(now->right);
+            now->right = node;
             que.pop();
         }
+        que.push(node);
         return now->val;
     }
     
     TreeNode* get_root() {
-        return rt;
+        return _root;
     }
-    TreeNode *rt;
     queue<TreeNode *> que;
+    TreeNode *_root;
 };
 
 /**

@@ -1,24 +1,24 @@
-//--- Q: 901. Online Stock Span 
+//--- Q: 0901. Online Stock Span 
 
-//--- method 1: stack operation
+//--- method 1: decreasing stack operation
 class StockSpanner {
 public:
     StockSpanner() {
-        
+        idx = 0;
+        sk.push_back(-1);
     }
     
     int next(int price) {
-        int res = 1;
-    	while (sk.size() && price >= sk.top().first)
-    	{
-    		res += sk.top().second;
-    		sk.pop();
-    	}
-    	sk.push({price, res});
-    	return res;
+        while (sk.back() != -1 && arr[sk.back()] <= price) {
+            sk.pop_back();
+        }
+        int days = idx-sk.back();
+        arr.push_back(price);
+        sk.push_back(idx++);
+        return days;
     }
-private:
-	stack<pair<int,int>> sk;
+    vector<int> arr, sk;
+    int idx;
 };
 
 /**

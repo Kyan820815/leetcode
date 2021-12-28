@@ -1,66 +1,59 @@
-//--- Q: 924. Minimize Malware Spread
+//--- Q: 0924. Minimize Malware Spread
 
 //--- method 1: union find
 class Solution {
 public:
-    vector<int> sz, parent;
+    vector<int> parent, group;
     int minMalwareSpread(vector<vector<int>>& graph, vector<int>& initial) {
         int n = graph.size();
-        vector<int> infec(n, 0);
-        sz.resize(n, 0), parent.resize(n, -1);
+        vector<int> infectGroup(n, 0);
+        parent.resize(n, -1);
+        group.resize(n, 0);
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < i; ++j) {
                 if (graph[i][j]) {
                     int ap = findp(i);
                     int bp = findp(j);
                     if (ap != bp) {
-                        if (sz[ap] < sz[bp]) {
-                            parent[ap] = bp;
-                            sz[bp] += sz[ap];
-                        } else {
-                            parent[bp] = ap;
-                            sz[ap] += sz[bp];
-                        }
+                        parent[ap] = bp;
+                        group[bp] += group[ap];
                     }
                 }
             }
         }
-        int one = 0;
-        for (auto &id: initial) {
-            int p = findp(id);
-            if (++infec[p] == 1) {
-                ++one;
-            } else if (infec[p] == 2) {
-                --one;
+        int hasone = 0;
+        for (auto &node: initial) {
+            int p = findp(node);
+            if (++infectGroup[p] == 1) {
+                hasone = 1;
+            } else if (infectGroup[p] == 2) {
+                hasone = 0;
             }
         }
-        bool hasone = one > 0;
-        int maxv = 0, minid = n;
-        for (auto &id: initial) {
-            int p = findp(id);
-            if (infec[p] == 1) {
-                if (maxv < sz[p]) {
-                    maxv = sz[p];
-                    minid = id;
-                } else if (maxv == sz[p] && id < minid) {
-                    minid = id;
+        int res = 0, residx = n;
+        for (auto &node: initial) {
+            int p = findp(node);
+            if (infectGroup[p] == 1) {
+                if (res < group[p]) {
+                    res = group[p];
+                    residx = node;
+                } else if (res == group[p] && node < residx) {
+                    residx = node;
                 }
-            } else if (!hasone) {
-                minid = min(minid, id);
+            } else if (!hasone && node < residx) {
+                residx = node;
             }
         }
-        return minid;
+        return residx;
     }
     int findp(int now) {
         if (parent[now] == now) {
             return now;
+        } else if (parent[now] == -1){
+            ++group[now];
+            return parent[now] = now;
         } else {
-            if (parent[now] == -1) {
-                sz[now] = 1;
-                return parent[now] = now;
-            } else {
-                return parent[now] = findp(parent[now]);
-            }
+            return parent[now] = findp(parent[now]);
         }
     }
 };

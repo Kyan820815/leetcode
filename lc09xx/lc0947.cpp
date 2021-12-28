@@ -1,103 +1,58 @@
-//--- Q: 947. Most Stones Removed with Same Row or Column
+//--- Q: 0947. Most Stones Removed with Same Row or Column
 
 //--- method 1: union find
 class Solution {
 public:
-    int island = 0;
+    unordered_map<int,int> parent;
+    int group = 0;
     int removeStones(vector<vector<int>>& stones) {
-        unordered_map<int, int> parent;
-        for (int i = 0; i < stones.size(); ++i) {
-            int ap = findp(stones[i][0], parent);
-            int bp = findp(~stones[i][1], parent);
+        int cnt = stones.size();
+        for (auto &stone: stones) {
+            int ap = findp(stone[0]);
+            int bp = findp(~stone[1]);
             if (ap != bp) {
                 parent[ap] = bp;
-                --island;
+                --group;
             }
         }
-        return stones.size() - island;
+        return stones.size()-group;
     }
-    int findp(int now, unordered_map<int, int> &parent) {
+    int findp(int now) {
         if (parent.find(now) == parent.end()) {
-            parent[now] = now;
-            ++island;
-        } else if (parent[now] != now) {
-            parent[now] = findp(parent[now], parent);
+            ++group;
+            return parent[now] = now;
+        } else if (parent[now] == now) {
+            return now;
+        } else {
+            return parent[now] = findp(parent[now]);
         }
-        return parent[now];
     }
 };
 
 //--- method 2: dfs
 class Solution {
 public:
-    vector<int> visitr, visitc;
-    vector<vector<int>> relr, relc;
-    Solution() {
-        visitr.resize(10000, 0);
-        visitc.resize(10000, 0);
-        relr.resize(10000);
-        relc.resize(10000);
-    }
+    unordered_map<int, vector<int>> rel;
+    unordered_set<int> visit;
     int removeStones(vector<vector<int>>& stones) {
-        for (int i = 0; i < stones.size(); ++i) {
-            relr[stones[i][0]].push_back(stones[i][1]);
-            relc[stones[i][1]].push_back(stones[i][0]);
+        for (auto &stone: stones) {
+            rel[stone[0]].push_back(~stone[1]);
+            rel[~stone[1]].push_back(stone[0]);
         }
         int island = 0;
-        for (int i = 0; i < stones.size(); ++i) {
-            if (!visitr[stones[i][0]]) {
-                island++;
-                visitr[stones[i][0]] = 1;
-                dfsr(stones[i][0]);
-                dfsc(stones[i][1]);
-            }
-        }
-        return stones.size() - island;
-    }
-    void dfsr(int r) {
-        for (int i = 0; i < relr[r].size(); ++i) {
-            if (!visitc[relr[r][i]]) {
-                visitc[relr[r][i]] = 1; 
-                dfsc(relr[r][i]);
-            }
-        }
-    }
-    void dfsc(int c) {
-        for (int i = 0; i < relc[c].size(); ++i) {
-            if (!visitr[relc[c][i]]) {
-                visitr[relc[c][i]] = 1;
-                dfsr(relc[c][i]);
-            }
-        }
-
-    }
-};
-
-//--- method 3: better version of method 2
-class Solution {
-public:
-    int removeStones(vector<vector<int>>& stones) {
-        unordered_map<int, vector<int>> rel;
-        unordered_map<int ,int> visit;
-        int island = 0;
-        for (int i = 0; i < stones.size(); ++i) {
-            rel[stones[i][0]].push_back(~stones[i][1]);
-            rel[~stones[i][1]].push_back(stones[i][0]);
-        }
-        for (int i = 0; i < stones.size(); ++i) {
-            if (!visit[stones[i][0]]) {
+        for (auto &stone: stones) {
+            if (visit.find(stone[0]) == visit.end()) {
                 ++island;
-                visit[stones[i][0]] = 1;
-                dfs(stones[i][0], rel, visit);
+                dfs(stone[0]);
             }
         }
         return stones.size() - island;
     }
-    void dfs(int now, unordered_map<int, vector<int>> &rel, unordered_map<int, int>&visit) {
-        for (int i = 0; i < rel[now].size(); ++i) {
-            if (!visit[rel[now][i]]) {
-                visit[rel[now][i]] = 1;
-                dfs(rel[now][i], rel, visit);
+    void dfs(int now) {
+        visit.insert(now);
+        for (auto &next: rel[now]) {
+            if (visit.find(next) == visit.end()) {
+                dfs(next);
             }
         }
     }

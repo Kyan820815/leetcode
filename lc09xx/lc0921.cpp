@@ -1,43 +1,41 @@
-//--- Q: Minimum Add to Make Parentheses Valid
+//--- Q: 0921. Minimum Add to Make Parentheses Valid
 
 //--- method 1: stack operation
 class Solution {
 public:
-    int minAddToMakeValid(string S) {
-        stack<char> sk;
+    int minAddToMakeValid(string s) {
         int res = 0;
-        for (int i = 0; i < S.size(); ++i)
-        {
-        	if (S[i] == '(')
-        		sk.push(S[i]);
-        	else
-        	{
-        		if (sk.size() == 0)
-        			++res;
-        		else
-        			sk.pop();
-        	}
+        vector<char> sk;
+        for (auto &ch: s) {
+            if (ch == '(') {
+                sk.push_back(ch);
+            } else {
+                if (sk.size()) {
+                    sk.pop_back();
+                } else {
+                    ++res;
+                }
+            }
         }
-        res += sk.size();
-        return res;
+        return res + sk.size();
     }
 };
 
 //--- method 2: O(1) space
 class Solution {
 public:
-    int minAddToMakeValid(string S) {
-        int left = 0, res = 0;
-        for (int i = 0; i < S.size(); ++i) {
-            if (S[i] == ')') {
-                if (!left)
-                    ++res;
-                else
-                    --left;
-            } else {
+    int minAddToMakeValid(string s) {
+        int res = 0, left = 0;
+        for (auto &ch: s) {
+            if (ch == '(') {
                 ++left;
+            } else {
+                if (--left < 0) {
+                    left = 0;
+                    ++res;
+                }
             }
         }
-        return left + res;
+        return res + left;
     }
 };

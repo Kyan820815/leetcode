@@ -1,22 +1,19 @@
-//--- Q: 941. Valid Mountain Array
+//--- Q: 0941. Valid Mountain Array
 
 //--- method 1: one way check
 class Solution {
 public:
-    bool validMountainArray(vector<int>& A) {
-        int i = 0;
-        if (A.size() < 3) {
-            return false;
-        }
-        while (i < A.size()-1 && A[i] < A[i+1]) {
+    bool validMountainArray(vector<int>& arr) {
+        int i = 0, n = arr.size();
+        while (i+1 < n && arr[i] < arr[i+1]) {
             ++i;
         }
-        if (!i || i == A.size() - 1) {
+        if (!i || i == n-1) {
             return false;
         }
-        while (i < A.size()-1 && A[i] > A[i+1]) {
+        while (i+1 < n && arr[i] > arr[i+1]) {
             ++i;
         }
-        return i == A.size()-1;
+        return i == arr.size()-1;
     }
 };

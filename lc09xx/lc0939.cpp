@@ -1,29 +1,26 @@
-//--- Q: 939. Minimum Area Rectangle
+//--- Q: 0939. Minimum Area Rectangle
 
 //--- method 1: brute force
 class Solution {
 public:
     int minAreaRect(vector<vector<int>>& points) {
         int res = INT_MAX;
-        set<pair<int, int>> set;
-        for (int i = 0; i < points.size(); ++i) {
-            int x1 = points[i][0], y1 = points[i][1];
-            for (auto &p: set) {
-                auto x2 = p.first, y2 = p.second;
-                if (x1 == x2 || y1 == y2) {
-                    continue;
-                }
-                if (set.find({x1, y2}) != set.end() && set.find({x2, y1}) != set.end()) {
-                    res = min(res, abs(x2-x1) * abs(y2-y1));
+        sort(points.begin(), points.end());
+        set<pair<int,int>> set;
+        for (auto &point: points) {
+            for (auto &pt: set) {
+                if (set.find({pt.first,point[1]}) != set.end() && set.find({point[0],pt.second}) != set.end()) {
+                    res = min(res, abs(point[0]-pt.first)*abs(point[1]-pt.second));
                 }
             }
-            set.insert({x1,y1});
+            set.insert({point[0],point[1]});
         }
         return res == INT_MAX ? 0 : res;
     }
 };
 
 //--- method 2: sort x then save {y1, y2} = x，sliding window。
+// https://leetcode.com/problems/minimum-area-rectangle/discuss/192021/Python-O(N1.5)-80ms
 class Solution {
 public:
     struct hash_pair { 
