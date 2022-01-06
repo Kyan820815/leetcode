@@ -1,24 +1,23 @@
-//--- Q: 985. Sum of Even Numbers After Queries
+//--- Q: 0985. Sum of Even Numbers After Queries
 
 //--- method 1: track even sum
 class Solution {
 public:
-    vector<int> sumEvenAfterQueries(vector<int>& A, vector<vector<int>>& queries) {
-        int even = 0;
+    vector<int> sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries) {
         vector<int> res;
-        for (int i = 0; i <  A.size(); ++i) {
-            if (!(A[i]&1)) {
-                even += A[i];
-            } 
-        }
-        for (int i = 0; i < queries.size(); ++i) {
-            int idx = queries[i][1], val = queries[i][0];
-            if (!(A[idx]&1)) {
-                even -= A[idx];
+        int even = 0;
+        for (auto &num: nums) {
+            if (!(num&1)) {
+                even += num;
             }
-            A[idx] += val;
-            if (!(A[idx]&1)) {
-                even += A[idx];
+        }
+        for (auto &query: queries) {
+            if (!(nums[query[1]]&1)) {
+                even -= nums[query[1]];
+            }
+            nums[query[1]] += query[0];
+            if (!(nums[query[1]]&1)) {
+                even += nums[query[1]];
             }
             res.push_back(even);
         }

@@ -1,4 +1,4 @@
-//--- Q: 988. Smallest String Starting From Leaf
+//--- Q: 0988. Smallest String Starting From Leaf
 
 /**
  * Definition for a binary tree node.
@@ -13,25 +13,27 @@
 //--- method 1: preorder
 class Solution {
 public:
+    string res = "";
     string smallestFromLeaf(TreeNode* root) {
-    	string res = "";
-    	preorder(root, res, "");
-    	return res;
+        string str = "";
+        preorder(root, str);
+        return res;
     }
-    void preorder(TreeNode *root, string &res, string now)
-    {
-    	now.push_back(root->val+'a');
-    	if (!root->left && !root->right)
-    	{
-    		reverse(now.begin(), now.end());
-    		if (!res.size())
-    			res = now;
-    		else
-    			res = min(res, now);
-    	}
-    	if (root->left)
-    		preorder(root->left, res, now);
-    	if (root->right)
-    		preorder(root->right, res, now);
+    void preorder(TreeNode *root, string &str) {
+        str += (root->val+'a');
+        if (!root->left && !root->right) {
+            auto tmp = str;
+            reverse(tmp.begin(), tmp.end());
+            if (!res.size() || res > tmp) {
+                res = tmp;
+            }
+        }
+        if (root->left) {
+            preorder(root->left, str);
+        }
+        if (root->right) {
+            preorder(root->right, str);
+        }
+        str.pop_back();
     }
 };

@@ -1,26 +1,25 @@
-//--- Q: Pancake Sorting
+//--- Q: 0969. Pancake Sorting
 
 //--- method 1: find max
 class Solution {
 public:
-    vector<int> pancakeSort(vector<int>& A) {
-        int swap = A.size();
+    vector<int> pancakeSort(vector<int>& arr) {
         vector<int> res;
-        while (swap) {
-            int maxv = INT_MIN, maxidx;
-            for (int i = 0; i < swap; ++i) {
-                if (maxv < A[i]) {
-                    maxv = A[i];
-                    maxidx = i;
+        int n = arr.size();
+        for (int i = n-1; i > 0; --i) {
+            int maxi, maxv = INT_MIN;
+            for (int j = 0; j <= i; ++j) {
+                if (maxv < arr[j]) {
+                    maxv = arr[j];
+                    maxi = j;
                 }
             }
-            if (maxidx != swap-1) {
-                res.push_back(maxidx+1);
-                res.push_back(swap);
-                reverse(A.begin(), A.begin()+maxidx+1);
-                reverse(A.begin(), A.begin()+swap);
+            if (maxi < i) {
+                res.push_back(maxi+1);
+                res.push_back(i+1);
+                reverse(arr.begin(), arr.begin()+maxi+1);
+                reverse(arr.begin(), arr.begin()+i+1);
             }
-            --swap;
         }
         return res;
     }

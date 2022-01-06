@@ -1,47 +1,41 @@
-//--- Q: 977. Squares of a Sorted Array
+//--- Q: 0977. Squares of a Sorted Array
 
 //--- method 1: double pointer 
 class Solution {
+class Solution {
 public:
-    vector<int> sortedSquares(vector<int>& A) {
-        vector<int> res(A.size(), 0);
-        int left = 0, right = A.size()-1;
-        for (int i = A.size()-1; i >= 0; --i)
-        {
-        	if (abs(A[left]) > abs(A[right]))
-        	{
-        		res[i] = pow(A[left], 2);
-        		++left;
-        	}
-        	else
-        	{
-        		res[i] = pow(A[right], 2);
-        		--right;
-        	}
+    vector<int> sortedSquares(vector<int>& nums) {
+        int left = 0, right = nums.size()-1, idx = nums.size()-1;
+        vector<int> res(nums.size(), 0);
+        while (left <= right) {
+            int sqleft = nums[left]*nums[left], sqright = nums[right]*nums[right];
+            if (sqleft > sqright) {
+                res[idx--] = sqleft;
+                ++left;
+            } else {
+                res[idx--] = sqright;
+                --right;
+            }
         }
         return res;
     }
 };
 
-//--- method 2: stack operation 
+//--- method 2:
 class Solution {
 public:
-    vector<int> sortedSquares(vector<int>& A) {
-        vector<int> res;
-        stack<int> sk;
-        for (int i = 0; i < A.size(); ++i)
-        {
-        	while (sk.size() && sk.top() < pow(A[i],2))
-        	{
-        		res.push_back(sk.top());
-        		sk.pop();
-        	}
-        	sk.push(pow(A[i], 2));
+    vector<int> sortedSquares(vector<int>& nums) {
+        vector<int> sk, res;
+        for (auto &num: nums) {
+            while (sk.size() && sk.back() < abs(num)) {
+                res.push_back(sk.back()*sk.back());
+                sk.pop_back();
+            }
+            sk.push_back(abs(num));
         }
-        while (sk.size())
-        {
-        	res.push_back(sk.top());
-        	sk.pop();
+        while (sk.size()) {
+            res.push_back(sk.back()*sk.back());
+            sk.pop_back();
         }
         return res;
     }

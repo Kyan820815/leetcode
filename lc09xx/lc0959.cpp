@@ -1,95 +1,113 @@
-//--- Q: 959. Regions Cut By Slashes
+//--- Q: 0959. Regions Cut By Slashes
 
 //--- method 1: union find
-class Solution {
+cclass Solution {
 public:
+    vector<int> parent;
     int regionsBySlashes(vector<string>& grid) {
-        int n = grid.size();
-        count = n * n * 4;
-        for (int i = 0; i < n*n*4; ++i) {
-            parent.push_back(i);
-        }
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                if (i > 0) {
-                    uni(upscale(i, j, 0, n), upscale(i-1, j, 2, n));
-                }
-                if (j > 0) {
-                    uni(upscale(i, j, 3, n), upscale(i, j-1, 1, n));
-                }
+        int row = grid.size(), col = grid[0].size(), res = 4*row*col;
+        parent.resize(row*col*4, -1);
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                int idx = (i*col+j)*4;
                 if (grid[i][j] != '/') {
-                    uni(upscale(i, j, 3, n), upscale(i, j, 2, n));
-                    uni(upscale(i, j, 0, n), upscale(i, j, 1, n));
+                    int ap = findp(idx);
+                    int bp = findp(idx+1);
+                    if (ap != bp) {
+                        parent[ap] = bp;
+                        --res;
+                    }
+                    ap = findp(idx+2);
+                    bp = findp(idx+3);
+                    if (ap != bp) {
+                        parent[ap] = bp;
+                        --res;
+                    }
                 }
                 if (grid[i][j] != '\\') {
-                    uni(upscale(i, j, 0, n), upscale(i, j, 3, n));
-                    uni(upscale(i, j, 1, n), upscale(i, j, 2, n));
+                    int ap = findp(idx);
+                    int bp = findp(idx+3);
+                    if (ap != bp) {
+                        parent[ap] = bp;
+                        --res;
+                    }
+                    ap = findp(idx+1);
+                    bp = findp(idx+2);
+                    if (ap != bp) {
+                        parent[ap] = bp;
+                        --res;
+                    }
+                }
+                if (j+1 < col) {
+                    int ap = findp(idx+1);
+                    int bp = findp(idx+1+6);
+                    if (ap != bp) {
+                        parent[ap] = bp;
+                        --res;
+                    }
+                }
+                if (i+1 < row) {
+                    int ap = findp(idx+2);
+                    int bp = findp(idx+col*4);
+                    if (ap != bp) {
+                        parent[ap] = bp;
+                        --res;
+                    }
                 }
             }
         }
-        return count;
+        return res;
     }
-    int findp(int now, vector<int> &parent) {
-        if (parent[now] != now) {
-            parent[now] = findp(parent[now], parent);
-        }
-        return parent[now];
-    }
-    void uni(int a, int b) {
-        int ap = findp(a, parent);
-        int bp = findp(b, parent);
-        if (ap != bp) {
-            parent[ap] = bp;
-            --count;
+    int findp(int now) {
+        if (parent[now] == now) {
+            return now;
+        } else {
+            return parent[now] = parent[now] == -1 ? now : findp(parent[now]);
         }
     }
-    int upscale(int i, int j, int k, int n) {
-        return (i * n + j) * 4 + k;
-    }
-    int count;
-    vector<int> parent;
 };
 
 //--- method 2: upscale dfs
 class Solution {
 public:
+    vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+    int row, col;
     int regionsBySlashes(vector<string>& grid) {
-        int n = grid.size(), m = n*3, count = 0;
-        upgrid.resize(m, vector<int>(m, 0));
-        dir = {{0,1}, {0,-1}, {1,0}, {-1,0}};
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
+        row = grid.size(), col = grid[0].size();
+        int res = 0;
+        vector<vector<int>> tmp(row*3, vector<int>(col*3, 0));
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
                 if (grid[i][j] == '/') {
-                    upgrid[i*3+0][j*3+2] = 1;
-                    upgrid[i*3+1][j*3+1] = 1;
-                    upgrid[i*3+2][j*3+0] = 1;
-                } else if (grid[i][j] =='\\') {
-                    upgrid[i*3+0][j*3+0] = 1;
-                    upgrid[i*3+1][j*3+1] = 1;
-                    upgrid[i*3+2][j*3+2] = 1;
+                    tmp[i*3+2][j*3] = 1;
+                    tmp[i*3+1][j*3+1] = 1;
+                    tmp[i*3][j*3+2] = 1;
+                } else if (grid[i][j] == '\\') {
+                    tmp[i*3][j*3] = 1;
+                    tmp[i*3+1][j*3+1] = 1;
+                    tmp[i*3+2][j*3+2] = 1;
                 }
             }
         }
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < m; ++j) {
-                if (!upgrid[i][j]) {
-                    ++count;
-                    dfs(i, j, m);
+        for (int i = 0; i < row*3; ++i) {
+            for (int j = 0; j < col*3; ++j) {
+                if (!tmp[i][j]) {
+                    dfs(i, j, tmp);
+                    ++res;
                 }
             }
         }
-        return count;
+        return res;
     }
-    void dfs(int r, int c, int m) {
-        upgrid[r][c] = 1;
-        for (int i = 0; i < 4; ++i) {
-            int nr = r + dir[i][0];
-            int nc = c + dir[i][1];
-            if (nr < 0 || nr >= m || nc < 0 || nc >= m || upgrid[nr][nc]) {
+    void dfs(int r, int c, vector<vector<int>> &tmp) {
+        tmp[r][c] = 1;
+        for (auto &dir: dirs) {
+            int nr = r+dir[0];
+            int nc = c+dir[1];
+            if (nr < 0 || nr >= row*3 || nc < 0 || nc >= col*3 || tmp[nr][nc]) {
                 continue;
             }
-            dfs(nr, nc, m);
+            dfs(nr, nc, tmp);
         }
     }
-    vector<vector<int>> dir, upgrid;
 };

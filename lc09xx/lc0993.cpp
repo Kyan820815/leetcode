@@ -1,4 +1,4 @@
-//--- Q: 993. Cousins in Binary Tree
+//--- Q: 0993. Cousins in Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -10,33 +10,28 @@
  * };
  */
 
-//--- method 1: 
+//--- method 1: preorder
 class Solution {
 public:
+    int xd, yd, xp, yp;
     bool isCousins(TreeNode* root, int x, int y) {
-    	int lh, rh, lp, rp;
-    	TreeNode *dummy = new TreeNode(-1), *pre;
-    	dummy->left = root;
-    	pre = dummy;
-    	lh = rh = lp = rp = 0;
-    	preorder(root, pre, x, y, 0, lh, rh, lp, rp);
-    	return (lp != rp && lh == rh) ? true : false; 
+        preorder(root, x, y, 0, -1);
+        return xd == yd && xp != yp;
     }
-    void preorder(TreeNode *root, TreeNode *pre, int x, int y, int h, int &lh, int &rh, int &lp, int &rp)
-    {
-    	if (root->val == x)
-    	{
-    		lh = h;
-    		lp = pre->val;
-    	}
-    	else if (root->val == y)
-    	{
-    		rh = h;
-    		rp = pre->val;
-    	}
-    	if (root->left)
-    		preorder(root->left, root, x, y, h+1, lh, rh, lp, rp);
-    	if (root->right)
-    		preorder(root->right, root, x, y, h+1, lh, rh, lp, rp);
+    void preorder(TreeNode *root, int x, int y, int d, int p) {
+        if (root->val == x) {
+            xp = p;
+            xd = d;
+        }
+        if (root->val == y) {
+            yp = p;
+            yd = d;
+        }
+        if (root->left) {
+            preorder(root->left, x, y, d+1, root->val);
+        }
+        if (root->right) {
+            preorder(root->right, x, y, d+1, root->val);
+        }
     }
 };

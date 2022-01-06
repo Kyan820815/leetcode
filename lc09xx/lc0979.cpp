@@ -1,4 +1,4 @@
-//--- Q: 979. Distribute Coins in Binary Tree
+//--- Q: 0979. Distribute Coins in Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -10,22 +10,24 @@
  * };
  */
 
-//--- method 1: dfs
+//--- method 1: postorder
 class Solution {
 public:
+    int res = 0;
     int distributeCoins(TreeNode* root) {
-        int res = 0, coins = 0;
-        dfs(root, res, coins);
+        postorder(root);
         return res;
     }
-    void dfs(TreeNode *root, int &res, int &coins)
-    {
-    	int coins_l = 0, coins_r = 0;
-    	if (root->left)
-    		dfs(root->left, res, coins_l);
-    	if (root->right)
-    		dfs(root->right, res, coins_r);
-    	coins = coins_l + coins_r + (root->val-1);
-    	res += abs(coins);
+    int postorder(TreeNode *root) {
+        int lv = 0, rv = 0;
+        if (root->left) {
+            lv = postorder(root->left);
+        }
+        if (root->right) {
+            rv = postorder(root->right);
+        }
+        int sum = root->val+lv+rv-1;
+        res += abs(sum);
+        return sum;
     }
 };

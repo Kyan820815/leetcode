@@ -1,4 +1,4 @@
-//--- Q: 965. Univalued Binary Tree
+//--- Q: 0965. Univalued Binary Tree
 
 /**
  * Definition for a binary tree node.
@@ -10,23 +10,21 @@
  * };
  */
 
-//--- method 1: preorder recursion
+//--- method 1: postorder recursion
 class Solution {
 public:
     bool isUnivalTree(TreeNode* root) {
-        bool find = true;
-        if (root->left) {
-            if (root->left->val == root->val)
-                find &= isUnivalTree(root->left);
-            else
-                return false;
+        return postorder(root, root->val);
+    }
+    bool postorder(TreeNode *root, int p) {
+        if (!root) {
+            return true;
         }
-        if (root->right) {
-            if (root->right->val == root->val)
-                find &= isUnivalTree(root->right);
-            else
-                return false;
+        auto lv = postorder(root->left, root->val);
+        auto rv = postorder(root->right, root->val);
+        if (!lv || !rv || root->val != p) {
+            return false;
         }
-        return find;
+        return true;
     }
 };

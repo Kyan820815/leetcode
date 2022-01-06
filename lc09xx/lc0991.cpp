@@ -1,18 +1,17 @@
-//--- Q: 991. Broken Calculator
+//--- Q: 0991. Broken Calculator
 
 //--- method 1: find pattern
 class Solution {
 public:
-    int brokenCalc(int X, int Y) {
+    int brokenCalc(int startValue, int target) {
         int res = 0;
-        while (X < Y) {
-            if ((Y&1) == 0) {
-                Y >>= 1;
-            } else {
-                Y += 1;
+        while (target > startValue) {
+            if (target&1) {
+                ++res, ++target;
             }
+            target >>= 1;
             ++res;
         }
-        return res + X - Y;
+        return res+startValue-target;
     }
 };

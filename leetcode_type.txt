@@ -178,6 +178,7 @@
     0946(m): Validate Stack Sequences
     0953(e): Verifying an Alien Dictionary
     0977(e): Squares of a Sorted Array
+    0986(m): Interval List Intersections
     0992(h): Subarrays with K Different Integers
     1004(m): Max Consecutive Ones III
     1031(m): Maximum Sum of Two Non-Overlapping Subarrays
@@ -371,6 +372,7 @@
     0907(m): Sum of Subarray Minimums
     0921(m): Minimum Add to Make Parentheses Valid
     0946(m): Validate Stack Sequences
+    0977(e): Squares of a Sorted Array
     1003(m): Check If Word Is Valid After Substitutions
     1008(m): Construct Binary Search Tree from Preorder Traversal
     1019(m): Next Greater Node In Linked List
@@ -461,7 +463,8 @@
     0934(m): Shortest Bridge
     0950(m): Reveal Cards In Increasing Order
     0958(m): Check Completeness of a Binary Tree
-    0994(e): Rotting Oranges
+    0987(h): Vertical Order Traversal of a Binary Tree
+    0994(m): Rotting Oranges
     1030(e): Matrix Cells in Distance Order
     1059(m): All Paths from Source Lead to Destination
     1091(m): Shortest Path in Binary Matrix
@@ -629,6 +632,15 @@
     0934(m): Shortest Bridge
     0938(e): Range Sum of BST
     0947(m): Most Stones Removed with Same Row or Column 
+    0951(m): Flip Equivalent Binary Trees
+    0959(m): Regions Cut By Slashes
+    0965(e): Univalued Binary Tree
+    0971(m): Flip Binary Tree To Match Preorder Traversal
+    0979(m): Distribute Coins in Binary Tree
+    0980(h): Unique Paths III
+    0987(h): Vertical Order Traversal of a Binary Tree
+    0988(m): Smallest String Starting From Leaf
+    0993(e): Cousins in Binary Tree
     1020(m): Number of Enclaves
     1137(e): N-th Tribonacci Number
     1197(m): Minimum Knight Moves
@@ -687,6 +699,9 @@
     0881(m): Boats to Save People 
     0921(m): Minimum Add to Make Parentheses Valid
     0926(m): Flip String to Monotone Increasing
+    0969(m): Pancake Sorting
+    0976(e): Largest Perimeter Triangle
+    0991(m): Broken Calculator
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -776,6 +791,7 @@
     0926(m): Flip String to Monotone Increasing
     0931(m): Minimum Falling Path Sum
     0935(m): Knight Dialer
+    0978(m): Longest Turbulent Subarray
     0983(m): Minimum Cost For Tickets
     1035(m): Uncrossed Lines
     1043(m): Partition Array for Maximum Sum
@@ -827,7 +843,14 @@
     0673(m): Number of Longest Increasing Subsequence
     0674(e): Longest Continuous Increasing Subsequence
     0713(m): Subarray Product Less Than K
+    0718(m): Maximum Length of Repeated Subarray
     0792(m): Number of Matching Subsequences
+    0862(h): Shortest Subarray with Sum at Least K
+    0907(m): Sum of Subarray Minimums
+    0930(m): Binary Subarrays With Sum
+    0974(m): Subarray Sums Divisible by K
+    0978(m): Longest Turbulent Subarray
+    0992(h): Subarrays with K Different Integers
     1048(m): Longest String Chain
     1186(m): Maximum Subarray Sum with One Deletion
     1493(m): Longest Subarray of 1's After Deleting One Element
@@ -986,8 +1009,13 @@
     0924(h): Minimize Malware Spread
     0939(m): Minimum Area Rectangle
     0947(m): Most Stones Removed with Same Row or Column 
+    0953(e): Verifying an Alien Dictionary
+    0959(m): Regions Cut By Slashes
+    0974(m): Subarray Sums Divisible by K
     0981(m): Time Based Key-Value Store
-    0987(m): Vertical Order Traversal of a Binary Tree
+    0987(h): Vertical Order Traversal of a Binary Tree
+    0992(h): Subarrays with K Different Integers
+    0997(e): Find the Town Judge
     1094(m): Car Pooling
     1122(e): Relative Sort Array
     1128(e): Number of Equivalent Domino Pairs
@@ -1065,6 +1093,7 @@
     0901(m): Online Stock Span
     0919(m): Complete Binary Tree Inserter
     0933(e): Number of Recent Calls
+    0981(m): Time Based Key-Value Store
     1114(e): Print in Order
     1188(m): Design Bounded Blocking Queue
     1195(m): Fizz Buzz Multithreaded
@@ -1122,6 +1151,7 @@
     0725(m): Split Linked List in Parts
     0817(m): Linked List Components
     0876(e): Middle of the Linked List
+    0989(e): Add to Array-Form of Integer
     1019(m): Next Greater Node In Linked Lis
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
     1265(m): Print Immutable Linked List in Reverse
@@ -1317,6 +1347,10 @@
     0926(m): Flip String to Monotone Increasing
     0937(e): Reorder Data in Log Files
     0944(e): Delete Columns to Make Sorted
+    0953(e): Verifying an Alien Dictionary
+    0981(m): Time Based Key-Value Store
+    0988(m): Smallest String Starting From Leaf
+    0989(e): Add to Array-Form of Integer
     1065(e): Index Pairs of a String
     1165(e): Single-Row Keyboard
     1422(e): Maximum Score After Splitting a String
@@ -1609,13 +1643,24 @@
     0944(e): Delete Columns to Make Sorted
     0946(m): Validate Stack Sequences
     0950(m): Reveal Cards In Increasing Order
+    0953(e): Verifying an Alien Dictionary
     0957(m): Prison Cells After N Days
+    0959(m): Regions Cut By Slashes
     0961(e): N-Repeated Element in Size 2N Array
     0969(m): Pancake Sorting
+    0973(m): K Closest Points to Origin
+    0974(m): Subarray Sums Divisible by K
     0976(e): Largest Perimeter Triangle
     0978(m): Longest Turbulent Subarray
-    0985(e): Sum of Even Numbers After Queries
+    0980(h): Unique Paths III
+    0983(m): Minimum Cost For Tickets
+    0985(m): Sum of Even Numbers After Queries
+    0986(m): Interval List Intersections
     0989(e): Add to Array-Form of Integer
+    0992(h): Subarrays with K Different Integers
+    0994(m): Rotting Oranges
+    0997(e): Find the Town Judge
+    0999(e): Available Captures for Rook
     1002(e): Find Common Characters
     1005(e): Maximize Sum Of Array After K Negations
     1007(m): Minimum Domino Rotations For Equal Row
@@ -1814,7 +1859,7 @@
     0947(m): Most Stones Removed with Same Row or Column 
     0959(m): Regions Cut By Slashes
     0980(h): Unique Paths III
-    0994(e): Rotting Oranges
+    0994(m): Rotting Oranges
     0997(e): Find the Town Judge
     0999(e): Available Captures for Rook
     1020(m): Number of Enclaves
@@ -1978,7 +2023,7 @@
     0965(e): Univalued Binary Tree
     0971(m): Flip Binary Tree To Match Preorder Traversal
     0979(m): Distribute Coins in Binary Tree
-    0987(m): Vertical Order Traversal of a Binary Tree
+    0987(h): Vertical Order Traversal of a Binary Tree
     0988(m): Smallest String Starting From Leaf
     0993(e): Cousins in Binary Tree
     0998(m): Maximum Binary Tree II
@@ -2138,7 +2183,11 @@
     0908(e): Smallest Range I
     0914(e): X of a Kind in a Deck of Cards
     0939(m): Minimum Area Rectangle
+    0957(m): Prison Cells After N Days
+    0973(m): K Closest Points to Origin
+    0976(e): Largest Perimeter Triangle
     0977(e): Squares of a Sorted Array
+    0989(e): Add to Array-Form of Integer
     0991(m): Broken Calculator
     1037(e): Valid Boomerang
     1128(e): Number of Equivalent Domino Pairs

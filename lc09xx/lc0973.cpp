@@ -1,35 +1,24 @@
-//--- Q: 973. K Closest Points to Origin
+//--- Q: 0973. K Closest Points to Origin
 
 //--- method 1: priority queue
 class Solution {
 public:
-	static bool comp(pair<vector<int>,int> &a, pair<vector<int>,int> &b)
-	{
-		return a.second < b.second;
-	}
-    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
-        priority_queue<pair<vector<int>,int>, vector<pair<vector<int>,int>>, decltype(&comp)> que(&comp);
-        vector<vector<int>> res(K);
-
-        for (int i = 0; i < points.size(); ++i)
-        {
-        	int x = points[i][0], y = points[i][1];
-        	int dis = x*x+y*y;
-        	if (que.size() < K)
-        		que.push({points[i], dis});
-        	else
-        	{
-        		if (dis < que.top().second)
-        		{
-        			que.pop();
-        			que.push({points[i], dis});
-        		}
-        	}
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        auto comp = [](const pair<int,int> &a, const pair<int,int> &b) {
+            return a.first*a.first+a.second*a.second < b.first*b.first+b.second*b.second;
+        };
+        priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(comp)> que(comp);
+        for (auto pt: points) {
+            que.push({pt[0],pt[1]});
+            if (que.size() > k) {
+                que.pop();
+            }
         }
-        for (int i = K-1; i >= 0; --i)
-        {
-        	res[i] = que.top().first;
-        	que.pop();
+        vector<vector<int>> res;
+        while (que.size()) {
+            auto now = que.top();
+            que.pop();
+            res.push_back({now.first, now.second});
         }
         return res;
     }
@@ -38,38 +27,40 @@ public:
 //--- method 2: quick select
 class Solution {
 public:
-    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
-    	int left = 0, right = points.size()-1;
-    	while (true)
-    	{
-    		int mid = partition(points, left, right);
-    		if (mid == K-1)
-    			break;
-    		else if (mid < K-1)
-    			left = mid+1;
-    		else
-    			right = mid-1;
-    	}
-    	return vector<vector<int>>(points.begin(),points.begin()+K);
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        int start = 0, end = points.size()-1;
+        k--;
+        while (start < end) {
+            int mid = partition(start, end, points);
+            if (mid < k) {
+                start = mid+1;
+            } else {
+                end = mid;
+            }
+        }
+        return vector<vector<int>>(points.begin(),points.begin()+k+1);
     }
-    int random(int left, int right)
-    {
-    	return rand()%(right-left+1) + left;
+    int partition(int start, int end, vector<vector<int>> &points) {
+        int pivot = start+random()%(end-start+1);
+        swap(points[pivot], points[end]);
+        int end_dis = points[end][0]*points[end][0]+points[end][1]*points[end][1], idx = start-1;
+        for (int i = start; i < end; ++i) {
+            if (points[i][0]*points[i][0]+points[i][1]*points[i][1] < end_dis) {
+                swap(points[++idx], points[i]);
+            }
+        }
+        swap(points[++idx], points[end]);
+        return idx;
     }
-    int partition(vector<vector<int>>& points, int left, int right)
-    {
-    	int pivot = random(left, right);
-    	int dis, mid = left-1;
-    	swap(points[pivot], points[right]);
-    	pivot = right;
-    	dis = points[pivot][0]*points[pivot][0] + points[pivot][1]*points[pivot][1];
-    	for (int i = left; i < right; ++i)
-    	{
-    		int now_dis = points[i][0]*points[i][0] + points[i][1]*points[i][1];
-    		if (now_dis < dis)
-    			swap(points[++mid], points[i]);
-    	}
-    	swap(points[++mid], points[pivot]);
-    	return mid;
+};
+
+//--- method 3: quick select built in
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        nth_element(points.begin(), points.begin()+k, points.end(), [](const vector<int> &a, const vector<int> &b){
+            return a[0]*a[0]+a[1]*a[1] < b[0]*b[0]+b[1]*b[1];
+        });
+        return vector<vector<int>>(points.begin(), points.begin()+k);
     }
 };

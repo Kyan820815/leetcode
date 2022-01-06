@@ -1,13 +1,14 @@
-//--- Q: 976. Largest Perimeter Triangle
+//--- Q: 0976. Largest Perimeter Triangle
 
 //--- method 1: sort and greedy
 class Solution {
 public:
-    int largestPerimeter(vector<int>& A) {
-        sort(A.begin(), A.end());
-        for (int i = A.size()-1; i >= 2; --i) {
-            if (A[i-2]+A[i-1] > A[i]) {
-                return A[i]+A[i-1]+A[i-2];
+    int largestPerimeter(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        for (int i = n-1; i > 1; --i) {
+            if (nums[i] < nums[i-1] + nums[i-2]) {
+                return nums[i]+nums[i-1]+nums[i-2];
             }
         }
         return 0;

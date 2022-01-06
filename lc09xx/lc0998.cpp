@@ -1,4 +1,4 @@
-//--- Q: 998. Maximum Binary Tree II
+//--- Q: 0998. Maximum Binary Tree II
 
 /**
  * Definition for a binary tree node.
@@ -10,20 +10,20 @@
  * };
  */
 
-//--- method 1: 
+//--- method 1: find suitable position to insert
 class Solution {
 public:
     TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
-        TreeNode *nr;
-        if (!root) return new TreeNode(val);
-        if (root->val < val)
-        {
-            nr = new TreeNode(val);
-            nr->left = root;
-            return nr;
+        if (!root) {
+            return new TreeNode(val);
         }
-        else
+        if (root->val < val) {
+            auto now = new TreeNode(val);
+            now->left = root;
+            return now;
+        } else {
             root->right = insertIntoMaxTree(root->right, val);
-        return root;
+            return root;
+        }
     }
 };
