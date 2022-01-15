@@ -14,36 +14,23 @@
 class Solution {
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-        stack<TreeNode *> sk;
-        TreeNode *tmp = NULL, *root;
-        int idx = 1;
-        if (!preorder.size())
-        	return NULL;
-        root = new TreeNode(preorder[0]);
-        sk.push(root);
-
-        while (idx < preorder.size())
-        {
-        	if (!sk.size() || preorder[idx] < sk.top()->val)
-        	{
-        		if (!tmp)
-        		{
-	        		sk.top()->left = new TreeNode(preorder[idx]);
-    	    		sk.push(sk.top()->left);
-        		}
-        		else
-        		{
-        			tmp->right = new TreeNode(preorder[idx]);
-        			sk.push(tmp->right);
-        			tmp = NULL;
-        		}
-        		++idx;
-        	}
-        	else
-        	{
-        		tmp = sk.top();
-        		sk.pop();
-        	}
+        vector<TreeNode *> sk;
+        TreeNode *root = nullptr;
+        for (auto &val: preorder) {
+            TreeNode *now = new TreeNode(val), *last = nullptr;
+            while (sk.size() && sk.back()->val < val) {
+                last = sk.back();
+                sk.pop_back();
+            }
+            if (last) {
+                last->right = now;
+            } else if (sk.size()) {
+                sk.back()->left = now;
+            }
+            if (!root) {
+                root = now;
+            }
+            sk.push_back(now);
         }
         return root;
     }
@@ -53,30 +40,30 @@ public:
 class Solution {
 public:
     TreeNode* bstFromPreorder(vector<int>& preorder) {
-    	int idx = 0;
-    	if (!preorder.size()) return NULL;
-    	TreeNode *root = new TreeNode(preorder[0]);
-
-    	for (int i = 1; i < preorder.size(); ++i)
-    		dfs(root, preorder[i]);
-
-       return root;
+        TreeNode *dummy = new TreeNode(-1);
+        for (auto &val: preorder) {
+            dfs(dummy, val);
+        }
+        return dummy->left;
     }
-    void dfs(TreeNode *root, int val)
-    {
-    	if (root->val > val)
-    	{
-    		if (!root->left)
-    			root->left = new TreeNode(val);
-    		else
-    			dfs(root->left, val);
-    	}
-    	else
-    	{
-    		if (!root->right)
-    			root->right = new TreeNode(val);
-    		else
-    			dfs(root->right, val);
-    	}
+    void dfs(TreeNode *dummy, int val) {
+        TreeNode *parent = dummy, *root = dummy->left;
+        int dir = 0;
+        while (root) {
+            if (root->val < val) {
+                parent = root;
+                dir = 1;
+                root = root->right;
+            } else {
+                parent = root;
+                dir = 0;
+                root = root->left;
+            }
+        }
+        if (dir) {
+            parent->right = new TreeNode(val);
+        } else {
+            parent->left = new TreeNode(val);
+        }
     }
 };

@@ -4,21 +4,22 @@
 class Solution {
 public:
     int longestStrChain(vector<string>& words) {
-        int maxv = 1;
-        sort(words.begin(), words.end(), [](string &a, string &b) {
+        int res = 0;
+        unordered_map<string,int> map;
+        sort(words.begin(), words.end(), [](const string &a, const string &b) {
             return a.size() < b.size();
         });
-        unordered_map<string, int> dp;
-        for (int i = 0; i < words.size(); ++i) {
-            dp[words[i]] = 1;
-            for (int j = 0; j < words[i].size(); ++j) {
-                string last_str = words[i].substr(0, j) + words[i].substr(j+1);
-                if (dp.find(last_str) != dp.end()) {
-                    dp[words[i]] = max(dp[words[i]], dp[last_str]+1);
+        for (auto &word: words) {
+            int len = 1;
+            for (int i = 0; i < word.size(); ++i) {
+                auto tmp = word.substr(0, i) + word.substr(i+1);
+                if (map.find(tmp) != map.end()) {
+                    len = max(len, map[tmp]+1);
                 }
             }
-            maxv = max(maxv, dp[words[i]]);
+            map[word] = len;
+            res = max(res, len);
         }
-        return maxv;
+        return res;
     }
 };

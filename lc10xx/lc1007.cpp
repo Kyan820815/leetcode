@@ -3,23 +3,20 @@
 //--- method 1: one pass, find cnt for the first domino
 class Solution {
 public:
-    int minDominoRotations(vector<int>& A, vector<int>& B) {
-        int top = A[0], down = B[0], tcnt1 = 0, dcnt1 = 0, tcnt2 = 0, dcnt2 = 0;
-        for (int i = 0; i < A.size(); ++i) {
-            if (A[i] != top && B[i] != top) {
-                top = 0;
-            }
-            if (A[i] != down && B[i] != down) {
-                down = 0;
-            }
-            if (!top && !down) {
+    int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
+        int n = tops.size(), tsame = 1, bsame = 1;
+        int tcnt1 = 0, tcnt2 = 0, bcnt1 = 0, bcnt2 = 0;
+        for (int i = 0; i < n; ++i) {
+            tsame &= tops[i] == tops[0] || bottoms[i] == tops[0];
+            bsame &= tops[i] == bottoms[0] || bottoms[i] == bottoms[0];
+            if (!tsame && !bsame) {
                 return -1;
             }
-            tcnt1 += top == A[i];
-            dcnt1 += top == B[i];
-            tcnt2 += down == A[i];
-            dcnt2 += down == B[i];
+            tcnt1 += tops[0] == tops[i];
+            tcnt2 += tops[0] == bottoms[i];
+            bcnt1 += bottoms[0] == tops[i];
+            bcnt2 += bottoms[0] == bottoms[i];
         }
-        return min(A.size() - max(tcnt1, dcnt1), A.size() - max(tcnt2, dcnt2));
+        return min(n-max(tcnt1, tcnt2), n-max(bcnt1, bcnt2));
     }
 };

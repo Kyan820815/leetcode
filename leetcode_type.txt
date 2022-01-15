@@ -222,6 +222,7 @@
     0215(m): Kth Largest Element in an Array
     0378(m): Kth Smallest Element in a Sorted Matrix
     0973(m): K Closest Points to Origin
+    1005(e): Maximize Sum Of Array After K Negations
     1387(m): Sort Integers by The Power Value
     1985(m): Find the Kth Largest Integer in the Array
 
@@ -267,6 +268,7 @@
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
     0914(e): X of a Kind in a Deck of Cards
+    1002(e): Find Common Characters
     1057(m): Campus Bikes
     1196(e): How Many Apples Can You Put into the Basket
     1122(e): Relative Sort Array
@@ -378,7 +380,8 @@
     1019(m): Next Greater Node In Linked List
     1021(e): Remove Outermost Parentheses
     1028(h): Recover a Tree From Preorder Traversal
-    1043(e): Remove All Adjacent Duplicates In String
+    1038(m): Binary Search Tree to Greater Sum Tree
+    1047(e): Remove All Adjacent Duplicates In String
     1063(h): Number of Valid Subarrays
     1081(m): Smallest Subsequence of Distinct Characters
     1130(m): Minimum Cost Tree From Leaf Values
@@ -641,7 +644,13 @@
     0987(h): Vertical Order Traversal of a Binary Tree
     0988(m): Smallest String Starting From Leaf
     0993(e): Cousins in Binary Tree
+    1008(m): Construct Binary Search Tree from Preorder Traversal
     1020(m): Number of Enclaves
+    1022(e): Sum of Root To Leaf Binary Numbers
+    1025(e): Divisor Game
+    1026(m): Maximum Difference Between Node and Ancestor
+    1034(m): Coloring A Border
+    1038(m): Binary Search Tree to Greater Sum Tree
     1137(e): N-th Tribonacci Number
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
@@ -702,6 +711,12 @@
     0969(m): Pancake Sorting
     0976(e): Largest Perimeter Triangle
     0991(m): Broken Calculator
+    1005(e): Maximize Sum Of Array After K Negations
+    1007(m): Minimum Domino Rotations For Equal Row
+    1011(m): Capacity To Ship Packages Within D Days
+    1013(e): Partition Array Into Three Parts With Equal Sum
+    1029(m): Two City Scheduling
+    1046(e): Last Stone Weight
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -793,6 +808,7 @@
     0935(m): Knight Dialer
     0978(m): Longest Turbulent Subarray
     0983(m): Minimum Cost For Tickets
+    1031(m): Maximum Sum of Two Non-Overlapping Subarrays
     1035(m): Uncrossed Lines
     1043(m): Partition Array for Maximum Sum
     1048(m): Longest String Chain
@@ -851,7 +867,6 @@
     0974(m): Subarray Sums Divisible by K
     0978(m): Longest Turbulent Subarray
     0992(h): Subarrays with K Different Integers
-    1048(m): Longest String Chain
     1186(m): Maximum Subarray Sum with One Deletion
     1493(m): Longest Subarray of 1's After Deleting One Element
     1588(e): Sum of All Odd Length Subarrays
@@ -874,7 +889,8 @@
     0862(h): Shortest Subarray with Sum at Least K
     0930(m): Binary Subarrays With Sum
     0974(m): Subarray Sums Divisible by K
-    1010(e): Pairs of Songs With Total Durations Divisible by 60
+    1004(m): Max Consecutive Ones III
+    1010(m): Pairs of Songs With Total Durations Divisible by 60
     1109(m): Corporate Flight Bookings
     1124(m): Longest Well-Performing Interval
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
@@ -1016,6 +1032,9 @@
     0987(h): Vertical Order Traversal of a Binary Tree
     0992(h): Subarrays with K Different Integers
     0997(e): Find the Town Judge
+    1002(e): Find Common Characters
+    1010(m): Pairs of Songs With Total Durations Divisible by 60
+    1048(m): Longest String Chain
     1094(m): Car Pooling
     1122(e): Relative Sort Array
     1128(e): Number of Equivalent Domino Pairs
@@ -1351,6 +1370,13 @@
     0981(m): Time Based Key-Value Store
     0988(m): Smallest String Starting From Leaf
     0989(e): Add to Array-Form of Integer
+    1002(e): Find Common Characters
+    1003(m): Check If Word Is Valid After Substitutions
+    1021(e): Remove Outermost Parentheses
+    1028(h): Recover a Tree From Preorder Traversal
+    1041(m): Robot Bounded In Circle
+    1047(e): Remove All Adjacent Duplicates In String
+    1048(m): Longest String Chain
     1065(e): Index Pairs of a String
     1165(e): Single-Row Keyboard
     1422(e): Maximum Score After Splitting a String
@@ -1662,13 +1688,25 @@
     0997(e): Find the Town Judge
     0999(e): Available Captures for Rook
     1002(e): Find Common Characters
+    1004(m): Max Consecutive Ones III
     1005(e): Maximize Sum Of Array After K Negations
     1007(m): Minimum Domino Rotations For Equal Row
+    1008(m): Construct Binary Search Tree from Preorder Traversal
+    1010(m): Pairs of Songs With Total Durations Divisible by 60
+    1011(m): Capacity To Ship Packages Within D Days
     1013(e): Partition Array Into Three Parts With Equal Sum
+    1018(e): Binary Prefix Divisible By 5
+    1019(m): Next Greater Node In Linked List
     1020(m): Number of Enclaves
-    1025(e): Divisor Game
-    1029(e): Two City Scheduling
-    1041(m): Robot Bounded In Circle
+    1029(m): Two City Scheduling
+    1030(e): Matrix Cells in Distance Order
+    1031(m): Maximum Sum of Two Non-Overlapping Subarrays
+    1034(m): Coloring A Border
+    1035(m): Uncrossed Lines
+    1043(m): Partition Array for Maximum Sum
+    1046(e): Last Stone Weight
+    1048(m): Longest String Chain
+    1049(m): Last Stone Weight II
     1051(e): Height Checker
     1071(e): Greatest Common Divisor of Strings
     1085(e): Sum of Digits in the Minimum Number
@@ -1773,7 +1811,7 @@
     0709(e): To Lower Case
     0861(m): Score After Flipping Matrix
     0864(h): Shortest Path to Get All Keys
-    1048(m): Longest String Chain
+    1049(m): Last Stone Weight II
     1072(m): Flip Columns For Maximum Number of Equal Rows
     1018(e): Binary Prefix Divisible By 5
     1118(e): Number of Days in a Month
@@ -1863,6 +1901,7 @@
     0997(e): Find the Town Judge
     0999(e): Available Captures for Rook
     1020(m): Number of Enclaves
+    1030(e): Matrix Cells in Distance Order
     1034(m): Coloring A Border
     1059(m): All Paths from Source Lead to Destination
     1102(m): Path With Maximum Minimum Value
@@ -2189,7 +2228,10 @@
     0977(e): Squares of a Sorted Array
     0989(e): Add to Array-Form of Integer
     0991(m): Broken Calculator
+    1018(e): Binary Prefix Divisible By 5
+    1025(e): Divisor Game
     1037(e): Valid Boomerang
+    1041(m): Robot Bounded In Circle
     1128(e): Number of Equivalent Domino Pairs
     1227(m): Airplane Seat Assignment Probability
     1232(e): Check If It Is a Straight Line

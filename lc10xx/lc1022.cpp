@@ -13,18 +13,21 @@
 //--- method 1: dfs
 class Solution {
 public:
+    int res = 0;
     int sumRootToLeaf(TreeNode* root) {
-        int res = 0;
-        dfs(root, res, 0);
+        preorder(root, 0);
         return res;
     }
-    void dfs(TreeNode *root, int &res, int sum)
-    {
-        if (!root) return;
-        sum = (sum << 1) + root->val;
-        dfs(root->left, res, sum);
-        dfs(root->right, res, sum);
-        if (!root->left && !root->right)
+    void preorder(TreeNode *root, int sum) {
+        sum = (sum<<1)+root->val;
+        if (!root->left && !root->right) {
             res += sum;
+        }
+        if (root->left) {
+            preorder(root->left, sum);
+        }
+        if (root->right) {
+            preorder(root->right, sum);
+        }
     }
 };

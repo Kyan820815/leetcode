@@ -3,25 +3,25 @@
 //--- method 1: bfs
 class Solution {
 public:
-    vector<vector<int>> allCellsDistOrder(int R, int C, int r0, int c0) {
-        vector<vector<int>> res, visit(R, vector<int>(C, 0)), dir = {{-1,0},{1,0}, {0,-1},{0,1}};
-        queue<pair<int, int>> que;
-        visit[r0][c0] = 1;
-        que.push({r0, c0});
+    vector<vector<int>> allCellsDistOrder(int rows, int cols, int rCenter, int cCenter) {
+        vector<vector<int>> res, visit(rows, vector<int>(cols, 0)), dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        visit[rCenter][cCenter] = 1;
+        queue<pair<int,int>> que;
+        que.push({rCenter, cCenter});
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                res.push_back({now.first, now.second});
-                for (int j = 0; j < 4; ++j) {
-                    int nr = now.first + dir[j][0];
-                    int nc = now.second + dir[j][1];
-                    if (nr < 0 || nr >= R || nc < 0 || nc >= C || visit[nr][nc]) {
+                res.push_back({now.first,now.second});
+                for (auto &dir: dirs) {
+                    int nr = now.first+dir[0];
+                    int nc = now.second+dir[1];
+                    if (nr < 0 || nr >= rows || nc < 0 || nc >= cols || visit[nr][nc]) {
                         continue;
                     }
                     visit[nr][nc] = 1;
-                    que.push({nr, nc});
+                    que.push({nr,nc});
                 }
             }
         }

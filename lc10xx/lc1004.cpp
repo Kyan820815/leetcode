@@ -1,34 +1,34 @@
 //--- Q: 1004. Max Consecutive Ones III
 
-//--- method 1: sliding window with clean code, better
+//--- method 1: sliding window
 class Solution {
 public:
-    int longestOnes(vector<int>& A, int K) {
-    	int i = 0, j;
-    	for (j = 0; j < A.size(); ++j)
-    	{
-    		if (!A[j]) --K;
-    		if (K < 0 && !A[i++]) ++K;
-    	}
-    	return j-i;
+    int longestOnes(vector<int>& nums, int k) {
+        int n = nums.size(), left = 0, right = 0, res = 0;
+        while (right < n) {
+            k -= !nums[right];
+            while (k < 0) {
+                k += !nums[left++];
+            }
+            res = max(res, right-left+1);
+            ++right;
+        }
+        return res;
     }
 };
 
-//--- method 2: sliding window
+//--- method 2: sliding window with another thought
 class Solution {
 public:
-    int longestOnes(vector<int>& A, int K) {
-        int ones = 0, left = 0, res = 0;
-        for (int i = 0; i < A.size(); ++i)
-        {
-            if (A[i]) ++ones;
-            if (i-left+1 - ones > K)
-            {
-                if (A[left]) --ones;
-                ++left;
+    int longestOnes(vector<int>& nums, int k) {
+        int left = 0, right = 0, n = nums.size();
+        while (right < n) {
+            k -= !nums[right];
+            if (k < 0 && !nums[left++]) {
+                ++k;
             }
-            res = max(res, i-left+1);
+            ++right;
         }
-        return res;
+        return right-left;
     }
 };

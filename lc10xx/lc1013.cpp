@@ -3,22 +3,24 @@
 //--- method 1: find target 3 times
 class Solution {
 public:
-    bool canThreePartsEqualSum(vector<int>& A) {
+    bool canThreePartsEqualSum(vector<int>& arr) {
         int sum = 0;
-        for (int i = 0; i < A.size(); ++i) {
-            sum += A[i];
+        for (auto &num: arr) {
+            sum += num;
         }
-        if (sum % 3 != 0) {
+        if (sum%3 != 0) {
             return false;
         }
-        int target = sum/3, now = 0, times = 0;
-        for (int i = 0; i < A.size(); ++i) {
-            now += A[i];
-            if (now == target) {
-                now = 0;
-                ++times;
+        auto partv = sum/3, cnt = 0, curs = 0;
+        for (int i = 0; i < arr.size(); ++i) {
+            curs += arr[i];
+            if (curs == partv) {
+                curs = 0;
+                if (++cnt == 3) {
+                    return true;
+                }
             }
         }
-        return times >= 3;
+        return false;
     }
 };

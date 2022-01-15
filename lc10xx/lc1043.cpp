@@ -3,26 +3,20 @@
 //--- metho 1: O(n*K)
 class Solution {
 public:
-    int maxSumAfterPartitioning(vector<int>& A, int K) {
-    	int max_val = INT_MIN;
-    	vector<int> dp(A.size(),-1);
-    	for (int i = 0; i < A.size(); ++i)
-    	{
-    		if (i < K)
-    		{
-    			max_val = max(max_val, A[i]);
-    			dp[i] = max_val*(i+1);
-    		}
-    		else
-    		{
-    			max_val = A[i];
-    			for (int j = i-1; j >= i-K; --j)
-    			{
-    				max_val = max(max_val, A[j+1]);
-    				dp[i] = max(dp[i], dp[j] + max_val*(i-j));
-    			}
-    		}
-    	}
-    	return dp.back();
+    int maxSumAfterPartitioning(vector<int>& arr, int k) {
+        int n = arr.size(), maxv = 0;
+        vector<int> dp(n, 0);
+        for (int i = 0; i < k; ++i) {
+            maxv = max(maxv, arr[i]);
+            dp[i] = maxv*(i+1);
+        }
+        for (int i = k; i < n; ++i) {
+            int maxv = 0;
+            for (int j = i; j > i-k; --j) {
+                maxv = max(maxv, arr[j]);
+                dp[i] = max(dp[i], dp[j-1]+maxv*(i-j+1));
+            }
+        }
+        return dp.back();
     }
 };

@@ -13,47 +13,40 @@
 class Solution {
 public:
     vector<int> nextLargerNodes(ListNode* head) {
-        vector<pair<ListNode *, int>> sk;
-        int len = 0, idx = 0;
-        vector<int> res;
-        while (head) {
-            while (sk.size() && sk.back().first->val < head->val) {
-                res[sk.back().second] = head->val;
+        vector<int> res, sk, nums;
+        auto now = head;
+        int idx = -1;
+        while (now) {
+            while (sk.size() && nums[sk.back()] < now->val) {
+                res[sk.back()] = now->val;
                 sk.pop_back();
             }
-            sk.push_back({head, idx++});
+            sk.push_back(++idx);
             res.push_back(0);
-            head = head->next;
+            nums.push_back(now->val);
+            now = now->next;
         }
         return res;
     }
 };
 
-//--- method 2: two pass O(n) backtrack, better
+//--- method 2: two pass back tracking stack
 class Solution {
 public:
     vector<int> nextLargerNodes(ListNode* head) {
-        vector<int> res;
-        ListNode *cur;
-        stack<int> sk;
-        cur = head;
-        while(cur)
-        {
-        	res.push_back(cur->val);
-        	cur = cur->next;
+        vector<int> res, sk;
+        auto now = head;
+        while (now) {
+            res.push_back(now->val);
+            now = now->next;
         }
-        for (int i = res.size()-1; i >= 0 ; --i)
-        {
-        	while (sk.size() != 0 && sk.top() <= res[i])
-        	{
-        		sk.pop();
-        	}
-        	int val = res[i];
-        	if (!sk.size())
-        		res[i] = 0;
-        	else
-        		res[i] = sk.top();
-        	sk.push(val);
+        for (int i = res.size()-1; i >= 0; --i) {
+            while (sk.size() && sk.back() <= res[i]) {
+                sk.pop_back();
+            }
+            int nodeval = res[i];
+            res[i] = sk.size() ? sk.back() : 0;
+            sk.push_back(nodeval);
         }
         return res;
     }

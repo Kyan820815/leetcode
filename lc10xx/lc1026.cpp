@@ -13,21 +13,20 @@
 //--- method 1: preorder to find min and max of root to leaf
 class Solution {
 public:
+    int minv = INT_MAX, maxv = INT_MIN, res = 0;
     int maxAncestorDiff(TreeNode* root) {
-        if (!root) return 0;
-        int diff = 0, minv = INT_MAX, maxv = INT_MIN;
-        preorder(root, diff, minv, maxv);
-        return diff;
+        preorder(root, minv, maxv);
+        return res;
     }
-    void preorder(TreeNode *root, int &diff, int minv, int maxv)
-    {
-    	minv = min(minv, root->val);
-    	maxv = max(maxv, root->val);
-    	if (root->left)
-    		preorder(root->left, diff, minv, maxv);
-    	if (root->right)
-    		preorder(root->right, diff, minv, maxv);
-    	if (!root->left && !root->right)
-    		diff = max(diff, abs(minv-maxv));
+    void preorder(TreeNode *root, int minv, int maxv) {
+        minv = min(minv, root->val);
+        maxv = max(maxv, root->val);
+        res = max(res, abs(maxv-minv));
+        if (root->left) {
+            preorder(root->left, minv, maxv);
+        }
+        if (root->right) {
+            preorder(root->right, minv, maxv);
+        }
     }
 };

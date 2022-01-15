@@ -1,42 +1,79 @@
 //--- Q: 1005. Maximize Sum Of Array After K Negations
 
-//--- method 1: O(n) quick select
+//--- method 1: nlogn sort
 class Solution {
 public:
-    int largestSumAfterKNegations(vector<int>& A, int K) {
-        int sum = 0, minv = INT_MAX;
-        divide(A, 0, A.size()-1, K-1);
-        for (int i = 0; i < A.size(); ++i) {
-            if (K && A[i] < 0) {
-                A[i] *= -1;
-                --K;
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        int idx = 0, sum = 0, minv = INT_MAX;
+        while (idx < nums.size()) {
+            if (nums[idx] < 0 && k) {
+                sum -= nums[idx];
+                --k;
+            } else {
+                sum += nums[idx];
             }
-            sum += A[i];
-            minv = min(minv, A[i]);
+            minv = min(minv, abs(nums[idx++]));
         }
-        if (K & 1)
-            sum -= 2*minv;
-        return sum;
+        return k&1 ? sum-2*minv : sum;
     }
-    int partition(vector<int> &A, int start, int end) {
-        int pivot = start + rand()%(end-start+1), mid = start-1;
-        swap(A[pivot], A[end]);
+};
+
+//--- method 2: quick select O(n)
+class Solution {
+public:
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        int idx = 0, sum = 0, minv = INT_MAX;
+        divide(0, nums.size()-1, nums, k);
+        while (idx < nums.size()) {
+            if (nums[idx] < 0 && k) {
+                sum -= nums[idx];
+                --k;
+            } else {
+                sum += nums[idx];
+            }
+            minv = min(minv, abs(nums[idx++]));
+        }
+        return k&1 ? sum-2*minv : sum;
+    }
+    void divide(int start, int end, vector<int> &nums, int k) {
+        while (start < end) {
+            int mid = partition(start, end, nums);
+            if (mid < k) {
+                start = mid+1;
+            } else {
+                end = mid;
+            }
+        }
+    }
+    int partition(int start, int end, vector<int> &nums) {
+        int pivot = random()%(end-start+1)+start, idx = start-1;
+        swap(nums[pivot], nums[end]);
         for (int i = start; i < end; ++i) {
-            if (A[i] < A[end])
-                swap(A[++mid], A[i]);
+            if (nums[i] < nums[end]) {
+                swap(nums[++idx], nums[i]);
+            }
         }
-        swap(A[++mid], A[end]);
-        return mid;
+        swap(nums[++idx], nums[end]);
+        return idx;
     }
-    void divide(vector<int> &A, int start, int end, int K) {
-        if (start < end) {
-            int mid = partition(A, start, end);
-            if (mid < K)
-                divide(A, mid+1, end, K);
-            else if (mid > K)
-                divide(A, start, mid-1, K);
-            else
-                return;
+};
+
+//--- method 2: built in quick select O(n)
+class Solution {
+public:
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        nth_element(nums.begin(), nums.begin()+k, nums.end());
+        int idx = 0, sum = 0, minv = INT_MAX;
+        while (idx < nums.size()) {
+            if (nums[idx] < 0 && k) {
+                sum -= nums[idx];
+                --k;
+            } else {
+                sum += nums[idx];
+            }
+            minv = min(minv, abs(nums[idx++]));
         }
+        return k&1 ? sum-2*minv : sum;
     }
 };
