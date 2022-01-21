@@ -4,21 +4,22 @@
 class Solution {
 public:
     string smallestSubsequence(string s) {
-        vector<int> cnt(26, 0), exist(26, 0);
         string res = "";
-        for (auto &c: s) {
-            ++cnt[c-'a'];
+        vector<int> cnt(26, 0), used(26, 0);
+        for (auto &ch: s) {
+            ++cnt[ch-'a'];
         }
-        for (auto &c: s) {
-            if (!exist[c-'a']) {
-                exist[c-'a'] = 1;
-                while (res.size() && c < res.back() && cnt[res.back()-'a']) {
-                    exist[res.back()-'a'] = 0;
-                    res.pop_back();
-                }
-                res.push_back(c);
+        for (auto &ch: s) {
+            --cnt[ch-'a'];
+            if (used[ch-'a']) {
+                continue;
             }
-            --cnt[c-'a'];
+            while (res.size() && res.back() > ch && cnt[res.back()-'a']) {
+                used[res.back()-'a'] = 0;
+                res.pop_back();
+            }
+            res += ch;
+            used[ch-'a'] = 1;
         }
         return res;
     }

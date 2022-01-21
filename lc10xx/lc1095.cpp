@@ -10,55 +10,41 @@
  *     int length();
  * };
  */
-   
+
 class Solution {
 public:
     int findInMountainArray(int target, MountainArray &mountainArr) {
-        int n = mountainArr.length(), left = 0, right = n-1;
+        int left = 0, right = mountainArr.length()-1;
         while (left < right) {
-            int mid = left + (right-left)/2, mv, mv_next;
-            mv = mountainArr.get(mid);
-            mv_next = mountainArr.get(mid+1);
-            if (mv > mv_next) {
-                right = mid;
-            } else {
+            int mid = left + (right-left)/2;
+            if (mountainArr.get(mid) < mountainArr.get(mid+1)) {
                 left = mid+1;
+            } else {
+                right = mid;
             }
         }
-        int peak = left;
-        left = 0, right = peak;
+        int pivot = left;
+        left = 0, right = pivot;
         while (left < right) {
-            int mid = left + (right-left)/2, mv;
-            mv = mountainArr.get(mid);
-            if (mv < target) {
+            int mid = left + (right-left)/2;
+            if (mountainArr.get(mid) < target) {
                 left = mid+1;
-            } else if (mv > target) {
-                right = mid;
             } else {
-                return mid;
+                right = mid;
             }
         }
         if (mountainArr.get(left) == target) {
             return left;
         }
-        left = peak+1, right = n-1;
+        left = pivot, right = mountainArr.length()-1;
         while (left < right) {
-            int mid = left + (right-left)/2, mv;
-            mv = mountainArr.get(mid);
-            if (mv < target) {
-                right = mid;
-            } else if (mv > target) {
+            int mid = left + (right-left)/2;
+            if (mountainArr.get(mid) > target) {
                 left = mid+1;
             } else {
-                return mid;
+                right = mid;
             }
         }
-        if (mountainArr.get(left) == target) {
-            return left;
-        } else {
-            return -1;
-        }
+        return mountainArr.get(left) == target ? left : -1;
     }
 };
-
-

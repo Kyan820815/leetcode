@@ -3,12 +3,11 @@
 //--- method 1: simple finding sum of minv digits
 class Solution {
 public:
-    int sumOfDigits(vector<int>& A) {
-        int minv = INT_MAX;
-        for (int i = 0; i < A.size(); ++i) {
-            minv = min(minv, A[i]);
+    int sumOfDigits(vector<int>& nums) {
+        int minv = INT_MAX, res = 0;
+        for (auto &num: nums) {
+            minv = min(minv, num);
         }
-        int res = 0;
         while (minv) {
             res += minv%10;
             minv /= 10;

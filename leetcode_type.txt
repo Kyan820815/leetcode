@@ -182,6 +182,7 @@
     0992(h): Subarrays with K Different Integers
     1004(m): Max Consecutive Ones III
     1031(m): Maximum Sum of Two Non-Overlapping Subarrays
+    1051(e): Height Checker
     1052(m): Grumpy Bookstore Owner
     1089(e): Duplicate Zeros
     1099(e): Two Sum Less Than K
@@ -269,7 +270,10 @@
     0791(m): Custom Sort String
     0914(e): X of a Kind in a Deck of Cards
     1002(e): Find Common Characters
+    1051(e): Height Checker
     1057(m): Campus Bikes
+    1086(e): High Five 
+    1094(m): Car Pooling
     1196(e): How Many Apples Can You Put into the Basket
     1122(e): Relative Sort Array
     1133(e): Largest Unique Number
@@ -469,7 +473,6 @@
     0987(h): Vertical Order Traversal of a Binary Tree
     0994(m): Rotting Oranges
     1030(e): Matrix Cells in Distance Order
-    1059(m): All Paths from Source Lead to Destination
     1091(m): Shortest Path in Binary Matrix
     1129(m): Shortest Path with Alternating Colors 
     1136(m): Parallel Courses
@@ -634,7 +637,7 @@
     0894(m): All Possible Full Binary Trees
     0934(m): Shortest Bridge
     0938(e): Range Sum of BST
-    0947(m): Most Stones Removed with Same Row or Column 
+    0947(m): Most Stones Removed with Same Row or Column
     0951(m): Flip Equivalent Binary Trees
     0959(m): Regions Cut By Slashes
     0965(e): Univalued Binary Tree
@@ -651,6 +654,10 @@
     1026(m): Maximum Difference Between Node and Ancestor
     1034(m): Coloring A Border
     1038(m): Binary Search Tree to Greater Sum Tree
+    1059(m): All Paths from Source Lead to Destination
+    1079(m): Letter Tile Possibilities
+    1080(m): Insufficient Nodes in Root to Leaf Paths
+    1087(m): Brace Expansion
     1137(e): N-th Tribonacci Number
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
@@ -717,6 +724,9 @@
     1013(e): Partition Array Into Three Parts With Equal Sum
     1029(m): Two City Scheduling
     1046(e): Last Stone Weight
+    1057(m): Campus Bikes
+    1081(m): Smallest Subsequence of Distinct Characters
+    1090(m): Largest Values From Labels
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -891,6 +901,7 @@
     0974(m): Subarray Sums Divisible by K
     1004(m): Max Consecutive Ones III
     1010(m): Pairs of Songs With Total Durations Divisible by 60
+    1094(m): Car Pooling
     1109(m): Corporate Flight Bookings
     1124(m): Longest Well-Performing Interval
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
@@ -1035,6 +1046,13 @@
     1002(e): Find Common Characters
     1010(m): Pairs of Songs With Total Durations Divisible by 60
     1048(m): Longest String Chain
+    1057(m): Campus Bikes
+    1059(m): All Paths from Source Lead to Destination
+    1072(m): Flip Columns For Maximum Number of Equal Rows
+    1079(m): Letter Tile Possibilities
+    1081(m): Smallest Subsequence of Distinct Characters
+    1086(e): High Five 
+    1090(m): Largest Values From Labels
     1094(m): Car Pooling
     1122(e): Relative Sort Array
     1128(e): Number of Equivalent Domino Pairs
@@ -1377,7 +1395,12 @@
     1041(m): Robot Bounded In Circle
     1047(e): Remove All Adjacent Duplicates In String
     1048(m): Longest String Chain
+    1061(m): Lexicographically Smallest Equivalent String
     1065(e): Index Pairs of a String
+    1071(e): Greatest Common Divisor of Strings
+    1079(m): Letter Tile Possibilities
+    1081(m): Smallest Subsequence of Distinct Characters
+    1087(m): Brace Expansion
     1165(e): Single-Row Keyboard
     1422(e): Maximum Score After Splitting a String
     1525(m): Number of Good Ways to Split a String
@@ -1708,9 +1731,21 @@
     1048(m): Longest String Chain
     1049(m): Last Stone Weight II
     1051(e): Height Checker
-    1071(e): Greatest Common Divisor of Strings
+    1052(m): Grumpy Bookstore Owner
+    1057(m): Campus Bikes
+    1060(m): Missing Element in Sorted Array
+    1063(h): Number of Valid Subarrays
+    1064(e): Fixed Point
+    1065(e): Index Pairs of a String
+    1072(m): Flip Columns For Maximum Number of Equal Rows
     1085(e): Sum of Digits in the Minimum Number
     1086(e): High Five 
+    1089(e): Duplicate Zeros
+    1090(m): Largest Values From Labels
+    1091(m): Shortest Path in Binary Matrix
+    1094(m): Car Pooling
+    1095(h): Find in Mountain Array
+    1099(e): Two Sum Less Than K
     1103(e): Distribute Candies to People
     1108(e): Defanging an IP Address
     1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
@@ -1812,7 +1847,6 @@
     0861(m): Score After Flipping Matrix
     0864(h): Shortest Path to Get All Keys
     1049(m): Last Stone Weight II
-    1072(m): Flip Columns For Maximum Number of Equal Rows
     1018(e): Binary Prefix Divisible By 5
     1118(e): Number of Days in a Month
     1128(e): Number of Equivalent Domino Pairs
@@ -1904,6 +1938,7 @@
     1030(e): Matrix Cells in Distance Order
     1034(m): Coloring A Border
     1059(m): All Paths from Source Lead to Destination
+    1091(m): Shortest Path in Binary Matrix
     1102(m): Path With Maximum Minimum Value
     1129(m): Shortest Path with Alternating Colors 
     1135(m): Connecting Cities With Minimum Cost
@@ -1932,6 +1967,7 @@
     0648(m): Replace Words
     0720(m): Longest Word in Dictionary
     0809(m): Expressive Words
+    1065(e): Index Pairs of a String
     1804(m): Implement Trie II (Prefix Tree)
     1858(m): Longest Word With All Prefixes
 
@@ -2232,6 +2268,8 @@
     1025(e): Divisor Game
     1037(e): Valid Boomerang
     1041(m): Robot Bounded In Circle
+    1071(e): Greatest Common Divisor of Strings
+    1085(e): Sum of Digits in the Minimum Number
     1128(e): Number of Equivalent Domino Pairs
     1227(m): Airplane Seat Assignment Probability
     1232(e): Check If It Is a Straight Line

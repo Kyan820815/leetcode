@@ -5,15 +5,20 @@ class Solution {
 public:
     string gcdOfStrings(string str1, string str2) {
         while (str1.size() && str2.size()) {
-            if (str1.size() < str2.size()) {
-                swap(str1, str2);
-            }
-            if (str1.substr(0, str2.size()) == str2) {
-                str1 = str1.substr(str2.size());
-            } else {
-                return "";
+            find(str1, str2);
+        }
+        return str1;
+    }
+    void find(string &a, string &b) {
+        int i;
+        for (i = 0; i+b.size() <= a.size(); i += b.size()) {
+            if (a.substr(i, b.size()) != b) {
+                a = b = "";
+                return;
             }
         }
-        return str2;
+        auto tmp = a.substr(i);
+        a = b;
+        b = tmp;
     }
 };

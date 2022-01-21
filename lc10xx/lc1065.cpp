@@ -5,15 +5,14 @@ class Solution {
 public:
     vector<vector<int>> indexPairs(string text, vector<string>& words) {
         vector<vector<int>> res;
-        for (auto &word: words) {
-            int len = word.size();
-            for (int i = 0; i <= (int)text.size()-len; ++i) {
-                if (text.substr(i, len) == word) {
-                    res.push_back({i, i+len-1});
+        sort(words.begin(), words.end());
+        for (int i = 0; i < text.size(); ++i) {
+            for (auto &word: words) {
+                if (text.substr(i, word.size()) == word) {
+                    res.push_back({i, i+(int)word.size()-1});
                 }
             }
         }
-        sort(res.begin(), res.end());
         return res;
     }
 };
@@ -23,12 +22,11 @@ class TNode {
 public:
     TNode() {
         isend = false;
-        next.resize(26, NULL);
+        next.resize(26, nullptr);
     }
-    vector<TNode *> next;
     bool isend;
+    vector<TNode *> next;
 };
-
 class Solution {
 public:
     TNode *root;
@@ -42,20 +40,26 @@ public:
         }
         now->isend = true;
     }
+    void search(string &text, int idx) {
+        auto now = root;
+        for (int i = idx; i < text.size(); ++i) {
+            if (!now->next[text[i]-'a']) {
+                return;
+            }
+            now = now->next[text[i]-'a'];
+            if (now->isend) {
+                res.push_back({idx, i});
+            }
+        }
+    }
+    vector<vector<int>> res;
     vector<vector<int>> indexPairs(string text, vector<string>& words) {
         root = new TNode();
-        for (auto &wd: words) {
-            insert(wd);
+        for (auto &word: words) {
+            insert(word);
         }
-        vector<vector<int>> res;
         for (int i = 0; i < text.size(); ++i) {
-            auto now = root;
-            for (int j = i; j < text.size() && now; ++j) {
-                now = now->next[text[j]-'a'];
-                if (now && now->isend) {
-                    res.push_back({i,j});
-                }
-            }
+            search(text, i);
         }
         return res;
     }

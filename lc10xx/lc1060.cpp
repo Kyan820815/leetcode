@@ -7,19 +7,19 @@ public:
         int left = 0, right = nums.size()-1;
         while (left < right) {
             int mid = left + (right-left)/2;
-            if (func(nums, mid) < k) {
+            if (get(nums, mid) < k) {
                 left = mid+1;
             } else {
                 right = mid;
             }
         }
-        if (k > func(nums, left)) {
-            return nums[left] + k-func(nums, left);
+        if (left == nums.size()-1 && get(nums, left) < k) {
+            return k-get(nums, left) + nums.back();
         } else {
-            return nums[left-1] + k-func(nums, left-1);
+            return k-get(nums, left-1)+nums[left-1];
         }
     }
-    int func(vector<int> &nums, int idx) {
-        return idx ? nums[idx]-nums[0]-idx : 0;
+    int get(vector<int> &nums, int idx) {
+        return nums[idx]-nums[0]-idx;
     }
 };

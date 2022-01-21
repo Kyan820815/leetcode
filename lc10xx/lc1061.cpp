@@ -3,67 +3,32 @@
 //--- method 1: union find, better
 class Solution {
 public:
-    string smallestEquivalentString(string A, string B, string S) {
-        vector<int> parent(26, -1);
-        string res = "";
-        for (int i = 0; i < 26; ++i) {
-            parent[i] = i;
-        }
-        for (int i = 0; i < A.size(); ++i) {
-            int ap = findp(A[i]-'a', parent);
-            int bp = findp(B[i]-'a', parent);
+    vector<int> parent;
+    string smallestEquivalentString(string s1, string s2, string baseStr) {
+        int n = s1.size();
+        parent.resize(26, -1);
+        for (int i = 0; i < n; ++i) {
+            int ap = findp(s1[i]-'a');
+            int bp = findp(s2[i]-'a');
             if (ap != bp) {
-                parent[max(ap, bp)] = min(ap, bp);
-            }
-        }
-        for (int i = 0; i < S.size(); ++i) {
-            int ap = findp(S[i]-'a', parent);
-            res.push_back(ap + 'a');
-        }
-        return res;
-    }
-    int findp(int now, vector<int> &parent) {
-        if (now != parent[now]) {
-            return parent[now] = findp(parent[now], parent);
-        }
-        return now;
-    }
-};
-
-//--- method 2: union find
-class Solution {
-public:
-    string smallestEquivalentString(string A, string B, string S) {
-        unordered_map<int, set<char>> group;
-        vector<int> parent(26, -1);
-        string res = "";
-        for (int i = 0; i < 26; ++i) {
-            parent[i] = i;
-            group[i].insert(i+'a');
-        }
-        for (int i = 0; i < A.size(); ++i) {
-            int ap = findp(A[i]-'a', parent);
-            int bp = findp(B[i]-'a', parent);
-            if (ap != bp) {
-                if (group[ap].size() < group[bp].size()) {
-                    parent[ap] = bp;
-                    group[bp].insert(group[ap].begin(), group[ap].end());
-                } else {
+                if (ap < bp) {
                     parent[bp] = ap;
-                    group[ap].insert(group[bp].begin(), group[bp].end());
+                } else {
+                    parent[ap] = bp;
                 }
             }
         }
-        for (int i = 0; i < S.size(); ++i) {
-            int ap = findp(S[i]-'a', parent);
-            res.push_back(*group[ap].begin());
+        string res = "";
+        for (auto &ch: baseStr) {
+            res += findp(ch-'a')+'a';
         }
         return res;
     }
-    int findp(int now, vector<int> &parent) {
-        if (now != parent[now]) {
-            return parent[now] = findp(parent[now], parent);
+    int findp(int now) {
+        if (parent[now] == now) {
+            return now;
+        } else {
+            return parent[now] = parent[now] == -1 ? now : findp(parent[now]);
         }
-        return now;
     }
 };

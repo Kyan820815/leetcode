@@ -3,24 +3,25 @@
 //--- method 1: priority queue
 class Solution {
 public:
-    int largestValsFromLabels(vector<int>& values, vector<int>& labels, int num_wanted, int use_limit) {
-        unordered_map<int, int> used;
-        int res = 0;
-        auto comp = [&values](int a, int b) {
-              return values[a] < values[b];
+    int largestValsFromLabels(vector<int>& values, vector<int>& labels, int numWanted, int useLimit) {
+        int n = labels.size(), res = 0;
+        auto comp = [&values](int &a, int &b) {
+            return values[a] < values[b];
         };
         priority_queue<int, vector<int>, decltype(comp)> que(comp);
-        for (int i = 0; i < labels.size(); ++i) {
+        for (int i = 0; i < n; ++i) {
             que.push(i);
         }
-        while (que.size() && num_wanted) {
-            auto now = que.top();
+        unordered_map<int,int> cnt;
+        while (que.size() && numWanted) {
+            auto idx = que.top();
             que.pop();
-            if (used[labels[now]]++ < use_limit) {
-                res += values[now];
-                --num_wanted;
+            if (cnt[labels[idx]] < useLimit) {
+                ++cnt[labels[idx]];
+                --numWanted;
+                res += values[idx];
             }
         }
         return res;
-}
+    }
 };

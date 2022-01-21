@@ -18,7 +18,7 @@ public:
     TreeNode* sufficientSubset(TreeNode* root, int limit) {
         limit -= root->val;
         if (!root->left && !root->right) {
-            return limit > 0 ? NULL : root;
+            return limit > 0 ? nullptr : root;
         }
         if (root->left) {
             root->left = sufficientSubset(root->left, limit);
@@ -26,6 +26,6 @@ public:
         if (root->right) {
             root->right = sufficientSubset(root->right, limit);
         }
-        return (root->left || root->right) ? root : NULL;
+        return !root->left && !root->right ? nullptr : root;
     }
 };

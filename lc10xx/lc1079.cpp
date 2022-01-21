@@ -1,49 +1,53 @@
 //--- Q: 1079. Letter Tile Possibilities
 
-//--- method 1: dfs recursion
-class Solution {
-public:
-    int numTilePossibilities(string tiles) {
-        int res = 0;
-        sort(tiles.begin(), tiles.end());
-        vector<bool> visit(tiles.size(), false);
-        dfs(0, tiles, res, visit);
-        return res;
-    }
-    void dfs(int cnt, string &tiles, int &res, vector<bool> &visit) {
-        if (cnt == tiles.size())
-            return;
-        for (int i = 0; i < tiles.size(); ++i) {
-            if (i > 0 && tiles[i] == tiles[i-1] && !visit[i-1] || visit[i])
-                continue;
-            visit[i] = true;
-            ++res;
-            dfs(cnt+1, tiles, res, visit);
-            visit[i] = false;
-        }
-    }
-};
-
-//--- method 1-2: ABA case
+//--- method 1: count if appear before
 class Solution {
 public:
     int res = 0;
     int numTilePossibilities(string tiles) {
-        tiles = "ABA";
-        vector<int> previous_visit(tiles.size(), 0);
-        dfs(previous_visit, tiles);
-        return res;
+        vector<int> used(tiles.size(), 0);
+        sort(tiles.begin(), tiles.end());
+        dfs(tiles, 0, used);
+        return res;    
     }
-    void dfs(vector<int> &previous_visit, string &S) {
-        vector<int> cur_level_visit(26, 0);
-        for (int i = 0; i < S.size(); ++i) {
-            if (previous_visit[i] || cur_level_visit[S[i]-'A']) {
+    void dfs(string &tiles, int times, vector<int> &used) {
+        if (times == tiles.size()) {
+            return;
+        }
+        for (int i = 0; i < tiles.size(); ++i) {
+            if (i && !used[i-1] && tiles[i] == tiles[i-1] || used[i]) {
                 continue;
             }
             ++res;
-            previous_visit[i] = cur_level_visit[S[i]-'A'] = 1;
-            dfs(previous_visit, S);
-            previous_visit[i] = 0;
+            used[i] = 1;
+            dfs(tiles, times+1, used);
+            used[i] = 0;
+        }
+    }
+};
+
+//--- method 2: sort then compare with previous ch
+class Solution {
+public:
+    int res = 0;
+    int numTilePossibilities(string tiles) {
+        vector<int> used(tiles.size(), 0);
+        dfs(tiles, 0, used);
+        return res;    
+    }
+    void dfs(string &tiles, int times, vector<int> &used) {
+        if (times == tiles.size()) {
+            return;
+        }
+        vector<int> cnt(26, 0);
+        for (int i = 0; i < tiles.size(); ++i) {
+            if (!cnt[tiles[i]-'A'] && !used[i]) {
+                ++res;
+                cnt[tiles[i]-'A'] = 1;
+                used[i] = 1;
+                dfs(tiles, times+1, used);
+                used[i] = 0;
+            }
         }
     }
 };

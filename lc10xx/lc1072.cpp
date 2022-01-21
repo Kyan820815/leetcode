@@ -4,16 +4,15 @@
 class Solution {
 public:
     int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
-        int row = matrix.size(), col = matrix[0].size(), maxv = 0;
         unordered_map<string, int> map;
+        int row = matrix.size(), col = matrix[0].size(), res = 0;
         for (int i = 0; i < row; ++i) {
-            string str = "";
-            int change = (matrix[i][0] == 1);
+            string tmp = "";
             for (int j = 0; j < col; ++j) {
-                str.push_back(matrix[i][j]^change + '0');
+                tmp += (matrix[i][j] == matrix[i][0] ? '1' : '0');
             }
-            maxv = max(maxv, ++map[str]);
+            res = max(res, ++map[tmp]);
         }
-        return maxv;
+        return res;
     }
 };

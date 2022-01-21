@@ -4,15 +4,38 @@
 class Solution {
 public:
     bool carPooling(vector<vector<int>>& trips, int capacity) {
-        vector<int> cap(1001, 0);
-        for (int i = 0; i < trips.size(); ++i) {
-            cap[trips[i][1]] += trips[i][0];
-            cap[trips[i][2]] -= trips[i][0];
-        }
+        vector<int> location(1001, 0);
         int people = 0;
-        for (int i = 0; i <= 1000 && people <= capacity; ++i) {
-            people += cap[i];
+        for (auto &trip: trips) {
+            location[trip[1]] += trip[0];
+            location[trip[2]] -= trip[0];
         }
-        return people <= capacity;
+        for (int i = 0; i <= 1000; ++i) {
+            people += location[i];
+            if (people > capacity) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
+
+//--- method 2: map traversal
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity) {
+        int people = 0;
+        map<int,int> loc;
+        for (auto &trip: trips) {
+            loc[trip[1]] += trip[0];
+            loc[trip[2]] -= trip[0];
+        }
+        for (auto &node: loc) {
+            people += node.second;
+            if (people > capacity) {
+                return false;
+            }
+        }
+        return true;
     }
 };

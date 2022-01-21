@@ -3,18 +3,17 @@
 //--- method 1: two pointers
 class Solution {
 public:
-    int twoSumLessThanK(vector<int>& A, int K) {
-        int left = 0, right = A.size()-1;
-        int diff = INT_MAX;
-        sort(A.begin(), A.end());
+    int twoSumLessThanK(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end());
+        int left = 0, right = nums.size()-1, res = 0;
         while (left < right) {
-            int sum = A[left] + A[right];
-            if (sum < K) {
-                diff = min(diff, K-sum);
+            if (nums[left] + nums[right] < k) {
+                res = max(res, nums[left]+nums[right]);
                 ++left;
-            } else
+            } else {
                 --right;
+            }
         }
-        return diff == INT_MAX ? -1 : K-diff;
+        return !res ? -1 : res;
     }
 };
