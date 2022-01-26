@@ -3,17 +3,18 @@
 //--- method 1: dp iteration
 class Solution {
 public:
-    int minHeightShelves(vector<vector<int>>& books, int shelf_width) {
+    int minHeightShelves(vector<vector<int>>& books, int shelfWidth) {
         int n = books.size();
-        vector<int> dp(n+1, INT_MAX);
-        dp[0] = 0;
-        for (int i = 1; i <= n; ++i) {
-            for (int j = i, h = 0, w = 0; j > 0 && w + books[j-1][0] <= shelf_width; --j) {
-                w += books[j-1][0];
-                h = max(h, books[j-1][1]);
-                dp[i] = min(dp[i], dp[j-1] + h);
+        vector<int> dp(n+1, 0);
+        for (int i = 0; i < n; ++i) {
+            int curh = books[i][1], maxw = books[i][0], minh = curh+dp[i];
+            for (int j = i-1; j >= 0 && maxw+books[j][0] <= shelfWidth; --j) {
+                curh = max(curh, books[j][1]);
+                minh = min(minh, curh+dp[j]);
+                maxw += books[j][0];
             }
+            dp[i+1] = minh;
         }
-        return dp.back();
+        return dp[n];
     }
 };

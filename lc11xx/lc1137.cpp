@@ -9,14 +9,14 @@ public:
         } else if (n == 1 || n == 2) {
             return 1;
         }
-        int r3 = 0, r2 = 1, r1 = 1;
+        int first = 0, second = 1, thrid = 1;
         for (int i = 3; i <= n; ++i) {
-            int tmp = r1+r2+r3;
-            r3 = r2;
-            r2 = r1;
-            r1 = tmp;
+            int tmp = first+second+thrid;
+            first = second;
+            second = thrid;
+            thrid = tmp;
         }
-        return r1;
+        return thrid;
     }
 };
 
@@ -26,8 +26,8 @@ public:
     int tribonacci(int n) {
         vector<int> dp = {0,1,1};
         for (int i = 3; i <= n; ++i) {
-            int sum = dp[0]+dp[1]+dp[2];
-            dp[i%3] = sum;
+            int tmp = dp[0]+dp[1]+dp[2];
+            dp[i%3] = tmp;
         }
         return dp[n%3];
     }

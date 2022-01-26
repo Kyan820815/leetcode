@@ -13,23 +13,23 @@
 //--- method 1: dfs
 class Solution {
 public:
-	int left, right;
+    int belowlc = 0, belowrc = 0;
     bool btreeGameWinningMove(TreeNode* root, int n, int x) {
-        dfs(root, x);
-        return max(max(left, right), n-left-right-1) > n/2;
+        postorder(root, x);
+        return max(n-belowlc-belowrc-1, max(belowlc, belowrc)) > n/2;
     }
-    int dfs(TreeNode *root, int x)
-    {
-    	int l = 0, r = 0;
-    	if (root->left)
-    		l = dfs(root->left, x);
-    	if (root->right)
-    		r = dfs(root->right, x);
-    	if (root->val == x)
-    	{
-    		left = l;
-    		right = r;
-    	}
-    	return l+r+1;
+    int postorder(TreeNode *root, int x) {
+        int lc = 0, rc = 0;
+        if (root->left) {
+            lc = postorder(root->left, x);
+        }
+        if (root->right) {
+            rc = postorder(root->right, x);
+        }
+        if (root->val == x) {
+            belowlc = lc;
+            belowrc = rc;
+        }
+        return lc+rc+1;
     }
 };

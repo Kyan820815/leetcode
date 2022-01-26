@@ -1,3 +1,5 @@
+//--- Q: 1100. Delete Nodes And Return Forest
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -11,28 +13,32 @@
 //--- method 1: postorder
 class Solution {
 public:
+    vector<TreeNode *> res;
     vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
-        unordered_set<int> set;
-        vector<TreeNode *> res;
-        for (int i = 0; i < to_delete.size(); ++i)
-            set.insert(to_delete[i]);
-        root = dfs(root, res, set);
-        if (root)
+        unordered_set<int> del(to_delete.begin(), to_delete.end());
+        root = postorder(root, del);
+        if (root) {
             res.push_back(root);
+        }
         return res;
     }
-    TreeNode *dfs(TreeNode *root, vector<TreeNode *> &res, unordered_set<int> &set) {
-        if (root->left)
-            root->left = dfs(root->left, res, set);
-        if (root->right)
-            root->right = dfs(root->right, res, set);
-        if (set.find(root->val) != set.end()) {
-            if (root->left)
-                res.push_back(root->left);
-            if (root->right)
-                res.push_back(root->right);
-            return NULL;
+    TreeNode *postorder(TreeNode *root, unordered_set<int> &del) {
+        if (root->left) {
+            root->left = postorder(root->left, del);
         }
-        return root;
+        if (root->right) {
+            root->right = postorder(root->right, del);
+        }
+        if (del.find(root->val) != del.end()) {
+            if (root->left) {
+                res.push_back(root->left);
+            }
+            if (root->right) {
+                res.push_back(root->right);
+            }
+            return nullptr;
+        } else {
+            return root;
+        }
     }
 };

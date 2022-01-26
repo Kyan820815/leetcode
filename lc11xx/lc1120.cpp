@@ -13,21 +13,23 @@
 //--- method 1: dfs recursion
 class Solution {
 public:
+    double res = 0;
     double maximumAverageSubtree(TreeNode* root) {
-        double res = 0, now;
-        postorder(root, res, now);
+        int sum = 0;
+        postorder(root, sum);
         return res;
     }
-    int postorder(TreeNode *root, double &res, double &now) {
-        int l = 0, r = 0;
-        double lv = 0, rv = 0;
-        if (root->left)
-            l = postorder(root->left, res, lv);
-        if (root->right)
-            r = postorder(root->right, res, rv);
-        
-        res = max(res, (root->val+lv+rv) / (l+r+1));
-        now = root->val + lv + rv;
-        return l+r+1;
+    int postorder(TreeNode *root, int &sum) {
+        int lv = 0, rv = 0, lcnt = 0, rcnt = 0;
+        if (root->left) {
+            lcnt = postorder(root->left, lv);
+        }
+        if (root->right) {
+            rcnt = postorder(root->right, rv);
+        }
+        sum = root->val+lv+rv;
+        int cnt = lcnt+rcnt+1;
+        res = max(res, (double)sum/cnt);
+        return cnt;
     }
 };

@@ -5,11 +5,12 @@ class Solution {
 public:
     vector<int> distributeCandies(int candies, int num_people) {
         vector<int> res(num_people, 0);
-        int idx = 0, num = 1;
+        int num = 1, idx = 0;
         while (candies-num >= 0) {
+            res[idx] += num;
             candies -= num;
-            res[idx++] += num++;
-            if (idx == num_people) {
+            num++;
+            if (++idx == num_people) {
                 idx = 0;
             }
         }

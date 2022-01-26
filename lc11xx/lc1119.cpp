@@ -3,13 +3,15 @@
 //--- method 1: one time pass
 class Solution {
 public:
-    string removeVowels(string S) {
-        int now = -1;
-        for (int i = 0; i < S.size(); ++i) {
-            if (S[i] != 'a' && S[i] != 'e' && S[i] != 'i' && S[i] != 'o' && S[i] != 'u') {
-                swap(S[++now], S[i]);
+    string removeVowels(string s) {
+        string res = "";
+        vector<int> cnt(26, 0);
+        cnt['a'-'a'] = cnt['e'-'a'] = cnt['i'-'a'] = cnt['o'-'a'] = cnt['u'-'a'] = 1;
+        for (auto &ch: s) {
+            if (!cnt[ch-'a']) {
+                res += ch;
             }
         }
-        return S.substr(0, now+1);
+        return res;
     }
 };

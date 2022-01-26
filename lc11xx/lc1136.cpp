@@ -5,32 +5,32 @@ class Solution {
 public:
     int minimumSemesters(int n, vector<vector<int>>& relations) {
         vector<vector<int>> rel(n);
-        vector<int> deg(n);
+        vector<int> deg(n, 0);
         for (auto &relation: relations) {
             rel[relation[0]-1].push_back(relation[1]-1);
             ++deg[relation[1]-1];
         }
+        int res = 0;
         queue<int> que;
         for (int i = 0; i < n; ++i) {
             if (!deg[i]) {
                 que.push(i);
             }
         }
-        int level = 0;
         while (que.size()) {
             auto qsize = que.size();
             n -= qsize;
             while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                for (auto &node: rel[now]) {
-                    if (!--deg[node]) {
-                        que.push(node);
+                for (auto &next: rel[now]) {
+                    if (!--deg[next]) {
+                        que.push(next);
                     }
                 }
             }
-            ++level;
+            ++res;
         }
-        return !n ? level : -1;
+        return !n ? res : -1;
     }
 };

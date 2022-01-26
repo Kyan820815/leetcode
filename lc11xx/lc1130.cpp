@@ -1,46 +1,24 @@
 //--- Q: 1130. Minimum Cost Tree From Leaf Values
 
-//--- method 1: O(n^2)
+//--- method 1: O(n) monotonic decreasing stack
 class Solution {
 public:
     int mctFromLeafValues(vector<int>& arr) {
-        int res = 0;
-        while (arr.size() > 1) {
-            int minidx, minv = INT_MAX;
-            for (int i = 0; i < arr.size()-1; ++i) {
-                int now = arr[i] * arr[i+1];
-                if (minv > now) {
-                    minv = now;
-                    minidx = i;
-                }
+        int n = arr.size(), res = 0;
+        vector<int> sk;
+        for (auto &val: arr) {
+            while (sk.size() && sk.back() < val) {
+                auto mid = sk.back();
+                sk.pop_back();
+                int left = !sk.size() ? INT_MAX : sk.back()*mid;
+                int right = mid*val;
+                res += min(left, right);
             }
-            arr[minidx] = max(arr[minidx], arr[minidx+1]);
-            arr.erase(arr.begin()+minidx+1);
-            res += minv;
+            sk.push_back(val);
+        }
+        for (int i = 0; i < sk.size()-1; ++i) {
+            res += sk[i]*sk[i+1];
         }
         return res;
-    }
-};
-
-//--- method 2: O(n)
-class Solution {
-public:
-    int mctFromLeafValues(vector<int>& arr) {
-        int res = 0;
-    	vector<int> sk = {INT_MAX};
-
-    	for (int i = 0; i < arr.size(); ++i)
-    	{
-    		while (sk.size() && sk.back() < arr[i])
-    		{
-    			int remove = sk.back();
-    			sk.pop_back();
-    			res += remove*min(sk.back(), arr[i]);
-    		}
-    		sk.push_back(arr[i]);
-    	}
-    	for (int i = 1; i < sk.size()-1; ++i)
-    		res += sk[i]*sk[i+1];
-    	return res;
     }
 };

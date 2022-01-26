@@ -4,15 +4,15 @@
 class Solution {
 public:
     vector<int> maxDepthAfterSplit(string seq) {
-        int depth = 0;
-        vector<int> res;
+        int n = seq.size(), left = 0;
+        vector<int> res(n);
         for (int i = 0; i < seq.size(); ++i) {
             if (seq[i] == '(') {
-                ++depth;
-            }
-            res.push_back(depth % 2);
-            if (seq[i] == ')') {
-                --depth;
+                ++left;
+                res[i] = left&1;
+            } else {
+                res[i] = left&1;
+                --left;
             }
         }
         return res;

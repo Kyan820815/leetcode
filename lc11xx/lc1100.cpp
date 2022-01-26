@@ -3,39 +3,35 @@
 //--- method 1: sliding window, clean code
 class Solution {
 public:
-    int numKLenSubstrNoRepeats(string S, int K) {
+    int numKLenSubstrNoRepeats(string s, int k) {
+        int left = 0, right = 0, n = s.size(), res = 0;
         vector<int> cnt(26, 0);
-        int res = 0, left = 0, right = 0;
-        while (right < S.size()) {
-            ++cnt[S[right]-'a'];
-            while (cnt[S[right]-'a'] > 1) {
-                --cnt[S[left++]-'a'];
+        while (right < n) {
+            ++cnt[s[right]-'a'];
+            while (cnt[s[right]-'a'] > 1) {
+                --cnt[s[left++]-'a'];
             }
-            if (right-left+1 >= K) {
-                ++res;
-            }
+            res += right-left+1 >= k;
             ++right;
         }
         return res;
     }
 };
 
-//--- method 2: sliding window
+//--- method 2: follow up at least length k
 class Solution {
 public:
-    int numKLenSubstrNoRepeats(string S, int K) {
-        int left = 0, right = 0, res = 0;
-        vector<int> valid(26, 0);
-        while (right < S.size()) {
-            if (valid[S[right]-'a']) {
-                 while (left < right && valid[S[right]-'a'])
-                    --valid[S[left++]-'a'];
+    int numKLenSubstrNoRepeats(string s, int k) {
+        int left = 0, right = 0, n = s.size(), res = 0;
+        vector<int> cnt(26, 0);
+        while (right < n) {
+            ++cnt[s[right]-'a'];
+            while (cnt[s[right]-'a'] > 1) {
+                --cnt[s[left++]-'a'];
             }
-            ++valid[S[right]-'a'];
-            if (right-left+1 > K)
-                --valid[S[left++]-'a'];
-            if (right-left+1 == K)
-                ++res;
+            if (right-left+1 >= k) {
+                res += right-left+1-k+1;
+            }
             ++right;
         }
         return res;

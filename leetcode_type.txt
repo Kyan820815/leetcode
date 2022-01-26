@@ -42,6 +42,7 @@
     1060(m): Missing Element in Sorted Array
     1064(e): Fixed Point
     1095(h): Find in Mountain Array
+    1146(m): Snapshot Array
     1150(e): Check If a Number Is Majority Element in a Sorted Array
     1198(m): Find Smallest Common Element in All Rows
     1228(e): Missing Number In Arithmetic Progression
@@ -388,6 +389,7 @@
     1047(e): Remove All Adjacent Duplicates In String
     1063(h): Number of Valid Subarrays
     1081(m): Smallest Subsequence of Distinct Characters
+    1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
     1130(m): Minimum Cost Tree From Leaf Values
     1190(m): Reverse Substrings Between Each Pair of Parentheses
     1209(m): Remove All Adjacent Duplicates in String II
@@ -474,6 +476,7 @@
     0994(m): Rotting Oranges
     1030(e): Matrix Cells in Distance Order
     1091(m): Shortest Path in Binary Matrix
+    1102(m): Path With Maximum Minimum Value
     1129(m): Shortest Path with Alternating Colors 
     1136(m): Parallel Courses
     1161(m): Maximum Level Sum of a Binary Tree
@@ -658,7 +661,12 @@
     1079(m): Letter Tile Possibilities
     1080(m): Insufficient Nodes in Root to Leaf Paths
     1087(m): Brace Expansion
-    1137(e): N-th Tribonacci Number
+    1101(m): The Earliest Moment When Everyone Become Friends
+    1110(m): Delete Nodes And Return Forest
+    1120(m): Maximum Average Subtree
+    1123(m): Lowest Common Ancestor of Deepest Leaves
+    1135(m): Connecting Cities With Minimum Cost
+    1145(m): Binary Tree Coloring Game
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
     1340(h): Jump Game V
@@ -727,6 +735,7 @@
     1057(m): Campus Bikes
     1081(m): Smallest Subsequence of Distinct Characters
     1090(m): Largest Values From Labels
+    1130(m): Minimum Cost Tree From Leaf Values
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -824,6 +833,7 @@
     1048(m): Longest String Chain
     1049(m): Last Stone Weight II
     1105(m): Filling Bookcase Shelves
+    1137(e): N-th Tribonacci Number
     1140(m): Stone Game II
     1143(m): Longest Common Subsequence
     1155(m): Number of Dice Rolls With Target Sum
@@ -904,6 +914,7 @@
     1094(m): Car Pooling
     1109(m): Corporate Flight Bookings
     1124(m): Longest Well-Performing Interval
+    1128(e): Number of Equivalent Domino Pairs
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
     1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
     1314(m): Matrix Block Sum
@@ -1054,8 +1065,16 @@
     1086(e): High Five 
     1090(m): Largest Values From Labels
     1094(m): Car Pooling
+    1100(m): Find K-Length Substrings With No Repeated Characters
+    1102(m): Path With Maximum Minimum Value
+    1110(m): Delete Nodes And Return Forest
+    1119(e): Remove Vowels from a String
     1122(e): Relative Sort Array
+    1124(m): Longest Well-Performing Interval
     1128(e): Number of Equivalent Domino Pairs
+    1129(m): Shortest Path with Alternating Colors 
+    1133(e): Largest Unique Number
+    1136(m): Parallel Courses
     1146(m): Snapshot Array
     1152(m): Analyze User Website Visit Pattern
     1169(m): Invalid Transactions
@@ -1132,6 +1151,7 @@
     0933(e): Number of Recent Calls
     0981(m): Time Based Key-Value Store
     1114(e): Print in Order
+    1146(m): Snapshot Array
     1188(m): Design Bounded Blocking Queue
     1195(m): Fizz Buzz Multithreaded
     1244(m): Design A Leaderboard
@@ -1401,6 +1421,11 @@
     1079(m): Letter Tile Possibilities
     1081(m): Smallest Subsequence of Distinct Characters
     1087(m): Brace Expansion
+    1100(m): Find K-Length Substrings With No Repeated Characters
+    1108(e): Defanging an IP Address
+    1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
+    1119(e): Remove Vowels from a String
+    1143(m): Longest Common Subsequence
     1165(e): Single-Row Keyboard
     1422(e): Maximum Score After Splitting a String
     1525(m): Number of Good Ways to Split a String
@@ -1746,10 +1771,20 @@
     1094(m): Car Pooling
     1095(h): Find in Mountain Array
     1099(e): Two Sum Less Than K
-    1103(e): Distribute Candies to People
-    1108(e): Defanging an IP Address
-    1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
-    1119(e): Remove Vowels from a String
+    1101(m): The Earliest Moment When Everyone Become Friends
+    1102(m): Path With Maximum Minimum Value
+    1105(m): Filling Bookcase Shelves
+    1109(m): Corporate Flight Bookings
+    1122(e): Relative Sort Array
+    1124(m): Longest Well-Performing Interval
+    1128(e): Number of Equivalent Domino Pairs
+    1130(m): Minimum Cost Tree From Leaf Values
+    1133(e): Largest Unique Number
+    1135(m): Connecting Cities With Minimum Cost
+    1137(e): N-th Tribonacci Number
+    1140(m): Stone Game II
+    1146(m): Snapshot Array
+    1150(e): Check If a Number Is Majority Element in a Sorted Array
     1160(e): Find Words That Can Be Formed by Characters
     1180(e): Count Substrings with Only One Distinct Letter
     1184(e): Distance Between Bus Stops
@@ -1848,6 +1883,7 @@
     0864(h): Shortest Path to Get All Keys
     1049(m): Last Stone Weight II
     1018(e): Binary Prefix Divisible By 5
+    1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
     1118(e): Number of Days in a Month
     1128(e): Number of Equivalent Domino Pairs
     1290(e): Convert Binary Number in a Linked List to Integer
@@ -2270,7 +2306,12 @@
     1041(m): Robot Bounded In Circle
     1071(e): Greatest Common Divisor of Strings
     1085(e): Sum of Digits in the Minimum Number
+    1103(e): Distribute Candies to People
+    1104(m): Path In Zigzag Labelled Binary Tree
+    1118(e): Number of Days in a Month
     1128(e): Number of Equivalent Domino Pairs
+    1137(e): N-th Tribonacci Number
+    1140(m): Stone Game II
     1227(m): Airplane Seat Assignment Probability
     1232(e): Check If It Is a Straight Line
     1281(e): Subtract the Product and Sum of Digits of an Integer
@@ -2289,3 +2330,6 @@
     0384(m): Shuffle an Array
     0398(m): Random Pick Index
     0497(m): Random Point in Non-overlapping Rectangles
+
+--- Concurrency
+    1114(e): Print in Order

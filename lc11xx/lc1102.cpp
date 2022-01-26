@@ -3,32 +3,67 @@
 //--- method 1: Dijkstra
 class Solution {
 public:
-    int maximumMinimumPath(vector<vector<int>>& A) {
-        int minval = INT_MAX;
-        int row = A.size(), col = A[0].size();
-        vector<vector<int>> dir = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-        auto comp = [](pair<int, pair<int, int>> &a, pair<int, pair<int, int>> &b) {
+    int maximumMinimumPath(vector<vector<int>>& grid) {
+        int row = grid.size(), col = grid[0].size();
+        vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        auto comp = [](pair<int,pair<int,int>> &a, pair<int,pair<int,int>> &b) {
             return a.first < b.first;
         };
-        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, decltype(comp)> que(comp);
-        que.push({A[0][0], {0, 0}});
-        A[0][0] = -1;
+        priority_queue<pair<int,pair<int,int>>, vector<pair<int,pair<int,int>>>, decltype(comp)> que(comp);
+        que.push({grid[0][0],{0,0}});
+        grid[0][0] = -1;
         while (que.size()) {
             auto now = que.top();
             que.pop();
-            int r = now.second.first, c = now.second.second;
+            int val = now.first, r = now.second.first, c = now.second.second;
             if (r == row-1 && c == col-1) {
-                minval = now.first;
-                break;
+                return val;
             }
-            for (int i = 0; i < 4; ++i) {
-                int nr = r+dir[i][0], nc = c+dir[i][1];
-                if (nr < 0 || nr >= row || nc < 0 || nc >= col || A[nr][nc] == -1)
+            for (auto &dir: dirs) {
+                int nr = r+dir[0];
+                int nc = c+dir[1];
+                if (nr < 0 || nr >= row || nc < 0 || nc >= col || grid[nr][nc] == -1) {
                     continue;
-                que.push({min(now.first, A[nr][nc]), {nr, nc}});
-                A[nr][nc] = -1;
+                }
+                int nval = min(val, grid[nr][nc]);
+                que.push({nval,{nr,nc}});
+                grid[nr][nc] = -1;
             }
         }
-        return minval;
+        return -1;
+    }
+};
+
+//--- method 2: bfs
+class Solution {
+public:
+    int maximumMinimumPath(vector<vector<int>>& grid) {
+        int row = grid.size(), col = grid[0].size();
+        vector<vector<int>> dirs = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        vector<vector<int>> visit(row, vector<int>(col, INT_MIN));
+        queue<pair<int,pair<int,int>>> que;
+        que.push({grid[0][0],{0,0}});
+        visit[0][0] = grid[0][0];
+        while (que.size()) {
+            auto qsize = que.size();
+            while (qsize--) {
+                auto now = que.front();
+                que.pop();
+                int val = now.first, r = now.second.first, c = now.second.second;
+                for (auto &dir: dirs) {
+                    int nr = r+dir[0];
+                    int nc = c+dir[1];
+                    if (nr < 0 || nr >= row || nc < 0 || nc >= col) {
+                        continue;
+                    }
+                    int nval = min(val, grid[nr][nc]);
+                    if (nval > visit[nr][nc]) {
+                        visit[nr][nc] = nval;
+                        que.push({nval,{nr,nc}});
+                    }
+                }
+            }
+        }
+        return visit[row-1][col-1];
     }
 };

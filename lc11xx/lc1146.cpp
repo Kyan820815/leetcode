@@ -1,70 +1,67 @@
 //--- Q: 1146. Snapshot Array
 
-//--- method 1: save change to index in map
+//--- method 1: binary search
 class SnapshotArray {
 public:
+    int snap_version = 0;
     SnapshotArray(int length) {
-        cnt = 0;        
+        data.resize(length);
         for (int i = 0; i < length; ++i) {
-            record[i][cnt] = 0;
+            data[i].push_back({0,0});
         }
     }
     
     void set(int index, int val) {
-        record[index][cnt] = val;
-    }
-    
-    int snap() {
-        return cnt++;
-    }
-    
-    int get(int index, int snap_id) {
-        auto now = record[index].upper_bound(snap_id);
-        --now;
-        return now->second;
-    }
-    int cnt;
-    unordered_map<int, map<int, int>> record;
-};
-
-//--- method 2: binary search
-class SnapshotArray {
-public:
-    SnapshotArray(int length) {
-        version = 0;
-        for (int i = 0; i < length; ++i) {
-            map[i].push_back({version,0});
-        }
-    }
-    
-    void set(int index, int val) {
-        auto &vec = map[index];
-        if (vec.back().first == version) {
-            vec.back().second = val;
+        if (data[index].back().first == snap_version) {
+            data[index].back().second = val;
         } else {
-            vec.push_back({version, val});
+            data[index].push_back({snap_version, val});
         }
     }
     
     int snap() {
-        return version++;    
+        return snap_version++;
     }
     
     int get(int index, int snap_id) {
-        auto &vec = map[index];
-        int left = 0, right = vec.size()-1;
+        int left = 0, right = data[index].size()-1;
         while (left < right) {
             int mid = left + (right-left)/2;
-            if (vec[mid].first < snap_id) {
+            if (data[index][mid].first < snap_id) {
                 left = mid+1;
             } else {
                 right = mid;
             }
         }
-        return vec[left].first > snap_id ? vec[left-1].second : vec[left].second;
+        return data[index][left].first > snap_id ? data[index][left-1].second : data[index][left].second;
     }
-    int version;
-    unordered_map<int, vector<pair<int,int>>> map;
+    vector<vector<pair<int,int>>> data;
+};
+
+//--- method 2: save change to index in map
+class SnapshotArray {
+public:
+    int snap_version = 0;
+    SnapshotArray(int length) {
+        data.resize(length);
+        for (int i = 0; i < length; ++i) {
+            data[i][0] = 0;
+        }
+    }
+    
+    void set(int index, int val) {
+        data[index][snap_version] = val;
+    }
+    
+    int snap() {
+        return snap_version++;
+    }
+    
+    int get(int index, int snap_id) {
+        auto pos = data[index].upper_bound(snap_id);
+        return prev(pos)->second;
+    }
+    vector<map<int, int>> data;
 };
 
 /**

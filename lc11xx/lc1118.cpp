@@ -3,9 +3,11 @@
 //--- method 1: find rule
 class Solution {
 public:
-    int numberOfDays(int Y, int M) {
-        if (M == 2)
-            return (Y % 100 == 0 && Y % 400 != 0 || Y % 4 != 0) ? 28 : 29;
-        return 30 + ((M >= 8) ? 1 - M&1 : M&1);
+    int numberOfDays(int year, int month) {
+        if (month == 2) {
+            return (year%4 == 0 && (year%100 != 0 || year%400 == 0)) ? 29 : 28;
+        } else {
+            return 30 + (month < 8 ? month&1 : 1-month&1);
+        }
     }
 };
