@@ -3,21 +3,21 @@
 //--- method 1: dp solution
 class Solution {
 public:
-    unordered_map<string, int> map;
+    unordered_map<string,int> visit;
     int minKnightMoves(int x, int y) {
-        map["0_0"] = 0;
-        return dp(abs(x), abs(y));
+        return dfs(abs(x), abs(y));
     }
-    int dp(int x, int y) {
-        string &&str = to_string(x) + "_" + to_string(y);
-        if (map.find(str) != map.end()) {
-            return map[str];
+    int dfs(int x, int y) {
+        string tag = to_string(x)+","+to_string(y);
+        if (visit.find(tag) != visit.end()) {
+            return visit[tag];
         }
-        // (1,1), (2,0), (0,2)
-        if (x+y == 2) {
+        if (!x && !y) {
+            return 0;
+        } else if (x + y == 2) {
             return 2;
         }
-        return map[str] = min(dp(abs(x-1), abs(y-2)), dp(abs(x-2), abs(y-1))) + 1;
+        return visit[tag] = min(dfs(abs(x-2), abs(y-1)), dfs(abs(x-1), abs(y-2)))+1;
     }
 };
 
@@ -25,30 +25,29 @@ public:
 class Solution {
 public:
     int minKnightMoves(int x, int y) {
-        vector<vector<int>> dir = {{1,2}, {1,-2}, {-1, 2}, {-1,-2}, {2,1}, {2,-1}, {-2,1}, {-2,-1}};
         vector<vector<int>> visit(301, vector<int>(301, 0));
-        queue<pair<int, int>> que;
-        que.push({0, 0});
-        visit[0][0] = 1;
+        queue<pair<int,int>> que;
+        vector<vector<int>> dirs = {{1,2}, {1,-2}, {-1,2}, {-1,-2}, {2,1}, {2,-1}, {-2,1}, {-2,-1}};
         int res = 0;
-        x = abs(x);
-        y = abs(y);
+        x = abs(x), y = abs(y);
+        que.push({0,0});
+        visit[0][0] = 1;
         while (que.size()) {
-            int qsize = que.size();
-            for (int i = 0; i < qsize; ++i) {
+            auto qsize = que.size();
+            while (qsize--) {
                 auto now = que.front();
-                que.pop();
                 if (now.first == x && now.second == y) {
                     return res;
                 }
-                for (int j = 0; j < 8; ++j) {
-                    int nx = now.first + dir[j][0];
-                    int ny = now.second + dir[j][1];
-                    if (nx > 300 || ny > 300 || visit[abs(nx)][abs(ny)]) {
+                que.pop();
+                for (auto &dir: dirs) {
+                    int nr = abs(now.first+dir[0]);
+                    int nc = abs(now.second+dir[1]);
+                    if (nr > 300 || nc > 300 || visit[nr][nc]) {
                         continue;
                     }
-                    visit[abs(nx)][abs(ny)] = 1;
-                    que.push({abs(nx), abs(ny)});
+                    visit[nr][nc] = 1;
+                    que.push({nr,nc});
                 }
             }
             ++res;

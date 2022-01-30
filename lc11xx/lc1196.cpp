@@ -3,23 +3,31 @@
 //--- method 1: bucket sort
 class Solution {
 public:
-    int maxNumberOfApples(vector<int>& arr) {
-        vector<int> slot(1001, 0);
-        int res = 0, sum = 0;
-        for (int i = 0; i < arr.size(); ++i) {
-            ++slot[arr[i]];
+    int maxNumberOfApples(vector<int>& weight) {
+        vector<int> cnt(1001, 0);
+        for (auto &w: weight) {
+            ++cnt[w];
         }
-        for (int i = 1; i <= 1000; ++i) {
-            if (slot[i] > 0) {
-                for (int j = 0; j < slot[i] && sum < 5000; ++j) {
-                    sum += i;
-                    ++res;
-                }
+        int budget = 5000, res = 0;
+        for (int i = 1; i <= 1000 && budget-i >= 0; ++i) {
+            for (int j = 0; j < cnt[i] && budget-i >= 0; ++j) {
+                ++res;
+                budget -= i;
             }
-            if (sum >= 5000) {
-                --res;
-                break;
-            }
+        }
+        return res;
+    }
+};
+
+//--- method 2: nlogn sort
+class Solution {
+public:
+    int maxNumberOfApples(vector<int>& weight) {
+        sort(weight.begin(), weight.end());
+        int budget = 5000, res = 0;
+        for (int i = 0; i < weight.size() && budget >= weight[i]; ++i) {
+            budget -= weight[i];
+            ++res;
         }
         return res;
     }

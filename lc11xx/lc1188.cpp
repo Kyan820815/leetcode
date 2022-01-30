@@ -4,39 +4,36 @@
 class BoundedBlockingQueue {
 public:
     BoundedBlockingQueue(int capacity) {
-        c = capacity;
+        cap = capacity;        
     }
     
     void enqueue(int element) {
-        {
-            unique_lock<mutex> ul(mtx);
-            cv.wait(ul, [this](){return que.size() < c;});
-            que.push(element);
-        }
-        cv.notify_one();
+        unique_lock<mutex> ulock(mtx);
+        cv.wait(ulock, [this]() {
+            return que.size() < cap;
+        });
+        que.push(element);
+        cv.notify_all();
     }
     
     int dequeue() {
-        int now;
-        {
-            unique_lock<mutex> ul(mtx);
-            cv.wait(ul, [this](){return que.size() > 0;});
-            now = que.front();
-            que.pop();
-        }
-        cv.notify_one();
-        return now;
+        unique_lock<mutex> ulock(mtx);
+        cv.wait(ulock, [this]() {
+            return que.size() > 0;
+        });
+        int val = que.front();
+        que.pop();
+        cv.notify_all();
+        return val;
     }
     
     int size() {
-        shared_lock<shared_mutex> sl(smtx);
-        int qsize = que.size();
+        shared_lock<shared_mutex> slock(stx);
         return que.size();
     }
-private:
-    queue<int> que;
-    mutex mtx;
-    shared_mutex smtx;
     condition_variable cv;
-    int c;
+    mutex mtx;
+    shared_mutex stx;
+    queue<int> que;
+    int cap;
 };

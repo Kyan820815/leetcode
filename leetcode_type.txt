@@ -190,6 +190,7 @@
     1100(m): Find K-Length Substrings With No Repeated Characters
     1163(h): Last Substring in Lexicographical Order
     1176(e): Diet Plan Performance
+    1180(e): Count Substrings with Only One Distinct Letter
     1190(m): Reverse Substrings Between Each Pair of Parentheses
     1213(e): Intersection of Three Sorted Arrays
     1214(m): Two Sum BSTs
@@ -278,7 +279,8 @@
     1196(e): How Many Apples Can You Put into the Basket
     1122(e): Relative Sort Array
     1133(e): Largest Unique Number
-    1170(e): Compare Strings by Frequency of the Smallest Character
+    1160(e): Find Words That Can Be Formed by Characters
+    1170(m): Compare Strings by Frequency of the Smallest Character
     1189(e): Maximum Number of Balloons
     1200(e): Minimum Absolute Difference
     1337(e): The K Weakest Rows in a Matrix
@@ -481,6 +483,7 @@
     1136(m): Parallel Courses
     1161(m): Maximum Level Sum of a Binary Tree
     1162(m): As Far from Land as Possible
+    1197(m): Minimum Knight Moves
     1245(m): Tree Diameter
     1248(m): Count Number of Nice Subarrays
     1293(h): Shortest Path in a Grid with Obstacles Elimination
@@ -667,6 +670,8 @@
     1123(m): Lowest Common Ancestor of Deepest Leaves
     1135(m): Connecting Cities With Minimum Cost
     1145(m): Binary Tree Coloring Game
+    1155(m): Number of Dice Rolls With Target Sum
+    1192(h): Critical Connections in a Network
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
     1340(h): Jump Game V
@@ -735,6 +740,7 @@
     1057(m): Campus Bikes
     1081(m): Smallest Subsequence of Distinct Characters
     1090(m): Largest Values From Labels
+    1196(e): How Many Apples Can You Put into the Basket
     1130(m): Minimum Cost Tree From Leaf Values
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1616(m): Split Two Strings to Make Palindrome
@@ -837,6 +843,7 @@
     1140(m): Stone Game II
     1143(m): Longest Common Subsequence
     1155(m): Number of Dice Rolls With Target Sum
+    1186(m): Maximum Subarray Sum with One Deletion
     1235(h): Maximum Profit in Job Scheduling
     1277(m): Count Square Submatrices with All Ones
     1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
@@ -1077,8 +1084,19 @@
     1136(m): Parallel Courses
     1146(m): Snapshot Array
     1152(m): Analyze User Website Visit Pattern
+    1155(m): Number of Dice Rolls With Target Sum
+    1160(e): Find Words That Can Be Formed by Characters
+    1165(e): Single-Row Keyboard
     1169(m): Invalid Transactions
+    1170(m): Compare Strings by Frequency of the Smallest Character
+    1171(m): Remove Zero Sum Consecutive Nodes from Linked List
+    1180(e): Count Substrings with Only One Distinct Letter
+    1189(e): Maximum Number of Balloons
+    1190(m): Reverse Substrings Between Each Pair of Parentheses
+    1192(h): Critical Connections in a Network
+    1196(e): How Many Apples Can You Put into the Basket
     1197(m): Minimum Knight Moves
+    1198(m): Find Smallest Common Element in All Rows
     1207(e): Unique Number of Occurrences
     1235(h): Maximum Profit in Job Scheduling
     1244(m): Design A Leaderboard
@@ -1426,7 +1444,15 @@
     1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
     1119(e): Remove Vowels from a String
     1143(m): Longest Common Subsequence
+    1152(m): Analyze User Website Visit Pattern
+    1160(e): Find Words That Can Be Formed by Characters
+    1163(h): Last Substring in Lexicographical Order
     1165(e): Single-Row Keyboard
+    1169(m): Invalid Transactions
+    1170(m): Compare Strings by Frequency of the Smallest Character
+    1180(e): Count Substrings with Only One Distinct Letter
+    1189(e): Maximum Number of Balloons
+    1190(m): Reverse Substrings Between Each Pair of Parentheses
     1422(e): Maximum Score After Splitting a String
     1525(m): Number of Good Ways to Split a String
     1573(m): Number of Ways to Split a String
@@ -1785,9 +1811,18 @@
     1140(m): Stone Game II
     1146(m): Snapshot Array
     1150(e): Check If a Number Is Majority Element in a Sorted Array
+    1152(m): Analyze User Website Visit Pattern
+    1155(m): Number of Dice Rolls With Target Sum
     1160(e): Find Words That Can Be Formed by Characters
-    1180(e): Count Substrings with Only One Distinct Letter
+    1162(m): As Far from Land as Possible
+    1167(m): Minimum Cost to Connect Sticks
+    1169(m): Invalid Transactions
+    1170(m): Compare Strings by Frequency of the Smallest Character
+    1176(e): Diet Plan Performance
     1184(e): Distance Between Bus Stops
+    1186(m): Maximum Subarray Sum with One Deletion
+    1192(h): Critical Connections in a Network
+    1196(e): How Many Apples Can You Put into the Basket
     1198(m): Find Smallest Common Element in All Rows
     1217(e): Play with Chips
     1221(e): Split a String in Balanced Strings
@@ -2333,3 +2368,5 @@
 
 --- Concurrency
     1114(e): Print in Order
+    1188(m): Design Bounded Blocking Queue
+    1195(m): Fizz Buzz Multithread

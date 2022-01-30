@@ -13,29 +13,26 @@
 class Solution {
 public:
     ListNode* removeZeroSumSublists(ListNode* head) {
-        ListNode *cur = head, *dummy = new ListNode(-1);
-        dummy->next = head;
-        unordered_map<int, ListNode*> prefix_sum;
-        prefix_sum[0] = dummy;
+        ListNode *dummy = new ListNode(-1, head);
+        unordered_map<int, ListNode *> map;
+        map[0] = dummy;
         int sum = 0;
-        while (cur)
-        {
-        	sum += cur->val;
-        	if (prefix_sum.find(sum) == prefix_sum.end())
-        		prefix_sum[sum] = cur;
-        	else
-            {
-                ListNode *tmp = prefix_sum[sum]->next;
-                int tmp_sum = sum;
-                while (tmp != cur)
-                {
-                    tmp_sum += tmp->val;
-                    prefix_sum.erase(tmp_sum);
-                    tmp = tmp->next;
+        auto now = head;
+        while (now) {
+            sum += now->val;
+            if (map.find(sum) != map.end()) {
+                auto cur = map[sum]->next;
+                int cursum = sum;
+                while (cur != now) {
+                    cursum += cur->val;
+                    map.erase(cursum);
+                    cur = cur->next;
                 }
-                prefix_sum[sum]->next = cur->next;
+                map[sum]->next = now->next;
+            } else {
+                map[sum] = now;
             }
-        	cur = cur->next;
+            now = now->next;
         }
         return dummy->next;
     }

@@ -4,22 +4,20 @@
 class Solution {
 public:
     int dietPlanPerformance(vector<int>& calories, int k, int lower, int upper) {
-        int sum = 0, points = 0;
+        int points = 0, val = 0;
         for (int i = 0; i < k; ++i) {
-            sum += calories[i];
+            val += calories[i];
         }
-        if (sum < lower) {
-            --points;
-        } else if (sum > upper) {
-            ++points;
-        }
-        for (int i = k; i < calories.size(); ++i) {
-            sum = sum - calories[i-k] + calories[i];
-            if (sum < lower) {
+        for (int i = k; i <= calories.size(); ++i) {
+            if (val < lower) {
                 --points;
-            } else if (sum > upper) {
+            } else if (val > upper) {
                 ++points;
             }
+            if (i == calories.size()) {
+                break;
+            }
+            val += calories[i] - calories[i-k];
         }
         return points;
     }

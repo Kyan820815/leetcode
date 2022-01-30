@@ -7,12 +7,12 @@ public:
         priority_queue<int, vector<int>, greater<int>> que(sticks.begin(), sticks.end());
         int res = 0;
         while (que.size() > 1) {
-            int a = que.top();
+            auto first = que.top();
             que.pop();
-            int b = que.top();
+            auto second = que.top();
             que.pop();
-            res += (a + b);
-            que.push(a + b);
+            res += first+second;
+            que.push(first+second);
         }
         return res;
     }

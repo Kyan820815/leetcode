@@ -4,32 +4,40 @@
 class Solution {
 public:
     vector<int> numSmallerByFrequency(vector<string>& queries, vector<string>& words) {
-        vector<int> map(11, 0), res;
-        for (int i = 0; i < words.size(); ++i) {
-            ++map[countf(words[i])];
+        int n = queries.size();
+        vector<int> idx(11, 0), res;
+        for (auto &word: words) {
+            vector<int> cnt(26, 0);
+            for (auto &ch: word) {
+                ++cnt[ch-'a'];
+            }
+            for (int i = 0; i < 26; ++i) {
+                if (cnt[i]) {
+                    ++idx[cnt[i]];
+                    break;
+                }
+            }
         }
-        int sum = 0;
-        for (int i = 10; i >= 1; --i) {
-            int tmp = map[i];
-            map[i] = sum;
-            sum += tmp;
+        int sum = 0, prev = 0;
+        for (int i = 10; i >= 0; --i) {
+            sum += idx[i];
+            idx[i] = prev;
+            prev = sum;
         }
-        for (int i = 0; i < queries.size(); ++i) {
-            res.push_back(map[countf(queries[i])]);
+        for (auto &query: queries) {
+            vector<int> cnt(26, 0);
+            for (auto &ch: query) {
+                ++cnt[ch-'a'];
+            }
+            int val;
+            for (int i = 0; i < 26; ++i) {
+                if (cnt[i]) {
+                    val = cnt[i];
+                    break;
+                }
+            }
+            res.push_back(idx[val]);
         }
         return res;
     }
-    int countf(string &word) {
-        vector<int> cnt(26, 0);
-        for (int j = 0; j < word.size(); ++j) {
-            ++cnt[word[j]-'a'];
-        }
-        for (int j = 0; j < 26; ++j) {
-            if (cnt[j]) {
-                return cnt[j];
-            }
-        }
-        return 0;
-    }
-
 };

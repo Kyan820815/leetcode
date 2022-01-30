@@ -4,14 +4,14 @@
 class Solution {
 public:
     int calculateTime(string keyboard, string word) {
-        vector<int> map(26);
+        vector<int> idx(26, 0);
         for (int i = 0; i < keyboard.size(); ++i) {
-            map[keyboard[i]-'a'] = i;
+            idx[keyboard[i]-'a'] = i;
         }
-        int last = 0, res = 0;
+        int cur = 0, res = 0;
         for (auto &ch: word) {
-            res += abs(map[ch-'a']-last);
-            last = map[ch-'a'];
+            res += abs(idx[ch-'a']-cur);
+            cur = idx[ch-'a'];
         }
         return res;
     }

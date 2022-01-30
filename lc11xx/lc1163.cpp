@@ -7,7 +7,7 @@ public:
         int l = 0, r = 1, k = 0;
         while (r+k < s.size()) {
             if (s[l+k] == s[r+k]) {
-                ++k;
+                k++;
                 continue;
             } else if (s[l+k] < s[r+k]) {
                 l = max(l+k+1, r);

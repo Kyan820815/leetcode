@@ -4,12 +4,12 @@
 class Solution {
 public:
     int maximumSum(vector<int>& arr) {
-        int maxNoDelete = arr[0], maxWithDelete = arr[0], maxv = arr[0];
+        int maxWithDel = arr[0], maxWithNoDel = arr[0], res = arr[0];
         for (int i = 1; i < arr.size(); ++i) {
-            maxWithDelete = max(maxNoDelete, maxWithDelete+arr[i]);
-            maxNoDelete = max(maxNoDelete+arr[i], arr[i]);
-            maxv = max(maxv, max(maxNoDelete, maxWithDelete));
+            maxWithDel = max(maxWithNoDel, maxWithDel+arr[i]);
+            maxWithNoDel = max(arr[i], maxWithNoDel+arr[i]);
+            res = max(res, max(maxWithDel, maxWithNoDel));
         }
-        return maxv;
+        return res;
     }
 };

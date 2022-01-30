@@ -4,17 +4,16 @@
 class Solution {
 public:
     int distanceBetweenBusStops(vector<int>& distance, int start, int destination) {
-        int left = 0, right = 0;
+        int total = 0, partial = 0;
         if (start > destination) {
             swap(start, destination);
         }
         for (int i = 0; i < distance.size(); ++i) {
             if (i >= start && i < destination) {
-                left += distance[i];
-            } else {
-                right += distance[i];
+                partial += distance[i];
             }
+            total += distance[i];
         }
-        return min(left, right);
+        return min(partial, total-partial);
     }
 };

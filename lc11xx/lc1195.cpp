@@ -8,73 +8,74 @@ private:
 public:
     FizzBuzz(int n) {
         this->n = n;
-        now = three = five = 1;
+        idx = 1;
     }
 
     // printFizz() outputs "fizz".
     void fizz(function<void()> printFizz) {
-        while (1) {
+        while (idx <= n) {
             unique_lock<mutex> ulock(mtx);
-            cv.wait(ulock, [this](){
-                return three == 3 && five != 5 || now > n;
+            cv.wait(ulock, [this]() {
+                return idx % 3 == 0 && idx % 5 != 0 || idx > n;
             });
-            if (now > n) {
+            if (idx > n) {
                 break;
             }
             printFizz();
-            three = 1, ++five, ++now;
+            idx++;
             cv.notify_all();
         }
     }
 
     // printBuzz() outputs "buzz".
     void buzz(function<void()> printBuzz) {
-        while (1) {
+        while (idx <= n) {
             unique_lock<mutex> ulock(mtx);
-            cv.wait(ulock, [this](){
-                return three != 3 && five == 5 || now > n;
+            cv.wait(ulock, [this]() {
+                return idx % 3 != 0 && idx % 5 == 0 || idx > n;
             });
-            if (now > n) {
+            if (idx > n) {
                 break;
             }
             printBuzz();
-            five = 1, ++three, ++now;
+            idx++;
             cv.notify_all();
         }
     }
 
     // printFizzBuzz() outputs "fizzbuzz".
 	void fizzbuzz(function<void()> printFizzBuzz) {
-        while (1) {
+        while (idx <= n) {
             unique_lock<mutex> ulock(mtx);
-            cv.wait(ulock, [this](){
-                return three == 3 && five == 5 || now > n;
+            cv.wait(ulock, [this]() {
+                return idx % 3 == 0 && idx % 5 == 0 || idx > n;
             });
-            if (now > n) {
+            if (idx > n) {
                 break;
             }
             printFizzBuzz();
-            three = five = 1, ++now;
+            idx++;
             cv.notify_all();
         }
     }
 
     // printNumber(x) outputs "x", where x is an integer.
     void number(function<void(int)> printNumber) {
-        while (1) {
+        while (idx <= n) {
             unique_lock<mutex> ulock(mtx);
-            cv.wait(ulock, [this](){
-                return three != 3 && five != 5 || now > n;
+            cv.wait(ulock, [this]() {
+                return idx % 3 != 0 && idx % 5 != 0 || idx > n;
             });
-            if (now > n) {
+            if (idx > n) {
                 break;
             }
-            printNumber(now);
-            ++three, ++five, ++now;
+            printNumber(idx);
+            idx++;
             cv.notify_all();
         }
     }
-    int three, five, now;
-    mutex mtx;
+    
     condition_variable cv;
+    int idx;
+    mutex mtx;
 };

@@ -4,19 +4,21 @@
 class Solution {
 public:
     string reverseParentheses(string s) {
-        vector<string> sk = {""};
+        vector<string> sk;
+        string cur = "";
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(') {
-                sk.push_back("");
+                sk.push_back(cur);
+                cur = "";
             } else if (s[i] == ')') {
-                reverse(sk.back().begin(), sk.back().end());
-                sk[sk.size()-2] += sk.back();
+                reverse(cur.begin(), cur.end());
+                cur = sk.back()+cur;
                 sk.pop_back();
             } else {
-                sk.back().push_back(s[i]);
+                cur += s[i];
             }
         }
-        return sk.back();
+        return cur;
     }
 };
 
@@ -24,13 +26,13 @@ public:
 class Solution {
 public:
     string reverseParentheses(string s) {
-        vector<int> pair(s.size()), sk;
+        vector<int> sk, pair(s.size(), 0);
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == '(') {
                 sk.push_back(i);
             } else if (s[i] == ')') {
-                pair[sk.back()] = i;
                 pair[i] = sk.back();
+                pair[sk.back()] = i;
                 sk.pop_back();
             }
         }

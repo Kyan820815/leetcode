@@ -15,26 +15,28 @@ class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
         queue<TreeNode *> que;
+        int res = INT_MIN, level = 1, maxlevel;
         que.push(root);
-        int qsize = 1, maxv = INT_MIN, level = 0, maxl;
-        while (qsize) {
-            int nowv = 0;
-            ++level;
-            for (auto i = 0; i < qsize; ++i) {
+        while (que.size()) {
+            auto qsize = que.size();
+            int sum = 0;
+            while (qsize--) {
                 auto now = que.front();
                 que.pop();
-                nowv += now->val;
-                if (now->left)
+                sum += now->val;
+                if (now->left) {
                     que.push(now->left);
-                if (now->right)
+                }
+                if (now->right) {
                     que.push(now->right);
+                }
             }
-            if (maxv < nowv) {
-                maxv = nowv;
-                maxl = level;
+            if (sum > res) {
+                res = sum;
+                maxlevel = level;
             }
-            qsize = que.size();
+            ++level;
         }
-        return maxl;
+        return maxlevel;
     }
 };

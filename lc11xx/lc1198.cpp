@@ -1,82 +1,71 @@
 //--- Q: 1198. Find Smallest Common Element in All Rows
 
-//--- method 1-1: binary search
+//--- method 1: binary search
 class Solution {
 public:
     int smallestCommonElement(vector<vector<int>>& mat) {
-        int row = mat.size(), col = mat[0].size();
-        for (int j = 0; j < col; ++j) {
-            int target = mat[0][j], find = 1;
-            for (int i = 1; i < row && find; ++i) {
+        int row = mat.size(), col = mat[0].size(), start = 0, k, find = 0;
+        for (k = 0; k < col && !find; ++k) {
+            find = 1;
+            for (int i = 1; i < row; ++i) {
                 int left = 0, right = col-1;
-                int pos = bsearch(left, right, target, mat[i]);
-                if (mat[i][pos] != target) {
+                while (left < right) {
+                    int mid = left + (right-left)/2;
+                    if (mat[i][mid] < mat[0][k]) {
+                        left = mid+1;
+                    } else {
+                        right = mid;
+                    }
+                }
+                if (mat[i][left] != mat[0][k]) {
                     find = 0;
+                    break;
                 }
             }
-            if (find) {
-                return target;
-            }
         }
-        return -1;
-    }
-    int bsearch(int left, int right, int target, vector<int> &mat) {
-        while (left < right) {
-            int mid = left + (right-left)/2;
-            if (mat[mid] < target) {
-                left = mid+1;
-            } else {
-                right = mid;
-            }
-        }
-        return left;
+        return find ? mat[0][k-1] : -1;
     }
 };
 
-//--- method 1-2: optimized binary search
+//--- method 2: improved binary search
+class Solution {
+public:
+    int smallestCommonElement(vector<vector<int>>& mat) {
+        int row = mat.size(), col = mat[0].size(), start = 0, k, find = 0;
+        vector<int> last(row, 0);
+        for (k = 0; k < col && !find; ++k) {
+            find = 1;
+            for (int i = 1; i < row; ++i) {
+                int left = last[i], right = col-1;
+                while (left < right) {
+                    int mid = left + (right-left)/2;
+                    if (mat[i][mid] < mat[0][k]) {
+                        left = mid+1;
+                    } else {
+                        right = mid;
+                    }
+                }
+                last[i] = left;
+                if (mat[i][left] != mat[0][k]) {
+                    find = 0;
+                    break;
+                }
+            }
+        }
+        return find ? mat[0][k-1] : -1;
+    }
+};
+
+//--- method 3: count first number having n times
 class Solution {
 public:
     int smallestCommonElement(vector<vector<int>>& mat) {
         int row = mat.size(), col = mat[0].size();
-        vector<int> last_start(row, 0);
-        for (int j = 0; j < col; ++j) {
-            int target = mat[0][j], find = 1;
-            for (int i = 1; i < row && find; ++i) {
-                int left = last_start[i], right = col-1;
-                int pos = bsearch(left, right, target, mat[i]);
-                if (mat[i][pos] != target) {
-                    find = 0;
-                }
-                last_start[i] = pos;
-            }
-            if (find) {
-                return target;
-            }
-        }
-        return -1;
-    }
-    int bsearch(int left, int right, int target, vector<int> &mat) {
-        while (left < right) {
-            int mid = left + (right-left)/2;
-            if (mat[mid] < target) {
-                left = mid+1;
-            } else {
-                right = mid;
-            }
-        }
-        return left;
-    }
-};
-
-//--- method 2: count first number having n times
-class Solution {
-public:
-    int smallestCommonElement(vector<vector<int>>& mat) {
-        unordered_map<int, int> map;
-        for (auto &row: mat) {
-            for (auto &element: row) {
-                if (++map[element] == mat.size()) {
-                    return element;
+        unordered_map<int,int> map;
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (++map[mat[i][j]] == row) {
+                    return mat[i][j];
                 }
             }
         }
