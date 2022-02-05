@@ -218,10 +218,14 @@
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1800(e): Maximum Ascending Subarray Sum
     1839(m): Longest Substring Of All Vowels in Order
+    1848(e): Minimum Distance to the Target Element
     1869(e): Longer Contiguous Segments of Ones than Zeros
     1877(m): Minimize Maximum Pair Sum in Array
+    1920(e): Build Array from Permutation
+    2037(e): Minimum Number of Moves to Seat Everyone
     2062(e): Count Vowel Substrings of a String
     2095(m): Delete the Middle Node of a Linked List
+    2108(e): Find First Palindromic String in the Array
 
 --- Quick Select:
     0215(m): Kth Largest Element in an Array
@@ -255,6 +259,7 @@
     1337(e): The K Weakest Rows in a Matrix
     1338(m): Reduce Array Size to The Half
     1353(m): Maximum Number of Events That Can Be Attended
+    1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1425(h): Constrained Subsequence Sum
     1481(m): Least Number of Unique Integers after K Removals
     1584(m): Min Cost to Connect All Points
@@ -300,11 +305,14 @@
     1636(e): Sort Array by Increasing Frequency
     1657(m): Determine if Two Strings Are Close
     1700(e): Number of Students Unable to Eat Lunch
+    1748(e): Sum of Unique Elements
     1874(m): Minimize Product Sum of Two Arrays
     1897(e): Redistribute Characters to Make All Strings Equal
     1941(e): Check if All Characters Have Equal Number of Occurrences
+    2037(e): Minimum Number of Moves to Seat Everyone
     2068(e): Check Whether Two Strings are Almost Equivalent
     2089(e): Find Target Indices After Sorting Array
+    2144(e): Minimum Cost of Buying Candies With Discount
 
 --- Union Find:
     0200(m): Number of Islands
@@ -496,6 +504,7 @@
     1311(m): Get Watched Videos by Your Friends
     1345(h): Jump Game IV
     1361(m): Validate Binary Tree Nodes
+    1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1376(m): Time Needed to Inform All Employees
     1391(m): Check if There is a Valid Path in a Grid
     1425(h): Constrained Subsequence Sum
@@ -763,8 +772,10 @@
     1897(e): Redistribute Characters to Make All Strings Equal
     1903(e): Largest Odd Number in String
     2027(e): Minimum Moves to Convert String
+    2037(e): Minimum Number of Moves to Seat Everyone
     2077(m): Paths in Maze That Lead to Same Room
     2078(e): Two Furthest Houses With Different Colors
+    2144(e): Minimum Cost of Buying Candies With Discount
 
 --- Dynamic Programming:
     0005(m): Longest Palindromic Substring
@@ -1049,6 +1060,7 @@
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
     0792(m): Number of Matching Subsequences
+    0804(e): Unique Morse Code Words
     0811(m): Subdomain Visit Count
     0817(m): Linked List Components
     0819(e): Most Common Word
@@ -1114,11 +1126,12 @@
     1244(m): Design A Leaderboard
     1296(m): Divide Array in Sets of K Consecutive Numbers
     1348(m): Tweet Counts Per Frequency
+    1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1396(m): Design Underground System
     1429(m): First Unique Number
     1436(e): Destination City
     1462(m): Course Schedule IV
-    1472(m): Design Browser History
+    1472(m): Design Browser Historya
     1496(e): Path Crossing
     1570(m): Dot Product of Two Sparse Vectors
     1583(m): Count Unhappy Friends
@@ -1128,17 +1141,20 @@
     1666(m): Change the Root of a Binary Tree
     1676(m): Lowest Common Ancestor of a Binary Tree IV
     1684(e): Count the Number of Consistent Strings
+    1748(e): Sum of Unique Elements
     1772(m): Sort Features by Popularity
     1858(m): Longest Word With All Prefixes
     1902(m): Depth of BST Given Insertion Order
     1941(e): Check if All Characters Have Equal Number of Occurrences
     1985(m): Find the Kth Largest Integer in the Array
     2021(m): Brightest Position on Street
+    2032(e): Two Out of Three
     2068(e): Check Whether Two Strings are Almost Equivalent
     2077(m): Paths in Maze That Lead to Same Room
     2083(m): Substrings That Begin and End With the Same Letter
     2085(e): Count Common Words With One Occurrence
     2121(m): Intervals Between Identical Elements
+    2133(e): Check if Every Row and Column Contains All Numbers
 
 --- Design:
     0146(m): LRU Cache
@@ -1415,6 +1431,7 @@
     0791(m): Custom Sort String
     0792(m): Number of Matching Subsequences
     0796(e): Rotate String
+    0804(e): Unique Morse Code Words
     0809(m): Expressive Words
     0811(m): Subdomain Visit Count
     0819(e): Most Common Word
@@ -1496,6 +1513,8 @@
     2083(m): Substrings That Begin and End With the Same Letter
     2085(e): Count Common Words With One Occurrence
     2096(m): Step-By-Step Directions From a Binary Tree Node to Another
+    2108(e): Find First Palindromic String in the Array
+    2114(e): Maximum Number of Words Found in Sentences
 
 --- Array:
     0004(h): Median of Two Sorted Arrays
@@ -1714,6 +1733,7 @@
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
     0801(h): Minimum Swaps To Make Sequences Increasing
+    0804(e): Unique Morse Code Words
     0807(m): Max Increase to Keep City Skyline
     0809(m): Expressive Words
     0811(m): Subdomain Visit Count
@@ -1861,6 +1881,7 @@
     1331(e): Rank Transform of an Array
     1346(e): Check If N and Its Double Exist
     1351(e): Count Negative Numbers in a Sorted Matrix
+    1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1380(e): Lucky Numbers in a Matrix 
     1385(e): Find the Distance Value Between Two Arrays
     1387(m): Sort Integers by The Power Value
@@ -1897,13 +1918,18 @@
     1732(e): Find the Highest Altitude
     1736(e): Latest Time by Replacing Hidden Digits
     1746(m): Maximum Subarray Sum After One Operation
+    1748(e): Sum of Unique Elements
     1753(m): Maximum Score From Removing Stones
     1765(m): Map of Highest Peak
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
+    1779(e): Find Nearest Point That Has the Same X or Y Coordinate
     1784(e): Check if Binary String Has at Most One Segment of Ones
+    1848(e): Minimum Distance to the Target Element
     1858(m): Longest Word With All Prefixes
     1877(m): Minimize Maximum Pair Sum in Array
     1905(m): Count Sub Islands
+    1920(e): Build Array from Permutation
+    1929(m): Concatenation of Array
     1961(e): Check If String Is a Prefix of Array
     1985(m): Find the Kth Largest Integer in the Array
     1991(e): Find the Middle Index in Array
@@ -1911,12 +1937,19 @@
     2016(e): Maximum Difference Between Increasing Elements
     2021(m): Brightest Position on Street
     2022(e): Convert 1D Array Into 2D Array
+    2032(e): Two Out of Three
+    2037(e): Minimum Number of Moves to Seat Everyone
     2057(e): Smallest Index With Equal Value
     2073(e): Time Needed to Buy Tickets
     2078(e): Two Furthest Houses With Different Colors
     2085(e): Count Common Words With One Occurrence
     2089(e): Find Target Indices After Sorting Array
+    2108(e): Find First Palindromic String in the Array
+    2114(e): Maximum Number of Words Found in Sentences
     2121(m): Intervals Between Identical Elements
+    2133(e): Check if Every Row and Column Contains All Numbers
+    2144(e): Minimum Cost of Buying Candies With Discount
+    2148(e): Count Elements With Strictly Smaller and Greater Elements
 
 --- Bit Manipulation:
     0067(e): Add Binary 
@@ -2047,6 +2080,7 @@
     1254(m): Number of Closed Islands
     1311(m): Get Watched Videos by Your Friends
     1340(h): Jump Game V
+    1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1391(m): Check if There is a Valid Path in a Grid
     1462(m): Course Schedule IV
     1466(m): Reorder Routes to Make All Paths Lead to the City Zero
