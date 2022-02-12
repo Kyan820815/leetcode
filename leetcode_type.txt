@@ -105,6 +105,7 @@
     0161(m): One Edit Distance
     0165(m): Compare Version Numbers
     0167(e): Two Sum II - Input array is sorted
+    0186(m): Reverse Words in a String II
     0189(m): Rotate Array
     0202(e): Happy Number
     0209(m): Minimum Size Subarray Sum
@@ -178,6 +179,7 @@
     0922(e): Sort Array By Parity II
     0925(e): Long Pressed Name
     0930(m): Binary Subarrays With Sum
+    0942(e): DI String Match
     0946(m): Validate Stack Sequences
     0953(e): Verifying an Alien Dictionary
     0977(e): Squares of a Sorted Array
@@ -203,6 +205,7 @@
     1385(e): Find the Distance Value Between Two Arrays
     1423(m): Maximum Points You Can Obtain from Cards
     1470(e): Shuffle the Array
+    1471(m): The k Strongest Values in an Array
     1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum\
     1493(m): Longest Subarray of 1's After Deleting One Element
     1544(e): Make The String Great
@@ -219,6 +222,7 @@
     1800(e): Maximum Ascending Subarray Sum
     1839(m): Longest Substring Of All Vowels in Order
     1848(e): Minimum Distance to the Target Element
+    1861(m): Rotating the Box
     1869(e): Longer Contiguous Segments of Ones than Zeros
     1877(m): Minimize Maximum Pair Sum in Array
     1920(e): Build Array from Permutation
@@ -226,6 +230,11 @@
     2062(e): Count Vowel Substrings of a String
     2095(m): Delete the Middle Node of a Linked List
     2108(e): Find First Palindromic String in the Array
+    2130(m): Maximum Twin Sum of a Linked List
+    2149(m): Rearrange Array Elements by Sign
+    2155(m): All Divisions With the Highest Score of a Binary Array
+    2156(h): Find Substring With Given Hash Value
+    2161(m): Partition Array According to Given Pivot
 
 --- Quick Select:
     0215(m): Kth Largest Element in an Array
@@ -248,6 +257,7 @@
     0692(m): Top K Frequent Words
     0703(e): Kth Largest Element in a Stream
     0743(m): Network Delay Time
+    0787(m): Cheapest Flights Within K Stops
     0864(h): Shortest Path to Get All Keys
     0973(m): K Closest Points to Origin
     1046(e): Last Stone Weight
@@ -266,6 +276,8 @@
     1619(e): Mean of Array After Removing Some Elements
     1631(m): Path With Minimum Effort
     1824(m): Minimum Sideway Jumps
+    2093(m): Minimum Cost to Reach City With Discounts
+    2163(h): Minimum Difference in Sums After Removal of Elements
 
 --- Bucket Sort:
     0347(m): Top K Frequent Elements
@@ -313,6 +325,7 @@
     2068(e): Check Whether Two Strings are Almost Equivalent
     2089(e): Find Target Indices After Sorting Array
     2144(e): Minimum Cost of Buying Candies With Discount
+    2154(e): Keep Multiplying Found Values by Two
 
 --- Union Find:
     0200(m): Number of Islands
@@ -339,6 +352,7 @@
     1319(m): Number of Operations to Make Network Connected
     1584(m): Min Cost to Connect All Points
     1971(e): Find if Path Exists in Graph
+    2157(h): Groups of Strings
 
 --- Stack:
     0020(e): Valid Parentheses 
@@ -421,6 +435,7 @@
     1614(e): Maximum Nesting Depth of the Parentheses
     1673(m): Find the Most Competitive Subsequence
     1762(m): Buildings With an Ocean View
+    2130(m): Maximum Twin Sum of a Linked List
 
 --- Queue:
     0017(m): Letter Combinations of a Phone Number
@@ -688,6 +703,7 @@
     1192(h): Critical Connections in a Network
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
+    1334(m): Find the City With the Smallest Number of Neighbors at a Threshold Distance
     1340(h): Jump Game V
     1361(m): Validate Binary Tree Nodes
     1376(m): Time Needed to Inform All Employees
@@ -700,6 +716,7 @@
     1973(m): Count Nodes Equal to Sum of Descendants
     2039(m): The Time When the Network Becomes Idle
     2049(m): Count Nodes With the Highest Score
+    2157(h): Groups of Strings
 
 --- Greedy:
     0045(m): Jump Game II
@@ -742,6 +759,7 @@
     0881(m): Boats to Save People 
     0921(m): Minimum Add to Make Parentheses Valid
     0926(m): Flip String to Monotone Increasing
+    0942(e): DI String Match
     0969(m): Pancake Sorting
     0976(e): Largest Perimeter Triangle
     0991(m): Broken Calculator
@@ -776,6 +794,8 @@
     2077(m): Paths in Maze That Lead to Same Room
     2078(e): Two Furthest Houses With Different Colors
     2144(e): Minimum Cost of Buying Candies With Discount
+    2160(e): Minimum Sum of Four Digit Number After Splitting Digits
+    2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
 
 --- Dynamic Programming:
     0005(m): Longest Palindromic Substring
@@ -866,6 +886,7 @@
     1277(m): Count Square Submatrices with All Ones
     1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
     1314(m): Matrix Block Sum
+    1334(m): Find the City With the Smallest Number of Neighbors at a Threshold Distance
     1504(m): Count Submatrices With All Ones
     1525(m): Number of Good Ways to Split a String
     1664(m): Ways to Make a Fair Array
@@ -873,6 +894,8 @@
     1824(m): Minimum Sideway Jumps
     1871(m): Jump Game VII
     2016(e): Maximum Difference Between Increasing Elements
+    2163(h): Minimum Difference in Sums After Removal of Elements
+    2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
 
 --- Sub Series:
     0003(m): Longest Substring Without Repeating Characters
@@ -913,10 +936,12 @@
     0974(m): Subarray Sums Divisible by K
     0978(m): Longest Turbulent Subarray
     0992(h): Subarrays with K Different Integers
+    1063(h): Number of Valid Subarrays
     1186(m): Maximum Subarray Sum with One Deletion
     1493(m): Longest Subarray of 1's After Deleting One Element
     1588(e): Sum of All Odd Length Subarrays
     1746(m): Maximum Subarray Sum After One Operation
+    2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
 
 --- Prefix Sum:
     0209(m): Minimum Size Subarray Sum
@@ -1058,6 +1083,7 @@
     0760(e): Find Anagram Mappings
     0763(m): Partition Labels
     0771(e): Jewels and Stones
+    0787(m): Cheapest Flights Within K Stops
     0791(m): Custom Sort String
     0792(m): Number of Matching Subsequences
     0804(e): Unique Morse Code Words
@@ -1153,8 +1179,11 @@
     2077(m): Paths in Maze That Lead to Same Room
     2083(m): Substrings That Begin and End With the Same Letter
     2085(e): Count Common Words With One Occurrence
+    2093(m): Minimum Cost to Reach City With Discounts
     2121(m): Intervals Between Identical Elements
     2133(e): Check if Every Row and Column Contains All Numbers
+    2154(e): Keep Multiplying Found Values by Two
+    2166(m): Design Bitset
 
 --- Design:
     0146(m): LRU Cache
@@ -1210,6 +1239,7 @@
     1656(e): Design an Ordered Stream
     1670(m): Design Front Middle Back Queue
     1804(m): Implement Trie II (Prefix Tree)
+    2166(m): Design Bitset
 
 --- Linked List:
     0002(m): Add Two Numbers 
@@ -1269,6 +1299,7 @@
     2046(m): Sort Linked List Already Sorted Using Absolute Values
     2058(m): Find the Minimum and Maximum Number of Nodes Between Critical Points
     2095(m): Delete the Middle Node of a Linked List
+    2130(m): Maximum Twin Sum of a Linked List
 
 --- Duplicate:
     0026(e): Remove Duplicates from Sorted Array
@@ -1334,6 +1365,7 @@
     0168(e): Excel Sheet Column Title
     0171(e): Excel Sheet Column Number
     0179(m): Largest Number
+    0186(m): Reverse Words in a String II
     0187(m): Repeated DNA Sequences
     0205(e): Isomorphic Strings
     0224(h): Basic Calculator
@@ -1453,6 +1485,7 @@
     0925(e): Long Pressed Name
     0926(m): Flip String to Monotone Increasing
     0937(e): Reorder Data in Log Files
+    0942(e): DI String Match
     0944(e): Delete Columns to Make Sorted
     0953(e): Verifying an Alien Dictionary
     0981(m): Time Based Key-Value Store
@@ -1515,6 +1548,12 @@
     2096(m): Step-By-Step Directions From a Binary Tree Node to Another
     2108(e): Find First Palindromic String in the Array
     2114(e): Maximum Number of Words Found in Sentences
+    2156(h): Find Substring With Given Hash Value
+    2157(h): Groups of Strings
+    2162(m): Minimum Cost to Set Cooking Time
+    2165(m): Smallest Value of the Rearranged Number
+    2166(m): Design Bitset
+    2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
 
 --- Array:
     0004(h): Median of Two Sorted Arrays
@@ -1778,6 +1817,7 @@
     0937(e): Reorder Data in Log Files
     0939(m): Minimum Area Rectangle
     0941(e): Valid Mountain Array
+    0942(e): DI String Match
     0944(e): Delete Columns to Make Sorted
     0946(m): Validate Stack Sequences
     0950(m): Reveal Cards In Increasing Order
@@ -1894,6 +1934,7 @@
     1431(e): Kids With the Greatest Number of Candies
     1437(e): Check If All 1's Are at Least Length K Places Away
     1441(e): Build an Array With Stack Operations
+    1471(m): The k Strongest Values in an Array
     1480(e): Running Sum of 1d Array
     1464(e): Maximum Product of Two Elements in an Array
     1491(e): Average Salary Excluding the Minimum and Maximum Salary
@@ -1926,6 +1967,7 @@
     1784(e): Check if Binary String Has at Most One Segment of Ones
     1848(e): Minimum Distance to the Target Element
     1858(m): Longest Word With All Prefixes
+    1861(m): Rotating the Box
     1877(m): Minimize Maximum Pair Sum in Array
     1905(m): Count Sub Islands
     1920(e): Build Array from Permutation
@@ -1950,6 +1992,13 @@
     2133(e): Check if Every Row and Column Contains All Numbers
     2144(e): Minimum Cost of Buying Candies With Discount
     2148(e): Count Elements With Strictly Smaller and Greater Elements
+    2149(m): Rearrange Array Elements by Sign
+    2154(e): Keep Multiplying Found Values by Two
+    2155(m): All Divisions With the Highest Score of a Binary Array
+    2160(e): Minimum Sum of Four Digit Number After Splitting Digits
+    2161(m): Partition Array According to Given Pivot
+    2163(h): Minimum Difference in Sums After Removal of Elements
+    2164(e): Sort Even and Odd Indices Independently
 
 --- Bit Manipulation:
     0067(e): Add Binary 
@@ -1989,6 +2038,7 @@
     1506(m): Find Root of N-Ary Tree
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1832(e): Check if the Sentence Is Pangram
+    2157(h): Groups of Strings
 
 --- Intervals:
     0056(m): Merge Intervals
@@ -2049,6 +2099,7 @@
     0743(m): Network Delay Time
     0765(h): Couples Holding Hands
     0785(m): Is Graph Bipartite?
+    0787(m): Cheapest Flights Within K Stops
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
     0841(m): Keys and Rooms
@@ -2079,6 +2130,7 @@
     1222(m): Queens That Can Attack the King
     1254(m): Number of Closed Islands
     1311(m): Get Watched Videos by Your Friends
+    1334(m): Find the City With the Smallest Number of Neighbors at a Threshold Distance
     1340(h): Jump Game V
     1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1391(m): Check if There is a Valid Path in a Grid
@@ -2092,6 +2144,7 @@
     1971(e): Find if Path Exists in Graph
     2039(m): The Time When the Network Becomes Idle
     2077(m): Paths in Maze That Lead to Same Room
+    2093(m): Minimum Cost to Reach City With Discounts
 
 --- Trie Tree:
     0208(m): Implement Trie (Prefix Tree)
@@ -2325,7 +2378,9 @@
     0673(m): Number of Longest Increasing Subsequence
     0674(e): Longest Continuous Increasing Subsequence
     1079(m): Letter Tile Possibilities
+    1081(m): Smallest Subsequence of Distinct Characters
     1087(m): Brace Expansion
+    1143(m): Longest Common Subsequence
 
 --- Math:
     0007(e): Reverse Integer
@@ -2396,6 +2451,7 @@
     0908(e): Smallest Range I
     0914(e): X of a Kind in a Deck of Cards
     0939(m): Minimum Area Rectangle
+    0942(e): DI String Match
     0957(m): Prison Cells After N Days
     0973(m): K Closest Points to Origin
     0976(e): Largest Perimeter Triangle
@@ -2426,6 +2482,8 @@
     1822(e): Sign of the Product of an Array
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
+    2156(h): Find Substring With Given Hash Value
+    2162(m): Minimum Cost to Set Cooking Time
 
 --- Reservoir Sampling:
     0382(m): Linked List Random Node
