@@ -105,6 +105,7 @@
     0161(m): One Edit Distance
     0165(m): Compare Version Numbers
     0167(e): Two Sum II - Input array is sorted
+    0170(e): Two Sum III - Data structure design
     0186(m): Reverse Words in a String II
     0189(m): Rotate Array
     0202(e): Happy Number
@@ -220,12 +221,15 @@
     1768(e): Merge Strings Alternately
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1800(e): Maximum Ascending Subarray Sum
+    1826(e): Faulty Sensor
     1839(m): Longest Substring Of All Vowels in Order
     1848(e): Minimum Distance to the Target Element
+    1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1861(m): Rotating the Box
     1869(e): Longer Contiguous Segments of Ones than Zeros
     1877(m): Minimize Maximum Pair Sum in Array
     1920(e): Build Array from Permutation
+    1963(m): Minimum Number of Swaps to Make the String Balanced
     2037(e): Minimum Number of Moves to Seat Everyone
     2062(e): Count Vowel Substrings of a String
     2095(m): Delete the Middle Node of a Linked List
@@ -435,6 +439,7 @@
     1614(e): Maximum Nesting Depth of the Parentheses
     1673(m): Find the Most Competitive Subsequence
     1762(m): Buildings With an Ocean View
+    1963(m): Minimum Number of Swaps to Make the String Balanced
     2130(m): Maximum Twin Sum of a Linked List
 
 --- Queue:
@@ -784,11 +789,13 @@
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1780(m): Check if Number is a Sum of Powers of Three
     1827(e): Minimum Operations to Make the Array Increasing
+    1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1874(m): Minimize Product Sum of Two Arrays
     1877(m): Minimize Maximum Pair Sum in Array
     1893(e): Check if All the Integers in a Range Are Covered
     1897(e): Redistribute Characters to Make All Strings Equal
     1903(e): Largest Odd Number in String
+    1963(m): Minimum Number of Swaps to Make the String Balanced
     2027(e): Minimum Moves to Convert String
     2037(e): Minimum Number of Moves to Seat Everyone
     2077(m): Paths in Maze That Lead to Same Room
@@ -989,6 +996,7 @@
     0128(m): Longest Consecutive Sequence
     0133(m): Clone Graph
     0146(m): LRU Cache
+    0170(e): Two Sum III - Data structure design
     0187(m): Repeated DNA Sequences
     0205(e): Isomorphic Strings
     0217(e): Contains Duplicate
@@ -1188,6 +1196,7 @@
 --- Design:
     0146(m): LRU Cache
     0155(e): Min Stack
+    0170(e): Two Sum III - Data structure design
     0173(m): Binary Search Tree Iterator
     0208(m): Implement Trie (Prefix Tree)
     0211(m): Design Add and Search Words Data Structure
@@ -1533,10 +1542,12 @@
     1816(e): Truncate Sentence
     1832(e): Check if the Sentence Is Pangram
     1844(e): Replace All Digits with Characters
+    1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1858(m): Longest Word With All Prefixes
     1859(e): Sorting the Sentence
     1941(e): Check if All Characters Have Equal Number of Occurrences
     1961(e): Check If String Is a Prefix of Array
+    1963(m): Minimum Number of Swaps to Make the String Balanced
     1985(m): Find the Kth Largest Integer in the Array
     2000(e): Reverse Prefix of Word
     2011(e): Final Value of Variable After Performing Operations
@@ -1613,6 +1624,7 @@
     0163(e): Missing Ranges
     0167(e): Two Sum II - Input array is sorted
     0169(e): Majority Element
+    0170(e): Two Sum III - Data structure design
     0188(h): Best Time to Buy and Sell Stock IV
     0189(m): Rotate Array
     0198(m): House Robber
@@ -1965,6 +1977,7 @@
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1779(e): Find Nearest Point That Has the Same X or Y Coordinate
     1784(e): Check if Binary String Has at Most One Segment of Ones
+    1826(e): Faulty Sensor
     1848(e): Minimum Distance to the Target Element
     1858(m): Longest Word With All Prefixes
     1861(m): Rotating the Box
@@ -2495,3 +2508,14 @@
     1114(e): Print in Order
     1188(m): Design Bounded Blocking Queue
     1195(m): Fizz Buzz Multithread
+
+--- Sql
+    1303(e): Find the Team Size
+    1350(e): Students With Invalid Departments
+    1378(e): Replace Employee ID With The Unique Identifier
+    1587(e): Bank Account Summary II
+    1683(e): Invalid Tweets
+    1693(e): Daily Leads and Partners
+    1741(e): Find Total Time Spent by Each Employee
+    1757(e): Recyclable and Low Fat Products
+    1873(e): Calculate Special Bonus

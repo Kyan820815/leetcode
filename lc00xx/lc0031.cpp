@@ -21,7 +21,7 @@ public:
                 }
             }
             swap(nums[last], nums[idx]);
-            sort(nums.begin()+idx+1, nums.end());
+            reverse(nums.begin()+idx+1, nums.end());
         }
     }
 };

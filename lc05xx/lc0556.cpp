@@ -22,7 +22,7 @@ public:
             }
         }
         swap(str[start], str[last]);
-        sort(str.begin()+start+1, str.end());
+        reverse(str.begin()+start+1, str.end());
         int sum = 0;
         for (int i = 0; i < str.size(); ++i) {
             if (sum > INT_MAX/10 || sum == INT_MAX/10 && str[i] > '7') {
