@@ -134,6 +134,7 @@
     0360(m): Sort Transformed Array
     0392(e): Is Subsequence
     0395(m): Longest Substring with At Least K Repeating Characters
+    0408(e): Valid Word Abbreviation
     0413(m): Arithmetic Slices
     0424(m): Longest Repeating Character Replacement
     0438(m): Find All Anagrams in a String
@@ -262,11 +263,13 @@
     0703(e): Kth Largest Element in a Stream
     0743(m): Network Delay Time
     0787(m): Cheapest Flights Within K Stops
+    0847(h): Shortest Path Visiting All Nodes
     0864(h): Shortest Path to Get All Keys
     0973(m): K Closest Points to Origin
     1046(e): Last Stone Weight
     1090(m): Largest Values From Labels
     1102(m): Path With Maximum Minimum Value
+    1168(h): Optimize Water Distribution in a Village
     1167(m): Minimum Cost to Connect Sticks
     1293(h): Shortest Path in a Grid with Obstacles Elimination
     1329(m): Sort the Matrix Diagonally
@@ -279,6 +282,7 @@
     1584(m): Min Cost to Connect All Points
     1619(e): Mean of Array After Removing Some Elements
     1631(m): Path With Minimum Effort
+    1810(m): Minimum Path Cost in a Hidden Grid
     1824(m): Minimum Sideway Jumps
     2093(m): Minimum Cost to Reach City With Discounts
     2163(h): Minimum Difference in Sums After Removal of Elements
@@ -351,6 +355,7 @@
     0959(m): Regions Cut By Slashes
     1061(m): Lexicographically Smallest Equivalent String
     1101(m): The Earliest Moment When Everyone Become Friends
+    1168(h): Optimize Water Distribution in a Village
     1202(m): Smallest String With Swaps 
     1135(m): Connecting Cities With Minimum Cost
     1319(m): Number of Operations to Make Network Connected
@@ -496,6 +501,8 @@
     0785(m): Is Graph Bipartite?
     0797(m): All Paths From Source to Target
     0841(m): Keys and Rooms
+    0847(h): Shortest Path Visiting All Nodes
+    0851(m): Loud and Rich 
     0862(h): Shortest Subarray with Sum at Least K
     0863(m): All Nodes Distance K in Binary Tree
     0864(h): Shortest Path to Get All Keys
@@ -535,6 +542,7 @@
     1696(m): Jump Game VI
     1730(m): Shortest Path to Get Food
     1765(m): Map of Highest Peak
+    1778(m): Shortest Path in a Hidden Grid
     1791(e): Find Center of Star Graph
     1824(m): Minimum Sideway Jumps
     1871(m): Jump Game VII
@@ -671,6 +679,7 @@
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
     0841(m): Keys and Rooms
+    0851(m): Loud and Rich 
     0863(m): All Nodes Distance K in Binary Tree
     0865(m): Smallest Subtree with all the Deepest Nodes
     0889(m): Construct Binary Tree from Preorder and Postorder Traversal
@@ -715,7 +724,9 @@
     1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
     1462(m): Course Schedule IV
     1666(m): Change the Root of a Binary Tree
+    1778(m): Shortest Path in a Hidden Grid
     1804(m): Implement Trie II (Prefix Tree)
+    1810(m): Minimum Path Cost in a Hidden Grid
     1905(m): Count Sub Islands
     1971(e): Find if Path Exists in Graph
     1973(m): Count Nodes Equal to Sum of Descendants
@@ -1099,6 +1110,8 @@
     0817(m): Linked List Components
     0819(e): Most Common Word
     0823(m): Binary Trees With Factors
+    0847(h): Shortest Path Visiting All Nodes
+    0851(m): Loud and Rich 
     0863(m): All Nodes Distance K in Binary Tree
     0864(h): Shortest Path to Get All Keys
     0874(m): Walking Robot Simulation
@@ -1145,6 +1158,7 @@
     1155(m): Number of Dice Rolls With Target Sum
     1160(e): Find Words That Can Be Formed by Characters
     1165(e): Single-Row Keyboard
+    1168(h): Optimize Water Distribution in a Village
     1169(m): Invalid Transactions
     1170(m): Compare Strings by Frequency of the Smallest Character
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
@@ -1409,6 +1423,7 @@
     0395(m): Longest Substring with At Least K Repeating Characters
     0401(e): Binary Watch
     0402(m): Remove K Digits
+    0408(e): Valid Word Abbreviation
     0409(e): Longest Palindrome
     0412(e): Fizz Buzz
     0415(e): Add Strings
@@ -1797,6 +1812,7 @@
     0845(m): Longest Mountain in Array
     0848(m): Shifting Letters
     0849(m): Maximize Distance to Closest Person
+    0851(m): Loud and Rich 
     0852(e): Peak Index in a Mountain Array
     0860(e): Lemonade Change
     0861(m): Score After Flipping Matrix
@@ -2034,6 +2050,7 @@
     0477(m): Total Hamming Distance
     0661(e): Image Smoother
     0709(e): To Lower Case
+    0847(h): Shortest Path Visiting All Nodes
     0861(m): Score After Flipping Matrix
     0864(h): Shortest Path to Get All Keys
     1049(m): Last Stone Weight II
@@ -2116,6 +2133,8 @@
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
     0841(m): Keys and Rooms
+    0847(h): Shortest Path Visiting All Nodes
+    0851(m): Loud and Rich 
     0863(m): All Nodes Distance K in Binary Tree
     0864(h): Shortest Path to Get All Keys
     0886(m): Possible Bipartition
@@ -2138,6 +2157,7 @@
     1135(m): Connecting Cities With Minimum Cost
     1136(m): Parallel Courses
     1162(m): As Far from Land as Possible
+    1168(h): Optimize Water Distribution in a Village
     1192(h): Critical Connections in a Network
     1219(m): Path with Maximum Gold
     1222(m): Queens That Can Attack the King
@@ -2152,7 +2172,9 @@
     1557(m): Minimum Number of Vertices to Reach All Nodes
     1584(m): Min Cost to Connect All Points
     1765(m): Map of Highest Peak
+    1778(m): Shortest Path in a Hidden Grid
     1791(e): Find Center of Star Graph
+    1810(m): Minimum Path Cost in a Hidden Grid
     1905(m): Count Sub Islands
     1971(e): Find if Path Exists in Graph
     2039(m): The Time When the Network Becomes Idle
@@ -2514,8 +2536,25 @@
     1350(e): Students With Invalid Departments
     1378(e): Replace Employee ID With The Unique Identifier
     1587(e): Bank Account Summary II
+    1571(e): Warehouse Manager
+    1581(e): Customer Who Visited but Did Not Make Any Transactions
     1683(e): Invalid Tweets
     1693(e): Daily Leads and Partners
     1741(e): Find Total Time Spent by Each Employee
     1757(e): Recyclable and Low Fat Products
+    1777(e): Product's Price for Each Store
+    1821(e): Find Customers WITH Positive Revenue this Year
     1873(e): Calculate Special Bonus
+    1890(e): The Latest Login in 2020
+
+--- Interactive
+    0277(m): Find the Celebrity
+    0278(e): First Bad Version
+    0374(e): Guess Number Higher or Lower
+    0489(h): Robot Room Cleaner
+    1095(h): Find in Mountain Array
+    1236(m): Web Crawler
+    1274(h): Number of Ships in a Rectangle
+    1428(m): Leftmost Column with at Least a One
+    1778(m): Shortest Path in a Hidden Grid
+    1810(m): Minimum Path Cost in a Hidden Grid
