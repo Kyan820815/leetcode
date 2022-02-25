@@ -212,6 +212,7 @@
     1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum\
     1493(m): Longest Subarray of 1's After Deleting One Element
     1544(e): Make The String Great
+    1567(m): Maximum Length of Subarray With Positive Product
     1570(m): Dot Product of Two Sparse Vectors
     1616(m): Split Two Strings to Make Palindrome
     1662(e): Check If Two String Arrays are Equivalent
@@ -795,6 +796,7 @@
     1130(m): Minimum Cost Tree From Leaf Values
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1558(m): Minimum Numbers of Function Calls to Make Target Array
+    1567(m): Maximum Length of Subarray With Positive Product
     1605(m): Find Valid Matrix Given Row and Column Sums
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
@@ -887,11 +889,13 @@
     0894(m): All Possible Full Binary Trees
     0907(m): Sum of Subarray Minimums
     0915(m): Partition Array into Disjoint Intervals
+    0918(m): Maximum Sum Circular Subarray
     0926(m): Flip String to Monotone Increasing
     0931(m): Minimum Falling Path Sum
     0935(m): Knight Dialer
     0978(m): Longest Turbulent Subarray
     0983(m): Minimum Cost For Tickets
+    1014(m): Best Sightseeing Pair
     1031(m): Maximum Sum of Two Non-Overlapping Subarrays
     1035(m): Uncrossed Lines
     1043(m): Partition Array for Maximum Sum
@@ -1846,6 +1850,7 @@
     0912(m): Sort an Array
     0914(e): X of a Kind in a Deck of Cards
     0915(m): Partition Array into Disjoint Intervals
+    0918(m): Maximum Sum Circular Subarray
     0922(e): Sort Array By Parity II
     0924(h): Minimize Malware Spread
     0930(m): Binary Subarrays With Sum
@@ -1885,6 +1890,7 @@
     1010(m): Pairs of Songs With Total Durations Divisible by 60
     1011(m): Capacity To Ship Packages Within D Days
     1013(e): Partition Array Into Three Parts With Equal Sum
+    1014(m): Best Sightseeing Pair
     1018(e): Binary Prefix Divisible By 5
     1019(m): Next Greater Node In Linked List
     1020(m): Number of Enclaves
@@ -1984,6 +1990,7 @@
     1528(e): Shuffle String
     1550(e): Three Consecutive Odds
     1558(m): Minimum Numbers of Function Calls to Make Target Array
+    1567(m): Maximum Length of Subarray With Positive Product
     1572(e): Matrix Diagonal Sum
     1578(m): Minimum Deletion Cost to Avoid Repeating Letters
     1605(m): Find Valid Matrix Given Row and Column Sums
