@@ -12,6 +12,7 @@ public:
                     --right;
                 }
                 cnt = 1;
+                --right;
                 ++res;
             }
         }

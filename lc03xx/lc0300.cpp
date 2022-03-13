@@ -15,7 +15,7 @@ public:
                     right = mid;
                 }
             }
-            if (!res.size() || left == res.size()-1 && res[left] < nums[i]) {
+            if (!res.size() || res[left] < nums[i]) {
                 res.push_back(nums[i]);
             } else {
                 res[left] = nums[i];

@@ -4,20 +4,18 @@
 class ParkingSystem {
 public:
     ParkingSystem(int big, int medium, int small) {
-        num = {big, medium, small};
+        arr = {big, medium, small};
     }
     
     bool addCar(int carType) {
-        {
-            auto &mu = mtx[carType-1];
-            unique_lock<mutex> ulock(mu);
-            return --num[carType-1] >= 0;
-        }
-        return false;
+        auto &m = mtx[carType-1];
+        unique_lock<mutex> ulock(m);
+        return --arr[carType-1] >= 0;
     }
-    array<mutex, 3> mtx;
-    vector<int> num;
+    vector<int> arr;
+    array<mutex,3> mtx;
 };
+
 
 /**
  * Your ParkingSystem object will be instantiated and called as such:

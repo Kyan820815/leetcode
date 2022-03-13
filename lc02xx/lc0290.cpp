@@ -4,25 +4,25 @@
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
-        unordered_map<char, string> fw;
-        unordered_map<string, char> bw;
-        string str = "";
-        int j = 0;
-        for (int i = 0; i <= s.size(); ++i) {
+        string word = "";
+        unordered_map<string, char> fw;
+        unordered_map<char, string> bw;
+        int i, j;
+        for (i = 0, j = 0; i <= s.size() && j < pattern.size(); ++i) {
             if (i == s.size() || s[i] == ' ') {
-                if (fw.find(pattern[j]) == fw.end()) {
-                    fw[pattern[j]] = str;
-                    if (bw.find(str) != bw.end()) {
+                if (fw.find(word) == fw.end()) {
+                    fw[word] = pattern[j];
+                    if (bw.find(pattern[j]) != bw.end()) {
                         return false;
                     }
-                    bw[str] = pattern[j];
-                } else if (fw[pattern[j]] != str) {
+                    bw[pattern[j]] = word;
+                } else if (fw[word] != pattern[j]) {
                     return false;
                 }
+                word = "";
                 ++j;
-                str = "";
             } else {
-                str += s[i];
+                word += s[i];
             }
         }
         return j == pattern.size();
