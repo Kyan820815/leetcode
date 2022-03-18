@@ -487,6 +487,7 @@
     0362(m): Design Hit Counter
     0417(m): Pacific Atlantic Water Flow
     0429(m): N-ary Tree Level Order Traversal
+    0433(m): Minimum Genetic Mutation
     0449(m): Serialize and Deserialize BST
     0487(m): Max Consecutive Ones II
     0490(m): The Maze
@@ -1072,6 +1073,7 @@
     0407(h): Trapping Rain Water II
     0409(e): Longest Palindrome
     0414(e): Third Maximum Number
+    0433(m): Minimum Genetic Mutation
     0437(m): Path Sum III
     0451(m): Sort Characters By Frequency
     0454(m): 4Sum II
@@ -1353,6 +1355,7 @@
     1669(m): Merge In Between Linked Lists
     1670(m): Design Front Middle Back Queue
     1721(m): Swapping Nodes in a Linked List
+    1823(m): Find the Winner of the Circular Game
     1836(m): Remove Duplicates From an Unsorted Linked List
     2046(m): Sort Linked List Already Sorted Using Absolute Values
     2058(m): Find the Minimum and Maximum Number of Nodes Between Critical Points
@@ -1465,6 +1468,7 @@
     0415(e): Add Strings
     0424(m): Longest Repeating Character Replacement
     0428(h): Serialize and Deserialize N-ary Tree
+    0433(m): Minimum Genetic Mutation
     0434(e): Number of Segments in a String
     0438(m): Find All Anagrams in a String
     0443(m): String Compression
@@ -2044,6 +2048,7 @@
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1779(e): Find Nearest Point That Has the Same X or Y Coordinate
     1784(e): Check if Binary String Has at Most One Segment of Ones
+    1823(m): Find the Winner of the Circular Game
     1826(e): Faulty Sensor
     1848(e): Minimum Distance to the Target Element
     1858(m): Longest Word With All Prefixes
@@ -2521,6 +2526,7 @@
     0343(m): Integer Break
     0356(m): Line Reflection
     0360(m): Sort Transformed Array
+    0365(m): Water and Jug Problem
     0368(m): Largest Divisible Subset
     0369(m): Plus One Linked List
     0382(m): Linked List Random Node
@@ -2591,6 +2597,7 @@
     1759(m): Count Number of Homogenous Substrings
     1780(m): Check if Number is a Sum of Powers of Three
     1822(e): Sign of the Product of an Array
+    1823(m): Find the Winner of the Circular Game
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
     2156(h): Find Substring With Given Hash Value
@@ -2645,6 +2652,7 @@
 --- Number Theory:
     0204(m): Count Primes
     0258(e): Add Digits
+    0365(m): Water and Jug Problem
     0914(e): X of a Kind in a Deck of Cards
     2176(e): Count Equal and Divisible Pairs in an Array
     2183(h): Count Array Pairs Divisible by K

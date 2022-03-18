@@ -43,6 +43,9 @@ public:
                 queue<pair<int,int>> empty;
                 swap(que2, empty);
             }
+            if (visit[row-1][col-1] != INT_MAX) {
+                break;
+            }
         }
         return visit[row-1][col-1];
     }
