@@ -44,6 +44,7 @@
     1095(h): Find in Mountain Array
     1146(m): Snapshot Array
     1150(e): Check If a Number Is Majority Element in a Sorted Array
+    1182(m): Shortest Distance to Target Color
     1198(m): Find Smallest Common Element in All Rows
     1228(e): Missing Number In Arithmetic Progression
     1231(h): Divide Chocolate
@@ -192,6 +193,7 @@
     1031(m): Maximum Sum of Two Non-Overlapping Subarrays
     1051(e): Height Checker
     1052(m): Grumpy Bookstore Owner
+    1055(m): Shortest Way to Form String
     1089(e): Duplicate Zeros
     1099(e): Two Sum Less Than K
     1100(m): Find K-Length Substrings With No Repeated Characters
@@ -474,6 +476,7 @@
     0225(e): Implement Stack using Queues
     0232(e): Implement Queue using Stacks
     0239(h): Sliding Window Maximum
+    0254(m): Factor Combinations
     0261(m): Graph Valid Tree
     0281(m): Zigzag Iterator
     0286(m): Walls and Gates
@@ -615,6 +618,7 @@
     0247(m): Strobogrammatic Number II
     0248(h): Strobogrammatic Number III
     0250(m): Count Univalue Subtrees
+    0254(m): Factor Combinations
     0257(e): Binary Tree Paths
     0261(m): Graph Valid Tree
     0273(h): Integer to English Words
@@ -799,6 +803,7 @@
     1013(e): Partition Array Into Three Parts With Equal Sum
     1029(m): Two City Scheduling
     1046(e): Last Stone Weight
+    1055(m): Shortest Way to Form String
     1057(m): Campus Bikes
     1081(m): Smallest Subsequence of Distinct Characters
     1090(m): Largest Values From Labels
@@ -865,6 +870,7 @@
     0213(m): House Robber II
     0221(m): Maximal Square
     0241(m): Different Ways to Add Parentheses
+    0254(m): Factor Combinations
     0256(m): Paint House
     0276(m): Paint Fence
     0279(m): Perfect Squares
@@ -873,6 +879,7 @@
     0337(m): House Robber III
     0338(e): Counting Bits
     0343(m): Integer Break
+    0361(m): Bomb Enemy
     0368(m): Largest Divisible Subset
     0375(m): Guess Number Higher or Lower II
     0376(m): Wiggle Subsequence
@@ -894,6 +901,7 @@
     0650(m): 2 Keys Keyboard
     0673(m): Number of Longest Increasing Subsequence
     0678(m): Valid Parenthesis String
+    0712(m): Minimum ASCII Delete Sum for Two Strings
     0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
     0718(m): Maximum Length of Repeated Subarray
     0740(m): Delete and Earn
@@ -917,11 +925,13 @@
     1043(m): Partition Array for Maximum Sum
     1048(m): Longest String Chain
     1049(m): Last Stone Weight II
+    1055(m): Shortest Way to Form String
     1105(m): Filling Bookcase Shelves
     1137(e): N-th Tribonacci Number
     1140(m): Stone Game II
     1143(m): Longest Common Subsequence
     1155(m): Number of Dice Rolls With Target Sum
+    1182(m): Shortest Distance to Target Color
     1186(m): Maximum Subarray Sum with One Deletion
     1235(h): Maximum Profit in Job Scheduling
     1277(m): Count Square Submatrices with All Ones
@@ -981,6 +991,7 @@
     0974(m): Subarray Sums Divisible by K
     0978(m): Longest Turbulent Subarray
     0992(h): Subarrays with K Different Integers
+    1055(m): Shortest Way to Form String
     1063(h): Number of Valid Subarrays
     1186(m): Maximum Subarray Sum with One Deletion
     1493(m): Longest Subarray of 1's After Deleting One Element
@@ -1063,6 +1074,7 @@
     0350(e): Intersection of Two Arrays II
     0356(m): Line Reflection
     0359(e): Logger Rate Limiter
+    0361(m): Bomb Enemy
     0362(m): Design Hit Counter
     0375(m): Guess Number Higher or Lower II
     0380(m): Insert Delete GetRandom O(1)
@@ -1168,6 +1180,7 @@
     1002(e): Find Common Characters
     1010(m): Pairs of Songs With Total Durations Divisible by 60
     1048(m): Longest String Chain
+    1055(m): Shortest Way to Form String
     1057(m): Campus Bikes
     1059(m): All Paths from Source Lead to Destination
     1072(m): Flip Columns For Maximum Number of Equal Rows
@@ -1196,6 +1209,7 @@
     1170(m): Compare Strings by Frequency of the Smallest Character
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
     1180(e): Count Substrings with Only One Distinct Letter
+    1182(m): Shortest Distance to Target Color
     1189(e): Maximum Number of Balloons
     1190(m): Reverse Substrings Between Each Pair of Parentheses
     1192(h): Critical Connections in a Network
@@ -1509,6 +1523,7 @@
     0692(m): Top K Frequent Words
     0696(e): Count Binary Substrings
     0709(e): To Lower Case
+    0712(m): Minimum ASCII Delete Sum for Two Strings
     0720(m): Longest Word in Dictionary
     0721(m): Accounts Merge 
     0722(m): Remove Comments
@@ -1562,6 +1577,7 @@
     1041(m): Robot Bounded In Circle
     1047(e): Remove All Adjacent Duplicates In String
     1048(m): Longest String Chain
+    1055(m): Shortest Way to Form String
     1061(m): Lexicographically Smallest Equivalent String
     1065(e): Index Pairs of a String
     1071(e): Greatest Common Divisor of Strings
@@ -1710,6 +1726,7 @@
     0245(m): Shortest Word Distance III
     0252(e): Meeting Rooms
     0253(m): Meeting Rooms II
+    0254(m): Factor Combinations
     0255(m): Verify Preorder Sequence in Binary Search Tree
     0256(m): Paint House
     0259(m): 3Sum Smaller
@@ -1739,6 +1756,7 @@
     0350(e): Intersection of Two Arrays II
     0356(m): Line Reflection
     0360(m): Sort Transformed Array
+    0361(m): Bomb Enemy
     0362(m): Design Hit Counter
     0364(m): Nested List Weight Sum II
     0368(m): Largest Divisible Subset
@@ -1979,6 +1997,7 @@
     1169(m): Invalid Transactions
     1170(m): Compare Strings by Frequency of the Smallest Character
     1176(e): Diet Plan Performance
+    1182(m): Shortest Distance to Target Color
     1184(e): Distance Between Bus Stops
     1186(m): Maximum Subarray Sum with One Deletion
     1192(h): Critical Connections in a Network
