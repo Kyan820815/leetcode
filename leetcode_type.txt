@@ -336,6 +336,7 @@
     1874(m): Minimize Product Sum of Two Arrays
     1897(e): Redistribute Characters to Make All Strings Equal
     1941(e): Check if All Characters Have Equal Number of Occurrences
+    2006(e): Count Number of Pairs With Absolute Difference K
     2008(m): Maximum Earnings From Taxi
     2037(e): Minimum Number of Moves to Seat Everyone
     2068(e): Check Whether Two Strings are Almost Equivalent
@@ -423,6 +424,7 @@
     0844(e): Backspace String Compare
     0856(m): Score of Parentheses
     0889(m): Construct Binary Tree from Preorder and Postorder Traversal
+    0895(h): Maximum Frequency Stack
     0897(e): Increasing Order Search Tree
     0901(m): Online Stock Span
     0907(m): Sum of Subarray Minimums
@@ -668,6 +670,7 @@
     0559(e): Maximum Depth of N-ary Tree
     0563(e): Binary Tree Tilt
     0572(e): Subtree of Another Tree
+    0576(m): Out of Boundary Paths
     0582(m): Kill Process
     0589(e): N-ary Tree Preorder Traversal
     0590(e): N-ary Tree Postorder Traversal
@@ -758,6 +761,7 @@
     0122(e): Best Time to Buy and Sell Stock II
     0134(m): Gas Station
     0179(m): Largest Number
+    0265(h): Paint House II
     0277(m): Find the Celebrity
     0280(m): Wiggle Sort
     0316(m): Remove Duplicate Letters
@@ -815,6 +819,7 @@
     1605(m): Find Valid Matrix Given Row and Column Sums
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
+    1663(m): Smallest String With A Given Numeric Value
     1758(e): Minimum Changes To Make Alternating Binary String
     1762(m): Buildings With an Ocean View
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
@@ -826,6 +831,7 @@
     1893(e): Check if All the Integers in a Range Are Covered
     1897(e): Redistribute Characters to Make All Strings Equal
     1903(e): Largest Odd Number in String
+    1913(e): Maximum Product Difference Between Two Pairs
     1963(m): Minimum Number of Swaps to Make the String Balanced
     2027(e): Minimum Moves to Convert String
     2037(e): Minimum Number of Moves to Seat Everyone
@@ -872,6 +878,7 @@
     0241(m): Different Ways to Add Parentheses
     0254(m): Factor Combinations
     0256(m): Paint House
+    0265(h): Paint House II
     0276(m): Paint Fence
     0279(m): Perfect Squares
     0309(m): Best Time to Buy and Sell Stock with Cooldown
@@ -895,6 +902,7 @@
     0509(e): Fibonacci Number
     0516(m): Longest Palindromic Subsequence
     0518(m): Coin Change 2
+    0576(m): Out of Boundary Paths
     0583(m): Delete Operation for Two Strings
     0638(m): Shopping Offers
     0647(m): Palindromic Substrings
@@ -933,6 +941,7 @@
     1155(m): Number of Dice Rolls With Target Sum
     1182(m): Shortest Distance to Target Color
     1186(m): Maximum Subarray Sum with One Deletion
+    1230(m): Toss Strange Coins
     1235(h): Maximum Profit in Job Scheduling
     1277(m): Count Square Submatrices with All Ones
     1292(m): Maximum Side Length of a Square with Sum Less than or Equal to Threshold
@@ -1032,6 +1041,7 @@
     1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum
     1512(m): Number of Good Pairs
     1991(e): Find the Middle Index in Array
+    2006(e): Count Number of Pairs With Absolute Difference K
     2083(m): Substrings That Begin and End With the Same Letter
     2121(m): Intervals Between Identical Elements
     2134(m): Minimum Swaps to Group All 1's Together II
@@ -1112,6 +1122,7 @@
     0560(m): Subarray Sum Equals K
     0562(m): Longest Line of Consecutive One in Matrix
     0575(e): Distribute Candies
+    0576(m): Out of Boundary Paths
     0582(m): Kill Process
     0594(e): Longest Harmonious Subsequence
     0599(e): Minimum Index Sum of Two Lists
@@ -1165,6 +1176,7 @@
     0888(e): Fair Candy Swap
     0890(m): Find and Replace Pattern
     0893(m): Groups of Special-Equivalent Strings
+    0895(h): Maximum Frequency Stack
     0904(m): Fruit Into Baskets
     0914(e): X of a Kind in a Deck of Cards
     0924(h): Minimize Malware Spread
@@ -1242,6 +1254,7 @@
     1902(m): Depth of BST Given Insertion Order
     1941(e): Check if All Characters Have Equal Number of Occurrences
     1985(m): Find the Kth Largest Integer in the Array
+    2006(e): Count Number of Pairs With Absolute Difference K
     2021(m): Brightest Position on Street
     2032(e): Two Out of Three
     2068(e): Check Whether Two Strings are Almost Equivalent
@@ -1296,6 +1309,7 @@
     0716(e): Max Stack
     0729(m): My Calendar I
     0731(m): My Calendar II
+    0895(h): Maximum Frequency Stack
     0901(m): Online Stock Span
     0919(m): Complete Binary Tree Inserter
     0933(e): Number of Recent Calls
@@ -1359,6 +1373,7 @@
     0725(m): Split Linked List in Parts
     0817(m): Linked List Components
     0876(e): Middle of the Linked List
+    0895(h): Maximum Frequency Stack
     0989(e): Add to Array-Form of Integer
     1019(m): Next Greater Node In Linked Lis
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
@@ -1607,6 +1622,7 @@
     1616(m): Split Two Strings to Make Palindrome
     1624(e): Largest Substring Between Two Equal Characters
     1662(e): Check If Two String Arrays are Equivalent
+    1663(m): Smallest String With A Given Numeric Value
     1678(e): Goal Parser Interpretation
     1684(e): Count the Number of Consistent Strings
     1704(e): Determine if String Halves Are Alike
@@ -1731,6 +1747,7 @@
     0256(m): Paint House
     0259(m): 3Sum Smaller
     0260(m): Single Number III
+    0265(h): Paint House II
     0268(e): Missing Number
     0280(m): Wiggle Sort
     0281(m): Zigzag Iterator
@@ -1816,6 +1833,7 @@
     0565(m): Array Nesting
     0566(e): Reshape the Matrix
     0575(e): Distribute Candies
+    0576(m): Out of Boundary Paths
     0582(m): Kill Process
     0598(e): Range Addition II
     0599(e): Minimum Index Sum of Two Lists
@@ -2074,12 +2092,14 @@
     1861(m): Rotating the Box
     1877(m): Minimize Maximum Pair Sum in Array
     1905(m): Count Sub Islands
+    1913(e): Maximum Product Difference Between Two Pairs
     1920(e): Build Array from Permutation
     1926(m): Nearest Exit from Entrance in Maze
     1929(m): Concatenation of Array
     1961(e): Check If String Is a Prefix of Array
     1985(m): Find the Kth Largest Integer in the Array
     1991(e): Find the Middle Index in Array
+    2006(e): Count Number of Pairs With Absolute Difference K
     2008(m): Maximum Earnings From Taxi
     2011(e): Final Value of Variable After Performing Operations
     2016(e): Maximum Difference Between Increasing Elements
@@ -2603,6 +2623,7 @@
     1137(e): N-th Tribonacci Number
     1140(m): Stone Game II
     1227(m): Airplane Seat Assignment Probability
+    1230(m): Toss Strange Coins
     1232(e): Check If It Is a Straight Line
     1281(e): Subtract the Product and Sum of Digits of an Integer
     1304(e); Find N Unique Integers Sum up to Zero
