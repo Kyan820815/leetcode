@@ -791,10 +791,12 @@
     0767(m): Reorganize String
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
+    0775(m): Global and Local Inversions
     0807(m): Max Increase to Keep City Skyline
     0860(e): Lemonade Change
     0861(m): Score After Flipping Matrix
     0881(m): Boats to Save People 
+    0910(m): Smallest Range II
     0921(m): Minimum Add to Make Parentheses Valid
     0926(m): Flip String to Monotone Increasing
     0942(e): DI String Match
@@ -895,6 +897,7 @@
     0410(h): Split Array Largest Sum
     0413(m): Arithmetic Slices
     0416(m): Partition Equal Subset Sum
+    0464(m): Can I Win
     0472(h): Concatenated Words
     0474(m): Ones and Zeroes
     0486(m): Predict the Winner
@@ -955,6 +958,7 @@
     1871(m): Jump Game VII
     2008(m): Maximum Earnings From Taxi
     2016(e): Maximum Difference Between Increasing Elements
+    2110(m): Number of Smooth Descent Periods of a Stock
     2163(h): Minimum Difference in Sums After Removal of Elements
     2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
     2170(m): Minimum Operations to Make the Array Alternating
@@ -1060,6 +1064,7 @@
     0128(m): Longest Consecutive Sequence
     0133(m): Clone Graph
     0146(m): LRU Cache
+    0149(h): Max Points on a Line
     0170(e): Two Sum III - Data structure design
     0187(m): Repeated DNA Sequences
     0205(e): Isomorphic Strings
@@ -1100,6 +1105,7 @@
     0451(m): Sort Characters By Frequency
     0454(m): 4Sum II
     0460(h): LFU Cache
+    0464(m): Can I Win
     0472(h): Concatenated Words
     0474(m): Ones and Zeroes
     0480(h): Sliding Window Median
@@ -1637,6 +1643,7 @@
     1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1858(m): Longest Word With All Prefixes
     1859(e): Sorting the Sentence
+    1880(e): Check if Word Equals Summation of Two Words
     1941(e): Check if All Characters Have Equal Number of Occurrences
     1961(e): Check If String Is a Prefix of Array
     1963(m): Minimum Number of Swaps to Make the String Balanced
@@ -1713,6 +1720,7 @@
     0134(m): Gas Station
     0136(e): Single Number
     0137(m): Single Number II
+    0149(h): Max Points on a Line
     0150(m): Evaluate Reverse Polish Notation
     0153(m): Find Minimum in Rotated Sorted Array
     0162(m): Find Peak Element
@@ -1884,6 +1892,7 @@
     0766(e): Toeplitz Matrix
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
+    0775(m): Global and Local Inversions
     0799(m): Champagne Tower
     0801(h): Minimum Swaps To Make Sequences Increasing
     0804(e): Unique Morse Code Words
@@ -1920,6 +1929,7 @@
     0907(m): Sum of Subarray Minimums
     0908(e): Smallest Range I
     0909(m): Snakes and Ladders
+    0910(m): Smallest Range II
     0912(m): Sort an Array
     0914(e): X of a Kind in a Deck of Cards
     0915(m): Partition Array into Disjoint Intervals
@@ -2114,6 +2124,7 @@
     2089(e): Find Target Indices After Sorting Array
     2104(m): Sum of Subarray Ranges
     2108(e): Find First Palindromic String in the Array
+    2110(m): Number of Smooth Descent Periods of a Stock
     2114(e): Maximum Number of Words Found in Sentences
     2121(m): Intervals Between Identical Elements
     2133(e): Check if Every Row and Column Contains All Numbers
@@ -2144,6 +2155,7 @@
     0187(m): Repeated DNA Sequences
     0190(e): Reverse Bits
     0191(e): Number of 1 Bits
+    0201(m): Bitwise AND of Numbers Range
     0231(e): Power of Two
     0260(m): Single Number III
     0268(e): Missing Number
@@ -2154,6 +2166,7 @@
     0389(e): Find the Difference
     0401(e): Binary Watch
     0461(e): Hamming Distance
+    0464(m): Can I Win
     0476(e): Number Complement
     0477(m): Total Hamming Distance
     0661(e): Image Smoother
@@ -2544,6 +2557,7 @@
     0050(m): Pow(x, n)
     0066(e): Plus One
     0069(e): Sqrt(x)
+    0149(h): Max Points on a Line
     0168(e): Excel Sheet Column Title
     0171(e): Excel Sheet Column Number
     0172(e): Factorial Trailing Zeroes
@@ -2580,6 +2594,7 @@
     0445(m): Add Two Numbers II
     0453(e): Minimum Moves to Equal Array Elements
     0463(e): Island Perimeter
+    0464(m): Can I Win
     0477(m): Total Hamming Distance
     0486(m): Predict the Winner
     0497(m): Random Point in Non-overlapping Rectangles
@@ -2597,10 +2612,12 @@
     0738(m): Monotone Increasing Digits
     0754(m): Reach a Number
     0772(h): Basic Calculator III
+    0775(m): Global and Local Inversions
     0840(m): Magic Squares In Grid
     0888(e): Fair Candy Swap
     0892(e): Surface Area of 3D Shapes
     0908(e): Smallest Range I
+    0910(m): Smallest Range II
     0914(e): X of a Kind in a Deck of Cards
     0939(m): Minimum Area Rectangle
     0942(e): DI String Match
@@ -2640,6 +2657,7 @@
     1823(m): Find the Winner of the Circular Game
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
+    2110(m): Number of Smooth Descent Periods of a Stock
     2156(h): Find Substring With Given Hash Value
     2162(m): Minimum Cost to Set Cooking Time
     2169(e): Count Operations to Obtain Zero
@@ -2696,3 +2714,10 @@
     0914(e): X of a Kind in a Deck of Cards
     2176(e): Count Equal and Divisible Pairs in an Array
     2183(h): Count Array Pairs Divisible by K
+
+--- Game Theory:
+    0375(m): Guess Number Higher or Lower II
+    0464(m): Can I Win
+    0486(m): Predict the Winner
+    1025(e): Divisor Game
+    1140(m): Stone Game II
