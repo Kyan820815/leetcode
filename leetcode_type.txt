@@ -181,6 +181,7 @@
     0905(e): Sort Array By Parity
     0917(e): Reverse Only Letters
     0922(e): Sort Array By Parity II
+    0923(m): 3Sum With Multiplicity
     0925(e): Long Pressed Name
     0930(m): Binary Subarrays With Sum
     0942(e): DI String Match
@@ -308,6 +309,7 @@
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
     0914(e): X of a Kind in a Deck of Cards
+    0923(m): 3Sum With Multiplicity
     1002(e): Find Common Characters
     1051(e): Height Checker
     1057(m): Campus Bikes
@@ -914,6 +916,7 @@
     0650(m): 2 Keys Keyboard
     0673(m): Number of Longest Increasing Subsequence
     0678(m): Valid Parenthesis String
+    0698(m): Partition to K Equal Sum Subsets
     0712(m): Minimum ASCII Delete Sum for Two Strings
     0714(m): Best Time to Buy and Sell Stock with Transaction Fee 
     0718(m): Maximum Length of Repeated Subarray
@@ -954,6 +957,7 @@
     1334(m): Find the City With the Smallest Number of Neighbors at a Threshold Distance
     1504(m): Count Submatrices With All Ones
     1525(m): Number of Good Ways to Split a String
+    1641(m): Count Sorted Vowel Strings
     1664(m): Ways to Make a Fair Array
     1746(m): Maximum Subarray Sum After One Operation
     1824(m): Minimum Sideway Jumps
@@ -1031,6 +1035,7 @@
     0560(m): Subarray Sum Equals K
     0724(e): Find Pivot Index
     0862(h): Shortest Subarray with Sum at Least K
+    0923(m): 3Sum With Multiplicity
     0930(m): Binary Subarrays With Sum
     0974(m): Subarray Sums Divisible by K
     1004(m): Max Consecutive Ones III
@@ -1147,6 +1152,7 @@
     0690(e): Employee Importance
     0692(m): Top K Frequent Words
     0697(e): Degree of an Array
+    0698(m): Partition to K Equal Sum Subsets
     0705(e): Design HashSet
     0706(e): Design HashMap
     0716(e): Max Stack
@@ -1187,6 +1193,7 @@
     0895(h): Maximum Frequency Stack
     0904(m): Fruit Into Baskets
     0914(e): X of a Kind in a Deck of Cards
+    0923(m): 3Sum With Multiplicity
     0924(h): Minimize Malware Spread
     0939(m): Minimum Area Rectangle
     0947(m): Most Stones Removed with Same Row or Column 
@@ -1251,6 +1258,7 @@
     1570(m): Dot Product of Two Sparse Vectors
     1583(m): Count Unhappy Friends
     1615(m): Maximal Network Rank
+    1630(m): Arithmetic Subarrays
     1640(e): Check Array Formation Through Concatenation
     1660(m): Correct a Binary Tree
     1666(m): Change the Root of a Binary Tree
@@ -1484,6 +1492,7 @@
     0266(e): Palindrome Permutation
     0273(h): Integer to English Words
     0290(e): Word Pattern
+    0293(e): Flip Game
     0297(h): Serialize and Deserialize Binary Tree
     0299(m): Bulls and Cows
     0301(h): Remove Invalid Parentheses
@@ -1872,6 +1881,7 @@
     0694(m): Number of Distinct Islands
     0695(m): Max Area of Island
     0697(e): Degree of an Array
+    0698(m): Partition to K Equal Sum Subsets
     0704(e): Binary Search
     0705(e): Design HashSet
     0706(e): Design HashMap
@@ -1940,6 +1950,7 @@
     0915(m): Partition Array into Disjoint Intervals
     0918(m): Maximum Sum Circular Subarray
     0922(e): Sort Array By Parity II
+    0923(m): 3Sum With Multiplicity
     0924(h): Minimize Malware Spread
     0930(m): Binary Subarrays With Sum
     0931(m): Minimum Falling Path Sum
@@ -2086,6 +2097,7 @@
     1608(e): Special Array With X Elements Greater Than or Equal X
     1619(e): Mean of Array After Removing Some Elements
     1629(e): Slowest Key
+    1630(m): Arithmetic Subarrays
     1664(m): Ways to Make a Fair Array
     1668(e): Maximum Repeating Substring
     1672(e): Richest Customer Wealth
@@ -2177,6 +2189,7 @@
     0476(e): Number Complement
     0477(m): Total Hamming Distance
     0661(e): Image Smoother
+    0698(m): Partition to K Equal Sum Subsets
     0709(e): To Lower Case
     0847(h): Shortest Path Visiting All Nodes
     0861(m): Score After Flipping Matrix
