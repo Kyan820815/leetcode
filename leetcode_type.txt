@@ -35,6 +35,7 @@
     0705(e): Design HashSet
     0744(e): Find Smallest Letter Greater Than Target
     0776(m): Split BST
+    0826(m): Most Profit Assigning Work
     0852(e): Peak Index in a Mountain Array
     0875(m): Koko Eating Bananas
     0981(m): Time Based Key-Value Store
@@ -215,6 +216,7 @@
     1471(m): The k Strongest Values in an Array
     1477(m): Find Two Non-overlapping Sub-arrays Each With Target Sum\
     1493(m): Longest Subarray of 1's After Deleting One Element
+    1498(m): Number of Subsequences That Satisfy the Given Sum Condition
     1544(e): Make The String Great
     1567(m): Maximum Length of Subarray With Positive Product
     1570(m): Dot Product of Two Sparse Vectors
@@ -797,6 +799,7 @@
     0769(m): Max Chunks To Make Sorted
     0775(m): Global and Local Inversions
     0807(m): Max Increase to Keep City Skyline
+    0826(m): Most Profit Assigning Work
     0860(e): Lemonade Change
     0861(m): Score After Flipping Matrix
     0881(m): Boats to Save People 
@@ -914,6 +917,7 @@
     0638(m): Shopping Offers
     0647(m): Palindromic Substrings
     0650(m): 2 Keys Keyboard
+    0651(m): 4 Keys Keyboard
     0673(m): Number of Longest Increasing Subsequence
     0678(m): Valid Parenthesis String
     0698(m): Partition to K Equal Sum Subsets
@@ -1180,6 +1184,7 @@
     0817(m): Linked List Components
     0819(e): Most Common Word
     0823(m): Binary Trees With Factors
+    0826(m): Most Profit Assigning Work
     0847(h): Shortest Path Visiting All Nodes
     0851(m): Loud and Rich 
     0863(m): All Nodes Distance K in Binary Tree
@@ -1264,6 +1269,7 @@
     1666(m): Change the Root of a Binary Tree
     1676(m): Lowest Common Ancestor of a Binary Tree IV
     1684(e): Count the Number of Consistent Strings
+    1711(m): Count Good Meals
     1748(e): Sum of Unique Elements
     1772(m): Sort Features by Popularity
     1858(m): Longest Word With All Prefixes
@@ -1916,6 +1922,7 @@
     0811(m): Subdomain Visit Count
     0821(e): Shortest Distance to a Character
     0823(m): Binary Trees With Factors
+    0826(m): Most Profit Assigning Work
     0830(e): Positions of Large Groups
     0832(e): Flipping an Image
     0835(m): Image Overlap
@@ -2083,6 +2090,7 @@
     1480(e): Running Sum of 1d Array
     1464(e): Maximum Product of Two Elements in an Array
     1491(e): Average Salary Excluding the Minimum and Maximum Salary
+    1498(m): Number of Subsequences That Satisfy the Given Sum Condition
     1502(e): Can Make Arithmetic Progression From Sequence
     1504(m): Count Submatrices With All Ones
     1507(e): Reformat Date
@@ -2102,6 +2110,7 @@
     1668(e): Maximum Repeating Substring
     1672(e): Richest Customer Wealth
     1710(e): Maximum Units on a Truck
+    1711(m): Count Good Meals
     1725(e): Number Of Rectangles That Can Form The Largest Square
     1732(e): Find the Highest Altitude
     1736(e): Latest Time by Replacing Hidden Digits
@@ -2208,6 +2217,7 @@
     1486(e): XOR Operation in an Array
     1506(m): Find Root of N-Ary Tree
     1558(m): Minimum Numbers of Function Calls to Make Target Array
+    1711(m): Count Good Meals
     1832(e): Check if the Sentence Is Pangram
     2157(h): Groups of Strings
     2170(m): Minimum Operations to Make the Array Alternating
@@ -2628,6 +2638,7 @@
     0628(e): Maximum Product of Three Numbers
     0637(e): Average of Levels in Binary Tree
     0650(m): 2 Keys Keyboard
+    0651(m): 4 Keys Keyboard
     0670(m): Maximum Swap
     0738(m): Monotone Increasing Digits
     0754(m): Reach a Number
