@@ -4,27 +4,21 @@
 class Solution {
 public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
-        int n = intervals.size(), used = 0;
         vector<vector<int>> res;
-        for (int i = 0; i <= n || used;) {
-            vector<int> cur_arr;
-            if (!used) {
-                if (i == n || newInterval[0] < intervals[i][0]) {
-                    used = 1;
-                    cur_arr = newInterval;
-                } else {
-                    cur_arr = intervals[i++];
-                }
-            } else if (i < n) {
-                cur_arr = intervals[i++];
-            }
-            if (!cur_arr.size()) {
-                break;
-            }
-            if (!res.size() || res.back()[1] < cur_arr[0]) {
-                res.push_back(cur_arr);
+        int n = intervals.size(), i = 0, used = 0;
+        while (i < n || !used) {
+            vector<int> cur;
+            if (!used && (i == n || newInterval[0] < intervals[i][0])) {
+                cur = newInterval;
+                used = 1;
             } else {
-                res.back()[1] = max(res.back()[1], cur_arr[1]);
+                cur = intervals[i];
+                ++i;
+            }
+            if (!res.size() || res.back()[1] < cur[0]) {
+                res.push_back(cur);
+            } else {
+                res.back()[1] = max(res.back()[1], cur[1]);
             }
         }
         return res;
