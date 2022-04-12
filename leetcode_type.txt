@@ -18,6 +18,7 @@
     0285(m): Inorder Successor in BST 
     0287(m): Find the Duplicate Number
     0300(m): Longest Increasing Subsequence
+    0367(e): Valid Perfect Square
     0374(e): Guess Number Higher or Lower
     0410(h): Split Array Largest Sum
     0441(e): Arranging Coins
@@ -27,6 +28,7 @@
     0528(m): Random Pick with Weight
     0540(m): Single Element in a Sorted Array
     0611(m): Valid Triangle Number
+    0633(m): Sum of Square Numbers
     0658(m): Find K Closest Elements
     0669(m): Trim a Binary Search Tree
     0700(e): Search in a Binary Search Tree
@@ -58,6 +60,7 @@
     1389(e): Create Target Array in the Given Order
     1539(e): Kth Missing Positive Number
     1608(e): Special Array With X Elements Greater Than or Equal X
+    1855(m): Maximum Distance Between a Pair of Values
     2187(m): Minimum Time to Complete Trips
 
 --- Divide and Conquer
@@ -157,6 +160,7 @@
     0611(m): Valid Triangle Number
     0616(m): Add Bold Tag in String
     0622(m): Design Circular Queue
+    0633(m): Sum of Square Numbers
     0641(m): Design Circular Deque
     0647(m): Palindromic Substrings
     0653(e): Two Sum IV - Input is a BST
@@ -234,6 +238,7 @@
     1839(m): Longest Substring Of All Vowels in Order
     1848(e): Minimum Distance to the Target Element
     1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
+    1855(m): Maximum Distance Between a Pair of Values
     1861(m): Rotating the Box
     1869(e): Longer Contiguous Segments of Ones than Zeros
     1877(m): Minimize Maximum Pair Sum in Array
@@ -838,6 +843,7 @@
     1780(m): Check if Number is a Sum of Powers of Three
     1827(e): Minimum Operations to Make the Array Increasing
     1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
+    1855(m): Maximum Distance Between a Pair of Values
     1874(m): Minimize Product Sum of Two Arrays
     1877(m): Minimize Maximum Pair Sum in Array
     1893(e): Check if All the Integers in a Range Are Covered
@@ -845,6 +851,7 @@
     1903(e): Largest Odd Number in String
     1913(e): Maximum Product Difference Between Two Pairs
     1963(m): Minimum Number of Swaps to Make the String Balanced
+    1992(m): Find All Groups of Farmland
     2027(e): Minimum Moves to Convert String
     2037(e): Minimum Number of Moves to Seat Everyone
     2077(m): Paths in Maze That Lead to Same Room
@@ -1667,6 +1674,7 @@
     1768(e): Merge Strings Alternately
     1772(m): Sort Features by Popularity
     1773(e): Count Items Matching a Rule
+    1790(e): Check if One String Swap Can Make Strings Equal
     1796(e): Second Largest Digit in a String
     1816(e): Truncate Sentence
     1832(e): Check if the Sentence Is Pangram
@@ -2138,6 +2146,7 @@
     1823(m): Find the Winner of the Circular Game
     1826(e): Faulty Sensor
     1848(e): Minimum Distance to the Target Element
+    1855(m): Maximum Distance Between a Pair of Values
     1858(m): Longest Word With All Prefixes
     1861(m): Rotating the Box
     1877(m): Minimize Maximum Pair Sum in Array
@@ -2151,6 +2160,7 @@
     1961(e): Check If String Is a Prefix of Array
     1985(m): Find the Kth Largest Integer in the Array
     1991(e): Find the Middle Index in Array
+    1992(m): Find All Groups of Farmland
     2006(e): Count Number of Pairs With Absolute Difference K
     2008(m): Maximum Earnings From Taxi
     2011(e): Final Value of Variable After Performing Operations
@@ -2627,6 +2637,7 @@
     0356(m): Line Reflection
     0360(m): Sort Transformed Array
     0365(m): Water and Jug Problem
+    0367(e): Valid Perfect Square
     0368(m): Largest Divisible Subset
     0369(m): Plus One Linked List
     0382(m): Linked List Random Node
@@ -2653,6 +2664,7 @@
     0556(m): Next Greater Element III
     0598(e): Range Addition II
     0628(e): Maximum Product of Three Numbers
+    0633(m): Sum of Square Numbers
     0637(e): Average of Levels in Binary Tree
     0650(m): 2 Keys Keyboard
     0651(m): 4 Keys Keyboard
