@@ -1,6 +1,6 @@
 //--- Q: 2103. Rings and Rods
 
-//--- method 1:
+//--- method 1: bit representation
 class Solution {
 public:
     int countPoints(string rings) {
