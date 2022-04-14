@@ -386,6 +386,7 @@
     1135(m): Connecting Cities With Minimum Cost
     1319(m): Number of Operations to Make Network Connected
     1584(m): Min Cost to Connect All Points
+    1722(m): Minimize Hamming Distance After Swap Operations
     1971(e): Find if Path Exists in Graph
     2157(h): Groups of Strings
 
@@ -974,6 +975,7 @@
     1524(m): Number of Sub-arrays With Odd Sum
     1525(m): Number of Good Ways to Split a String
     1641(m): Count Sorted Vowel Strings
+    1653(m): Minimum Deletions to Make String Balanced
     1664(m): Ways to Make a Fair Array
     1746(m): Maximum Subarray Sum After One Operation
     1824(m): Minimum Sideway Jumps
@@ -1665,6 +1667,7 @@
     1573(m): Number of Ways to Split a String
     1616(m): Split Two Strings to Make Palindrome
     1624(e): Largest Substring Between Two Equal Characters
+    1653(m): Minimum Deletions to Make String Balanced
     1662(e): Check If Two String Arrays are Equivalent
     1663(m): Smallest String With A Given Numeric Value
     1678(e): Goal Parser Interpretation
@@ -1690,14 +1693,17 @@
     2000(e): Reverse Prefix of Word
     2011(e): Final Value of Variable After Performing Operations
     2027(e): Minimum Moves to Convert String
+    2042(e): Check if Numbers Are Ascending in a Sentence
     2053(e): Kth Distinct String in an Array
     2062(e): Count Vowel Substrings of a String
     2068(e): Check Whether Two Strings are Almost Equivalent
     2083(m): Substrings That Begin and End With the Same Letter
     2085(e): Count Common Words With One Occurrence
     2096(m): Step-By-Step Directions From a Binary Tree Node to Another
+    2103(e): Rings and Rods
     2108(e): Find First Palindromic String in the Array
     2114(e): Maximum Number of Words Found in Sentences
+    2124(e): Check if All A's Appears Before All B's
     2156(h): Find Substring With Given Hash Value
     2157(h): Groups of Strings
     2162(m): Minimum Cost to Set Cooking Time
@@ -2133,11 +2139,13 @@
     1672(e): Richest Customer Wealth
     1710(e): Maximum Units on a Truck
     1711(m): Count Good Meals
+    1722(m): Minimize Hamming Distance After Swap Operations
     1725(e): Number Of Rectangles That Can Form The Largest Square
     1732(e): Find the Highest Altitude
     1736(e): Latest Time by Replacing Hidden Digits
     1746(m): Maximum Subarray Sum After One Operation
     1748(e): Sum of Unique Elements
+    1752(e): Check if Array Is Sorted and Rotated
     1753(m): Maximum Score From Removing Stones
     1765(m): Map of Highest Peak
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
@@ -2246,6 +2254,7 @@
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1711(m): Count Good Meals
     1832(e): Check if the Sentence Is Pangram
+    2103(e): Rings and Rods
     2157(h): Groups of Strings
     2170(m): Minimum Operations to Make the Array Alternating
     2172(h): Maximum AND Sum of Array
@@ -2719,6 +2728,7 @@
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
     2110(m): Number of Smooth Descent Periods of a Stock
+    2119(e): A Number After a Double Reversal
     2156(h): Find Substring With Given Hash Value
     2162(m): Minimum Cost to Set Cooking Time
     2169(e): Count Operations to Obtain Zero
