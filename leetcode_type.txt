@@ -248,6 +248,7 @@
     2062(e): Count Vowel Substrings of a String
     2095(m): Delete the Middle Node of a Linked List
     2108(e): Find First Palindromic String in the Array
+    2129(e): Capitalize the Title
     2130(m): Maximum Twin Sum of a Linked List
     2134(m): Minimum Swaps to Group All 1's Together II
     2149(m): Rearrange Array Elements by Sign
@@ -471,6 +472,7 @@
     1598(e): Crawler Log Folder
     1614(e): Maximum Nesting Depth of the Parentheses
     1673(m): Find the Most Competitive Subsequence
+    1717(m): Maximum Score From Removing Substrings
     1762(m): Buildings With an Ocean View
     1963(m): Minimum Number of Swaps to Make the String Balanced
     2104(m): Sum of Subarray Ranges
@@ -638,6 +640,7 @@
     0257(e): Binary Tree Paths
     0261(m): Graph Valid Tree
     0273(h): Integer to English Words
+    0294(m): Flip Game II
     0297(h): Serialize and Deserialize Binary Tree
     0298(m): Binary Tree Longest Consecutive Sequence
     0301(h): Remove Invalid Parentheses
@@ -838,6 +841,7 @@
     1616(m): Split Two Strings to Make Palindrome
     1647(m): Minimum Deletions to Make Character Frequencies Unique
     1663(m): Smallest String With A Given Numeric Value
+    1717(m): Maximum Score From Removing Substrings
     1758(e): Minimum Changes To Make Alternating Binary String
     1762(m): Buildings With an Ocean View
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
@@ -902,6 +906,7 @@
     0265(h): Paint House II
     0276(m): Paint Fence
     0279(m): Perfect Squares
+    0294(m): Flip Game II
     0309(m): Best Time to Buy and Sell Stock with Cooldown
     0322(m): Coin Change
     0337(m): House Robber III
@@ -984,6 +989,7 @@
     2008(m): Maximum Earnings From Taxi
     2016(e): Maximum Difference Between Increasing Elements
     2110(m): Number of Smooth Descent Periods of a Stock
+    2152(m): Minimum Number of Lines to Cover Points
     2163(h): Minimum Difference in Sums After Removal of Elements
     2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
     2170(m): Minimum Operations to Make the Array Alternating
@@ -1104,6 +1110,7 @@
     0266(e): Palindrome Permutation
     0273(h): Integer to English Words
     0290(e): Word Pattern
+    0294(m): Flip Game II
     0314(m): Binary Tree Vertical Order Traversal
     0316(m): Remove Duplicate Letters
     0323(m): Number of Connected Components in an Undirected Graph
@@ -1307,6 +1314,7 @@
     2099(e): Find Subsequence of Length K With the Largest Sum
     2121(m): Intervals Between Identical Elements
     2133(e): Check if Every Row and Column Contains All Numbers
+    2152(m): Minimum Number of Lines to Cover Points
     2154(e): Keep Multiplying Found Values by Two
     2166(m): Design Bitset
     2170(m): Minimum Operations to Make the Array Alternating
@@ -1342,6 +1350,7 @@
     0449(m): Serialize and Deserialize BST
     0460(h): LFU Cache
     0535(m): Encode and Decode TinyURL
+    0604(e): Design Compressed String Iterator
     0621(m): Task Scheduler
     0622(m): Design Circular Queue
     0641(m): Design Circular Deque
@@ -1410,6 +1419,7 @@
     0430(m): Flatten a Multilevel Doubly Linked List
     0445(m): Add Two Numbers II
     0460(h): LFU Cache
+    0604(e): Design Compressed String Iterator
     0705(e): Design HashSet
     0706(e): Design HashMap
     0707(m): Design Linked List
@@ -1558,6 +1568,7 @@
     0500(e): Keyboard Row
     0506(e): Relative Ranks
     0516(m): Longest Palindromic Subsequence
+    0520(e): Detect Capital
     0524(m): Longest Word in Dictionary through Deleting
     0535(m): Encode and Decode TinyURL
     0536(m): Construct Binary Tree from String
@@ -1570,6 +1581,7 @@
     0572(e): Subtree of Another Tree
     0583(m): Delete Operation for Two Strings
     0599(e): Minimum Index Sum of Two Lists
+    0604(e): Design Compressed String Iterator
     0606(e): Construct String from Binary Tree
     0616(m): Add Bold Tag in String
     0648(m): Replace Words
@@ -1662,6 +1674,7 @@
     1309(e): Decrypt String from Alphabet to Integer Mapping
     1422(e): Maximum Score After Splitting a String
     1446(e): Consecutive Characters
+    1447(m): Simplified Fractions
     1513(m): Number of Substrings With Only 1s
     1525(m): Number of Good Ways to Split a String
     1573(m): Number of Ways to Split a String
@@ -1673,6 +1686,7 @@
     1678(e): Goal Parser Interpretation
     1684(e): Count the Number of Consistent Strings
     1704(e): Determine if String Halves Are Alike
+    1717(m): Maximum Score From Removing Substrings
     1759(m): Count Number of Homogenous Substrings
     1768(e): Merge Strings Alternately
     1772(m): Sort Features by Popularity
@@ -1704,6 +1718,8 @@
     2108(e): Find First Palindromic String in the Array
     2114(e): Maximum Number of Words Found in Sentences
     2124(e): Check if All A's Appears Before All B's
+    2129(e): Capitalize the Title
+    2138(e): Divide a String Into Groups of Size k
     2156(h): Find Substring With Given Hash Value
     2157(h): Groups of Strings
     2162(m): Minimum Cost to Set Cooking Time
@@ -2196,6 +2212,7 @@
     2148(e): Count Elements With Strictly Smaller and Greater Elements
     2149(m): Rearrange Array Elements by Sign
     2150(m): Find All Lonely Numbers in the Array
+    2152(m): Minimum Number of Lines to Cover Points
     2154(e): Keep Multiplying Found Values by Two
     2155(m): All Divisions With the Highest Score of a Binary Array
     2160(e): Minimum Sum of Four Digit Number After Splitting Digits
@@ -2228,6 +2245,7 @@
     0342(e): Power of Four
     0389(e): Find the Difference
     0401(e): Binary Watch
+    0405(e): Convert a Number to Hexadecimal
     0461(e): Hamming Distance
     0464(m): Can I Win
     0476(e): Number Complement
@@ -2238,6 +2256,7 @@
     0847(h): Shortest Path Visiting All Nodes
     0861(m): Score After Flipping Matrix
     0864(h): Shortest Path to Get All Keys
+    0868(e): Binary Gap
     1049(m): Last Stone Weight II
     1018(e): Binary Prefix Divisible By 5
     1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
@@ -2255,6 +2274,7 @@
     1711(m): Count Good Meals
     1832(e): Check if the Sentence Is Pangram
     2103(e): Rings and Rods
+    2152(m): Minimum Number of Lines to Cover Points
     2157(h): Groups of Strings
     2170(m): Minimum Operations to Make the Array Alternating
     2172(h): Maximum AND Sum of Array
@@ -2637,6 +2657,8 @@
     0264(m): Ugly Number II
     0273(h): Integer to English Words
     0279(m): Perfect Squares
+    0292(e): Nim Game
+    0294(m): Flip Game II
     0311(m): Sparse Matrix Multiplication 
     0313(m): Super Ugly Number
     0326(e): Power of Three
@@ -2655,6 +2677,7 @@
     0397(m): Integer Replacement
     0398(m): Random Pick Index
     0399(m): Evaluate Division
+    0405(e): Convert a Number to Hexadecimal
     0414(e): Third Maximum Number
     0415(e): Add Strings
     0441(e): Arranging Coins
@@ -2683,6 +2706,7 @@
     0772(h): Basic Calculator III
     0775(m): Global and Local Inversions
     0840(m): Magic Squares In Grid
+    0868(e): Binary Gap
     0888(e): Fair Candy Swap
     0892(e): Surface Area of 3D Shapes
     0908(e): Smallest Range I
@@ -2714,6 +2738,7 @@
     1281(e): Subtract the Product and Sum of Digits of an Integer
     1304(e); Find N Unique Integers Sum up to Zero
     1359(h): Count All Valid Pickup and Delivery Options
+    1447(m): Simplified Fractions
     1492(m): The kth Factor of n
     1513(m): Number of Substrings With Only 1s
     1518(e): Water Bottles
@@ -2729,6 +2754,8 @@
     2083(m): Substrings That Begin and End With the Same Letter
     2110(m): Number of Smooth Descent Periods of a Stock
     2119(e): A Number After a Double Reversal
+    2138(e): Divide a String Into Groups of Size k
+    2152(m): Minimum Number of Lines to Cover Points
     2156(h): Find Substring With Given Hash Value
     2162(m): Minimum Cost to Set Cooking Time
     2169(e): Count Operations to Obtain Zero
@@ -2783,10 +2810,13 @@
     0258(e): Add Digits
     0365(m): Water and Jug Problem
     0914(e): X of a Kind in a Deck of Cards
+    1447(m): Simplified Fractions
     2176(e): Count Equal and Divisible Pairs in an Array
     2183(h): Count Array Pairs Divisible by K
 
 --- Game Theory:
+    0292(e): Nim Game
+    0294(m): Flip Game II
     0375(m): Guess Number Higher or Lower II
     0464(m): Can I Win
     0486(m): Predict the Winner
