@@ -126,6 +126,7 @@
     0246(e): Strobogrammatic Number
     0247(m): Strobogrammatic Number II
     0248(h): Strobogrammatic Number III
+    0251(m): Flatten 2D Vector
     0253(m): Meeting Rooms II
     0259(m): 3Sum Smaller
     0272(h): Closest Binary Search Tree Value II
@@ -1339,7 +1340,9 @@
     0225(e): Implement Stack using Queues
     0232(e): Implement Queue using Stacks
     0244(m): Shortest Word Distance II
+    0251(m): Flatten 2D Vector
     0281(m): Zigzag Iterator
+    0284(m): Peeking Iterator
     0295(h): Find Median from Data Stream
     0297(h): Serialize and Deserialize Binary Tree
     0303(e): Range Sum Query - Immutable
@@ -1820,6 +1823,7 @@
     0243(e): Shortest Word Distance
     0244(m): Shortest Word Distance II
     0245(m): Shortest Word Distance III
+    0251(m): Flatten 2D Vector
     0252(e): Meeting Rooms
     0253(m): Meeting Rooms II
     0254(m): Factor Combinations
@@ -1832,6 +1836,7 @@
     0280(m): Wiggle Sort
     0281(m): Zigzag Iterator
     0283(e): Move Zeroes
+    0284(m): Peeking Iterator
     0286(m): Walls and Gates
     0287(m): Find the Duplicate Number
     0289(m): Game of Life
