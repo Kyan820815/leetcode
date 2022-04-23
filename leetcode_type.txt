@@ -232,6 +232,7 @@
     1700(e): Number of Students Unable to Eat Lunch
     1708(e): Largest Subarray Length K
     1754(m): Largest Merge Of Two Strings
+    1764(m): Form Array by Concatenating Subarrays of Another Array
     1768(e): Merge Strings Alternately
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1800(e): Maximum Ascending Subarray Sum
@@ -345,6 +346,7 @@
     1433(m): Check If a String Can Break Another String
     1460(e): Make Two Arrays Equal by Reversing Sub-arrays
     1481(m): Least Number of Unique Integers after K Removals
+    1519(m): Number of Nodes in the Sub-Tree With the Same Label
     1636(e): Sort Array by Increasing Frequency
     1657(m): Determine if Two Strings Are Close
     1700(e): Number of Students Unable to Eat Lunch
@@ -583,6 +585,7 @@
     1871(m): Jump Game VII
     1926(m): Nearest Exit from Entrance in Maze
     2073(e): Time Needed to Buy Tickets
+    2115(m): Find All Possible Recipes from Given Supplies
 
 --- Recursion:
     0017(m): Letter Combinations of a Phone Number
@@ -764,6 +767,7 @@
     1405(m): Longest Happy String
     1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
     1462(m): Course Schedule IV
+    1519(m): Number of Nodes in the Sub-Tree With the Same Label
     1666(m): Change the Root of a Binary Tree
     1778(m): Shortest Path in a Hidden Grid
     1804(m): Implement Trie II (Prefix Tree)
@@ -831,6 +835,7 @@
     1011(m): Capacity To Ship Packages Within D Days
     1013(e): Partition Array Into Three Parts With Equal Sum
     1029(m): Two City Scheduling
+    1042(m): Flower Planting With No Adjacent
     1046(e): Last Stone Weight
     1055(m): Shortest Way to Form String
     1057(m): Campus Bikes
@@ -849,6 +854,7 @@
     1717(m): Maximum Score From Removing Substrings
     1758(e): Minimum Changes To Make Alternating Binary String
     1762(m): Buildings With an Ocean View
+    1764(m): Form Array by Concatenating Subarrays of Another Array
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1780(m): Check if Number is a Sum of Powers of Three
     1827(e): Minimum Operations to Make the Array Increasing
@@ -1199,6 +1205,7 @@
     0740(m): Delete and Earn
     0742(m): Closest Leaf in a Binary Tree
     0743(m): Network Delay Time
+    0748(e): Shortest Completing Word
     0752(m): Open the Lock
     0756(m): Pyramid Transition Matrix
     0758(m): Bold Words in String
@@ -1290,6 +1297,8 @@
     1462(m): Course Schedule IV
     1472(m): Design Browser Historya
     1496(e): Path Crossing
+    1519(m): Number of Nodes in the Sub-Tree With the Same Label
+    1554(m): Strings Differ by One Character
     1570(m): Dot Product of Two Sparse Vectors
     1583(m): Count Unhappy Friends
     1615(m): Maximal Network Rank
@@ -1320,6 +1329,7 @@
     2085(e): Count Common Words With One Occurrence
     2093(m): Minimum Cost to Reach City With Discounts
     2099(e): Find Subsequence of Length K With the Largest Sum
+    2115(m): Find All Possible Recipes from Given Supplies
     2121(m): Intervals Between Identical Elements
     2133(e): Check if Every Row and Column Contains All Numbers
     2152(m): Minimum Number of Lines to Cover Points
@@ -1614,6 +1624,7 @@
     0726(h): Number of Atoms
     0734(e): Sentence Similarity
     0737(m): Sentence Similarity II
+    0748(e): Shortest Completing Word
     0752(m): Open the Lock
     0756(m): Pyramid Transition Matrix
     0758(m): Bold Words in String
@@ -1689,6 +1700,7 @@
     1447(m): Simplified Fractions
     1513(m): Number of Substrings With Only 1s
     1525(m): Number of Good Ways to Split a String
+    1554(m): Strings Differ by One Character
     1573(m): Number of Ways to Split a String
     1616(m): Split Two Strings to Make Palindrome
     1624(e): Largest Substring Between Two Equal Characters
@@ -1716,6 +1728,7 @@
     1941(e): Check if All Characters Have Equal Number of Occurrences
     1961(e): Check If String Is a Prefix of Array
     1963(m): Minimum Number of Swaps to Make the String Balanced
+    1980(m): Find Unique Binary String
     1985(m): Find the Kth Largest Integer in the Array
     2000(e): Reverse Prefix of Word
     2011(e): Final Value of Variable After Performing Operations
@@ -1730,6 +1743,7 @@
     2103(e): Rings and Rods
     2108(e): Find First Palindromic String in the Array
     2114(e): Maximum Number of Words Found in Sentences
+    2115(m): Find All Possible Recipes from Given Supplies
     2124(e): Check if All A's Appears Before All B's
     2129(e): Capitalize the Title
     2138(e): Divide a String Into Groups of Size k
@@ -1965,6 +1979,7 @@
     0744(e): Find Smallest Letter Greater Than Target
     0746(e): Min Cost Climbing Stairs
     0747(e): Largest Number At Least Twice of Others
+    0748(e): Shortest Completing Word
     0758(m): Bold Words in String
     0760(e): Find Anagram Mappings
     0766(e): Toeplitz Matrix
@@ -2178,6 +2193,7 @@
     1748(e): Sum of Unique Elements
     1752(e): Check if Array Is Sorted and Rotated
     1753(m): Maximum Score From Removing Stones
+    1764(m): Form Array by Concatenating Subarrays of Another Array
     1765(m): Map of Highest Peak
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1779(e): Find Nearest Point That Has the Same X or Y Coordinate
@@ -2197,12 +2213,14 @@
     1929(m): Concatenation of Array
     1937(m): Maximum Number of Points with Cost
     1961(e): Check If String Is a Prefix of Array
+    1980(m): Find Unique Binary String
     1985(m): Find the Kth Largest Integer in the Array
     1991(e): Find the Middle Index in Array
     1992(m): Find All Groups of Farmland
     2006(e): Count Number of Pairs With Absolute Difference K
     2008(m): Maximum Earnings From Taxi
     2011(e): Final Value of Variable After Performing Operations
+    2012(m): Sum of Beauty in the Array
     2016(e): Maximum Difference Between Increasing Elements
     2021(m): Brightest Position on Street
     2022(e): Convert 1D Array Into 2D Array
@@ -2221,6 +2239,7 @@
     2108(e): Find First Palindromic String in the Array
     2110(m): Number of Smooth Descent Periods of a Stock
     2114(e): Maximum Number of Words Found in Sentences
+    2115(m): Find All Possible Recipes from Given Supplies
     2121(m): Intervals Between Identical Elements
     2133(e): Check if Every Row and Column Contains All Numbers
     2134(m): Minimum Swaps to Group All 1's Together II
@@ -2376,6 +2395,7 @@
     1020(m): Number of Enclaves
     1030(e): Matrix Cells in Distance Order
     1034(m): Coloring A Border
+    1042(m): Flower Planting With No Adjacent
     1059(m): All Paths from Source Lead to Destination
     1091(m): Shortest Path in Binary Matrix
     1102(m): Path With Maximum Minimum Value
@@ -2407,6 +2427,7 @@
     2039(m): The Time When the Network Becomes Idle
     2077(m): Paths in Maze That Lead to Same Room
     2093(m): Minimum Cost to Reach City With Discounts
+    2115(m): Find All Possible Recipes from Given Supplies
 
 --- Trie Tree:
     0208(m): Implement Trie (Prefix Tree)
@@ -2596,6 +2617,7 @@
     1485(m): Clone Binary Tree With Random Pointer
     1490(m): Clone N-ary Tree
     1506(m): Find Root of N-Ary Tree
+    1519(m): Number of Nodes in the Sub-Tree With the Same Label
     1522(m): Diameter of N-Ary Tree
     1530(m): Number of Good Leaf Nodes Pairs
     1586(m): Binary Search Tree Iterator II
@@ -2617,6 +2639,7 @@
     2049(m): Count Nodes With the Highest Score
     2096(m): Step-By-Step Directions From a Binary Tree Node to Another
     2179(h): Count Good Triplets in an Array
+    2236(e): Root Equals Sum of Children
 
 --- Sequence:
     0031(m): Next Permutation
@@ -2840,3 +2863,9 @@
     0486(m): Predict the Winner
     1025(e): Divisor Game
     1140(m): Stone Game II
+
+--- Rolling Hash:
+    0187(m): Repeated DNA Sequences
+    0718(m): Maximum Length of Repeated Subarray
+    1554(m): Strings Differ by One Character
+    2156(h): Find Substring With Given Hash Value
