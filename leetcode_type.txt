@@ -1405,9 +1405,17 @@
     1188(m): Design Bounded Blocking Queue
     1195(m): Fizz Buzz Multithreaded
     1244(m): Design A Leaderboard
+    1261(m): Find Elements in a Contaminated Binary Tree
     1279(e): Traffic Light Controlled Intersection
+    1348(m): Tweet Counts Per Frequency
+    1352(m): Product of the Last K Numbers
+    1381(m): Design a Stack With Increment Operation
     1396(m): Design Underground System
+    1429(m): First Unique Number
     1472(m): Design Browser History
+    1570(m): Dot Product of Two Sparse Vectors
+    1586(m): Binary Search Tree Iterator II
+    1600(m): Throne Inheritance
     1603(e): Design Parking System
     1628(m): Design an Expression Tree With Evaluate Function 
     1656(e): Design an Ordered Stream
