@@ -725,6 +725,7 @@
     0797(m): All Paths From Source to Target
     0802(m): Find Eventual Safe States
     0841(m): Keys and Rooms
+    0842(m): Split Array into Fibonacci Sequence
     0851(m): Loud and Rich 
     0863(m): All Nodes Distance K in Binary Tree
     0865(m): Smallest Subtree with all the Deepest Nodes
@@ -848,6 +849,7 @@
     1130(m): Minimum Cost Tree From Leaf Values
     1405(m): Longest Happy String
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
+    1529(m): Minimum Suffix Flips
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1567(m): Maximum Length of Subarray With Positive Product
     1605(m): Find Valid Matrix Given Row and Column Sums
@@ -1001,6 +1003,7 @@
     1746(m): Maximum Subarray Sum After One Operation
     1824(m): Minimum Sideway Jumps
     1871(m): Jump Game VII
+    1911(m): Maximum Alternating Subsequence Sum
     1937(m): Maximum Number of Points with Cost
     2008(m): Maximum Earnings From Taxi
     2016(e): Maximum Difference Between Increasing Elements
@@ -1063,6 +1066,7 @@
     1630(m): Arithmetic Subarrays
     1746(m): Maximum Subarray Sum After One Operation
     1764(m): Form Array by Concatenating Subarrays of Another Array
+    1911(m): Maximum Alternating Subsequence Sum
     2036(m): Maximum Alternating Subarray Sum
     2104(m): Sum of Subarray Ranges
     2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
@@ -1285,6 +1289,7 @@
     1155(m): Number of Dice Rolls With Target Sum
     1160(e): Find Words That Can Be Formed by Characters
     1165(e): Single-Row Keyboard
+    1166(m): Design File System
     1168(h): Optimize Water Distribution in a Village
     1169(m): Invalid Transactions
     1170(m): Compare Strings by Frequency of the Smallest Character
@@ -1402,6 +1407,7 @@
     0981(m): Time Based Key-Value Store
     1114(e): Print in Order
     1146(m): Snapshot Array
+    1166(m): Design File System
     1188(m): Design Bounded Blocking Queue
     1195(m): Fizz Buzz Multithreaded
     1244(m): Design A Leaderboard
@@ -1669,6 +1675,7 @@
     0824(e): Goat Latin
     0830(e): Positions of Large Groups
     0838(m): Push Dominoes
+    0842(m): Split Array into Fibonacci Sequence
     0844(e): Backspace String Compare
     0848(m): Shifting Letters
     0856(m): Score of Parentheses
@@ -1711,6 +1718,7 @@
     1160(e): Find Words That Can Be Formed by Characters
     1163(h): Last Substring in Lexicographical Order
     1165(e): Single-Row Keyboard
+    1166(m): Design File System
     1169(m): Invalid Transactions
     1170(m): Compare Strings by Frequency of the Smallest Character
     1180(e): Count Substrings with Only One Distinct Letter
@@ -1723,6 +1731,7 @@
     1447(m): Simplified Fractions
     1513(m): Number of Substrings With Only 1s
     1525(m): Number of Good Ways to Split a String
+    1529(m): Minimum Suffix Flips
     1554(m): Strings Differ by One Character
     1573(m): Number of Ways to Split a String
     1616(m): Split Two Strings to Make Palindrome
@@ -2242,6 +2251,8 @@
     1886(e): Determine Whether Matrix Can Be Obtained By Rotation
     1901(m): Find a Peak Element II
     1905(m): Count Sub Islands
+    1908(m): Game of Nim
+    1911(m): Maximum Alternating Subsequence Sum
     1913(e): Maximum Product Difference Between Two Pairs
     1920(e): Build Array from Permutation
     1926(m): Nearest Exit from Entrance in Maze
@@ -2346,6 +2357,7 @@
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1711(m): Count Good Meals
     1832(e): Check if the Sentence Is Pangram
+    1908(m): Game of Nim
     2103(e): Rings and Rods
     2135(m): Count Words Obtained After Adding a Letter
     2152(m): Minimum Number of Lines to Cover Points
@@ -2479,6 +2491,7 @@
     0758(m): Bold Words in String
     0809(m): Expressive Words
     1065(e): Index Pairs of a String
+    1166(m): Design File System
     1804(m): Implement Trie II (Prefix Tree)
     1858(m): Longest Word With All Prefixes
 
@@ -2632,6 +2645,7 @@
     1130(m): Minimum Cost Tree From Leaf Values
     1145(m): Binary Tree Coloring Game
     1161(m): Maximum Level Sum of a Binary Tree
+    1166(m): Design File System
     1214(m): Two Sum BSTs
     1257(m): Smallest Common Region
     1261(m): Find Elements in a Contaminated Binary Tree
@@ -2831,6 +2845,8 @@
     1780(m): Check if Number is a Sum of Powers of Three
     1822(e): Sign of the Product of an Array
     1823(m): Find the Winner of the Circular Game
+    1837(e): Sum of Digits in Base K
+    1908(m): Game of Nim
     2028(m): Find Missing Observations
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
@@ -2904,6 +2920,7 @@
     0486(m): Predict the Winner
     1025(e): Divisor Game
     1140(m): Stone Game II
+    1908(m): Game of Nim
 
 --- Rolling Hash:
     0187(m): Repeated DNA Sequences
