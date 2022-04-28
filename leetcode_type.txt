@@ -652,6 +652,7 @@
     0297(h): Serialize and Deserialize Binary Tree
     0298(m): Binary Tree Longest Consecutive Sequence
     0301(h): Remove Invalid Parentheses
+    0306(m): Additive Number
     0307(m): Range Sum Query - Mutable
     0323(m): Number of Connected Components in an Undirected Graph
     0329(h): Longest Increasing Path in a Matrix
@@ -764,6 +765,7 @@
     1192(h): Critical Connections in a Network
     1197(m): Minimum Knight Moves
     1236(m): Web Crawler
+    1286(m): Iterator for Combination
     1334(m): Find the City With the Smallest Number of Neighbors at a Threshold Distance
     1340(h): Jump Game V
     1361(m): Validate Binary Tree Nodes
@@ -780,6 +782,7 @@
     1971(e): Find if Path Exists in Graph
     1973(m): Count Nodes Equal to Sum of Descendants
     1993(m): Operations on Tree
+    1999(m): Smallest Greater Multiple Made of Two Digits
     2039(m): The Time When the Network Becomes Idle
     2049(m): Count Nodes With the Highest Score
     2157(h): Groups of Strings
@@ -1413,6 +1416,7 @@
     1244(m): Design A Leaderboard
     1261(m): Find Elements in a Contaminated Binary Tree
     1279(e): Traffic Light Controlled Intersection
+    1286(m): Iterator for Combination
     1348(m): Tweet Counts Per Frequency
     1352(m): Product of the Last K Numbers
     1381(m): Design a Stack With Increment Operation
@@ -1483,6 +1487,7 @@
     1019(m): Next Greater Node In Linked Lis
     1171(m): Remove Zero Sum Consecutive Nodes from Linked List
     1265(m): Print Immutable Linked List in Reverse
+    1286(m): Iterator for Combination
     1290(e): Convert Binary Number in a Linked List to Integer
     1474(e): Delete N Nodes After M Nodes of a Linked List
     1485(m): Clone Binary Tree With Random Pointer
@@ -1583,6 +1588,7 @@
     0297(h): Serialize and Deserialize Binary Tree
     0299(m): Bulls and Cows
     0301(h): Remove Invalid Parentheses
+    0306(m): Additive Number
     0331(m): Verify Preorder Serialization of a Binary Tree
     0336(h): Palindrome Pairs
     0340(m): Longest Substring with At Most K Distinct Characters
@@ -1715,6 +1721,7 @@
     1119(e): Remove Vowels from a String
     1143(m): Longest Common Subsequence
     1152(m): Analyze User Website Visit Pattern
+    1154(e): Day of the Year
     1160(e): Find Words That Can Be Formed by Characters
     1163(h): Last Substring in Lexicographical Order
     1165(e): Single-Row Keyboard
@@ -1724,6 +1731,7 @@
     1180(e): Count Substrings with Only One Distinct Letter
     1189(e): Maximum Number of Balloons
     1190(m): Reverse Substrings Between Each Pair of Parentheses
+    1286(m): Iterator for Combination
     1309(e): Decrypt String from Alphabet to Integer Mapping
     1405(m): Longest Happy String
     1422(e): Maximum Score After Splitting a String
@@ -1741,6 +1749,7 @@
     1663(m): Smallest String With A Given Numeric Value
     1678(e): Goal Parser Interpretation
     1684(e): Count the Number of Consistent Strings
+    1694(e): Reformat Phone Number
     1704(e): Determine if String Halves Are Alike
     1717(m): Maximum Score From Removing Substrings
     1759(m): Count Number of Homogenous Substrings
@@ -2327,6 +2336,7 @@
     0326(e): Power of Three
     0338(e): Counting Bits
     0342(e): Power of Four
+    0371(e): Sum of Two Integers
     0389(e): Find the Difference
     0401(e): Binary Watch
     0405(e): Convert a Number to Hexadecimal
@@ -2346,6 +2356,7 @@
     1111(m): Maximum Nesting Depth of Two Valid Parentheses Strings
     1118(e): Number of Days in a Month
     1128(e): Number of Equivalent Domino Pairs
+    1286(m): Iterator for Combination
     1290(e): Convert Binary Number in a Linked List to Integer
     1342(e): Number of Steps to Reduce a Number to Zero
     1356(e): Sort Integers by The Number of 1 Bits
@@ -2754,6 +2765,7 @@
     0279(m): Perfect Squares
     0292(e): Nim Game
     0294(m): Flip Game II
+    0306(m): Additive Number
     0311(m): Sparse Matrix Multiplication 
     0313(m): Super Ugly Number
     0326(e): Power of Three
@@ -2766,6 +2778,7 @@
     0367(e): Valid Perfect Square
     0368(m): Largest Divisible Subset
     0369(m): Plus One Linked List
+    0371(e): Sum of Two Integers
     0382(m): Linked List Random Node
     0384(m): Shuffle an Array
     0386(m): Lexicographical Numbers
@@ -2827,6 +2840,7 @@
     1128(e): Number of Equivalent Domino Pairs
     1137(e): N-th Tribonacci Number
     1140(m): Stone Game II
+    1154(e): Day of the Year
     1227(m): Airplane Seat Assignment Probability
     1230(m): Toss Strange Coins
     1232(e): Check If It Is a Straight Line
@@ -2847,6 +2861,7 @@
     1823(m): Find the Winner of the Circular Game
     1837(e): Sum of Digits in Base K
     1908(m): Game of Nim
+    1999(m): Smallest Greater Multiple Made of Two Digits
     2028(m): Find Missing Observations
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
