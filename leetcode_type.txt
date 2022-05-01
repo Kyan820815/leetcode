@@ -394,6 +394,7 @@
     1135(m): Connecting Cities With Minimum Cost
     1319(m): Number of Operations to Make Network Connected
     1584(m): Min Cost to Connect All Points
+    1559(m): Detect Cycles in 2D Grid
     1722(m): Minimize Hamming Distance After Swap Operations
     1971(e): Find if Path Exists in Graph
     2157(h): Groups of Strings
@@ -774,11 +775,13 @@
     1414(m): Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
     1462(m): Course Schedule IV
     1519(m): Number of Nodes in the Sub-Tree With the Same Label
+    1559(m): Detect Cycles in 2D Grid
     1666(m): Change the Root of a Binary Tree
     1778(m): Shortest Path in a Hidden Grid
     1804(m): Implement Trie II (Prefix Tree)
     1810(m): Minimum Path Cost in a Hidden Grid
     1905(m): Count Sub Islands
+    1959(m): Minimum Total Space Wasted With K Resizing Operations
     1971(e): Find if Path Exists in Graph
     1973(m): Count Nodes Equal to Sum of Descendants
     1993(m): Operations on Tree
@@ -866,6 +869,7 @@
     1764(m): Form Array by Concatenating Subarrays of Another Array
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1780(m): Check if Number is a Sum of Powers of Three
+    1798(m): Maximum Number of Consecutive Values You Can Make
     1827(e): Minimum Operations to Make the Array Increasing
     1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1855(m): Maximum Distance Between a Pair of Values
@@ -1008,6 +1012,7 @@
     1871(m): Jump Game VII
     1911(m): Maximum Alternating Subsequence Sum
     1937(m): Maximum Number of Points with Cost
+    1959(m): Minimum Total Space Wasted With K Resizing Operations
     2008(m): Maximum Earnings From Taxi
     2016(e): Maximum Difference Between Increasing Elements
     2036(m): Maximum Alternating Subarray Sum
@@ -1255,6 +1260,7 @@
     0914(e): X of a Kind in a Deck of Cards
     0923(m): 3Sum With Multiplicity
     0924(h): Minimize Malware Spread
+    0929(e): Unique Email Addresses
     0939(m): Minimum Area Rectangle
     0947(m): Most Stones Removed with Same Row or Column 
     0953(e): Verifying an Alien Dictionary
@@ -1607,6 +1613,7 @@
     0409(e): Longest Palindrome
     0412(e): Fizz Buzz
     0415(e): Add Strings
+    0422(e): Valid Word Square
     0424(m): Longest Repeating Character Replacement
     0428(h): Serialize and Deserialize N-ary Tree
     0433(m): Minimum Genetic Mutation
@@ -1694,6 +1701,7 @@
     0921(m): Minimum Add to Make Parentheses Valid
     0925(e): Long Pressed Name
     0926(m): Flip String to Monotone Increasing
+    0929(e): Unique Email Addresses
     0937(e): Reorder Data in Log Files
     0942(e): DI String Match
     0944(e): Delete Columns to Make Sorted
@@ -1767,6 +1775,7 @@
     1859(e): Sorting the Sentence
     1880(e): Check if Word Equals Summation of Two Words
     1941(e): Check if All Characters Have Equal Number of Occurrences
+    1957(e): Delete Characters to Make Fancy String
     1961(e): Check If String Is a Prefix of Array
     1963(m): Minimum Number of Swaps to Make the String Balanced
     1980(m): Find Unique Binary String
@@ -1940,6 +1949,7 @@
     0414(e): Third Maximum Number
     0416(m): Partition Equal Subset Sum
     0419(m): Battleships in a Board
+    0422(e): Valid Word Square
     0427(m): Construct Quad Tree
     0435(m): Non-overlapping Intervals
     0442(m): Find All Duplicates in an Array
@@ -2082,6 +2092,7 @@
     0922(e): Sort Array By Parity II
     0923(m): 3Sum With Multiplicity
     0924(h): Minimize Malware Spread
+    0929(e): Unique Email Addresses
     0930(m): Binary Subarrays With Sum
     0931(m): Minimum Falling Path Sum
     0933(e): Number of Recent Calls
@@ -2223,6 +2234,7 @@
     1528(e): Shuffle String
     1550(e): Three Consecutive Odds
     1558(m): Minimum Numbers of Function Calls to Make Target Array
+    1559(m): Detect Cycles in 2D Grid
     1567(m): Maximum Length of Subarray With Positive Product
     1572(e): Matrix Diagonal Sum
     1578(m): Minimum Deletion Cost to Avoid Repeating Letters
@@ -2250,6 +2262,7 @@
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1779(e): Find Nearest Point That Has the Same X or Y Coordinate
     1784(e): Check if Binary String Has at Most One Segment of Ones
+    1798(m): Maximum Number of Consecutive Values You Can Make
     1823(m): Find the Winner of the Circular Game
     1826(e): Faulty Sensor
     1848(e): Minimum Distance to the Target Element
@@ -2267,6 +2280,7 @@
     1926(m): Nearest Exit from Entrance in Maze
     1929(m): Concatenation of Array
     1937(m): Maximum Number of Points with Cost
+    1959(m): Minimum Total Space Wasted With K Resizing Operations
     1961(e): Check If String Is a Prefix of Array
     1980(m): Find Unique Binary String
     1985(m): Find the Kth Largest Integer in the Array
