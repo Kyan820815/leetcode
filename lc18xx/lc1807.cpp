@@ -1,6 +1,6 @@
 //--- Q: 1807. Evaluate the Bracket Pairs of a String
 
-//--- method 1:
+//--- method 1: string processing
 class Solution {
 public:
     string evaluate(string s, vector<vector<string>>& knowledge) {
