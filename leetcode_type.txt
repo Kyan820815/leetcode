@@ -23,6 +23,7 @@
     0410(h): Split Array Largest Sum
     0441(e): Arranging Coins
     0450(m): Delete Node in a BST
+    0475(m): Heaters
     0497(m): Random Point in Non-overlapping Rectangles
     0510(m): Inorder Successor in BST II
     0528(m): Random Pick with Weight
@@ -33,6 +34,7 @@
     0669(m): Trim a Binary Search Tree
     0700(e): Search in a Binary Search Tree
     0701(m): Insert into a Binary Search Tree
+    0702(m): Search in a Sorted Array of Unknown Size
     0704(e): Binary Search
     0705(e): Design HashSet
     0744(e): Find Smallest Letter Greater Than Target
@@ -59,9 +61,11 @@
     1300(m): Sum of Mutated Array Closest to Target
     1337(e): The K Weakest Rows in a Matrix
     1389(e): Create Target Array in the Given Order
+    1533(m): Find the Index of the Large Integer
     1539(e): Kth Missing Positive Number
     1608(e): Special Array With X Elements Greater Than or Equal X
     1855(m): Maximum Distance Between a Pair of Values
+    1898(m): Maximum Number of Removable Characters
     1901(m): Find a Peak Element II
     2080(m): Range Frequency Queries
     2187(m): Minimum Time to Complete Trips
@@ -152,6 +156,7 @@
     0455(e): Assign Cookies
     0457(m): Circular Array Loop
     0459(e): Repeated Substring Pattern
+    0475(m): Heaters
     0486(m): Predict the Winner
     0487(m): Max Consecutive Ones II
     0524(m): Longest Word in Dictionary through Deleting
@@ -227,6 +232,7 @@
     1493(m): Longest Subarray of 1's After Deleting One Element
     1498(m): Number of Subsequences That Satisfy the Given Sum Condition
     1544(e): Make The String Great
+    1566(e): Detect Pattern of Length M Repeated K or More Times
     1567(m): Maximum Length of Subarray With Positive Product
     1570(m): Dot Product of Two Sparse Vectors
     1616(m): Split Two Strings to Make Palindrome
@@ -363,6 +369,7 @@
     1874(m): Minimize Product Sum of Two Arrays
     1897(e): Redistribute Characters to Make All Strings Equal
     1941(e): Check if All Characters Have Equal Number of Occurrences
+    1943(m): Describe the Painting
     2006(e): Count Number of Pairs With Absolute Difference K
     2008(m): Maximum Earnings From Taxi
     2037(e): Minimum Number of Moves to Seat Everyone
@@ -863,6 +870,7 @@
     1405(m): Longest Happy String
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1529(m): Minimum Suffix Flips
+    1561(m): Maximum Number of Coins You Can Get
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1567(m): Maximum Length of Subarray With Positive Product
     1605(m): Find Valid Matrix Given Row and Column Sums
@@ -879,6 +887,7 @@
     1780(m): Check if Number is a Sum of Powers of Three
     1798(m): Maximum Number of Consecutive Values You Can Make
     1827(e): Minimum Operations to Make the Array Increasing
+    1846(m): Maximum Element After Decreasing and Rearranging
     1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1855(m): Maximum Distance Between a Pair of Values
     1874(m): Minimize Product Sum of Two Arrays
@@ -1005,6 +1014,7 @@
     1155(m): Number of Dice Rolls With Target Sum
     1182(m): Shortest Distance to Target Color
     1186(m): Maximum Subarray Sum with One Deletion
+    1218(m): Longest Arithmetic Subsequence of Given Difference
     1230(m): Toss Strange Coins
     1235(h): Maximum Profit in Job Scheduling
     1277(m): Count Square Submatrices with All Ones
@@ -1124,8 +1134,10 @@
     1512(m): Number of Good Pairs
     1524(m): Number of Sub-arrays With Odd Sum
     1814(m): Count Nice Pairs in an Array
+    1943(m): Describe the Painting
     1991(e): Find the Middle Index in Array
     2006(e): Count Number of Pairs With Absolute Difference K
+    2017(m): Grid Game
     2083(m): Substrings That Begin and End With the Same Letter
     2121(m): Intervals Between Identical Elements
     2134(m): Minimum Swaps to Group All 1's Together II
@@ -1324,6 +1336,7 @@
     1197(m): Minimum Knight Moves
     1198(m): Find Smallest Common Element in All Rows
     1207(e): Unique Number of Occurrences
+    1218(m): Longest Arithmetic Subsequence of Given Difference
     1235(h): Maximum Profit in Job Scheduling
     1244(m): Design A Leaderboard
     1296(m): Divide Array in Sets of K Consecutive Numbers
@@ -1358,6 +1371,7 @@
     1858(m): Longest Word With All Prefixes
     1902(m): Depth of BST Given Insertion Order
     1941(e): Check if All Characters Have Equal Number of Occurrences
+    1943(m): Describe the Painting
     1985(m): Find the Kth Largest Integer in the Array
     1993(m): Operations on Tree
     2001(m): Number of Pairs of Interchangeable Rectangles
@@ -1793,6 +1807,7 @@
     1858(m): Longest Word With All Prefixes
     1859(e): Sorting the Sentence
     1880(e): Check if Word Equals Summation of Two Words
+    1898(m): Maximum Number of Removable Characters
     1941(e): Check if All Characters Have Equal Number of Occurrences
     1957(e): Delete Characters to Make Fancy String
     1961(e): Check If String Is a Prefix of Array
@@ -1982,6 +1997,7 @@
     0463(e): Island Perimeter
     0473(m): Matchsticks to Square
     0474(m): Ones and Zeroes
+    0475(m): Heaters
     0477(m): Total Hamming Distance
     0480(h): Sliding Window Median
     0486(m): Predict the Winner
@@ -2039,6 +2055,7 @@
     0695(m): Max Area of Island
     0697(e): Degree of an Array
     0698(m): Partition to K Equal Sum Subsets
+    0702(m): Search in a Sorted Array of Unknown Size
     0704(e): Binary Search
     0705(e): Design HashSet
     0706(e): Design HashMap
@@ -2067,6 +2084,7 @@
     0768(h): Max Chunks To Make Sorted II
     0769(m): Max Chunks To Make Sorted
     0775(m): Global and Local Inversions
+    0789(m): Escape The Ghosts
     0799(m): Champagne Tower
     0801(h): Minimum Swaps To Make Sequences Increasing
     0804(e): Unique Morse Code Words
@@ -2210,6 +2228,7 @@
     1196(e): How Many Apples Can You Put into the Basket
     1198(m): Find Smallest Common Element in All Rows
     1217(e): Play with Chips
+    1218(m): Longest Arithmetic Subsequence of Given Difference
     1221(e): Split a String in Balanced Strings
     1222(m): Queens That Can Attack the King
     1243(e): Array Transformation
@@ -2221,6 +2240,7 @@
     1275(e): Find Winner on a Tic Tac Toe Game
     1282(m): Group the People Given the Group Size They Belong To
     1287(e): Element Appearing More Than 25% In Sorted Array
+    1288(m): Remove Covered Intervals
     1295(e): Find Numbers with Even Number of Digits
     1299(e): Replace Elements with Greatest Element on Right Side
     1300(m): Sum of Mutated Array Closest to Target
@@ -2230,6 +2250,7 @@
     1346(e): Check If N and Its Double Exist
     1351(e): Count Negative Numbers in a Sorted Matrix
     1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
+    1375(m): Number of Times Binary String Is Prefix-Aligned
     1380(e): Lucky Numbers in a Matrix 
     1385(e): Find the Distance Value Between Two Arrays
     1387(m): Sort Integers by The Power Value
@@ -2253,9 +2274,12 @@
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1524(m): Number of Sub-arrays With Odd Sum
     1528(e): Shuffle String
+    1533(m): Find the Index of the Large Integer
     1550(e): Three Consecutive Odds
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1559(m): Detect Cycles in 2D Grid
+    1561(m): Maximum Number of Coins You Can Get
+    1566(e): Detect Pattern of Length M Repeated K or More Times
     1567(m): Maximum Length of Subarray With Positive Product
     1572(e): Matrix Diagonal Sum
     1578(m): Minimum Deletion Cost to Avoid Repeating Letters
@@ -2265,11 +2289,13 @@
     1629(e): Slowest Key
     1630(m): Arithmetic Subarrays
     1642(m): Furthest Building You Can Reach
+    1646(e): Get Maximum in Generated Array
     1664(m): Ways to Make a Fair Array
     1668(e): Maximum Repeating Substring
     1672(e): Richest Customer Wealth
     1710(e): Maximum Units on a Truck
     1711(m): Count Good Meals
+    1720(e): Decode XORed Array
     1722(m): Minimize Hamming Distance After Swap Operations
     1725(e): Number Of Rectangles That Can Form The Largest Square
     1732(e): Find the Highest Altitude
@@ -2289,6 +2315,7 @@
     1814(m): Count Nice Pairs in an Array
     1823(m): Find the Winner of the Circular Game
     1826(e): Faulty Sensor
+    1846(m): Maximum Element After Decreasing and Rearranging
     1848(e): Minimum Distance to the Target Element
     1854(e): Maximum Population Year
     1855(m): Maximum Distance Between a Pair of Values
@@ -2296,6 +2323,7 @@
     1861(m): Rotating the Box
     1877(m): Minimize Maximum Pair Sum in Array
     1886(e): Determine Whether Matrix Can Be Obtained By Rotation
+    1898(m): Maximum Number of Removable Characters
     1901(m): Find a Peak Element II
     1905(m): Count Sub Islands
     1908(m): Game of Nim
@@ -2305,6 +2333,7 @@
     1926(m): Nearest Exit from Entrance in Maze
     1929(m): Concatenation of Array
     1937(m): Maximum Number of Points with Cost
+    1943(m): Describe the Painting
     1959(m): Minimum Total Space Wasted With K Resizing Operations
     1961(e): Check If String Is a Prefix of Array
     1980(m): Find Unique Binary String
@@ -2317,6 +2346,7 @@
     2011(e): Final Value of Variable After Performing Operations
     2012(m): Sum of Beauty in the Array
     2016(e): Maximum Difference Between Increasing Elements
+    2017(m): Grid Game
     2021(m): Brightest Position on Street
     2022(e): Convert 1D Array Into 2D Array
     2028(m): Find Missing Observations
@@ -2409,6 +2439,7 @@
     1506(m): Find Root of N-Ary Tree
     1558(m): Minimum Numbers of Function Calls to Make Target Array
     1711(m): Count Good Meals
+    1720(e): Decode XORed Array
     1832(e): Check if the Sentence Is Pangram
     1908(m): Game of Nim
     2103(e): Rings and Rods
@@ -2435,6 +2466,7 @@
     0986(m): Interval List Intersections
     1229(m): Meeting Scheduler
     1272(m): Remove Interval
+    1288(m): Remove Covered Intervals
     1450(e): Number of Students Doing Homework at a Given Time
     1573(m): Number of Ways to Split a String
     1893(e): Check if All the Integers in a Range Are Covered
@@ -2855,6 +2887,7 @@
     0754(m): Reach a Number
     0772(h): Basic Calculator III
     0775(m): Global and Local Inversions
+    0789(m): Escape The Ghosts
     0800(e): Similar RGB Color
     0840(m): Magic Squares In Grid
     0868(e): Binary Gap
@@ -2896,6 +2929,7 @@
     1518(e): Water Bottles
     1523(e): Count Odd Numbers in an Interval Range
     1524(m): Number of Sub-arrays With Odd Sum
+    1561(m): Maximum Number of Coins You Can Get
     1573(m): Number of Ways to Split a String
     1716(e): Calculate Money in Leetcode Bank
     1759(m): Count Number of Homogenous Substrings
@@ -2956,10 +2990,12 @@
     0278(e): First Bad Version
     0374(e): Guess Number Higher or Lower
     0489(h): Robot Room Cleaner
+    0702(m): Search in a Sorted Array of Unknown Size
     1095(h): Find in Mountain Array
     1236(m): Web Crawler
     1274(h): Number of Ships in a Rectangle
     1428(m): Leftmost Column with at Least a One
+    1533(m): Find the Index of the Large Integer
     1778(m): Shortest Path in a Hidden Grid
     1810(m): Minimum Path Cost in a Hidden Grid
 
@@ -2981,6 +3017,7 @@
     0486(m): Predict the Winner
     1025(e): Divisor Game
     1140(m): Stone Game II
+    1561(m): Maximum Number of Coins You Can Get
     1908(m): Game of Nim
 
 --- Rolling Hash:
