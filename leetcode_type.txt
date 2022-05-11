@@ -256,6 +256,7 @@
     1850(m): Minimum Adjacent Swaps to Reach the Kth Smallest Number
     1855(m): Maximum Distance Between a Pair of Values
     1861(m): Rotating the Box
+    1868(m): Product of Two Run-Length Encoded Arrays
     1869(e): Longer Contiguous Segments of Ones than Zeros
     1877(m): Minimize Maximum Pair Sum in Array
     1885(m): Count Pairs in Two Arrays
@@ -1430,6 +1431,7 @@
     0232(e): Implement Queue using Stacks
     0244(m): Shortest Word Distance II
     0251(m): Flatten 2D Vector
+    0271(m): Encode and Decode Strings
     0281(m): Zigzag Iterator
     0284(m): Peeking Iterator
     0295(h): Find Median from Data Stream
@@ -1639,6 +1641,7 @@
     0249(m): Group Shifted Strings
     0257(e): Binary Tree Paths
     0266(e): Palindrome Permutation
+    0271(m): Encode and Decode Strings
     0273(h): Integer to English Words
     0290(e): Word Pattern
     0293(e): Flip Game
@@ -1957,6 +1960,7 @@
     0260(m): Single Number III
     0265(h): Paint House II
     0268(e): Missing Number
+    0271(m): Encode and Decode Strings
     0280(m): Wiggle Sort
     0281(m): Zigzag Iterator
     0283(e): Move Zeroes
@@ -2347,6 +2351,7 @@
     1855(m): Maximum Distance Between a Pair of Values
     1858(m): Longest Word With All Prefixes
     1861(m): Rotating the Box
+    1868(m): Product of Two Run-Length Encoded Arrays
     1877(m): Minimize Maximum Pair Sum in Array
     1885(m): Count Pairs in Two Arrays
     1886(e): Determine Whether Matrix Can Be Obtained By Rotation
