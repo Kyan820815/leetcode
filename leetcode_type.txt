@@ -278,6 +278,7 @@
 --- Quick Select:
     0215(m): Kth Largest Element in an Array
     0378(m): Kth Smallest Element in a Sorted Matrix
+    0462(m): Minimum Moves to Equal Array Elements II
     0973(m): K Closest Points to Origin
     1005(e): Maximize Sum Of Array After K Negations
     1387(m): Sort Integers by The Power Value
@@ -323,6 +324,7 @@
     1775(m): Equal Sum Arrays With Minimum Number of Operations
     1810(m): Minimum Path Cost in a Hidden Grid
     1824(m): Minimum Sideway Jumps
+    1834(m): Single-Threaded CPU
     1845(m): Seat Reservation Manager
     2093(m): Minimum Cost to Reach City With Discounts
     2099(e): Find Subsequence of Length K With the Largest Sum
@@ -365,6 +367,7 @@
     1433(m): Check If a String Can Break Another String
     1460(e): Make Two Arrays Equal by Reversing Sub-arrays
     1481(m): Least Number of Unique Integers after K Removals
+    1497(m): Check If Array Pairs Are Divisible by k
     1519(m): Number of Nodes in the Sub-Tree With the Same Label
     1636(e): Sort Array by Increasing Frequency
     1657(m): Determine if Two Strings Are Close
@@ -386,6 +389,7 @@
     2144(e): Minimum Cost of Buying Candies With Discount
     2150(m): Find All Lonely Numbers in the Array
     2154(e): Keep Multiplying Found Values by Two
+    2168(m): Unique Substrings With Equal Digit Frequency
     2171(m): Removing Minimum Number of Magic Beans
     2182(m): Construct String With Repeat Limit
     2186(m): Minimum Number of Steps to Make Two Strings Anagram II
@@ -450,6 +454,7 @@
     0445(m): Add Two Numbers II
     0449(m): Serialize and Deserialize BST
     0456(m): 132 Pattern
+    0484(m): Find Permutation
     0496(e): Next Greater Element I
     0503(m): Next Greater Element II
     0536(m): Construct Binary Tree from String
@@ -632,6 +637,7 @@
     0093(m): Restore IP Addresses
     0094(e): Binary Tree Inorder Traversal
     0095(m): Unique Binary Search Trees II
+    0097(m): Interleaving String
     0100(e): Same Tree
     0105(m): Construct Binary Tree from Preorder and Inorder Traversal
     0106(m): Construct Binary Tree from Inorder and Postorder Traversal 
@@ -832,6 +838,7 @@
     0435(m): Non-overlapping Intervals
     0452(m): Minimum Number of Arrows to Burst Balloons
     0455(e): Assign Cookies
+    0484(m): Find Permutation
     0561(e): Array Partition I
     0575(e): Distribute Candies
     0581(m): Shortest Unsorted Continuous Subarray
@@ -942,6 +949,7 @@
     0091(m): Decode Ways
     0095(m): Unique Binary Search Trees II
     0096(m): Unique Binary Search Trees
+    0097(m): Interleaving String
     0118(e): Pascal's Triangle
     0119(e): Pascal's Triangle II
     0120(m): Triangle
@@ -1037,6 +1045,7 @@
     1504(m): Count Submatrices With All Ones
     1524(m): Number of Sub-arrays With Odd Sum
     1525(m): Number of Good Ways to Split a String
+    1594(m): Maximum Non Negative Product in a Matrix
     1641(m): Count Sorted Vowel Strings
     1653(m): Minimum Deletions to Make String Balanced
     1664(m): Ways to Make a Fair Array
@@ -1123,11 +1132,13 @@
     0370(m): Range Addition
     0410(h): Split Array Largest Sum
     0437(m): Path Sum III
+    0462(m): Minimum Moves to Equal Array Elements II
     0497(m): Random Point in Non-overlapping Rectangles
     0523(m): Continuous Subarray Sum
     0525(m): Contiguous Array
     0528(m): Random Pick with Weight
     0560(m): Subarray Sum Equals K
+    0677(m): Map Sum Pairs
     0724(e): Find Pivot Index
     0862(h): Shortest Subarray with Sum at Least K
     0923(m): 3Sum With Multiplicity
@@ -1168,6 +1179,7 @@
     0015(m): 3Sum
     0036(m): Valid Sudoku
     0049(m): Group Anagrams
+    0097(m): Interleaving String
     0126(h): Word Ladder II
     0127(h): Word Ladder
     0128(m): Longest Consecutive Sequence
@@ -1210,6 +1222,7 @@
     0407(h): Trapping Rain Water II
     0409(e): Longest Palindrome
     0414(e): Third Maximum Number
+    0421(m): Maximum XOR of Two Numbers in an Array
     0433(m): Minimum Genetic Mutation
     0437(m): Path Sum III
     0451(m): Sort Characters By Frequency
@@ -1251,6 +1264,7 @@
     0659(m): Split Array into Consecutive Subsequences
     0663(m): Equal Tree Partition
     0673(m): Number of Longest Increasing Subsequence
+    0677(m): Map Sum Pairs
     0681(m): Next Closest Time
     0684(m): Redundant Connection
     0690(e): Employee Importance
@@ -1284,6 +1298,7 @@
     0811(m): Subdomain Visit Count
     0817(m): Linked List Components
     0819(e): Most Common Word
+    0820(m): Short Encoding of Words
     0823(m): Binary Trees With Factors
     0826(m): Most Profit Assigning Work
     0847(h): Shortest Path Visiting All Nodes
@@ -1415,6 +1430,7 @@
     2152(m): Minimum Number of Lines to Cover Points
     2154(e): Keep Multiplying Found Values by Two
     2166(m): Design Bitset
+    2168(m): Unique Substrings With Equal Digit Frequency
     2170(m): Minimum Operations to Make the Array Alternating
     2171(m): Removing Minimum Number of Magic Beans
     2176(e): Count Equal and Divisible Pairs in an Array
@@ -1455,6 +1471,7 @@
     0621(m): Task Scheduler
     0622(m): Design Circular Queue
     0641(m): Design Circular Deque
+    0677(m): Map Sum Pairs
     0703(e): Kth Largest Element in a Stream
     0705(e): Design HashSet
     0706(e): Design HashMap
@@ -1612,6 +1629,7 @@
     0076(h): Minimum Window Substring
     0091(m): Decode Ways
     0093(m): Restore IP Addresses
+    0097(m): Interleaving String
     0125(e): Valid Palindrome
     0126(h): Word Ladder II
     0127(h): Word Ladder
@@ -1706,6 +1724,7 @@
     0652(m): Find Duplicate Subtrees
     0657(e): Robot Return to Origin
     0670(m): Maximum Swap
+    0677(m): Map Sum Pairs
     0678(m): Valid Parenthesis String
     0680(e): Valid Palindrome II
     0681(m): Next Closest Time
@@ -1738,6 +1757,7 @@
     0809(m): Expressive Words
     0811(m): Subdomain Visit Count
     0819(e): Most Common Word
+    0820(m): Short Encoding of Words
     0821(e): Shortest Distance to a Character
     0828(h): Count Unique Characters of All Substrings of a Given String
     0824(e): Goat Latin
@@ -1863,6 +1883,7 @@
     2165(m): Smallest Value of the Rearranged Number
     2166(m): Design Bitset
     2167(h): Minimum Time to Remove All Cars Containing Illegal Goods
+    2168(m): Unique Substrings With Equal Digit Frequency
     2182(m): Construct String With Repeat Limit
     2185(e): Counting Words With a Given Prefix
     2186(m): Minimum Number of Steps to Make Two Strings Anagram II
@@ -2009,6 +2030,7 @@
     0414(e): Third Maximum Number
     0416(m): Partition Equal Subset Sum
     0419(m): Battleships in a Board
+    0421(m): Maximum XOR of Two Numbers in an Array
     0422(e): Valid Word Square
     0427(m): Construct Quad Tree
     0435(m): Non-overlapping Intervals
@@ -2020,12 +2042,14 @@
     0455(e): Assign Cookies
     0456(m): 132 Pattern
     0457(m): Circular Array Loop
+    0462(m): Minimum Moves to Equal Array Elements II
     0463(e): Island Perimeter
     0473(m): Matchsticks to Square
     0474(m): Ones and Zeroes
     0475(m): Heaters
     0477(m): Total Hamming Distance
     0480(h): Sliding Window Median
+    0484(m): Find Permutation
     0486(m): Predict the Winner
     0490(m): The Maze
     0491(m): Increasing Subsequences
@@ -2117,6 +2141,7 @@
     0807(m): Max Increase to Keep City Skyline
     0809(m): Expressive Words
     0811(m): Subdomain Visit Count
+    0820(m): Short Encoding of Words
     0821(e): Shortest Distance to a Character
     0823(m): Binary Trees With Factors
     0826(m): Most Profit Assigning Work
@@ -2293,6 +2318,7 @@
     1480(e): Running Sum of 1d Array
     1464(e): Maximum Product of Two Elements in an Array
     1491(e): Average Salary Excluding the Minimum and Maximum Salary
+    1497(m): Check If Array Pairs Are Divisible by k
     1498(m): Number of Subsequences That Satisfy the Given Sum Condition
     1502(e): Can Make Arithmetic Progression From Sequence
     1504(m): Count Submatrices With All Ones
@@ -2309,6 +2335,7 @@
     1567(m): Maximum Length of Subarray With Positive Product
     1572(e): Matrix Diagonal Sum
     1578(m): Minimum Deletion Cost to Avoid Repeating Letters
+    1594(m): Maximum Non Negative Product in a Matrix
     1605(m): Find Valid Matrix Given Row and Column Sums
     1608(e): Special Array With X Elements Greater Than or Equal X
     1619(e): Mean of Array After Removing Some Elements
@@ -2344,6 +2371,7 @@
     1814(m): Count Nice Pairs in an Array
     1823(m): Find the Winner of the Circular Game
     1826(e): Faulty Sensor
+    1834(m): Single-Threaded CPU
     1838(m): Frequency of the Most Frequent Element
     1846(m): Maximum Element After Decreasing and Rearranging
     1848(e): Minimum Distance to the Target Element
@@ -2447,6 +2475,7 @@
     0389(e): Find the Difference
     0401(e): Binary Watch
     0405(e): Convert a Number to Hexadecimal
+    0421(m): Maximum XOR of Two Numbers in an Array
     0461(e): Hamming Distance
     0464(m): Can I Win
     0473(m): Matchsticks to Square
@@ -2507,6 +2536,7 @@
     1450(e): Number of Students Doing Homework at a Given Time
     1573(m): Number of Ways to Split a String
     1701(m): Average Waiting Time
+    1834(m): Single-Threaded CPU
     1893(e): Check if All the Integers in a Range Are Covered
     1943(m): Describe the Painting
     2015(m): Average Height of Buildings in Each Segment
@@ -2610,11 +2640,14 @@
     0211(m): Design Add and Search Words Data Structure
     0212(h): Word Search II
     0336(h): Palindrome Pairs
+    0421(m): Maximum XOR of Two Numbers in an Array
     0616(m): Add Bold Tag in String
     0648(m): Replace Words
+    0677(m): Map Sum Pairs
     0720(m): Longest Word in Dictionary
     0758(m): Bold Words in String
     0809(m): Expressive Words
+    0820(m): Short Encoding of Words
     1065(e): Index Pairs of a String
     1166(m): Design File System
     1804(m): Implement Trie II (Prefix Tree)
@@ -2687,6 +2720,7 @@
     0337(m): House Robber III
     0366(m): Find Leaves of Binary Tree
     0404(e): Sum of Left Leaves
+    0421(m): Maximum XOR of Two Numbers in an Array
     0426(m): Convert Binary Search Tree to Sorted Doubly Linked List
     0427(m): Construct Quad Tree
     0428(h): Serialize and Deserialize N-ary Tree
@@ -2728,6 +2762,7 @@
     0666(m): Path Sum IV
     0669(m): Trim a Binary Search Tree
     0671(e): Second Minimum Node In a Binary Tree
+    0677(m): Map Sum Pairs
     0687(m): Longest Univalue Path
     0700(e): Search in a Binary Search Tree
     0701(m): Insert into a Binary Search Tree
@@ -2739,6 +2774,7 @@
     0783(e): Minimum Distance Between BST Nodes
     0809(m): Expressive Words
     0814(m): Binary Tree Pruning
+    0820(m): Short Encoding of Words
     0863(m): All Nodes Distance K in Binary Tree
     0865(m): Smallest Subtree with all the Deepest Nodes
     0872(e): Leaf-Similar Trees
@@ -2905,6 +2941,7 @@
     0441(e): Arranging Coins
     0445(m): Add Two Numbers II
     0453(e): Minimum Moves to Equal Array Elements
+    0462(m): Minimum Moves to Equal Array Elements II
     0463(e): Island Perimeter
     0464(m): Can I Win
     0477(m): Total Hamming Distance
@@ -3066,3 +3103,4 @@
     0718(m): Maximum Length of Repeated Subarray
     1554(m): Strings Differ by One Character
     2156(h): Find Substring With Given Hash Value
+    2168(m): Unique Substrings With Equal Digit Frequency
