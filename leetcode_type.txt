@@ -817,6 +817,8 @@
     1999(m): Smallest Greater Multiple Made of Two Digits
     2039(m): The Time When the Network Becomes Idle
     2049(m): Count Nodes With the Highest Score
+    2061(m): Number of Spaces Cleaning Robot Cleaned
+    2101(m): Detonate the Maximum Bombs
     2157(h): Groups of Strings
 
 --- Greedy:
@@ -1423,6 +1425,7 @@
     2085(e): Count Common Words With One Occurrence
     2093(m): Minimum Cost to Reach City With Discounts
     2099(e): Find Subsequence of Length K With the Largest Sum
+    2101(m): Detonate the Maximum Bombs
     2115(m): Find All Possible Recipes from Given Supplies
     2121(m): Intervals Between Identical Elements
     2133(e): Check if Every Row and Column Contains All Numbers
@@ -1836,6 +1839,7 @@
     1678(e): Goal Parser Interpretation
     1684(e): Count the Number of Consistent Strings
     1694(e): Reformat Phone Number
+    1698(m): Number of Distinct Substrings in a String
     1704(e): Determine if String Halves Are Alike
     1717(m): Maximum Score From Removing Substrings
     1759(m): Count Number of Homogenous Substrings
@@ -2420,6 +2424,7 @@
     2036(m): Maximum Alternating Subarray Sum
     2037(e): Minimum Number of Moves to Seat Everyone
     2053(e): Kth Distinct String in an Array
+    2061(m): Number of Spaces Cleaning Robot Cleaned
     2057(e): Smallest Index With Equal Value
     2073(e): Time Needed to Buy Tickets
     2078(e): Two Furthest Houses With Different Colors
@@ -2429,6 +2434,7 @@
     2091(m): Removing Minimum and Maximum From Array
     2098(m): Subsequence of Size K With the Largest Even Sum
     2099(e): Find Subsequence of Length K With the Largest Sum
+    2101(m): Detonate the Maximum Bombs
     2104(m): Sum of Subarray Ranges
     2108(e): Find First Palindromic String in the Array
     2110(m): Number of Smooth Descent Periods of a Stock
@@ -2635,6 +2641,7 @@
     2039(m): The Time When the Network Becomes Idle
     2077(m): Paths in Maze That Lead to Same Room
     2093(m): Minimum Cost to Reach City With Discounts
+    2101(m): Detonate the Maximum Bombs
     2115(m): Find All Possible Recipes from Given Supplies
 
 --- Trie Tree:
@@ -3012,6 +3019,7 @@
     1524(m): Number of Sub-arrays With Odd Sum
     1561(m): Maximum Number of Coins You Can Get
     1573(m): Number of Ways to Split a String
+    1698(m): Number of Distinct Substrings in a String
     1716(e): Calculate Money in Leetcode Bank
     1759(m): Count Number of Homogenous Substrings
     1780(m): Check if Number is a Sum of Powers of Three
@@ -3026,6 +3034,7 @@
     2033(m): Minimum Operations to Make a Uni-Value Grid
     2039(m): The Time When the Network Becomes Idle
     2083(m): Substrings That Begin and End With the Same Letter
+    2101(m): Detonate the Maximum Bombs
     2110(m): Number of Smooth Descent Periods of a Stock
     2119(e): A Number After a Double Reversal
     2138(e): Divide a String Into Groups of Size k
@@ -3106,5 +3115,6 @@
     0187(m): Repeated DNA Sequences
     0718(m): Maximum Length of Repeated Subarray
     1554(m): Strings Differ by One Character
+    1698(m): Number of Distinct Substrings in a String
     2156(h): Find Substring With Given Hash Value
     2168(m): Unique Substrings With Equal Digit Frequency
