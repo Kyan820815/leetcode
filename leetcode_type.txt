@@ -1479,6 +1479,7 @@
     0716(e): Max Stack
     0729(m): My Calendar I
     0731(m): My Calendar II
+    0745(h): Prefix and Suffix Search
     0895(h): Maximum Frequency Stack
     0901(m): Online Stock Span
     0919(m): Complete Binary Tree Inserter
@@ -1739,6 +1740,7 @@
     0726(h): Number of Atoms
     0734(e): Sentence Similarity
     0737(m): Sentence Similarity II
+    0745(h): Prefix and Suffix Search
     0748(e): Shortest Completing Word
     0752(m): Open the Lock
     0756(m): Pyramid Transition Matrix
@@ -2645,6 +2647,7 @@
     0648(m): Replace Words
     0677(m): Map Sum Pairs
     0720(m): Longest Word in Dictionary
+    0745(h): Prefix and Suffix Search
     0758(m): Bold Words in String
     0809(m): Expressive Words
     0820(m): Short Encoding of Words
@@ -2769,6 +2772,7 @@
     0705(e): Design HashSet
     0720(m): Longest Word in Dictionary
     0742(m): Closest Leaf in a Binary Tree
+    0745(h): Prefix and Suffix Search
     0758(m): Bold Words in String
     0776(m): Split BST
     0783(e): Minimum Distance Between BST Nodes
