@@ -22,6 +22,21 @@ public:
     vector<int> arr;
 };
 
+//--- method 2: find index
+class Solution {
+public:
+    unordered_map<int,vector<int>> arr;
+    Solution(vector<int>& nums) {
+        for (int i = 0; i < nums.size(); ++i) {
+            arr[nums[i]].push_back(i);
+        }
+    }
+    
+    int pick(int target) {
+        return arr[target][random()%arr[target].size()];
+    }
+};
+
 /**
  * Your Solution object will be instantiated and called as such:
  * Solution* obj = new Solution(nums);

@@ -3,49 +3,60 @@
 //--- method 1: dfs with memorization
 class Solution {
 public:
-    unordered_map<string, int> map;
+    unordered_map<string,int> m;
     int findMinStep(string board, string hand) {
-        vector<int> cnt(26, 0);
+        unordered_map<char,int> cnt;
         for (auto &ch: hand) {
-            ++cnt[ch-'A'];
+            ++cnt[ch];
         }
-        map[""] = 0;
-        auto res = dfs(board, cnt);
-        return res == INT_MAX ? -1 : res;
+        return dfs(board, cnt);
     }
-    int dfs(string &board, vector<int> &cnt) {
-        board = remove(board);
-        if (map.find(board) != map.end()) {
-            return map[board];
+    int dfs(string &s, unordered_map<char,int> &cnt) {
+        s = remove(s);
+        if (!s.size()) {
+            return 0;
         }
-        int times = INT_MAX;
-        for (int i = 0; i <= board.size(); ++i) {
-            for (int j = 0; j < 26; ++j) {
-                if (cnt[j]) {
-                    --cnt[j];
-                    string mid(1,j+'A');
-                    string next = board.substr(0,i) + mid + board.substr(i);
-                    auto rtn_cnt = dfs(next, cnt);
-                    if (rtn_cnt != INT_MAX) {
-                        times = min(times, rtn_cnt+1);
+        string tag = s;
+        for (auto &[ch, val]: cnt) {
+            tag += ch + to_string(val);
+        }
+        if (m.find(tag) != m.end()) {
+            return m[tag];
+        }
+        int minv = INT_MAX;
+        for (auto &[ch, val]: cnt) {
+            if (!val) {
+                continue;
+            }
+            for (int i = 0; i <= s.size(); ++i) {
+                if (i && s[i-1] == ch) {
+                    continue;
+                }
+                if (s[i] == ch || i && s[i] == s[i-1]) {
+                    string next = s.substr(0,i)+ch+s.substr(i);
+                    --val;
+                    int rtn = dfs(next, cnt);
+                    if (rtn >= 0) {
+                        minv = min(minv, rtn);
                     }
-                    ++cnt[j];
+                    ++val;
                 }
             }
         }
-        return map[board] = times;
+        return m[tag] = minv == INT_MAX ? -1 : minv+1;
     }
-    string remove(string &board) {
-        for (int i = 1, j = 0; i <= board.size(); ++i) {
-            if (i == board.size() || board[i] != board[j]) {
+    string remove(string &s) {
+        int i = 0, j = 0;
+        while (i <= s.size()) {
+            if (i == s.size() || s[i] != s[j]) {
                 if (i-j >= 3) {
-                    string next = board.substr(0,j) + board.substr(i);
+                    string next = s.substr(0,j) + s.substr(i);
                     return remove(next);
-                } else {
-                    j = i;
                 }
+                j = i;
             }
+            ++i;
         }
-        return board;
+        return s;
     }
 };

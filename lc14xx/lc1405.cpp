@@ -33,16 +33,21 @@ public:
 class Solution {
 public:
     string longestDiverseString(int a, int b, int c, char aa = 'a', char bb = 'b', char cc = 'c') {
-        if (c > b) {
+        if (b < c) {
             return longestDiverseString(a, c, b, aa, cc, bb);
         }
-        if (b > a) {
+        if (a < b) {
             return longestDiverseString(b, a, c, bb, aa, cc);
         }
-        if (!b) {
-            return string(min(a,2), aa);
+        int cnta = min(2, a);
+        string str(cnta, aa);
+        if (b == 0) {
+            return str;
         }
-        int used_a = min(2, a), used_b = a-used_a >= b ? 1 : 0;
-        return string(used_a, aa) + string(used_b, bb) + longestDiverseString(a-used_a, b-used_b, c, aa, bb, cc);
+        if (a-cnta < b) {
+            return str + longestDiverseString(a-cnta, b, c, aa, bb, cc);
+        } else {
+            return str + bb + longestDiverseString(a-cnta, b-1, c, aa, bb, cc);
+        }
     }
 };
