@@ -4675,6 +4675,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 (1) sum(max-min) = sum(max) - sum(min)
     sum(min) -> increasing stack
     sum(max) -> decreasing stack
+(2) dp with stack
 
 ///////////////////////////////////////////////////////////////
 //

@@ -1062,6 +1062,7 @@
     2008(m): Maximum Earnings From Taxi
     2016(e): Maximum Difference Between Increasing Elements
     2036(m): Maximum Alternating Subarray Sum
+    2104(m): Sum of Subarray Ranges
     2110(m): Number of Smooth Descent Periods of a Stock
     2152(m): Minimum Number of Lines to Cover Points
     2163(h): Minimum Difference in Sums After Removal of Elements

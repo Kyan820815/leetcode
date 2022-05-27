@@ -8052,6 +8052,7 @@ O(n)
     這可以用stack去做，因為每次都往前找，若給定降序input，每次都要找到頭，很浪費時間。
     所以用stack維持一個升序序列，若當前比top小就pop。
     類似lc977，lc1019，lc1130，lc654，1043。
+(2) stack without dp
 
 ///////////////////////////////////////////////////////////////
 //
@@ -14855,6 +14856,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 (1) sum(max-min) = sum(max) - sum(min)
     sum(min) -> increasing stack
     sum(max) -> decreasing stack
+(2) dp with stack
 
 ///////////////////////////////////////////////////////////////
 //
