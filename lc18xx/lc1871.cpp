@@ -4,27 +4,27 @@
 class Solution {
 public:
     bool canReach(string s, int minJump, int maxJump) {
+        int n = s.size(), mr = 0;
         queue<int> que;
         que.push(0);
-        int max_start = 0, n = s.size();
         while (que.size()) {
-            int qsize = que.size();
+            auto qsize = que.size();
             while (qsize--) {
                 auto now = que.front();
                 que.pop();
                 if (now == n-1) {
                     return true;
                 }
-                int left = max(now+minJump, max_start+1), right = min(now+maxJump, n-1);
+                int left = max(mr, now+minJump);
+                int right = min(n-1, now+maxJump);
                 for (int i = left; i <= right; ++i) {
                     if (s[i] == '0') {
-                        s[i] == '-1';
+                        s[i] = '1';
                         que.push(i);
                     }
                 }
-                max_start = right;
+                mr = right+1;
             }
-            
         }
         return false;
     }
