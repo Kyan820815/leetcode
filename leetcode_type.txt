@@ -18,6 +18,7 @@
     0285(m): Inorder Successor in BST 
     0287(m): Find the Duplicate Number
     0300(m): Longest Increasing Subsequence
+    0354(h): Russian Doll Envelopes
     0367(e): Valid Perfect Square
     0374(e): Guess Number Higher or Lower
     0410(h): Split Array Largest Sum
@@ -2012,6 +2013,7 @@
     0348(m): Design Tic-Tac-Toe
     0349(e): Intersection of Two Arrays
     0350(e): Intersection of Two Arrays II
+    0354(h): Russian Doll Envelopes
     0356(m): Line Reflection
     0360(m): Sort Transformed Array
     0361(m): Bomb Enemy
@@ -2884,6 +2886,7 @@
     0298(m): Binary Tree Longest Consecutive Sequence
     0300(m): Longest Increasing Subsequence
     0334(m): Increasing Triplet Subsequence
+    0354(h): Russian Doll Envelopes
     0376(m): Wiggle Subsequence
     0377(m): Combination Sum IV
     0392(e): Is Subsequence
