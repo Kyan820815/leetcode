@@ -62,6 +62,7 @@
     1300(m): Sum of Mutated Array Closest to Target
     1337(e): The K Weakest Rows in a Matrix
     1389(e): Create Target Array in the Given Order
+    1488(m): Avoid Flood in The City
     1533(m): Find the Index of the Large Integer
     1539(e): Kth Missing Positive Number
     1608(e): Special Array With X Elements Greater Than or Equal X
@@ -317,12 +318,14 @@
     1353(m): Maximum Number of Events That Can Be Attended
     1368(h): Minimum Cost to Make at Least One Valid Path in a Grid
     1425(h): Constrained Subsequence Sum
+    1488(m): Avoid Flood in The City
     1481(m): Least Number of Unique Integers after K Removals
     1584(m): Min Cost to Connect All Points
     1619(e): Mean of Array After Removing Some Elements
     1631(m): Path With Minimum Effort
     1642(m): Furthest Building You Can Reach
     1775(m): Equal Sum Arrays With Minimum Number of Operations
+    1792(m): Maximum Average Pass Ratio
     1810(m): Minimum Path Cost in a Hidden Grid
     1824(m): Minimum Sideway Jumps
     1834(m): Single-Threaded CPU
@@ -509,6 +512,7 @@
     1673(m): Find the Most Competitive Subsequence
     1717(m): Maximum Score From Removing Substrings
     1762(m): Buildings With an Ocean View
+    1856(m): Maximum Subarray Min-Product
     1963(m): Minimum Number of Swaps to Make the String Balanced
     2104(m): Sum of Subarray Ranges
     2130(m): Maximum Twin Sum of a Linked List
@@ -887,6 +891,7 @@
     1196(e): How Many Apples Can You Put into the Basket
     1130(m): Minimum Cost Tree From Leaf Values
     1405(m): Longest Happy String
+    1488(m): Avoid Flood in The City
     1509(m): Minimum Difference Between Largest and Smallest Value in Three Moves
     1529(m): Minimum Suffix Flips
     1561(m): Maximum Number of Coins You Can Get
@@ -904,6 +909,7 @@
     1769(m): Minimum Number of Operations to Move All Balls to Each Box
     1775(m): Equal Sum Arrays With Minimum Number of Operations
     1780(m): Check if Number is a Sum of Powers of Three
+    1792(m): Maximum Average Pass Ratio
     1798(m): Maximum Number of Consecutive Values You Can Make
     1827(e): Minimum Operations to Make the Array Increasing
     1838(m): Frequency of the Most Frequent Element
@@ -1062,6 +1068,7 @@
     2008(m): Maximum Earnings From Taxi
     2016(e): Maximum Difference Between Increasing Elements
     2036(m): Maximum Alternating Subarray Sum
+    2100(m): Find Good Days to Rob the Bank
     2104(m): Sum of Subarray Ranges
     2110(m): Number of Smooth Descent Periods of a Stock
     2152(m): Minimum Number of Lines to Cover Points
@@ -1164,6 +1171,7 @@
     1524(m): Number of Sub-arrays With Odd Sum
     1814(m): Count Nice Pairs in an Array
     1838(m): Frequency of the Most Frequent Element
+    1856(m): Maximum Subarray Min-Product
     1906(m): Minimum Absolute Difference Queries
     1943(m): Describe the Painting
     1991(e): Find the Middle Index in Array
@@ -1171,6 +1179,7 @@
     2017(m): Grid Game
     2033(m): Minimum Operations to Make a Uni-Value Grid
     2083(m): Substrings That Begin and End With the Same Letter
+    2100(m): Find Good Days to Rob the Bank
     2121(m): Intervals Between Identical Elements
     2134(m): Minimum Swaps to Group All 1's Together II
     2176(e): Count Equal and Divisible Pairs in an Array
@@ -1383,6 +1392,7 @@
     1436(e): Destination City
     1462(m): Course Schedule IV
     1472(m): Design Browser Historya
+    1488(m): Avoid Flood in The City
     1496(e): Path Crossing
     1519(m): Number of Nodes in the Sub-Tree With the Same Label
     1554(m): Strings Differ by One Character
@@ -1823,6 +1833,7 @@
     1190(m): Reverse Substrings Between Each Pair of Parentheses
     1286(m): Iterator for Combination
     1309(e): Decrypt String from Alphabet to Integer Mapping
+    1360(e): Number of Days Between Two Dates
     1405(m): Longest Happy String
     1422(e): Maximum Score After Splitting a String
     1446(e): Consecutive Characters
@@ -2326,6 +2337,7 @@
     1471(m): The k Strongest Values in an Array
     1480(e): Running Sum of 1d Array
     1464(e): Maximum Product of Two Elements in an Array
+    1488(m): Avoid Flood in The City
     1491(e): Average Salary Excluding the Minimum and Maximum Salary
     1497(m): Check If Array Pairs Are Divisible by k
     1498(m): Number of Subsequences That Satisfy the Given Sum Condition
@@ -2375,6 +2387,7 @@
     1775(m): Equal Sum Arrays With Minimum Number of Operations
     1779(e): Find Nearest Point That Has the Same X or Y Coordinate
     1784(e): Check if Binary String Has at Most One Segment of Ones
+    1792(m): Maximum Average Pass Ratio
     1798(m): Maximum Number of Consecutive Values You Can Make
     1807(m): Evaluate the Bracket Pairs of a String
     1814(m): Count Nice Pairs in an Array
@@ -2386,6 +2399,7 @@
     1848(e): Minimum Distance to the Target Element
     1854(e): Maximum Population Year
     1855(m): Maximum Distance Between a Pair of Values
+    1856(m): Maximum Subarray Min-Product
     1858(m): Longest Word With All Prefixes
     1861(m): Rotating the Box
     1868(m): Product of Two Run-Length Encoded Arrays
@@ -2437,6 +2451,7 @@
     2091(m): Removing Minimum and Maximum From Array
     2098(m): Subsequence of Size K With the Largest Even Sum
     2099(e): Find Subsequence of Length K With the Largest Sum
+    2100(m): Find Good Days to Rob the Bank
     2101(m): Detonate the Maximum Bombs
     2104(m): Sum of Subarray Ranges
     2108(e): Find First Palindromic String in the Array
@@ -3015,6 +3030,7 @@
     1281(e): Subtract the Product and Sum of Digits of an Integer
     1304(e); Find N Unique Integers Sum up to Zero
     1359(h): Count All Valid Pickup and Delivery Options
+    1360(e): Number of Days Between Two Dates
     1447(m): Simplified Fractions
     1492(m): The kth Factor of n
     1513(m): Number of Substrings With Only 1s
