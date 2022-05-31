@@ -1570,8 +1570,12 @@ always find the largest one less than K。
 //
 ///////////////////////////////////////////////////////////////
 
-最佳解： method 1
+最佳解： method 3，4
 
+(1) set shrink
+(2) set not shrink
+(3) deque shrink
+(4) deque not shrink
 
 ///////////////////////////////////////////////////////////////
 //
@@ -1669,6 +1673,16 @@ always find the largest one less than K。
 (1) bucket sort
 (2) a. use xor to check if bit counting is same between arr and target.
     b. check if target sum is equal to arr sum.
+
+///////////////////////////////////////////////////////////////
+//
+// lc1461. Check If a String Contains All Binary Codes of Size K
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) bit manipulation
 
 ///////////////////////////////////////////////////////////////
 //

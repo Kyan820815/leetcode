@@ -192,6 +192,7 @@
     0838(m): Push Dominoes
     0844(e): Backspace String Compare
     0845(m): Longest Mountain in Array
+    0862(h): Shortest Subarray with Sum at Least K
     0876(e): Middle of the Linked List
     0881(m): Boats to Save People 
     0904(m): Fruit Into Baskets
@@ -228,6 +229,8 @@
     1358(m): Number of Substrings Containing All Three Characters
     1385(e): Find the Distance Value Between Two Arrays
     1423(m): Maximum Points You Can Obtain from Cards
+    1425(h): Constrained Subsequence Sum
+    1438(m): Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
     1456(m): Maximum Number of Vowels in a Substring of Given Length
     1470(e): Shuffle the Array
     1471(m): The k Strongest Values in an Array
@@ -608,6 +611,7 @@
     1391(m): Check if There is a Valid Path in a Grid
     1425(h): Constrained Subsequence Sum
     1429(m): First Unique Number
+    1438(m): Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
     1466(m): Reorder Routes to Make All Paths Lead to the City Zero
     1654(m): Minimum Jumps to Reach Home 
     1670(m): Design Front Middle Back Queue
@@ -1214,6 +1218,7 @@
     0294(m): Flip Game II
     0314(m): Binary Tree Vertical Order Traversal
     0316(m): Remove Duplicate Letters
+    0318(m): Maximum Product of Word Lengths
     0323(m): Number of Connected Components in an Undirected Graph
     0325(m): Maximum Size Subarray Sum Equals k
     0329(h): Longest Increasing Path in a Matrix
@@ -1390,6 +1395,8 @@
     1396(m): Design Underground System
     1429(m): First Unique Number
     1436(e): Destination City
+    1438(m): Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
+    1461(m): Check If a String Contains All Binary Codes of Size K
     1462(m): Course Schedule IV
     1472(m): Design Browser Historya
     1488(m): Avoid Flood in The City
@@ -1683,6 +1690,7 @@
     0299(m): Bulls and Cows
     0301(h): Remove Invalid Parentheses
     0306(m): Additive Number
+    0318(m): Maximum Product of Word Lengths
     0331(m): Verify Preorder Serialization of a Binary Tree
     0336(h): Palindrome Pairs
     0340(m): Longest Substring with At Most K Distinct Characters
@@ -1839,6 +1847,7 @@
     1446(e): Consecutive Characters
     1447(m): Simplified Fractions
     1456(m): Maximum Number of Vowels in a Substring of Given Length
+    1461(m): Check If a String Contains All Binary Codes of Size K
     1513(m): Number of Substrings With Only 1s
     1525(m): Number of Good Ways to Split a String
     1529(m): Minimum Suffix Flips
@@ -2013,6 +2022,7 @@
     0305(h): Number of Islands II
     0315(h): Count of Smaller Numbers After Self
     0317(h): Shortest Distance from All Buildings
+    0318(m): Maximum Product of Word Lengths
     0322(m): Coin Change
     0325(m): Maximum Size Subarray Sum Equals k
     0327(h): Count of Range Sum
@@ -2333,6 +2343,7 @@
     1428(m): Leftmost Column with at Least a One
     1431(e): Kids With the Greatest Number of Candies
     1437(e): Check If All 1's Are at Least Length K Places Away
+    1438(m): Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
     1441(e): Build an Array With Stack Operations
     1471(m): The k Strongest Values in an Array
     1480(e): Running Sum of 1d Array
@@ -2494,6 +2505,7 @@
     0260(m): Single Number III
     0268(e): Missing Number
     0289(m): Game of Life
+    0318(m): Maximum Product of Word Lengths
     0326(e): Power of Three
     0338(e): Counting Bits
     0342(e): Power of Four
@@ -2525,6 +2537,7 @@
     1356(e): Sort Integers by The Number of 1 Bits
     1457(m): Pseudo-Palindromic Paths in a Binary Tree
     1460(e): Make Two Arrays Equal by Reversing Sub-arrays
+    1461(m): Check If a String Contains All Binary Codes of Size K
     1470(e): Shuffle the Array
     1486(e): XOR Operation in an Array
     1506(m): Find Root of N-Ary Tree
@@ -3134,6 +3147,7 @@
 --- Rolling Hash:
     0187(m): Repeated DNA Sequences
     0718(m): Maximum Length of Repeated Subarray
+    1461(m): Check If a String Contains All Binary Codes of Size K
     1554(m): Strings Differ by One Character
     1698(m): Number of Distinct Substrings in a String
     2156(h): Find Substring With Given Hash Value
