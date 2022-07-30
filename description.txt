@@ -327,9 +327,9 @@ time: O(klogk*N)
 
 (1) 線性搜尋。
 
-What should we return when needle is an empty string? 
-For the purpose of this problem, we will return 0 when needle is an empty string 
-(priority greater than haystack is empty). 
+What should we return when needle is an empty string?
+For the purpose of this problem, we will return 0 when needle is an empty string
+(priority greater than haystack is empty).
 This is consistent to C's strstr() and Java's indexOf().
 
 //////////////////////////////////////////////////////////////
@@ -360,7 +360,7 @@ This is consistent to C's strstr() and Java's indexOf().
 
 最佳解： method 1
 
-(1) 
+(1)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -822,7 +822,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 
 (1) 先確認第零row或第零col有沒有0，有的話tag = true，再來對非零列或非零行
     找有沒有0，若有將其matrix[i][0] 和 matrix[0][j] 設置成0，此設法不會
-    影響結果，用作tag，再來對非零列或非零行找matrix[i][0] 和 matrix[0][j] 
+    影響結果，用作tag，再來對非零列或非零行找matrix[i][0] 和 matrix[0][j]
     有沒有=0，若有就改成0，最後若一開始的0 row或0 col tag = true，將整行或整列
     改成0。
 
@@ -1021,7 +1021,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
     ex: 1. 插入2: [] -> [] 2
         2: 插入2: 因為與上次相同，所以只需要從idx = 1(上次插入前的size)開始插入。
 
-(2) 如同3sum處理重複的作法，這次插入的數字和上次一樣，就跳過。 
+(2) 如同3sum處理重複的作法，這次插入的數字和上次一樣，就跳過。
     (條件要加上 i>pos, pos為這次遞迴的起點idx)。
 
 ///////////////////////////////////////////////////////////////
@@ -1033,7 +1033,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 最佳解： method 2
 
 (1) dp iteration：
-    若當前數字不等於'0' 
+    若當前數字不等於'0'
         dp[i] += dp[i-1];
     若當前數字和上一數字組合為 "1x" or "20"~"26"，
         dp[i] += dp[i-2];
@@ -1041,7 +1041,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 (2) O(1) space:
     利用兩遍量紀錄當前的i-1(i_1)和i-2(i_2)方法數，迴圈從1開始:
     若s[i] = '0'，i_1 = 0，
-    
+
     另外核心思想是i_2再下一輪會是i_1的值：i_2 = i_1
     若符合的當前和上一位可以解碼，i_1 += i_2，i_2 = i_1-i_2。
     反之，i_2 = i_1。
@@ -1077,7 +1077,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 最佳解： method 1, 2, 3
 
 (1) 遞迴跑inorder
-(2) iterative method: 
+(2) iterative method:
     用stack做inorder，每次都把left放進stack直到NULL，
     pop出一個，對這個node放入node->right，代表要往右處理tree的右半部，
     右半部裡面若有左子樹又會照上述的步驟進行，直到樹被跑完且stack為空。
@@ -1099,7 +1099,7 @@ https://leetcode.com/problems/combination-sum/discuss/742449/Explanation-of-Time
 
 (1) 使用方法為類似lc096的dp遞迴，差異在每次拿出的左子樹和右子樹，不只要數量，還要所有組合。
     因此要多使用vector<TreeNode *>表示子樹的組合種類。
-    time complexity: 
+    time complexity:
     https://www.geeksforgeeks.org/program-nth-catalan-number/
 
 ///////////////////////////////////////////////////////////////
@@ -1489,14 +1489,14 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704
     走過的點。
 
     time complexity:
-    Let's call k the max number of neighbors of a node, and d is the distance from start to end. 
-    In traditional BFS, we explore k nodes at each BFS level, each one generating in the worst case k 
+    Let's call k the max number of neighbors of a node, and d is the distance from start to end.
+    In traditional BFS, we explore k nodes at each BFS level, each one generating in the worst case k
     neighbors till we find end. So the maximum number of nodes we explore till we reach end is k*k*k...*k, d times. So it's O(k^d).
 
-    In double-ended BFS we finish when the forward and backward searches collide. 
-    Where do they collide? Approximately at d/2 distance. Let's call this point mid. 
-    So it's O(k^(d/2)) (start to mid) + O(k^(d/2)) (end to mid), yielding O(k^(d/2)). 
-    Yes, it's the same class of complexity of standard BFS, 
+    In double-ended BFS we finish when the forward and backward searches collide.
+    Where do they collide? Approximately at d/2 distance. Let's call this point mid.
+    So it's O(k^(d/2)) (start to mid) + O(k^(d/2)) (end to mid), yielding O(k^(d/2)).
+    Yes, it's the same class of complexity of standard BFS,
     but for large graphs double-ended BFS may give you the right result waaaaaaay faster.
 
 ///////////////////////////////////////////////////////////////
@@ -1685,7 +1685,7 @@ https://www.cnblogs.com/daijinqiao/p/3352893.html
 利用快慢指針所到的交會點，再從此交會點和原點一起順著走，相遇點即為cycle入口。
 假設head至入口為a，入口至相遇點為b，相遇點再到入口為c，
 2*(a+b) = a+b+n*(b+c) -> a+b = n*(b+c) -> a = (n-1)(b+c) + c;
-也就是說從head走到入口的距離等同於從交會點順著走n-1圈後再走長度c。 
+也就是說從head走到入口的距離等同於從交會點順著走n-1圈後再走長度c。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -1764,19 +1764,19 @@ https://www.cnblogs.com/daijinqiao/p/3352893.html
 
 最佳解： method 2
 
-(1) merge sort，中間點用快慢指針，類似lc021。 
+(1) merge sort，中間點用快慢指針，類似lc021。
     要注意找出中間點時，左邊的尾巴要指向NULL。
 
 (2) bottom up，o(nlogn) time and o(1) space。
     想像merge sort 由下往上做，每次合併2(左右各一) 4(左右各2) 8...個
     每次做完一個合併過程，要將tail指向left & right的頭，並且串接left & right
     最後return 一個新的tail
-    
+
     ex:4->2->1->3
-    
+
     step = 1，左右各1合併
     2->4->1->3
-    
+
     step = 2，左右各2合併
     1->2->3->4
 
@@ -2099,7 +2099,7 @@ https://www.cnblogs.com/daijinqiao/p/3352893.html
 (1) 維持一個dp[i] = max(dp[i-1], dp[i-2]+nums[i])。
     表示當前最大偷錢為 (a) 當前不偷，選用上一個偷錢數量。
                     (b) 當前偷，加上上上個偷錢數量。
-    (a)和(b)取最大值。                 
+    (a)和(b)取最大值。
 
 ***優化為：維持evenMax和oddMax
           若當前為偶數idx，則抓錢最大化為 max(evenMax+nums[idx], oddMax)。
@@ -2261,7 +2261,7 @@ https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
 (1) trie tree，類似lc208。
     n: # of words, m: average word length
     total space of tree: O(n*m)
-    one word insert: 
+    one word insert:
         time: O(m)
         space: O(m)
     one search:
@@ -2384,7 +2384,7 @@ https://cp-algorithms.com/algebra/sieve-of-eratosthenes.html
     若當前不是full complete tree，遞回去算full complete tree
     => 1 + dfs(root->left) + dfs(root->right)
     time complexity: O(logN*logN)
-    since always at least one of the two recursive calls is such a full tree, 
+    since always at least one of the two recursive calls is such a full tree,
     at least one of the two calls immediately stops. Again we have runtime O(log(n)^2).
 
 ///////////////////////////////////////////////////////////////
@@ -2573,7 +2573,7 @@ find O(1) insert into list O(logn) delete from list O(1)
 (2) O(n)，利用deque STL，
     維持一個降序陣列，此外當頭 <= i-k，pop_front,
     每當push_back時，若尾端 < nums[i]，pop_back。
-    
+
 ///////////////////////////////////////////////////////////////
 //
 // lc240. Search a 2D Matrix II (看)
@@ -2594,7 +2594,7 @@ find O(1) insert into list O(logn) delete from list O(1)
 最佳解： method 1
 
 (1) 利用divide & conquer with dp memorization。
-    time complexity: 
+    time complexity:
     https://www.geeksforgeeks.org/program-nth-catalan-number/
     https://stackoverflow.com/questions/27371612/catalan-numbers-recursive-function-time-complexity
     http://people.math.sc.edu/howard/Classes/554b/catalan.pdf
@@ -2632,8 +2632,8 @@ find O(1) insert into list O(logn) delete from list O(1)
 Approach 1: Preprocessing: O(n^2) Compute:O(1)
 Approach 2: Preprocessing: O(n) Compute:O(n)
 
-If the compute method is getting called a lot of times, approach 1 is better. 
-Let's say compute is called n times. 
+If the compute method is getting called a lot of times, approach 1 is better.
+Let's say compute is called n times.
 approach1 would be O(n^2) + O(n)
 approach2 would be O(n) + O(n)*O(n)
 so if compute > n times, approach 1 is better。
@@ -2997,9 +2997,9 @@ approach 1: We can use a hash map to store the shortest distances for any pair o
 方法一為iteration，方法二為遞迴。
 (1)
     (1-1) 每次跑一個迴圈決定好第i個的數量
-        dp[i] = min(dp[i], dp[i-j*j]+1]), j=1; j*j<=i 
+        dp[i] = min(dp[i], dp[i-j*j]+1]), j=1; j*j<=i
     (1-2) 核心思想為dp[i+j*j] = min(dp[i+j*j], dp[i]+1);
-          i = 0 ~ n, 
+          i = 0 ~ n,
           j = 1; i+j*j <= n;
     (2-1)
         dp[n] = min(dp[n], dp[n-i*i]+1)
@@ -3084,7 +3084,7 @@ approach 1: We can use a hash map to store the shortest distances for any pair o
     例如第一個index為0，後面n個(index:1~n指到1~n)，假設每個都指到別人且不重複，
     剩下一個點必指到已經被指過的，這樣就會有環。
     可用快慢指針解。
-(2) binary search: 
+(2) binary search:
     n+1個洞有1~n，必有一重複。
     若沒有重複數字，每次切中間，左邊的數量應該=mid(條件設<=mid，這樣奇偶都可以cover)，
     然後一直往右推移，若到left=right=n則代表沒有重複數字。
@@ -3224,14 +3224,14 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
     last_j: 當前開始刪的位置，last_i，當前開始檢查的位置。
     當刪除好右括號，去跑一次新的recursion刪除左括號，若當前是合法且為刪除左括號的recursion，
     res.push_back(now)。
-    The program only generates valid answers. Every path in the search generates 
-    one valid answer. The whole search space is a tree with k leaves. The number 
-    of nodes in the tree is roughly O(k). But this is not always true, for example 
+    The program only generates valid answers. Every path in the search generates
+    one valid answer. The whole search space is a tree with k leaves. The number
+    of nodes in the tree is roughly O(k). But this is not always true, for example
     a degenerated tree.
 
-    To generate one node it requires O(n) time from the string concatenation among 
-    other things. So roughly O(nk). Accurately O(nm) where m is the total "number 
-    of recursive calls" or "nodes in the search tree". Then you need to relate m 
+    To generate one node it requires O(n) time from the string concatenation among
+    other things. So roughly O(nk). Accurately O(nm) where m is the total "number
+    of recursive calls" or "nodes in the search tree". Then you need to relate m
     to n in the worst case.
 
     我的想法，若'))(('，這種只要走四遍，因為連續括號只做一次: O(n) function call，each O(n)
@@ -3241,14 +3241,14 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
 (2) 利用bfs，對於每一層，若沒有valid就將這個now的每一個位置都刪除一次，加入queue，
     若只要有一個，其他在這一層的not valid就不用處理，因為題目要求的是找到
     刪除最小次數的valid 括號。
-    
+
     time complexity: O(n*2^(n-1))
-    Let n be the number of parentheses in the string. While doing BFS we remove one one parantheses 
-    character from the given string and keep on doing it till we get a result (even an empty string is also an answer). 
+    Let n be the number of parentheses in the string. While doing BFS we remove one one parantheses
+    character from the given string and keep on doing it till we get a result (even an empty string is also an answer).
     So, in the worst case we traverse till the end. Therefore,
-    
+
     T(n) = n * C(n, n) + (n - 1) * C(n, n -1) + .... + 1*C(n, 1)
-    
+
     https://leetcode.com/problems/remove-invalid-parentheses/discuss/167659/Time-Complexity-Analysis-O(n*2n)
 
 ///////////////////////////////////////////////////////////////
@@ -3320,8 +3320,8 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
     S2： 從s1來，必須通過賣，由於賣完必須強制休息一個回合，因此在這有個S2為cool down
                            (表示至少休息一個回合，至於在休息狀態S0要休息幾輪看DP)。
     S0(i) = max(S0(i-1), S2(i-1));
-    S1(i) = max(S1(i-1), S0(i-1)-prices[i]);  
-    S2(i) = S1(i-1)+prices[i];  
+    S1(i) = max(S1(i-1), S0(i-1)-prices[i]);
+    S2(i) = S1(i-1)+prices[i];
 (2) another view of state machine
 
 ///////////////////////////////////////////////////////////////
@@ -3397,9 +3397,9 @@ follow up: If all integer numbers from the stream are between 0 and 100, how wou
 最佳解： method 1
 
 (1)
-    * Pop character from the stack when there is still another same 
+    * Pop character from the stack when there is still another same
         character in the remaining string and this element > now character.
-    * every time we process each character, we need to subtract one 
+    * every time we process each character, we need to subtract one
         from counter because this element we would not use anymore into our solution.
     * if the stack contain current character, just ignore this one.
 
@@ -3777,8 +3777,8 @@ SPACE: O(N)
 
 (1) map
 follow up: thread safe:
-    It's possible that the Logger is called with the same message at 
-    the same time from multiple sources. In that case the HashMap might 
+    It's possible that the Logger is called with the same message at
+    the same time from multiple sources. In that case the HashMap might
     not have been updated fast enough when the second duplicate message arrives.
     time: O(1), space(O(n))
 
@@ -4392,7 +4392,7 @@ follow up: convert to binary
     確定每個number都只能用一次，並對於這個num找尋dp[i-num]是否存在。
     所以i要從target往num走(--j)，
     因為如果從num走，會讓所有dp都是true，進而失去dp意義(重複使用num)。
-    (here we must start from 'half' downto 'num', 
+    (here we must start from 'half' downto 'num',
     otherwise current 'num' might be multiply used. )
 
 ///////////////////////////////////////////////////////////////
@@ -4769,9 +4769,9 @@ follow up: convert to binary
 最佳解： method 1
 
 (1) 類似lc287。
-    Since in this problems, we can find a loop when we start from any index. 
+    Since in this problems, we can find a loop when we start from any index.
     All we need to do is check if this loop has correct direction and loop cycle greater than 1.
-    We mark all position we have been to 0. 
+    We mark all position we have been to 0.
     so any point we travese will not more than 3 -> linear time complexity.
     time: O(n)
     space: O(1)
@@ -4797,7 +4797,7 @@ follow up: convert to binary
 
 最佳解： method 1
 
-(1) 維持 
+(1) 維持
     unordered_map<int,list<pair<int,int>>::iterator> map;
     此為key對應其所在位置
 
@@ -5184,7 +5184,7 @@ follow up：一直右上對角或是一直左下對角。
 (1) Dijkstra, O(n^2 + nlogn)
 (2) bfs with normal queue, O(n^2)
 (3) dfs, O(n!)
-    since every nodes may be updated after it has been visited. 
+    since every nodes may be updated after it has been visited.
     Therefore, the DFS tree should have n children in general.
 
 ///////////////////////////////////////////////////////////////
@@ -5210,7 +5210,7 @@ follow up：一直右上對角或是一直左下對角。
 
 ///////////////////////////////////////////////////////////////
 //
-// lc508. Most Frequent Subtree Sum 
+// lc508. Most Frequent Subtree Sum
 //
 ///////////////////////////////////////////////////////////////
 
@@ -5272,7 +5272,7 @@ follow up：一直右上對角或是一直左下對角。
 
 (1) 類似lc647，lc005。
     space O(n^2)
-    s[i] == s[j] -> dp[i][j] = dp[i+1][j-1]+2, 
+    s[i] == s[j] -> dp[i][j] = dp[i+1][j-1]+2,
     s[i] != s[j] -> dp[i][j] = max(dp[i+1][j], dp[i][j-1])。
     也可用遞迴。
 
@@ -5502,7 +5502,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 最佳解： method 1
 
 (1) double pass，第一遍檢查左上的最小值與自己相比，第二遍檢查右下的最小值與自己相比。
-    第一遍碰到非零的要比較，第二遍碰到非0或1的要比較。 
+    第一遍碰到非零的要比較，第二遍碰到非0或1的要比較。
 (2) bfs：對0的點全部加入queue，在queue中檢查鄰近有1(且值比當前+1還要來得大)的加入queue，
          且改為0，如洋蔥式解法。
 (3) dfs：對有1(有1代表旁邊是0，對原本為1且旁邊都是1的改為INT_MAX)的丟入dfs，
@@ -6067,7 +6067,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
     碰到的就取代sentence中的單字。
     n: # of dict, m: avg len of wd in dict, p: # of wd in sentence
     time: nlogn + pnm
-(2) 利用prefix tree，先將dict加入tree，再對sentence中每個單字去找有沒有遇到prefix。    
+(2) 利用prefix tree，先將dict加入tree，再對sentence中每個單字去找有沒有遇到prefix。
     x: avg len of wd in sentence
     time: nm + px
 
@@ -6185,7 +6185,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
     所以比較第一個左邊界和第二個右邊界來決定。
     若右邊界靠近x，left = mid+1;
     若左邊界靠近x，right = mid;
-    若相同，選左邊的arr。    
+    若相同，選左邊的arr。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -6452,7 +6452,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 ///////////////////////////////////////////////////////////////
 //
-// lc692. Top K Frequent Words 
+// lc692. Top K Frequent Words
 //
 ///////////////////////////////////////////////////////////////
 
@@ -6551,7 +6551,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 最佳解： method 1
 
 (1) binary search
- 
+
 ///////////////////////////////////////////////////////////////
 //
 // lc703. Kth Largest Element in a Stream
@@ -6655,7 +6655,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 
 ///////////////////////////////////////////////////////////////
 //
-// lc714. Best Time to Buy and Sell Stock with Transaction Fee 
+// lc714. Best Time to Buy and Sell Stock with Transaction Fee
 //
 ///////////////////////////////////////////////////////////////
 
@@ -7037,7 +7037,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 (1) 對於當前level，跑到底，若到底，往下個level，較快，因為不用使用vector<string>
     去算出在單一level所有可能性的string。
 (2) time complexity: O(a^n)，
-    對於每個level算出所有可能性的string。    
+    對於每個level算出所有可能性的string。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -7193,7 +7193,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 (1) 維持兩個，一個比v要小或等於，一個比v大。
     若當前root->val <= v，則往root->right走，且return的兩個tree，
     root->right = res_return[0]，res_return[0] = root。
-    
+
     若當前root->val > v，則往root->left走，且return的兩個tree，
     root->left = res_return[1]，res_return[1] = root。
 
@@ -7206,7 +7206,7 @@ https://leetcode.com/problems/encode-and-decode-tinyurl/discuss/100268/Two-solut
 最佳解： method 1
 
 (1) two pointer，比較當前非'X'值，
-    若不一樣，return false   
+    若不一樣，return false
     對於'L'， (i in start) >= (j in end)
     對於'R'， (i in start) <= (j in end)
     若有一條走完，檢查另一條有沒有非'X'值，若有，return false。
@@ -7559,7 +7559,7 @@ https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-giv
 最佳解： method 1
 
 (1) in place solution，只要注意last是R的case就好。
-(2) 
+(2)
     midlen = right-left-1;
     若d[left] == d[right]，中間都填上d[left];
     若d[left] == 'L' && d[right] == 'R'，中間都填上'.'
@@ -7847,7 +7847,7 @@ https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-giv
     從i往回跑，若遇到數字，
         N /= digit
         k %= N;
-    else 
+    else
         if (k == N || k == 0)
             return s[i]
         否則
@@ -8341,10 +8341,10 @@ O(n)
     O(n^2)
 (2) O(nx*ny*ny) < O(n^1.5)
     if (nx == ny) -> O(nx*ny*ny) = O(n^1.5)
-    First, note that, in the 3-level loop, its complexity is o(nx * ny * ny). 
-    We make the size of outmost loop, ie, nx, the largest, and in this way we 
-    save much computation. However, when nx = ny, we do not save computation. 
-    Thus, the worst case is nx = ny. The typical example is the N points form 
+    First, note that, in the 3-level loop, its complexity is o(nx * ny * ny).
+    We make the size of outmost loop, ie, nx, the largest, and in this way we
+    save much computation. However, when nx = ny, we do not save computation.
+    Thus, the worst case is nx = ny. The typical example is the N points form
     a regular grid, where nx = ny = sqrt (N)
     (a) 對於每一個x，從小到大，若有一對y1, y2，且y1和y2上次被用過的是lastx
         -> res = min(res, (x - lastx) * (y1- y2))。
@@ -8404,7 +8404,7 @@ O(n)
 這題是在講，對於連通的點可以移除的點數，可以用dfs或是union find，核心在於
 同個島嶼移除的點數為這個島嶼的點數-1，所以總共的移除點數就是總共的點數-總共的島嶼數。
 又或者每個島嶼在移除後都會剩下一個，所以若一個島嶼只有一個點，這個島嶼不能移除。
-題目中的最大move數量，指的是，至個點旁邊有row或col相同的點，這個點可以move 
+題目中的最大move數量，指的是，至個點旁邊有row或col相同的點，這個點可以move
 (也就是remove 這個點)。
 
 (1) union find
@@ -8665,8 +8665,8 @@ O(n)
     update a[idx] = a[idx] + val
     再次檢查a[idx]是不是even，是的話，加回even。
     O(n):
-    n here is the size of A. Based on the problem description, 
-    it dominates the size of queries (0 <= queries[i][1] < A.length). 
+    n here is the size of A. Based on the problem description,
+    it dominates the size of queries (0 <= queries[i][1] < A.length).
     So, worst case scenario, we need 3 * n operations, which is O(n).
 
 ///////////////////////////////////////////////////////////////
@@ -8753,7 +8753,7 @@ O(n)
 (2) one pass
     維持一個unique integer size = k 的window，且一變數prefix，表示
     在left之前有多少重複的number，res += prefix+1。且left為cnt[left] == 1，
-    固定起始點的出現次數為1。所以left為unique interger subarray and 
+    固定起始點的出現次數為1。所以left為unique interger subarray and
     cnt[left] = 1。若 k < 0 => prefix = 0。要重新計算有多少prefix array。
     ex 1 1 1 2 2 2 3 3 3
        0 1 2 3 4 5 6 7 8
@@ -8970,7 +8970,7 @@ O(n)
 
 最佳解： method 1
 
-(1) 將本來的stack array做成 pair<ListNode *, int>來表示 the relation 
+(1) 將本來的stack array做成 pair<ListNode *, int>來表示 the relation
     between list node and index in the res array。
 
 (2) 類似lc503，但是因為只要找一輪，從尾巴往頭看，每次push當前val進入stack，
@@ -9357,6 +9357,18 @@ k = # of words, m = len of text, n = avg len of a word
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1078. Occurrences After Bigram
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1，2，3
+
+(1) built-in
+(2) direct string processing
+(3) string find
+
+///////////////////////////////////////////////////////////////
+//
 // lc1079. Letter Tile Possibilities (看)*
 //
 ///////////////////////////////////////////////////////////////
@@ -9378,7 +9390,7 @@ k = # of words, m = len of text, n = avg len of a word
 最佳解： method 1
 
 (1) (a) Go to leaf to check if limit > 0.
-    (b) for every internal node, if return child is both NULL, 
+    (b) for every internal node, if return child is both NULL,
         it means that this node is insufficient node. So we return NULL.
 
 ///////////////////////////////////////////////////////////////
@@ -9535,7 +9547,7 @@ k = # of words, m = len of text, n = avg len of a word
 (1) 每次分num個糖果，直到不能分為止。
     time:O(sqrt(n))
 
-    we give out candies x times since the total number of candies is n, 
+    we give out candies x times since the total number of candies is n,
     then x*(x+1)/2 = n or O(x^2) = O(n) or O(x) = O(sqrt(n)).
 
     因為1+2+3+...+x = n
@@ -9673,9 +9685,9 @@ k = # of words, m = len of text, n = avg len of a word
 
 (1) 一次postorder，高度從最底層開始算(深度是由上往下算)，
     若左子樹高度 = 右子樹高度，return root。
-    若左子樹高度 > 右子樹高度，return left 
+    若左子樹高度 > 右子樹高度，return left
                         (此left為遞迴return值，並不一定是root->left)。
-    若左子樹高度 < 右子樹高度，return right 
+    若左子樹高度 < 右子樹高度，return right
                         (此right為遞迴return值，並不一定是root->right)。
 
 (2) 兩次postorder，第一次找最大深度，第二次跑lc236找最小共同祖先。
@@ -9718,15 +9730,15 @@ k = # of words, m = len of text, n = avg len of a word
     color edge 連過來。從零開始用bfs。初始化個點最大path為2 * n，n為總數。
 
     其實最大是n*2-3：
-    The maximum result happens when in a path from 0 to target, 
-    all the intermediate nodes (excluding 0 and target) have 
+    The maximum result happens when in a path from 0 to target,
+    all the intermediate nodes (excluding 0 and target) have
     an additional self-edge. e.g.
 
     red_edges = [[0, 1], [1, 2], [2, 3]]
     blue_edges = [[1, 1], [2, 2]]
     n = 4
-    The minimum step to reach 3 is 5 steps, because all intermediate 
-    nodes 1 and 2 contain self-edges. In other words, 
+    The minimum step to reach 3 is 5 steps, because all intermediate
+    nodes 1 and 2 contain self-edges. In other words,
     the maximum result can be 2 * (n - 2) + 1.
 
 ///////////////////////////////////////////////////////////////
@@ -10180,15 +10192,15 @@ k = # of words, m = len of text, n = avg len of a word
 
 note that (1,1), (2,0), (0,2) would be special cases, these
 three cost 2 step
-The moment you reach 0,2 or 2,0 or 1,1 (visualize in the real chess board) 
-the knight cannot move further to 0,0 or might go into negative axis, 
-the smartest way is to if you are in (0,2) move the night to (2,1) 
-then from there it could move to (0,0)..this takes 2 move. 
+The moment you reach 0,2 or 2,0 or 1,1 (visualize in the real chess board)
+the knight cannot move further to 0,0 or might go into negative axis,
+the smartest way is to if you are in (0,2) move the night to (2,1)
+then from there it could move to (0,0)..this takes 2 move.
 same applies for (1,1) and (2,0) too
 
 why only (a) abs(x-1) abs(y-2) and (b) abs(x-2) abs(y-1)
-This is because you are counting steps (and walking backwards) 
-as you traverse from x,y to 0,0. 
+This is because you are counting steps (and walking backwards)
+as you traverse from x,y to 0,0.
 The only way to reach 0.0 from x,y (x>0, y>0) is to either try (x-1,y-2) or (x-2,y-1)
 
 time: O(m*n), m = x, n = y
@@ -10336,18 +10348,18 @@ follow up: >= k
 最佳解： method 1
 
 (1) f(n) = 1/n + 1/n * (n-2) * f(n-1)。
-    (a) the 1st person gets his/her own seat. (with probability 1/n). 
+    (a) the 1st person gets his/her own seat. (with probability 1/n).
         Then the n-th person is sure (with probability 1) to get the n-th seat.
-    (b) the 1st person gets the n-th person's seat. (with probability 1/n). 
+    (b) the 1st person gets the n-th person's seat. (with probability 1/n).
         Then the n-th person cannot (with probability 0) get the n-th seat.
-    (c) the 1st person gets a seat between 2 and n-1 (with probability (n-2)/n). 
+    (c) the 1st person gets a seat between 2 and n-1 (with probability (n-2)/n).
         Assume the 1st person gets a-th seat. Then in the next round, we have 3 choices again:
-    3.1) if the a-th person gets 1st seat (with probability 1/(n-1)), 
-         then this is just like 1st and a-th person swap their seats, 
+    3.1) if the a-th person gets 1st seat (with probability 1/(n-1)),
+         then this is just like 1st and a-th person swap their seats,
          it never affect our result for the n-th person.
-    3.2) if the a-th person gets n-th seat (with probability 1/(n-1)), 
+    3.2) if the a-th person gets n-th seat (with probability 1/(n-1)),
          game over.
-    3.3) if the a-th person gets a seat which is not 1st or n-th, 
+    3.3) if the a-th person gets a seat which is not 1st or n-th,
          (with probability (n-1-2)/(n-1)), we jump into a loop.
 (2) 利用數學歸納法得證 n > 1，f(n) = 0.5。
 
@@ -10397,7 +10409,7 @@ follow up: >= k
 (1) binary search，類似lc410, lc1011。
     注意和上面兩題不同的是，我們要找minimum of subarray sum
     上面兩題找得是maximum of subarray sum
-    We want each cut size >= mid. 
+    We want each cut size >= mid.
     We are binary searching minimum total sweetness.
 
 ///////////////////////////////////////////////////////////////
@@ -10409,8 +10421,8 @@ follow up: >= k
 最佳解： method 1
 
 (1) 斜率轉換，avoid divide by zero condition。
-                (y2-y1) / (x2 - x1) == (y3-y2) / (x3 - x2) 
-    is equal to 
+                (y2-y1) / (x2 - x1) == (y3-y2) / (x3 - x2)
+    is equal to
                 (y2-y1) * (x3 - x2) == (y3 - y2) * (x2 - x1)
 
 ///////////////////////////////////////////////////////////////
@@ -10439,11 +10451,11 @@ follow up: >= k
 (1) 維持一map<int,int> dp表示map[time] = profit，到time為止最大profit
     對endtime, starttime, profit, 做sort
     對當前job，找到上一個time <= job.starttime, use prev(upper_bound)
-    
+
     **  不用lower_bound是因為，若當前沒有job.starttime in dp，要用prev，若有，
         不能用prev，但用upper_bound，只要prev(upper_bound)就可以解決，
         類似lc1146。
-    
+
     cur = dp[last_time] + job.profit
     若cur > dp.rbegin()->profit then dp[job.endtime] = cur;
 
@@ -10722,7 +10734,7 @@ follow up: >= k
 
 ///////////////////////////////////////////////////////////////
 //
-// lc1281. Subtract the Product and Sum of Digits of an Integer 
+// lc1281. Subtract the Product and Sum of Digits of an Integer
 //
 ///////////////////////////////////////////////////////////////
 
@@ -10968,8 +10980,8 @@ follow up: >= k
 
 類似lc1292。
 (1) 先算出dp[i][j]，表示(0,0)到(i,j)的總和
-    再來res[i][j] = res[i+k][j+k] - res[i+k][j-k-1] 
-                                 - res[i-k-1][j+k] 
+    再來res[i][j] = res[i+k][j+k] - res[i+k][j-k-1]
+                                 - res[i-k-1][j+k]
                                  + res[i-k-1][j-k-1]
 
 ///////////////////////////////////////////////////////////////
@@ -11039,6 +11051,16 @@ follow up: >= k
 最佳解： method 1
 
 (1) sort index，add to result array。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1332. Remove Palindromic Subsequences
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) two pointers
 
 ///////////////////////////////////////////////////////////////
 //
@@ -11424,13 +11446,13 @@ follow up: >= k
 follow up: O(1) space DSW algo
 https://leetcode.com/problems/balance-a-binary-search-tree/discuss/541785/C%2B%2BJava-with-picture-DSW-O(n)orO(1)
 ** dont need to write code but briefly explain how it works
-(a) Convert the initial tree into a vine. By doing right rotations, 
+(a) Convert the initial tree into a vine. By doing right rotations,
     we flatten a tree into a 'linked list', where the head is the former leftmost node, and tail - former rightmost node.
 (b) As you convert the tree into a vine, count the total number of nodes in cnt.
 (c) Calculate the height of the closest perfectly balanced tree: h = log2(cnt + 1).
 (d) Calculate the number of nodes in the closest perfectly balanced tree: m = pow(2, h) - 1.
 (e) Left-rotate cnt - m nodes to cover up the excess of nodes.
-Note: you rotate the root node, then you rotate the right child of the new root node, 
+Note: you rotate the root node, then you rotate the right child of the new root node,
 and so on. In other words, left rotations are performed on every second node of the vine.
 
 (f)Left-rotate m / 2 nodes.
@@ -11555,7 +11577,7 @@ and so on. In other words, left rotations are performed on every second node of 
 
 最佳解： method 1
 
-(1) sort 
+(1) sort
 (2) recursion
 
 ///////////////////////////////////////////////////////////////
@@ -11752,7 +11774,7 @@ always find the largest one less than K。
 
 最佳解： method 1
 
-(1) linear find last index with a[idx] == 1 and check if 
+(1) linear find last index with a[idx] == 1 and check if
     i-idx-1 < k or not。
 
 ///////////////////////////////////////////////////////////////
@@ -11776,7 +11798,7 @@ always find the largest one less than K。
 
 最佳解： method 1
 
-(1) When we find target[i] is greater than current number, 
+(1) When we find target[i] is greater than current number,
     just push and pop and update it until they are equal.
 
 ///////////////////////////////////////////////////////////////
@@ -12119,7 +12141,7 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
 
 最佳解： method 1
 
-(1) 
+(1)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -12129,7 +12151,7 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
 
 最佳解： method 1
 
-(1) 用set紀錄走過的。 
+(1) 用set紀錄走過的。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -12255,11 +12277,11 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
     empty = empty / exchange + empty % exchange
 (2) O(1) time
 
-The "price" of buying a refill is handing over two empties. 
+The "price" of buying a refill is handing over two empties.
 However, you must have your own empty bottle to receive the refill.
-Therefore after drinking the initial numBottles, 
-we "keep aside" one empty for receiving the refills (therefore we do 9 minus 1) 
-and trade in the remaining 8 empties to get refills @ 2 bottles/refill. 
+Therefore after drinking the initial numBottles,
+we "keep aside" one empty for receiving the refills (therefore we do 9 minus 1)
+and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 
 ///////////////////////////////////////////////////////////////
 //
@@ -12310,7 +12332,7 @@ follow up: find total sum of odd sub arrays
 
 最佳解： method 1
 
-(1) two pass dp, maintain a dp[i] means # of unique characters 
+(1) two pass dp, maintain a dp[i] means # of unique characters
     from 0 ... i.
 
 ///////////////////////////////////////////////////////////////
@@ -12383,10 +12405,10 @@ follow up: find total sum of odd sub arrays
 
 最佳解： method 1
 
-(1) 
-    (a) when s[i] == ')' && (s[i+1] == '(' or i == s.size()-1), we need to insert one ')'; 
+(1)
+    (a) when s[i] == ')' && (s[i+1] == '(' or i == s.size()-1), we need to insert one ')';
         Otherwise, there are two consecutive ')', and we skip the next one: i++
-    (b) when every time we face two ')', subtract one '(' and check if it is < 0. 
+    (b) when every time we face two ')', subtract one '(' and check if it is < 0.
         If yes, we need to insert one '(' and reset left to 0.
     (c) after one time pass. res += left*2 to make sure if there are not enough ')'.
 
@@ -12588,14 +12610,14 @@ follow up: find total sum of odd sub arrays
 https://leetcode.com/problems/min-cost-to-connect-all-points/discuss/843940/C%2B%2B-MST%3A-Kruskal-%2B-Prim's-%2B-Complete-Graph
 
 (1) Kruskal with sort
-    Kruskal involves min heap to pick the smallest edge, 
+    Kruskal involves min heap to pick the smallest edge,
     and union-find to check if the edge is redundant. We exit when all points are connected.
 (2) Kruskal with heap
 (3) Kruskal with priority queue
 (4) Prim with priority queue
-    In the Prim's algorithm, we are building a tree starting from some initial point. 
+    In the Prim's algorithm, we are building a tree starting from some initial point.
     We track all connected points in visited.
-    For the current point, we add its edges to the min heap. 
+    For the current point, we add its edges to the min heap.
     Then, we pick a smallest edge that connects to a point that is not visited. Repeat till all points are visited.
 
 ///////////////////////////////////////////////////////////////
@@ -12984,6 +13006,16 @@ follow up:
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1658. Minimum Operations to Reduce X to Zero
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) prefix sum
+
+///////////////////////////////////////////////////////////////
+//
 // lc1657. Determine if Two Strings Are Close (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -13200,8 +13232,8 @@ follow up:
 time : O(n), space: O(k)
     this problem is like leetcode 239, just use a decreasing deque size k.
     More specifically, the head of the deque is the max score we can get from current index i.
-    The size of deque is k because for current index i, 
-    the farthest idx before i is i-k, and when we push i in to que, 
+    The size of deque is k because for current index i,
+    the farthest idx before i is i-k, and when we push i in to que,
     we need to pop out any index smaller than i-k.
 
 ///////////////////////////////////////////////////////////////
@@ -13225,7 +13257,7 @@ time : O(n), space: O(k)
 (1) two pointer，計算不符合的數量，若等同於當前學生數量，return。
     O(n^2) time
     the worst case is like student [0 0 0 1 1 1], sandwich [1 0 1 0 1 0]
-    and for each sandwich, we go though student array n/2 times. 
+    and for each sandwich, we go though student array n/2 times.
     That is, total time: n/2*n = O(n^2).
 
 (2) bucket sort。
@@ -13805,7 +13837,7 @@ time : O(n), space: O(k)
 
 最佳解： method 1
 
-(1) count # of negative sing 
+(1) count # of negative sing
 
 ///////////////////////////////////////////////////////////////
 //
@@ -14587,7 +14619,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 最佳解： method 2
 
 (1) 存'x'的index，然後算個數。
-(2) 遇到'x'，i+=3，++res。 
+(2) 遇到'x'，i+=3，++res。
     遇到'o'，i++。
 
 ///////////////////////////////////////////////////////////////
@@ -14787,7 +14819,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 
 最佳解： method 1
 
-(1) greedy, 
+(1) greedy,
     find the first house from right to left that has different color with colors[0]
     find the first house from left to right that has different color with colors[n-1]
 
@@ -14834,7 +14866,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 
 最佳解： method 1
 
-(1) sort 
+(1) sort
 (2) bucket sort
 
 ///////////////////////////////////////////////////////////////

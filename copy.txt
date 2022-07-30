@@ -6,7 +6,7 @@
 
 最佳解： method 1
 
-(1) 
+(1)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -145,18 +145,18 @@ follow up: >= k
 最佳解： method 1
 
 (1) f(n) = 1/n + 1/n * (n-2) * f(n-1)。
-    (a) the 1st person gets his/her own seat. (with probability 1/n). 
+    (a) the 1st person gets his/her own seat. (with probability 1/n).
         Then the n-th person is sure (with probability 1) to get the n-th seat.
-    (b) the 1st person gets the n-th person's seat. (with probability 1/n). 
+    (b) the 1st person gets the n-th person's seat. (with probability 1/n).
         Then the n-th person cannot (with probability 0) get the n-th seat.
-    (c) the 1st person gets a seat between 2 and n-1 (with probability (n-2)/n). 
+    (c) the 1st person gets a seat between 2 and n-1 (with probability (n-2)/n).
         Assume the 1st person gets a-th seat. Then in the next round, we have 3 choices again:
-    3.1) if the a-th person gets 1st seat (with probability 1/(n-1)), 
-         then this is just like 1st and a-th person swap their seats, 
+    3.1) if the a-th person gets 1st seat (with probability 1/(n-1)),
+         then this is just like 1st and a-th person swap their seats,
          it never affect our result for the n-th person.
-    3.2) if the a-th person gets n-th seat (with probability 1/(n-1)), 
+    3.2) if the a-th person gets n-th seat (with probability 1/(n-1)),
          game over.
-    3.3) if the a-th person gets a seat which is not 1st or n-th, 
+    3.3) if the a-th person gets a seat which is not 1st or n-th,
          (with probability (n-1-2)/(n-1)), we jump into a loop.
 (2) 利用數學歸納法得證 n > 1，f(n) = 0.5。
 
@@ -206,7 +206,7 @@ follow up: >= k
 (1) binary search，類似lc410, lc1011。
     注意和上面兩題不同的是，我們要找minimum of subarray sum
     上面兩題找得是maximum of subarray sum
-    We want each cut size >= mid. 
+    We want each cut size >= mid.
     We are binary searching minimum total sweetness.
 
 ///////////////////////////////////////////////////////////////
@@ -218,8 +218,8 @@ follow up: >= k
 最佳解： method 1
 
 (1) 斜率轉換，avoid divide by zero condition。
-                (y2-y1) / (x2 - x1) == (y3-y2) / (x3 - x2) 
-    is equal to 
+                (y2-y1) / (x2 - x1) == (y3-y2) / (x3 - x2)
+    is equal to
                 (y2-y1) * (x3 - x2) == (y3 - y2) * (x2 - x1)
 
 ///////////////////////////////////////////////////////////////
@@ -248,11 +248,11 @@ follow up: >= k
 (1) 維持一map<int,int> dp表示map[time] = profit，到time為止最大profit
     對endtime, starttime, profit, 做sort
     對當前job，找到上一個time <= job.starttime, use prev(upper_bound)
-    
+
     **  不用lower_bound是因為，若當前沒有job.starttime in dp，要用prev，若有，
         不能用prev，但用upper_bound，只要prev(upper_bound)就可以解決，
         類似lc1146。
-    
+
     cur = dp[last_time] + job.profit
     若cur > dp.rbegin()->profit then dp[job.endtime] = cur;
 
@@ -531,7 +531,7 @@ follow up: >= k
 
 ///////////////////////////////////////////////////////////////
 //
-// lc1281. Subtract the Product and Sum of Digits of an Integer 
+// lc1281. Subtract the Product and Sum of Digits of an Integer
 //
 ///////////////////////////////////////////////////////////////
 
@@ -777,8 +777,8 @@ follow up: >= k
 
 類似lc1292。
 (1) 先算出dp[i][j]，表示(0,0)到(i,j)的總和
-    再來res[i][j] = res[i+k][j+k] - res[i+k][j-k-1] 
-                                 - res[i-k-1][j+k] 
+    再來res[i][j] = res[i+k][j+k] - res[i+k][j-k-1]
+                                 - res[i-k-1][j+k]
                                  + res[i-k-1][j-k-1]
 
 ///////////////////////////////////////////////////////////////
@@ -848,6 +848,16 @@ follow up: >= k
 最佳解： method 1
 
 (1) sort index，add to result array。
+
+///////////////////////////////////////////////////////////////
+//
+// lc1332. Remove Palindromic Subsequences
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) two pointers
 
 ///////////////////////////////////////////////////////////////
 //
@@ -1233,13 +1243,13 @@ follow up: >= k
 follow up: O(1) space DSW algo
 https://leetcode.com/problems/balance-a-binary-search-tree/discuss/541785/C%2B%2BJava-with-picture-DSW-O(n)orO(1)
 ** dont need to write code but briefly explain how it works
-(a) Convert the initial tree into a vine. By doing right rotations, 
+(a) Convert the initial tree into a vine. By doing right rotations,
     we flatten a tree into a 'linked list', where the head is the former leftmost node, and tail - former rightmost node.
 (b) As you convert the tree into a vine, count the total number of nodes in cnt.
 (c) Calculate the height of the closest perfectly balanced tree: h = log2(cnt + 1).
 (d) Calculate the number of nodes in the closest perfectly balanced tree: m = pow(2, h) - 1.
 (e) Left-rotate cnt - m nodes to cover up the excess of nodes.
-Note: you rotate the root node, then you rotate the right child of the new root node, 
+Note: you rotate the root node, then you rotate the right child of the new root node,
 and so on. In other words, left rotations are performed on every second node of the vine.
 
 (f)Left-rotate m / 2 nodes.
@@ -1364,7 +1374,7 @@ and so on. In other words, left rotations are performed on every second node of 
 
 最佳解： method 1
 
-(1) sort 
+(1) sort
 (2) recursion
 
 ///////////////////////////////////////////////////////////////
@@ -1561,7 +1571,7 @@ always find the largest one less than K。
 
 最佳解： method 1
 
-(1) linear find last index with a[idx] == 1 and check if 
+(1) linear find last index with a[idx] == 1 and check if
     i-idx-1 < k or not。
 
 ///////////////////////////////////////////////////////////////
@@ -1585,7 +1595,7 @@ always find the largest one less than K。
 
 最佳解： method 1
 
-(1) When we find target[i] is greater than current number, 
+(1) When we find target[i] is greater than current number,
     just push and pop and update it until they are equal.
 
 ///////////////////////////////////////////////////////////////
@@ -1928,7 +1938,7 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
 
 最佳解： method 1
 
-(1) 
+(1)
 
 ///////////////////////////////////////////////////////////////
 //
@@ -1938,7 +1948,7 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
 
 最佳解： method 1
 
-(1) 用set紀錄走過的。 
+(1) 用set紀錄走過的。
 
 ///////////////////////////////////////////////////////////////
 //
@@ -2064,11 +2074,11 @@ https://leetcode.com/problems/xor-operation-in-an-array/discuss/699141/Visual-So
     empty = empty / exchange + empty % exchange
 (2) O(1) time
 
-The "price" of buying a refill is handing over two empties. 
+The "price" of buying a refill is handing over two empties.
 However, you must have your own empty bottle to receive the refill.
-Therefore after drinking the initial numBottles, 
-we "keep aside" one empty for receiving the refills (therefore we do 9 minus 1) 
-and trade in the remaining 8 empties to get refills @ 2 bottles/refill. 
+Therefore after drinking the initial numBottles,
+we "keep aside" one empty for receiving the refills (therefore we do 9 minus 1)
+and trade in the remaining 8 empties to get refills @ 2 bottles/refill.
 
 ///////////////////////////////////////////////////////////////
 //
@@ -2119,7 +2129,7 @@ follow up: find total sum of odd sub arrays
 
 最佳解： method 1
 
-(1) two pass dp, maintain a dp[i] means # of unique characters 
+(1) two pass dp, maintain a dp[i] means # of unique characters
     from 0 ... i.
 
 ///////////////////////////////////////////////////////////////
@@ -2192,10 +2202,10 @@ follow up: find total sum of odd sub arrays
 
 最佳解： method 1
 
-(1) 
-    (a) when s[i] == ')' && (s[i+1] == '(' or i == s.size()-1), we need to insert one ')'; 
+(1)
+    (a) when s[i] == ')' && (s[i+1] == '(' or i == s.size()-1), we need to insert one ')';
         Otherwise, there are two consecutive ')', and we skip the next one: i++
-    (b) when every time we face two ')', subtract one '(' and check if it is < 0. 
+    (b) when every time we face two ')', subtract one '(' and check if it is < 0.
         If yes, we need to insert one '(' and reset left to 0.
     (c) after one time pass. res += left*2 to make sure if there are not enough ')'.
 
@@ -2397,14 +2407,14 @@ follow up: find total sum of odd sub arrays
 https://leetcode.com/problems/min-cost-to-connect-all-points/discuss/843940/C%2B%2B-MST%3A-Kruskal-%2B-Prim's-%2B-Complete-Graph
 
 (1) Kruskal with sort
-    Kruskal involves min heap to pick the smallest edge, 
+    Kruskal involves min heap to pick the smallest edge,
     and union-find to check if the edge is redundant. We exit when all points are connected.
 (2) Kruskal with heap
 (3) Kruskal with priority queue
 (4) Prim with priority queue
-    In the Prim's algorithm, we are building a tree starting from some initial point. 
+    In the Prim's algorithm, we are building a tree starting from some initial point.
     We track all connected points in visited.
-    For the current point, we add its edges to the min heap. 
+    For the current point, we add its edges to the min heap.
     Then, we pick a smallest edge that connects to a point that is not visited. Repeat till all points are visited.
 
 ///////////////////////////////////////////////////////////////
@@ -2793,6 +2803,16 @@ follow up:
 
 ///////////////////////////////////////////////////////////////
 //
+// lc1658. Minimum Operations to Reduce X to Zero
+//
+///////////////////////////////////////////////////////////////
+
+最佳解： method 1
+
+(1) prefix sum
+
+///////////////////////////////////////////////////////////////
+//
 // lc1657. Determine if Two Strings Are Close (看)
 //
 ///////////////////////////////////////////////////////////////
@@ -3009,8 +3029,8 @@ follow up:
 time : O(n), space: O(k)
     this problem is like leetcode 239, just use a decreasing deque size k.
     More specifically, the head of the deque is the max score we can get from current index i.
-    The size of deque is k because for current index i, 
-    the farthest idx before i is i-k, and when we push i in to que, 
+    The size of deque is k because for current index i,
+    the farthest idx before i is i-k, and when we push i in to que,
     we need to pop out any index smaller than i-k.
 
 ///////////////////////////////////////////////////////////////
@@ -3034,7 +3054,7 @@ time : O(n), space: O(k)
 (1) two pointer，計算不符合的數量，若等同於當前學生數量，return。
     O(n^2) time
     the worst case is like student [0 0 0 1 1 1], sandwich [1 0 1 0 1 0]
-    and for each sandwich, we go though student array n/2 times. 
+    and for each sandwich, we go though student array n/2 times.
     That is, total time: n/2*n = O(n^2).
 
 (2) bucket sort。
@@ -3614,7 +3634,7 @@ time : O(n), space: O(k)
 
 最佳解： method 1
 
-(1) count # of negative sing 
+(1) count # of negative sing
 
 ///////////////////////////////////////////////////////////////
 //
@@ -4396,7 +4416,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 最佳解： method 2
 
 (1) 存'x'的index，然後算個數。
-(2) 遇到'x'，i+=3，++res。 
+(2) 遇到'x'，i+=3，++res。
     遇到'o'，i++。
 
 ///////////////////////////////////////////////////////////////
@@ -4596,7 +4616,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 
 最佳解： method 1
 
-(1) greedy, 
+(1) greedy,
     find the first house from right to left that has different color with colors[0]
     find the first house from left to right that has different color with colors[n-1]
 
@@ -4643,7 +4663,7 @@ https://cp-algorithms.com/game_theory/sprague-grundy-nim.html
 
 最佳解： method 1
 
-(1) sort 
+(1) sort
 (2) bucket sort
 
 ///////////////////////////////////////////////////////////////
