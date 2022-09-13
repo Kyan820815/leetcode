@@ -1,6 +1,6 @@
 //--- Q: 0378. Kth Smallest Element in a Sorted Matrix
 
-//--- method 1: partition, O(n)
+//--- method 1: partition, O(n^2) time, O(1) space
 class Solution {
 public:
     int row, col;
@@ -32,7 +32,7 @@ public:
     }
 };
 
-//--- method 2: priority queue max heap
+//--- method 2: priority queue max heap, O(n^2 * logk), O(k) space
 class Solution {
 public:
     int row, col;

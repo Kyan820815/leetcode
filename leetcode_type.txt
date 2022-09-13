@@ -352,6 +352,7 @@
     0771(e): Jewels and Stones
     0791(m): Custom Sort String
     0914(e): X of a Kind in a Deck of Cards
+    0916(m): Word Subsets
     0923(m): 3Sum With Multiplicity
     1002(e): Find Common Characters
     1051(e): Height Checker
@@ -1335,6 +1336,7 @@
     0895(h): Maximum Frequency Stack
     0904(m): Fruit Into Baskets
     0914(e): X of a Kind in a Deck of Cards
+    0916(m): Word Subsets
     0923(m): 3Sum With Multiplicity
     0924(h): Minimize Malware Spread
     0929(e): Unique Email Addresses
@@ -1801,6 +1803,7 @@
     0884(e): Uncommon Words from Two Sentences
     0890(m): Find and Replace Pattern
     0893(m): Groups of Special-Equivalent Strings
+    0916(m): Word Subsets
     0917(e): Reverse Only Letters
     0921(m): Minimum Add to Make Parentheses Valid
     0925(e): Long Pressed Name
@@ -2213,6 +2216,7 @@
     0912(m): Sort an Array
     0914(e): X of a Kind in a Deck of Cards
     0915(m): Partition Array into Disjoint Intervals
+    0916(m): Word Subsets
     0918(m): Maximum Sum Circular Subarray
     0922(e): Sort Array By Parity II
     0923(m): 3Sum With Multiplicity
