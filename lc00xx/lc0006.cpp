@@ -1,4 +1,5 @@
 //--- Q: 0006. ZigZag Conversion
+//--- last written: 2022/11/01
 
 //--- method 1: find pattern
 class Solution {

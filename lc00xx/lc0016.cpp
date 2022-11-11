@@ -1,4 +1,5 @@
 //--- Q: 0016. 3Sum Closest
+//--- last written: 2022/11/02
 
 //--- method 1: sort and O(n^2) find
 class Solution {

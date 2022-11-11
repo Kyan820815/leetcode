@@ -1,4 +1,5 @@
 //--- Q: 0001. Two Sum
+//--- last written: 2022/11/01
 
 //--- method 1-1: sort then find index from left and right, better
 class Solution {

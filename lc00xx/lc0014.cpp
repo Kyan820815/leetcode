@@ -1,4 +1,5 @@
 //--- Q: 0014. Longest Common Prefix
+//--- last written: 2022/11/02
 
 //--- method 1: vertical scanning, better
 class Solution {
