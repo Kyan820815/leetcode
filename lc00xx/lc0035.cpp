@@ -1,4 +1,5 @@
 //--- Q: 0035. Search Insert Position
+//--- last written: 2022/11/06
 
 //--- method 1: binary search
 class Solution {

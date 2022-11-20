@@ -1,4 +1,5 @@
 //--- Q: 0031. Next Permutation
+//--- last written: 2022/11/06
 
 //--- method 1: find the pattern
 class Solution {

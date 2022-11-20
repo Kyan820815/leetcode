@@ -1,4 +1,5 @@
 //--- Q: 0025. Reverse Nodes in k-Group
+//--- last written: 2022/11/04
 
 /**
  * Definition for singly-linked list.
@@ -11,7 +12,7 @@
  * };
  */
 
-//--- method 1: initialize revH as next start of reverse list 
+//--- method 1: initialize revH as next start of reverse list
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {

@@ -1,4 +1,5 @@
 //--- Q: 0028. Implement strStr()
+//--- last written: 2022/11/04
 
 //--- method 1: one pass
 class Solution {

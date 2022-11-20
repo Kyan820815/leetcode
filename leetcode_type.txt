@@ -103,6 +103,7 @@
     0016(m): 3Sum Closest
     0018(m): 4Sum
     0019(m): Remove Nth Node From End of List
+    0030(h): Substring with Concatenation of All Words
     0042(h): Trapping Rain Water
     0058(e): Length of Last Word
     0075(m): Sort Colors
@@ -1198,6 +1199,7 @@
     0012(m): Integer to Roman
     0013(e): Roman to Integer
     0015(m): 3Sum
+    0030(h): Substring with Concatenation of All Words
     0036(m): Valid Sudoku
     0049(m): Group Anagrams
     0097(m): Interleaving String
@@ -1647,6 +1649,7 @@
     0020(e): Valid Parentheses
     0022(m): Generate Parentheses
     0028(e): Implement strStr()
+    0030(h): Substring with Concatenation of All Words
     0032(h): Longest Valid Parentheses
     0038(m): Count and Say
     0043(m): Multiply Strings
@@ -3166,3 +3169,4 @@
     2168(m): Unique Substrings With Equal Digit Frequency
 
 --- Sliding Window:
+    0030(h): Substring with Concatenation of All Words

@@ -1,4 +1,5 @@
 //--- Q: 0022. Generate Parentheses
+//--- last written: 2022/11/04
 
 //--- method 1: dfs recursion
 class Solution {

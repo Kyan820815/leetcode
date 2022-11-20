@@ -360,7 +360,8 @@ This is consistent to C's strstr() and Java's indexOf().
 
 最佳解： method 1
 
-(1)
+(1) map cnt
+(2) sliding window
 
 ///////////////////////////////////////////////////////////////
 //
@@ -422,6 +423,7 @@ This is consistent to C's strstr() and Java's indexOf().
 
 (1) encode string： i(val), (val)j, i/3(val)j/3
     第一個是第i個row，再來是第j個col，最後是第(i/3, j/3)個block。
+(2) 可將儲存空間改成9*9 vector
 
 ///////////////////////////////////////////////////////////////
 //
