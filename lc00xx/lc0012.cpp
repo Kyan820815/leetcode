@@ -1,5 +1,5 @@
 //--- Q: 0012. Integer to Roman
-//--- last written: 2022/11/011
+//--- last written: 2022/11/11
 
 //--- method 1: elegant solution, better
 class Solution {
@@ -32,7 +32,7 @@ public:
         while (num) {
             int rem = num%10;
             if (rem == 4 || rem == 9) {
-                res += map[(rem+1)*level]; 
+                res += map[(rem+1)*level];
                 res += map[level];
             } else if (rem == 5) {
                 res += map[rem*level];
