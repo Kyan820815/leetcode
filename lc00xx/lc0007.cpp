@@ -1,5 +1,5 @@
 //--- Q: 0007. Reverse Integer
-//--- last written: 2022/11/01
+//--- last written: 2023/03/11
 
 //--- method 1: index by index checking, better
 class Solution {

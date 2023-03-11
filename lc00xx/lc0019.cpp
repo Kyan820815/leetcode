@@ -1,5 +1,5 @@
 //--- Q: 0019. Remove Nth Node From End of List
-//--- last written: 2022/11/02
+//--- last written: 2023/03/11
 
 /**
  * Definition for singly-linked list.
