@@ -1,5 +1,5 @@
 //--- Q: 0038. Count and Say
-//--- last written: 2022/11/06
+//--- last written: 2023/03/13
 
 //--- method 1: process last res
 class Solution {

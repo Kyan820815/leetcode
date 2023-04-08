@@ -1,5 +1,5 @@
 //--- Q: 0030. Substring with Concatenation of All Words
-//--- last written: 2022/11/18
+//--- last written: 2023/04/09
 
 //--- method 1: map record
 class Solution {
@@ -37,7 +37,7 @@ public:
             ++cnt[word];
         }
         vector<int> res;
-        int n = s.size(), wdlen = words[0].size(), wdcnt = words.size(), totallen = wdlen * wdcnt;
+        int n = s.size(), wdlen = words[0].size();
         int kind = cnt.size();
         for (int i = 0; i < wdlen; ++i) {
             int left = i, right = i, ckind = 0;

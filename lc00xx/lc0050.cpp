@@ -1,4 +1,5 @@
 //--- Q: 0050. Pow(x, n)
+//--- last written: 2023/03/15
 
 //--- method 1: iterative solution
 class Solution {
@@ -20,7 +21,7 @@ public:
             x *= x;
             n >>= 1;
         }
-        return res*add;      
+        return res*add;
     }
 };
 
@@ -38,7 +39,7 @@ public:
             n = -n;
         }
         double res = dfs(x, n);
-        return res*add;      
+        return res*add;
     }
     double dfs(double x, int n) {
         if (!n) {

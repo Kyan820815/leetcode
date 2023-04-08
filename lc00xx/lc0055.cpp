@@ -1,4 +1,5 @@
 //--- Q: 0055. Jump Game
+//--- last written: 2023/03/15
 
 //--- method 1: greedy method
 class Solution {

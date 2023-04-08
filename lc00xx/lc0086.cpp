@@ -1,4 +1,5 @@
 //--- Q: 0086. Partition List
+//--- last written: 2023/04/05
 
 /**
  * Definition for singly-linked list.

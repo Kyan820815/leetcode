@@ -1,4 +1,5 @@
 //--- Q: 0056. Merge Intervals
+//--- last written: 2023/03/15
 
 //--- method 1: O(nlogn)
 class Solution {

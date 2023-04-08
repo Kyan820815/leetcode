@@ -1,4 +1,5 @@
 //--- Q: 0081. Search in Rotated Sorted Array II
+//--- last written: 2023/04/04
 
 //--- method 1: divide (binary search) O(n)
 class Solution {
@@ -12,7 +13,7 @@ public:
             }
             if (nums[left] <= nums[mid]) {
                 if (nums[left] <= target && target <= nums[mid]) {
-                    right = mid;   
+                    right = mid;
                 } else {
                     left = mid+1;
                 }

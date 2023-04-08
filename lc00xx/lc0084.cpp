@@ -1,4 +1,5 @@
 //--- Q: 0084. Largest Rectangle in Histogram
+//--- last written: 2023/04/05
 
 //--- method 1: stack operation
 class Solution {

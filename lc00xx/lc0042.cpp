@@ -1,4 +1,5 @@
 //--- Q: 0042. Trapping Rain Water
+//--- last written: 2023/03/14
 
 //--- method 1: double pointer left & right
 class Solution {

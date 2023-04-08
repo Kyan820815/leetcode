@@ -1,4 +1,5 @@
 //--- Q: 0051. N-Queens
+//--- last written: 2023/03/15
 
 //--- method 1: dfs
 class Solution {

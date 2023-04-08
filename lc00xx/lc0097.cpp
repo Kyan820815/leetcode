@@ -1,4 +1,5 @@
 //--- Q: 0097. Interleaving String
+//--- last written: 2023/04/08
 
 //--- method 1: dp recursion
 class Solution {
@@ -28,7 +29,7 @@ public:
                 return visit[tag] = 0;
             }
         }
-        return visit[tag] = 1;    
+        return visit[tag] = 1;
     }
 };
 
@@ -53,7 +54,7 @@ public:
                 dp[i][j] = dp[i][j-1] && s2[j-1] == s3[i+j-1] || dp[i-1][j] && s1[i-1] == s3[i+j-1];
             }
         }
-        return dp[n][m];        
+        return dp[n][m];
     }
 };
 
@@ -76,6 +77,6 @@ public:
                 dp[j] = dp[j-1] && s2[j-1] == s3[i+j-1] || dp[j] && s1[i-1] == s3[i+j-1];
             }
         }
-        return dp[m];        
+        return dp[m];
     }
 };

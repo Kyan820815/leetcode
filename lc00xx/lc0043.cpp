@@ -1,4 +1,5 @@
 //--- Q: 0043. Multiply Strings
+//--- last written: 2023/03/14
 
 //--- method 1: back multiplication
 class Solution {
