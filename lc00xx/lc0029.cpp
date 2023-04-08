@@ -27,8 +27,9 @@ public:
         if (dividend == INT_MIN && divisor == -1) {
             return INT_MAX;
         }
-        long long int a = abs(dividend), b = abs(divisor), res = 0;
-        for (int x = 31; x >= 0; --x) {
+        long long int a = abs(dividend), b = abs(divisor);
+        long long int x, res = 0;
+        for (x = 31; x >= 0; --x) {
             if (a >= (b << x)) {
                 a -= (b << x);
                 res += (1 << x);
