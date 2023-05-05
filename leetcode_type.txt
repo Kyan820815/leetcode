@@ -1,7 +1,6 @@
 --- Binary Search:
     0004(h): Median of Two Sorted Arrays
     0014(e): Longest Common Prefix
-    0029(m): Divide Two Integers
     0033(m): Search in Rotated Sorted Array
     0034(m): Find First and Last Position of Element in Sorted Array
     0035(e): Search Insert Position
@@ -103,6 +102,8 @@
     0016(m): 3Sum Closest
     0018(m): 4Sum
     0019(m): Remove Nth Node From End of List
+    0026(e): Remove Duplicates from Sorted Array
+    0027(e): Remove Element
     0030(h): Substring with Concatenation of All Words
     0042(h): Trapping Rain Water
     0058(e): Length of Last Word
@@ -632,6 +633,7 @@
 
 --- Recursion:
     0017(m): Letter Combinations of a Phone Number
+    0021(e): Merge Two Sorted Lists
     0022(m): Generate Parentheses
     0039(m): Combination Sum
     0040(m): Combination Sum II
@@ -835,6 +837,7 @@
     2157(h): Groups of Strings
 
 --- Greedy:
+    0011(m): Container With Most Water
     0045(m): Jump Game II
     0055(m): Jump Game
     0122(e): Best Time to Buy and Sell Stock II
@@ -955,7 +958,7 @@
     0022(m): Generate Parentheses
     0032(h): Longest Valid Parentheses
     0045(m): Jump Game II
-    0053(e): Maximum Subarray
+    0053(m): Maximum Subarray
     0055(m): Jump Game
     0062(m): Unique Paths
     0063(m): Unique Paths II
@@ -1089,7 +1092,7 @@
 --- Sub Series:
     0003(m): Longest Substring Without Repeating Characters
     0005(m): Longest Palindromic Substring
-    0053(e): Maximum Subarray
+    0053(m): Maximum Subarray
     0076(h): Minimum Window Substring
     0152(m): Maximum Product Subarray
     0159(m): Longest Substring with At Most Two Distinct Characters
@@ -1202,7 +1205,6 @@
     0030(h): Substring with Concatenation of All Words
     0036(m): Valid Sudoku
     0049(m): Group Anagrams
-    0097(m): Interleaving String
     0126(h): Word Ladder II
     0127(h): Word Ladder
     0128(m): Longest Consecutive Sequence
@@ -1930,6 +1932,7 @@
 
 --- Array:
     0004(h): Median of Two Sorted Arrays
+    0011(m): Container With Most Water
     0015(m): 3Sum
     0016(m): 3Sum Closest
     0018(m): 4Sum
@@ -1950,7 +1953,7 @@
     0048(m): Rotate Image
     0051(h): N-queens
     0052(h): N-Queens II
-    0053(e): Maximum Subarray
+    0053(m): Maximum Subarray
     0054(m): Spiral Matrix
     0055(m): Jump Game
     0056(m): Merge Intervals
@@ -2508,6 +2511,7 @@
     2188(h): Minimum Time to Finish the Race
 
 --- Bit Manipulation:
+    0029(m): Divide Two Integers
     0067(e): Add Binary
     0136(e): Single Number
     0137(m): Single Number II
@@ -2947,15 +2951,18 @@
     1332(e): Remove Palindromic Subsequences
 
 --- Math:
-    0007(e): Reverse Integer
+    0007(m): Reverse Integer
     0008(m): String to Integer (atoi)
     0009(e): Palindrome Number
     0012(m): Integer to Roman
     0013(e): Roman to Integer
     0029(m): Divide Two Integers
     0043(m): Multiply Strings
+    0048(m): Rotate Image
     0050(m): Pow(x, n)
+    0060(h): Permutation Sequence
     0066(e): Plus One
+    0067(e): Add Binary
     0069(e): Sqrt(x)
     0149(h): Max Points on a Line
     0168(e): Excel Sheet Column Title
@@ -3169,4 +3176,6 @@
     2168(m): Unique Substrings With Equal Digit Frequency
 
 --- Sliding Window:
+    0003(m): Longest Substring Without Repeating Characters
     0030(h): Substring with Concatenation of All Words
+    0076(h): Minimum Window Substring
