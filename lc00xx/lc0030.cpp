@@ -1,5 +1,5 @@
 //--- Q: 0030. Substring with Concatenation of All Words
-//--- last written: 2023/04/09
+//--- last written: 2023/06/05
 
 //--- method 1: map record
 class Solution {

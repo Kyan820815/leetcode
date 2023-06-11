@@ -1,5 +1,5 @@
 //--- Q: 0008. String to Integer (atoi)
-//--- last written: 2023/03/11
+//--- last written: 2023/05/28
 
 //--- method 1: find first sign and digit to calculate
 class Solution {

@@ -1,5 +1,5 @@
 //--- Q: 0020. Valid Parentheses
-//--- last written: 2023/03/11
+//--- last written: 2023/06/01
 
 //--- method 1: stack
 class Solution {

@@ -1,5 +1,5 @@
 //--- Q: 0023. Merge k Sorted Lists
-//--- last written: 2023/03/11
+//--- last written: 2023/06/05
 
 /**
  * Definition for singly-linked list.
