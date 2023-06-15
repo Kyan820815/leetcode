@@ -1,5 +1,5 @@
 //--- Q: 0036. Valid Sudoku
-//--- last written: 2023/03/13
+//--- last written: 2023/06/09
 
 //--- method 1: hashmap, clean code
 class Solution {

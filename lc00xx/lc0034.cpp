@@ -1,5 +1,5 @@
 //--- Q: 0034. Find First and Last Position of Element in Sorted Array
-//--- last written: 2023/03/13
+//--- last written: 2023/06/09
 
 //--- method 1: double bainry search
 class Solution {

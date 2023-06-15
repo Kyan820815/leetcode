@@ -1,5 +1,5 @@
 //--- Q: 0045. Jump Game II
-//--- last written: 2023/03/15
+//--- last written: 2023/06/10
 
 //--- method 1: O(1) space, O(n) time
 class Solution {
