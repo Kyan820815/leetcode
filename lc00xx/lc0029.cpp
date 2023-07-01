@@ -1,5 +1,5 @@
 //--- Q: 0029. Divide Two Integers
-//--- last written: 2023/06/05
+//--- last written: 2023/07/02
 
 //--- method 1: O(log(n)^2) time
 class Solution {

@@ -1,5 +1,5 @@
 //--- Q: 0027. Remove Element
-//--- last written: 2023/06/05
+//--- last written: 2023/07/02
 
 //--- method 1: partition tech of quick select
 class Solution {
