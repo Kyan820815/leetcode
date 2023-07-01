@@ -1,5 +1,5 @@
 //--- Q: 0005. Longest Palindromic Substring
-//--- last written: 2023/05/28
+//--- last written: 2023/07/01
 
 //--- method 1: linear search
 class Solution {

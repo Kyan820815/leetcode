@@ -1,5 +1,5 @@
 //--- Q: 0004. Median of Two Sorted Arrays
-//--- last written: 2023/05/28
+//--- last written: 2023/07/01
 
 //--- method 1: binary search for two arrays
 class Solution {

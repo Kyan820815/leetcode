@@ -1,5 +1,5 @@
 //--- Q: 0009. Palindrome Number
-//--- last written: 2023/05/28
+//--- last written: 2023/07/01
 
 //--- method 1: turn to string then compare
 class Solution {
