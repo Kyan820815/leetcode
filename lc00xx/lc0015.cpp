@@ -1,5 +1,5 @@
 //--- Q: 0015. 3Sum
-//--- last written: 2023/05/28
+//--- last written: 2023/07/01
 
 //--- method 1: build-in sort
 class Solution {
