@@ -1,5 +1,5 @@
 //--- Q: 0052. N-Queens II
-//--- last written: 2023/06/16
+//--- last written: 2023/07/02
 
 //--- method 1: dfs recursion
 class Solution {

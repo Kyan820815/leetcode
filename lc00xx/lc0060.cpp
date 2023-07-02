@@ -1,5 +1,5 @@
 //--- Q: 0060. Permutation Sequence
-//--- last written: 2023/06/16
+//--- last written: 2023/07/02
 
 //--- method 1: O(n) find pattern
 class Solution {

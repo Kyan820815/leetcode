@@ -1,5 +1,5 @@
 //--- Q: 0059. Spiral Matrix II
-//--- last written: 2023/06/16
+//--- last written: 2023/07/02
 
 //--- method 1: clean code
 class Solution {

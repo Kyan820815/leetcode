@@ -1,5 +1,5 @@
 //--- Q: 0058. Length of Last Word
-//--- last written: 2023/06/16
+//--- last written: 2023/07/02
 
 //--- method 1: string operation
 class Solution {
