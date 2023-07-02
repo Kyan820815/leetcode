@@ -1,5 +1,5 @@
 //--- Q: 0032. Longest Valid Parentheses
-//--- last written: 2023/06/09
+//--- last written: 2023/07/02
 
 //--- method 1: stack
 class Solution {
