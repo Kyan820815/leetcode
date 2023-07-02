@@ -1,5 +1,5 @@
 //--- Q: 0063. Unique Paths II
-//--- last written: 2023/03/16
+//--- last written: 2023/07/02
 
 //--- method 1: dp iteration
 class Solution {
@@ -13,17 +13,18 @@ public:
         for (int i = 0; i < row; ++i) {
             for (int j = 0; j < col; ++j) {
                 if (obstacleGrid[i][j] == 1) {
+                    obstacleGrid[i][j] = 0;
                     continue;
                 }
-                if (i && obstacleGrid[i-1][j] < 0) {
+                if (i) {
                     obstacleGrid[i][j] += obstacleGrid[i-1][j];
                 }
-                if (j && obstacleGrid[i][j-1] < 0) {
+                if (j) {
                     obstacleGrid[i][j] += obstacleGrid[i][j-1];
                 }
             }
         }
-        return obstacleGrid[row-1][col-1] < 0 ? abs(obstacleGrid[row-1][col-1]) : 0;
+        return abs(obstacleGrid[row-1][col-1]);
     }
 };
 

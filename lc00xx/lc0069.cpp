@@ -1,5 +1,5 @@
 //--- Q: 0069. Sqrt(x)
-//--- last written: 2023/04/04
+//--- last written: 2023/07/02
 
 //--- method 1: binary search
 class Solution {

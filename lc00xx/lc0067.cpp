@@ -1,5 +1,5 @@
 //--- Q: 0067. Add Binary
-//--- last written: 2023/04/04
+//--- last written: 2023/07/02
 
 //--- method 1: bit by bit add
 class Solution {
