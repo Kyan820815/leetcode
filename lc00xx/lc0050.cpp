@@ -1,5 +1,5 @@
 //--- Q: 0050. Pow(x, n)
-//--- last written: 2023/06/09
+//--- last written: 2023/07/02
 
 //--- method 1: iterative solution
 class Solution {
