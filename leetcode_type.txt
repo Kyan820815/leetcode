@@ -964,7 +964,7 @@
     0063(m): Unique Paths II
     0064(m): Minimum Path Sum
     0070(e): Climbing Stairs
-    0072(h): Edit Distance
+    0072(m): Edit Distance
     0085(h): Maximal Rectangle
     0091(m): Decode Ways
     0095(m): Unique Binary Search Trees II
@@ -1659,7 +1659,7 @@
     0058(e): Length of Last Word
     0067(e): Add Binary
     0071(m): Simplify Path
-    0072(h): Edit Distance
+    0072(m): Edit Distance
     0076(h): Minimum Window Substring
     0091(m): Decode Ways
     0093(m): Restore IP Addresses
