@@ -1,4 +1,5 @@
 //--- Q: 0120. Triangle
+//--- last written: 2023/07/13
 
 //--- method 1: O(1) space
 class Solution {
