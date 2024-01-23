@@ -1,4 +1,5 @@
 //--- Q: 0128. Longest Consecutive Sequence
+//--- last written: 2023/07/14
 
 //--- method 1: unordered_map
 class Solution {

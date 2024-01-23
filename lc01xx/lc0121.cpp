@@ -1,4 +1,5 @@
 //--- Q: 0121. Best Time to Buy and Sell Stock
+//--- last written: 2023/07/14
 
 //--- method 1: O(n) one pass
 class Solution {

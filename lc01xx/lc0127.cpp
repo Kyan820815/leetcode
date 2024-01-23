@@ -1,4 +1,5 @@
 //--- Q: 0127. Word Ladder
+//--- last written: 2023/07/14
 
 //--- method 1: single way bfs
 class Solution {

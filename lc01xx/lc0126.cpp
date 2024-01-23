@@ -1,4 +1,5 @@
 //--- Q: 0126. Word Ladder II
+//--- last written: 2023/07/14
 
 //--- method 1: bi-directional BFS
 class Solution {

@@ -1,6 +1,7 @@
 //--- Q: 0131. Palindrome Partitioning
+//--- last written: 2023/07/14
 
-//--- method 1: dfs with check palidrome every time 
+//--- method 1: dfs with check palidrome every time
 class Solution {
 public:
     vector<string> res;

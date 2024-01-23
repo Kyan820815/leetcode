@@ -1,4 +1,5 @@
 //--- Q: 0125. Valid Palindrome
+//--- last written: 2023/07/14
 
 //--- method 1: two pointer
 class Solution {
@@ -13,7 +14,7 @@ public:
                 --j;
             }
             if ((s[i]^32) == s[j] || s[i] == s[j]) {
-                ++i, --j;    
+                ++i, --j;
             } else {
                 return false;
             }
